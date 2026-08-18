@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-17T21:48:55Z",
+  "updated_at": "2026-08-18T04:45:22Z",
+  "owner_authorization": {
+    "path": "/Users/gpt/.codex/attachments/747c6057-a4c6-4fa6-a37a-b40c26f672ff/pasted-text.txt",
+    "sha256": "eb6546c25056022d51934d04a8f599e2669d2cabbb67343476874bea0e9257c2",
+    "byte_size": 46358,
+    "observed_mtime": "2026-08-17T17:40:28-0400",
+    "source_type": "OWNER_INSTRUCTION_NOT_EVIDENCE"
+  },
+  "missing_historical_sources": [
+    {
+      "filename": "Pattern Recognition — Visual Map (v13).html",
+      "expected_sha256": "fac9337e47675bfea192715edb8993e258c8a64ea1edec32d1d111534c671c39",
+      "status": "EXACT_BYTES_MISSING_LIVE_V13_REFERENCE_RECOVERED"
+    },
+    {
+      "filename": "pattern-recognition-diagram-v12.png",
+      "expected_sha256": "8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae",
+      "status": "EXACT_BYTES_MISSING_RENDERED_ASSET_VISUALLY_INSPECTED"
+    },
+    {
+      "filename": "Research.zip",
+      "expected_sha256": null,
+      "status": "MISSING"
+    },
+    {
+      "filename": "Alpha_Solver_Brain_New_Thread_Migration_Packet_v18.md",
+      "expected_sha256": null,
+      "status": "MISSING"
+    }
+  ],
+  "live_historical_reference": {
+    "owner_supplied_url": "https://pattern-recognition-map.adonisdv23.chatgpt.site/",
+    "access_date": "2026-08-17",
+    "page_title": "Pattern Recognition — Visual Map",
+    "visible_version_marker": "Personal map · v13 · For internal use",
+    "complete_rendered_content_read": true,
+    "desktop_and_mobile_inspection_completed": true,
+    "asset_export_status": "BLOCKED_BY_BROWSER_PERMISSION_NO_WORKAROUND_ATTEMPTED",
+    "exact_hash_verification": false,
+    "manifest": "archive/v13/LIVE_SITE_REFERENCE_MANIFEST.json",
+    "recovery_memo": "reports/V13_RECOVERY_AND_INTENT_MEMO.md",
+    "source_type": "OWNER_DESIGNATED_HISTORICAL_LIVE_REFERENCE"
+  },
+  "local_case_study_sources": [
+    {
+      "repository": "Alpha-Solver",
+      "revision": "e7a6baa93627c9ef1e27f0660bd4913262267ea2",
+      "path": "/Users/gpt/Documents/Codex/projects/Alpha-Solver/README.md",
+      "sha256": "b336076614db0f0f0ecd1c7a66a969730b68f7ef13327c2a4b2d74447edb4b4f"
+    },
+    {
+      "repository": "Alpha-Solver",
+      "revision": "e7a6baa93627c9ef1e27f0660bd4913262267ea2",
+      "path": "/Users/gpt/Documents/Codex/projects/Alpha-Solver/docs/evals/runs/alpha-solver-discrimination-layer-demo-pack-001/README.md",
+      "sha256": "48f773d4f77b190a383f0e72386953698ff1a2da78e733fdc3727d085efae2e6"
+    },
+    {
+      "repository": "Alpha-Solver",
+      "revision": "e7a6baa93627c9ef1e27f0660bd4913262267ea2",
+      "path": "/Users/gpt/Documents/Codex/projects/Alpha-Solver/docs/evals/runs/alpha-solver-discrimination-layer-demo-pack-001/presenter-script.md",
+      "sha256": "00433fc5e11731a2f73f78a98cd9360b7deb3d05ed65503d97e62084172b4f4d"
+    },
+    {
+      "repository": "Alpha-Solver",
+      "revision": "e7a6baa93627c9ef1e27f0660bd4913262267ea2",
+      "path": "/Users/gpt/Documents/Codex/projects/Alpha-Solver/docs/evals/runs/alpha-solver-manual-discrimination-value-read-001/README.md",
+      "sha256": "af06c539ba61b272fb5f9f500fc9432ab9844ab268eac748d809a82452bdef86"
+    },
+    {
+      "repository": "Signal-Foundry",
+      "revision": "f9bf3775ca3d5b52ea5083cea52306c025727e23",
+      "path": "/Users/gpt/Documents/Codex/projects/Signal-Foundry/docs/pattern_recognition_evidence_boundary.md",
+      "sha256": "5c5ad64930b672ea059780e8e2882b618e877b237cc09002de270c6cf90171b4"
+    },
+    {
+      "repository": "Signal-Foundry",
+      "revision": "f9bf3775ca3d5b52ea5083cea52306c025727e23",
+      "path": "/Users/gpt/Documents/Codex/projects/Signal-Foundry/docs/alpha_solver_evidence_packet_contract_boundary.md",
+      "sha256": "eb4415cdf48bf784634fd548a42e4e5422338b0266b6262e66853a4867d6240b"
+    },
+    {
+      "repository": "Signal-Foundry",
+      "revision": "f9bf3775ca3d5b52ea5083cea52306c025727e23",
+      "path": "/Users/gpt/Documents/Codex/projects/Signal-Foundry/docs/transcript_enrichment_hub_alpha_solver_reference_audit.md",
+      "sha256": "1ce3713f1811ca19e4f424b5ecf04b367b431e2a870e3129cafacb4c7d8fe1bd"
+    }
+  ],
+  "external_research_registry": {
+    "access_date": "2026-08-17",
+    "canonical_human_readable_file": "research/REFERENCES.md",
+    "canonical_bibliography_file": "research/references.bib",
+    "selection_rule": "Prefer primary papers, publisher records, standards, and official technical documentation; label preprints and industry guidance explicitly."
+  },
+  "model_review_boundary": {
+    "treated_as_evidence": false,
+    "luna": {
+      "direct_agents": 4,
+      "recursive_agents": 0,
+      "status_file": "reviews/luna/EARLY_AUDIT_STATUS.json",
+      "early_disposition": "reviews/luna/CODEX_DISPOSITION_OF_EARLY_LUNA_AUDITS.md",
+      "final_reader_disposition": "reviews/luna/CODEX_DISPOSITION_OF_FINAL_LUNA_READER_AUDIT.md"
+    },
+    "claude_cli": {
+      "status": "UNAVAILABLE_AUTHENTICATION_FAILED",
+      "status_file": "reviews/claude_cli/CLAUDE_SYSTEMS_REVIEW_STATUS.json",
+      "response_produced": false
+    },
+    "chatgpt_pro": {
+      "status": "UNAVAILABLE_LOGGED_OUT_NO_PRO_MODE",
+      "status_file": "reviews/chatgpt_pro/CHATGPT_PRO_READER_REVIEW_STATUS.json",
+      "response_produced": false
+    },
+    "claude_work_visual": {
+      "status": "COMPLETE_READ_ONLY_RENDERED_TEXT_CAPTURE",
+      "status_file": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_STATUS.json",
+      "task_id": "cse_01R4yYV4PpeW88z2ywP8fkDz",
+      "visible_model": "Opus 5",
+      "visible_effort": "Max",
+      "response_produced": true,
+      "response_capture": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_RAW_OUTPUT.md",
+      "visible_text_sha256": "f62268688ef6b9a4d9051f88c3488827adb564d39eeb79674e7211d24933b704",
+      "disposition": "reviews/claude_desktop/CODEX_DISPOSITION_OF_CLAUDE_VISUAL_REVIEW.md",
+      "treated_as_evidence": false
+    }
+  },
+  "final_local_artifacts": {
+    "thought_piece": "source/THOUGHT_PIECE_V14.md",
+    "framework_json": "source/FRAMEWORK_COMPONENT_MAP.json",
+    "framework_markdown": "source/FRAMEWORK_COMPONENT_MAP.md",
+    "local_site": "site/",
+    "local_url": "http://127.0.0.1:8773/",
+    "pdf": {
+      "path": "exports/THOUGHT_PIECE_V14.pdf",
+      "sha256": "326a870a8fe15356265c9adc1e59c3a0727c0c622c15a4cc6d2b91f1a30a2f41",
+      "pages": 25,
+      "tagged": false,
+      "role": "VISUAL_PRINT_COMPANION"
+    },
+    "publication_status": "NOT_PUBLISHED_PENDING_OWNER_REVIEW"
+  }
+}
