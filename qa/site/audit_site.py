@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+"""Static, semantic, no-script, and boundary checks for the local v16 site.
+
+This is structural QA only. It is not a reader-comprehension, effectiveness,
+model, empirical, participant, or deployment result.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import re
+from html.parser import HTMLParser
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[2]
+DIST = ROOT / "site" / "dist"
+EXPORT = ROOT / "site" / "exports" / "standalone" / "pattern-map-v16.html"
+DIAGRAM = ROOT / "assets" / "diagrams" / "historical-v13-pattern-recognition-diagram-v12.png"
+EXPECTED_DIAGRAM_SHA = "8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae"
+ROUTES = {
+    "index.html": "Pattern Recognition / The Discrimination Layer",
+    "read/index.html": "Read the idea",
+    "map/index.html": "Explore the map",
+    "apply/index.html": "Apply it",
+    "examples/index.html": "Examples",
+    "boundaries/index.html": "Boundaries",
+    "sources/index.html": "Sources",
+    "research/index.html": "Research",
+    "history/index.html": "History",
+}
+
+
+class SemanticParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.stack: list[dict[str, object]] = []
+        self.headings: list[tuple[int, str]] = []
+        self.landmarks: list[tuple[str, str]] = []
+        self.interactive: list[tuple[str, dict[str, str], str]] = []
+        self.images: list[dict[str, str]] = []
+        self.scripts = 0
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = {key: value or "" for key, value in attrs}
+        if tag == "script":
+            self.scripts += 1
+        if tag == "img":
+            self.images.append(attributes)
+        if tag in {"header", "main", "nav", "footer", "article", "section"}:
+            self.landmarks.append((tag, attributes.get("aria-label", "")))
+        self.stack.append({"tag": tag, "attrs": attributes, "text": []})
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
+    def handle_data(self, data: str) -> None:
+        for item in self.stack:
+            item["text"].append(data)  # type: ignore[union-attr]
+
+    def handle_endtag(self, tag: str) -> None:
+        for index in range(len(self.stack) - 1, -1, -1):
+            if self.stack[index]["tag"] != tag:
+                continue
+            item = self.stack.pop(index)
+            text = " ".join("".join(item["text"]).split())  # type: ignore[arg-type]
+            attrs = item["attrs"]  # type: ignore[assignment]
+            if re.fullmatch(r"h[1-6]", tag):
+                self.headings.append((int(tag[1]), text))
+            if tag in {"a", "button", "summary"}:
+                self.interactive.append((tag, attrs, text))  # type: ignore[arg-type]
+            break
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise AssertionError(message)
+
+
+def parse(file: Path) -> tuple[str, SemanticParser]:
+    text = file.read_text(encoding="utf-8")
+    parser = SemanticParser()
+    parser.feed(text)
+    return text, parser
+
+
+def accessible_name(attrs: dict[str, str], text: str) -> str:
+    return attrs.get("aria-label", "").strip() or attrs.get("alt", "").strip() or text.strip()
+
+
+def audit_route(relative: str, expected_title: str) -> list[str]:
+    file = DIST / relative
+    require(file.is_file(), f"missing built route: {relative}")
+    text, parser = parse(file)
+    messages: list[str] = []
+    require('<html lang="en">' in text, f"{relative}: missing lang=en")
+    require(text.count('<main id="main"') == 1, f"{relative}: expected one main landmark")
+    require('<a class="skip-link" href="#main">' in text, f"{relative}: skip link missing")
+    require(any(label == "Principal routes" for tag, label in parser.landmarks if tag == "nav"), f"{relative}: principal nav label missing")
+    require(len(parser.headings) >= 1, f"{relative}: no headings")
+    require(sum(level == 1 for level, _ in parser.headings) == 1, f"{relative}: expected exactly one h1")
+    require(parser.headings[0][0] == 1, f"{relative}: h1 is not the first heading")
+    for previous, current in zip(parser.headings, parser.headings[1:]):
+        require(current[0] <= previous[0] + 1, f"{relative}: heading jump {previous} -> {current}")
+    for tag, attrs, text_value in parser.interactive:
+        if tag == "a" and not attrs.get("href"):
+            raise AssertionError(f"{relative}: anchor without href")
+        if tag in {"button", "summary"}:
+            require(accessible_name(attrs, text_value), f"{relative}: {tag} without accessible name")
+    for image in parser.images:
+        require("alt" in image, f"{relative}: image without alt attribute")
+    if expected_title != "Pattern Recognition / The Discrimination Layer":
+        require(expected_title in text, f"{relative}: route title copy missing")
+    messages.append(f"PASS semantic landmarks/headings/names: {relative}")
+    return messages
+
+
+def main() -> None:
+    output: list[str] = []
+    for route, expected_title in ROUTES.items():
+        output.extend(audit_route(route, expected_title))
+
+    root_text = (DIST / "index.html").read_text(encoding="utf-8")
+    map_text = (DIST / "map/index.html").read_text(encoding="utf-8")
+    apply_text = (DIST / "apply/index.html").read_text(encoding="utf-8")
+    read_text = (DIST / "read/index.html").read_text(encoding="utf-8")
+
+    essential = [
+        "AI slop often begins before the model writes a word.",
+        "Pattern Recognition is the discipline of improving them.",
+        "Peripheral signal",
+        "Source weighing",
+        "Velocity / motion",
+        "Absence + memory",
+        "Structured patterns",
+        "Learning loop",
+        "Human authority stays explicit.",
+    ]
+    for value in essential:
+        require(value in root_text + map_text + apply_text + read_text, f"essential site meaning missing: {value}")
+    output.append("PASS no-script essential meaning is present in static HTML")
+
+    for value in ["ordinary", "lightweight", "moderate", "advanced", "ACQUIRE", "STOPPED_BUDGET", "LEARNING_PENDING_OUTCOME"]:
+        require(value.lower() in apply_text.lower(), f"Apply vocabulary missing: {value}")
+    output.append("PASS Apply route exposes ordinary/lightweight/moderate/advanced and route/stop/learning vocabularies")
+
+    for value in ["@media print", "prefers-reduced-motion", "forced-colors", "details > summary"]:
+        require(value in (ROOT / "site" / "src" / "site.css").read_text(encoding="utf-8"), f"responsive/accessibility CSS hook missing: {value}")
+    output.append("PASS reduced-motion, forced-colors, 200%-friendly reflow, and print hooks present")
+
+    stripped = re.sub(r"<script\b[^>]*>[\s\S]*?</script>", "", root_text + map_text + apply_text, flags=re.IGNORECASE)
+    for value in ["AI slop often begins before the model writes a word.", "Peripheral signal", "ordinary", "lightweight", "moderate", "advanced"]:
+        require(value in stripped, f"no-script simulation lost essential value: {value}")
+    output.append("PASS no-script simulation retains first-screen, map, and application essentials")
+
+    echo_removed = re.sub(r"echo|origin-accounting|no results", "", read_text + map_text + apply_text, flags=re.IGNORECASE)
+    for value in ["Pattern Recognition", "Peripheral signal", "Source weighing", "Learning loop", "ACQUIRE", "HOLD", "STOPPED_BUDGET"]:
+        require(value in echo_removed, f"Echo-removal simulation lost principal-route meaning: {value}")
+    output.append("PASS synthetic Echo-removal simulation leaves Read/Explore/Apply meaning coherent")
+
+    history_text = (DIST / "history/index.html").read_text(encoding="utf-8")
+    require("Historical v13 origin — not the current v16 topology." in history_text, "historical/current label missing")
+    require("current relationship view" in history_text.lower(), "current relationship distinction missing")
+    require(hashlib.sha256(DIAGRAM.read_bytes()).hexdigest() == EXPECTED_DIAGRAM_SHA, "historical diagram hash changed")
+    output.append("PASS historical diagram label/current-topology distinction and hash")
+
+    standalone_text = EXPORT.read_text(encoding="utf-8")
+    require("<style>" in standalone_text and 'rel="stylesheet"' not in standalone_text, "standalone export still needs external CSS")
+    require("<script src=" not in standalone_text, "standalone export still needs external JavaScript")
+    require("Read the idea" in standalone_text and "Explore the map" in standalone_text and "Apply it" in standalone_text, "standalone export lost principal doors")
+    require(f'src="../../../assets/diagrams/{DIAGRAM.name}"' in standalone_text and DIAGRAM.is_file(), "standalone export lost its local historical diagram reference")
+    output.append("PASS standalone HTML is self-contained for direct local opening")
+
+    print("\n".join(output))
+    print("NOTE structural QA is not reader comprehension or effectiveness evidence")
+
+
+if __name__ == "__main__":
+    main()
