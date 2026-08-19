@@ -52,7 +52,14 @@
         "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
         "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
         "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
-        "framework/templates/README.md"
+        "framework/templates/README.md",
+        "framework/templates/DECISION_BRIEF.md",
+        "framework/templates/ACQUISITION_RECEIPT.md",
+        "framework/templates/EVIDENCE_REGISTER.md",
+        "framework/templates/COMPARISON_MATRIX.md",
+        "framework/templates/DISCONFIRMATION_LOG.md",
+        "framework/templates/INFLUENCE_RECEIPT.md",
+        "framework/templates/OUTCOME_REVIEW.md"
       ]
     }
   ],
@@ -63,7 +70,10 @@
       "sources": [
         "manuscript/PATTERN_RECOGNITION_V16.md",
         "framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md",
-        "cases/README.md"
+        "cases/README.md",
+        "cases/signal-foundry/README.md",
+        "cases/general-research/README.md",
+        "cases/product-and-process/README.md"
       ]
     },
     {
@@ -78,7 +88,8 @@
       "id": "sources",
       "label": "Sources",
       "sources": [
-        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md"
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md"
       ]
     },
     {
@@ -98,7 +109,10 @@
       "sources": [
         "manuscript/ORIGIN_NOTE.md",
         "docs/SOURCE_AUTHORITY_AND_LINEAGE.md",
-        "archive/README.md"
+        "archive/README.md",
+        "archive/v13/README.md",
+        "archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/LIVE_SITE_REFERENCE_MANIFEST.json",
+        "archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/pattern-recognition-diagram-v12.png"
       ]
     }
   ],
@@ -209,10 +223,16 @@
     "deploy": false,
     "publish": false,
     "github_release": false,
-    "study": false,
+    "replace_public_site": false,
+    "empirical_study": false,
+    "model_study": false,
+    "participant_study": false,
     "provider_call": false,
+    "paid_provider": false,
     "dataset_acquisition": false,
     "participant_activity": false,
+    "preregister": false,
+    "outreach_or_contact": false,
     "spend": false
   }
 }

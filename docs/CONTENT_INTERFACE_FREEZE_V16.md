@@ -17,6 +17,11 @@ The machine-readable companion is
 and the JSON disagree, the locked owner intent and canonical source artifacts
 govern; the disagreement must be corrected before site integration.
 
+The JSON is a complete explicit manifest for the site-facing source files at
+this checkpoint, not merely a list of directory indexes. Adding or removing a
+canonical site source requires updating both forms and passing the content-
+interface validator.
+
 ## First screen
 
 The first screen must begin with the human problem and broad upstream-choice
@@ -118,7 +123,7 @@ The site may expose these after or alongside the three doors:
 | --- | --- | --- |
 | Examples | Show peripheral/specialist signal, velocity or expected absence, common-origin recurrence, Signal Foundry, and two neutral cases | Essay worked examples; `cases/**`; agent ordinary-vs-layered example |
 | Boundaries | State when the framework should shrink or disappear and preserve permission, uncertainty, human authority, and claim limits | `framework/BOUNDARIES_AND_FAILURES.md`; `docs/ARTIFACT_BOUNDARIES.md` |
-| Sources | Offer a targeted, non-exhaustive route without turning the essay into a literature review | `manuscript/SOURCES_AND_RESEARCH_ROUTE.md` |
+| Sources | Offer a targeted, non-exhaustive route without turning the essay into a literature review | `manuscript/SOURCES_AND_RESEARCH_ROUTE.md`; `docs/CLAIMS_AND_SOURCE_LEDGER_V16.md` |
 | Research | Explain the unrun research agenda and link to Echo as separate Track 01 | `research/README.md`; broader agenda; future protocol; Echo README/status |
 | History | Explain v13 continuity and the v14–v15.2 lineage | `manuscript/ORIGIN_NOTE.md`; `docs/SOURCE_AUTHORITY_AND_LINEAGE.md`; archive indexes |
 
