@@ -20,10 +20,11 @@ inputs, flattened context, missing comparisons, unexamined assumptions, and no
 record of the upstream choices that shaped the prompt. Generation then does
 what generation is good at: it makes the room it was given sound coherent.
 
-That is the idea I want to put on the table. AI-assisted work inherits choices
-made before generation. If we want less predictable work, we need to improve
-the choices about what the system should notice, acquire, compare, preserve,
-question, and allow to influence the answer.
+That is the idea I want to put on the table. It is the part I did not manage to
+say clearly in the coffee conversation that started this project: AI-assisted
+work inherits choices made before generation. If we want less predictable
+work, we need to improve the choices about what the system should notice,
+acquire, compare, preserve, question, and allow to influence the answer.
 
 I call that discipline **pattern recognition**. The name is deliberately
 broader than finding an unusual source. It includes noticing a change against
@@ -33,11 +34,9 @@ learning from outcomes without rewriting the past.
 
 The **Discrimination Layer** is the responsibility for making those upstream
 choices explicit, inspectable, cost-bounded, and open to correction. Here,
-*discrimination* means technical differentiation among information candidates
-and possible next actions. It does not mean classifying people, allocating
-rights, or treating protected groups differently. A *layer* is a logical
-responsibility, not necessarily a model, service, database, prompt, or box in a
-diagram.
+*discrimination* means differentiating among information candidates and
+possible next actions—not classifying people or allocating rights. A *layer*
+names the responsibility, not a mandatory piece of software.
 
 The point is not to add ceremony to every question or to build a universal
 trust score. It is to ask, in proportion to the stakes: what entered the room,
@@ -49,7 +48,10 @@ still unknown, and who can change the route?
 The original Pattern Recognition map had six families. They are not six
 features to buy, and they are not a claim that these practices were invented
 here. They are six ways to look at the information environment before asking a
-generator to make it sound finished.
+generator to make it sound finished. The movement matters more than the
+numbering: widen the field, weigh what entered, compare what is changing or
+missing, make the comparison explicit, and learn which routes deserve to be
+used again.
 
 ### 1. Peripheral signal: look beyond the obvious path
 
@@ -94,17 +96,17 @@ repeated because many people saw the same announcement. It can have a useful
 track record in one domain and no established standing in another. It can be
 technically accessible but not permitted for retention, disclosure, or action.
 
-Those are different judgments. Source role, claim support, recurrence,
-origin, relevance, permission, and action priority should be allowed to inform
-one another without being collapsed into one number. Provenance can tell us
-where a piece of material came from; it cannot tell us that the material is
-correct. Repetition can tell us that a claim travelled; it cannot, by itself,
-turn one origin into many independent supports.
+Those are different judgments. Ask two plain questions: what can this source
+actually tell us about this claim, and what can it not tell us? A vendor may be
+the best source for what it announced and no source at all for whether the
+product works in another team's environment. Provenance can tell us where a
+piece of material came from; it cannot tell us that the material is correct.
+Repetition can tell us that a claim travelled; it cannot, by itself, turn one
+origin into many independent supports.
 
-The practical habit is simple to say, even when it takes work: preserve the
-item, name the exact claim it bears on, record what kind of support or
-contradiction it offers, keep its source role and permission visible, and
-leave unresolved relationships unresolved.
+Keep the original item and the claim it bears on close enough together that
+another person can see why it influenced the answer. If the source's role,
+relationship, or permission is unclear, leave that unclear.
 
 ### 3. Velocity and motion: notice change against a baseline
 
@@ -211,20 +213,12 @@ travelled, how it was framed, or what the vendor said. But repetition alone did
 not create eight new origins. If the relationship disappears when the material
 is summarized, a generator can inherit an inflated sense of corroboration.
 
-One small record could keep the structure visible:
-
-| What is being counted? | Recorded value |
-| --- | ---: |
-| Report observations | 09 |
-| Known shared information paths | 01 |
-| Paths counted as separate support for the broad claim under this rule | 00 |
-| Next human step | HOLD — inspect another origin relation |
-
-Zero separately counted paths is not a verdict that the tool is false, that the
-reports are useless, or that the vendor may not speak authoritatively about
-its own announcement. It is a hold on one broad claim until another
-relationship is inspected. The record preserves all nine observations while
-refusing to make their apparent plurality do more work than the evidence
+One small record could preserve all nine observations while saying: one shared
+information path is known; independence has not been established for the broad
+validation claim; hold that claim and inspect another origin if the decision
+warrants the cost. That does not make the reports false or useless, and it does
+not erase what the vendor can say about its own announcement. It simply keeps
+their apparent plurality from doing more work than the known relationship
 supports.
 
 This is the subordinate Echo example. **The Echo Problem** is a separate
@@ -250,19 +244,16 @@ That is already a lightweight implementation. It may be enough for a bounded
 research question or a decision that matters but does not justify a new
 system.
 
-A moderate implementation might preserve an evidence or context packet: the
-selected material, source roles, claim links, comparison notes, exclusions,
-unknowns, permission boundary, budget, human disposition, and versioned
-memory. The point of the packet is not to make a beautiful audit trail. It is
-to let a reviewer see what changed the route and correct it without deleting
-the original observation.
+A moderate implementation might preserve a compact evidence packet: what was
+used, why it mattered, what remains unknown, and who can correct the route. It
+can retain the original observations and a versioned decision without turning
+the record into an end in itself.
 
-An advanced implementation could distribute the responsibility across search,
-evidence management, policy, interface, memory, and model-supported behavior.
-It might track baselines, common-origin relationships, outcome windows, and
-costs over time. That can be appropriate for consequential, contested, or
-repeated work. It is not a mandatory architecture, and naming a service the
-“Discrimination Layer” would not establish that it works.
+For consequential, contested, or repeated work, an advanced implementation
+might use software to track baselines, permissions, source relationships,
+costs, and outcomes over time. That is an implementation choice, not a
+mandatory architecture, and naming a service the “Discrimination Layer” would
+not establish that it works.
 
 The stopping rule matters as much as the acquisition rule. More search can
 reduce uncertainty, or it can add duplicated material, cost, delay, privacy
@@ -281,12 +272,10 @@ has confused rigor with ceremony.
 ## The hard parts, after the idea is clear
 
 The strongest challenge is that much of this is old work under a new
-arrangement. Information foraging, source credibility, provenance, duplicate
-detection, claim verification, evidence synthesis, retrieval diversity,
-mixed-initiative systems, memory, calibration, and decision theory already
-occupy pieces of the territory. V16 does not claim to invent those fields or
-to have found an empty conceptual space. The proposition is narrower: keeping
-these upstream judgments visible and connected may be a useful working
+arrangement. Search, source evaluation, provenance, evidence synthesis,
+memory, and decision support all precede it. V16 does not claim to invent those
+fields or to have found an empty conceptual space. The proposition is narrower:
+keeping these upstream judgments visible and connected may be a useful working
 discipline for evidence-sensitive AI tasks. That proposition still needs fair
 comparison with simpler methods.
 
@@ -326,13 +315,13 @@ reduces the confusion, that is a worthwhile revision.
 ## What could be tested—and what has not been shown
 
 The strongest version of this project is a framework and a set of testable
-questions, not a completed result. A future study could compare an ordinary
-retrieval-and-generation route with a deliberately structured route under a
-matched task, evidence budget, model configuration, and human review budget.
-It could ask whether the extra structure changes supported-claim handling,
-missing-perspective detection, correction effort, evidence diversity, or
-decision usefulness enough to justify its cost. It would also need to preserve
-null, harmful, shortcut-driven, fragile, non-transfer, and stop outcomes.
+questions, not a completed result. A fair future test would compare an ordinary
+retrieval-and-generation route with a deliberately structured route under the
+same task, budget, model, and human review. It should ask whether the extra
+structure helps people produce more useful, supportable work or merely adds
+cost and ceremony. Null, harmful, shortcut-driven, fragile, non-transfer, and
+stopped outcomes would have to remain reportable. The detailed measures belong
+in the research route, not in the center of this essay.
 
 The comparison would need to say exactly what was supplied and what was
 discovered. A model following a written rule about common origins is not the
@@ -370,6 +359,3 @@ conversation, not a demand to adopt a complete system. The invitation is
 smaller and more useful: look at the room before the answer, make the important
 choices visible, and leave enough of the route open that another person can
 challenge it.
-
-*Editorial status: owner-review manuscript; conceptual proposal, not an
-empirical validation or a claim of novelty.*

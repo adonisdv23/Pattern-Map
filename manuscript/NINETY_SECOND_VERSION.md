@@ -7,12 +7,12 @@ baseline, an expected piece of information was missing, or the system had no
 memory of what happened before. The answer inherits those choices.
 
 Pattern Recognition is the discipline of improving them. The Discrimination
-Layer is a plain-language name for the responsibility of deciding what the
-system should notice, acquire, compare, preserve, question, and allow to
-influence an answer. “Discrimination” here means technical differentiation
-among information candidates and possible next actions—not social
-classification or discriminatory treatment. “Layer” means a responsibility,
-not a mandatory product or architecture.
+Layer names the responsibility for deciding what the system should notice,
+acquire, compare, preserve, question, and allow to influence an answer—and for
+making those choices visible enough to correct. Here “discrimination” means
+differentiating among information candidates and possible next actions, not
+classifying people; “layer” means a responsibility, not a mandatory
+architecture.
 
 The six families are: look beyond the default path for a peripheral signal;
 weigh sources by their role and support for this exact claim; notice velocity
