@@ -173,3 +173,33 @@ or result.
 
 **Governing requirement:** canonical reproducibility; archive immutability;
 A10/A14/A15.
+
+## D-011 — Tighten the manuscript without weakening its boundaries
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The first Wave 1 mentor-reader/anti-slop audit passed the broad thesis and Echo
+subordination but found cumulative committee tone in term defense, numbered
+family treatment, noun inventories, implementation detail, repeated caveats,
+research language, and the long cover note.
+
+The integrated revision keeps all six families, all three required examples,
+the technical/social term boundary, the light/moderate/advanced spectrum,
+permission, uncertainty, stopping, human judgment, non-novelty, no-results,
+and unfavorable-outcome boundaries. It adds one owner-supplied coffee-
+conversation anchor, simplifies prose, removes the Echo table, trims the cover
+note from 398 to 247 raw words, and lets the human invitation close the essay.
+
+The resulting essay remains 3,289 raw / 3,149 prose words (an estimated
+13.7–14.3 minutes), and the short version remains an estimated 74–77 seconds.
+No reader timing or comprehension result is claimed.
+
+**Advisory report:**
+`qa/editorial/advisory/MENTOR_READER_ANTI_SLOP_2026-08-19_505d007.md`.
+
+**Implementation:** `51177d9`.
+
+**Governing requirement:** owner-intent voice contract; A01–A06, A10, A11,
+A15–A17.
