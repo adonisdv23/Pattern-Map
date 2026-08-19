@@ -4,17 +4,15 @@ QA evidence is grouped by editorial fidelity, applied usefulness, research
 boundaries, site behavior, and visual integrity. Machine checks and advisory
 reviews must state exactly what they establish and what remains manual.
 
-## Scheduled gate checks
+## Completed artifact-gate rechecks
 
-- A07/A08: inspect framework completeness and agent executability after the
-  applied advisory review, then recheck the rendered routes after site
-  integration.
-- A09: inspect every Signal Foundry mention and link after site integration;
-  no surface may turn the bounded illustration into implementation or
-  validation evidence.
-- Record the integrated commit, evidence, residual limitation, and controlled
-  disposition. A manuscript-only or scaffold-only snapshot cannot close these
-  gates.
+- A07/A08: exact post-site and final-regression reviews pass for framework
+  completeness, observable artifact behavior, and rendered-route fidelity at
+  `8aa5f94` and `2a54b24`.
+- A09: every rendered Signal Foundry mention and link was inspected at
+  `2a54b24`; the case remains fixture-only, read-only, and not validation.
+- These are artifact gates. They do not establish live-agent compliance,
+  product behavior, reader comprehension, or framework effectiveness.
 
 ## Current rendered evidence
 
@@ -26,6 +24,6 @@ reviews must state exactly what they establish and what remains manual.
 - This evidence establishes implementation structure and rendering only. It
   does not establish comprehension, persuasion, effectiveness, live-agent
   compliance, or a research result.
-- Physical keyboard traversal and a human print-preview pass remain open
-  because the available automation surface could not provide reliable Tab or
-  print-media emulation evidence.
+- Physical keyboard traversal, a supported screen-reader pass, and a human
+  print-preview pass remain open because the available automation surface
+  could not establish those behaviors reliably.

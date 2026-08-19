@@ -113,6 +113,16 @@ The in-app Browser automation surface did not advance focus reliably after synth
 
 ## Residuals
 
+The post-revision advisory reports correctly found that the PNG captures
+committed at their exact target still predated the narrow-navigation and Map
+copy corrections. The primary integration pass rebuilt the local site and
+replaced those two evidence files. At 390×844, `innerWidth` and `scrollWidth`
+were both 390 and Read / Explore / Apply / More were all visibly rendered. At
+1440×1000, the refreshed Map showed the plain-language F1/F2 bridges, one route
+`h1`, complete glossary content, and no horizontal overflow. These captures
+support render freshness only; they are not comprehension or accessibility
+results.
+
 1. Browser-level physical Tab traversal could not be completed because synthetic Tab events did not advance focus in the in-app automation surface. The site still has a semantic tab order and explicit focus styling; manual owner review should confirm the physical keyboard path.
 2. The browser security policy declined the CDP permission needed to emulate print media. Static print hooks and no-script checks pass; a manual print-preview check remains open.
 3. The existing targeted source links are presented as source pointers, not as newly reverified evidence. No external source read was performed for this lane.

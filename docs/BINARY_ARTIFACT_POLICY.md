@@ -19,8 +19,11 @@ prevents large opaque files from silently becoming ordinary source.
    and status before accession.
 3. A binary under `archive/` is immutable after accession. Replacement requires
    a new path and a new lineage record.
-4. Do not commit dependencies, caches, temporary renders, browser profiles,
-   credentials, or regenerated build products.
+4. Do not add dependencies, caches, temporary renders, browser profiles,
+   credentials, or regenerated build products as active project material. A
+   pre-existing immutable transfer member may be retained only when removing
+   it would break a verified historical accession; that exception must be
+   named below and does not authorize execution or reuse.
 5. New opaque Git objects should not exceed 1,000,000 bytes without a recorded
    exception. Splitting one opaque artifact does not reduce total history or
    checkout weight and is not, by itself, a storage optimization.
@@ -31,6 +34,16 @@ prevents large opaque files from silently becoming ordinary source.
 
 ## Recorded v16 owner-review exceptions
 
+- The complete v14 transfer contains one pre-existing compiled Python cache
+  member at
+  `archive/transfers/v14-complete-2026-08-18/09_TOOLS_AND_REPRODUCTION/__pycache__/render_visual_reader_pdf.cpython-312.pyc`.
+  It was already tracked on `main` in the historical transfer commit
+  `e98c2fb`, before the v16 foundation, and is covered by the transfer's
+  passing 429-file SHA-256 ledger. It remains solely because the governing
+  archive rule forbids deleting or normalizing a verified historical byte.
+  It is not imported, executed, copied into active code, or treated as a build
+  artifact. No other tracked cache/dependency path is permitted outside the
+  immutable archive.
 - `assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png` is a
   1,961,204-byte historical asset and therefore exceeds the ordinary 1 MB
   guidance. It is accepted because the exact recovered bytes are the lineage
@@ -44,8 +57,8 @@ prevents large opaque files from silently becoming ordinary source.
 - `site/exports/pattern-map-v16-owner-review.pdf` is a review companion whose
   Markdown/source artifacts remain canonical. Its current file is below 1 MB.
 
-These exceptions do not authorize larger future binaries, deployment
-artifacts, dependency directories, or an exact-ZIP import.
+These exceptions do not authorize future cache files, larger binaries,
+deployment artifacts, dependency directories, or an exact-ZIP import.
 
 GitHub's current documentation warns for regular-Git files above 50 MiB,
 blocks files above 100 MiB, recommends a 1 MB maximum object, and recommends

@@ -24,8 +24,9 @@ transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1
 Echo project, an explicitly unrun broader research agenda, and a nine-route
 local owner-review site. Structural, responsive, no-script, export, and visual
-checks pass. Final independent reader/operator reviews and manual physical-
-keyboard and print-preview confirmation remain open.
+checks and final independent proxy/operator reviews pass within their stated
+artifact boundaries. Owner/mentor judgment plus manual physical-keyboard,
+supported screen-reader, and browser print-preview confirmation remain open.
 
 Start with:
 

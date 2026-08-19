@@ -15,11 +15,11 @@ home.
 | 0 — Foundation | Verified sources, immutable archive boundary, clean canonical root, lineage and binary policy | Complete — foundation commit `0c3a6e7` |
 | 1 — Intent freeze | Locked owner intent, thesis/audience, artifact boundaries, acceptance criteria, v13→v16 fidelity matrix | Complete — owner-locked contracts and intent audit |
 | 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | Complete — all production lanes integrated; Wave 1, applied, continuity, and Echo findings dispositioned |
-| 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Complete — frozen contract and strengthened structural validator at `9079fcb`; rendered gates remain later |
+| 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Complete — frozen contract and strengthened structural validator at `9079fcb`; its rendered gates were subsequently completed in Phases 4/6 within stated proxy limits |
 | 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete — site task `a3cd7c7`, integration correction `932366a`; manual keyboard/print confirmation remains a release residual |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
-| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | In progress — pre-site loops and rendered implementation QA complete; post-site A07–A09 and final cold-reader/novelty/accessibility/operator reviews next |
-| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Pending; no merge/deploy |
+| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Complete for artifact/proxy scope — final operator, hostile novelty, cold-reader, and site/accessibility reports dispositioned; no human comprehension or assistive-technology result inferred |
+| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | In progress — package/checksum validation and draft PR remain; owner/mentor and physical keyboard/screen-reader/print gates stay open; no merge/deploy |
 
 ## Dependency rules
 
@@ -34,15 +34,17 @@ home.
 - A review is not accepted because it is detailed. Every recommendation gets a
   recorded disposition against a governing requirement.
 
-## Scheduled acceptance re-audits
+## Completed acceptance re-audits
 
-- Re-audit A07 and A08 after the applied advisory findings are dispositioned
-  and again after site integration confirms that builder and agent routes are
-  exposed without displacing the human essay.
-- Re-audit A09 after every Signal Foundry cross-link and rendered site surface
-  exists; the case must remain an illustration rather than validation.
-- The final A07–A09 verdict must cite the integrated commit, not the earlier
-  manuscript-only snapshot `ea8a6e2`.
+- A07 and A08 pass the exact post-site review at `8aa5f94` and remain passing
+  in the final regression check at `2a54b24`; the verdict covers artifact and
+  rendered-route completeness, not live-agent behavior or effectiveness.
+- A09 passes after every Signal Foundry rendered mention and cross-link is
+  inspected at `2a54b24`; the case remains fixture-only, read-only, and not
+  validation.
+- The final reports supersede the implementation-scope deferral recorded at
+  the manuscript-only snapshot `ea8a6e2` without changing its historical
+  report.
 
 ## Release boundary
 

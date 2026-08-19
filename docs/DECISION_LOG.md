@@ -448,3 +448,50 @@ them reliably.
 
 **Governing requirement:** three-door site contract; progressive disclosure;
 historical integrity; A01–A17 as scoped; no-deploy/no-publish boundary.
+
+## D-020 — Accept final rendered corrections as artifact evidence, not human or effectiveness results
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision for owner review
+
+The final advisory wave found bounded, correctable defects in the rendered
+owner-review surface: underscore-bearing operational identifiers could be
+mutated by emphasis parsing; some local source links fell back to inaccurate or
+missing destinations; the standalone export repeated level-one headings and
+IDs; narrow headers hid the principal route links; Map cards led with builder
+vocabulary; several contrast pairs were weak; five promised glossary entries
+were incomplete; and the PDF's untagged status was not explicit enough.
+
+The integrated source checkpoint `2a54b24ec01707bb2a73032ab3f662cd995669ae`
+repairs those implementation defects without changing the locked owner intent
+or the canonical six-family framework. Exact follow-up reviews report one
+standalone `h1`, 282 unique IDs, complete local fragments, intact route/stop/
+learning tokens, direct Echo anchoring, plain-language Map bridges, populated
+glossary entries, visible narrow-width principal routes, stronger contrast,
+and an explicitly visual-only PDF with semantic standalone HTML as the
+accessibility route. A final browser evidence refresh replaced the two stale
+mobile/Map screenshots; it changed review evidence only, not canonical copy.
+
+The post-site applied reviews pass A07, A08, and A09 as artifact gates. That
+means the repository exposes concrete builder paths, specifies observable agent
+records and states, and keeps Signal Foundry bounded as an illustration. It is
+not evidence that a live agent complied, a product improved, a reader
+understood the idea, or the framework is effective.
+
+The cold-reader and site reviews are model proxies and implementation audits.
+A01 and A04 still require owner/mentor judgment; the A05 durations remain
+editorial estimates; and A13 remains partial pending physical keyboard,
+supported screen-reader, and browser print-preview checks. The package must
+therefore be called an owner-review candidate, not a fully accepted,
+accessible, published, deployed, or empirically validated release.
+
+**Evidence:**
+`qa/applied/advisory/APPLIED_FINAL_REGRESSION_CHECK_2026-08-19_2a54b24.md`;
+`qa/editorial/advisory/COLD_READER_POST_REVISION_VERIFICATION_2026-08-19_2a54b24.md`;
+`qa/site/advisory/SITE_POST_REVISION_VERIFICATION_2026-08-19_2a54b24.md`;
+`docs/ADVISORY_REVIEW_DISPOSITIONS.md`; and
+`qa/FINAL_ACCEPTANCE_MATRIX_V16.md`.
+
+**Governing requirement:** A01/A04–A13/A15–A17; review-and-disposition
+protocol; no-results and no-publication boundaries.
