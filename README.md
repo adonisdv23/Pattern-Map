@@ -27,6 +27,9 @@ local owner-review site. Structural, responsive, no-script, export, and visual
 checks and final independent proxy/operator reviews pass within their stated
 artifact boundaries. Owner/mentor judgment plus manual physical-keyboard,
 supported screen-reader, and browser print-preview confirmation remain open.
+The canonical owner-review surface is draft pull request
+[#1](https://github.com/adonisdv23/Pattern-Map/pull/1); it is not authorization
+to merge or publish.
 
 Start with:
 

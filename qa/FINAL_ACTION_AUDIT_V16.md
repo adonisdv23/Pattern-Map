@@ -17,7 +17,7 @@ the project.
 | Commit and push coherent feature branches | Foundation, Echo, manuscript, applied, and site branch refs | **USED WITHIN SCOPE** |
 | Create durable tasks and bounded advisory agents | Advisory reports and integration ledger | **USED WITHIN SCOPE** |
 | Build local review artifacts | Nine-route local site, standalone HTML, visual PDF companion, local QA renders | **USED WITHIN SCOPE** |
-| Open a draft pull request for owner review | Recorded in `handoff/BRANCH_AND_PR_STATE.md` when created | **AUTHORIZED; DRAFT ONLY** |
+| Open a draft pull request for owner review | [PR #1](https://github.com/adonisdv23/Pattern-Map/pull/1) and `handoff/BRANCH_AND_PR_STATE.md` | **USED WITHIN SCOPE; OPEN AND DRAFT** |
 
 ## Prohibited or separately authorized actions
 

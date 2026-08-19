@@ -7,7 +7,7 @@
   "evidence_note": "The manifest includes final mobile and Map capture refreshes generated from the corrected checkpoint after exact-commit advisory review.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 114,
-  "total_bytes": 5262561,
+  "total_bytes": 5265017,
   "files": [
     {
       "path": ".gitignore",
@@ -21,8 +21,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4487,
-      "sha256": "0b8141faa6fb189db0b1ee041434dc285ebbbd9fd1d2a5922f65554bec7de31b"
+      "bytes": 4645,
+      "sha256": "61640c36770e8383508bcd2a365fa9b266ebfce0c562c191dabb84df9cd015b4"
     },
     {
       "path": "archive/CHECKPOINT_INDEX.json",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 23214,
-      "sha256": "b5bc05fa7daef8462af021d7508094d08c4784c8529374ecce992a91b1296964"
+      "bytes": 24648,
+      "sha256": "5ede29000113a291d0ee271cff03e284576c18b4195af224916f55d59931f857"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -171,13 +171,13 @@
     },
     {
       "path": "docs/V16_ROADMAP.md",
-      "bytes": 3733,
-      "sha256": "d1b61019e7e428203513c5a85993fecdb0c3e3ffb53b120e385771f147cb33d1"
+      "bytes": 3784,
+      "sha256": "1c837c80af307d5ef70d39c4e41ff5f4c4828789a7cc3222bde517661f75b627"
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 1744,
-      "sha256": "cc9a3db07c5d54fb59beb696fb965bf2719fed8f2bc8091a754a0454c3c5001a"
+      "bytes": 1795,
+      "sha256": "9e647c11ebd8bc0c28cb3f06fcbc8666b60792acdb03855f6d55200691b54b45"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -251,13 +251,13 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 1223,
-      "sha256": "6cf41b26a560bea92489f312619310b8bee14a21eb596e7093dd27f131f3e8c1"
+      "bytes": 1753,
+      "sha256": "689f33a711456ccf4bbeeb9ec1c51c43c1af1e9385a299cb31f4e2cc07701c19"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 7811,
-      "sha256": "ba235124b1f0c41a18920e7e0ff2f5da189257fb6815ca3232d6ace147aa8988"
+      "bytes": 7995,
+      "sha256": "38d2a4895b6de31cf3cb19bff26478e0b88da32498eb9a10cacaf2f09d5d74cd"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
@@ -311,8 +311,8 @@
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
-      "bytes": 4341,
-      "sha256": "509b42b9931162f2803e65fb2f33d8c5bed6635e861fdde294e2ca7ddcdbeae5"
+      "bytes": 4389,
+      "sha256": "ac2592ae863ff8ba7bea4d4cb0190fba7deb0aae4b191f2efe4f69ad7d75f259"
     },
     {
       "path": "qa/applied/README.md",

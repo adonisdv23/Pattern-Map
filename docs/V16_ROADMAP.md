@@ -19,7 +19,7 @@ home.
 | 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete — site task `a3cd7c7`, integration correction `932366a`; manual keyboard/print confirmation remains a release residual |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
 | 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Complete for artifact/proxy scope — final operator, hostile novelty, cold-reader, and site/accessibility reports dispositioned; no human comprehension or assistive-technology result inferred |
-| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | In progress — package/checksum validation and draft PR remain; owner/mentor and physical keyboard/screen-reader/print gates stay open; no merge/deploy |
+| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Complete for authorized repository handoff — package checkpoint `63e63c1` pushed and draft PR #1 open; owner/mentor and physical keyboard/screen-reader/print acceptance gates stay open; no merge/deploy |
 
 ## Dependency rules
 

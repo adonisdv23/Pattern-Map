@@ -26,6 +26,10 @@ origin accounting. All six original families remain visible: peripheral
 signal; source weighing; velocity/motion; absence + memory; structured
 patterns; and the learning loop.
 
+GitHub owner-review surface: draft pull request
+[#1](https://github.com/adonisdv23/Pattern-Map/pull/1), targeting `main` from
+`codex/pattern-map-v16-foundation`. It remains unmerged.
+
 ## Recommended review path
 
 1. Read the [60–90-second version](../manuscript/NINETY_SECOND_VERSION.md).

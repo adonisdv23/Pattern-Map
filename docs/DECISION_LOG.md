@@ -495,3 +495,31 @@ accessible, published, deployed, or empirically validated release.
 
 **Governing requirement:** A01/A04–A13/A15–A17; review-and-disposition
 protocol; no-results and no-publication boundaries.
+
+## D-021 — Open a draft PR as the bounded owner-review release
+
+**Date:** 2026-08-19
+
+**Status:** Accepted for owner review; owner acceptance remains open
+
+After the 114-file package manifest and full local verification suite passed,
+the foundation branch was pushed at owner-review package checkpoint
+`63e63c123874a7be7ccc9aff6f2bce102a971ae3`. GitHub repository metadata
+confirmed `adonisdv23/Pattern-Map`, default branch `main`, working fetch/push
+connectivity, and no pre-existing open PR for the foundation branch.
+
+Draft pull request [#1](https://github.com/adonisdv23/Pattern-Map/pull/1) now
+targets `main` from `codex/pattern-map-v16-foundation`. Its body states the
+two-project separation, artifact inventory, integrity results, manual owner
+gates, and exact external-action boundary. The PR remains a review surface; it
+does not authorize merge, deployment, public-site replacement, publication,
+Release creation, research execution, provider selection/call, spend, data or
+participant acquisition, preregistration, outreach, or representation of
+unrun work as a result.
+
+The authorized owner-review handoff phase is complete as a repository
+artifact. Binding owner/mentor judgment and physical keyboard, supported
+screen-reader, and browser print-preview checks remain open, so v16 is not
+recorded as fully accepted under every gate.
+
+**Governing requirement:** owner-review release boundary; A01/A04/A05/A13/A15–A17.
