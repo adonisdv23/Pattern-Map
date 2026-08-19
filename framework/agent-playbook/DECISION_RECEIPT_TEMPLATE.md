@@ -75,7 +75,11 @@ It is a compact audit trail, not a claim that the answer is correct.
 ## Route
 
 - Route: ANSWER / ANSWER_PROVISIONALLY / ACQUIRE / COMPARE / CLARIFY /
-  HOLD / DEFER / ESCALATE / REFUSE / STOPPED_BUDGET / STOPPED_DEADLINE
+  HOLD / DEFER / ESCALATE / REFUSE
+- Stop status: CONTINUE / COMPLETE / STOPPED_BUDGET / STOPPED_DEADLINE /
+  STOPPED_OTHER
+- Learning status: LEARNING_PLANNED / LEARNING_PENDING_OUTCOME /
+  LEARNING_REVIEWED / LEARNING_NOT_APPLICABLE
 - Why this route:
 - Expected benefit:
 - Cost:
@@ -128,6 +132,7 @@ It is a compact audit trail, not a claim that the answer is correct.
 - Technical access: YES
 - Operational authorization: UNKNOWN
 - Route: HOLD / ESCALATE
+- Stop status: STOPPED_OTHER
 - Stop reason: Access is not permission; no acquisition or disclosure occurred.
 - Resume condition: Named authority records purpose-limited authorization.
 
@@ -138,6 +143,7 @@ It is a compact audit trail, not a claim that the answer is correct.
 - One expected comparison: completed
 - Disconfirmation: one contrary route checked
 - Route: ANSWER_PROVISIONALLY
+- Stop status: COMPLETE
 - Stop reason: remaining search is expected to add duplicates within the
   five-minute limit.
 - Caveat: the answer is limited to the observed material and is not a claim of

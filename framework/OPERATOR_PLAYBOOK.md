@@ -100,7 +100,9 @@ Output: disconfirmation log.
 
 Choose ACQUIRE, COMPARE, CLARIFY, ANSWER, ANSWER_PROVISIONALLY, HOLD, DEFER,
 ESCALATE, or REFUSE. A route must name its reason, expected benefit, cost,
-permission, uncertainty, and stop condition.
+permission, uncertainty, and stop condition. Separately record stop status
+CONTINUE, COMPLETE, STOPPED_BUDGET, STOPPED_DEADLINE, or STOPPED_OTHER; never
+use that status in place of the route.
 
 Hard stop and escalate if permission is absent, a critical identity or
 provenance check fails, a high-consequence claim remains materially
@@ -145,7 +147,7 @@ Output: outcome review and update proposal.
 | Repeated reports with unclear relation | COMPARE or HOLD | Recurrence observed; independence UNKNOWN until supported |
 | High-consequence claim with missing baseline | HOLD or ESCALATE | Baseline missing; no factual absence or motion conclusion |
 | Technical access exists but permission is absent | REFUSE acquisition or ESCALATE | Access is not authorization; no retrieval or disclosure |
-| More search would mostly duplicate current material | STOPPED_BUDGET or ANSWER_PROVISIONALLY | What remains uncertain and why more work is not worth the current cost |
+| More search would mostly duplicate current material | ANSWER_PROVISIONALLY, HOLD, or DEFER; stop status `STOPPED_BUDGET` or `STOPPED_OTHER` | What remains uncertain and why more work is not worth the current cost |
 | Evidence supports a narrow statement but not its explanation | ANSWER_PROVISIONALLY | State the supported observation and withhold the causal claim |
 | Later outcome conflicts with expectation | OUTCOME_REVIEW | Preserve original receipt; propose, do not silently apply, an update |
 

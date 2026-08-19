@@ -30,9 +30,11 @@
     "withheld_items": []
   },
   "route": "ANSWER_PROVISIONALLY",
+  "stop_status": "COMPLETE",
   "stop_reason": "Remaining search is not worth the low-consequence task budget.",
   "uncertainty": ["scope limited to supplied material"],
   "outcome": {
-    "applicable": false
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
   }
 }

@@ -32,9 +32,11 @@ or a consequential recommendation.
    fields instead of filling them.
 8. **Challenge.** Search for one strongest contrary item, missing perspective,
    alternative explanation, measurement change, or common origin.
-9. **Route and stop.** Choose answer, provisional answer, hold, defer,
-   escalate, refuse, or one more bounded action. Record why the next action is
-   worth its cost and what will stop it.
+9. **Route and stop.** Choose `ACQUIRE`, `COMPARE`, `CLARIFY`, `ANSWER`,
+   `ANSWER_PROVISIONALLY`, `HOLD`, `DEFER`, `ESCALATE`, or `REFUSE`. Separately
+   record stop status `CONTINUE`, `COMPLETE`, `STOPPED_BUDGET`,
+   `STOPPED_DEADLINE`, or `STOPPED_OTHER`, why the next action is worth its
+   cost, and what will stop or resume it.
 10. **Record influence.** List what shaped the answer, what was withheld, why,
     which uncertainties remain, and who has authority for any external action.
 
@@ -49,7 +51,17 @@ Return or save:
 - a disconfirmation note;
 - a route and stop/escalation reason;
 - an influence receipt;
-- an outcome expectation when later learning is possible.
+- an outcome expectation, window, and `LEARNING_PENDING_OUTCOME` status when
+  later learning is defined; `LEARNING_PLANNED` only when that route is
+  proposed but not yet locked; or `LEARNING_NOT_APPLICABLE` with a reason.
+
+If a later outcome is defined, preserve the original expectation. After the
+outcome window, compare the observed outcome, actual cost, corrections, and
+context with it; propose one bounded update; request human disposition; and
+record `LEARNING_REVIEWED`. Use
+[`../templates/OUTCOME_REVIEW.md`](../templates/OUTCOME_REVIEW.md). Until then,
+keep the locked expectation at `LEARNING_PENDING_OUTCOME`. Do not make learning
+mandatory for an ordinary-path task.
 
 If a field was not needed, write NOT_APPLICABLE and why. If it was needed but
 could not be established, write UNKNOWN. Do not fill a missing field with a
@@ -64,7 +76,7 @@ plausible assumption.
 | Identity, provenance, or transformation check fails | Keep the item out of influence; record the failure |
 | Observation failure is the only basis for an alleged absence | State FAILED_CAPTURE or UNKNOWN, not absence |
 | One point is the only basis for velocity | Do not call it motion; request another time point or state insufficient |
-| Budget or deadline is reached | STOPPED_BUDGET or STOPPED_DEADLINE with remaining uncertainty |
+| Budget or deadline is reached | Choose the permitted route; separately record STOPPED_BUDGET or STOPPED_DEADLINE with remaining uncertainty |
 | External action is requested beyond the agent’s authority | Leave the action to the named human authority |
 
 ## Smallest safe response shape

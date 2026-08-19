@@ -18,7 +18,8 @@ withheld, and why?
 - Allowed disclosure:
 - Human action boundary:
 - Main uncertainty:
-- Route and stop reason:
+- Route:
+- Stop status and reason:
 
 ## Selected material
 

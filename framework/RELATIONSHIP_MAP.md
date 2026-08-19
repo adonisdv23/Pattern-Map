@@ -29,7 +29,7 @@ flowchart TD
     F --> K
     K --> L{"Bounded route"}
     L -->|"acquire / compare / clarify"| B
-    L -->|"hold / escalate / abstain"| M["Human disposition"]
+    L -->|"hold / defer / escalate / refuse"| M["Human disposition"]
     L -->|"answer / provisional packet"| N["Influence receipt + context packet"]
     M --> N
     N --> O["Generation or human decision"]

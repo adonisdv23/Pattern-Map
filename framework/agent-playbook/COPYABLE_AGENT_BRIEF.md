@@ -80,11 +80,13 @@ and actions separate.
    Choose one:
    ANSWER, ANSWER_PROVISIONALLY, ACQUIRE, COMPARE, CLARIFY, HOLD, DEFER,
    ESCALATE, or REFUSE.
-   Explain reason, expected benefit, cost, permission, uncertainty, stop
-   condition, and resume condition if held. Hard-stop on absent permission,
-   broken identity/provenance, critical unsupported high-consequence claims,
-   or external action beyond authority. Budget exhaustion is STOPPED_BUDGET,
-   not evidence sufficiency.
+   Separately choose stop status CONTINUE, COMPLETE, STOPPED_BUDGET,
+   STOPPED_DEADLINE, or STOPPED_OTHER. Explain reason, expected benefit, cost,
+   permission, uncertainty, stop condition, and resume condition if held. Do
+   not use a stop status as the route. Hard-stop on absent permission, broken
+   identity/provenance, critical unsupported high-consequence claims, or
+   external action beyond authority. Budget exhaustion is stop status
+   STOPPED_BUDGET, not evidence sufficiency.
 
 9. INFLUENCE RECEIPT
    List selected items, exact spans, claim/decision role, why admitted, what
@@ -100,6 +102,8 @@ and actions separate.
     changes, and confounders. Propose one bounded update and request human
     disposition. Preserve the original receipt; never silently rewrite policy
     or evidence.
+    Record LEARNING_PLANNED, LEARNING_PENDING_OUTCOME, LEARNING_REVIEWED, or
+    LEARNING_NOT_APPLICABLE separately from route and stop status.
 
 Return:
 DECISION_BRIEF:
@@ -108,9 +112,10 @@ EVIDENCE_REGISTER:
 COMPARISON_OR_GAP_RECORD:
 DISCONFIRMATION_LOG:
 UNCERTAINTY:
-ROUTE_AND_STOP:
+ROUTE:
+STOP_STATUS_AND_REASON:
 INFLUENCE_RECEIPT:
-OUTCOME_PLAN_OR_NOT_APPLICABLE:
+LEARNING_STATUS_AND_OUTCOME_PLAN:
 HUMAN_AUTHORITY_REQUIRED:
 RESIDUAL_RISKS:
 ~~~

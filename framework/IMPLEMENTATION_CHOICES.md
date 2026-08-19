@@ -12,6 +12,13 @@ No stack, provider, model, graph, database, or service is mandatory.
 | Moderate | Repeated work or decisions where identity, comparison, and correction matter | Stable IDs, source/artifact records, typed relationships, budget, human checkpoint | Versioned evidence register, comparison/gap record, context packet, disposition, outcome review | Setup and review overhead; documents, spreadsheets, or a small store | Route-specific marginal value is low, budget is reached, or human gate is required | Ceremony and stale records |
 | Advanced | Consequential, high-volume, or long-lived workflows with approved engineering capacity | Structured data, access policy, provenance, relationship and time-series views, routing policy, review roles | Queryable lineage, typed graphs, policy receipts, replayable packets, versioned learning proposals | Engineering, privacy, security, operations, and evaluation cost | Hard safety/permission stop, policy threshold, or approved matched-budget evaluation boundary | False precision, automation bias, and expensive bureaucracy |
 
+These levels preserve v13's practical range without preserving a hierarchy.
+They may be realized as a team process, an intermediary reasoning/context or
+evidence workflow, or—only with separately approved data, budget, governance,
+and evaluation—model adaptation. No path is inherently deeper, more
+defensible, or required, and the levels can combine when the decision warrants
+it.
+
 ## Lightweight route
 
 Use this route when the task is reversible, the evidence is bounded, no

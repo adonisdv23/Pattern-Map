@@ -67,6 +67,28 @@ action.
 Technical access to a future source, bucket, transcript, or provider would not
 be permission to retrieve, retain, disclose, or act on it.
 
+### Illustrative cost and stop envelope
+
+These controls bound this fixture; they are not claims about, or requirements
+for, a Signal Foundry product:
+
+| Dimension | Illustrative boundary |
+| --- | --- |
+| Material | The supplied rows and pointers in this file only |
+| Acquisition | Zero provider calls, paid retrieval, scraping, private-data access, or new external content |
+| Work | One packet-composition pass and one bounded comparison/peripheral-route pass |
+| Human attention | One accountable reviewer and one correction round |
+| Retention / disclosure | Repository fixture only; no external disclosure or runtime handoff |
+| Latency | End the pass when the declared fixture rows have been dispositioned |
+
+Hard-stop on missing or ambiguous permission, unresolved identity or capture
+failure that affects the packet, any paid/private acquisition, or any proposed
+external action. Soft-stop after the two declared passes even if uncertainty
+remains; record the remaining gap instead of expanding the fixture. Resume only
+when a named human supplies an authorized pointer, corrects a record, or
+explicitly authorizes a separately scoped next step. None of those resume
+conditions is satisfied by this illustration itself.
+
 ## Evidence-class boundary
 
 | Class | Illustrative use | What it is not |
@@ -139,7 +161,7 @@ could create the packet reliably.
 9. **Disconfirm.** Look for a contrary or qualifying context class and a
    measurement or extraction failure.
 10. **Route.** Choose packet, provisional packet, hold, or escalation under the
-    cost boundary.
+    illustrative cost and stop envelope above.
 11. **Influence.** Record selected and withheld items, exact reasons, and
     disclosure limits.
 12. **Learn later.** If a future authorized review produces an outcome, compare
@@ -162,6 +184,8 @@ could create the packet reliably.
 - The case does not establish an implemented handoff or runtime behavior.
 - Product-specific routes, object names, storage, providers, and queues are not
   universal requirements.
+- The illustrative cost and stop envelope is a case control, not a product
+  requirement or evidence of runtime behavior.
 - Transcript evidence is not visual evidence; comments are not proof; metadata
   is not correctness; a gap is not nonexistence.
 - No row grants permission to scrape, disclose, purchase, contact, deploy, or

@@ -14,6 +14,10 @@ The check validates:
 - required builder and agent artifacts;
 - cross-file boundary language;
 - bounded-case disclaimers and Signal Foundry containment;
+- the fixture-scoped Signal Foundry cost/stop/resume envelope;
+- canonical route, stop, and learning vocabulary across entry-point artifacts;
+- Quickstart outcome close-out and preflight group-status observability;
+- bounded v13 process/workflow/model-path continuity without hierarchy;
 - receipt fixtures through the documented preflight and stop rules.
 
 These checks do not show that the framework improves decisions, that any case

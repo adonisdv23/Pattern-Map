@@ -66,6 +66,8 @@ ESCALATE for consequential work.
 
 ## Outcome plan
 
+- Learning status: LEARNING_PLANNED / LEARNING_PENDING_OUTCOME /
+  LEARNING_NOT_APPLICABLE
 - Expected outcome or abstention condition:
 - Measurement window:
 - Attribution boundary:

@@ -10,6 +10,7 @@ Complete after the defined outcome window, not by hindsight.
 - Original influence receipt:
 - Original expectation date:
 - Outcome observer:
+- Learning status before review: LEARNING_PENDING_OUTCOME
 
 ## Predeclared expectation
 
@@ -45,6 +46,7 @@ Complete after the defined outcome window, not by hindsight.
 - New version required:
 - Human disposition:
 - If rejected or deferred, reason:
+- Learning status after disposition: LEARNING_REVIEWED
 
 Learning proposes a bounded update. It does not silently change policy,
 overwrite evidence, or turn one outcome into causal proof.

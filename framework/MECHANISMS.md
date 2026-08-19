@@ -171,6 +171,19 @@ automatic authority to act outside the envelope.
 | ESCALATE | Human or domain authority must decide | Destination, question, and no-action boundary |
 | REFUSE | The requested action is prohibited or unsafe within the envelope | Reason and safe alternative |
 
+Route and stop are separate fields. Use exactly one route value from the table
+above. Record the current stop state as `CONTINUE`, `COMPLETE`,
+`STOPPED_BUDGET`, `STOPPED_DEADLINE`, or `STOPPED_OTHER`, with a reason and a
+resume condition when one exists. Budget or deadline exhaustion therefore does
+not become a route; for example, an operator may `ANSWER_PROVISIONALLY` with
+`STOPPED_BUDGET`, or `HOLD` with `STOPPED_DEADLINE`. Plain-language
+“abstention” maps to `HOLD`, `DEFER`, or `REFUSE` according to why no answer or
+action is allowed.
+
+Learning has its own state: `LEARNING_PLANNED`, `LEARNING_PENDING_OUTCOME`,
+`LEARNING_REVIEWED`, or `LEARNING_NOT_APPLICABLE`. Do not use a learning state
+as a route or treat a missing future outcome as a failed present answer.
+
 ### Cost dimensions
 
 Record at least the dimensions that can bind the task:
@@ -183,8 +196,8 @@ Record at least the dimensions that can bind the task:
 - latency or opportunity cost;
 - risk of misleading influence or external action.
 
-Do not report budget exhaustion as evidence sufficiency. Say STOPPED_BUDGET with
-the remaining uncertainty.
+Do not report budget exhaustion as evidence sufficiency. Record stop status
+`STOPPED_BUDGET` with the remaining uncertainty and a permitted route.
 
 ## M07. Context packet and influence receipt
 

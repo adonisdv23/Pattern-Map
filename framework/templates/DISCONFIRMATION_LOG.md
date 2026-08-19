@@ -21,7 +21,10 @@
 - What changed:
 - What remains unresolved:
 - Does the uncertainty change the route or wording?
-- Route: ANSWER / ANSWER_PROVISIONALLY / HOLD / DEFER / ESCALATE / REFUSE
+- Route: ACQUIRE / COMPARE / CLARIFY / ANSWER / ANSWER_PROVISIONALLY / HOLD /
+  DEFER / ESCALATE / REFUSE
+- Stop status: CONTINUE / COMPLETE / STOPPED_BUDGET / STOPPED_DEADLINE /
+  STOPPED_OTHER
 - Stop reason:
 - Reviewer / disposition:
 

@@ -20,12 +20,12 @@ remove domain judgment, privacy obligations, or human accountability.
 | Comparison by appearance | Unlike items are compared because they look similar | Declare comparison unit and mark incomparable fields |
 | Confidence collapse | Model confidence becomes the evidence assessment | Use typed uncertainty and exact support links |
 | Search without a stop | More acquisition continues without a decision rule | Compare expected benefit with cost and stop or escalate |
-| Budget-as-sufficiency | A time or token limit is described as proof | State STOPPED_BUDGET and the remaining uncertainty |
+| Budget-as-sufficiency | A time or token limit is described as proof | Record stop status STOPPED_BUDGET and the remaining uncertainty separately from the route |
 | Influence opacity | The answer cites sources but not what shaped which claim | Create a claim-level influence receipt |
 | Rubber-stamp review | Human approval has no role, reason, or scope | Record disposition, authority, reason, and any override |
 | Hindsight learning | The later outcome rewrites the earlier story | Freeze the original receipt and write an outcome review |
 | Over-discrimination | The workflow refuses or delays easy, reversible tasks | Use the lightweight or ordinary path and measure reviewer cost |
-| Under-discrimination | Fluent answer proceeds despite a critical gap or permission issue | Hold, abstain, or escalate with the missing condition visible |
+| Under-discrimination | Fluent answer proceeds despite a critical gap or permission issue | Use HOLD, DEFER, ESCALATE, or REFUSE with the missing condition visible |
 
 ## Stop rules
 

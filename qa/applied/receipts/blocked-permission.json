@@ -30,9 +30,11 @@
     "withheld_items": []
   },
   "route": "ESCALATE",
+  "stop_status": "STOPPED_OTHER",
   "stop_reason": "Permission is absent; technical access is not authorization.",
   "uncertainty": ["NOT_AUTHORIZED"],
   "outcome": {
-    "applicable": false
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
   }
 }

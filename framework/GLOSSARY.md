@@ -27,6 +27,7 @@ records and decisions; none is a universal truth score.
 | Gap | Missing expected material relative to an explicit baseline or comparison frame | Absence without a baseline is not meaningful absence |
 | Influence | The bounded effect allowed to a context item on routing, judgment, or generation | Influence is not permanent trust or permission to act |
 | Independence | Distinctness of origin, method, or information pathway | Not the number of sources, URLs, or repetitions |
+| Learning status | LEARNING_PLANNED, LEARNING_PENDING_OUTCOME, LEARNING_REVIEWED, or LEARNING_NOT_APPLICABLE | A learning state is separate from the current route and never implies that an outcome validates the framework |
 | Learning update | A proposed bounded change to a query, baseline, routing rule, source policy, or review rule after an outcome comparison | It is not automatically applied and does not rewrite history |
 | Memory | Versioned retained observations, decisions, outcomes, and interpretations with provenance and scope | Not a timeless fact store or permission to overwrite evidence |
 | Motion | A rate, direction, or change observed across comparable time-stamped observations against a baseline | Not a forecast, cause, or truth signal |
@@ -39,9 +40,10 @@ records and decisions; none is a universal truth score.
 | Provenance | Origin, custody, derivation, agent, transformation, and time relationships | Not truth, support, relevance, independence, or authorization |
 | Recurrence | Repeated appearance across observations | Not independent corroboration |
 | Relevance | Usefulness to the present question, decision, or constraint | Not general importance, truth, or owner endorsement |
-| Route | A bounded next action such as acquire, compare, answer, hold, defer, escalate, or refuse | A route recommendation is not permission to execute externally consequential action |
+| Route | One bounded next action: ACQUIRE, COMPARE, CLARIFY, ANSWER, ANSWER_PROVISIONALLY, HOLD, DEFER, ESCALATE, or REFUSE | A route is separate from stop and learning status and is not permission to execute externally consequential action |
 | Source | An agent, organization, system, or origin that issues or makes an artifact available | Source identity is distinct from artifact identity |
 | Stop rule | An inspectable policy for ending acquisition or computation given expected benefit, uncertainty, consequence, and cost | Stopping does not imply certainty |
+| Stop status | CONTINUE, COMPLETE, STOPPED_BUDGET, STOPPED_DEADLINE, or STOPPED_OTHER, recorded separately from the route | A stop state does not imply evidence sufficiency and needs a reason plus any resume condition |
 | Uncertainty | An explicit state about what is unknown, contested, ambiguous, stale, or weakly supported | Not a single model-confidence number |
 | Withholding | Deliberate exclusion from influence or output for a stated reason | Does not require deleting the underlying evidence |
 
@@ -54,7 +56,12 @@ trusted, or important:
   FAILED
 - Permission state: AUTHORIZED, NOT_AUTHORIZED, UNKNOWN, REVOKED
 - Claim state: SUPPORTED, CONTRADICTED, QUALIFIED, INSUFFICIENT, UNKNOWN
-- Route state: PROPOSED, ALLOWED, HELD, ESCALATED, STOPPED, REFUSED
+- Route value: ACQUIRE, COMPARE, CLARIFY, ANSWER, ANSWER_PROVISIONALLY, HOLD,
+  DEFER, ESCALATE, REFUSE
+- Stop status: CONTINUE, COMPLETE, STOPPED_BUDGET, STOPPED_DEADLINE,
+  STOPPED_OTHER
+- Learning status: LEARNING_PLANNED, LEARNING_PENDING_OUTCOME,
+  LEARNING_REVIEWED, LEARNING_NOT_APPLICABLE
 - Disposition state: ACCEPTED, REJECTED, DEFERRED, OVERRIDDEN,
   REQUEST_ENRICHMENT
 

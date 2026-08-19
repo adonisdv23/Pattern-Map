@@ -30,10 +30,12 @@
     "withheld_items": ["E-002"]
   },
   "route": "ANSWER_PROVISIONALLY",
+  "stop_status": "COMPLETE",
   "stop_reason": "The packet is bounded; remaining unknown origin is named.",
   "uncertainty": ["one related source remains UNKNOWN_ORIGIN"],
   "outcome": {
     "applicable": true,
+    "learning_status": "LEARNING_PENDING_OUTCOME",
     "expectation_recorded": true,
     "update_applied": false
   }

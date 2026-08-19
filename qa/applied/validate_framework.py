@@ -165,6 +165,68 @@ def validate_artifact_inventory() -> None:
     require("not_validation" in signal, "Signal Foundry case lacks validation boundary")
     require("not performed" in signal, "Signal Foundry case does not state unperformed operations")
     require("no row grants permission" in signal, "Signal Foundry permission boundary is incomplete")
+    require("illustrative cost and stop envelope" in signal,
+            "Signal Foundry case lacks a fixture-scoped cost/stop envelope")
+    require("zero provider calls" in signal and "resume only" in signal,
+            "Signal Foundry cost, stop, or resume boundary is incomplete")
+
+    implementation = read_text("framework/IMPLEMENTATION_CHOICES.md")
+    require("team process" in implementation and "model adaptation" in implementation,
+            "implementation choices do not expose the bounded v13 path continuity")
+    require("No path is inherently deeper" in implementation,
+            "implementation path continuity lacks its anti-hierarchy boundary")
+
+    route_values = {
+        "ACQUIRE",
+        "COMPARE",
+        "CLARIFY",
+        "ANSWER",
+        "ANSWER_PROVISIONALLY",
+        "HOLD",
+        "DEFER",
+        "ESCALATE",
+        "REFUSE",
+    }
+    stop_values = {
+        "CONTINUE",
+        "COMPLETE",
+        "STOPPED_BUDGET",
+        "STOPPED_DEADLINE",
+        "STOPPED_OTHER",
+    }
+    learning_values = {
+        "LEARNING_PLANNED",
+        "LEARNING_PENDING_OUTCOME",
+        "LEARNING_REVIEWED",
+        "LEARNING_NOT_APPLICABLE",
+    }
+    vocabulary_files = (
+        "framework/MECHANISMS.md",
+        "framework/GLOSSARY.md",
+        "framework/agent-playbook/QUICKSTART.md",
+        "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
+        "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
+        "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
+        "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
+    )
+    for relative in vocabulary_files:
+        content = read_text(relative)
+        for value in route_values | stop_values | learning_values:
+            require(value in content,
+                    f"{relative} is missing canonical route/stop/learning value {value}")
+
+    quickstart = read_text("framework/agent-playbook/QUICKSTART.md")
+    require("compare the observed outcome" in quickstart,
+            "Quickstart does not close the learning loop")
+    require("OUTCOME_REVIEW.md" in quickstart,
+            "Quickstart does not point to the outcome-review artifact")
+
+    preflight = read_text("framework/agent-playbook/PREFLIGHT_CHECKLIST.md")
+    require(preflight.count("Group status: PASS / FAIL / UNKNOWN / NOT_APPLICABLE") == 8,
+            "preflight does not capture a status for every P-group")
+    require("PASS groups / evidence" in preflight
+            and "NOT_APPLICABLE groups / reason" in preflight,
+            "preflight receipt does not preserve status evidence and N/A reasons")
 
     for relative in ("cases/general-research/README.md", "cases/product-and-process/README.md"):
         case = read_text(relative).lower()
@@ -184,6 +246,7 @@ def validate_receipt(receipt: dict, filename: str) -> None:
         "disconfirmation",
         "influence",
         "route",
+        "stop_status",
         "stop_reason",
     }
     require(required <= set(receipt), f"{filename} is missing receipt keys")
@@ -194,7 +257,30 @@ def validate_receipt(receipt: dict, filename: str) -> None:
     disconfirmation = receipt["disconfirmation"]
     influence = receipt["influence"]
     route = receipt["route"]
+    stop_status = receipt["stop_status"]
     stop_reason = receipt["stop_reason"].lower()
+
+    routes = {
+        "ACQUIRE",
+        "COMPARE",
+        "CLARIFY",
+        "ANSWER",
+        "ANSWER_PROVISIONALLY",
+        "HOLD",
+        "DEFER",
+        "ESCALATE",
+        "REFUSE",
+    }
+    stop_statuses = {
+        "CONTINUE",
+        "COMPLETE",
+        "STOPPED_BUDGET",
+        "STOPPED_DEADLINE",
+        "STOPPED_OTHER",
+    }
+    require(route in routes, f"{filename}: route is not canonical: {route}")
+    require(stop_status in stop_statuses,
+            f"{filename}: stop status is not canonical: {stop_status}")
 
     require(isinstance(permission.get("technical_access"), bool),
             f"{filename}: technical access must be boolean")
@@ -208,6 +294,8 @@ def validate_receipt(receipt: dict, filename: str) -> None:
     if not permission["authorized"]:
         require(route in {"HOLD", "ESCALATE", "REFUSE"},
                 f"{filename}: unauthorized work must hold, escalate, or refuse")
+        require(stop_status != "CONTINUE",
+                f"{filename}: unauthorized work cannot remain in CONTINUE state")
         require("permission" in stop_reason or "access" in stop_reason,
                 f"{filename}: unauthorized stop reason must name permission/access")
         require(not influence["recorded"],
@@ -226,10 +314,16 @@ def validate_receipt(receipt: dict, filename: str) -> None:
                 f"{filename}: answer route needs an influence receipt")
 
     if budget["remaining_minutes"] <= 0:
-        require(route.startswith("STOPPED") or route in {"HOLD", "ESCALATE"},
-                f"{filename}: exhausted budget must stop, hold, or escalate")
+        require(stop_status in {"STOPPED_BUDGET", "STOPPED_DEADLINE", "STOPPED_OTHER"},
+                f"{filename}: exhausted budget needs a stop status")
+        require(route not in {"ACQUIRE", "COMPARE"},
+                f"{filename}: exhausted budget cannot route to more work")
         require("budget" in stop_reason or "deadline" in stop_reason,
                 f"{filename}: exhausted budget reason must be explicit")
+
+    if stop_status == "STOPPED_BUDGET":
+        require("budget" in stop_reason,
+                f"{filename}: STOPPED_BUDGET reason must name budget")
 
     if receipt.get("motion_claim") is True:
         require(baseline.get("motion_repeated") is True,
@@ -242,11 +336,25 @@ def validate_receipt(receipt: dict, filename: str) -> None:
                 f"{filename}: independence claim needs an independent relation")
 
     outcome = receipt.get("outcome", {})
+    learning_statuses = {
+        "LEARNING_PLANNED",
+        "LEARNING_PENDING_OUTCOME",
+        "LEARNING_REVIEWED",
+        "LEARNING_NOT_APPLICABLE",
+    }
+    require(outcome.get("learning_status") in learning_statuses,
+            f"{filename}: outcome needs a canonical learning status")
     if outcome.get("applicable") is True:
+        require(outcome.get("learning_status") in {
+                    "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED"},
+                f"{filename}: applicable outcome needs pending or reviewed state")
         require(outcome.get("expectation_recorded") is True,
                 f"{filename}: learning needs a pre-outcome expectation")
         require(outcome.get("update_applied") is False,
                 f"{filename}: fixture must not silently apply a learning update")
+    else:
+        require(outcome.get("learning_status") == "LEARNING_NOT_APPLICABLE",
+                f"{filename}: non-applicable outcome must say LEARNING_NOT_APPLICABLE")
 
 
 def validate_receipts() -> None:

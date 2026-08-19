@@ -32,8 +32,9 @@ One receipt records one route, query, capture attempt, or bounded stop.
 
 ## Result
 
-- Status: CAPTURED / PARTIAL / NOT_FOUND / FAILED / NOT_AUTHORIZED /
-  STOPPED_BUDGET / STOPPED_OTHER
+- Capture status: CAPTURED / PARTIAL / NOT_FOUND / FAILED / NOT_AUTHORIZED
+- Stop status: CONTINUE / COMPLETE / STOPPED_BUDGET / STOPPED_DEADLINE /
+  STOPPED_OTHER
 - Source ID:
 - Artifact ID:
 - Version or digest:
@@ -48,7 +49,7 @@ One receipt records one route, query, capture attempt, or bounded stop.
 
 - Remaining budget:
 - Next route: ACQUIRE / COMPARE / CLARIFY / ANSWER /
-  ANSWER_PROVISIONALLY / HOLD / DEFER / ESCALATE / REFUSE / STOP
+  ANSWER_PROVISIONALLY / HOLD / DEFER / ESCALATE / REFUSE
 - Reason:
 - Uncertainty preserved:
 - Reviewer / disposition:

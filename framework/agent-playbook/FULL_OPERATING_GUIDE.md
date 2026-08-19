@@ -107,9 +107,10 @@ For each acquisition:
 5. Record whether the result is usable, partial, withheld, or unresolved.
 6. Update remaining budget and the next stop condition.
 
-Failure classes include NOT_FOUND, FAILED_CAPTURE, PARSER_ERROR, UNAVAILABLE,
-STALE, NOT_AUTHORIZED, OUT_OF_SCOPE, and STOPPED_BUDGET. A failed capture is
-not evidence that the source, event, or perspective does not exist.
+Capture and failure classes include NOT_FOUND, FAILED_CAPTURE, PARSER_ERROR,
+UNAVAILABLE, STALE, NOT_AUTHORIZED, and OUT_OF_SCOPE. Budget or deadline
+termination belongs in the separate stop-status field. A failed capture is not
+evidence that the source, event, or perspective does not exist.
 
 ## 7. Weigh sources at claim level
 
@@ -209,20 +210,34 @@ confidence into evidence support.
 
 The agent may recommend or perform only a route allowed by the brief.
 
-| Condition | Required route |
-| --- | --- |
-| Low consequence, narrow supported claim | ANSWER |
-| Evidence sufficient for a bounded answer but material uncertainty remains | ANSWER_PROVISIONALLY |
-| One low-cost authorized action may reduce a named gap | ACQUIRE or COMPARE |
-| Question or authority is unclear | CLARIFY |
-| Critical gap, conflict, or permission issue blocks influence | HOLD |
-| Human or domain authority must decide | ESCALATE |
-| Requested action is prohibited | REFUSE |
-| More work is not worth the remaining budget | STOPPED_BUDGET or STOPPED_OTHER |
+Record three separate fields:
 
-Every route receipt includes reason, expected benefit, cost, permission,
-uncertainty, and stop or resume condition. Budget exhaustion is not evidence
-sufficiency.
+- **Route:** `ACQUIRE`, `COMPARE`, `CLARIFY`, `ANSWER`,
+  `ANSWER_PROVISIONALLY`, `HOLD`, `DEFER`, `ESCALATE`, or `REFUSE`.
+- **Stop status:** `CONTINUE`, `COMPLETE`, `STOPPED_BUDGET`,
+  `STOPPED_DEADLINE`, or `STOPPED_OTHER`.
+- **Learning status:** `LEARNING_PLANNED`, `LEARNING_PENDING_OUTCOME`,
+  `LEARNING_REVIEWED`, or `LEARNING_NOT_APPLICABLE`.
+
+Do not substitute a stop or learning status for the route. If the agent
+abstains, record why as `HOLD`, `DEFER`, or `REFUSE` rather than creating an
+untyped `ABSTAIN` route.
+
+| Condition | Required route | Stop status example |
+| --- | --- | --- |
+| Low consequence, narrow supported claim | ANSWER | COMPLETE |
+| Evidence sufficient for a bounded answer but material uncertainty remains | ANSWER_PROVISIONALLY | COMPLETE or a named stop state |
+| One low-cost authorized action may reduce a named gap | ACQUIRE or COMPARE | CONTINUE |
+| Question or authority is unclear | CLARIFY | CONTINUE or STOPPED_OTHER |
+| Critical gap, conflict, or permission issue blocks influence | HOLD | STOPPED_OTHER |
+| A later time or missing input is required | DEFER | STOPPED_DEADLINE or STOPPED_OTHER |
+| Human or domain authority must decide | ESCALATE | STOPPED_OTHER |
+| Requested action is prohibited | REFUSE | COMPLETE or STOPPED_OTHER |
+| More work is not worth the remaining budget | ANSWER_PROVISIONALLY, HOLD, or DEFER | STOPPED_BUDGET |
+
+Every route receipt includes route, stop status, reason, expected benefit,
+cost, permission, uncertainty, and stop or resume condition. Budget exhaustion
+is not evidence sufficiency.
 
 ## 13. Build the context and influence receipt
 
@@ -284,6 +299,12 @@ After the window:
 
 Learning proposes a bounded update. It does not silently change a policy,
 rewrite a fact, or turn correlation into causation.
+
+Record `LEARNING_NOT_APPLICABLE` when no defined later outcome exists. Use
+`LEARNING_PLANNED` while a future outcome route is proposed but its expectation
+and window are not yet locked. Once those pre-outcome fields are recorded, use
+`LEARNING_PENDING_OUTCOME`. Use `LEARNING_REVIEWED` only after the outcome
+review and human disposition are recorded.
 
 ## 16. Completion checklist
 

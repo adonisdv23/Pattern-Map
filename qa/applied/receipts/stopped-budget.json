@@ -29,10 +29,12 @@
     "selected_items": ["E-010"],
     "withheld_items": ["E-011"]
   },
-  "route": "STOPPED_BUDGET",
+  "route": "ANSWER_PROVISIONALLY",
+  "stop_status": "STOPPED_BUDGET",
   "stop_reason": "Budget exhausted before the missing expected field could be acquired.",
   "uncertainty": ["FAILED_CAPTURE", "UNKNOWN"],
   "outcome": {
-    "applicable": false
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
   }
 }
