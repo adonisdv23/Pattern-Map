@@ -1,0 +1,63 @@
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+*.mobileprovision
+credentials.json
+secrets.json
+auth.json
+cookies.json
+
+# JavaScript and web tooling
+node_modules/
+.next/
+.nuxt/
+.svelte-kit/
+.vinext/
+.wrangler/
+.vercel/
+.turbo/
+dist/
+build/
+out/
+coverage/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local caches, logs, and temporary renders
+.cache/
+tmp/
+temp/
+*.log
+*.tmp
+*.swp
+*.bak
+qa/**/tmp/
+qa/**/renders-tmp/
+
+# Do not accidentally commit the 41.4 MB v15.2 distribution ZIP as an ordinary
+# Git object. Its verified extracted payload is accessioned instead; the exact
+# ZIP remains at the source location pending an authorized LFS/Release channel.
+archive/transfers/v15.2-owner-handoff/PATTERN_MAP_V15_2_OWNER_HANDOFF.zip

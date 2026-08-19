@@ -1,0 +1,30 @@
+* text=auto eol=lf
+
+*.md text diff=markdown
+*.json text
+*.csv text
+*.tsv text
+*.html text
+*.css text
+*.js text
+*.mjs text
+*.cjs text
+*.ts text
+*.tsx text
+*.py text
+*.sh text eol=lf
+*.svg text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+
+archive/** linguist-vendored
