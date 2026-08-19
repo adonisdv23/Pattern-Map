@@ -126,6 +126,7 @@ def main() -> None:
     apply_text = (DIST / "apply/index.html").read_text(encoding="utf-8")
     read_text = (DIST / "read/index.html").read_text(encoding="utf-8")
     sources_text = (DIST / "sources/index.html").read_text(encoding="utf-8")
+    examples_text = (DIST / "examples/index.html").read_text(encoding="utf-8")
 
     essential = [
         "AI slop often begins before the model writes a word.",
@@ -182,6 +183,19 @@ def main() -> None:
             require('target="_blank"' in attributes, f"{label}: external link missing target=_blank")
             require('rel="noreferrer"' in attributes, f"{label}: external link missing rel=noreferrer")
     output.append("PASS external Markdown links preserve URLs and safe anchor attributes")
+
+    for token in ("STOPPED_BUDGET", "LEARNING_NOT_APPLICABLE", "NOT_AUTHORIZED_OR_AMBIGUOUS"):
+        require(token in apply_text, f"Apply route mutated state token: {token}")
+        require(token in standalone_text, f"standalone export mutated state token: {token}")
+    signal_foundry_status = "ILLUSTRATION_ONLY / READ_ONLY / NOT_VALIDATION"
+    require(signal_foundry_status in examples_text, "Examples route mutated Signal Foundry status")
+    require(signal_foundry_status in standalone_text, "standalone export mutated Signal Foundry status")
+    standalone_ids = set(re.findall(r'\sid="([^"]+)"', standalone_text))
+    standalone_fragments = re.findall(r'href="#([^"]+)"', standalone_text)
+    missing_fragments = sorted(set(standalone_fragments) - standalone_ids)
+    require(not missing_fragments, f"standalone export has missing fragments: {missing_fragments}")
+    require('href="#source-' not in standalone_text, "standalone export contains an unresolved source fragment")
+    output.append("PASS exact underscore-bearing state vocabulary and standalone fragment integrity")
 
     print("\n".join(output))
     print("NOTE structural QA is not reader comprehension or effectiveness evidence")

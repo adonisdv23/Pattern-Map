@@ -26,14 +26,24 @@ const read = (filePath) => fs.readFileSync(filePath, "utf8");
 
 const localLinksIn = (html) => [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((match) => match[1]);
 
+const idsIn = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
+
 const checkLink = (fromFile, href) => {
-  if (!href || href.startsWith("#") || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(href)) return;
-  const [withoutHash] = href.split("#");
+  if (!href || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(href)) return;
+  if (href.startsWith("#")) {
+    const fragment = decodeURIComponent(href.slice(1));
+    assert(!fragment || idsIn(read(fromFile)).has(fragment), `${fromFile} points to missing fragment: ${href}`);
+    return;
+  }
+  const [withoutHash, fragment = ""] = href.split("#");
   const [filePart] = withoutHash.split("?");
   if (!filePart) return;
   const target = path.resolve(path.dirname(fromFile), filePart);
   assert(target.startsWith(`${DIST_DIR}${path.sep}`), `${fromFile} escapes dist: ${href}`);
   assert(fs.existsSync(target), `${fromFile} points to missing local target: ${href}`);
+  if (fragment && target.endsWith(".html")) {
+    assert(idsIn(read(target)).has(decodeURIComponent(fragment)), `${fromFile} points to missing target fragment: ${href}`);
+  }
 };
 
 const main = () => {
@@ -48,12 +58,18 @@ const main = () => {
   const history = read(path.join(DIST_DIR, "history/index.html"));
   const headline = "AI slop often begins before the model writes a word.";
   const standfirst = "A polished answer can still feel generic when the system follows the obvious search path";
+  const conceptualBridge = "This is a broad proposal about the room before the answer";
   assert(root.includes(headline), "root headline missing");
   assert(root.includes(standfirst), "root standfirst missing");
+  assert(root.includes(conceptualBridge), "root conceptual-framing bridge missing");
   for (const door of ["Read the idea", "Explore the map", "Apply it"]) assert(root.indexOf(door) >= 0, `principal door missing: ${door}`);
   const doorEnd = root.indexOf("</nav>", root.indexOf('<nav class="door-grid"'));
   const echoIndex = root.indexOf("Echo");
   assert(doorEnd > 0 && (echoIndex < 0 || echoIndex > doorEnd), "Echo appears before principal doors");
+  const firstScreen = root.slice(0, doorEnd).toLowerCase();
+  for (const prohibitedClaim of ["study shows", "measured prevalence", "proven improvement", "causes the model"]) {
+    assert(!firstScreen.includes(prohibitedClaim), `first screen presents conceptual framing as a result: ${prohibitedClaim}`);
+  }
   const familyOrder = ["F1", "F2", "F3", "F4", "F5", "F6"].map((id) => map.indexOf(`id="family-${id}"`));
   assert(familyOrder.every((position) => position >= 0), "one or more family cards missing");
   assert(familyOrder.every((position, index) => index === 0 || position > familyOrder[index - 1]), "family card order changed");
@@ -68,21 +84,36 @@ const main = () => {
   assert(history.includes("current relationship view"), "current/historical distinction missing");
   const metareasoningHref = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"';
   assert(sources.includes(metareasoningHref), "parenthesized external URL was not preserved");
-  for (const html of [sources, read(EXPORT_PATH)]) {
+  const standalone = read(EXPORT_PATH);
+  for (const html of [sources, standalone]) {
     assert(!/<a\b[^>]*<(?:\/?em|\/?strong|\/?code)\b/i.test(html), "inline markup corrupted an anchor start tag");
     for (const match of html.matchAll(/<a href="https?:[^"]+"([^>]*)>/g)) {
       assert(match[1].includes('target="_blank"'), "external link is missing target=_blank");
       assert(match[1].includes('rel="noreferrer"'), "external link is missing rel=noreferrer");
     }
   }
+  for (const token of ["STOPPED_BUDGET", "LEARNING_NOT_APPLICABLE", "NOT_AUTHORIZED_OR_AMBIGUOUS"]) {
+    assert(apply.includes(token), `Apply route mutated state token: ${token}`);
+    assert(standalone.includes(token), `standalone export mutated state token: ${token}`);
+  }
+  const signalFoundryStatus = "ILLUSTRATION_ONLY / READ_ONLY / NOT_VALIDATION";
+  assert(examples.includes(signalFoundryStatus), "Examples route mutated Signal Foundry status");
+  assert(standalone.includes(signalFoundryStatus), "standalone export mutated Signal Foundry status");
   const htmlFiles = requiredRoutes.map((route) => path.join(DIST_DIR, route));
   for (const filePath of htmlFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href);
+  for (const href of localLinksIn(standalone)) {
+    if (!href.startsWith("#")) continue;
+    const fragment = decodeURIComponent(href.slice(1));
+    assert(!fragment || idsIn(standalone).has(fragment), `standalone export points to missing fragment: ${href}`);
+  }
+  assert(!standalone.includes('href="#source-'), "standalone export contains an unresolved source fragment");
   console.log(`PASS routes: ${requiredRoutes.length}`);
-  console.log("PASS exact first-screen headline/standfirst and principal-door presence");
+  console.log("PASS exact first-screen framing, non-result boundary, and principal-door presence");
   console.log("PASS six-family order/names, implementation levels, teaching patterns");
   console.log("PASS Signal Foundry, Echo, and historical/current topology boundaries");
   console.log("PASS local route/assets link integrity");
   console.log("PASS external Markdown links preserve URLs and safe anchor attributes");
+  console.log("PASS exact underscore-bearing state vocabulary and standalone fragments");
   console.log("PASS standalone export exists");
 };
 

@@ -63,6 +63,16 @@ const externalHref = (href) =>
 const sourceRouteFor = (href) => {
   const normalized = href.toLowerCase();
   const mappings = [
+    ["templates/outcome_review", "apply"],
+    ["owner_intent_v16", "sources"],
+    ["thesis_and_audience_contract_v16", "sources"],
+    ["future_execution_plan", "research"],
+    ["preserved_v15_2_index", "research"],
+    ["ep_v0_1_qa", "research"],
+    ["relation_to_v16", "research"],
+    ["status_and_boundaries", "research"],
+    ["transfers/v14-complete-2026-08-18/05_historical_v13", "history"],
+    ["version_history", "history"],
     ["pattern_recognition_v16", "read"],
     ["ninety_second_version", "read"],
     ["mentor_cover_note", "read"],
@@ -97,16 +107,17 @@ const siteSourceHref = (href, ctx) => {
   const [withoutQuery, query = ""] = href.split("?");
   const [withoutFragment, fragment = ""] = withoutQuery.split("#");
   const route = sourceRouteFor(withoutFragment);
-  if (!route) return ctx.standalone ? `#source-${slugify(withoutFragment)}` : `${ctx.base}index.html`;
+  if (!route) throw new Error(`Unmapped local Markdown link: ${href}`);
   return routeHref(ctx, route, fragment || query || "");
 };
 
+// Canonical route and status identifiers use underscores. This deliberately
+// small Markdown renderer supports asterisk emphasis only so machine-like
+// tokens remain exact in visible text and copyable records.
 const applyEmphasis = (value) =>
   value
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/__([^_]+)__/g, "<strong>$1</strong>")
-    .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-    .replace(/_([^_]+)_/g, "<em>$1</em>");
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>");
 
 const inlineMarkdown = (value, ctx) => {
   const tokens = [];

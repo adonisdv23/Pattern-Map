@@ -34,11 +34,12 @@ Built standalone export to site/exports/standalone/pattern-map-v16.html
 
 cd site && npm run check
 PASS routes: 9
-PASS exact first-screen headline/standfirst and principal-door presence
+PASS exact first-screen framing, non-result boundary, and principal-door presence
 PASS six-family order/names, implementation levels, teaching patterns
 PASS Signal Foundry, Echo, and historical/current topology boundaries
 PASS local route/assets link integrity
 PASS external Markdown links preserve parenthesized URLs and safe anchor attributes
+PASS exact underscore-bearing state vocabulary and standalone fragment integrity
 PASS standalone export exists
 
 python3 qa/site/audit_site.py
@@ -61,6 +62,15 @@ containing parentheses. The renderer now protects completed inline tokens,
 supports balanced parentheses in link destinations, and has regression checks
 across the Sources route and standalone export. No malformed anchor from the
 pre-integration candidate was pushed to the canonical remote branch.
+
+The final builder/operator advisory then exposed two further blind spots:
+single-underscore emphasis mutated visible machine-like state identifiers, and
+unmapped local source links produced silent home fallbacks or dead standalone
+fragments. The renderer now supports asterisk emphasis only, fails the build on
+an unmapped local Markdown link, maps every current source reference to an
+intentional route, and checks exact representative state/status tokens plus all
+standalone fragments. Canonical framework and case wording was not changed to
+accommodate either renderer defect.
 
 ## Content and route contract
 
