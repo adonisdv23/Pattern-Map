@@ -1,0 +1,218 @@
+{
+  "schema_version": "pattern-map.content-interface.v16",
+  "status": "frozen-for-local-site-implementation",
+  "freeze_basis_commit": "2b8bd1b1c93ab5e38ecc60bf940e0519c537bb73",
+  "owner_intent_sha256": "3aea5eeb19302a0e6498f7bcfccb23535953dbb6807fb5a486e0279bfa72543b",
+  "first_screen": {
+    "headline": "AI slop often begins before the model writes a word.",
+    "standfirst": "A polished answer can still feel generic when the system follows the obvious search path, misses a specialist perspective, skips a useful comparison, overlooks an expected absence, or forgets what happened before. The answer inherits those upstream choices. Pattern Recognition is the discipline of improving them.",
+    "claim_status": "owner-approved-conceptual-framing-not-measured-prevalence",
+    "must_precede": [
+      "protocol",
+      "disclaimer",
+      "literature-defense",
+      "provenance-graph",
+      "research-status",
+      "echo-example"
+    ]
+  },
+  "doors": [
+    {
+      "id": "read",
+      "label": "Read the idea",
+      "promise": "Continue the coffee conversation: why choices made before generation shape what an answer can become.",
+      "sources": [
+        "manuscript/NINETY_SECOND_VERSION.md",
+        "manuscript/PATTERN_RECOGNITION_V16.md",
+        "manuscript/MENTOR_COVER_NOTE.md",
+        "manuscript/PUBLIC_ABSTRACT.md"
+      ]
+    },
+    {
+      "id": "map",
+      "label": "Explore the map",
+      "promise": "See six ways to improve what the system notices, compares, preserves, questions, and learns from.",
+      "sources": [
+        "framework/SIX_FAMILIES.json",
+        "framework/SIX_FAMILIES.md",
+        "framework/RELATIONSHIP_MAP.md",
+        "framework/GLOSSARY.md"
+      ]
+    },
+    {
+      "id": "apply",
+      "label": "Apply it",
+      "promise": "Turn the idea into a proportionate workflow, from one decision brief to an inspectable agent procedure.",
+      "sources": [
+        "framework/OPERATOR_PLAYBOOK.md",
+        "framework/IMPLEMENTATION_CHOICES.md",
+        "framework/BOUNDARIES_AND_FAILURES.md",
+        "framework/agent-playbook/QUICKSTART.md",
+        "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
+        "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
+        "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
+        "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
+        "framework/templates/README.md"
+      ]
+    }
+  ],
+  "secondary_routes": [
+    {
+      "id": "examples",
+      "label": "Examples",
+      "sources": [
+        "manuscript/PATTERN_RECOGNITION_V16.md",
+        "framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md",
+        "cases/README.md"
+      ]
+    },
+    {
+      "id": "boundaries",
+      "label": "Boundaries",
+      "sources": [
+        "framework/BOUNDARIES_AND_FAILURES.md",
+        "docs/ARTIFACT_BOUNDARIES.md"
+      ]
+    },
+    {
+      "id": "sources",
+      "label": "Sources",
+      "sources": [
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md"
+      ]
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "sources": [
+        "research/README.md",
+        "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
+        "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md",
+        "research/the-echo-problem/README.md",
+        "research/the-echo-problem/STATUS_AND_BOUNDARIES.md"
+      ]
+    },
+    {
+      "id": "history",
+      "label": "History",
+      "sources": [
+        "manuscript/ORIGIN_NOTE.md",
+        "docs/SOURCE_AUTHORITY_AND_LINEAGE.md",
+        "archive/README.md"
+      ]
+    }
+  ],
+  "families": [
+    {
+      "id": "F1",
+      "slug": "peripheral-signal",
+      "name": "Peripheral signal",
+      "reader_question": "What might the default path have overlooked?"
+    },
+    {
+      "id": "F2",
+      "slug": "source-weighing",
+      "name": "Source weighing",
+      "reader_question": "What role does each source play for this exact claim?"
+    },
+    {
+      "id": "F3",
+      "slug": "velocity-motion",
+      "name": "Velocity / motion",
+      "reader_question": "What is changing unusually relative to a relevant baseline?"
+    },
+    {
+      "id": "F4",
+      "slug": "absence-memory",
+      "name": "Absence + memory",
+      "reader_question": "What should be present but is not, and what prior context changes the meaning of now?"
+    },
+    {
+      "id": "F5",
+      "slug": "structured-patterns",
+      "name": "Structured patterns",
+      "reader_question": "What becomes visible through explicit comparison?"
+    },
+    {
+      "id": "F6",
+      "slug": "learning-loop",
+      "name": "Learning loop",
+      "reader_question": "What did we expect, what happened, and what bounded update is justified?"
+    }
+  ],
+  "required_examples": [
+    "peripheral-or-specialist-candidate",
+    "velocity-or-expected-absence-with-baseline",
+    "common-origin-recurrence-with-unknown-independence"
+  ],
+  "implementation_levels": [
+    "ordinary",
+    "lightweight",
+    "moderate",
+    "advanced"
+  ],
+  "progressive_disclosure": {
+    "essential_without_javascript": [
+      "human-problem",
+      "broad-definition",
+      "six-family-names-and-questions",
+      "human-judgment-boundary",
+      "implementation-levels"
+    ],
+    "popover_source": "framework/GLOSSARY.md",
+    "popover_terms": [
+      "Evidence spine",
+      "Typed relationship",
+      "Influence receipt",
+      "Cost-bounded route",
+      "Versioned memory",
+      "Common origin",
+      "Human disposition"
+    ],
+    "closed_controls_may_hide_required_qualifications": false
+  },
+  "history": {
+    "v13_label": "Historical v13 origin — not the current v16 topology.",
+    "current_topology_source": "framework/RELATIONSHIP_MAP.md"
+  },
+  "echo": {
+    "principal_door": false,
+    "placement": "secondary-research-route-and-late-common-origin-example",
+    "required_label": "Separate project — unrun — no results",
+    "removal_must_preserve_all_principal_routes": true
+  },
+  "claims": [
+    "six-families-are-not-claimed-as-new",
+    "peripheral-is-candidate-not-truth",
+    "provenance-is-not-correctness",
+    "recurrence-is-not-independent-corroboration",
+    "access-is-not-permission",
+    "fixtures-protocols-validators-and-reviews-are-not-results",
+    "signal-foundry-is-illustration-not-validation",
+    "research-tracks-are-unrun-with-no-results",
+    "human-judgment-and-consequential-authority-remain-human"
+  ],
+  "visual_policy": {
+    "code_native_first": true,
+    "bitmap_requires_documented_need": true,
+    "visual_needs_path": "qa/visual/VISUAL_NEEDS.md",
+    "image_ledger_path": "assets/IMAGE_USE_LEDGER.md"
+  },
+  "required_outputs": [
+    "local-interactive-site",
+    "standalone-html",
+    "pdf-review-companion",
+    "responsive-keyboard-screen-reader-print-qa"
+  ],
+  "external_actions_authorized": {
+    "merge_main": false,
+    "deploy": false,
+    "publish": false,
+    "github_release": false,
+    "study": false,
+    "provider_call": false,
+    "dataset_acquisition": false,
+    "participant_activity": false,
+    "spend": false
+  }
+}
