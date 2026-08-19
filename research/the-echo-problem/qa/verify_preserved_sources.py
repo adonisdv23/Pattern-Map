@@ -24,19 +24,19 @@ TREE_MAPPINGS = (
     ),
     (
         "03_RESEARCH_PROGRAM_UNRUN/offline-implementation/origin_accounting/",
-        "harness/origin_accounting/",
+        "tools/origin_accounting/",
     ),
     (
         "03_RESEARCH_PROGRAM_UNRUN/research/origin_accounting/fixtures/",
-        "fixtures/",
+        "research/origin_accounting/fixtures/",
     ),
     (
         "03_RESEARCH_PROGRAM_UNRUN/research/origin_accounting/config/",
-        "fixtures/config/",
+        "research/origin_accounting/config/",
     ),
     (
         "03_RESEARCH_PROGRAM_UNRUN/research/origin_accounting/schema/",
-        "fixtures/schema/",
+        "research/origin_accounting/schema/",
     ),
 )
 
@@ -59,7 +59,7 @@ FILE_MAPPINGS = (
     ),
     (
         "03_RESEARCH_PROGRAM_UNRUN/tests/test_origin_accounting.py",
-        "harness/tests/test_origin_accounting.py",
+        "tests/test_origin_accounting.py",
     ),
     (
         "03_RESEARCH_PROGRAM_UNRUN/research/CLAIMS_AND_EVIDENCE_REGISTER.csv",

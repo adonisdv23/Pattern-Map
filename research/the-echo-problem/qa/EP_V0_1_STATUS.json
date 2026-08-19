@@ -45,7 +45,9 @@
     "offline_harness": {
       "status": "PASS",
       "test_count": 15,
-      "execution": "deterministic local unittest; no model/provider calls"
+      "execution": "deterministic local unittest; no model/provider calls",
+      "working_directory": "research/the-echo-problem/preserved/v15.2",
+      "command": "python3 -m unittest discover -s tests -v"
     },
     "owner_intent_lock": "PASS_BEFORE_EDITING"
   }

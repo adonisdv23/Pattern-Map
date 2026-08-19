@@ -14,7 +14,7 @@ home.
 | --- | --- | --- |
 | 0 — Foundation | Verified sources, immutable archive boundary, clean canonical root, lineage and binary policy | Complete — foundation commit `0c3a6e7` |
 | 1 — Intent freeze | Locked owner intent, thesis/audience, artifact boundaries, acceptance criteria, v13→v16 fidelity matrix | Complete — owner-locked contracts and intent audit |
-| 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | Ready — begin only from the committed Phase 1 checkpoint |
+| 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | In progress — manuscript and Echo integrated; playbook and Wave 1 reviews active |
 | 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Blocked on Phase 2 review |
 | 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Blocked on content freeze |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Pending |

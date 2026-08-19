@@ -33,11 +33,27 @@ From the repository root:
 python3 archive/transfers/v15.2-owner-handoff/verify_accession.py \
   --source-zip /Users/gpt/Documents/Codex/worktrees/discrimination-layer-v15-2-overnight/output/PATTERN_MAP_V15_2_OWNER_HANDOFF.zip
 python3 research/the-echo-problem/qa/verify_preserved_sources.py
+(cd research/the-echo-problem/preserved/v15.2 && \
+  python3 -m unittest discover -s tests -v)
 ```
 
 The source ZIP remains outside Git and untouched. The first command protects
 the v16 contract; the second protects the accession; the third protects the
-curated successor's exact copies. None runs a model or participant study.
+curated successor's exact copies; the fourth exercises the preserved
+deterministic harness from its historical repository-relative layout. None
+runs a model or participant study.
+
+## Integrator reproducibility correction
+
+The first-wave commit grouped the curated harness under role-oriented
+`harness/` and `fixtures/` paths. Integrity checks passed because the bytes were
+exact, but an independent test replay failed before collection: the preserved
+test imports `tools.origin_accounting`, and the preserved loader expects
+`research/origin_accounting/config/frozen_config.json`. The integrator moved
+only the curated copies into those historical repository-relative paths and
+updated the preserved-source mapping. The immutable accession was not edited.
+The test command above now exercises all 15 cases without altering historical
+source bytes. This is a reproducibility correction, not a research result.
 
 ## Advisory disposition
 

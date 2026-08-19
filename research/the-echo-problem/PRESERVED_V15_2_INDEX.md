@@ -15,9 +15,9 @@ source and reports the aggregate count and bytes.
 | Editable site | `preserved/v15.2/site-source/` | `01_FINAL_OUTPUT/site-source/` | Complete curated site source, including its source tests and locked package metadata; no dependencies or build cache. |
 | Standalone site | `preserved/v15.2/site-standalone/` | `01_FINAL_OUTPUT/standalone-site/` | Historical standalone review surface; not a publication or deployment. |
 | Protocols | `preserved/v15.2/protocol/` | `03_RESEARCH_PROGRAM_UNRUN/research/ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V0.md`; `.../ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V1.md`; `.../overnight/v15_2/ORIGIN_ACCOUNTING_PROTOCOL_V1_1_AMENDMENT_DRAFT.md` | V1 is the canonical v15.2 protocol; V0 is retained history; V1.1 is explicitly a draft amendment, not canonical. |
-| Offline harness | `preserved/v15.2/harness/origin_accounting/` | `03_RESEARCH_PROGRAM_UNRUN/offline-implementation/origin_accounting/` | Deterministic implementation source only; no live provider adapter or model call. |
-| Harness test | `preserved/v15.2/harness/tests/test_origin_accounting.py` | `03_RESEARCH_PROGRAM_UNRUN/tests/test_origin_accounting.py` | Offline test source; a passing test is not an empirical result. |
-| Fixture contract | `preserved/v15.2/fixtures/` | `03_RESEARCH_PROGRAM_UNRUN/research/origin_accounting/fixtures/`, `.../config/`, and `.../schema/` | README, frozen configuration, and schemas are preserved. No empirical fixture dataset is claimed. |
+| Offline harness | `preserved/v15.2/tools/origin_accounting/` | `03_RESEARCH_PROGRAM_UNRUN/offline-implementation/origin_accounting/` | Deterministic implementation source only; restored to its historical repository-relative `tools/` location so its unedited imports remain runnable. No live provider adapter or model call. |
+| Harness test | `preserved/v15.2/tests/test_origin_accounting.py` | `03_RESEARCH_PROGRAM_UNRUN/tests/test_origin_accounting.py` | Offline test source at its historical repository-relative location; a passing test is not an empirical result. |
+| Fixture contract | `preserved/v15.2/research/origin_accounting/` | `03_RESEARCH_PROGRAM_UNRUN/research/origin_accounting/fixtures/`, `.../config/`, and `.../schema/` | README, frozen configuration, and schemas retain the layout expected by the byte-preserved harness. No empirical fixture dataset is claimed. |
 | Prior art and evidence | `preserved/v15.2/prior-art/` | Selected files under `03_RESEARCH_PROGRAM_UNRUN/research/` and its prior-art overnight records | Prior-art maps, references, claim/evidence registers, counterargument register, readiness path, and literature audit records remain advisory/source material. |
 
 ## Exactness and exclusions
@@ -27,3 +27,10 @@ state, or unfavorable-result classes. The package ZIP itself, dependencies,
 caches, credentials, and build products are not copied into the successor. The
 complete 239-file payload remains available in the immutable accession for
 anything not included in this focused curated view.
+
+The harness, test, configuration, and schema files use their historical
+repository-relative paths because the preserved test imports
+`tools.origin_accounting` and the preserved configuration loader resolves
+`research/origin_accounting/config/frozen_config.json`. Their bytes remain
+unchanged; only the curated successor's placement supplies the original import
+contract.

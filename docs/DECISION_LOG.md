@@ -130,3 +130,46 @@ The Echo Problem, site, and historical archive have separate canonical paths,
 readers, and evidentiary roles. The removal test governs integration: v16 must
 remain coherent without the Echo example, and Echo must stand independently as
 an unrun origin-accounting project.
+
+## D-009 — Accept the verified v15.2 accession and EP v0.1 successor
+
+**Date:** 2026-08-19
+
+**Status:** Accepted
+
+The immutable accession contains all 239 external-manifest payload files and
+48,717,432 payload bytes, plus the unchanged external manifest and sidecar. The
+complete verifier also confirms the untouched 41,436,496-byte source ZIP, its
+SHA-256, all 240 ZIP members, CRCs, and the embedded-manifest identity. The ZIP
+itself remains outside Git under D-004.
+
+EP v0.1 is accepted as a separate, unrun successor with 82 byte-verified
+preserved source files covering the v15.2 manuscript, site, protocol, harness,
+fixture contract, and prior art. Its QA and status records are preservation and
+implementation evidence only, not research results.
+
+**Source task:** `90c64ad`; integrated as `96f8e32`.
+
+**Governing requirement:** two-project separation; A10/A14/A15.
+
+## D-010 — Preserve runnable historical paths in the curated Echo copy
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The first EP v0.1 commit grouped byte-exact harness and fixture copies under
+role-oriented `harness/` and `fixtures/` paths. An independent replay failed
+before test collection because the preserved test imports
+`tools.origin_accounting` and the preserved loader resolves
+`research/origin_accounting/config/frozen_config.json`.
+
+Only the curated copies were moved to the historical repository-relative
+`tools/`, `tests/`, and `research/origin_accounting/` paths. No preserved file
+byte and no immutable accession path changed. The source-copy verifier still
+passes for all 82 files, and all 15 deterministic local tests now run from the
+documented preserved root. This is a reproducibility correction, not a study
+or result.
+
+**Governing requirement:** canonical reproducibility; archive immutability;
+A10/A14/A15.
