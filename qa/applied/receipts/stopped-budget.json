@@ -1,0 +1,38 @@
+{
+  "receipt_id": "DR-BUDGET-001",
+  "consequence": "MEDIUM",
+  "permission": {
+    "technical_access": true,
+    "authorized": true,
+    "disclosure_allowed": true
+  },
+  "budget": {
+    "remaining_minutes": 0,
+    "limit_minutes": 10
+  },
+  "baseline": {
+    "present": true,
+    "motion_repeated": false,
+    "absence_expected": true
+  },
+  "comparison": {
+    "done": true,
+    "unit": "period",
+    "origin_state": "UNKNOWN"
+  },
+  "disconfirmation": {
+    "attempted": true,
+    "result": "one limiting route checked"
+  },
+  "influence": {
+    "recorded": true,
+    "selected_items": ["E-010"],
+    "withheld_items": ["E-011"]
+  },
+  "route": "STOPPED_BUDGET",
+  "stop_reason": "Budget exhausted before the missing expected field could be acquired.",
+  "uncertainty": ["FAILED_CAPTURE", "UNKNOWN"],
+  "outcome": {
+    "applicable": false
+  }
+}
