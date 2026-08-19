@@ -26,9 +26,12 @@ The Echo Problem must preserve:
 - the v15.2 manuscript and site;
 - protocol, offline harness, fixtures, tests, and prior art;
 - the explicit statement that no model or participant study has run;
-- null, rule-only, invalidity-driven, harmful, shortcut-driven,
-  surface/semantic-audit-failure, unstable, noise-fragile, non-transfer, and
-  stopped or quarantined outcome classes; and
+- the complete canonical unfavorable-result taxonomy: `null`, `rule_only`,
+  `invalidity_driven`, `threshold_only_vor`, `harmful`, `shortcut_driven`,
+  `surface_or_semantic_audit_failure`, `unstable`, `noise_fragile`,
+  `nontransfer`, and `stopped_or_quarantined`, as defined in
+  [`research/the-echo-problem/STATUS_AND_BOUNDARIES.md`](../research/the-echo-problem/STATUS_AND_BOUNDARIES.md);
+  and
 - its own EP version history and future low/no-cost execution plan.
 
 ## Allowed relationship
