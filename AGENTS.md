@@ -14,6 +14,7 @@ Read these files in order when present:
 4. `docs/SOURCE_AUTHORITY_AND_LINEAGE.md`
 5. `docs/V16_ACCEPTANCE_CRITERIA.md`
 6. `docs/DECISION_LOG.md`
+7. `docs/REVIEW_AND_DISPOSITION_PROTOCOL.md`
 
 Then inspect `git status`, the current branch, and any task-specific ownership
 instructions. Never assume that a detailed historical or model-generated file
