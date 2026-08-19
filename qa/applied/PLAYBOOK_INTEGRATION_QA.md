@@ -4,7 +4,7 @@
 **Source parent:** `2f863471aee4666f304f3840d0b0a27120158f1e`  
 **Integrated commit:** `223d19069a3d61069c3eedec64e6ccdd38852dff`  
 **Review date:** 2026-08-19  
-**Status:** accepted for advisory review; procedural and structural evidence only
+**Status:** accepted with bounded revisions; procedural and structural evidence only
 
 ## Integration result
 
@@ -52,11 +52,23 @@ distinct. The learning loop proposes a bounded update and preserves the
 original record. Ordinary low-consequence transformations may bypass the full
 framework, preventing a universal-bureaucracy reading.
 
-## Residual review work
+## Post-revision closure
 
-This integration check does not establish real-world usefulness, reader
-comprehension, agent compliance, Signal Foundry product behavior, or framework
-effectiveness. The independent agent-playbook/Signal Foundry advisory audit,
-v13 continuity audit, owner review, and later cold-reader/builder acceptance
-review remain controlling inputs before the content interface can freeze.
+The independent agent-playbook/Signal Foundry audit and v13 continuity audit
+were completed and dispositioned. Their accepted revisions close the
+Quickstart learning loop, separate canonical route/stop/learning vocabularies,
+make preflight statuses inspectable, define the fixture-scoped Signal Foundry
+cost/stop/resume envelope, and make the v13 process/workflow/optional-model
+continuity explicit without hierarchy. A narrow follow-up also mapped packet
+output labels to canonical route values in the relationship map and Signal
+Foundry procedure.
 
+`python3 qa/applied/validate_framework.py` passes after those changes, and the
+independent read-only follow-up found no remaining route-label residue in
+scope. The detailed findings and controlled dispositions are preserved in
+`qa/applied/advisory/` and `docs/ADVISORY_REVIEW_DISPOSITIONS.md`.
+
+This integration check still does not establish real-world usefulness, reader
+comprehension, live-agent compliance, Signal Foundry product behavior, or
+framework effectiveness. Final cold-reader/builder review and the rendered
+site A07–A09 re-audit remain required.

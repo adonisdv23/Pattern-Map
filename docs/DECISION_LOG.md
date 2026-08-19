@@ -311,3 +311,62 @@ historical relative links resolve from the curated placement.
 
 **Governing requirement:** preserve historical v15.2 exactly; canonical
 recoverability; A10/A14.
+
+## D-016 — Accept the applied framework after bounded interoperability revisions
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The first applied checkpoint already supplied the six-family specification,
+implementation spectrum, operator playbook, agent companion, templates, Signal
+Foundry translation, and two domain-neutral fixtures. Advisory review found
+four bounded execution gaps: the Quickstart did not close learning, route/stop
+labels conflicted, preflight statuses were not inspectable, and the Signal
+Foundry fixture lacked a concrete cost/stop/resume envelope.
+
+The integrated revisions preserve the ordinary path and add no mandatory
+architecture. Route, stop, and learning states are now separate canonical
+vocabularies; the relationship map and Signal Foundry procedure map friendly
+packet descriptions to canonical route values. The focused validator and an
+independent post-revision review pass with no remaining APP-02 residue.
+
+This establishes builder and agent artifact completeness for the pre-site
+scope. It does not establish live-agent compliance, Signal Foundry product
+behavior, reader comprehension, or framework effectiveness. A07–A09 remain
+scheduled for a final rendered-site/cross-link review.
+
+**Implementation:** `223d190`, `cd8a756`, and `9ab9b5d`.
+
+**Advisory reports:**
+`qa/applied/advisory/AGENT_PLAYBOOK_AND_SIGNAL_FOUNDRY_AUDIT_2026-08-19_223d190.md`;
+`qa/applied/advisory/APPLIED_POST_REVISION_VERIFICATION_2026-08-19_cd8a756.md`;
+`qa/editorial/advisory/V13_CONTINUITY_AND_INTENT_FIDELITY_2026-08-19_223d190.md`.
+
+**Governing requirement:** A03, A07–A09, A11, A15–A17.
+
+## D-017 — Contain the broader research agenda as an unrun future track
+
+**Date:** 2026-08-19
+
+**Status:** Accepted
+
+The broader v16 research agenda now treats The Echo Problem as independent
+Research Track 01 and defines DL-PLAYBOOK-01 as a separate future flagship
+candidate. The candidate asks whether the operational playbook changes
+usefulness, supported novelty, evidence diversity, missing-perspective
+detection, and human correction effort relative to ordinary prompting under a
+matched total resource envelope.
+
+The protocol counts playbook instructions, context/output tokens, tool calls,
+retries, elapsed time, human review, and any later-authorized cost. It retains
+null, harmful, shortcut-driven, fragile, non-transfer, stopped, invalid, and
+indeterminate outcomes. It selects no provider, model, dataset, participant,
+sample size, registry, or spend and authorizes no execution.
+
+Local validators establish containment and required fields only. They are not
+research evidence, a preregistration, or a completed study.
+
+**Implementation:** `1e376c0`.
+
+**Governing requirement:** research containment; A10/A11/A15/A16.
