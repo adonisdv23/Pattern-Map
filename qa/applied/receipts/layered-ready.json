@@ -1,0 +1,40 @@
+{
+  "receipt_id": "DR-LAYER-001",
+  "consequence": "HIGH",
+  "permission": {
+    "technical_access": true,
+    "authorized": true,
+    "disclosure_allowed": true
+  },
+  "budget": {
+    "remaining_minutes": 8,
+    "limit_minutes": 20
+  },
+  "baseline": {
+    "present": true,
+    "motion_repeated": true,
+    "absence_expected": true
+  },
+  "comparison": {
+    "done": true,
+    "unit": "peer and period",
+    "origin_state": "COMMON_ORIGIN"
+  },
+  "disconfirmation": {
+    "attempted": true,
+    "result": "contrary route and missing perspective checked"
+  },
+  "influence": {
+    "recorded": true,
+    "selected_items": ["E-001", "E-004"],
+    "withheld_items": ["E-002"]
+  },
+  "route": "ANSWER_PROVISIONALLY",
+  "stop_reason": "The packet is bounded; remaining unknown origin is named.",
+  "uncertainty": ["one related source remains UNKNOWN_ORIGIN"],
+  "outcome": {
+    "applicable": true,
+    "expectation_recorded": true,
+    "update_applied": false
+  }
+}
