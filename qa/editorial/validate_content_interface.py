@@ -443,7 +443,7 @@ def main() -> None:
     print("PASS  human-problem first screen, examples, and late Echo placement")
     print("PASS  claim, no-script, visual, output, and external-action obligations")
     print(f"PASS  manuscript lengths: essay={words(essay_path)} raw words; short={words(short_path)} raw words")
-    print("NOTE  rendered site, accessibility, print, removal, and reader gates remain open")
+    print("NOTE  rendered site, accessibility, print, removal, and reader gates are outside this source-contract validator")
 
 
 if __name__ == "__main__":

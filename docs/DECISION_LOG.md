@@ -403,3 +403,48 @@ remain explicit Phase 4/6 work.
 `qa/editorial/advisory/CONTENT_INTERFACE_FREEZE_AUDIT_2026-08-19_6f672f2.md`.
 
 **Governing requirement:** site dependency rule; A01–A17 as scoped.
+
+## D-019 — Integrate the local site with an explicit renderer correction and manual residuals
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision for final advisory review
+
+The site lane produced a dependency-free nine-route local review surface with
+the three frozen principal doors, five secondary routes, all six families,
+progressive technical disclosure, ordinary through advanced application paths,
+three required teaching patterns, bounded Signal Foundry and Echo routes, a
+historical/current topology distinction, a standalone HTML export, and a
+six-page PDF companion. No deployment, hosting API, publication, provider,
+study, external dataset, or spend occurred.
+
+Primary integration review found one defect before any canonical remote push:
+the small Markdown renderer allowed emphasis parsing to alter `_blank` inside
+generated anchor attributes, and its link regex truncated a DOI containing
+parentheses. The renderer now token-protects completed inline markup, preserves
+balanced parentheses in destinations, and tests both safe external attributes
+and the exact parenthesized URL across the Sources route and standalone export.
+All site, content-interface, applied, and research-boundary validators pass
+after the correction.
+
+The visual-needs record found no justified generated-bitmap need. The site uses
+code-native teaching treatments and a byte-identical 1,961,204-byte recovered
+v13 diagram. That active historical copy is an explicit binary-policy
+exception, hash-verified, and labeled `Historical v13 origin — not the current
+v16 topology.` No generated image was created.
+
+Responsive screenshots and rendered PDF pages are implementation QA, not
+reader or research evidence. Static focus order, focus handoff, accessible
+names, no-script meaning, reduced motion, forced colors, reflow, and print CSS
+pass. Physical keyboard traversal and a human print-preview pass remain honest
+owner-review residuals because the automation surface could not establish
+them reliably.
+
+**Implementation:** site task `a3cd7c7`; renderer correction `932366a`.
+
+**Evidence:** `qa/site/SITE_QA_REPORT.md`,
+`qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_NEEDS.md`, and
+`assets/IMAGE_USE_LEDGER.md`.
+
+**Governing requirement:** three-door site contract; progressive disclosure;
+historical integrity; A01–A17 as scoped; no-deploy/no-publish boundary.

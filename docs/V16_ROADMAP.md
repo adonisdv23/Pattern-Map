@@ -16,9 +16,9 @@ home.
 | 1 — Intent freeze | Locked owner intent, thesis/audience, artifact boundaries, acceptance criteria, v13→v16 fidelity matrix | Complete — owner-locked contracts and intent audit |
 | 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | Complete — all production lanes integrated; Wave 1, applied, continuity, and Echo findings dispositioned |
 | 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Complete — frozen contract and strengthened structural validator at `9079fcb`; rendered gates remain later |
-| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Ready — isolated site task may start from the frozen interface; no deployment |
+| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete — site task `a3cd7c7`, integration correction `932366a`; manual keyboard/print confirmation remains a release residual |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
-| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | In progress — pre-site editorial, applied, continuity, prior-art, and Echo loops complete; site/final reviews pending |
+| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | In progress — pre-site loops and rendered implementation QA complete; post-site A07–A09 and final cold-reader/novelty/accessibility/operator reviews next |
 | 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Pending; no merge/deploy |
 
 ## Dependency rules

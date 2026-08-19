@@ -11,7 +11,7 @@ exact contents.
 | v15 | Historical convergence checkpoint | Curated index into preserved v15.2 history; sealed predecessor; unrun and not published |
 | v15.1 | Historical reader/research checkpoint | Curated index into preserved v15.2 history; sealed predecessor; unrun and not published |
 | v15.2 | Exact owner-review checkpoint centered on origin accounting; no study run | Verified 239-file extracted accession plus curated version index; source checkpoint for The Echo Problem; preserved without renaming |
-| v16 | Broad human-first Pattern Recognition / Discrimination Layer reset | Intent, manuscript, six-family framework, agent companion, cases, and unrun research agenda converged; site content interface frozen for local implementation after advisory revision |
+| v16 | Broad human-first Pattern Recognition / Discrimination Layer reset | Owner-review candidate: intent, manuscript, six-family framework, agent companion, cases, unrun research agenda, nine-route local site, standalone HTML, and PDF companion integrated; final review/handoff remains open; not deployed or published |
 
 ## The Echo Problem sequence
 

@@ -29,6 +29,24 @@ prevents large opaque files from silently becoming ordinary source.
    clone/recovery workflow is tested.
 7. GitHub Releases are not an authorized storage route during v16 development.
 
+## Recorded v16 owner-review exceptions
+
+- `assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png` is a
+  1,961,204-byte historical asset and therefore exceeds the ordinary 1 MB
+  guidance. It is accepted because the exact recovered bytes are the lineage
+  evidence being displayed, its SHA-256 is locked as
+  `8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae`,
+  and the active copy lets the standalone local review route work without
+  mutating the immutable transfer. It is labeled historical, not current.
+- Committed browser screenshots and six PDF page renders under `qa/visual/`
+  are bounded review evidence. Each individual file is below 1 MB. They are
+  not runtime dependencies, generated-image candidates, or research results.
+- `site/exports/pattern-map-v16-owner-review.pdf` is a review companion whose
+  Markdown/source artifacts remain canonical. Its current file is below 1 MB.
+
+These exceptions do not authorize larger future binaries, deployment
+artifacts, dependency directories, or an exact-ZIP import.
+
 GitHub's current documentation warns for regular-Git files above 50 MiB,
 blocks files above 100 MiB, recommends a 1 MB maximum object, and recommends
 Git LFS for binary files. References:

@@ -15,3 +15,17 @@ reviews must state exactly what they establish and what remains manual.
 - Record the integrated commit, evidence, residual limitation, and controlled
   disposition. A manuscript-only or scaffold-only snapshot cannot close these
   gates.
+
+## Current rendered evidence
+
+- `qa/site/SITE_QA_REPORT.md` records the nine-route build, semantic/static
+  checks, no-script and Echo-removal simulations, link integrity, and explicit
+  manual residuals.
+- `qa/visual/VISUAL_QA_REPORT.md` records responsive browser captures,
+  code-native visual behavior, the historical-map label, and PDF inspection.
+- This evidence establishes implementation structure and rendering only. It
+  does not establish comprehension, persuasion, effectiveness, live-agent
+  compliance, or a research result.
+- Physical keyboard traversal and a human print-preview pass remain open
+  because the available automation surface could not provide reliable Tab or
+  print-media emulation evidence.

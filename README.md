@@ -12,18 +12,20 @@ separate bodies of work:
    for preventing repeated or derived reports from being misrepresented as
    independent corroboration.
 
-The project is in owner-review development. The v16 public site has not been
-deployed or substituted for the historical reference, and the framework is not
-empirically validated or authorized for a study run.
+The project is in owner-review development. A local v16 site, standalone HTML
+export, and PDF companion now exist for review, but no public site has been
+deployed or substituted for the historical reference. The framework is not
+empirically validated and no study run is authorized.
 
 ## Current state
 
 The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1
-Echo project, and an explicitly unrun broader research agenda. The content
-interface is frozen for local site implementation; rendered accessibility,
-print, export, and final reader reviews are still open.
+Echo project, an explicitly unrun broader research agenda, and a nine-route
+local owner-review site. Structural, responsive, no-script, export, and visual
+checks pass. Final independent reader/operator reviews and manual physical-
+keyboard and print-preview confirmation remain open.
 
 Start with:
 
@@ -39,6 +41,21 @@ Start with:
 10. [`docs/ADVISORY_REVIEW_DISPOSITIONS.md`](docs/ADVISORY_REVIEW_DISPOSITIONS.md)
 11. [`docs/CONTENT_INTERFACE_FREEZE_V16.md`](docs/CONTENT_INTERFACE_FREEZE_V16.md)
 12. [`docs/CLAIMS_AND_SOURCE_LEDGER_V16.md`](docs/CLAIMS_AND_SOURCE_LEDGER_V16.md)
+
+For the local review surface:
+
+```sh
+cd site
+npm run build
+npm run check
+npm run dev
+```
+
+Then open <http://127.0.0.1:4173/>. The direct-open HTML export is
+[`site/exports/standalone/pattern-map-v16.html`](site/exports/standalone/pattern-map-v16.html),
+and the review companion is
+[`site/exports/pattern-map-v16-owner-review.pdf`](site/exports/pattern-map-v16-owner-review.pdf).
+These are local artifacts, not a deployment or publication.
 
 ## Repository map
 
