@@ -20,14 +20,43 @@ ledger, or historical archive.
 The recovered v13 diagram is an immutable historical anchor. It is not the
 current system map and is not used here as evidence that the framework works.
 
+## Targeted prior-art route
+
+This is a targeted wayfinding route, not a systematic or exhaustive literature
+review. The archived [prior-art and adjacent-fields map](../archive/transfers/v14-complete-2026-08-18/03_RESEARCH_PACKAGE/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md)
+shows where the proposal overlaps established work and where its contribution
+claim must remain narrow. The accompanying [reference list](../archive/transfers/v14-complete-2026-08-18/03_RESEARCH_PACKAGE/REFERENCES.md)
+records source type and was last checked on 2026-08-18; links should be
+re-verified before any public release.
+
+Selected primary and official entry points include:
+
+- [Information Foraging](https://doi.org/10.1037/0033-295X.106.4.643) and
+  [Principles of Metareasoning](https://doi.org/10.1016/0004-3702(91)90015-C)
+  for bounded search and the cost of further computation;
+- the W3C [PROV-O Recommendation](https://www.w3.org/TR/prov-o/) and
+  [claim-provenance research](https://aclanthology.org/2020.acl-main.406/) for
+  lineage without a correctness guarantee;
+- the [Cochrane Handbook](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current)
+  for evidence synthesis and common-origin handling;
+- the original [retrieval-augmented generation paper](https://papers.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html)
+  for retrieved context as an established mechanism; and
+- primary work on [mixed-initiative interfaces](https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/)
+  and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233)
+  for human correction and control.
+
+These sources constrain claims and expose overlap. They do not validate the
+six-family arrangement or establish that it improves outcomes.
+
 ## Echo route
 
 The Echo Problem / ECHO-01 is a separate v15.2-derived origin-accounting track.
-Its protocol, fixtures, no-results boundary, and unfavorable-result classes
-belong in `research/the-echo-problem/` after that track's curated successor is
-integrated. The v16 manuscript uses only the fictional common-origin example;
-it does not import a result, a selected model, or a claim of discovered
-provenance.
+Its curated [EP v0.1 project](../research/the-echo-problem/README.md) and
+[status/no-results record](../research/the-echo-problem/STATUS_AND_BOUNDARIES.md)
+now preserve the protocol, fixtures, and unfavorable-result classes. The
+project remains unrun and has no results. The v16 manuscript uses only the
+fictional common-origin example; it does not import a result, a selected model,
+or a claim of discovered provenance.
 
 ## Future research route
 

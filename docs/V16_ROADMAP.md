@@ -34,6 +34,16 @@ home.
 - A review is not accepted because it is detailed. Every recommendation gets a
   recorded disposition against a governing requirement.
 
+## Scheduled acceptance re-audits
+
+- Re-audit A07 and A08 after the applied advisory findings are dispositioned
+  and again after site integration confirms that builder and agent routes are
+  exposed without displacing the human essay.
+- Re-audit A09 after every Signal Foundry cross-link and rendered site surface
+  exists; the case must remain an illustration rather than validation.
+- The final A07–A09 verdict must cite the integrated commit, not the earlier
+  manuscript-only snapshot `ea8a6e2`.
+
 ## Release boundary
 
 The release in this roadmap means an owner-review branch and draft pull

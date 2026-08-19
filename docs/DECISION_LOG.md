@@ -234,3 +234,32 @@ v13-continuity audits remain required before the content interface freezes.
 
 **Governing requirement:** owner-intent operational contract; A03, A07–A09,
 A11, A15–A17.
+
+## D-013 — Keep prior art optional, direct, and claim-constraining
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The Wave 1 prior-art/overclaim audit passed the core manuscript's novelty,
+causality, effectiveness, provenance, recurrence, case, Echo, and no-results
+boundaries. Its source-route corrections are accepted: the optional route now
+links to the already integrated EP v0.1 status, the archived targeted
+prior-art map, its classified reference list, and a small set of primary or
+official entry points.
+
+The route is explicitly targeted rather than exhaustive, stays outside the
+human essay, and records that links require re-verification before any public
+release. The owner-approved “AI slop often begins” framing remains unchanged
+because it is a conceptual editorial proposition, not a measured prevalence
+claim. Future site wording may not present it as an empirical technical fact.
+
+The audit's A07–A09 scope limitation is also accepted: those gates must be
+re-audited against the integrated framework, cases, and eventual site rather
+than inferred from the manuscript-only `ea8a6e2` snapshot.
+
+**Advisory report:**
+`qa/research/advisory/PRIOR_ART_AND_OVERCLAIM_BOUNDARY_2026-08-19_ea8a6e2.md`.
+
+**Governing requirement:** targeted prior-art restraint; two-project
+separation; A07–A11, A15, A16.
