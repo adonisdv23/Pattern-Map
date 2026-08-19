@@ -203,3 +203,34 @@ No reader timing or comprehension result is claimed.
 
 **Governing requirement:** owner-intent voice contract; A01–A06, A10, A11,
 A15–A17.
+
+## D-012 — Integrate the applied framework as an inspectable, proportionate layer
+
+**Date:** 2026-08-19
+
+**Status:** Accepted for advisory review
+
+The first applied-framework lane is integrated with all six historical
+families as the stable public map. Permission envelopes, evidence spines,
+typed relationships, routing, context packets, receipts, and human disposition
+are supporting mechanisms; they do not replace the six families or impose one
+technical stack.
+
+The companion defines observable acquisition, comparison, disconfirmation,
+uncertainty, cost, stop, escalation, influence, and learning procedures. It
+also includes an ordinary path and explicit when-not-to-use guidance so the
+framework can remain proportionate. Common-origin recurrence remains one F5
+mechanism and example. Signal Foundry remains an invented, read-only fixture
+and not implementation evidence or validation.
+
+The focused validator, JSON parse checks, source-parent/scope audit, and
+owner-intent hash pass. These are structural and procedural checks only. They
+do not establish agent compliance or effectiveness; independent applied and
+v13-continuity audits remain required before the content interface freezes.
+
+**Source task:** `fccfceb`; integrated as `223d190`.
+
+**Integration QA:** `qa/applied/PLAYBOOK_INTEGRATION_QA.md`.
+
+**Governing requirement:** owner-intent operational contract; A03, A07–A09,
+A11, A15–A17.
