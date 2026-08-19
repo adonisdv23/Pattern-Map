@@ -1,0 +1,33 @@
+# Pattern Recognition: The Discrimination Layer
+
+AI answers can sound generic before the model writes a word. The weakness may
+be upstream: the search followed the obvious path, familiar sources crowded
+out a specialist perspective, no one compared the case with a useful peer or
+baseline, an expected piece of information was missing, or the system had no
+memory of what happened before. The answer inherits those choices.
+
+Pattern Recognition is the discipline of improving them. The Discrimination
+Layer is a plain-language name for the responsibility of deciding what the
+system should notice, acquire, compare, preserve, question, and allow to
+influence an answer. “Discrimination” here means technical differentiation
+among information candidates and possible next actions—not social
+classification or discriminatory treatment. “Layer” means a responsibility,
+not a mandatory product or architecture.
+
+The six families are: look beyond the default path for a peripheral signal;
+weigh sources by their role and support for this exact claim; notice velocity
+against a meaningful baseline; notice expected absences while preserving
+versioned memory; compare peers, periods, and structures without forcing false
+equivalence; and learn from defined outcomes without rewriting history.
+
+Peripheral material is a candidate for inspection, not a truth signal. Repeated
+reports are observations, not automatically independent corroboration. Access
+is not permission, provenance is not correctness, and a human disposition is
+not a fact.
+
+Sometimes this needs only a short decision brief. Higher-stakes work may merit
+an inspectable evidence packet, explicit cost and stopping rules, and a person
+who can correct the route. Low-stakes rewrites and obvious transformations may
+need almost none. The proposal is broader than origin counting and narrower
+than a claim to replace expertise. It asks us to improve the room before we
+ask AI to make the room sound finished.
