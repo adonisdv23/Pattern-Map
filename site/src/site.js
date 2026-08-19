@@ -31,10 +31,18 @@
 
   const moreButton = document.querySelector(".nav-more");
   const secondary = document.querySelector(".secondary-nav-wrap");
+  const setMoreOpen = (isOpen, moveFocus = false) => {
+    moreButton?.setAttribute("aria-expanded", String(isOpen));
+    secondary?.classList.toggle("is-open", isOpen);
+    if (isOpen && moveFocus) secondary?.querySelector("a")?.focus();
+  };
   moreButton?.addEventListener("click", () => {
     const isOpen = moreButton.getAttribute("aria-expanded") === "true";
-    moreButton.setAttribute("aria-expanded", String(!isOpen));
-    secondary?.classList.toggle("is-open", !isOpen);
-    if (!isOpen) secondary?.querySelector("a")?.focus();
+    setMoreOpen(!isOpen, !isOpen);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || moreButton?.getAttribute("aria-expanded") !== "true") return;
+    setMoreOpen(false);
+    moreButton.focus();
   });
 })();

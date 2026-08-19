@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const SITE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.join(SITE_DIR, "dist");
 const EXPORT_PATH = path.join(SITE_DIR, "exports", "standalone", "pattern-map-v16.html");
+const CSS_PATH = path.join(SITE_DIR, "src", "site.css");
 
 const requiredRoutes = [
   "index.html",
@@ -27,6 +28,25 @@ const read = (filePath) => fs.readFileSync(filePath, "utf8");
 const localLinksIn = (html) => [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((match) => match[1]);
 
 const idsIn = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
+
+const idListIn = (html) => [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+
+const relativeLuminance = (hex) => {
+  const channels = [1, 3, 5].map((index) => Number.parseInt(hex.slice(index, index + 2), 16) / 255);
+  const linear = channels.map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+};
+
+const contrastRatio = (first, second) => {
+  const values = [relativeLuminance(first), relativeLuminance(second)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+};
+
+const cssHexVariable = (css, name) => {
+  const value = css.match(new RegExp(`--${name}:\\s*(#[0-9a-f]{6})`, "i"))?.[1];
+  assert(value, `missing hexadecimal CSS variable: --${name}`);
+  return value;
+};
 
 const checkLink = (fromFile, href) => {
   if (!href || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(href)) return;
@@ -51,11 +71,13 @@ const main = () => {
   assert(fs.existsSync(EXPORT_PATH), "missing committed standalone export; run build first");
   const root = read(path.join(DIST_DIR, "index.html"));
   const map = read(path.join(DIST_DIR, "map/index.html"));
+  const readRoute = read(path.join(DIST_DIR, "read/index.html"));
   const apply = read(path.join(DIST_DIR, "apply/index.html"));
   const examples = read(path.join(DIST_DIR, "examples/index.html"));
   const sources = read(path.join(DIST_DIR, "sources/index.html"));
   const research = read(path.join(DIST_DIR, "research/index.html"));
   const history = read(path.join(DIST_DIR, "history/index.html"));
+  const css = read(CSS_PATH);
   const headline = "AI slop often begins before the model writes a word.";
   const standfirst = "A polished answer can still feel generic when the system follows the obvious search path";
   const conceptualBridge = "This is a broad proposal about the room before the answer";
@@ -74,17 +96,39 @@ const main = () => {
   assert(familyOrder.every((position) => position >= 0), "one or more family cards missing");
   assert(familyOrder.every((position, index) => index === 0 || position > familyOrder[index - 1]), "family card order changed");
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) assert(map.includes(familyName), `family name missing: ${familyName}`);
+  for (const plainPurpose of [
+    "Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.",
+    "Ask what each source can and cannot tell us about this exact claim",
+    "Notice a change against a stated baseline before calling it meaningful.",
+    "Notice what should be present but is not",
+    "preserve important differences",
+    "Compare what you expected with what happened",
+  ]) assert(map.includes(plainPurpose), `plain-language family bridge missing: ${plainPurpose}`);
+  assert(!/<p class="boundary"><strong>Boundary:<\/strong>\s*<\/p>/.test(map), "Map glossary contains an empty boundary");
+  assert(!/<details class="glossary-item">[\s\S]*?<p><\/p>/.test(map), "Map glossary contains an empty technical meaning");
   for (const level of ["ordinary", "lightweight", "moderate", "advanced"]) assert(apply.toLowerCase().includes(level), `implementation level missing: ${level}`);
   for (const example of ["specialist signal", "explicit baseline", "independence: UNKNOWN"]) assert(examples.includes(example), `teaching pattern missing: ${example}`);
   assert(examples.includes("ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION"), "Signal Foundry status missing");
   assert(examples.includes("The Echo Problem</strong> is a separate project"), "late Echo boundary missing from examples");
   assert(research.includes("UNRUN") && research.includes("NO RESULTS") && research.includes("NO PROVIDER OR MODEL SELECTED"), "research no-results status missing");
   assert(research.includes("separate project — unrun — no results"), "Echo status missing from research route");
+  assert(research.includes('id="echo"'), "Echo section has no stable route fragment");
+  assert(research.includes('href="../research/index.html#echo"'), "Echo source route does not target the separate Echo section");
   assert(history.includes("Historical v13 origin — not the current v16 topology."), "historical label missing");
   assert(history.includes("current relationship view"), "current/historical distinction missing");
   const metareasoningHref = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"';
   assert(sources.includes(metareasoningHref), "parenthesized external URL was not preserved");
   const standalone = read(EXPORT_PATH);
+  const standaloneIds = idListIn(standalone);
+  assert(standaloneIds.length === new Set(standaloneIds).size, "standalone export contains duplicate IDs");
+  assert((standalone.match(/<h1\b/g) ?? []).length === 1, "standalone export must contain exactly one level-one heading");
+  const headingLevels = [...standalone.matchAll(/<h([1-6])\b/g)].map((match) => Number(match[1]));
+  for (let index = 1; index < headingLevels.length; index += 1) {
+    assert(headingLevels[index] <= headingLevels[index - 1] + 1, `standalone heading level jumps from h${headingLevels[index - 1]} to h${headingLevels[index]}`);
+  }
+  for (const section of ["home", "read", "map", "apply", "examples", "boundaries", "sources", "research", "history"]) {
+    assert(standalone.includes(`<section class="standalone-section" id="${section}"`), `standalone route section missing: ${section}`);
+  }
   for (const html of [sources, standalone]) {
     assert(!/<a\b[^>]*<(?:\/?em|\/?strong|\/?code)\b/i.test(html), "inline markup corrupted an anchor start tag");
     for (const match of html.matchAll(/<a href="https?:[^"]+"([^>]*)>/g)) {
@@ -107,6 +151,17 @@ const main = () => {
     assert(!fragment || idsIn(standalone).has(fragment), `standalone export points to missing fragment: ${href}`);
   }
   assert(!standalone.includes('href="#source-'), "standalone export contains an unresolved source fragment");
+  assert(readRoute.includes('aria-current="page"'), "active principal route lacks aria-current=page");
+  assert(research.includes('aria-current="page"'), "active secondary route lacks aria-current=page");
+  assert(root.includes("<noscript><style>.secondary-nav-wrap { display: block; }.nav-more { display: none; }</style></noscript>"), "no-script navigation fallback missing");
+  assert(!/\.primary-nav\s+a\s*\{[^}]*display:\s*none/i.test(css), "mobile CSS hides principal route links");
+  const paper = cssHexVariable(css, "paper");
+  for (const token of ["muted", "teal", "green", "purple", "orange", "ochre", "blue"]) {
+    const ratio = contrastRatio(cssHexVariable(css, token), paper);
+    assert(ratio >= 4.5, `--${token} text contrast is ${ratio.toFixed(2)}:1; expected at least 4.5:1`);
+  }
+  assert(contrastRatio(cssHexVariable(css, "focus-dark"), paper) >= 3, "dark focus ring lacks 3:1 contrast on paper");
+  assert(contrastRatio(cssHexVariable(css, "focus-light"), cssHexVariable(css, "navy")) >= 3, "light focus ring lacks 3:1 contrast on dark surfaces");
   console.log(`PASS routes: ${requiredRoutes.length}`);
   console.log("PASS exact first-screen framing, non-result boundary, and principal-door presence");
   console.log("PASS six-family order/names, implementation levels, teaching patterns");
@@ -114,6 +169,9 @@ const main = () => {
   console.log("PASS local route/assets link integrity");
   console.log("PASS external Markdown links preserve URLs and safe anchor attributes");
   console.log("PASS exact underscore-bearing state vocabulary and standalone fragments");
+  console.log("PASS standalone heading hierarchy and unique IDs");
+  console.log("PASS responsive/no-script navigation and active-route semantics");
+  console.log("PASS normal-text and dual-focus contrast thresholds");
   console.log("PASS standalone export exists");
 };
 

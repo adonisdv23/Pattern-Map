@@ -1,7 +1,7 @@
 :root {
   --ink: #152022;
   --ink-soft: #405156;
-  --muted: #6c7779;
+  --muted: #526063;
   --paper: #f4f0e8;
   --paper-deep: #e6dfd2;
   --paper-light: #fbfaf6;
@@ -11,12 +11,14 @@
   --line-strong: #9ba6a1;
   --accent: #d26e45;
   --accent-deep: #9d442d;
-  --teal: #277f7e;
-  --green: #5d8554;
-  --purple: #8066a3;
-  --orange: #c66c3e;
-  --ochre: #ae8a37;
-  --blue: #4b7591;
+  --teal: #1d6665;
+  --green: #426b3e;
+  --purple: #674b89;
+  --orange: #98502f;
+  --ochre: #735a1f;
+  --blue: #355f78;
+  --focus-dark: #0c5963;
+  --focus-light: #fff6dd;
   --shadow: 0 18px 40px rgba(21, 32, 34, 0.09);
   --radius: 16px;
   --measure: 72rem;
@@ -53,8 +55,9 @@ button, summary { font: inherit; }
 button { color: inherit; }
 
 button:focus-visible, a:focus-visible, summary:focus-visible {
-  outline: 3px solid #efb24e;
+  outline: 3px solid var(--focus-dark);
   outline-offset: 4px;
+  box-shadow: 0 0 0 6px var(--focus-light);
 }
 
 h1, h2, h3, h4 {
@@ -448,7 +451,7 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 }
 
 @media (max-width: 760px) {
-  .site-header { grid-template-columns: 1fr auto; }.wordmark { display: grid; gap: 0.1rem; }.primary-nav a { display: none; }.primary-nav .nav-more { display: inline-flex; }.secondary-nav { justify-content: flex-start; }
+  .site-header { grid-template-columns: 1fr; gap: 0.55rem; }.wordmark { display: grid; gap: 0.1rem; }.primary-nav { justify-content: flex-start; }.primary-nav .nav-more { display: inline-flex; }.secondary-nav { justify-content: flex-start; }
   .door-grid, .home-short, .map-preview, .application-preview, .late-context, .family-grid, .example-grid, .firebreak-grid { grid-template-columns: 1fr; }
   .home-short .text-link, .map-preview .text-link, .application-preview .text-link { grid-column: auto; }
   .family-strip { grid-template-columns: 1fr; }
@@ -473,6 +476,7 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
   .door-card, .family-card, .topology-node, .implementation-card, .example-card, .example-late, details, .callout, .boundary-banner, .source-notice, .research-status, .echo-callout { border: 2px solid CanvasText; }
   .family-card, .topology-family { border-top-color: CanvasText; }
   a { color: LinkText; }.status-dot, .family-dot { background: CanvasText; }
+  button:focus-visible, a:focus-visible, summary:focus-visible { outline-color: Highlight; box-shadow: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -21,13 +21,14 @@ versioned memory; compare peers, periods, and structures without forcing false
 equivalence; and learn from defined outcomes without rewriting history.
 
 Peripheral material is a candidate for inspection, not a truth signal. Repeated
-reports are observations, not automatically independent corroboration. Access
-is not permission, provenance is not correctness, and a human disposition is
-not a fact.
+reports are observations, not automatically separate confirmation. Access is
+not permission, and knowing where something came from does not prove it is
+correct. People still make the judgment and keep authority for consequential
+action.
 
-Sometimes this needs only a short decision brief. Higher-stakes work may merit
-an inspectable evidence packet, explicit cost and stopping rules, and a person
-who can correct the route. Low-stakes rewrites and obvious transformations may
-need almost none. The proposal is broader than origin counting and narrower
-than a claim to replace expertise. It asks us to improve the room before we
-ask AI to make the room sound finished.
+Sometimes this needs only a short note naming the decision and assumptions.
+Higher-stakes work may merit a reviewable evidence record, clear cost and
+stopping rules, and a person who can correct the route. Low-stakes rewrites and
+obvious transformations may need almost none. The proposal is broader than
+origin counting and narrower than a claim to replace expertise. It asks us to
+improve the room before we ask AI to make the room sound finished.

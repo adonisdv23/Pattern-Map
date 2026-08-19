@@ -51,7 +51,7 @@ const ROUTES = {
 
 const routeHref = (ctx, route, fragment = "") => {
   if (ctx.standalone) {
-    return fragment ? `#${fragment}` : `#${route}`;
+    return fragment ? `#${route}-${fragment}` : `#${route}`;
   }
   const target = route === "home" ? "index.html" : `${ROUTES[route].directory}/index.html`;
   return `${ctx.base}${target}${fragment ? `#${fragment}` : ""}`;
@@ -101,6 +101,19 @@ const sourceRouteFor = (href) => {
   return mappings.find(([needle]) => normalized.includes(needle))?.[1] ?? null;
 };
 
+const sourceFragmentFor = (href) => {
+  const normalized = href.toLowerCase();
+  const echoSources = [
+    "the-echo-problem",
+    "future_execution_plan",
+    "preserved_v15_2_index",
+    "ep_v0_1_qa",
+    "relation_to_v16",
+    "status_and_boundaries",
+  ];
+  return echoSources.some((needle) => normalized.includes(needle)) ? "echo" : "";
+};
+
 const siteSourceHref = (href, ctx) => {
   if (externalHref(href)) return href;
   if (href.startsWith("#")) return href;
@@ -108,7 +121,7 @@ const siteSourceHref = (href, ctx) => {
   const [withoutFragment, fragment = ""] = withoutQuery.split("#");
   const route = sourceRouteFor(withoutFragment);
   if (!route) throw new Error(`Unmapped local Markdown link: ${href}`);
-  return routeHref(ctx, route, fragment || query || "");
+  return routeHref(ctx, route, fragment || sourceFragmentFor(withoutFragment) || query || "");
 };
 
 // Canonical route and status identifiers use underscores. This deliberately
@@ -321,6 +334,33 @@ const glossaryTermList = [
   "Human disposition",
 ];
 
+const familyPublicCopy = {
+  F1: {
+    purpose: "Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.",
+    mechanism: "Try a small number of alternative search routes, then weigh, compare, and challenge what they return.",
+  },
+  F2: {
+    purpose: "Ask what each source can and cannot tell us about this exact claim; keep support, relevance, origin, and permission separate.",
+    mechanism: "Record the claim, each source's role, and whether the material supports, challenges, qualifies, repeats, or merely resembles it.",
+  },
+  F3: {
+    purpose: "Notice a change against a stated baseline before calling it meaningful.",
+    mechanism: "Compare observations made in the same way over time, and check whether the measurement itself changed.",
+  },
+  F4: {
+    purpose: "Notice what should be present but is not, and keep earlier observations and corrections visible.",
+    mechanism: "State the expected baseline, record the gap, and retain dated, source-linked memory without overwriting history.",
+  },
+  F5: {
+    purpose: "Compare peers, periods, structures, and relationships so recurrence, difference, and missing perspectives can be seen.",
+    mechanism: "Name what is being compared, preserve important differences, and record what kind of relationship each comparison shows.",
+  },
+  F6: {
+    purpose: "Compare what you expected with what happened, then propose one bounded change without rewriting the old record.",
+    mechanism: "Define the outcome window in advance, record cost and missing information, and let an accountable person accept, reject, hold, or revise the proposed update.",
+  },
+};
+
 const renderGlossary = (ctx) => `
   <section class="glossary-section" aria-labelledby="glossary-heading">
     <div class="section-heading compact-heading">
@@ -332,6 +372,9 @@ const renderGlossary = (ctx) => `
       ${glossaryTermList.map((term) => {
         const row = glossaryByTerm.get(term) ?? {};
         const plain = glossaryPlainByTerm.get(term) ?? "A bounded record that keeps the route inspectable.";
+        if (!row["working meaning"] || !row.boundary) {
+          throw new Error(`Incomplete glossary entry promised by the Map route: ${term}`);
+        }
         return `<details class="glossary-item"><summary>${escapeHtml(term)}</summary><p><strong>Plain language:</strong> ${inlineMarkdown(plain, ctx)}</p><p>${inlineMarkdown(row["working meaning"] ?? "", ctx)}</p><p class="boundary"><strong>Boundary:</strong> ${inlineMarkdown(row.boundary ?? "", ctx)}</p></details>`;
       }).join("")}
     </div>
@@ -355,14 +398,14 @@ const renderDoorCard = (id, ctx) => {
 
 const renderSecondaryNav = (ctx, active = "") => `
   <nav class="secondary-nav" aria-label="Secondary routes">
-    ${Object.entries(ROUTES).filter(([key]) => ["examples", "boundaries", "sources", "research", "history"].includes(key)).map(([key, route]) => `<a class="${active === key ? "is-active" : ""}" href="${routeHref(ctx, key, key)}">${escapeHtml(route.label)}</a>`).join("")}
+    ${Object.entries(ROUTES).filter(([key]) => ["examples", "boundaries", "sources", "research", "history"].includes(key)).map(([key, route]) => `<a class="${active === key ? "is-active" : ""}"${active === key ? ' aria-current="page"' : ""} href="${routeHref(ctx, key, key)}">${escapeHtml(route.label)}</a>`).join("")}
   </nav>`;
 
 const renderHeader = (ctx, active = "") => `
   <header class="site-header">
     <a class="wordmark" href="${routeHref(ctx, "home", "top")}"><span>Pattern Map</span><small>v16 / local owner review</small></a>
     <nav class="primary-nav" aria-label="Principal routes">
-      ${contentInterface.doors.map((door) => `<a class="${active === door.id ? "is-active" : ""}" href="${routeHref(ctx, door.id, door.id === "read" ? "read-idea" : door.id)}">${escapeHtml(door.label)}</a>`).join("")}
+      ${contentInterface.doors.map((door) => `<a class="${active === door.id ? "is-active" : ""}"${active === door.id ? ' aria-current="page"' : ""} href="${routeHref(ctx, door.id, door.id === "read" ? "read-idea" : door.id)}">${escapeHtml(door.label)}</a>`).join("")}
       <button class="nav-more" type="button" aria-expanded="false" aria-controls="secondary-routes">More <span aria-hidden="true">+</span></button>
     </nav>
     <div class="secondary-nav-wrap" id="secondary-routes">${renderSecondaryNav(ctx, active)}</div>
@@ -382,6 +425,7 @@ const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "pa
   <meta name="description" content="Pattern Recognition / The Discrimination Layer v16 — local owner-review site.">
   <title>${escapeHtml(title)} — Pattern Map v16</title>
   ${ctx.standalone ? `<style>${styles}</style>` : `<link rel="stylesheet" href="${ctx.base}assets/site.css">`}
+  <noscript><style>.secondary-nav-wrap { display: block; }.nav-more { display: none; }</style></noscript>
 </head>
 <body id="${escapeAttribute(id)}">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -398,13 +442,15 @@ const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "pa
 const renderFamilyCard = (family, ctx) => {
   const colorClass = `family-${family.id.toLowerCase()}`;
   const levels = Object.entries(family.implementation_levels ?? {});
+  const publicCopy = familyPublicCopy[family.id];
+  if (!publicCopy) throw new Error(`Missing plain-language Map copy for ${family.id}`);
   return `<article id="family-${family.id}" class="family-card ${colorClass}" data-family-card="${escapeAttribute(family.id)}">
     <div class="family-meta"><span class="family-id">${escapeHtml(family.id)}</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="${escapeAttribute(family.id)}" aria-pressed="false">Focus this family</button></div>
     <h3>${escapeHtml(family.name)}</h3>
     <p class="family-question">${escapeHtml(family.reader_question)}</p>
-    <p>${inlineMarkdown(family.purpose, ctx)}</p>
-    <div class="family-columns"><div><h4>How it works</h4><p>${inlineMarkdown(family.mechanism, ctx)}</p></div><div><h4>Boundary</h4><p>${inlineMarkdown(family.boundaries[0], ctx)}</p></div></div>
-    <details class="family-detail"><summary>Implementation detail</summary><dl>${levels.map(([level, description]) => `<div><dt>${escapeHtml(level)}</dt><dd>${inlineMarkdown(description, ctx)}</dd></div>`).join("")}</dl><p class="muted"><strong>When not to use:</strong> ${family.when_not_to_use.map((item) => inlineMarkdown(item, ctx)).join(" ")}</p></details>
+    <p>${inlineMarkdown(publicCopy.purpose, ctx)}</p>
+    <div class="family-columns"><div><h4>How it works</h4><p>${inlineMarkdown(publicCopy.mechanism, ctx)}</p></div><div><h4>Boundary</h4><p>${inlineMarkdown(family.boundaries[0], ctx)}</p></div></div>
+    <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> ${inlineMarkdown(family.purpose, ctx)}</p><p><strong>Technical mechanism:</strong> ${inlineMarkdown(family.mechanism, ctx)}</p><dl>${levels.map(([level, description]) => `<div><dt>${escapeHtml(level)}</dt><dd>${inlineMarkdown(description, ctx)}</dd></div>`).join("")}</dl><p class="muted"><strong>When not to use:</strong> ${family.when_not_to_use.map((item) => inlineMarkdown(item, ctx)).join(" ")}</p></details>
   </article>`;
 };
 
@@ -596,7 +642,7 @@ const renderResearch = (ctx) => `
     <div class="research-status"><span class="status-dot" aria-hidden="true"></span><div><p class="eyebrow">RESEARCH ROUTE / STATUS</p><h2>UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED</h2><p>This route describes future questions and boundaries only. It does not authorize a model call, provider selection, participant activity, dataset acquisition, preregistration, publication, deployment, or spend.</p></div></div>
     <div class="source-markdown long-source">${renderMarkdown(readText("research/README.md"), { ctx, headingOffset: 1, idPrefix: "research-readme-" })}${renderMarkdown(readText("research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md"), { ctx, headingOffset: 1, idPrefix: "research-agenda-" })}</div>
     <details class="protocol-source"><summary>Future protocol candidate: DL-PLAYBOOK-01 v0.1 — specification only</summary><div class="source-markdown">${renderMarkdown(readText("research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md"), { ctx, headingOffset: 2, idPrefix: "protocol-" })}</div></details>
-    <section class="echo-section" aria-labelledby="echo-heading"><div class="echo-callout"><p class="eyebrow">SEPARATE PROJECT / RESEARCH TRACK 01</p><h2 id="echo-heading">The Echo Problem — separate project — unrun — no results</h2><p>Echo is a v15.2-derived origin-accounting project. Its preserved protocol, fixtures, harness, prior art, and unfavorable-result classes remain in its own track. V16 uses common-origin recurrence as one worked example; it does not borrow results or let Echo define the map.</p></div><details><summary>Read the Echo identity and status boundary</summary><div class="source-markdown">${renderMarkdown(readText("research/the-echo-problem/README.md"), { ctx, headingOffset: 2, idPrefix: "echo-readme-" })}${renderMarkdown(readText("research/the-echo-problem/STATUS_AND_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "echo-status-" })}</div></details></section>
+    <section class="echo-section" id="echo" aria-labelledby="echo-heading"><div class="echo-callout"><p class="eyebrow">SEPARATE PROJECT / RESEARCH TRACK 01</p><h2 id="echo-heading">The Echo Problem — separate project — unrun — no results</h2><p>Echo is a v15.2-derived origin-accounting project. Its preserved protocol, fixtures, harness, prior art, and unfavorable-result classes remain in its own track. V16 uses common-origin recurrence as one worked example; it does not borrow results or let Echo define the map.</p><p><a href="${routeHref(ctx, "research", "echo")}">The Echo Problem — separate project — unrun — no results</a></p></div><details><summary>Read the Echo identity and exact no-results status</summary><div class="source-markdown">${renderMarkdown(readText("research/the-echo-problem/README.md"), { ctx, headingOffset: 2, idPrefix: "echo-readme-" })}${renderMarkdown(readText("research/the-echo-problem/STATUS_AND_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "echo-status-" })}</div></details></section>
     ${renderSourceManifest("research", ctx)}
   </section>`;
 
@@ -629,6 +675,39 @@ const writeFile = (filePath, content) => {
   fs.writeFileSync(filePath, content.replace(/[ \t]+$/gm, ""));
 };
 
+const normalizeStandaloneMain = (routeKey, main) => {
+  const firstIdFor = new Map();
+  const idCounts = new Map();
+  let normalized = main.replace(/\sid="([^"]+)"/g, (_, originalId) => {
+    const count = (idCounts.get(originalId) ?? 0) + 1;
+    idCounts.set(originalId, count);
+    const uniqueId = `${routeKey}-${originalId}${count > 1 ? `-${count}` : ""}`;
+    if (!firstIdFor.has(originalId)) firstIdFor.set(originalId, uniqueId);
+    return ` id="${uniqueId}"`;
+  });
+
+  const routeKeys = ["home", ...Object.keys(ROUTES)];
+  const routePrefixes = routeKeys.map((key) => `${key}-`);
+  const normalizedReference = (reference) => {
+    if (!reference) return reference;
+    if (firstIdFor.has(reference)) return firstIdFor.get(reference);
+    if (routeKeys.includes(reference)) return reference;
+    if (routePrefixes.some((prefix) => reference.startsWith(prefix))) return reference;
+    return `${routeKey}-${reference}`;
+  };
+
+  normalized = normalized.replace(/href="#([^"]*)"/g, (_, reference) =>
+    `href="#${normalizedReference(reference)}"`
+  );
+  normalized = normalized.replace(/\b(aria-labelledby|aria-describedby|aria-controls|for)="([^"]+)"/g, (_, attribute, references) =>
+    `${attribute}="${references.split(/\s+/).map(normalizedReference).join(" ")}"`
+  );
+  normalized = normalized.replace(/<(\/?)h([1-6])(\b[^>]*)>/g, (_, closing, level, attributes) =>
+    `<${closing}h${Math.min(6, Number(level) + 1)}${attributes}>`
+  );
+  return normalized;
+};
+
 const build = () => {
   fs.rmSync(DIST_DIR, { recursive: true, force: true });
   fs.mkdirSync(DIST_DIR, { recursive: true });
@@ -654,7 +733,8 @@ const build = () => {
   const standalonePages = pageDefinitions({ base: "", standalone: true });
   const standaloneContent = Object.entries(standalonePages).map(([key, html]) => {
     const main = html.match(/<main id="main"[^>]*>([\s\S]*)<\/main>/i)?.[1] ?? "";
-    return `<section class="standalone-section" id="standalone-${key}">${main}</section>`;
+    const label = key === "home" ? "Home" : ROUTES[key].label;
+    return `<section class="standalone-section" id="${key}" aria-label="${escapeAttribute(label)}">${normalizeStandaloneMain(key, main)}</section>`;
   }).join("\n");
   const standalone = renderPage({
     title: "Pattern Map v16 — standalone owner-review export",

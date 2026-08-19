@@ -168,11 +168,19 @@ def main() -> None:
     output.append("PASS historical diagram label/current-topology distinction and hash")
 
     standalone_text = EXPORT.read_text(encoding="utf-8")
+    _, standalone_parser = parse(EXPORT)
     require("<style>" in standalone_text and 'rel="stylesheet"' not in standalone_text, "standalone export still needs external CSS")
     require("<script src=" not in standalone_text, "standalone export still needs external JavaScript")
     require("Read the idea" in standalone_text and "Explore the map" in standalone_text and "Apply it" in standalone_text, "standalone export lost principal doors")
     require(f'src="../../../assets/diagrams/{DIAGRAM.name}"' in standalone_text and DIAGRAM.is_file(), "standalone export lost its local historical diagram reference")
-    output.append("PASS standalone HTML is self-contained for direct local opening")
+    standalone_id_list = re.findall(r'\sid="([^"]+)"', standalone_text)
+    require(len(standalone_id_list) == len(set(standalone_id_list)), "standalone export contains duplicate IDs")
+    require(sum(level == 1 for level, _ in standalone_parser.headings) == 1, "standalone export must have exactly one h1")
+    for previous, current in zip(standalone_parser.headings, standalone_parser.headings[1:]):
+        require(current[0] <= previous[0] + 1, f"standalone export heading jump {previous} -> {current}")
+    for route_id in ("home", "read", "map", "apply", "examples", "boundaries", "sources", "research", "history"):
+        require(f'<section class="standalone-section" id="{route_id}"' in standalone_text, f"standalone route section missing: {route_id}")
+    output.append("PASS standalone HTML is self-contained with one h1, unique IDs, and named route sections")
 
     metareasoning_href = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"'
     require(metareasoning_href in sources_text, "parenthesized external URL was not preserved")

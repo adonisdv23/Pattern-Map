@@ -21,7 +21,9 @@ npm run dev
 The local preview is <http://127.0.0.1:4173/>. `npm run dev` serves the latest
 build and does not deploy or publish anything. The owner-review PDF is kept in
 `site/exports/` and is generated/inspected separately under the repository PDF
-workflow.
+workflow. It is an untagged visual review companion, not the accessibility
+route. Use the standalone HTML for semantic headings, landmarks, links, and
+assistive-technology navigation.
 
 The site preserves progressive disclosure, the separate Echo route, the
 historical/current-map distinction, a no-script reading path, print styling,

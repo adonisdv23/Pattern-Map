@@ -392,6 +392,7 @@ def build_pdf() -> None:
             doors_table,
             Spacer(1, 0.18 * inch),
             p("A compact companion to the local interactive site. The site keeps the human essay, current relationship view, proportionate application path, targeted sources, research boundaries, and historical lineage in separate but connected routes.", "BodyMuted"),
+            p("Accessibility route: this PDF is an untagged visual review companion. Use the standalone HTML for semantic headings, landmarks, links, and assistive-technology navigation.", "Small"),
             tag("Local owner review - not a deployment, publication, or research result", CORAL),
             PageBreak(),
         ]
@@ -568,17 +569,30 @@ def build_pdf() -> None:
         "Frozen content-interface validator passes; exact first-screen copy, door order, F1-F6 order, route manifests, and claim boundaries are present.",
         "Rendered checks cover desktop, tablet, mobile, map focus behavior, Apply choices, and the historical route.",
         "Semantic landmark, heading, accessible-name, no-script, reduced-motion, forced-colors, 200% reflow, print-hook, standalone, and Echo-removal audits pass.",
-        "PDF was reopened, text-checked, rendered with Poppler, and visually inspected for clipping, overlap, and unreadable glyphs.",
+        "The untagged PDF was reopened, text-checked, rendered with Poppler, and visually inspected for clipping, overlap, and unreadable glyphs; semantic and assistive-technology navigation belongs to the standalone HTML.",
     ]
-    for item in qa_items:
-        story.append(bullet(item))
+    qa_rows = [[p("•", "Body"), p(item, "Body")] for item in qa_items]
+    qa_table = Table(qa_rows, colWidths=[0.18 * inch, doc.width - 0.18 * inch])
+    qa_table.setStyle(
+        TableStyle(
+            [
+                ("TEXTCOLOR", (0, 0), (0, -1), TEAL),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 2),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
+            ]
+        )
+    )
+    story.append(qa_table)
     story.extend(
         [
             Spacer(1, 0.06 * inch),
             card("What this QA does not establish", "QA is implementation evidence, not reader comprehension, persuasion, behavioral effectiveness, model quality, or research evidence. The site retains those questions as future, unrun work.", CORAL, "Explicit residual"),
             Spacer(1, 0.15 * inch),
             p("Local handoff", "SectionTitle"),
-            rich("Build from the repository root with <font name='Courier'>cd site &amp;&amp; npm run build &amp;&amp; npm run check</font>. Preview with <font name='Courier'>npm run dev</font> and open <font name='Courier'>http://127.0.0.1:4173/</font>. The standalone export is under <font name='Courier'>site/exports/standalone/pattern-map-v16.html</font>; this companion is under <font name='Courier'>site/exports/pattern-map-v16-owner-review.pdf</font>.", "BodyMuted"),
+            rich("Build from the repository root with <font name='Courier'>cd site &amp;&amp; npm run build &amp;&amp; npm run check</font>. Preview with <font name='Courier'>npm run dev</font> and open <font name='Courier'>http://127.0.0.1:4173/</font>. The semantic standalone export is under <font name='Courier'>site/exports/standalone/pattern-map-v16.html</font>; the untagged visual companion is under <font name='Courier'>site/exports/pattern-map-v16-owner-review.pdf</font>.", "BodyMuted"),
             tag("No hosting API, deployment, publication, release, or production URL used", PURPLE),
         ]
     )

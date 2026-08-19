@@ -40,6 +40,9 @@ PASS Signal Foundry, Echo, and historical/current topology boundaries
 PASS local route/assets link integrity
 PASS external Markdown links preserve parenthesized URLs and safe anchor attributes
 PASS exact underscore-bearing state vocabulary and standalone fragment integrity
+PASS standalone heading hierarchy and unique IDs
+PASS responsive/no-script navigation and active-route semantics
+PASS normal-text and dual-focus contrast thresholds
 PASS standalone export exists
 
 python3 qa/site/audit_site.py
@@ -50,7 +53,7 @@ PASS reduced-motion, forced-colors, 200%-friendly reflow, and print hooks
 PASS no-script simulation
 PASS synthetic Echo-removal simulation
 PASS historical diagram label/current-topology distinction and hash
-PASS standalone HTML is self-contained for direct local opening
+PASS standalone HTML is self-contained with one h1, unique IDs, and named route sections
 NOTE structural QA is not reader comprehension or effectiveness evidence
 ```
 
@@ -88,9 +91,11 @@ The generated site includes:
 
 ## Semantic and static accessibility audit
 
-The static audit checks every route for `lang="en"`, one `main` landmark, a skip link, a labeled principal nav, one level-one heading with no heading jumps, accessible names for links/buttons/summaries, and `alt` on images. The skip target is `main#main` with `tabindex="-1"` so the target is programmatically focusable.
+The static audit checks every route for `lang="en"`, one `main` landmark, a skip link, a labeled principal nav, one level-one heading with no heading jumps, accessible names for links/buttons/summaries, and `alt` on images. The skip target is `main#main` with `tabindex="-1"` so the target is programmatically focusable. The standalone export is additionally checked for one level-one heading, unique prefixed IDs, named route sections, complete fragment targets, and no heading-level jumps.
 
-No-script simulation strips script blocks from the home, map, and apply HTML and retains the first-screen problem, six-family content, and implementation choices. The standalone export embeds CSS and JavaScript and references only the repository-local historical image path; it does not require a deployed server.
+No-script simulation strips script blocks from the home, map, and apply HTML and retains the first-screen problem, six-family content, and implementation choices. A `noscript` rule exposes the secondary routes when the disclosure script is unavailable. The standalone export embeds CSS and JavaScript and references only the repository-local historical image path; it does not require a deployed server.
+
+At narrow widths the header wraps onto two rows and keeps all three principal links visible; `More` discloses only the five secondary routes. The active route carries `aria-current="page"` and a non-color-only visual treatment. Normal-text tokens used for muted and family labels pass a computed 4.5:1 contrast threshold against the paper surface. The dual focus indicator supplies a dark ring for light surfaces and a light outer ring for dark surfaces; both checked pairs exceed 3:1.
 
 The stylesheet contains explicit reduced-motion, forced-colors, 200% reflow, and print rules. The print rules remove site chrome and preserve route content. A separate browser print-media capture was attempted but the browser security policy declined the CDP permission; that blocked capture is recorded as a residual, not represented as a pass.
 

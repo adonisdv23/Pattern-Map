@@ -17,6 +17,7 @@ records and decisions; none is a universal truth score.
 | Comparison | Deliberate alignment of comparable claims, observations, sources, or alternatives | Juxtaposition does not establish equivalence or causation |
 | Context | Material made available to a human or model for a bounded task | Context is not automatically evidence |
 | Cost boundary | Stated limit on money, time, latency, tokens, compute, privacy exposure, and human attention | A budget does not by itself define value or sufficiency |
+| Cost-bounded route | A next action chosen within declared limits on time, money, tool use, privacy exposure, and human attention | Staying within budget does not establish evidence sufficiency or authorize an otherwise prohibited action |
 | Disconfirmation | A bounded attempt to find contrary, missing, differently rooted, or limiting material | Failure to find a counterpoint is not proof of the leading interpretation |
 | Discrimination Layer | The explicit, inspectable, cost-bounded, and correctable responsibility for differentiating among information candidates and possible next actions before generation | In this project it does not mean protected-class differentiation, discriminatory treatment, or human-like discernment |
 | Disposition | An explicit human or policy state such as accept, reject, hold, defer, override, or request enrichment | Not proof, truth, or a timeless preference |
@@ -25,7 +26,9 @@ records and decisions; none is a universal truth score.
 | Evidence spine | Identity, capture, version, custody, derivation, and citation records that let evidence be traced | Traceability does not establish correctness |
 | Expected baseline | A declared set of material or condition that should be present for a narrow observation boundary | An unspecified expectation manufactures an absence |
 | Gap | Missing expected material relative to an explicit baseline or comparison frame | Absence without a baseline is not meaningful absence |
+| Human disposition | An accountable person's recorded choice to accept, reject, hold, defer, override, correct, or request more work | A disposition is not evidence, truth, or authority beyond the declared permission envelope |
 | Influence | The bounded effect allowed to a context item on routing, judgment, or generation | Influence is not permanent trust or permission to act |
+| Influence receipt | A record of which material shaped an answer or route, which material was withheld, and why | A receipt makes influence inspectable; it does not prove the answer is correct or complete |
 | Independence | Distinctness of origin, method, or information pathway | Not the number of sources, URLs, or repetitions |
 | Learning status | LEARNING_PLANNED, LEARNING_PENDING_OUTCOME, LEARNING_REVIEWED, or LEARNING_NOT_APPLICABLE | A learning state is separate from the current route and never implies that an outcome validates the framework |
 | Learning update | A proposed bounded change to a query, baseline, routing rule, source policy, or review rule after an outcome comparison | It is not automatically applied and does not rewrite history |
@@ -44,7 +47,9 @@ records and decisions; none is a universal truth score.
 | Source | An agent, organization, system, or origin that issues or makes an artifact available | Source identity is distinct from artifact identity |
 | Stop rule | An inspectable policy for ending acquisition or computation given expected benefit, uncertainty, consequence, and cost | Stopping does not imply certainty |
 | Stop status | CONTINUE, COMPLETE, STOPPED_BUDGET, STOPPED_DEADLINE, or STOPPED_OTHER, recorded separately from the route | A stop state does not imply evidence sufficiency and needs a reason plus any resume condition |
+| Typed relationship | An explicit label for how two records relate, such as supports, contradicts, qualifies, copies, compares with, or resembles | The label is a scoped assertion with evidence and uncertainty, not a fact created by naming it |
 | Uncertainty | An explicit state about what is unknown, contested, ambiguous, stale, or weakly supported | Not a single model-confidence number |
+| Versioned memory | Earlier observations, interpretations, decisions, and corrections retained alongside a clearly identified current view | A current view does not erase history or turn an earlier interpretation into fact |
 | Withholding | Deliberate exclusion from influence or output for a stated reason | Does not require deleting the underlying evidence |
 
 ## Preferred state words
