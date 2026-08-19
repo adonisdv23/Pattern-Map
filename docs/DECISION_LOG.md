@@ -370,3 +370,36 @@ research evidence, a preregistration, or a completed study.
 **Implementation:** `1e376c0`.
 
 **Governing requirement:** research containment; A10/A11/A15/A16.
+
+## D-018 — Freeze the site content interface without claiming a rendered site
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The pre-site interface fixes the human-first headline and standfirst, three
+principal doors, five secondary routes, six-family public tuple, source
+manifests, example classes, progressive-disclosure obligations, Echo/history
+placement, claim boundaries, visual policy, output requirements, and external-
+action prohibitions. It freezes hierarchy and meaning while leaving layout and
+technical implementation to the site lane.
+
+An independent audit found that the first validator could pass several forms
+of lockstep drift. The revised validator now compares the immutable owner-
+intent checkpoint, a fixed six-family tuple and boundaries, exact source and
+action manifests, required examples/levels/outputs, Echo and Signal Foundry
+status, glossary coverage, and the bitmap-needs gate. The current visual-needs
+record justifies no generated bitmap: code-native treatments and the preserved
+historical v13 diagram cover the teaching needs.
+
+This checkpoint authorizes the isolated site task to begin. It does not pass
+rendered first-screen, reader comprehension, no-script, keyboard, responsive,
+print, PDF, historical-map-display, link-wording, or site-removal gates. Those
+remain explicit Phase 4/6 work.
+
+**Implementation:** initial freeze `6f672f2`; audit revision `9079fcb`.
+
+**Advisory report:**
+`qa/editorial/advisory/CONTENT_INTERFACE_FREEZE_AUDIT_2026-08-19_6f672f2.md`.
+
+**Governing requirement:** site dependency rule; A01–A17 as scoped.

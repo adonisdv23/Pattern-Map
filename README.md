@@ -12,15 +12,18 @@ separate bodies of work:
    for preventing repeated or derived reports from being misrepresented as
    independent corroboration.
 
-The project is in private owner-review development. It is not published,
-deployed, empirically validated, or authorized for a study run.
+The project is in owner-review development. The v16 public site has not been
+deployed or substituted for the historical reference, and the framework is not
+empirically validated or authorized for a study run.
 
 ## Current state
 
-The repository is being reorganized from a preserved v14 transfer into a
-reproducible active project. Historical source material remains immutable
-under `archive/`. Canonical v16 work will live in the plain-language root
-structure rather than inside an inherited transfer bundle.
+The repository now has a reproducible canonical root, immutable historical
+transfers, a locked v16 intent, a converged manuscript, a stable six-family
+framework, an operational agent companion, bounded cases, a separate EP v0.1
+Echo project, and an explicitly unrun broader research agenda. The content
+interface is frozen for local site implementation; rendered accessibility,
+print, export, and final reader reviews are still open.
 
 Start with:
 
@@ -34,6 +37,8 @@ Start with:
 8. [`docs/DECISION_LOG.md`](docs/DECISION_LOG.md)
 9. [`docs/REVIEW_AND_DISPOSITION_PROTOCOL.md`](docs/REVIEW_AND_DISPOSITION_PROTOCOL.md)
 10. [`docs/ADVISORY_REVIEW_DISPOSITIONS.md`](docs/ADVISORY_REVIEW_DISPOSITIONS.md)
+11. [`docs/CONTENT_INTERFACE_FREEZE_V16.md`](docs/CONTENT_INTERFACE_FREEZE_V16.md)
+12. [`docs/CLAIMS_AND_SOURCE_LEDGER_V16.md`](docs/CLAIMS_AND_SOURCE_LEDGER_V16.md)
 
 ## Repository map
 
