@@ -160,8 +160,10 @@ could create the packet reliably.
    absence is actually a capture or permission state.
 9. **Disconfirm.** Look for a contrary or qualifying context class and a
    measurement or extraction failure.
-10. **Route.** Choose packet, provisional packet, hold, or escalation under the
-    illustrative cost and stop envelope above.
+10. **Route.** Choose `ANSWER` (packet), `ANSWER_PROVISIONALLY` (provisional
+    packet), `HOLD`, or `ESCALATE` under the illustrative cost and stop
+    envelope above. Packet names describe outputs; the uppercase values are the
+    canonical route field, separate from stop and learning status.
 11. **Influence.** Record selected and withheld items, exact reasons, and
     disclosure limits.
 12. **Learn later.** If a future authorized review produces an outcome, compare

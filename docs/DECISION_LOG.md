@@ -290,3 +290,24 @@ under D-004. No archive byte was rewritten.
 
 **Governing requirement:** canonical reproducibility, historical immutability,
 Git hygiene, and A14.
+
+## D-015 — Keep historical links byte-exact and provide current recovery routes
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with documented limitation
+
+The 82-file EP v0.1 curated source set is intentionally smaller than the
+complete 239-file v15.2 accession. Eight link occurrences in three preserved
+Markdown files refer to five historical repository-relative targets that are
+not all present at the same relative locations in the focused curated view.
+Editing those links would violate the byte-exact preservation boundary.
+
+`research/the-echo-problem/PRESERVED_V15_2_INDEX.md` now maps every unique
+historical target to either its curated copy or its complete-accession copy.
+Active-document link QA must exclude the immutable preserved subtree and verify
+the current routes in that index instead. The project does not claim that the
+historical relative links resolve from the curated placement.
+
+**Governing requirement:** preserve historical v15.2 exactly; canonical
+recoverability; A10/A14.

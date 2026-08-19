@@ -34,3 +34,27 @@ repository-relative paths because the preserved test imports
 `research/origin_accounting/config/frozen_config.json`. Their bytes remain
 unchanged; only the curated successor's placement supplies the original import
 contract.
+
+## Historical link context
+
+This is a focused 82-file view of a 239-file accession, so a small number of
+relative Markdown links inside the byte-preserved files do not resolve from the
+curated placement. Those links described the layout of the historical source
+repository. They are intentionally not rewritten: changing even a path would
+make the curated copy cease to be byte-for-byte historical evidence.
+
+Use the current local routes below when following those historical references:
+
+| Historical reference | Current local route |
+| --- | --- |
+| `ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V0.md` | [Curated v0 protocol](preserved/v15.2/protocol/ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V0.md) |
+| `overnight/rounds/08_LOOP2_OPERATIONALIZATION_SPEC.md` | [Complete-accession operationalization specification](../../archive/transfers/v15.2-owner-handoff/03_RESEARCH_PROGRAM_UNRUN/research/overnight/rounds/08_LOOP2_OPERATIONALIZATION_SPEC.md) |
+| `PAPER_PROSPECTUS_V0.md` | [Complete-accession paper prospectus](../../archive/transfers/v15.2-owner-handoff/03_RESEARCH_PROGRAM_UNRUN/research/PAPER_PROSPECTUS_V0.md) |
+| `PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md` | [Curated prior-art map](preserved/v15.2/prior-art/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md) |
+| `source/THOUGHT_PIECE_V14.md` | [Complete-accession v14 thought piece](../../archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-version-surfaces/THOUGHT_PIECE_V14.md) |
+
+Repository-wide active-document link checks must therefore treat
+`preserved/v15.2/**` as immutable historical content and test this index's
+current routes instead. This is a documented subset boundary, not a claim that
+the historical relative links resolve in their new placement. The complete
+accession remains the recovery authority.

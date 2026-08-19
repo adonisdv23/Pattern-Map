@@ -215,6 +215,22 @@ def validate_artifact_inventory() -> None:
             require(value in content,
                     f"{relative} is missing canonical route/stop/learning value {value}")
 
+    relationship = read_text("framework/RELATIONSHIP_MAP.md")
+    for value in route_values:
+        require(value in relationship,
+                f"relationship map is missing canonical route value {value}")
+    relationship_words = " ".join(relationship.split())
+    require("output descriptions, not additional routes" in relationship_words,
+            "relationship map does not distinguish packet outputs from routes")
+
+    signal_routes = read_text("cases/signal-foundry/README.md")
+    for value in ("ANSWER", "ANSWER_PROVISIONALLY", "HOLD", "ESCALATE"):
+        require(value in signal_routes,
+                f"Signal Foundry procedure is missing canonical route value {value}")
+    signal_route_words = " ".join(signal_routes.split())
+    require("Packet names describe outputs" in signal_route_words,
+            "Signal Foundry procedure does not distinguish packet outputs from routes")
+
     quickstart = read_text("framework/agent-playbook/QUICKSTART.md")
     require("compare the observed outcome" in quickstart,
             "Quickstart does not close the learning loop")

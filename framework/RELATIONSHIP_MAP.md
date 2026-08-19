@@ -28,9 +28,9 @@ flowchart TD
     C --> K["Disconfirmation + uncertainty review"]
     F --> K
     K --> L{"Bounded route"}
-    L -->|"acquire / compare / clarify"| B
-    L -->|"hold / defer / escalate / refuse"| M["Human disposition"]
-    L -->|"answer / provisional packet"| N["Influence receipt + context packet"]
+    L -->|"ACQUIRE / COMPARE / CLARIFY"| B
+    L -->|"HOLD / DEFER / ESCALATE / REFUSE"| M["Human disposition"]
+    L -->|"ANSWER / ANSWER_PROVISIONALLY"| N["Influence receipt + context packet"]
     M --> N
     N --> O["Generation or human decision"]
     O --> P["Recorded expectation + outcome window"]
@@ -38,6 +38,12 @@ flowchart TD
     Q -->|"propose bounded update"| M
     M --> A
 ~~~
+
+The edge labels leaving `Bounded route` are canonical route-field values.
+`ANSWER` may produce a packet and `ANSWER_PROVISIONALLY` may produce a
+provisional packet, but `packet` and `provisional packet` are output
+descriptions, not additional routes. Stop status and learning status remain
+separate fields.
 
 ## What the arrows mean
 
