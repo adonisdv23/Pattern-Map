@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/qa-record.schema.json",
+  "title": "Origin-accounting QA receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["qa_id", "object_id", "qa_type", "auditor_id", "label", "code", "notes", "created_at_utc"],
+  "properties": {
+    "qa_id": {"type": "string"},
+    "object_id": {"type": "string"},
+    "qa_type": {"enum": ["schema", "semantic_stance", "transformation", "graph_invariant", "surface_balance", "split_leakage", "prompt_parity", "parser_fixture", "privacy", "replay"]},
+    "auditor_id": {"type": "string"},
+    "label": {"enum": ["pass", "fail", "uncertain", "not_applicable"]},
+    "code": {"type": "string"},
+    "notes": {"type": "string", "maxLength": 1000},
+    "created_at_utc": {"type": "string"}
+  }
+}

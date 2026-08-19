@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Origin count — concept visual</title>
+  <style>
+    :root {
+      --paper: #f3efe5;
+      --paper-light: #fffdf8;
+      --ink: #1f1d19;
+      --muted: #625d55;
+      --line: #b8afa1;
+      --teal: #1b6265;
+      --violet: #5c467d;
+      --coral: #9c4233;
+      --ochre: #76500f;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.55 var(--serif);
+    }
+    a { color: inherit; }
+    :focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px var(--ink);
+    }
+    main { width: min(1040px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 64px; }
+    .eyebrow, .label, .status, .legend, .microcopy {
+      font: .68rem/1.35 var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--teal); }
+    h1 { max-width: 780px; margin: 0 0 14px; font: 500 clamp(2.3rem, 6vw, 4.6rem)/1 var(--serif); letter-spacing: -.045em; }
+    .lede { max-width: 760px; margin: 0 0 30px; color: var(--muted); font-size: 1.15rem; }
+    figure { margin: 0; border: 1px solid var(--ink); background: var(--paper-light); }
+    figcaption { padding: 20px 22px; border-bottom: 1px solid var(--line); }
+    figcaption strong { display: block; margin-bottom: 5px; font-size: 1.25rem; }
+    figcaption span { display: block; color: var(--muted); }
+    .visual-grid { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 1px; background: var(--line); }
+    .cluster, .contrast { padding: 24px; background: var(--paper-light); }
+    .cluster { position: relative; }
+    .cluster::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -28px;
+      width: 56px;
+      border-top: 2px solid var(--teal);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .label { margin: 0 0 12px; color: var(--teal); }
+    .reports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .reports li {
+      min-height: 82px;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--teal);
+      background: #fbf9f3;
+    }
+    .reports strong { font-size: 1.25rem; }
+    .reports span { color: var(--muted); font: .65rem/1.3 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+    .origin-node {
+      width: min(100%, 240px);
+      margin: 24px auto 0;
+      padding: 18px;
+      border: 2px solid var(--teal);
+      background: #edf5f2;
+      text-align: center;
+    }
+    .origin-node strong { display: block; font-size: 1.45rem; }
+    .origin-node span { display: block; margin-top: 5px; color: var(--muted); font-size: .85rem; }
+    .contrast { border-left: 1px solid var(--line); }
+    .contrast h2 { margin: 0 0 12px; font: 500 1.35rem/1.15 var(--serif); }
+    .contrast-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .contrast-list li { padding: 12px; border: 1px solid var(--line); background: #fbf9f3; }
+    .contrast-list strong { display: block; color: var(--violet); font: .8rem var(--mono); letter-spacing: .08em; }
+    .contrast-list span { display: block; margin-top: 4px; color: var(--muted); font-size: .82rem; }
+    .accounting { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; border-top: 1px solid var(--line); background: var(--line); }
+    .accounting div { padding: 16px 20px; background: var(--paper-light); }
+    .accounting dt { margin-bottom: 6px; color: var(--muted); font: .62rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .accounting dd { margin: 0; font: 500 2rem/1 var(--serif); }
+    .accounting dd small { display: block; margin-top: 6px; color: var(--muted); font: .72rem/1.3 var(--sans); }
+    .boundary { margin: 20px 22px 22px; padding: 14px 16px; border-left: 5px solid var(--coral); background: #f8e9e4; }
+    .boundary strong { display: block; margin-bottom: 3px; }
+    .boundary span { color: var(--muted); }
+    .legend { margin: 20px 0 0; color: var(--muted); }
+    @media (max-width: 700px) {
+      main { width: min(100% - 22px, 560px); padding-top: 30px; }
+      .visual-grid, .accounting { grid-template-columns: 1fr; }
+      .cluster::after { top: auto; right: auto; bottom: -28px; left: 50%; width: 0; height: 56px; border-top: 0; border-left: 2px solid var(--teal); transform: translateX(-50%); }
+      .contrast { border-top: 1px solid var(--line); border-left: 0; padding-top: 48px; }
+      .reports { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+      .reports li { min-height: 68px; padding: 8px; }
+      .reports strong { font-size: 1rem; }
+      .reports span { font-size: .56rem; }
+    }
+    @media (max-width: 360px) { .reports { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media print {
+      body { background: #fff; font-size: 10pt; }
+      main { width: 100%; padding: 0; }
+      .cluster::after { display: none; }
+      figure { border-color: #777; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Term visual candidate · origin relation</p>
+    <h1>Nine observations are not automatically nine origins.</h1>
+    <p class="lede">Keep every report as an observation. Count a new supporting origin only when the stated relation rule and the claim under review justify it.</p>
+
+    <figure aria-labelledby="origin-figure-title" aria-describedby="origin-figure-description">
+      <figcaption>
+        <strong id="origin-figure-title">What the receipt is counting</strong>
+        <span id="origin-figure-description">Nine report records arrive. In this fictional packet, all nine trace to one launch announcement. That makes one known common-origin cluster, not nine independent supports.</span>
+      </figcaption>
+      <div class="visual-grid">
+        <section class="cluster" aria-labelledby="report-cluster-title">
+          <p class="label" id="report-cluster-title">Observed reports · 09</p>
+          <ol class="reports" aria-label="Nine observed report records that trace to Origin A">
+            <li><strong>O01</strong><span>report observation</span></li>
+            <li><strong>O02</strong><span>report observation</span></li>
+            <li><strong>O03</strong><span>report observation</span></li>
+            <li><strong>O04</strong><span>report observation</span></li>
+            <li><strong>O05</strong><span>report observation</span></li>
+            <li><strong>O06</strong><span>report observation</span></li>
+            <li><strong>O07</strong><span>report observation</span></li>
+            <li><strong>O08</strong><span>report observation</span></li>
+            <li><strong>O09</strong><span>report observation</span></li>
+          </ol>
+          <div class="origin-node" aria-label="One known common origin: Origin A, a launch announcement">
+            <strong>Origin A</strong>
+            <span>one launch announcement<br>known shared path</span>
+          </div>
+        </section>
+        <section class="contrast" aria-labelledby="contrast-title">
+          <h2 id="contrast-title">Separate roots shown for contrast</h2>
+          <ul class="contrast-list">
+            <li><strong>B1</strong><span>separate root · illustrative</span></li>
+            <li><strong>C1</strong><span>separate root · illustrative</span></li>
+          </ul>
+          <p class="microcopy">Their support for the claim is not assessed.</p>
+        </section>
+      </div>
+      <dl class="accounting" aria-label="Origin accounting summary">
+        <div><dt>Observations</dt><dd>09</dd></div>
+        <div><dt>Known common-origin clusters</dt><dd>01</dd></div>
+        <div><dt>Supporting origins counted</dt><dd>00<small>claim support remains unassessed</small></dd></div>
+      </dl>
+      <p class="boundary"><strong>Boundary</strong><span>A shared origin does not make a report false. A trace does not prove the claim. The visual explains relation accounting, not truth.</span></p>
+    </figure>
+    <p class="legend">Color is decorative. The words and counts carry the meaning; the connectors are only a visual cue.</p>
+  </main>
+</body>
+</html>

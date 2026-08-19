@@ -1,0 +1,52 @@
+{
+  "project": "ECHO-01",
+  "version": "EP v0.1",
+  "status": "PRESERVED_SUCCESSOR_UNRUN_NO_RESULTS_NOT_PUBLISHED",
+  "source": {
+    "commit": "36568cb6e8afce9544606c968319b063fc9b79ce",
+    "branch": "codex/discrimination-layer-v15-2-overnight",
+    "zip_bytes": 41436496,
+    "zip_sha256": "f8b71db0bda7f7564e5d3cec1f697bee38b3fcb17b56f47c79bf653f39b549b5",
+    "manifest_bytes": 69680,
+    "manifest_sha256": "05aedafc2f5cb3f589cfdc69d1eff5c854c3bef97071324f9845d63a7a1028eb",
+    "payload_files": 239,
+    "payload_bytes": 48717432,
+    "zip_members": 240
+  },
+  "research_boundary": {
+    "model_or_provider_calls": 0,
+    "empirical_study_run": false,
+    "participant_study_run": false,
+    "participants": 0,
+    "external_dataset_acquisition": false,
+    "published": false,
+    "deployed": false
+  },
+  "unfavorable_result_classes": [
+    "null",
+    "rule_only",
+    "invalidity_driven",
+    "threshold_only_vor",
+    "harmful",
+    "shortcut_driven",
+    "surface_or_semantic_audit_failure",
+    "unstable",
+    "noise_fragile",
+    "nontransfer",
+    "stopped_or_quarantined"
+  ],
+  "checks": {
+    "accession": "PASS",
+    "preserved_source_copies": {
+      "status": "PASS",
+      "files": 82,
+      "bytes": 11323689
+    },
+    "offline_harness": {
+      "status": "PASS",
+      "test_count": 15,
+      "execution": "deterministic local unittest; no model/provider calls"
+    },
+    "owner_intent_lock": "PASS_BEFORE_EDITING"
+  }
+}

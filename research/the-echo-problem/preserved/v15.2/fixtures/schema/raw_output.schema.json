@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/raw-output.schema.json",
+  "title": "Immutable raw origin-accounting output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "raw_output_b64", "byte_length", "raw_output_sha256", "parse_status", "error_code"],
+  "properties": {
+    "run_id": {"type": "string", "pattern": "^RN-[A-Z2-7]{10}$"},
+    "raw_output_b64": {"type": "string", "contentEncoding": "base64", "contentMediaType": "application/octet-stream"},
+    "byte_length": {"type": "integer", "minimum": 0},
+    "raw_output_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "parse_status": {"enum": ["valid", "invalid_utf8", "invalid_json", "schema_error", "semantic_error", "runtime_error", "timeout", "empty_output"]},
+    "error_code": {"enum": ["TIMEOUT", "CANCELLED", "BACKEND_ERROR", "EMPTY_OUTPUT", "INVALID_UTF8", "INVALID_JSON", "DUPLICATE_KEY", "SCHEMA_ERROR", "SEMANTIC_ERROR", "UNKNOWN_EVIDENCE_ID", "NONE"]}
+  }
+}

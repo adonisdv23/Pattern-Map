@@ -1,0 +1,26 @@
+{
+  "version": "v15.2",
+  "status": "LOCAL_OWNER_REVIEW_NO_RESULTS",
+  "routes": [
+    {
+      "route": "/",
+      "filename": "index.html",
+      "bytes": 5319373
+    },
+    {
+      "route": "/explore",
+      "filename": "explore.html",
+      "bytes": 838796
+    },
+    {
+      "route": "/lab",
+      "filename": "lab.html",
+      "bytes": 87304
+    },
+    {
+      "route": "/sources",
+      "filename": "sources.html",
+      "bytes": 90376
+    }
+  ]
+}
