@@ -263,3 +263,30 @@ than inferred from the manuscript-only `ea8a6e2` snapshot.
 
 **Governing requirement:** targeted prior-art restraint; two-project
 separation; A07–A11, A15, A16.
+
+## D-014 — Use version indexes instead of duplicate archive copies
+
+**Date:** 2026-08-19
+
+**Status:** Accepted
+
+The version-specific `archive/v13/`, `v14/`, `v15/`, `v15.1/`, and `v15.2/`
+directories are curated indexes into the already preserved immutable transfers,
+not second physical copies. This preserves canonical navigation and explicit
+version status while avoiding duplicate checkout weight and any false claim
+that copying identical bytes improves archival integrity.
+
+`archive/CHECKPOINT_INDEX.json` records size and SHA-256 for 26 selected
+anchors across the five versions. `archive/verify_checkpoint_index.py` checks
+those paths and the exact-ZIP external hash record. Complete integrity remains
+with the v14 checksum ledger and v15.2 accession manifest/verifier. Source
+commit identifiers from earlier repositories remain lineage anchors and are
+not represented as objects available in Pattern-Map's object database.
+
+The indexes preserve material limitations: v13's original standalone HTML was
+not recovered; v15's separate Markdown source is not exposed by the current
+accession index; and the exact v15.2 ZIP container remains outside ordinary Git
+under D-004. No archive byte was rewritten.
+
+**Governing requirement:** canonical reproducibility, historical immutability,
+Git hygiene, and A14.
