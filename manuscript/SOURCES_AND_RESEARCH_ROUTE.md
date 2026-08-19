@@ -10,6 +10,9 @@ ledger, or historical archive.
   audience, six-family scope, human-judgment boundary, and action limits.
 - [Thesis and audience contract](../docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md) —
   plain-language reading stops, technical definition, and evidence boundary.
+- [V16 claims and source ledger](../docs/CLAIMS_AND_SOURCE_LEDGER_V16.md) —
+  controlled public claims, their strongest current basis, and the empirical
+  or product claim each must not be upgraded into.
 - [V13 recovery and intent memo](../archive/transfers/v14-complete-2026-08-18/10_FULL_REPOSITORY_SNAPSHOT/reports/V13_RECOVERY_AND_INTENT_MEMO.md) —
   historical reader problem, six-family continuity, and the warning that
   historical material is not proof.
