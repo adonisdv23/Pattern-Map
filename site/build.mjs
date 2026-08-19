@@ -101,28 +101,44 @@ const siteSourceHref = (href, ctx) => {
   return routeHref(ctx, route, fragment || query || "");
 };
 
+const applyEmphasis = (value) =>
+  value
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/__([^_]+)__/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+    .replace(/_([^_]+)_/g, "<em>$1</em>");
+
 const inlineMarkdown = (value, ctx) => {
-  let output = escapeHtml(value);
-  const codeSpans = [];
-  output = output.replace(/`([^`]+)`/g, (_, text) => {
-    const token = `@@CODE${codeSpans.length}@@`;
-    codeSpans.push(`<code>${text}</code>`);
+  const tokens = [];
+  const storeToken = (html) => {
+    const token = `\uE000${tokens.length}\uE001`;
+    tokens.push(html);
     return token;
-  });
-  output = output.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, href) =>
-    `<span class="inline-media-note">[${alt}: ${href}]</span>`
+  };
+  const restoreTokens = (valueWithTokens) => {
+    let restored = valueWithTokens;
+    let previous;
+    do {
+      previous = restored;
+      restored = restored.replace(/\uE000(\d+)\uE001/g, (_, index) => tokens[Number(index)]);
+    } while (restored !== previous);
+    return restored;
+  };
+  const formatLabel = (label) => restoreTokens(applyEmphasis(escapeHtml(label)));
+
+  let output = String(value);
+  output = output.replace(/`([^`]+)`/g, (_, text) =>
+    storeToken(`<code>${escapeHtml(text)}</code>`)
   );
-  output = output.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+  output = output.replace(/!\[([^\]]*)\]\(((?:[^()]|\([^()]*\))*)\)/g, (_, alt, href) =>
+    storeToken(`<span class="inline-media-note">[${formatLabel(alt)}: ${escapeHtml(href)}]</span>`)
+  );
+  output = output.replace(/\[([^\]]+)\]\(((?:[^()]|\([^()]*\))*)\)/g, (_, label, href) => {
     const resolved = siteSourceHref(href, ctx);
     const external = externalHref(href);
-    return `<a href="${escapeAttribute(resolved)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${label}</a>`;
+    return storeToken(`<a href="${escapeAttribute(resolved)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${formatLabel(label)}</a>`);
   });
-  output = output.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-  output = output.replace(/__([^_]+)__/g, "<strong>$1</strong>");
-  output = output.replace(/\*([^*]+)\*/g, "<em>$1</em>");
-  output = output.replace(/_([^_]+)_/g, "<em>$1</em>");
-  output = output.replace(/@@CODE(\d+)@@/g, (_, index) => codeSpans[Number(index)]);
-  return output;
+  return restoreTokens(applyEmphasis(escapeHtml(output)));
 };
 
 const tableCells = (line) => {

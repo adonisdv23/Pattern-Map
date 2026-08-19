@@ -125,6 +125,7 @@ def main() -> None:
     map_text = (DIST / "map/index.html").read_text(encoding="utf-8")
     apply_text = (DIST / "apply/index.html").read_text(encoding="utf-8")
     read_text = (DIST / "read/index.html").read_text(encoding="utf-8")
+    sources_text = (DIST / "sources/index.html").read_text(encoding="utf-8")
 
     essential = [
         "AI slop often begins before the model writes a word.",
@@ -171,6 +172,16 @@ def main() -> None:
     require("Read the idea" in standalone_text and "Explore the map" in standalone_text and "Apply it" in standalone_text, "standalone export lost principal doors")
     require(f'src="../../../assets/diagrams/{DIAGRAM.name}"' in standalone_text and DIAGRAM.is_file(), "standalone export lost its local historical diagram reference")
     output.append("PASS standalone HTML is self-contained for direct local opening")
+
+    metareasoning_href = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"'
+    require(metareasoning_href in sources_text, "parenthesized external URL was not preserved")
+    for label, html in (("sources route", sources_text), ("standalone export", standalone_text)):
+        require(not re.search(r'<a\b[^>]*<(?:/?em|/?strong|/?code)\b', html, flags=re.IGNORECASE), f"{label}: inline markup corrupted an anchor start tag")
+        for match in re.finditer(r'<a href="https?:[^"]+"([^>]*)>', html):
+            attributes = match.group(1)
+            require('target="_blank"' in attributes, f"{label}: external link missing target=_blank")
+            require('rel="noreferrer"' in attributes, f"{label}: external link missing rel=noreferrer")
+    output.append("PASS external Markdown links preserve URLs and safe anchor attributes")
 
     print("\n".join(output))
     print("NOTE structural QA is not reader comprehension or effectiveness evidence")

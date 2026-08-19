@@ -43,6 +43,7 @@ const main = () => {
   const map = read(path.join(DIST_DIR, "map/index.html"));
   const apply = read(path.join(DIST_DIR, "apply/index.html"));
   const examples = read(path.join(DIST_DIR, "examples/index.html"));
+  const sources = read(path.join(DIST_DIR, "sources/index.html"));
   const research = read(path.join(DIST_DIR, "research/index.html"));
   const history = read(path.join(DIST_DIR, "history/index.html"));
   const headline = "AI slop often begins before the model writes a word.";
@@ -65,6 +66,15 @@ const main = () => {
   assert(research.includes("separate project — unrun — no results"), "Echo status missing from research route");
   assert(history.includes("Historical v13 origin — not the current v16 topology."), "historical label missing");
   assert(history.includes("current relationship view"), "current/historical distinction missing");
+  const metareasoningHref = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"';
+  assert(sources.includes(metareasoningHref), "parenthesized external URL was not preserved");
+  for (const html of [sources, read(EXPORT_PATH)]) {
+    assert(!/<a\b[^>]*<(?:\/?em|\/?strong|\/?code)\b/i.test(html), "inline markup corrupted an anchor start tag");
+    for (const match of html.matchAll(/<a href="https?:[^"]+"([^>]*)>/g)) {
+      assert(match[1].includes('target="_blank"'), "external link is missing target=_blank");
+      assert(match[1].includes('rel="noreferrer"'), "external link is missing rel=noreferrer");
+    }
+  }
   const htmlFiles = requiredRoutes.map((route) => path.join(DIST_DIR, route));
   for (const filePath of htmlFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href);
   console.log(`PASS routes: ${requiredRoutes.length}`);
@@ -72,6 +82,7 @@ const main = () => {
   console.log("PASS six-family order/names, implementation levels, teaching patterns");
   console.log("PASS Signal Foundry, Echo, and historical/current topology boundaries");
   console.log("PASS local route/assets link integrity");
+  console.log("PASS external Markdown links preserve URLs and safe anchor attributes");
   console.log("PASS standalone export exists");
 };
 

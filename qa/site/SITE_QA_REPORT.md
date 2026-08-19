@@ -38,6 +38,7 @@ PASS exact first-screen headline/standfirst and principal-door presence
 PASS six-family order/names, implementation levels, teaching patterns
 PASS Signal Foundry, Echo, and historical/current topology boundaries
 PASS local route/assets link integrity
+PASS external Markdown links preserve parenthesized URLs and safe anchor attributes
 PASS standalone export exists
 
 python3 qa/site/audit_site.py
@@ -53,6 +54,13 @@ NOTE structural QA is not reader comprehension or effectiveness evidence
 ```
 
 The site package has a dependency-free, deterministic `site/package-lock.json`. Transient `site/dist/` output remains ignored; the committed direct-open export is under `site/exports/standalone/` as requested.
+
+Primary integration review found that the first site commit allowed emphasis
+parsing to rewrite `_blank` inside generated anchor markup and truncated a DOI
+containing parentheses. The renderer now protects completed inline tokens,
+supports balanced parentheses in link destinations, and has regression checks
+across the Sources route and standalone export. No malformed anchor from the
+pre-integration candidate was pushed to the canonical remote branch.
 
 ## Content and route contract
 
