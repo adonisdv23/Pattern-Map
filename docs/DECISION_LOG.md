@@ -87,3 +87,46 @@ Scoped branches, worktrees, commits, pushes, and draft PRs are authorized. No
 merge to `main`, deploy, publication, Release, study, paid provider, spending,
 dataset acquisition, preregistration, outreach, or result implication is
 authorized.
+
+## D-006 — Lock the v16 owner intent before downstream drafting
+
+**Date:** 2026-08-19
+
+**Status:** Accepted — owner-fixed
+
+`docs/OWNER_INTENT_V16.md` is the governing intent contract. Agents may improve
+expression but may not alter the underlying proposition, audiences, six-family
+scope, two-project separation, or action boundaries without a new explicit owner
+instruction. Proposed changes remain non-canonical and owner-decision-required.
+
+**Integrity lock:** `docs/OWNER_INTENT_V16.sha256` records the checkpoint's
+byte-level SHA-256. Downstream QA must verify it before integration; wording
+changes intentionally require a new owner-approved checkpoint rather than an
+unexplained hash refresh.
+
+## D-007 — Restore the historical six families as the public map
+
+**Date:** 2026-08-19
+
+**Status:** Accepted — owner-fixed
+
+V16 publicly organizes the framework around peripheral signal, source weighing,
+velocity/motion, absence + memory, structured patterns, and the learning loop.
+V14/v15 components such as authorization, provenance, claim graphs, routing,
+context packets, human disposition, and versioned memory may implement or
+qualify those families but may not replace them as the thesis-facing map.
+
+**Reason:** the v14/v15 decomposition improved rigor but contributed to drift
+away from the original reader problem and ambition.
+
+## D-008 — Enforce artifact firebreaks and Echo independence
+
+**Date:** 2026-08-19
+
+**Status:** Accepted — owner-fixed
+
+The human essay, builder framework, agent companion, broader research agenda,
+The Echo Problem, site, and historical archive have separate canonical paths,
+readers, and evidentiary roles. The removal test governs integration: v16 must
+remain coherent without the Echo example, and Echo must stand independently as
+an unrun origin-accounting project.

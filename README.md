@@ -24,14 +24,14 @@ structure rather than inside an inherited transfer bundle.
 
 Start with:
 
-1. [`docs/SOURCE_AUTHORITY_AND_LINEAGE.md`](docs/SOURCE_AUTHORITY_AND_LINEAGE.md)
-2. [`docs/MIGRATION_INVENTORY.md`](docs/MIGRATION_INVENTORY.md)
-3. [`docs/V16_ROADMAP.md`](docs/V16_ROADMAP.md)
-4. [`docs/DECISION_LOG.md`](docs/DECISION_LOG.md)
-
-The locked owner-intent, thesis/audience, artifact-boundary, and acceptance
-contracts are the next checkpoint and must exist before manuscript, framework,
-or site implementation begins.
+1. [`docs/OWNER_INTENT_V16.md`](docs/OWNER_INTENT_V16.md)
+2. [`docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md`](docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md)
+3. [`docs/ARTIFACT_BOUNDARIES.md`](docs/ARTIFACT_BOUNDARIES.md)
+4. [`docs/V16_ACCEPTANCE_CRITERIA.md`](docs/V16_ACCEPTANCE_CRITERIA.md)
+5. [`docs/SOURCE_AUTHORITY_AND_LINEAGE.md`](docs/SOURCE_AUTHORITY_AND_LINEAGE.md)
+6. [`docs/V13_TO_V16_FIDELITY_MATRIX.md`](docs/V13_TO_V16_FIDELITY_MATRIX.md)
+7. [`docs/V16_ROADMAP.md`](docs/V16_ROADMAP.md)
+8. [`docs/DECISION_LOG.md`](docs/DECISION_LOG.md)
 
 ## Repository map
 

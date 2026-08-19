@@ -19,6 +19,16 @@ Then inspect `git status`, the current branch, and any task-specific ownership
 instructions. Never assume that a detailed historical or model-generated file
 is current authority.
 
+Before integration, verify the locked owner-intent checkpoint with:
+
+```sh
+(cd docs && shasum -a 256 -c OWNER_INTENT_V16.sha256)
+```
+
+Do not refresh that checksum to accommodate an edit. An intentional change to
+the locked contract requires a new explicit owner instruction and recorded
+checkpoint.
+
 ## Authority order
 
 1. The owner's approved v16 handoff and later explicit owner instructions.
