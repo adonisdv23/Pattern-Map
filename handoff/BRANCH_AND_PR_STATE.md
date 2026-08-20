@@ -19,9 +19,11 @@ mistakes an intended commit for a made one.
 | Checkpoint | Commit | What it carries |
 | --- | --- | --- |
 | Reviewed predecessor | `cc5547d` | The exact state the independent ChatGPT Pro round-one review inspected |
-| Round-one correction and round-two verification | `PENDING — stamped at integration` | Planning-only Apply semantics, the line-free responsive Map, Guided route, term help, Stage 0, plus the rendered-measurement evidence and the corrections it produced |
+| Round-one correction and round-two verification | `7202746a9a211233fc3b614b87d497046eeacda4` | Planning-only Apply semantics, the line-free responsive Map, Guided route, term help, Stage 0, plus the rendered-measurement evidence and the corrections it produced |
 
-Until a checkpoint row shows a real commit, no document may claim one.
+The round-one/round-two hash above was verified to resolve with `git cat-file -t`
+after the commit was made, not before. Until a checkpoint row shows a real
+commit, no document may claim one.
 `handoff/verify_owner_review_package.py` reads `CONTENT_CHECKPOINT` from this
 same value and fails when the manifest disagrees with the artifact bytes.
 
@@ -29,7 +31,7 @@ same value and fails when the manifest disagrees with the artifact bytes.
 
 | Role | Branch | Integrated checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | see the checkpoint register above | Draft PR #1 open and unmerged |
+| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `7202746` | Draft PR #1 open and unmerged |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
 | Applied framework and agent playbook | `codex/pattern-map-v16-playbook` | `fccfceb` | Pushed; integrated into foundation |
