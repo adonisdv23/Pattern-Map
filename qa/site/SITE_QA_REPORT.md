@@ -123,6 +123,17 @@ were both 390 and Read / Explore / Apply / More were all visibly rendered. At
 support render freshness only; they are not comprehension or accessibility
 results.
 
+A later live-browser boundary check at repository head `79a2392` reopened all
+nine routes at 1280×720, found one main/one h1 and no horizontal overflow or
+browser-console errors, and re-exercised the More focus handoff/Escape return,
+Map focus/reset live status, dual focus ring, and disclosure pointer behavior.
+The same run again could not make synthetic Tab or native keyboard-default
+activation advance reliably. The browser security layer declined the
+developer capability needed for responsive emulation, print-media capture,
+and browser accessibility-tree inspection, and that decision was not
+bypassed. See
+`qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md`.
+
 1. Browser-level physical Tab traversal could not be completed because synthetic Tab events did not advance focus in the in-app automation surface. The site still has a semantic tab order and explicit focus styling; manual owner review should confirm the physical keyboard path.
 2. The browser security policy declined the CDP permission needed to emulate print media. Static print hooks and no-script checks pass; a manual print-preview check remains open.
 3. The existing targeted source links are presented as source pointers, not as newly reverified evidence. No external source read was performed for this lane.

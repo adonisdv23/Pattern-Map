@@ -6,8 +6,8 @@
   "content_site_source_and_pdf_checkpoint": "2a54b24ec01707bb2a73032ab3f662cd995669ae",
   "evidence_note": "The manifest includes final mobile and Map capture refreshes generated from the corrected checkpoint after exact-commit advisory review.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 114,
-  "total_bytes": 5265017,
+  "file_count": 115,
+  "total_bytes": 5274457,
   "files": [
     {
       "path": ".gitignore",
@@ -96,8 +96,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 42746,
-      "sha256": "cbed566dc72e5f9b755eeb8c65afe5b5cfd041389ada06a5d8ca53d9de3b5ae5"
+      "bytes": 43131,
+      "sha256": "3613b2465049269827ef795f557b556a0730601f08123f3d9fbc2cf3a5542c10"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 24648,
-      "sha256": "5ede29000113a291d0ee271cff03e284576c18b4195af224916f55d59931f857"
+      "bytes": 26061,
+      "sha256": "7cd09fc7d34c87df500b158b31882fd1945a5547dac81d94cc92b9c1b261a308"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -256,13 +256,13 @@
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 7995,
-      "sha256": "38d2a4895b6de31cf3cb19bff26478e0b88da32498eb9a10cacaf2f09d5d74cd"
+      "bytes": 8394,
+      "sha256": "ae91b89abe862f7db710b9e4779d346f7765854d4e9106c5f78735019bfe7865"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 5592,
-      "sha256": "50a3209c29966549c51412480900cac5db98961ea3256916365824915d8e2899"
+      "bytes": 5777,
+      "sha256": "605538633402aff39142370f83aaf4976f7027ed58ec2f3c70e3706895bad961"
     },
     {
       "path": "handoff/README.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 9285,
-      "sha256": "ca8e866da4648939bf4cdf728dd96dd32f694d0a77850179a2ae2637830dc75e"
+      "bytes": 9350,
+      "sha256": "dea391d439ef8be9e0687109af914d35053fcd71a785838608a572fe8d64a18e"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -306,8 +306,8 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 9177,
-      "sha256": "e7ad1ff6e7eae5e6ac006fef062d6f607cf585f60020cfe25f4bbd8f96ed066c"
+      "bytes": 9580,
+      "sha256": "b5d363211d82f74aa17829a608f1779a068fc45fe434e40e985662d0d4d909e5"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
@@ -375,9 +375,14 @@
       "sha256": "c94f1862e0098a5167b03d9ad22d21c448460e505bb9af72e97cf1e7a667bc85"
     },
     {
+      "path": "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
+      "bytes": 5912,
+      "sha256": "447c26354ba084d2744742af1e768ffd5cf7018e2b2479293d0762c2bf34165d"
+    },
+    {
       "path": "qa/site/SITE_QA_REPORT.md",
-      "bytes": 9876,
-      "sha256": "96329c173d63b7322ed36bf59f58a0cfbf295c795827cd3631adf30d6e400106"
+      "bytes": 10554,
+      "sha256": "ec50246d2edb23c82b975d8894071aa9aea6a704de7f1df0ba48932488f041d2"
     },
     {
       "path": "qa/site/advisory/SITE_COMPREHENSION_ACCESSIBILITY_2026-08-19_6a29ed8.md",

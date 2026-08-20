@@ -90,6 +90,12 @@ the semantic accessibility route.
   tests pass as implementation checks only.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, and historical-asset checks pass.
+- A current-head live-browser pass reopens all nine routes without overflow or
+  console errors and passes More focus handoff/Escape return, Map live-status
+  and reset behavior, visible focus rings, and pointer disclosure behavior. It
+  explicitly leaves physical Tab, supported screen-reader, and print preview
+  open because the automation/browser permission surfaces could not establish
+  them.
 - Six PDF pages were reopened and rendered with Poppler; no clipping, overlap,
   or unreadable glyphs was observed.
 - Final advisory lanes preserve explicit limits: proxy reader reviews are not

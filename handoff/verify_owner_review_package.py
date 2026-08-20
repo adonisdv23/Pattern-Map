@@ -106,6 +106,7 @@ REQUIRED_PATHS = [
     "qa/research/validate_research_boundaries.py",
     "qa/site/SITE_QA_REPORT.md",
     "qa/site/audit_site.py",
+    "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
     "qa/visual/VISUAL_NEEDS.md",
     "qa/visual/VISUAL_QA_REPORT.md",
     "qa/visual/screenshots/home-desktop-1440x1000.png",

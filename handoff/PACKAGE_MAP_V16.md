@@ -56,6 +56,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open review route |
 | PDF companion | `site/exports/pattern-map-v16-owner-review.pdf` | Untagged visual companion; not the accessibility route |
 | Site implementation QA | `qa/site/SITE_QA_REPORT.md`, `qa/site/audit_site.py` | Structural/accessibility proxy only |
+| Current-head live browser boundary | `qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md` | Pointer/focus/state evidence; physical keyboard/screen-reader/print remain manual |
 | Visual QA | `qa/visual/VISUAL_QA_REPORT.md`, screenshots, PDF renders | Layout evidence only |
 | Image decision/use records | `qa/visual/VISUAL_NEEDS.md`, `assets/IMAGE_USE_LEDGER.md` | No generated bitmap candidates |
 

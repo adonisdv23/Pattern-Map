@@ -21,6 +21,10 @@ reviews must state exactly what they establish and what remains manual.
   manual residuals.
 - `qa/visual/VISUAL_QA_REPORT.md` records responsive browser captures,
   code-native visual behavior, the historical-map label, and PDF inspection.
+- `qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md` records the
+  current-head live route, More/Escape focus, Map state/live-region, visible-
+  focus, and disclosure checks, together with the exact browser-permission and
+  synthetic-keyboard limits that keep manual A13 gates open.
 - This evidence establishes implementation structure and rendering only. It
   does not establish comprehension, persuasion, effectiveness, live-agent
   compliance, or a research result.

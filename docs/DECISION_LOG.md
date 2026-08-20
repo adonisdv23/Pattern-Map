@@ -523,3 +523,34 @@ screen-reader, and browser print-preview checks remain open, so v16 is not
 recorded as fully accepted under every gate.
 
 **Governing requirement:** owner-review release boundary; A01/A04/A05/A13/A15–A17.
+
+## D-022 — Strengthen live-browser evidence without converting automation into manual acceptance
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with manual residuals unchanged
+
+A current-head in-app-browser pass reopened all nine local routes, exercised
+the More focus handoff and Escape return, checked Map focus/reset and live-
+region behavior, inspected visible focus styles, toggled progressive detail,
+and checked route-level headings, landmarks, active links, overflow, and
+console errors. Those live behaviors passed at the available 1280×720
+viewport.
+
+Synthetic Tab traversal and native default keyboard activation still did not
+advance reliably in the automation surface. The browser security layer also
+declined the supported developer capability requested for responsive viewport,
+print-media, and accessibility-tree inspection. The denial was not bypassed
+and no alternate browser-control surface was used.
+
+The evidence therefore improves the live implementation record but does not
+close physical keyboard, supported screen-reader, or browser print-preview
+acceptance. No canonical site correction was indicated, and A13 remains
+partial. Human comprehension, voice, and observed timing remain outside this
+browser check.
+
+**Evidence:**
+`qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md`.
+
+**Governing requirement:** A02/A06/A13/A15/A17; evidence-scope and browser-
+permission boundaries.
