@@ -623,3 +623,72 @@ HTML are primary.
 
 **Governing requirement:** owner visual expectation; three-door site contract;
 A02/A06–A08/A10–A13/A15–A17; no-deploy/no-publish boundary.
+
+## D-024 — Correct the Pro round-1 blockers without changing the locked thesis
+
+**Date:** 2026-08-20
+
+**Status:** Accepted with owner/assistive-technology residuals unchanged
+
+At the owner's request, an outside ChatGPT Pro project reviewed exact commit
+`cc5547def98aeec819eabc68bbf850548e97d4c6` and draft PR #1 against the locked
+owner intent, two-project firebreak, acceptance gates, source tree, generated
+site, standalone export, playbook, and historical design references. The full
+report was read before disposition and is preserved in
+`qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md`.
+
+Two source-deterministic defects were accepted as P0. The old Apply studio
+converted planning choices into event-like completion, stop, learning, and
+human-decision states, and restricted permission did not dominate every route
+shortcut. The old Map combined a 3-column medium layout with a later
+821-pixel desktop coordinate override, making collisions and detached lines
+possible from 821 through 1100 pixels.
+
+The correction keeps the owner's thesis, headline, six families, three doors,
+human-authority boundary, proportional levels, warm visual system, and
+Echo/Signal Foundry boundaries intact. It changes the implementation as
+follows:
+
+- Apply now returns planning recommendations only. Observed execution, stop,
+  outcome, learning, and human-decision fields remain explicitly unrun or
+  unobserved; optional later-state controls are labeled local simulations and
+  never mutate those fields. A pure 54-combination test enforces permission
+  precedence and prevents event-token fabrication.
+- The Map is flow-native and line-free at every width. Six family questions,
+  optional shared records, and four limited relationship bands replace the
+  fragile fixed topology. Exact 821-pixel and 1024-pixel browser inspection
+  shows the intended 3-column/2-column reflow without horizontal overflow.
+- The 60–90-second entry is now 250 raw words, uses a concrete product-release
+  case before the family questions, and delays the internal framework name
+  until its function is clear. This remains an editorial estimate, not an
+  observed reading-time or comprehension result.
+- A tenth, optional Guided route provides one authored 8–12-minute path from
+  the human problem through the questions, relationships, smallest useful
+  application, examples, and boundaries. It is generated from the same
+  canonical components and does not replace Read / Map / Apply or fork the
+  manuscript.
+- Difficult primary-path terms now have inline plain meaning plus optional
+  click/touch/keyboard explainers with code-native microvisuals, boundaries,
+  and glossary links. No essential meaning is hover-only and no generated
+  bitmap was justified.
+- Apply is progressively enhanced: without JavaScript, dead controls are
+  hidden and the complete static planning guide remains readable. The
+  Quickstart and full guide now begin with Stage 0 so ordinary supplied-material
+  transformations do not inherit evidence bureaucracy.
+
+The advisory suggestion to soften “AI slop often begins before the model
+writes a word” was rejected under D-013/PAOB-03 because the phrase is the
+owner-approved editorial center and remains explicitly conceptual rather than
+measured. Lower-priority URL focus persistence and broad appendix terminology
+rewrites were deferred unless an exact-commit follow-up shows a material need.
+
+Current automated and in-app-browser evidence covers the ten-route build,
+54-state planning matrix, no-script contract, 390-pixel Home/Map/Apply reflow,
+exact 821-pixel and 1024-pixel Map behavior, term interaction, permission
+precedence, and absence of console errors. Physical keyboard traversal,
+supported screen-reader review, real 200% zoom, browser print preview, and
+owner/mentor judgment remain binding manual residuals. The Pro report is a
+model advisory, not owner acceptance or empirical evidence.
+
+**Governing requirement:** owner visual expectation; authority order;
+A01–A08/A10–A13/A15–A17; no-deploy/no-publish/no-study boundary.

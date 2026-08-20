@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -221,7 +221,7 @@ main:focus-visible { outline: 3px solid var(--ink); outline-offset: -0.35rem; }
 .door-promise { max-width: 25ch; color: var(--ink-soft); font-size: 0.88rem; line-height: 1.45; }
 .door-arrow { position: absolute; right: 1.1rem; bottom: 1rem; color: var(--accent-deep); font-size: 1.5rem; }
 
-.home-section, .reading-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route {
+.home-section, .reading-route, .guided-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route {
   width: min(100% - 2rem, var(--measure));
   margin: 0 auto;
   padding: clamp(3.4rem, 7vw, 6.5rem) 0;
@@ -473,7 +473,7 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {
-  body { font-size: 0.97rem; }.site-header, .hero, .home-section, .reading-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro, .site-footer { width: min(100% - 1.25rem, var(--measure)); }
+  body { font-size: 0.97rem; }.site-header, .hero, .home-section, .reading-route, .guided-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro, .site-footer { width: min(100% - 1.25rem, var(--measure)); }
   .topology-family-row, .operator-steps { grid-template-columns: 1fr; }.door-card { min-height: 11.5rem; }.implementation-grid { grid-template-columns: 1fr; }.lineage-grid { grid-template-columns: 1fr; }.glossary-grid { grid-template-columns: 1fr; }.report-chip { font-size: 0.58rem; }
   .wordmark span { font-size: 1.08rem; }.wordmark small { font-size: 0.53rem; }.primary-nav { gap: 0; }.nav-more { padding-inline: 0.45rem; }
 }
@@ -513,8 +513,8 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
   :root { --paper: #fff; --paper-light: #fff; --ink: #000; --ink-soft: #222; --muted: #444; --line: #999; color-scheme: light; }
   body { background: white; font-size: 10.5pt; }
   .site-header, .skip-link, .primary-nav, .secondary-nav-wrap, .door-arrow, .family-focus, .quiet-button, .site-footer { display: none !important; }
-  main, .home-section, .reading-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro { width: 100%; padding: 1rem 0; }
-  .hero { width: 100%; min-height: auto; padding: 0 0 1rem; }.hero h1 { max-width: 16ch; font-size: 34pt; }.standfirst { font-size: 14pt; }.door-grid { grid-template-columns: repeat(3, 1fr); margin-top: 1rem; }.door-card { min-height: 7rem; box-shadow: none; }.home-section, .reading-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route { break-before: page; }
+  main, .home-section, .reading-route, .guided-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro { width: 100%; padding: 1rem 0; }
+  .hero { width: 100%; min-height: auto; padding: 0 0 1rem; }.hero h1 { max-width: 16ch; font-size: 34pt; }.standfirst { font-size: 14pt; }.door-grid { grid-template-columns: repeat(3, 1fr); margin-top: 1rem; }.door-card { min-height: 7rem; box-shadow: none; }.home-section, .reading-route, .guided-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route { break-before: page; }
   details { display: block !important; border-color: #999; background: white; }.source-manifest { display: block; }.source-manifest > summary, details > summary { display: none; }.source-markdown, .reading-column { max-width: none; }.essay-content h2 { break-before: page; }
   .topology-figure, .historical-figure figure { break-inside: avoid; }.family-grid, .implementation-grid, .example-grid, .lineage-grid { grid-template-columns: repeat(2, 1fr); }.operator-steps { grid-template-columns: repeat(3, 1fr); }.state-grid { grid-template-columns: repeat(3, 1fr); }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; overflow-wrap: anywhere; }
@@ -527,7 +527,7 @@ body { overflow-x: clip; }
 main { overflow: visible; }
 .page-frame { display: grid; grid-template-columns: minmax(9rem, 11rem) minmax(0, 1fr); gap: clamp(1.6rem, 4vw, 4.3rem); width: min(100% - 2rem, 88rem); margin: 0 auto; }
 .page-content { min-width: 0; }
-.page-content > .hero, .page-content > .home-section, .page-content > .reading-route, .page-content > .map-route, .page-content > .apply-route, .page-content > .examples-route, .page-content > .boundaries-route, .page-content > .sources-route, .page-content > .research-route, .page-content > .history-route, .page-content > .route-intro { width: 100%; margin-left: 0; margin-right: 0; }
+.page-content > .hero, .page-content > .home-section, .page-content > .reading-route, .page-content > .guided-route, .page-content > .map-route, .page-content > .apply-route, .page-content > .examples-route, .page-content > .boundaries-route, .page-content > .sources-route, .page-content > .research-route, .page-content > .history-route, .page-content > .route-intro { width: 100%; margin-left: 0; margin-right: 0; }
 .orientation-rail { position: sticky; top: 1rem; align-self: start; display: flex; min-height: min(40rem, calc(100vh - 2rem)); flex-direction: column; gap: 1.15rem; margin-top: clamp(2rem, 5vw, 4.4rem); padding: 0.2rem 1rem 1rem 0; border-right: 1px solid var(--line); }
 .orientation-brand { display: flex; align-items: center; gap: 0.6rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--ink); }
 .orientation-brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; background: var(--navy); color: var(--paper-light); font: 0.68rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.06em; }
@@ -598,13 +598,6 @@ main { overflow: visible; }
   .route-brief strong { font-size: 0.5rem; letter-spacing: 0.06em; white-space: nowrap; }
 }
 
-@media (min-width: 821px) {
-  .map-family-grid { top: 8.5rem; }
-  .map-record-row { top: 21rem; }
-  .map-output-row { top: 29.5rem; }
-  .map-learning { top: 39.5rem; }
-}
-
 @media (forced-colors: active) {
   .orientation-rail, .orientation-mobile, .route-brief, .door-preview, .map-canvas, .map-node, .map-family-node, .map-focus-detail, .route-studio-form, .route-receipt-card, .static-route-equivalent, .narrative-visual { border-color: CanvasText; background: Canvas; color: CanvasText; box-shadow: none; }.relationship-connectors { stroke: CanvasText; opacity: 1; }.map-family-node:hover, .map-family-node:focus-visible, .map-family-node.is-selected { outline: 3px solid Highlight; background: Canvas; }.orientation-link:hover, .orientation-link:focus-visible, .orientation-link.is-current { border-color: Highlight; color: LinkText; background: Canvas; }.receipt-route-badge, .receipt-state-actions button { border-color: CanvasText; color: CanvasText; }.map-route .map-loop-mark { color: CanvasText; }.presence.yes, .presence.no { border-color: CanvasText; }.preview-line, .preview-map-link, .preview-receipt-line { background: Canvas; border-color: CanvasText; color: CanvasText; }
 }
@@ -619,11 +612,218 @@ main { overflow: visible; }
   body { overflow: visible; }
   .page-frame { display: block; width: 100%; }
   .orientation-rail, .orientation-mobile, .route-brief, .reading-index, .reading-progress-wrap, .studio-actions, .studio-boundary, .receipt-state-actions, .map-family-node .map-family-connection, .map-label-top, .map-label-bottom { display: none !important; }
-  .page-content > .hero, .page-content > .home-section, .page-content > .reading-route, .page-content > .map-route, .page-content > .apply-route, .page-content > .examples-route, .page-content > .boundaries-route, .page-content > .sources-route, .page-content > .research-route, .page-content > .history-route, .page-content > .route-intro { width: 100%; }
+  .page-content > .hero, .page-content > .home-section, .page-content > .reading-route, .page-content > .guided-route, .page-content > .map-route, .page-content > .apply-route, .page-content > .examples-route, .page-content > .boundaries-route, .page-content > .sources-route, .page-content > .research-route, .page-content > .history-route, .page-content > .route-intro { width: 100%; }
   .relationship-connectors { opacity: 0.8; }.map-canvas { min-height: 47rem; break-inside: avoid; }.map-focus-detail, .static-route-equivalent, .route-receipt-card, .narrative-visual { break-inside: avoid; box-shadow: none; }.route-studio-layout { grid-template-columns: 1fr 1fr; }.example-narrative { break-inside: avoid; }.narrative-marker { position: static; }.static-route-equivalent { display: block !important; }.static-route-equivalent > summary { display: none; }.static-route-body { display: block !important; padding: 1rem; }.reading-section { scroll-margin-top: 0; }
 }
+
+/* Pro review correction: flow-native relationship map, honest planning states,
+   progressive term help, and one optional continuous reading path. */
+[hidden] { display: none !important; }
+.no-script-note { display: none; margin: 1rem 0; padding: 0.9rem 1rem; border-left: 0.3rem solid var(--ochre); background: rgba(154, 108, 31, 0.08); }
+.no-js .no-script-note { display: block; }
+.no-js [data-route-studio], .no-js [data-route-recommendation] { display: none; }
+
+.hero-term-line { max-width: 52rem; margin: 1rem 0 0; color: var(--ink-soft); font-size: 0.9rem; }
+.term-help { position: relative; display: inline; color: inherit; }
+.term-help dfn { color: var(--ink); font-style: normal; font-weight: 800; text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 0.12em; text-underline-offset: 0.18em; }
+.term-inline { color: var(--ink-soft); font-weight: 400; }
+.term-popover-trigger { display: inline-flex; min-width: 2.75rem; min-height: 2.75rem; align-items: center; justify-content: center; margin-left: 0.35rem; padding: 0.28rem 0.48rem; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--paper-light); color: var(--teal); cursor: pointer; font: 0.58rem/1 "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.04em; vertical-align: middle; }
+.term-popover-trigger:hover, .term-popover-trigger[aria-expanded="true"] { border-color: var(--teal); color: var(--ink); background: rgba(39,127,126,0.08); }
+.term-popover { position: absolute; z-index: 20; top: calc(100% + 0.55rem); left: 0; display: grid; width: min(31rem, 82vw); gap: 0.7rem; padding: 1rem; border: 1px solid var(--navy); border-top: 0.35rem solid var(--teal); border-radius: 0.35rem; background: var(--paper-light); box-shadow: 0 1rem 2.4rem rgba(21,32,34,0.2); color: var(--ink); font-size: 0.82rem; font-weight: 400; line-height: 1.45; text-align: left; }
+.term-popover > strong { font: 700 1.2rem/1.1 Georgia, "Times New Roman", serif; }
+.term-popover > a { justify-self: start; font-weight: 800; }
+.term-popover-boundary { padding-top: 0.65rem; border-top: 1px solid var(--line); color: var(--ink-soft); }
+.term-mini { display: grid; gap: 0.45rem; padding: 0.75rem; border: 1px solid var(--line); background: rgba(230,223,210,0.35); }
+.term-mini-track, .term-mini-pair, .term-mini-gate, .term-mini-loop { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.4rem; align-items: center; }
+.term-mini-track span, .term-mini-pair span, .term-mini-gate span, .term-mini-loop span { display: grid; min-height: 3.2rem; place-items: center; padding: 0.45rem; border-top: 0.25rem solid var(--teal); background: var(--paper-light); font: 0.65rem/1.25 "SFMono-Regular", Consolas, monospace; text-align: center; }
+.term-mini-track b, .term-mini-pair b, .term-mini-gate b, .term-mini-loop b { color: var(--accent-deep); font-size: 1.1rem; }
+.term-mini-chain, .term-mini-learning { grid-template-columns: 1fr auto 1fr auto 1fr auto 1.15fr; align-items: center; }
+.term-mini-candidate, .term-mini-authority { grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; }
+.term-mini-stop, .term-mini-origin { grid-template-columns: 1fr auto 1fr; align-items: center; }
+.term-mini-chain b, .term-mini-candidate b, .term-mini-authority b, .term-mini-learning b, .term-mini-stop b, .term-mini-stop strong, .term-mini-authority strong, .term-mini-learning strong, .term-mini-origin > span, .term-mini-origin > strong { display: grid; min-width: 0; min-height: 3rem; place-items: center; padding: 0.38rem; border-top: 0.24rem solid var(--teal); background: var(--paper-light); font: 700 0.58rem/1.2 "SFMono-Regular", Consolas, monospace; text-align: center; }
+.term-mini-chain i, .term-mini-candidate i, .term-mini-authority i, .term-mini-learning i, .term-mini-stop i, .term-mini-origin > i { color: var(--accent-deep); font-style: normal; font-weight: 800; text-align: center; }
+.term-mini-origin > span { grid-template-columns: repeat(3, 1fr); gap: 0.18rem; }
+.term-mini-origin > span b { font: 700 0.54rem "SFMono-Regular", Consolas, monospace; }
+.term-mini-baseline { display: flex; height: 5rem; align-items: end; gap: 0.45rem; }
+.term-mini-baseline i { display: block; flex: 1; height: var(--term-bar); min-height: 0.8rem; border-radius: 0.2rem 0.2rem 0 0; background: #b9cfcb; }
+.term-mini-baseline i.is-current { background: var(--purple); }
+.term-visual-text { margin: 0; color: var(--muted); font-size: 0.7rem; }
+.term-glossary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.term-glossary-card { display: grid; align-content: start; gap: 0.7rem; padding: 1rem; border: 1px solid var(--line); border-top: 0.32rem solid var(--teal); background: rgba(255,255,255,0.32); }
+.term-glossary-card h3, .term-glossary-card p { margin: 0; }
+.term-glossary-card .boundary { margin-top: auto; padding-top: 0.7rem; border-top: 1px solid var(--line); }
+.builder-glossary { margin-top: 1rem; }
+
+.opening-case { display: grid; grid-template-columns: minmax(15rem, 0.7fr) minmax(0, 1.3fr); gap: clamp(1rem, 3vw, 2.5rem); align-items: center; margin: clamp(1.7rem, 4vw, 3.4rem) 0; padding: clamp(1rem, 2.4vw, 1.6rem); border: 1px solid var(--line-strong); border-left: 0.38rem solid var(--accent); background: linear-gradient(120deg, rgba(210,110,69,0.07), rgba(39,127,126,0.05)); }
+.opening-case-copy h2 { max-width: 22ch; margin-bottom: 0.6rem; font-size: clamp(1.55rem, 2.5vw, 2.25rem); }
+.opening-case-copy p:last-child { margin-bottom: 0; color: var(--ink-soft); }
+.opening-case-track { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0.45rem; align-items: stretch; }
+.opening-case-track > span { display: grid; align-content: start; gap: 0.35rem; min-width: 0; min-height: 8.2rem; padding: 0.75rem; border-top: 0.32rem solid var(--teal); background: var(--paper-light); }
+.opening-case-track > span:nth-of-type(2) { border-top-color: var(--purple); }
+.opening-case-track > span:nth-of-type(3) { border-top-color: var(--ochre); }
+.opening-case-track > span > b { color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; }
+.opening-case-track > span > strong { font: 700 1rem/1.12 Georgia, "Times New Roman", serif; }
+.opening-case-track > span > small { color: var(--ink-soft); font-size: 0.7rem; line-height: 1.35; }
+.opening-case-track > i { align-self: center; color: var(--accent-deep); font-style: normal; font-size: 1.2rem; }
+.guided-cta { margin: 1rem 0 0; }
+.guided-cta a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.75rem; align-items: center; padding: 0.9rem 1rem; border: 1px solid var(--line-strong); background: rgba(255,255,255,0.28); color: var(--ink); text-decoration: none; }
+.guided-cta a:hover { border-color: var(--teal); background: rgba(39,127,126,0.06); }
+.guided-cta span { color: var(--ink-soft); font-size: 0.78rem; }
+.guided-cta b { color: var(--teal); font-size: 1.25rem; }
+
+/* The current map is deliberately line-free. Each band names its relationship
+   in text, so resize cannot detach a connector from the nodes it explains. */
+.map-canvas { position: static; display: grid; gap: 1rem; min-height: 0; overflow: visible; padding: clamp(0.85rem, 2vw, 1.35rem); }
+.relationship-connectors, .map-output-row, .map-learning, .map-canvas-label { display: none; }
+.map-node, .map-start, .map-family-grid, .map-record-row { position: static; inset: auto; top: auto; right: auto; bottom: auto; left: auto; width: auto; }
+.map-start { min-height: 0; padding: 0.9rem 1rem; border-top-width: 0.35rem; text-align: left; }
+.map-order-note { margin: 0; padding: 0.75rem 0.85rem; border-left: 0.28rem solid var(--purple); background: rgba(103,75,137,0.06); color: var(--ink-soft); font-size: 0.82rem; }
+.map-family-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.55rem; }
+.map-family-node { min-height: 10.2rem; }
+.map-record-tray { display: grid; grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 1fr); gap: 1rem; align-items: stretch; padding: 1rem; border: 1px solid var(--line); background: rgba(39,127,126,0.045); }
+.map-record-tray h3 { margin: 0.25rem 0 0.35rem; font-size: 1.35rem; }
+.map-record-tray p { margin: 0; color: var(--ink-soft); font-size: 0.78rem; }
+.map-record-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; }
+.map-record { display: grid; align-content: start; gap: 0.28rem; min-height: 5.6rem; padding: 0.7rem; border: 1px solid var(--line); border-top: 0.28rem solid var(--teal); background: var(--paper-light); }
+.map-record strong { font: 700 1rem/1.1 Georgia, "Times New Roman", serif; }
+.map-record small { color: var(--ink-soft); font-size: 0.68rem; line-height: 1.35; }
+.map-relationship-bands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
+.relationship-band { display: grid; align-content: start; gap: 0.5rem; min-width: 0; padding: 0.9rem; border: 1px solid var(--line); border-left: 0.3rem solid var(--teal); background: rgba(255,255,255,0.42); }
+.relationship-origin { border-left-color: var(--ochre); }
+.relationship-authority { border-left-color: var(--purple); }
+.relationship-learning { border-left-color: var(--blue); }
+.relationship-type { color: var(--muted); font: 0.56rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; }
+.relationship-band h4, .relationship-band p { margin: 0; }
+.relationship-band h4 { font-family: Georgia, "Times New Roman", serif; font-size: 1.16rem; line-height: 1.24; text-transform: none; }
+.relationship-band p { color: var(--ink-soft); font-size: 0.78rem; }
+.relationship-equation { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 0.4rem; align-items: center; margin-top: auto; padding-top: 0.65rem; border-top: 1px solid var(--line); }
+.relationship-equation span, .relationship-equation strong { font: 0.62rem/1.32 "SFMono-Regular", Consolas, monospace; }
+.relationship-equation strong { color: var(--ink); }
+.relationship-equation b { color: var(--accent-deep); font-size: 1rem; }
+.map-focus-detail dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.route-recommendation-card { border: 1px solid var(--navy); border-top: 0.45rem solid var(--purple); background: var(--paper-light); box-shadow: var(--shadow); }
+.recommendation-card-header { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; padding: 1rem 1.15rem 0.7rem; }
+.recommendation-card-kicker { color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; }
+.recommendation-level-badge { padding: 0.3rem 0.45rem; border: 1px solid var(--purple); color: var(--purple); font: 0.62rem "SFMono-Regular", Consolas, monospace; font-weight: 800; text-transform: uppercase; }
+.route-recommendation-card > h3, .route-recommendation-card > p { padding-inline: 1.15rem; }
+.route-recommendation-card > h3 { margin-top: 0.6rem; font-size: 1.8rem; }
+.route-recommendation-card > p { color: var(--ink-soft); font-size: 0.87rem; }
+.route-recommendation-card > section { padding: 1rem 1.15rem; border-top: 1px solid var(--line); }
+.route-recommendation-card > section > h4 { margin: 0 0 0.55rem; font-size: 1.05rem; }
+.recommendation-facts, .observed-state dl, .simulation-record { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; border: 1px solid var(--line); background: var(--line); }
+.recommendation-facts > div, .observed-state dl > div, .simulation-record > div { min-width: 0; padding: 0.7rem; background: var(--paper-light); }
+.recommendation-facts dt, .observed-state dt, .simulation-record dt { color: var(--muted); font: 0.56rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.recommendation-facts dd, .observed-state dd, .simulation-record dd { margin: 0.32rem 0 0; overflow-wrap: anywhere; font-size: 0.73rem; line-height: 1.38; }
+.recommendation-facts dd, .observed-state dd { font-family: "SFMono-Regular", Consolas, monospace; }
+.recommendation-status { margin: 0; padding-block: 0.8rem !important; border-top: 1px solid var(--line); background: rgba(103,75,137,0.06); font: 0.67rem "SFMono-Regular", Consolas, monospace !important; }
+.observed-state { background: rgba(39,127,126,0.045); }
+.observed-state dl > div:last-child { grid-column: 1 / -1; }
+.observed-state > p, .simulation-controls > p { color: var(--ink-soft); font-size: 0.77rem; }
+.simulation-controls h4 { font-family: Georgia, "Times New Roman", serif; font-size: 1.2rem !important; line-height: 1.2; text-transform: none; }
+.simulation-controls > div { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.75rem; }
+.simulation-controls button { min-height: 2.75rem; padding: 0.5rem 0.65rem; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; font: 0.62rem "SFMono-Regular", Consolas, monospace; }
+.simulation-controls button:hover { border-color: var(--purple); background: rgba(103,75,137,0.06); }
+.simulation-record { grid-template-columns: 1fr; }
+.static-plan { padding: 0.75rem; border-left: 0.25rem solid var(--teal); background: rgba(39,127,126,0.06); }
+
+.guided-route { width: min(100% - 2rem, var(--measure)); margin: 0 auto; padding: 0.4rem 0 clamp(3.4rem, 7vw, 6.5rem); border-top: 0; }
+.guided-index { position: sticky; z-index: 8; top: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; margin: 0 0 0.8rem; border: 1px solid var(--line); background: var(--line); }
+.guided-index a { display: grid; gap: 0.2rem; min-height: 3.6rem; padding: 0.55rem; background: var(--paper-light); color: var(--ink-soft); font-size: 0.66rem; text-decoration: none; }
+.guided-index a:hover, .guided-index a.is-current { background: #eef4f2; color: var(--ink); }
+.guided-index span { color: var(--teal); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; }
+.guided-section { margin-top: clamp(3rem, 7vw, 6rem); padding-top: 1rem; border-top: 1px solid var(--line-strong); scroll-margin-top: 5.5rem; }
+.guided-opening { margin-top: 2.5rem; }
+.guided-short { max-width: 46rem; margin: 2rem auto 0; }
+.guided-transition { margin: 1.4rem 0 0; font-weight: 800; }
+.guided-family-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.guided-family { display: grid; align-content: start; gap: 0.45rem; min-height: 15rem; padding: 0.9rem; border: 1px solid var(--line); border-top: 0.35rem solid var(--family); background: rgba(255,255,255,0.34); }
+.guided-family > span { color: var(--family); font: 0.62rem "SFMono-Regular", Consolas, monospace; font-weight: 800; }
+.guided-family h3, .guided-family p { margin: 0; }
+.guided-family h3 { font-size: 1.3rem; }
+.guided-family p { color: var(--ink); font: italic 0.92rem/1.35 Georgia, "Times New Roman", serif; }
+.guided-family small { color: var(--ink-soft); font-size: 0.73rem; line-height: 1.4; }
+.guided-family a { margin-top: auto; padding-top: 0.55rem; border-top: 1px solid var(--line); font-size: 0.72rem; font-weight: 800; }
+.guided-relation-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; }
+.guided-relation-strip span { display: grid; gap: 0.3rem; min-height: 5.2rem; padding: 0.7rem; border-top: 0.3rem solid var(--teal); background: rgba(39,127,126,0.06); }
+.guided-relation-strip span:nth-child(2) { border-top-color: var(--ochre); }
+.guided-relation-strip span:nth-child(3) { border-top-color: var(--purple); }
+.guided-relation-strip span:nth-child(4) { border-top-color: var(--blue); }
+.guided-relation-strip b { font: 700 1rem/1.1 Georgia, "Times New Roman", serif; }
+.guided-relation-strip small { color: var(--ink-soft); font-size: 0.7rem; }
+.guided-example-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.guided-example-grid article { padding: 0.9rem; border: 1px solid var(--line); background: rgba(255,255,255,0.34); }
+.guided-example-grid h3 { font-size: 1.15rem; }
+.guided-appendices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-top: 1rem; }
+.guided-appendices a { min-height: 2.75rem; padding: 0.65rem; border: 1px solid var(--line); background: var(--paper-light); font-size: 0.72rem; font-weight: 800; text-decoration: none; }
+
+.nav-more, .quiet-button, .family-focus, .map-family-node, .studio-submit, .simulation-controls button, .guided-index a { min-height: 2.75rem; }
+
+@media (min-width: 601px) and (max-width: 1100px) {
+  .map-family-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .map-record-tray { grid-template-columns: 1fr; }
+  .map-record-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .map-relationship-bands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guided-index { grid-template-columns: repeat(3, minmax(0, 1fr)); position: static; }
+  .guided-family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 820px) {
+  .opening-case { grid-template-columns: 1fr; }
+  .term-glossary-grid { grid-template-columns: 1fr; }
+  .simulation-record { grid-template-columns: 1fr; }
+  .guided-route { width: 100%; }
+  .guided-example-grid { grid-template-columns: 1fr; }
+  .guided-appendices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .hero, .home-section, .reading-route, .guided-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro { width: 100%; }
+  .term-help { position: static; }
+  .term-popover { position: static; width: 100%; margin-top: 0.55rem; box-shadow: none; }
+  .opening-case-track { grid-template-columns: 1fr; }
+  .opening-case-track > span { min-height: 0; }
+  .opening-case-track > i { justify-self: center; transform: rotate(90deg); }
+  .guided-cta a { grid-template-columns: 1fr auto; }
+  .guided-cta span { grid-column: 1; }
+  .guided-cta b { grid-column: 2; grid-row: 1 / 3; }
+  .map-canvas { padding: 0.7rem; }
+  .map-family-grid, .map-record-row, .map-relationship-bands { grid-template-columns: 1fr; }
+  .map-family-node { min-height: 0; }
+  .map-record-tray { grid-template-columns: 1fr; padding: 0.75rem; }
+  .relationship-equation { grid-template-columns: 1fr; }
+  .relationship-equation b { transform: rotate(90deg); justify-self: start; }
+  .map-focus-detail dl, .recommendation-facts, .observed-state dl { grid-template-columns: 1fr; }
+  .guided-index { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guided-family-grid, .guided-relation-strip { grid-template-columns: 1fr; }
+  .guided-family { min-height: 0; }
+}
+
+@media (max-width: 480px) {
+  .guided-index, .guided-appendices { grid-template-columns: 1fr; }
+}
+
+@media (forced-colors: active) {
+  .term-popover, .term-mini, .term-glossary-card, .opening-case, .opening-case-track > span, .map-order-note, .map-record-tray, .map-record, .relationship-band, .route-recommendation-card, .recommendation-facts, .observed-state dl, .simulation-record, .guided-index, .guided-family, .guided-relation-strip span, .guided-example-grid article, .guided-appendices a { border-color: CanvasText; background: Canvas; color: CanvasText; box-shadow: none; }
+  .term-help dfn { text-decoration-color: CanvasText; }
+  .term-popover-trigger, .simulation-controls button { border-color: ButtonText; background: ButtonFace; color: ButtonText; }
+}
+
+@media print {
+  .guided-route { width: 100%; }
+  .term-popover-trigger, .term-popover, .guided-index, [data-route-studio], [data-route-recommendation], .simulation-controls { display: none !important; }
+  .term-inline { color: #222; }
+  .opening-case, .map-canvas, .map-record-tray, .relationship-band, .guided-section, .guided-family, .guided-example-grid article { break-inside: avoid; box-shadow: none; }
+  .map-canvas { display: block; min-height: 0; }
+  .map-canvas > * { margin-bottom: 0.7rem; }
+  .map-family-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .map-record-tray { grid-template-columns: 1fr; }
+  .map-record-row, .map-relationship-bands { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .static-route-equivalent { display: block !important; }
+  .guided-family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 </style>
-  <noscript><style>.secondary-nav-wrap { display: block; }.nav-more { display: none; }</style></noscript>
+  <noscript><style>.secondary-nav-wrap { display: block; }.nav-more, [data-route-studio], [data-route-recommendation] { display: none !important; }.no-script-note { display: block !important; }</style></noscript>
 </head>
 <body id="standalone-export">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -636,7 +836,7 @@ main { overflow: visible; }
     </nav>
     <div class="secondary-nav-wrap" id="secondary-routes">
   <nav class="secondary-nav" aria-label="Secondary routes">
-    <a class="" href="#examples-examples">Examples</a><a class="" href="#boundaries-boundaries">Boundaries</a><a class="" href="#sources-sources">Sources</a><a class="" href="#research-research">Research</a><a class="" href="#history-history">History</a>
+    <a class="" href="#guided-guided">Guided read</a><a class="" href="#examples-examples">Examples</a><a class="" href="#boundaries-boundaries">Boundaries</a><a class="" href="#sources-sources">Sources</a><a class="" href="#research-research">Research</a><a class="" href="#history-history">History</a>
   </nav></div>
   </header>
   <main id="main" tabindex="-1">
@@ -649,7 +849,7 @@ main { overflow: visible; }
       <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
       <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
       <p class="orientation-label orientation-label-secondary">Then, if useful</p>
-      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      <a class="orientation-link orientation-guided" href="#guided-guided"><span class="orientation-number">G</span><span>Guided read</span></a><a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
     </nav>
     <p class="orientation-next"><span>Next</span><a href="#read-read-idea">Read the idea <span aria-hidden="true">→</span></a></p>
   </aside>
@@ -664,7 +864,7 @@ main { overflow: visible; }
         <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
         <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
         <p class="orientation-label orientation-label-secondary">Then, if useful</p>
-        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+        <a class="orientation-link orientation-guided" href="#guided-guided"><span class="orientation-number">G</span><span>Guided read</span></a><a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
       </nav>
       <p class="orientation-mobile-next"><span>Next:</span> <a href="#read-read-idea">Read the idea <span aria-hidden="true">→</span></a></p>
     </div>
@@ -679,7 +879,13 @@ main { overflow: visible; }
       <h2>AI slop often begins before the model writes a word.</h2>
       <p class="standfirst">A polished answer can still feel generic when the system follows the obvious search path, misses a specialist perspective, skips a useful comparison, overlooks an expected absence, or forgets what happened before. The answer inherits those upstream choices. Pattern Recognition is the discipline of improving them.</p>
       <p class="hero-bridge">This is a broad proposal about the room before the answer: what gets noticed, compared, preserved, questioned, and allowed to shape generation.</p>
+      <p class="hero-term-line"><span class="term-help" data-term-help><dfn>upstream choices</dfn><span class="term-inline"> — choices made before the model writes, including what is collected, compared, retained, and trusted</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="home-term-popover-home-upstream">See it</button><span class="term-popover" id="home-term-popover-home-upstream" role="note" hidden><strong>upstream choices</strong><span>Generation inherits these choices. A polished answer cannot recover a perspective that was never sought or a comparison that was never made.</span><span class="term-mini term-mini-chain" aria-hidden="true"><b>notice</b><i>→</i><b>compare</b><i>→</i><b>preserve</b><i>→</i><b>answer</b></span><span class="term-visual-text">Choices about noticing, comparison, and memory occur before the answer.</span><span class="term-popover-boundary"><b>Boundary:</b> Better inputs do not remove uncertainty or human judgment.</span><a href="#map-term-upstream-choices">Open the glossary entry</a></span></span></p>
     </div>
+
+  <aside class="opening-case" aria-labelledby="home-home-case-heading">
+    <div class="opening-case-copy"><p class="eyebrow">A QUICK EXAMPLE</p><h3 id="home-home-case-heading">A product release can look strong until the room changes.</h3><p>The obvious search finds familiar coverage. A better pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks happen before prose.</p></div>
+    <div class="opening-case-track" aria-label="A familiar search is widened, compared with a baseline, and checked for an expected absence"><span><b>01</b><strong>Familiar coverage</strong><small>the default path</small></span><i aria-hidden="true">→</i><span><b>02</b><strong>Earlier releases</strong><small><span class="term-help" data-term-help><dfn>baseline</dfn><span class="term-inline"> — an earlier or expected state used to judge change or absence</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="home-term-popover-home-case-baseline">See it</button><span class="term-popover" id="home-term-popover-home-case-baseline" role="note" hidden><strong>baseline</strong><span>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</span><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><span class="term-popover-boundary"><b>Boundary:</b> One convenient comparison is not automatically a fair baseline.</span><a href="#map-term-baseline">Open the glossary entry</a></span></span></small></span><i aria-hidden="true">→</i><span><b>03</b><strong>Missing fields</strong><small>monitoring + rollback owner</small></span></div>
+  </aside>
     <nav class="door-grid" aria-label="Three principal doors">
       <a class="door-card door-read" href="#read-read-idea">
     <span class="door-topline"><span class="door-number">01</span><span class="door-mode">follow the thread</span></span>
@@ -701,16 +907,17 @@ main { overflow: visible; }
     <span class="door-arrow" aria-hidden="true">↗</span>
   </a>
     </nav>
+    <p class="guided-cta"><a href="#guided-guided"><strong>Take the guided read</strong><span>One continuous path through the idea, map, and smallest useful application · approximately 8–12 minutes</span><b aria-hidden="true">→</b></a></p>
   </section>
 
   <section class="home-section home-short" aria-labelledby="home-short-entry-heading">
     <div class="section-heading"><p class="eyebrow">A CUMULATIVE 60–90 SECOND ENTRY</p><h3 id="home-short-entry-heading">The idea before the machinery.</h3><p>Start here if you want the broad proposition in one sitting. The longer piece remains a human thought piece, not a protocol preamble.</p></div>
     <div class="short-entry reading-column"><h4 id="home-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
-<p>AI answers can sound generic before the model writes a word. The weakness may be upstream: the search followed the obvious path, familiar sources crowded out a specialist perspective, no one compared the case with a useful peer or baseline, an expected piece of information was missing, or the system had no memory of what happened before. The answer inherits those choices.</p>
-<p>Pattern Recognition is the discipline of improving them. The Discrimination Layer names the responsibility for deciding what the system should notice, acquire, compare, preserve, question, and allow to influence an answer—and for making those choices visible enough to correct. Here “discrimination” means differentiating among information candidates and possible next actions, not classifying people; “layer” means a responsibility, not a mandatory architecture.</p>
-<p>The six families are: look beyond the default path for a peripheral signal; weigh sources by their role and support for this exact claim; notice velocity against a meaningful baseline; notice expected absences while preserving versioned memory; compare peers, periods, and structures without forcing false equivalence; and learn from defined outcomes without rewriting history.</p>
-<p>Peripheral material is a candidate for inspection, not a truth signal. Repeated reports are observations, not automatically separate confirmation. Access is not permission, and knowing where something came from does not prove it is correct. People still make the judgment and keep authority for consequential action.</p>
-<p>Sometimes this needs only a short note naming the decision and assumptions. Higher-stakes work may merit a reviewable evidence record, clear cost and stopping rules, and a person who can correct the route. Low-stakes rewrites and obvious transformations may need almost none. The proposal is broader than origin counting and narrower than a claim to replace expertise. It asks us to improve the room before we ask AI to make the room sound finished.</p></div>
+<p>An AI answer can sound polished yet be generic because weakness can begin before writing. Ask a system to assess a product release. The obvious search finds familiar coverage. A stronger pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks do not decide the answer; they improve the information available to it.</p>
+<p>Pattern Recognition makes those upstream choices deliberate and correctable. Its six families ask:</p>
+<ol><li>What might the obvious path have missed?</li><li>What can each source actually support?</li><li>What is changing against a useful baseline?</li><li>What expected information is missing, and what should memory preserve?</li><li>What appears when peers, periods, structures, or origins are compared?</li><li>After a defined outcome, what bounded update should be proposed?</li></ol>
+<p>The Discrimination Layer names that responsibility: deciding what the system should notice, compare, preserve, question, and allow to shape an answer. It is not mandatory software. Peripheral material is a candidate for inspection, not a truth signal. Repetition is not automatically independent confirmation. Technical access is not permission. People retain judgment and authority for consequential action.</p>
+<p>A supplied-text rewrite may need almost none of this. Higher-stakes work may need an evidence record, cost limit, planned stopping condition, and human checkpoint. This is a design proposal, not a settled empirical result or a replacement for expertise. The aim is to improve the room before asking AI to make it sound finished.</p></div>
     <a class="text-link" href="#read-read-idea">Continue into the complete thought piece <span aria-hidden="true">→</span></a>
   </section>
   <section class="home-section map-preview" aria-labelledby="home-map-preview-heading">
@@ -727,7 +934,7 @@ main { overflow: visible; }
     <div class="section-heading"><p class="eyebrow">LATER, IF IT HELPS</p><h3 id="home-late-context-heading">Examples, boundaries, sources, research, and history.</h3><p>These routes deepen the idea after the principal doors. They include a bounded Signal Foundry illustration, the separate unrun Echo project, and the recovered v13 origin map.</p></div>
 
   <nav class="secondary-nav" aria-label="Secondary routes">
-    <a class="" href="#examples-examples">Examples</a><a class="" href="#boundaries-boundaries">Boundaries</a><a class="" href="#sources-sources">Sources</a><a class="" href="#research-research">Research</a><a class="" href="#history-history">History</a>
+    <a class="" href="#guided-guided">Guided read</a><a class="" href="#examples-examples">Examples</a><a class="" href="#boundaries-boundaries">Boundaries</a><a class="" href="#sources-sources">Sources</a><a class="" href="#research-research">Research</a><a class="" href="#history-history">History</a>
   </nav>
   </section>
       </section>
@@ -735,7 +942,7 @@ main { overflow: visible; }
         <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 01</p><h2>Read the idea</h2><p class="route-lede">Continue the coffee conversation: why choices made before generation shape what an answer can become.</p></section>
 
 
-  <section class="reading-route" id="read-read-idea">
+  <section class="reading-route" id="read-read-idea" data-reading-route>
     <div class="route-brief" aria-label="How to use the Read route"><span><strong>What this is</strong> A human thought piece about upstream choices.</span><span><strong>What you can do</strong> Start short, then read deep.</span><span><strong>Next</strong> Explore the six-family map.</span></div>
     <nav class="reading-index" aria-label="Reading path">
       <a class="is-current" data-reading-link href="#read-read-quick"><span>01</span><strong>Enter in 60–90 seconds</strong></a>
@@ -745,11 +952,11 @@ main { overflow: visible; }
     <div class="reading-progress-wrap"><span>Reading progress</span><div class="reading-progress" data-reading-progress role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><span data-reading-progress-value>0%</span></div>
     <blockquote class="pull-quote"><p>“The answer inherits those upstream choices.”</p><cite>Frozen v16 standfirst</cite></blockquote>
     <section class="short-entry reading-column reading-section" id="read-read-quick" data-reading-section aria-labelledby="read-read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h3 id="read-read-short-heading">The broad idea first.</h3><h4 id="read-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
-<p>AI answers can sound generic before the model writes a word. The weakness may be upstream: the search followed the obvious path, familiar sources crowded out a specialist perspective, no one compared the case with a useful peer or baseline, an expected piece of information was missing, or the system had no memory of what happened before. The answer inherits those choices.</p>
-<p>Pattern Recognition is the discipline of improving them. The Discrimination Layer names the responsibility for deciding what the system should notice, acquire, compare, preserve, question, and allow to influence an answer—and for making those choices visible enough to correct. Here “discrimination” means differentiating among information candidates and possible next actions, not classifying people; “layer” means a responsibility, not a mandatory architecture.</p>
-<p>The six families are: look beyond the default path for a peripheral signal; weigh sources by their role and support for this exact claim; notice velocity against a meaningful baseline; notice expected absences while preserving versioned memory; compare peers, periods, and structures without forcing false equivalence; and learn from defined outcomes without rewriting history.</p>
-<p>Peripheral material is a candidate for inspection, not a truth signal. Repeated reports are observations, not automatically separate confirmation. Access is not permission, and knowing where something came from does not prove it is correct. People still make the judgment and keep authority for consequential action.</p>
-<p>Sometimes this needs only a short note naming the decision and assumptions. Higher-stakes work may merit a reviewable evidence record, clear cost and stopping rules, and a person who can correct the route. Low-stakes rewrites and obvious transformations may need almost none. The proposal is broader than origin counting and narrower than a claim to replace expertise. It asks us to improve the room before we ask AI to make the room sound finished.</p></section>
+<p>An AI answer can sound polished yet be generic because weakness can begin before writing. Ask a system to assess a product release. The obvious search finds familiar coverage. A stronger pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks do not decide the answer; they improve the information available to it.</p>
+<p>Pattern Recognition makes those upstream choices deliberate and correctable. Its six families ask:</p>
+<ol><li>What might the obvious path have missed?</li><li>What can each source actually support?</li><li>What is changing against a useful baseline?</li><li>What expected information is missing, and what should memory preserve?</li><li>What appears when peers, periods, structures, or origins are compared?</li><li>After a defined outcome, what bounded update should be proposed?</li></ol>
+<p>The Discrimination Layer names that responsibility: deciding what the system should notice, compare, preserve, question, and allow to shape an answer. It is not mandatory software. Peripheral material is a candidate for inspection, not a truth signal. Repetition is not automatically independent confirmation. Technical access is not permission. People retain judgment and authority for consequential action.</p>
+<p>A supplied-text rewrite may need almost none of this. Higher-stakes work may need an evidence record, cost limit, planned stopping condition, and human checkpoint. This is a design proposal, not a settled empirical result or a replacement for expertise. The aim is to improve the room before asking AI to make it sound finished.</p></section>
     <section class="essay-section reading-section" id="read-read-essay" data-reading-section aria-labelledby="read-complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h3 id="read-complete-essay-heading">Pattern Recognition: The Discrimination Layer</h3><p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p></div><article class="reading-column essay-content"><h3 id="read-essay-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h3>
 <h4 id="read-essay-what-an-ai-system-should-notice-before-it-writes">What an AI system should notice before it writes</h4>
 <p>Some AI answers are wrong in an obvious way. More unsettling are the answers that are polished, reasonable, and strangely familiar. They sound as if the system found the same few articles everyone else found, asked the same safe question, and returned the same middle-of-the-road summary. The words are competent. The work still feels generic.</p>
@@ -844,57 +1051,34 @@ main { overflow: visible; }
   <section class="topology-section" id="map-current-map" aria-labelledby="map-topology-heading">
     <div class="section-heading">
       <p class="eyebrow">CURRENT V16 RELATIONSHIP VIEW</p>
-      <h3 id="map-topology-heading">A connected movement, not a mandatory pipeline.</h3>
-      <p>The map starts with a real decision and permission envelope, widens and weighs what enters, compares motion and gaps, routes a bounded response, preserves influence, and lets later learning loop back without rewriting history. The relationships are a teaching aid, not an instruction to run every family.</p>
+      <h3 id="map-topology-heading">Six connected responsibilities. No required starting order.</h3>
+      <p>Enter through whichever question the decision requires. The map shows four relationships that matter—baseline, common origin, human authority, and conditional learning—without pretending every task must move through the same sequence.</p>
     </div>
     <figure class="relationship-map" aria-labelledby="map-topology-caption">
       <div class="map-canvas" data-map-stage>
-        <svg class="relationship-connectors" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M500 84 C430 120 190 125 86 196" data-map-edge="F1"></path>
-          <path d="M500 84 C450 124 315 136 245 196" data-map-edge="F2"></path>
-          <path d="M500 84 C484 135 416 154 403 196" data-map-edge="F3"></path>
-          <path d="M500 84 C516 135 585 154 561 196" data-map-edge="F4"></path>
-          <path d="M500 84 C550 124 688 136 719 196" data-map-edge="F5"></path>
-          <path d="M500 84 C570 120 810 125 880 196" data-map-edge="F6"></path>
-          <path d="M86 292 C166 332 262 340 338 364" data-map-edge="F1-record"></path>
-          <path d="M245 292 C278 330 314 342 382 364" data-map-edge="F2-record"></path>
-          <path d="M403 292 C405 330 414 342 426 364" data-map-edge="F3-record"></path>
-          <path d="M561 292 C548 330 532 342 514 364" data-map-edge="F4-record"></path>
-          <path d="M719 292 C682 330 635 342 558 364" data-map-edge="F5-record"></path>
-          <path d="M880 292 C792 332 726 340 602 364" data-map-edge="F6-record"></path>
-          <path d="M500 456 C500 488 500 500 500 528" data-map-edge="route"></path>
-          <path d="M628 574 C744 620 792 574 744 526" data-map-edge="learning"></path>
-          <path d="M744 526 C720 490 656 482 612 506" data-map-edge="learning-back"></path>
-        </svg>
-        <div class="map-canvas-label map-label-top">frame the decision <span aria-hidden="true">↓</span> widen the field <span aria-hidden="true">↓</span> weigh the relation</div>
-        <div class="map-node map-start"><span class="node-kicker">STARTING QUESTION</span><strong>Decision brief + permission envelope</strong><small>real decision · audience · consequence · budget · allowed operations</small></div>
+        <div class="map-node map-start"><span class="node-kicker">SHARED ANCHOR</span><strong>Frame the real decision and permission boundary.</strong><small>audience · consequence · useful outcome · cost · allowed operations</small></div>
+        <p class="map-order-note"><strong>No required order:</strong> F1–F6 are questions you may enter through in different combinations. Their identifiers preserve the historical family map; they are not steps.</p>
         <div class="map-family-grid" aria-label="Six current v16 families in order"><button type="button" class="map-family-node family-f1" data-map-family="F1" data-map-name="Peripheral signal" data-map-question="What might the default path have overlooked?" data-map-inputs="default path + peripheral candidate" data-map-comparison="prominence, specialist relevance, and what the default path omitted" data-map-records="candidate source role + disconfirmation note" data-map-boundary="underweighted is a reason to inspect, not a reason to believe" data-map-connections="widens the field before F2 weighs it" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F1</span><strong>Peripheral signal</strong><span class="map-family-question">What might the default path have overlooked?</span><span class="map-family-connection">widens the field before F2 weighs it</span></button><button type="button" class="map-family-node family-f2" data-map-family="F2" data-map-name="Source weighing" data-map-question="What role does each source play for this exact claim?" data-map-inputs="claim + source identity + source role" data-map-comparison="support, challenge, relevance, origin, and permission" data-map-records="evidence register + typed source relationship" data-map-boundary="recurrence is not independent corroboration" data-map-connections="weighs F1 candidates and feeds F5 comparisons" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F2</span><strong>Source weighing</strong><span class="map-family-question">What role does each source play for this exact claim?</span><span class="map-family-connection">weighs F1 candidates and feeds F5 comparisons</span></button><button type="button" class="map-family-node family-f3" data-map-family="F3" data-map-name="Velocity / motion" data-map-question="What is changing unusually relative to a relevant baseline?" data-map-inputs="comparable observations + time window" data-map-comparison="current movement against a relevant baseline" data-map-records="velocity note + measurement caveat" data-map-boundary="one observation is not velocity" data-map-connections="adds motion context before a route is chosen" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F3</span><strong>Velocity / motion</strong><span class="map-family-question">What is changing unusually relative to a relevant baseline?</span><span class="map-family-connection">adds motion context before a route is chosen</span></button><button type="button" class="map-family-node family-f4" data-map-family="F4" data-map-name="Absence + memory" data-map-question="What should be present but is not, and what prior context changes the meaning of now?" data-map-inputs="explicit expectation + prior context" data-map-comparison="what should be present against what is present" data-map-records="gap record + versioned memory" data-map-boundary="a gap is not proof of nonexistence" data-map-connections="absence depends on a baseline and memory" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F4</span><strong>Absence + memory</strong><span class="map-family-question">What should be present but is not, and what prior context changes the meaning of now?</span><span class="map-family-connection">absence depends on a baseline and memory</span></button><button type="button" class="map-family-node family-f5" data-map-family="F5" data-map-name="Structured patterns" data-map-question="What becomes visible through explicit comparison?" data-map-inputs="named peers, periods, structures, or origins" data-map-comparison="recurrence, difference, missing perspective, and common pathways" data-map-records="comparison matrix + origin note" data-map-boundary="common-origin recurrence keeps independence UNKNOWN" data-map-connections="makes F2 relationships and F6 updates inspectable" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F5</span><strong>Structured patterns</strong><span class="map-family-question">What becomes visible through explicit comparison?</span><span class="map-family-connection">makes F2 relationships and F6 updates inspectable</span></button><button type="button" class="map-family-node family-f6" data-map-family="F6" data-map-name="Learning loop" data-map-question="What did we expect, what happened, and what bounded update is justified?" data-map-inputs="recorded expectation + later outcome" data-map-comparison="what happened, what it cost, and what remains confounded" data-map-records="outcome review + bounded update proposal" data-map-boundary="a later outcome does not rewrite the old record" data-map-connections="loops later learning back to the next decision" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F6</span><strong>Learning loop</strong><span class="map-family-question">What did we expect, what happened, and what bounded update is justified?</span><span class="map-family-connection">loops later learning back to the next decision</span></button></div>
-        <div class="map-record-row" aria-label="Supporting records">
-          <div class="map-node map-record"><span class="node-kicker">NOTICE</span><strong>Evidence + capture</strong><small>what entered, what failed, what remains unknown</small></div>
-          <div class="map-node map-record"><span class="node-kicker">WEIGH</span><strong>Source role + claim</strong><small>support, challenge, relevance, origin, permission</small></div>
-          <div class="map-node map-record"><span class="node-kicker">COMPARE</span><strong>Baseline + gap + origin</strong><small>motion, expected absence, peers, common pathways</small></div>
-          <div class="map-node map-record"><span class="node-kicker">REMEMBER</span><strong>Versioned context</strong><small>dated memory stays visible; history is not overwritten</small></div>
-        </div>
-        <div class="map-output-row">
-          <div class="map-node map-baseline"><span class="node-kicker">F4 DEPENDENCY</span><strong>Baseline → absence + memory</strong><small>what should be present must be stated before a gap can be interpreted</small></div>
-          <div class="map-node map-route"><span class="node-kicker">ROUTE / STOP</span><strong>ACQUIRE · COMPARE · CLARIFY</strong><small>or HOLD · DEFER · ESCALATE · REFUSE when the route or authority requires it</small></div>
-          <div class="map-node map-human"><span class="node-kicker">GENERATION + AUTHORITY</span><strong>Influence receipt → human disposition</strong><small>selected material can shape an answer; a person may hold, correct, or override</small></div>
-        </div>
-        <div class="map-node map-learning"><span class="node-kicker">F6 LEARNING LOOP</span><strong>expect → outcome → bounded update</strong><small>later learning returns to the next decision without turning an outcome into proof</small><span class="map-loop-mark" aria-hidden="true">↺</span></div>
-        <div class="map-canvas-label map-label-bottom">The loop changes the next brief; it does not rewrite the evidence behind the last one.</div>
+        <section class="map-record-tray" aria-labelledby="map-map-records-heading"><div><span class="node-kicker">OPTIONAL SHARED RECORDS</span><h4 id="map-map-records-heading">Create only the records the decision warrants.</h4><p>No family owns exactly one record, and an ordinary supplied-material task may need none of these.</p></div><div class="map-record-row"><div class="map-record"><strong>Notice</strong><small>what entered, failed, or remains unknown</small></div><div class="map-record"><strong>Weigh</strong><small>source role, claim support, relevance, origin, permission</small></div><div class="map-record"><strong>Compare</strong><small>baseline, peer, period, structure, common pathway</small></div><div class="map-record"><strong>Remember</strong><small>dated context and corrections without overwritten history</small></div></div></section>
+        <section class="map-relationship-bands" aria-labelledby="map-key-relationships-heading"><h4 id="map-key-relationships-heading" class="sr-only">Four key relationships</h4>
+          <article class="relationship-band relationship-baseline"><span class="relationship-type">REQUIRES A BASELINE</span><h5><span class="term-help" data-term-help><dfn>baseline</dfn><span class="term-inline"> — an earlier or expected state used to judge change or absence</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="map-term-popover-map-baseline">See it</button><span class="term-popover" id="map-term-popover-map-baseline" role="note" hidden><strong>baseline</strong><span>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</span><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><span class="term-popover-boundary"><b>Boundary:</b> One convenient comparison is not automatically a fair baseline.</span><a href="#map-term-baseline">Open the glossary entry</a></span></span></h5><p>An expected or earlier state must be named before F3 can call something motion or F4 can call something missing.</p><div class="relationship-equation" aria-label="Baseline informs velocity and expected absence"><span>earlier / expected state</span><b aria-hidden="true">→</b><strong>F3 motion · F4 absence</strong></div></article>
+          <article class="relationship-band relationship-origin"><span class="relationship-type">CAN REVEAL A SHARED PATH</span><h5><span class="term-help" data-term-help><dfn>common origin</dfn><span class="term-inline"> — several reports ultimately tracing to the same underlying source</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="map-term-popover-map-origin">See it</button><span class="term-popover" id="map-term-popover-map-origin" role="note" hidden><strong>common origin</strong><span>Repeated observations may still matter, but repetition from one source pathway is not the same as independent support.</span><span class="term-mini term-mini-origin" aria-hidden="true"><span><b>R1</b><b>R2</b><b>R3</b></span><i>→</i><strong>one source</strong></span><span class="term-visual-text">Several reports converge on one known source pathway rather than three established independent roots.</span><span class="term-popover-boundary"><b>Boundary:</b> Common origin does not make the underlying claim false; independence stays unknown until established.</span><a href="#map-term-common-origin">Open the glossary entry</a></span></span></h5><p>F2 weighs source roles while F5 compares relationships. Repeated reports may converge on one source without becoming independent support.</p><div class="relationship-equation" aria-label="Source weighing and structured comparison reveal a possible common origin"><span>F2 source roles + F5 comparison</span><b aria-hidden="true">→</b><strong>known, separate, or unknown origin</strong></div></article>
+          <article class="relationship-band relationship-authority"><span class="relationship-type">CONSTRAINS INFLUENCE</span><h5><span class="term-help" data-term-help><dfn>human authority</dfn><span class="term-inline"> — the person who may approve, hold, correct, override, or reject consequential use</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="map-term-popover-map-authority">See it</button><span class="term-popover" id="map-term-popover-map-authority" role="note" hidden><strong>human authority</strong><span>The system may prepare evidence or a recommendation. It cannot record the person’s decision before that person actually makes it.</span><span class="term-mini term-mini-authority" aria-hidden="true"><b>evidence</b><i>→</i><b>recommendation</b><i>⇢</i><strong>person decides</strong></span><span class="term-visual-text">Evidence may shape a recommendation; a separate person approves, holds, corrects, or rejects consequential use.</span><span class="term-popover-boundary"><b>Boundary:</b> Technical access and model confidence do not grant authority.</span><a href="#map-term-human-authority">Open the glossary entry</a></span></span></h5><p>Permission limits what may enter. Evidence may shape a recommendation; a separate person may approve, hold, correct, or reject consequential use.</p><div class="relationship-equation" aria-label="Permission and human authority constrain influence"><span>permitted evidence → recommendation</span><b aria-hidden="true">⇢</b><strong>person decides</strong></div></article>
+          <article class="relationship-band relationship-learning"><span class="relationship-type">MAY UPDATE AFTER AN OUTCOME</span><h5><span class="term-help" data-term-help><dfn>learning loop</dfn><span class="term-inline"> — reviewing a later outcome against a recorded expectation before proposing one limited change</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="map-term-popover-map-learning">See it</button><span class="term-popover" id="map-term-popover-map-learning" role="note" hidden><strong>learning loop</strong><span>The original expectation and evidence remain preserved. A later review may propose an update for human disposition.</span><span class="term-mini term-mini-learning" aria-hidden="true"><b>expectation</b><i>→</i><b>outcome</b><i>→</i><b>review</b><i>↺</i><strong>proposed update</strong></span><span class="term-visual-text">A recorded expectation is compared with an observed outcome before a limited update is proposed.</span><span class="term-popover-boundary"><b>Boundary:</b> An outcome does not silently rewrite history or prove causation.</span><a href="#map-term-learning-loop">Open the glossary entry</a></span></span></h5><p>F6 compares a recorded expectation with an observed outcome. A reviewed update may inform the next brief without rewriting the last one.</p><div class="relationship-equation" aria-label="An observed outcome is reviewed before an update is proposed"><span>expectation → outcome → review</span><b aria-hidden="true">↺</b><strong>proposed update for the next brief</strong></div></article>
+        </section>
       </div>
-      <figcaption id="map-topology-caption" class="relationship-caption"><strong>Current v16 topology.</strong> Six families stay in view as connected responsibilities around a bounded, human-correctable route. The dashed loop is later learning, not an automatic policy update.</figcaption>
+      <figcaption id="map-topology-caption" class="relationship-caption"><strong>Current v16 relationship map.</strong> The six families remain available in any useful order. The four bands show limited relationships, not an automatic pipeline or a claim that every task needs every record.</figcaption>
     </figure>
-    <aside class="map-focus-detail" id="map-map-focus-detail" aria-live="polite" aria-atomic="true">
-      <div><p class="eyebrow">MAP INSPECTION</p><h4 data-map-focus-title>All six families remain in view.</h4><p data-map-focus-question>Choose a family to inspect its question, inputs, comparison, boundary, record, and adjacent connections. Focus adds emphasis; it never hides essential meaning.</p></div>
-      <dl><div><dt>Inputs</dt><dd data-map-focus-inputs>decision brief, permission, evidence, baselines, gaps, comparisons, and outcomes</dd></div><div><dt>Record</dt><dd data-map-focus-record>the route keeps observation, interpretation, recommendation, and human disposition distinct</dd></div><div><dt>Boundary</dt><dd data-map-focus-boundary>unknown relations stay unknown; human authority remains explicit</dd></div></dl>
-      <p class="map-focus-status" data-map-focus-status>All six families are available for comparison.</p>
+    <aside class="map-focus-detail" id="map-map-focus-detail">
+      <div><p class="eyebrow">MAP INSPECTION</p><h4 data-map-focus-title>All six families remain in view.</h4><p>Choose a family to inspect its six fields. Focus adds emphasis; it never hides essential meaning.</p></div>
+      <dl><div><dt>Question</dt><dd data-map-focus-question>Choose a family to inspect it. Focus adds emphasis; it never hides essential meaning.</dd></div><div><dt>Inputs</dt><dd data-map-focus-inputs>decision, permission, evidence, baselines, gaps, comparisons, or observed outcomes</dd></div><div><dt>Compare</dt><dd data-map-focus-comparison>the comparison changes with the family; no single score governs the map</dd></div><div><dt>Record</dt><dd data-map-focus-record>records are created only when the task warrants them</dd></div><div><dt>Boundary</dt><dd data-map-focus-boundary>unknown relations stay unknown; candidates do not become truth by status</dd></div><div><dt>Connections</dt><dd data-map-focus-connections>baseline, common-origin, influence-gate, and conditional-learning relationships remain explicit</dd></div></dl>
+      <p class="map-focus-status" data-map-focus-status role="status" aria-live="polite" aria-atomic="true">All six families are available for comparison.</p>
     </aside>
     <details class="map-text-equivalent" open>
       <summary>Text equivalent: how the current v16 map connects</summary>
-      <p>Read the visual from the starting question through the six family questions, supporting records, bounded route, generation boundary, and learning loop. The family list below is the complete accessible equivalent.</p>
-      <ol><li><strong>F1 · Peripheral signal</strong><span>What might the default path have overlooked?</span><small>Inputs: default path + peripheral candidate. Compare: prominence, specialist relevance, and what the default path omitted. Record: candidate source role + disconfirmation note. Boundary: underweighted is a reason to inspect, not a reason to believe.</small></li><li><strong>F2 · Source weighing</strong><span>What role does each source play for this exact claim?</span><small>Inputs: claim + source identity + source role. Compare: support, challenge, relevance, origin, and permission. Record: evidence register + typed source relationship. Boundary: recurrence is not independent corroboration.</small></li><li><strong>F3 · Velocity / motion</strong><span>What is changing unusually relative to a relevant baseline?</span><small>Inputs: comparable observations + time window. Compare: current movement against a relevant baseline. Record: velocity note + measurement caveat. Boundary: one observation is not velocity.</small></li><li><strong>F4 · Absence + memory</strong><span>What should be present but is not, and what prior context changes the meaning of now?</span><small>Inputs: explicit expectation + prior context. Compare: what should be present against what is present. Record: gap record + versioned memory. Boundary: a gap is not proof of nonexistence.</small></li><li><strong>F5 · Structured patterns</strong><span>What becomes visible through explicit comparison?</span><small>Inputs: named peers, periods, structures, or origins. Compare: recurrence, difference, missing perspective, and common pathways. Record: comparison matrix + origin note. Boundary: common-origin recurrence keeps independence UNKNOWN.</small></li><li><strong>F6 · Learning loop</strong><span>What did we expect, what happened, and what bounded update is justified?</span><small>Inputs: recorded expectation + later outcome. Compare: what happened, what it cost, and what remains confounded. Record: outcome review + bounded update proposal. Boundary: a later outcome does not rewrite the old record.</small></li></ol>
-      <p><strong>Across the map:</strong> F4's absence claim depends on an explicit baseline and retained memory. F2/F5 can surface common-origin recurrence, but independence remains <code>UNKNOWN</code>. F6 compares a recorded expectation with a later outcome and proposes a bounded update for human disposition.</p>
+      <p>Start with the real decision and permission boundary, then use any family question that can materially improve the information environment. There is no required family order. The family list and four relationship statements below are the complete text equivalent.</p>
+      <ol><li><strong>F1 · Peripheral signal</strong><span>What might the default path have overlooked?</span><small>Inputs: default path + peripheral candidate. Compare: prominence, specialist relevance, and what the default path omitted. Record: candidate source role + disconfirmation note. Boundary: underweighted is a reason to inspect, not a reason to believe. Connections: widens the field before F2 weighs it.</small></li><li><strong>F2 · Source weighing</strong><span>What role does each source play for this exact claim?</span><small>Inputs: claim + source identity + source role. Compare: support, challenge, relevance, origin, and permission. Record: evidence register + typed source relationship. Boundary: recurrence is not independent corroboration. Connections: weighs F1 candidates and feeds F5 comparisons.</small></li><li><strong>F3 · Velocity / motion</strong><span>What is changing unusually relative to a relevant baseline?</span><small>Inputs: comparable observations + time window. Compare: current movement against a relevant baseline. Record: velocity note + measurement caveat. Boundary: one observation is not velocity. Connections: adds motion context before a route is chosen.</small></li><li><strong>F4 · Absence + memory</strong><span>What should be present but is not, and what prior context changes the meaning of now?</span><small>Inputs: explicit expectation + prior context. Compare: what should be present against what is present. Record: gap record + versioned memory. Boundary: a gap is not proof of nonexistence. Connections: absence depends on a baseline and memory.</small></li><li><strong>F5 · Structured patterns</strong><span>What becomes visible through explicit comparison?</span><small>Inputs: named peers, periods, structures, or origins. Compare: recurrence, difference, missing perspective, and common pathways. Record: comparison matrix + origin note. Boundary: common-origin recurrence keeps independence UNKNOWN. Connections: makes F2 relationships and F6 updates inspectable.</small></li><li><strong>F6 · Learning loop</strong><span>What did we expect, what happened, and what bounded update is justified?</span><small>Inputs: recorded expectation + later outcome. Compare: what happened, what it cost, and what remains confounded. Record: outcome review + bounded update proposal. Boundary: a later outcome does not rewrite the old record. Connections: loops later learning back to the next decision.</small></li></ol>
+      <ul><li><strong>Baseline:</strong> F3 motion and F4 absence require a relevant earlier or expected state.</li><li><strong>Common origin:</strong> F2 source weighing and F5 structured comparison may show that repeated items share one pathway; independence remains <code>UNKNOWN</code> until established.</li><li><strong>Influence:</strong> permission and human authority constrain what may shape a consequential answer or action.</li><li><strong>Learning:</strong> F6 requires an observed outcome and review before proposing a limited update for the next decision.</li></ul>
     </details>
     <p class="topology-note"><strong>Human correction remains in the loop.</strong> A person may revise a brief, correct a relationship, change a permission, hold a route, or override a recommendation. That disposition is a record of a decision, not a new fact.</p>
   </section>
@@ -905,6 +1089,7 @@ main { overflow: visible; }
     <p class="family-question">What might the default path have overlooked?</p>
     <p>Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.</p>
     <div class="family-columns"><div><h5>How it works</h5><p>Try a small number of alternative search routes, then weigh, compare, and challenge what they return.</p></div><div><h5>Boundary</h5><p>less-visible is a reason to inspect, not a reason to believe</p></div></div>
+    <a class="family-example-link" href="#examples-example-specialist">See F1 in the specialist-signal example <span aria-hidden="true">→</span></a>
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Widen a task-scoped information aperture beyond the obvious route while treating every result as a candidate for inspection.</p><p><strong>Technical mechanism:</strong> Bounded alternate acquisition routes followed by source weighing, comparison, and disconfirmation.</p><dl><div><dt>lightweight</dt><dd>One bounded alternate route recorded in an evidence register.</dd></div><div><dt>moderate</dt><dd>Route coverage, source identities, exclusion reasons, and missing-perspective check.</dd></div><div><dt>advanced</dt><dd>Task-scoped route planner or corpus-coverage view with human review and a hard enrichment budget.</dd></div></dl><p class="muted"><strong>When not to use:</strong> the question is purely administrative and no evidence choice is at issue the task has no permission to acquire beyond supplied material the consequence and time window make any expansion less valuable than a clear abstention</p></details>
   </article><article id="map-family-F2" class="family-card family-f2" data-family-card="F2">
     <div class="family-meta"><span class="family-id">F2</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="F2" aria-pressed="false">Focus this family</button></div>
@@ -912,6 +1097,7 @@ main { overflow: visible; }
     <p class="family-question">What role does each source play for this exact claim?</p>
     <p>Ask what each source can and cannot tell us about this exact claim; keep support, relevance, origin, and permission separate.</p>
     <div class="family-columns"><div><h5>How it works</h5><p>Record the claim, each source&#39;s role, and whether the material supports, challenges, qualifies, repeats, or merely resembles it.</p></div><div><h5>Boundary</h5><p>provenance is not correctness</p></div></div>
+    <a class="family-example-link" href="#examples-example-recurrence">See F2 in the common-origin example <span aria-hidden="true">→</span></a>
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Keep source role, claim-scoped authority, support, relevance, recurrence, origin, provenance, and permission distinct.</p><p><strong>Technical mechanism:</strong> Claim-level evidence records with typed relationships and explicit source roles.</p><dl><div><dt>lightweight</dt><dd>Three-column note: source role, what it supports, and what remains unknown.</dd></div><div><dt>moderate</dt><dd>Claim-level evidence register with typed relationship states.</dd></div><div><dt>advanced</dt><dd>Versioned source, artifact, derivation, and claim graphs with domain review.</dd></div></dl><p class="muted"><strong>When not to use:</strong> the output is a purely creative transformation of user-supplied text and no factual claim is added the task has no external evidence and a simple uncertainty note is sufficient</p></details>
   </article><article id="map-family-F3" class="family-card family-f3" data-family-card="F3">
     <div class="family-meta"><span class="family-id">F3</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="F3" aria-pressed="false">Focus this family</button></div>
@@ -919,6 +1105,7 @@ main { overflow: visible; }
     <p class="family-question">What is changing unusually relative to a relevant baseline?</p>
     <p>Notice a change against a stated baseline before calling it meaningful.</p>
     <div class="family-columns"><div><h5>How it works</h5><p>Compare observations made in the same way over time, and check whether the measurement itself changed.</p></div><div><h5>Boundary</h5><p>change is an attention prompt, not a conclusion</p></div></div>
+    <a class="family-example-link" href="#examples-example-motion">See F3 in the motion-and-baseline example <span aria-hidden="true">→</span></a>
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Notice a rate, direction, or change that merits examination against a defined history or comparison set.</p><p><strong>Technical mechanism:</strong> Repeated comparable time-stamped observations plus a stated baseline and measurement-change check.</p><dl><div><dt>lightweight</dt><dd>Current/prior comparison with written baseline and one alternative explanation.</dd></div><div><dt>moderate</dt><dd>Versioned series with denominator, time window, and collection-change notes.</dd></div><div><dt>advanced</dt><dd>Versioned time-series and anomaly tooling with domain-reviewed thresholds.</dd></div></dl><p class="muted"><strong>When not to use:</strong> there is only one observation and no defensible baseline the task cannot define comparable time or measurement boundaries</p></details>
   </article><article id="map-family-F4" class="family-card family-f4" data-family-card="F4">
     <div class="family-meta"><span class="family-id">F4</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="F4" aria-pressed="false">Focus this family</button></div>
@@ -926,6 +1113,7 @@ main { overflow: visible; }
     <p class="family-question">What should be present but is not, and what prior context changes the meaning of now?</p>
     <p>Notice what should be present but is not, and keep earlier observations and corrections visible.</p>
     <div class="family-columns"><div><h5>How it works</h5><p>State the expected baseline, record the gap, and retain dated, source-linked memory without overwriting history.</p></div><div><h5>Boundary</h5><p>a gap is not proof of nonexistence</p></div></div>
+    <a class="family-example-link" href="#examples-example-motion">See F4 in the expected-absence example <span aria-hidden="true">→</span></a>
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Detect typed gaps against an expected baseline and retrieve relevant prior observations, decisions, corrections, and outcomes without overwriting history.</p><p><strong>Technical mechanism:</strong> Baseline-linked gap records and versioned, source-bound memory.</p><dl><div><dt>lightweight</dt><dd>Expected/observed/unknown table with one prior-state citation.</dd></div><div><dt>moderate</dt><dd>Append-only observations, corrections, and supersession links.</dd></div><div><dt>advanced</dt><dd>Versioned memory retrieval with source-bound filters, stale flags, and correction workflows.</dd></div></dl><p class="muted"><strong>When not to use:</strong> the task has no relevant prior state and no expected baseline retaining the material would violate a stated minimization or deletion rule</p></details>
   </article><article id="map-family-F5" class="family-card family-f5" data-family-card="F5">
     <div class="family-meta"><span class="family-id">F5</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="F5" aria-pressed="false">Focus this family</button></div>
@@ -933,6 +1121,7 @@ main { overflow: visible; }
     <p class="family-question">What becomes visible through explicit comparison?</p>
     <p>Compare peers, periods, structures, and relationships so recurrence, difference, and missing perspectives can be seen.</p>
     <div class="family-columns"><div><h5>How it works</h5><p>Name what is being compared, preserve important differences, and record what kind of relationship each comparison shows.</p></div><div><h5>Boundary</h5><p>comparison is not equivalence</p></div></div>
+    <a class="family-example-link" href="#examples-example-recurrence">See F5 in the structured common-origin example <span aria-hidden="true">→</span></a>
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Compare peers, periods, attributes, structures, and relationships explicitly enough to expose recurrence, difference, and missing perspective.</p><p><strong>Technical mechanism:</strong> A declared unit of comparison, matched or intentionally asymmetric set, and typed relationship record.</p><dl><div><dt>lightweight</dt><dd>Two- or three-row comparison table with explicit not-comparable cells.</dd></div><div><dt>moderate</dt><dd>Versioned comparison matrices and origin notes.</dd></div><div><dt>advanced</dt><dd>Typed relationship graph and queryable cohort definitions with human entity-resolution review.</dd></div></dl><p class="muted"><strong>When not to use:</strong> there is no defensible comparison unit the apparent peers differ on a decision-critical dimension that cannot be normalized</p></details>
   </article><article id="map-family-F6" class="family-card family-f6" data-family-card="F6">
     <div class="family-meta"><span class="family-id">F6</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="F6" aria-pressed="false">Focus this family</button></div>
@@ -940,18 +1129,22 @@ main { overflow: visible; }
     <p class="family-question">What did we expect, what happened, and what bounded update is justified?</p>
     <p>Compare what you expected with what happened, then propose one bounded change without rewriting the old record.</p>
     <div class="family-columns"><div><h5>How it works</h5><p>Define the outcome window in advance, record cost and missing information, and let an accountable person accept, reject, hold, or revise the proposed update.</p></div><div><h5>Boundary</h5><p>outcomes preserve the original record</p></div></div>
+    <a class="family-example-link" href="#examples-cases-heading">See F6 in the outcome-review cases <span aria-hidden="true">→</span></a>
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Compare recorded expectations, routes, decisions, costs, and defined outcomes, then propose a bounded update while preserving the original record.</p><p><strong>Technical mechanism:</strong> Outcome review with a predeclared outcome window, attribution boundary, missingness state, and dispositioned update proposal.</p><dl><div><dt>lightweight</dt><dd>Expectation/outcome table with one proposed change.</dd></div><div><dt>moderate</dt><dd>Append-only outcome reviews linked to receipts and versions.</dd></div><div><dt>advanced</dt><dd>Approved matched-budget policy comparisons preserving null, harmful, shortcut, fragility, and non-transfer results.</dd></div></dl><p class="muted"><strong>When not to use:</strong> there is no defined outcome or measurement window the proposed update would affect external people or systems without an authorized review</p></details>
   </article></div>
 
   <section class="glossary-section" aria-labelledby="map-glossary-heading">
     <div class="section-heading compact-heading">
-      <p class="eyebrow">OPTIONAL GLOSSARY</p>
-      <h3 id="map-glossary-heading">A few terms, translated before they get technical.</h3>
-      <p>These explanations deepen the map. The visible family questions and boundaries remain understandable without opening them.</p>
+      <p class="eyebrow">PLAIN-LANGUAGE TERM HELP</p>
+      <h3 id="map-glossary-heading">Open a term without leaving the thought.</h3>
+      <p>Every essential definition remains visible at first use. These entries add a small diagram, a deeper explanation, and the boundary that keeps the term honest.</p>
     </div>
-    <div class="glossary-grid">
-      <details class="glossary-item"><summary>Evidence spine</summary><p><strong>Plain language:</strong> Keep track of what the item is, where it came from, when it was seen, and how it changed</p><p>Identity, capture, version, custody, derivation, and citation records that let evidence be traced</p><p class="boundary"><strong>Boundary:</strong> Traceability does not establish correctness</p></details><details class="glossary-item"><summary>Typed relationship</summary><p><strong>Plain language:</strong> Say exactly whether two things support, contradict, copy, compare, or merely resemble each other</p><p>An explicit label for how two records relate, such as supports, contradicts, qualifies, copies, compares with, or resembles</p><p class="boundary"><strong>Boundary:</strong> The label is a scoped assertion with evidence and uncertainty, not a fact created by naming it</p></details><details class="glossary-item"><summary>Influence receipt</summary><p><strong>Plain language:</strong> Show what shaped the answer, what was left out, and why</p><p>A record of which material shaped an answer or route, which material was withheld, and why</p><p class="boundary"><strong>Boundary:</strong> A receipt makes influence inspectable; it does not prove the answer is correct or complete</p></details><details class="glossary-item"><summary>Cost-bounded route</summary><p><strong>Plain language:</strong> Decide what one more search or comparison is worth before spending the time</p><p>A next action chosen within declared limits on time, money, tool use, privacy exposure, and human attention</p><p class="boundary"><strong>Boundary:</strong> Staying within budget does not establish evidence sufficiency or authorize an otherwise prohibited action</p></details><details class="glossary-item"><summary>Versioned memory</summary><p><strong>Plain language:</strong> Keep old observations and corrections visible while making the current view clear</p><p>Earlier observations, interpretations, decisions, and corrections retained alongside a clearly identified current view</p><p class="boundary"><strong>Boundary:</strong> A current view does not erase history or turn an earlier interpretation into fact</p></details><details class="glossary-item"><summary>Common origin</summary><p><strong>Plain language:</strong> A bounded record that keeps the route inspectable.</p><p>A shared upstream report, study, event, release, dataset, or information pathway</p><p class="boundary"><strong>Boundary:</strong> Different URLs, publishers, or wording do not establish independence</p></details><details class="glossary-item"><summary>Human disposition</summary><p><strong>Plain language:</strong> Give an accountable person a recorded choice to accept, hold, reject, correct, or ask for more</p><p>An accountable person&#39;s recorded choice to accept, reject, hold, defer, override, correct, or request more work</p><p class="boundary"><strong>Boundary:</strong> A disposition is not evidence, truth, or authority beyond the declared permission envelope</p></details>
+    <div class="term-glossary-grid">
+      <article class="term-glossary-card" id="map-term-discrimination-layer"><p class="eyebrow">Discrimination Layer</p><h4>the responsibility for deciding what information may shape an answer before generation</h4><p>It can be a careful practice, workflow, or product capability. It is not a mandatory software component and does not classify people.</p><span class="term-mini term-mini-chain" aria-hidden="true"><b>notice</b><i>→</i><b>compare</b><i>→</i><b>preserve</b><i>→</i><b>answer</b></span><span class="term-visual-text">Choices about noticing, comparison, and memory occur before the answer.</span><p class="boundary"><strong>Boundary:</strong> Naming the responsibility does not prove that it improves outcomes.</p></article><article class="term-glossary-card" id="map-term-upstream-choices"><p class="eyebrow">upstream choices</p><h4>choices made before the model writes, including what is collected, compared, retained, and trusted</h4><p>Generation inherits these choices. A polished answer cannot recover a perspective that was never sought or a comparison that was never made.</p><span class="term-mini term-mini-chain" aria-hidden="true"><b>notice</b><i>→</i><b>compare</b><i>→</i><b>preserve</b><i>→</i><b>answer</b></span><span class="term-visual-text">Choices about noticing, comparison, and memory occur before the answer.</span><p class="boundary"><strong>Boundary:</strong> Better inputs do not remove uncertainty or human judgment.</p></article><article class="term-glossary-card" id="map-term-peripheral-signal"><p class="eyebrow">peripheral signal</p><h4>material outside the obvious path that may be worth checking</h4><p>A specialist source, alternate vocabulary, dissenting view, adjacent peer, or low-prominence field can widen the candidate set.</p><span class="term-mini term-mini-candidate" aria-hidden="true"><b>default path</b><i>+</i><b>candidate</b><i>→</i><b>weigh</b></span><span class="term-visual-text">The alternate item enters as a candidate and is weighed before use.</span><p class="boundary"><strong>Boundary:</strong> Less visible is a reason to inspect, not a reason to believe.</p></article><article class="term-glossary-card" id="map-term-provenance"><p class="eyebrow">provenance</p><h4>where an item came from and what happened to it before use</h4><p>Provenance can reveal transformations, copying, versions, or common pathways that affect how a claim should be weighed.</p><span class="term-mini term-mini-origin" aria-hidden="true"><span><b>R1</b><b>R2</b><b>R3</b></span><i>→</i><strong>one source</strong></span><span class="term-visual-text">Several reports converge on one known source pathway rather than three established independent roots.</span><p class="boundary"><strong>Boundary:</strong> Knowing an origin does not establish correctness.</p></article><article class="term-glossary-card" id="map-term-baseline"><p class="eyebrow">baseline</p><h4>an earlier or expected state used to judge change or absence</h4><p>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</p><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><p class="boundary"><strong>Boundary:</strong> One convenient comparison is not automatically a fair baseline.</p></article><article class="term-glossary-card" id="map-term-common-origin"><p class="eyebrow">common origin</p><h4>several reports ultimately tracing to the same underlying source</h4><p>Repeated observations may still matter, but repetition from one source pathway is not the same as independent support.</p><span class="term-mini term-mini-origin" aria-hidden="true"><span><b>R1</b><b>R2</b><b>R3</b></span><i>→</i><strong>one source</strong></span><span class="term-visual-text">Several reports converge on one known source pathway rather than three established independent roots.</span><p class="boundary"><strong>Boundary:</strong> Common origin does not make the underlying claim false; independence stays unknown until established.</p></article><article class="term-glossary-card" id="map-term-planned-stop-condition"><p class="eyebrow">planned stop condition</p><h4>a future condition that would require the work to pause or end</h4><p>Examples include reaching a time limit, finding an unresolved permission problem, or completing the one comparison named in the brief.</p><span class="term-mini term-mini-stop" aria-hidden="true"><b>plan</b><i>if triggered →</i><strong>stop event</strong></span><span class="term-visual-text">A future condition becomes an event only if it is actually triggered during work.</span><p class="boundary"><strong>Boundary:</strong> A planned condition is not an actual stop event until it is triggered during a run.</p></article><article class="term-glossary-card" id="map-term-human-authority"><p class="eyebrow">human authority</p><h4>the person who may approve, hold, correct, override, or reject consequential use</h4><p>The system may prepare evidence or a recommendation. It cannot record the person’s decision before that person actually makes it.</p><span class="term-mini term-mini-authority" aria-hidden="true"><b>evidence</b><i>→</i><b>recommendation</b><i>⇢</i><strong>person decides</strong></span><span class="term-visual-text">Evidence may shape a recommendation; a separate person approves, holds, corrects, or rejects consequential use.</span><p class="boundary"><strong>Boundary:</strong> Technical access and model confidence do not grant authority.</p></article><article class="term-glossary-card" id="map-term-learning-loop"><p class="eyebrow">learning loop</p><h4>reviewing a later outcome against a recorded expectation before proposing one limited change</h4><p>The original expectation and evidence remain preserved. A later review may propose an update for human disposition.</p><span class="term-mini term-mini-learning" aria-hidden="true"><b>expectation</b><i>→</i><b>outcome</b><i>→</i><b>review</b><i>↺</i><strong>proposed update</strong></span><span class="term-visual-text">A recorded expectation is compared with an observed outcome before a limited update is proposed.</span><p class="boundary"><strong>Boundary:</strong> An outcome does not silently rewrite history or prove causation.</p></article>
     </div>
+    <details class="builder-glossary"><summary>Builder terms and technical records</summary><div class="glossary-grid">
+        <details class="glossary-item"><summary>Evidence spine</summary><p><strong>Plain language:</strong> Keep track of what the item is, where it came from, when it was seen, and how it changed</p><p>Identity, capture, version, custody, derivation, and citation records that let evidence be traced</p><p class="boundary"><strong>Boundary:</strong> Traceability does not establish correctness</p></details><details class="glossary-item"><summary>Typed relationship</summary><p><strong>Plain language:</strong> Say exactly whether two things support, contradict, copy, compare, or merely resemble each other</p><p>An explicit label for how two records relate, such as supports, contradicts, qualifies, copies, compares with, or resembles</p><p class="boundary"><strong>Boundary:</strong> The label is a scoped assertion with evidence and uncertainty, not a fact created by naming it</p></details><details class="glossary-item"><summary>Influence receipt</summary><p><strong>Plain language:</strong> Show what shaped the answer, what was left out, and why</p><p>A record of which material shaped an answer or route, which material was withheld, and why</p><p class="boundary"><strong>Boundary:</strong> A receipt makes influence inspectable; it does not prove the answer is correct or complete</p></details><details class="glossary-item"><summary>Cost-bounded route</summary><p><strong>Plain language:</strong> Decide what one more search or comparison is worth before spending the time</p><p>A next action chosen within declared limits on time, money, tool use, privacy exposure, and human attention</p><p class="boundary"><strong>Boundary:</strong> Staying within budget does not establish evidence sufficiency or authorize an otherwise prohibited action</p></details><details class="glossary-item"><summary>Versioned memory</summary><p><strong>Plain language:</strong> Keep old observations and corrections visible while making the current view clear</p><p>Earlier observations, interpretations, decisions, and corrections retained alongside a clearly identified current view</p><p class="boundary"><strong>Boundary:</strong> A current view does not erase history or turn an earlier interpretation into fact</p></details><details class="glossary-item"><summary>Common origin</summary><p><strong>Plain language:</strong> A bounded record that keeps the route inspectable.</p><p>A shared upstream report, study, event, release, dataset, or information pathway</p><p class="boundary"><strong>Boundary:</strong> Different URLs, publishers, or wording do not establish independence</p></details><details class="glossary-item"><summary>Human disposition</summary><p><strong>Plain language:</strong> Give an accountable person a recorded choice to accept, hold, reject, correct, or ask for more</p><p>An accountable person&#39;s recorded choice to accept, reject, hold, defer, override, correct, or request more work</p><p class="boundary"><strong>Boundary:</strong> A disposition is not evidence, truth, or authority beyond the declared permission envelope</p></details>
+      </div></details>
   </section>
     <section class="map-boundary callout" aria-labelledby="map-map-boundary-heading"><p class="eyebrow">MAP BOUNDARY</p><h3 id="map-map-boundary-heading">The order is a teaching aid, not a compulsory sequence.</h3><p>Skip a family when it has no observable input, record why, and keep unknown relations unknown. Common-origin recurrence is one mechanism inside source weighing and structured patterns; it is not the map's definition.</p></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/SIX_FAMILIES.json</code></li><li><code>framework/SIX_FAMILIES.md</code></li><li><code>framework/RELATIONSHIP_MAP.md</code></li><li><code>framework/GLOSSARY.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
@@ -964,28 +1157,29 @@ main { overflow: visible; }
   <section class="apply-route" id="apply-apply">
 
   <section class="route-studio-section" id="apply-route-studio" aria-labelledby="apply-route-studio-heading">
-    <div class="route-brief" aria-label="How to use the Apply route"><span><strong>What this is</strong> A local decision surface.</span><span><strong>What you can do</strong> Match consequence to route size.</span><span><strong>Next</strong> Inspect the receipt and choose a stop.</span></div>
-    <div class="section-heading"><p class="eyebrow">LOCAL ROUTE STUDIO / NO PROVIDER</p><h3 id="apply-route-studio-heading">Let consequence set the size of the route.</h3><p>This small, reversible interaction stays in the browser. Choose four conditions, build a local receipt, then mark a bounded stop or human gate. It does not acquire data, call a provider, or decide for anyone.</p></div>
+    <div class="route-brief" aria-label="How to use the Apply route"><span><strong>What this is</strong> A local planning surface.</span><span><strong>What you can do</strong> Match consequence to route size.</span><span><strong>What it cannot do</strong> Record a run, outcome, stop event, or human decision.</span></div>
+    <div class="section-heading"><p class="eyebrow">LOCAL ROUTE STUDIO / NO PROVIDER</p><h3 id="apply-route-studio-heading">Build a recommendation, not a fictional receipt.</h3><p>Choose four planning conditions. The browser can recommend a level, next action, required gate, <span class="term-help" data-term-help><dfn>planned stop condition</dfn><span class="term-inline"> — a future condition that would require the work to pause or end</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="apply-term-popover-apply-stop">See it</button><span class="term-popover" id="apply-term-popover-apply-stop" role="note" hidden><strong>planned stop condition</strong><span>Examples include reaching a time limit, finding an unresolved permission problem, or completing the one comparison named in the brief.</span><span class="term-mini term-mini-stop" aria-hidden="true"><b>plan</b><i>if triggered →</i><strong>stop event</strong></span><span class="term-visual-text">A future condition becomes an event only if it is actually triggered during work.</span><span class="term-popover-boundary"><b>Boundary:</b> A planned condition is not an actual stop event until it is triggered during a run.</span><a href="#map-term-planned-stop-condition">Open the glossary entry</a></span></span>, and learning option. It does not acquire data, execute work, observe an outcome, or decide for anyone. <span class="term-help" data-term-help><dfn>human authority</dfn><span class="term-inline"> — the person who may approve, hold, correct, override, or reject consequential use</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="apply-term-popover-apply-authority">See it</button><span class="term-popover" id="apply-term-popover-apply-authority" role="note" hidden><strong>human authority</strong><span>The system may prepare evidence or a recommendation. It cannot record the person’s decision before that person actually makes it.</span><span class="term-mini term-mini-authority" aria-hidden="true"><b>evidence</b><i>→</i><b>recommendation</b><i>⇢</i><strong>person decides</strong></span><span class="term-visual-text">Evidence may shape a recommendation; a separate person approves, holds, corrects, or rejects consequential use.</span><span class="term-popover-boundary"><b>Boundary:</b> Technical access and model confidence do not grant authority.</span><a href="#map-term-human-authority">Open the glossary entry</a></span></span> remains separate.</p></div>
+    <p class="no-script-note"><strong>The interactive recommendation builder requires JavaScript.</strong> The complete static decision guide below contains the same planning logic in readable form. No control is required to understand or use it.</p>
     <div class="route-studio-layout">
       <form class="route-studio-form" data-route-studio>
         <fieldset><legend>01 · Consequence</legend><label><input type="radio" name="consequence" value="reversible" checked> Reversible / supplied input <small>an ordinary path may fit</small></label><label><input type="radio" name="consequence" value="consequential"> Consequential / downstream effect <small>keep a human gate visible</small></label></fieldset>
         <fieldset><legend>02 · Uncertainty</legend><label><input type="radio" name="uncertainty" value="low" checked> Low <small>the question and material are clear</small></label><label><input type="radio" name="uncertainty" value="mixed"> Mixed <small>one comparison or challenge is warranted</small></label><label><input type="radio" name="uncertainty" value="high"> High <small>gaps, conflicts, or unknown origins remain</small></label></fieldset>
         <fieldset><legend>03 · Budget</legend><label><input type="radio" name="budget" value="quick" checked> Quick <small>short bounded pass</small></label><label><input type="radio" name="budget" value="bounded"> Bounded <small>repeated work needs a record</small></label><label><input type="radio" name="budget" value="substantial"> Substantial <small>engineering is justified only if value is visible</small></label></fieldset>
         <fieldset><legend>04 · Permission</legend><label><input type="radio" name="permission" value="supplied" checked> Supplied / ordinary authority <small>access and use are clear</small></label><label><input type="radio" name="permission" value="restricted"> Restricted / clarify before influence <small>hold ambiguous operations</small></label><label><input type="radio" name="permission" value="human-gate"> Human gate required <small>route can propose; a person decides</small></label></fieldset>
-        <div class="studio-actions"><button class="studio-submit" type="submit">Build local receipt <span aria-hidden="true">→</span></button><button class="quiet-button" type="button" data-route-reset>Reset choices</button></div>
-        <p class="studio-boundary"><strong>Local only.</strong> The controls create no network request and make no external change.</p>
+        <div class="studio-actions"><button class="studio-submit" type="submit">Build route recommendation <span aria-hidden="true">→</span></button><button class="quiet-button" type="button" data-route-reset>Reset choices</button></div>
+        <p class="studio-boundary"><strong>Planning only.</strong> The controls create no network request, perform no task, and make no external change.</p>
       </form>
-      <aside class="route-receipt-card" data-route-receipt aria-live="polite" aria-atomic="true">
-        <div class="receipt-card-header"><span class="receipt-card-kicker">DECISION RECEIPT / LOCAL</span><span class="receipt-route-badge" data-receipt-route>lightweight</span></div>
-        <h4 data-receipt-title>One brief, one alternate route, one clear stop.</h4>
-        <p data-receipt-summary>For a reversible task with low uncertainty, keep the route small and leave the important distinctions visible.</p>
-        <dl class="receipt-facts"><div><dt>Route</dt><dd data-receipt-route-value>ANSWER</dd></div><div><dt>Stop status</dt><dd data-receipt-stop>STOPPED_BUDGET</dd></div><div><dt>Learning</dt><dd data-receipt-learning>LEARNING_NOT_APPLICABLE</dd></div><div><dt>Authority</dt><dd data-receipt-authority>HUMAN_DISPOSITION_RECORDED</dd></div></dl>
-        <ol class="receipt-flow" aria-label="Observable route state"><li class="is-done"><span>01</span><strong>frame</strong><small>decision brief</small></li><li class="is-done"><span>02</span><strong>inspect</strong><small>compare / challenge</small></li><li class="is-current" data-receipt-flow-state><span>03</span><strong>disposition</strong><small>choose a bounded state</small></li><li><span>04</span><strong>learn</strong><small>later outcome</small></li></ol>
-        <div class="receipt-state-actions"><p class="eyebrow">Choose a recorded next state</p><div><button type="button" data-route-action="hold">HOLD for human</button><button type="button" data-route-action="escalate">ESCALATE</button><button type="button" data-route-action="stop">STOPPED_BUDGET</button></div></div>
-        <p class="receipt-status" data-receipt-status role="status">Receipt ready. The route is a proposal; human authority stays explicit.</p>
+      <aside class="route-recommendation-card" data-route-recommendation>
+        <div class="recommendation-card-header"><span class="recommendation-card-kicker">ROUTE RECOMMENDATION / LOCAL</span><span class="recommendation-level-badge" data-recommendation-level>ordinary</span></div>
+        <h4 data-recommendation-title>Do less when the task is simple.</h4>
+        <p data-recommendation-summary>Use the supplied material and keep the assumptions visible. No evidence workflow is required unless the task introduces an evidence-selection decision.</p>
+        <section aria-labelledby="apply-recommendation-heading"><h5 id="apply-recommendation-heading">Recommended plan</h5><dl class="recommendation-facts"><div><dt>Recommended action</dt><dd data-recommendation-action>ANSWER</dd></div><div><dt>Required gate</dt><dd data-recommendation-gate>No additional gate identified; consequential action still remains with the named person.</dd></div><div><dt>Planned stop condition</dt><dd data-recommendation-stop>Finish the supplied-material transformation. Do not begin external acquisition unless the brief changes.</dd></div><div><dt>Learning option</dt><dd data-recommendation-learning>No learning route is planned. A later outcome would need its own expectation and review window.</dd></div></dl></section>
+        <p class="recommendation-status" data-recommendation-status role="status" aria-live="polite" aria-atomic="true">Ordinary route recommendation ready; no execution or human decision has been recorded.</p>
+        <section class="observed-state" aria-labelledby="apply-observed-state-heading"><h5 id="apply-observed-state-heading">Observed state</h5><p>Planning inputs cannot create events. These fields remain unchanged until a real, separately authorized run produces evidence.</p><dl><div><dt>Execution</dt><dd data-observed-execution>NOT_RUN</dd></div><div><dt>Stop outcome</dt><dd data-observed-stop>NOT_TRIGGERED</dd></div><div><dt>Outcome</dt><dd data-observed-outcome>NOT_OBSERVED</dd></div><div><dt>Learning review</dt><dd data-observed-learning>NOT_AVAILABLE</dd></div><div><dt>Human decision</dt><dd data-observed-human>NOT_RECORDED</dd></div></dl></section>
+        <section class="simulation-controls" aria-labelledby="apply-simulation-heading"><p class="eyebrow">OPTIONAL LOCAL SIMULATION</p><h5 id="apply-simulation-heading">Inspect an example without mistaking it for a record.</h5><div><button type="button" data-simulation-action="hold">Simulate human HOLD</button><button type="button" data-simulation-action="clarify">Simulate clarification received</button><button type="button" data-simulation-action="reset">Reset simulation</button></div><dl class="simulation-record"><div><dt>Simulation</dt><dd data-simulation-state>NOT_SIMULATED</dd></div><div><dt>Reason</dt><dd data-simulation-reason>Use the controls only to inspect example state changes. They do not record a real person, run, stop, or outcome.</dd></div><div><dt>Local display time</dt><dd data-simulation-time>NOT_RECORDED</dd></div></dl></section>
       </aside>
     </div>
-    <details class="static-route-equivalent" open><summary>Static route key: complete no-script equivalent</summary><div class="static-route-body"><p>When JavaScript is unavailable, the four choices remain readable here and the sample receipt remains a copyable record. The interaction adds convenience; it does not carry essential meaning.</p><div class="table-wrap"><table><caption>Proportionate choices and observable states</caption><thead><tr><th scope="col">Choice</th><th scope="col">Fit</th><th scope="col">Route</th><th scope="col">Stop</th><th scope="col">Learning</th></tr></thead><tbody><tr><th scope="row">ordinary</th><td>reversible, clear, supplied input</td><td><code>ANSWER</code></td><td><code>COMPLETE</code></td><td><code>LEARNING_NOT_APPLICABLE</code></td></tr><tr><th scope="row">lightweight</th><td>bounded comparison or one alternate route</td><td><code>ANSWER_PROVISIONALLY</code></td><td><code>STOPPED_BUDGET</code></td><td><code>LEARNING_PLANNED</code></td></tr><tr><th scope="row">moderate</th><td>repeated work, mixed uncertainty, or a human gate</td><td><code>HOLD</code> / <code>ESCALATE</code></td><td><code>STOPPED_OTHER</code></td><td><code>LEARNING_PENDING_OUTCOME</code></td></tr><tr><th scope="row">advanced</th><td>queryable lineage and review are worth the cost</td><td><code>CLARIFY</code> / <code>HOLD</code></td><td><code>STOPPED_DEADLINE</code></td><td><code>LEARNING_PLANNED</code></td></tr></tbody></table></div><p class="static-receipt"><strong>Sample receipt:</strong> Route <code>ANSWER_PROVISIONALLY</code> · stop <code>STOPPED_BUDGET</code> · learning <code>LEARNING_PENDING_OUTCOME</code> · disposition <code>HOLD</code>. A person may correct the route or decide not to continue.</p></div></details>
+    <details class="static-route-equivalent" open><summary>Static decision guide: complete no-script equivalent</summary><div class="static-route-body"><p>The table expresses planning recommendations only. It does not claim that work ran, a budget or deadline was reached, an outcome was observed, learning occurred, or a person made a decision.</p><div class="table-wrap"><table><caption>Proportionate planning choices</caption><thead><tr><th scope="col">Choice</th><th scope="col">Fit</th><th scope="col">Recommended action</th><th scope="col">Required gate</th><th scope="col">Planned stop condition</th></tr></thead><tbody><tr><th scope="row">ordinary</th><td>reversible, clear, supplied material</td><td><code>ANSWER</code></td><td>no additional evidence gate</td><td>finish the supplied-material transformation</td></tr><tr><th scope="row">lightweight</th><td>one bounded comparison or alternate route</td><td><code>ANSWER_PROVISIONALLY</code></td><td>human review before consequential use</td><td>one route + one challenge + stated time limit</td></tr><tr><th scope="row">moderate</th><td>repeated, uncertain, or consequential work</td><td><code>COMPARE</code></td><td>named human review</td><td>named comparison, critical gap, or resource boundary</td></tr><tr><th scope="row">advanced</th><td>queryable records and review justify their cost</td><td><code>COMPARE</code></td><td>explicit permission + accountable review</td><td>approved resource boundary or blocking gap</td></tr><tr><th scope="row">restricted permission</th><td>any consequence or budget</td><td><code>CLARIFY</code></td><td>permission must be resolved before influence</td><td>hold while permission is unclear</td></tr><tr><th scope="row">human gate</th><td>any consequence or budget</td><td><code>HOLD</code></td><td>named person must approve proposed use</td><td>remain on hold until the gate is satisfied</td></tr></tbody></table></div><p class="static-plan"><strong>Observed state remains:</strong> execution <code>NOT_RUN</code> · stop outcome <code>NOT_TRIGGERED</code> · outcome <code>NOT_OBSERVED</code> · learning review <code>NOT_AVAILABLE</code> · human decision <code>NOT_RECORDED</code>.</p></div></details>
   </section>
 
   <section class="implementation-section" aria-labelledby="apply-levels-heading">
@@ -1010,11 +1204,14 @@ main { overflow: visible; }
   </section>
     <section class="agent-section" aria-labelledby="apply-agent-heading"><div class="section-heading"><p class="eyebrow">AGENT COMPANION</p><h3 id="apply-agent-heading">Copyable procedures, not an exhortation to be creative.</h3><p>The agent guide makes acquisition, comparison, disconfirmation, uncertainty, cost, stop, escalation, influence, and learning visible in artifacts another person can inspect.</p></div><div class="agent-docs"><details class="agent-doc agent-quickstart" open><summary>Quickstart — the smallest safe procedure</summary><div class="source-markdown"><h4 id="apply-agent-quickstart-agent-playbook-quickstart">Agent playbook quickstart</h4>
 <p>This is the short operating path for an agent preparing an answer or decision where upstream information choices may matter. It is a procedure, not a request to be more creative. The agent must leave artifacts that let a reviewer see what it did.</p>
-<p>Use the ordinary path for a reversible, low-consequence transformation of user-supplied material. Use this quickstart when the task involves new acquisition, competing sources, missing expected material, reuse of memory, or a consequential recommendation.</p>
+<h5 id="apply-agent-quickstart-stage-0-decide-whether-evidence-selection-exists">Stage 0 — decide whether evidence selection exists</h5>
+<p>Ask one question before opening the playbook: <strong>Does this task require the agent to select, acquire, compare, preserve, or weigh information beyond what the user supplied?</strong></p>
+<ul><li><strong>No:</strong> use the ordinary path. Perform the reversible transformation, keep the user’s instruction and supplied input visible, state any material assumption, and stop. Do not create an evidence register, comparison matrix, or learning plan merely to demonstrate process.</li><li><strong>Yes:</strong> use the smallest path below that matches consequence, uncertainty, repetition, and cost. New acquisition, competing sources, missing expected material, scoped memory, or a consequential recommendation usually creates an evidence-selection decision.</li></ul>
+<p>Stage 0 is a proportionality gate, not permission to skip a real uncertainty or consequential boundary.</p>
 <h5 id="apply-agent-quickstart-the-ten-minute-path">The ten-minute path</h5>
 <ol><li><strong>Define the decision.</strong> Write the real question, intended use, audience, consequence, owner, deadline, and what would count as useful.</li><li><strong>Check authority.</strong> Separate technical access from permission to acquire, transform, retain, disclose, or act. If permission is absent or unclear for a consequential operation, stop and escalate.</li><li><strong>Set a budget.</strong> State the time, money, tokens, compute, privacy, disclosure, and human-attention boundary. State the no-action boundary.</li><li><strong>Write the default path.</strong> Record the familiar query, source set, vocabulary, time window, or product route.</li><li><strong>Widen once.</strong> Use one bounded peripheral route: a specialist source, alternative vocabulary, dissenting view, adjacent peer, or low-prominence field. A candidate is not truth.</li><li><strong>Register evidence.</strong> Give each source and artifact an ID. Link exact spans to narrow claims. Keep source role, support, relevance, origin, and permission as separate fields.</li><li><strong>Compare.</strong> Choose the peer, period, attribute, structure, or origin comparison that could change the answer. Mark incomparable and unknown fields instead of filling them.</li><li><strong>Challenge.</strong> Search for one strongest contrary item, missing perspective, alternative explanation, measurement change, or common origin.</li><li><strong>Route and stop.</strong> Choose <code>ACQUIRE</code>, <code>COMPARE</code>, <code>CLARIFY</code>, <code>ANSWER</code>, <code>ANSWER_PROVISIONALLY</code>, <code>HOLD</code>, <code>DEFER</code>, <code>ESCALATE</code>, or <code>REFUSE</code>. Separately record stop status <code>CONTINUE</code>, <code>COMPLETE</code>, <code>STOPPED_BUDGET</code>, <code>STOPPED_DEADLINE</code>, or <code>STOPPED_OTHER</code>, why the next action is worth its cost, and what will stop or resume it.</li><li><strong>Record influence.</strong> List what shaped the answer, what was withheld, why, which uncertainties remain, and who has authority for any external action.</li></ol>
 <h5 id="apply-agent-quickstart-minimum-output">Minimum output</h5>
-<p>Return or save:</p>
+<p>For a task that passed Stage 0, return or save only the records the decision warrants:</p>
 <ul><li>a decision brief;</li><li>an acquisition or supplied-material note;</li><li>an evidence register;</li><li>a comparison or expected/observed record;</li><li>a disconfirmation note;</li><li>a route and stop/escalation reason;</li><li>an influence receipt;</li><li>an outcome expectation, window, and <code>LEARNING_PENDING_OUTCOME</code> status when later learning is defined; <code>LEARNING_PLANNED</code> only when that route is proposed but not yet locked; or <code>LEARNING_NOT_APPLICABLE</code> with a reason.</li></ul>
 <p>If a later outcome is defined, preserve the original expectation. After the outcome window, compare the observed outcome, actual cost, corrections, and context with it; propose one bounded update; request human disposition; and record <code>LEARNING_REVIEWED</code>. Use <a href="#apply-apply"><code>../templates/OUTCOME_REVIEW.md</code></a>. Until then, keep the locked expectation at <code>LEARNING_PENDING_OUTCOME</code>. Do not make learning mandatory for an ordinary-path task.</p>
 <p>If a field was not needed, write NOT_APPLICABLE and why. If it was needed but could not be established, write UNKNOWN. Do not fill a missing field with a plausible assumption.</p>
@@ -1025,10 +1222,14 @@ main { overflow: visible; }
 <ol><li>Answer or provisional answer.</li><li>What was observed and what was interpreted.</li><li>Source role and key uncertainty.</li><li>What was not checked.</li><li>Influence receipt and human action boundary.</li></ol>
 <p>This path intentionally allows the framework to stay lightweight. It should raise the floor of inspection without turning every trivial task into a compliance ritual.</p></div></details><details class="agent-doc"><summary>Full operating guide — deeper procedure</summary><div class="source-markdown"><h4 id="apply-agent-guide-full-operating-guide-for-agents">Full operating guide for agents</h4>
 <p>Status: v16 applied procedure. This guide defines observable agent behavior. An agent that follows it leaves records; it does not merely claim that it “thought differently.” The guide does not grant permission to spend, contact, publish, deploy, or act externally.</p>
+<h5 id="apply-agent-guide-0-decide-whether-evidence-selection-work-exists">0. Decide whether evidence-selection work exists</h5>
+<p>Before choosing a level, ask: <strong>Must the agent select, acquire, compare, preserve, or weigh information beyond the user-supplied material?</strong></p>
+<ul><li>If no, use the ordinary path: perform the reversible supplied-material transformation, state any material assumption, and stop. Keep the instruction, input, and output; do not manufacture evidence, route, outcome, or learning records.</li><li>If yes, continue to the operating levels below. Choose only the records and checks justified by consequence, uncertainty, repetition, and cost.</li></ul>
+<p>Formatting, translation, extraction, summarization, or creative transformation of supplied material normally stays ordinary unless the task introduces a material evidence-selection decision. This gate prevents the playbook from turning routine work into ceremony; it does not excuse hidden acquisition or a consequential judgment.</p>
 <h5 id="apply-agent-guide-1-choose-the-operating-level">1. Choose the operating level</h5>
 <p>Select LIGHTWEIGHT, MODERATE, or ADVANCED using the consequence, reversibility, evidence volume, sensitivity, reuse, and expected outcome. Record the choice.</p>
 <ul><li>LIGHTWEIGHT: decision brief, evidence table, one comparison or gap note, disconfirmation, influence receipt.</li><li>MODERATE: stable IDs, acquisition/failure receipts, typed relationships, packet, human disposition, outcome review.</li><li>ADVANCED: queryable lineage, access and retention policy, relationship/time views, route policy, replay, and approved evaluation.</li></ul>
-<p>If the task is only formatting, translation, or creative transformation of supplied text, use the ordinary path and state that no evidence-selection work was required.</p>
+<p>Record why the selected level is proportionate. Do not escalate an ordinary task merely because more infrastructure is available.</p>
 <h5 id="apply-agent-guide-2-define-the-real-decision">2. Define the real decision</h5>
 <p>Create a versioned decision brief before nontrivial acquisition.</p>
 <p>Required fields:</p>
@@ -1082,6 +1283,7 @@ main { overflow: visible; }
 <p>Do not substitute a stop or learning status for the route. If the agent abstains, record why as <code>HOLD</code>, <code>DEFER</code>, or <code>REFUSE</code> rather than creating an untyped <code>ABSTAIN</code> route.</p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Condition</th><th scope="col">Required route</th><th scope="col">Stop status example</th></tr></thead><tbody><tr><td>Low consequence, narrow supported claim</td><td>ANSWER</td><td>COMPLETE</td></tr><tr><td>Evidence sufficient for a bounded answer but material uncertainty remains</td><td>ANSWER_PROVISIONALLY</td><td>COMPLETE or a named stop state</td></tr><tr><td>One low-cost authorized action may reduce a named gap</td><td>ACQUIRE or COMPARE</td><td>CONTINUE</td></tr><tr><td>Question or authority is unclear</td><td>CLARIFY</td><td>CONTINUE or STOPPED_OTHER</td></tr><tr><td>Critical gap, conflict, or permission issue blocks influence</td><td>HOLD</td><td>STOPPED_OTHER</td></tr><tr><td>A later time or missing input is required</td><td>DEFER</td><td>STOPPED_DEADLINE or STOPPED_OTHER</td></tr><tr><td>Human or domain authority must decide</td><td>ESCALATE</td><td>STOPPED_OTHER</td></tr><tr><td>Requested action is prohibited</td><td>REFUSE</td><td>COMPLETE or STOPPED_OTHER</td></tr><tr><td>More work is not worth the remaining budget</td><td>ANSWER_PROVISIONALLY, HOLD, or DEFER</td><td>STOPPED_BUDGET</td></tr></tbody></table></div>
 <p>Every route receipt includes route, stop status, reason, expected benefit, cost, permission, uncertainty, and stop or resume condition. Budget exhaustion is not evidence sufficiency.</p>
+<p>A planning surface may recommend a route, gate, or stopping condition before a run. That recommendation is not an observed route receipt. Record <code>COMPLETE</code>, a <code>STOPPED_*</code> status, a human disposition, or an outcome-learning state only after the corresponding event has actually occurred.</p>
 <h5 id="apply-agent-guide-13-build-the-context-and-influence-receipt">13. Build the context and influence receipt</h5>
 <p>The packet contains only material permitted for this bounded output. For each selected item, state:</p>
 <ul><li>item and claim ID;</li><li>exact span or pointer;</li><li>source role and relationship;</li><li>influence role: supports, qualifies, contradicts, frames, or routes;</li><li>why admitted;</li><li>what it cannot establish;</li><li>disclosure permission and reviewer disposition.</li></ul>
@@ -1249,6 +1451,40 @@ main { overflow: visible; }
 <ul><li>Proposed update to query, baseline, source policy, route, threshold, or review rule:</li><li>Why this single update is justified:</li><li>What it must not change:</li><li>New version required:</li><li>Human disposition:</li><li>If rejected or deferred, reason:</li><li>Learning status after disposition: LEARNING_REVIEWED</li></ul>
 <p>Learning proposes a bounded update. It does not silently change policy, overwrite evidence, or turn one outcome into causal proof.</p></div></details></div></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/OPERATOR_PLAYBOOK.md</code></li><li><code>framework/IMPLEMENTATION_CHOICES.md</code></li><li><code>framework/BOUNDARIES_AND_FAILURES.md</code></li><li><code>framework/agent-playbook/QUICKSTART.md</code></li><li><code>framework/agent-playbook/FULL_OPERATING_GUIDE.md</code></li><li><code>framework/agent-playbook/COPYABLE_AGENT_BRIEF.md</code></li><li><code>framework/agent-playbook/PREFLIGHT_CHECKLIST.md</code></li><li><code>framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md</code></li><li><code>framework/templates/README.md</code></li><li><code>framework/templates/DECISION_BRIEF.md</code></li><li><code>framework/templates/ACQUISITION_RECEIPT.md</code></li><li><code>framework/templates/EVIDENCE_REGISTER.md</code></li><li><code>framework/templates/COMPARISON_MATRIX.md</code></li><li><code>framework/templates/DISCONFIRMATION_LOG.md</code></li><li><code>framework/templates/INFLUENCE_RECEIPT.md</code></li><li><code>framework/templates/OUTCOME_REVIEW.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
+  </section>
+      </section>
+<section class="standalone-section" id="guided" aria-label="Guided read">
+        <section class="route-intro"><p class="eyebrow">CONTINUOUS READING MODE</p><h2>Take the guided read</h2><p class="route-lede">Follow one authored path from the human problem through the six questions, their key relationships, and the smallest useful application.</p></section>
+
+
+  <section class="guided-route" id="guided-guided" data-reading-route>
+    <div class="route-brief" aria-label="How to use the Guided read"><span><strong>What this is</strong> One continuous path through the publication.</span><span><strong>What it preserves</strong> Read, Map, and Apply remain separate doors.</span><span><strong>Time</strong> Approximately 8–12 minutes; editorial estimate only.</span></div>
+    <nav class="guided-index" aria-label="Guided reading path"><a class="is-current" data-reading-link href="#guided-guided-opening"><span>01</span>Start with the problem</a><a data-reading-link href="#guided-guided-families"><span>02</span>Meet the six questions</a><a data-reading-link href="#guided-guided-relations"><span>03</span>See the relationships</a><a data-reading-link href="#guided-guided-apply"><span>04</span>Choose the smallest useful path</a><a data-reading-link href="#guided-guided-examples"><span>05</span>Test it against examples</a><a data-reading-link href="#guided-guided-boundary"><span>06</span>Keep the human boundary</a></nav>
+    <div class="reading-progress-wrap"><span>Guided progress</span><div class="reading-progress" data-reading-progress role="progressbar" aria-label="Guided reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><span data-reading-progress-value>0%</span></div>
+    <section class="guided-section guided-opening" id="guided-guided-opening" data-reading-section aria-labelledby="guided-guided-opening-heading"><div class="section-heading"><p class="eyebrow">01 · THE HUMAN PROBLEM</p><h3 id="guided-guided-opening-heading">The answer inherits the room it was given.</h3><p>Generation is only the visible end of the work. The less visible decisions—what to notice, compare, preserve, question, and permit—shape what the answer can become.</p></div>
+  <aside class="opening-case" aria-labelledby="guided-guided-case-heading">
+    <div class="opening-case-copy"><p class="eyebrow">A QUICK EXAMPLE</p><h3 id="guided-guided-case-heading">A product release can look strong until the room changes.</h3><p>The obvious search finds familiar coverage. A better pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks happen before prose.</p></div>
+    <div class="opening-case-track" aria-label="A familiar search is widened, compared with a baseline, and checked for an expected absence"><span><b>01</b><strong>Familiar coverage</strong><small>the default path</small></span><i aria-hidden="true">→</i><span><b>02</b><strong>Earlier releases</strong><small><span class="term-help" data-term-help><dfn>baseline</dfn><span class="term-inline"> — an earlier or expected state used to judge change or absence</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="guided-term-popover-guided-case-baseline">See it</button><span class="term-popover" id="guided-term-popover-guided-case-baseline" role="note" hidden><strong>baseline</strong><span>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</span><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><span class="term-popover-boundary"><b>Boundary:</b> One convenient comparison is not automatically a fair baseline.</span><a href="#map-term-baseline">Open the glossary entry</a></span></span></small></span><i aria-hidden="true">→</i><span><b>03</b><strong>Missing fields</strong><small>monitoring + rollback owner</small></span></div>
+  </aside><div class="guided-short reading-column"><h4 id="guided-guided-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
+<p>An AI answer can sound polished yet be generic because weakness can begin before writing. Ask a system to assess a product release. The obvious search finds familiar coverage. A stronger pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks do not decide the answer; they improve the information available to it.</p>
+<p>Pattern Recognition makes those upstream choices deliberate and correctable. Its six families ask:</p>
+<ol><li>What might the obvious path have missed?</li><li>What can each source actually support?</li><li>What is changing against a useful baseline?</li><li>What expected information is missing, and what should memory preserve?</li><li>What appears when peers, periods, structures, or origins are compared?</li><li>After a defined outcome, what bounded update should be proposed?</li></ol>
+<p>The Discrimination Layer names that responsibility: deciding what the system should notice, compare, preserve, question, and allow to shape an answer. It is not mandatory software. Peripheral material is a candidate for inspection, not a truth signal. Repetition is not automatically independent confirmation. Technical access is not permission. People retain judgment and authority for consequential action.</p>
+<p>A supplied-text rewrite may need almost none of this. Higher-stakes work may need an evidence record, cost limit, planned stopping condition, and human checkpoint. This is a design proposal, not a settled empirical result or a replacement for expertise. The aim is to improve the room before asking AI to make it sound finished.</p></div><p class="guided-transition"><a href="#read-read-essay">Read the complete thought piece <span aria-hidden="true">→</span></a></p></section>
+    <section class="guided-section" id="guided-guided-families" data-reading-section aria-labelledby="guided-guided-families-heading"><div class="section-heading"><p class="eyebrow">02 · SIX QUESTIONS</p><h3 id="guided-guided-families-heading">Use the family that exposes the missing decision.</h3><p>The identifiers preserve the historical map. They do not turn the families into six compulsory steps.</p></div><div class="guided-family-grid"><article class="guided-family family-f1"><span>F1</span><h4>Peripheral signal</h4><p>What might the default path have overlooked?</p><small>Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.</small><a href="#map-family-F1">Open the full family record <span aria-hidden="true">→</span></a></article><article class="guided-family family-f2"><span>F2</span><h4>Source weighing</h4><p>What role does each source play for this exact claim?</p><small>Ask what each source can and cannot tell us about this exact claim; keep support, relevance, origin, and permission separate.</small><a href="#map-family-F2">Open the full family record <span aria-hidden="true">→</span></a></article><article class="guided-family family-f3"><span>F3</span><h4>Velocity / motion</h4><p>What is changing unusually relative to a relevant baseline?</p><small>Notice a change against a stated baseline before calling it meaningful.</small><a href="#map-family-F3">Open the full family record <span aria-hidden="true">→</span></a></article><article class="guided-family family-f4"><span>F4</span><h4>Absence + memory</h4><p>What should be present but is not, and what prior context changes the meaning of now?</p><small>Notice what should be present but is not, and keep earlier observations and corrections visible.</small><a href="#map-family-F4">Open the full family record <span aria-hidden="true">→</span></a></article><article class="guided-family family-f5"><span>F5</span><h4>Structured patterns</h4><p>What becomes visible through explicit comparison?</p><small>Compare peers, periods, structures, and relationships so recurrence, difference, and missing perspectives can be seen.</small><a href="#map-family-F5">Open the full family record <span aria-hidden="true">→</span></a></article><article class="guided-family family-f6"><span>F6</span><h4>Learning loop</h4><p>What did we expect, what happened, and what bounded update is justified?</p><small>Compare what you expected with what happened, then propose one bounded change without rewriting the old record.</small><a href="#map-family-F6">Open the full family record <span aria-hidden="true">→</span></a></article></div></section>
+    <section class="guided-section" id="guided-guided-relations" data-reading-section aria-labelledby="guided-guided-relations-heading"><div class="section-heading"><p class="eyebrow">03 · RELATIONSHIPS</p><h3 id="guided-guided-relations-heading">Four connections keep the map honest.</h3><p><span class="term-help" data-term-help><dfn>baseline</dfn><span class="term-inline"> — an earlier or expected state used to judge change or absence</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="guided-term-popover-guided-baseline">See it</button><span class="term-popover" id="guided-term-popover-guided-baseline" role="note" hidden><strong>baseline</strong><span>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</span><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><span class="term-popover-boundary"><b>Boundary:</b> One convenient comparison is not automatically a fair baseline.</span><a href="#map-term-baseline">Open the glossary entry</a></span></span> makes motion and expected absence meaningful. <span class="term-help" data-term-help><dfn>common origin</dfn><span class="term-inline"> — several reports ultimately tracing to the same underlying source</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="guided-term-popover-guided-origin">See it</button><span class="term-popover" id="guided-term-popover-guided-origin" role="note" hidden><strong>common origin</strong><span>Repeated observations may still matter, but repetition from one source pathway is not the same as independent support.</span><span class="term-mini term-mini-origin" aria-hidden="true"><span><b>R1</b><b>R2</b><b>R3</b></span><i>→</i><strong>one source</strong></span><span class="term-visual-text">Several reports converge on one known source pathway rather than three established independent roots.</span><span class="term-popover-boundary"><b>Boundary:</b> Common origin does not make the underlying claim false; independence stays unknown until established.</span><a href="#map-term-common-origin">Open the glossary entry</a></span></span> keeps repetition separate from independent support. <span class="term-help" data-term-help><dfn>human authority</dfn><span class="term-inline"> — the person who may approve, hold, correct, override, or reject consequential use</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="guided-term-popover-guided-authority">See it</button><span class="term-popover" id="guided-term-popover-guided-authority" role="note" hidden><strong>human authority</strong><span>The system may prepare evidence or a recommendation. It cannot record the person’s decision before that person actually makes it.</span><span class="term-mini term-mini-authority" aria-hidden="true"><b>evidence</b><i>→</i><b>recommendation</b><i>⇢</i><strong>person decides</strong></span><span class="term-visual-text">Evidence may shape a recommendation; a separate person approves, holds, corrects, or rejects consequential use.</span><span class="term-popover-boundary"><b>Boundary:</b> Technical access and model confidence do not grant authority.</span><a href="#map-term-human-authority">Open the glossary entry</a></span></span> constrains consequential influence. The <span class="term-help" data-term-help><dfn>learning loop</dfn><span class="term-inline"> — reviewing a later outcome against a recorded expectation before proposing one limited change</span><button type="button" class="term-popover-trigger" data-term-trigger aria-expanded="false" aria-controls="guided-term-popover-guided-learning">See it</button><span class="term-popover" id="guided-term-popover-guided-learning" role="note" hidden><strong>learning loop</strong><span>The original expectation and evidence remain preserved. A later review may propose an update for human disposition.</span><span class="term-mini term-mini-learning" aria-hidden="true"><b>expectation</b><i>→</i><b>outcome</b><i>→</i><b>review</b><i>↺</i><strong>proposed update</strong></span><span class="term-visual-text">A recorded expectation is compared with an observed outcome before a limited update is proposed.</span><span class="term-popover-boundary"><b>Boundary:</b> An outcome does not silently rewrite history or prove causation.</span><a href="#map-term-learning-loop">Open the glossary entry</a></span></span> waits for an observed outcome before proposing an update.</p></div><div class="guided-relation-strip"><span><b>baseline</b><small>F3 motion · F4 absence</small></span><span><b>origin</b><small>F2 weighing · F5 comparison</small></span><span><b>authority</b><small>evidence ≠ permission to act</small></span><span><b>outcome</b><small>review before update</small></span></div><p class="guided-transition"><a href="#map-current-map">Open the interactive relationship map <span aria-hidden="true">→</span></a></p></section>
+    <section class="guided-section" id="guided-guided-apply" data-reading-section aria-labelledby="guided-guided-apply-heading"><div class="section-heading"><p class="eyebrow">04 · PROPORTIONALITY</p><h3 id="guided-guided-apply-heading">First ask whether evidence selection is even part of the task.</h3><p>If the work only formats, translates, rewrites, summarizes, or transforms supplied material, use the ordinary path. Add evidence records only when the system must select, acquire, compare, preserve, or weigh material that could change a decision.</p></div>
+  <section class="implementation-section" aria-labelledby="guided-levels-heading">
+    <div class="section-heading"><p class="eyebrow">FOUR PROPORTIONATE CHOICES</p><h3 id="guided-levels-heading">Choose the smallest route that fits the decision.</h3><p>No provider, model, database, graph, or custom service is required. The ordinary path is a valid choice when the work is reversible and evidence is supplied.</p></div>
+    <div class="implementation-grid">
+      <article class="implementation-card level-ordinary"><span class="level-pill">ordinary</span><h4>Do less when the task is simple.</h4><p>Use ordinary prompting with a short assumptions note for a creative transformation, direct format conversion, or supplied-input task where no new claim or acquisition decision is needed.</p><p class="card-boundary"><strong>Do not use the full framework</strong> when the record would cost more than the consequence of being wrong.</p></article>
+      <article class="implementation-card level-light"><span class="level-pill">lightweight</span><h4>One brief, one alternate route, one clear stop.</h4><p>Best for reversible work with bounded evidence. Record the decision, permission, default path, one peripheral candidate, one comparison, one disconfirmation attempt, and the uncertainty in the answer.</p><p class="card-boundary"><strong>Stop when</strong> the alternate route or comparison is complete, or the stated time limit is reached.</p></article>
+      <article class="implementation-card level-moderate"><span class="level-pill">moderate</span><h4>Make repeated work reproducible.</h4><p>Add stable IDs, source and artifact records, typed relationships, versioned evidence, human disposition, a context packet, and an outcome review.</p><p class="card-boundary"><strong>Stop when</strong> route-specific value is low, the budget is reached, or a human gate is required.</p></article>
+      <article class="implementation-card level-advanced"><span class="level-pill">advanced</span><h4>Engineer only when hidden mistakes justify it.</h4><p>Add queryable lineage, baselines, time-series and gap views, access policies, routing, review queues, replayable packets, and approved matched-budget evaluation.</p><p class="card-boundary"><strong>Never infer autonomy:</strong> engineering does not authorize acquisition, disclosure, or external action.</p></article>
+    </div>
+  </section><p class="guided-transition"><a href="#apply-route-studio">Build a local route recommendation <span aria-hidden="true">→</span></a></p></section>
+    <section class="guided-section" id="guided-guided-examples" data-reading-section aria-labelledby="guided-guided-examples-heading"><div class="section-heading"><p class="eyebrow">05 · TWO SCALES</p><h3 id="guided-guided-examples-heading">Ordinary work can stay ordinary. Consequential work earns more inspection.</h3></div><div class="guided-example-grid"><article><span class="level-pill level-ordinary">ordinary</span><h4>Rewrite supplied prose.</h4><p>Instruction, supplied text, returned draft. No source hunt, family checklist, influence record, or learning loop is needed.</p></article><article><span class="level-pill level-moderate">consequential</span><h4>Assess a release with conflicting signals.</h4><p>Name the decision, permission, baseline, comparison, missing fields, main challenge, planned stop condition, and human review point before consequential use.</p></article><article><span class="level-pill level-light">relationship</span><h4>Nine reports, one source path.</h4><p>Record nine observations and one known origin without converting repetition into nine independent confirmations. The Echo project remains separate and unrun.</p></article></div><p class="guided-transition"><a href="#examples-examples">Explore all worked examples and bounded cases <span aria-hidden="true">→</span></a></p></section>
+    <section class="guided-section guided-boundary" id="guided-guided-boundary" data-reading-section aria-labelledby="guided-guided-boundary-heading"><div class="section-heading"><p class="eyebrow">06 · HUMAN BOUNDARY</p><h3 id="guided-guided-boundary-heading">Scaffold the floor; do not automate the ceiling.</h3><p>The framework can make comparisons, memory, gaps, source pathways, uncertainty, cost, and influence more inspectable. It cannot replace expertise, taste, accountability, contextual judgment, or permission. A plan is not an event. A recommendation is not a human decision. A later outcome is not automatic proof.</p></div><div class="guided-appendices"><a href="#boundaries-boundaries"><strong>Boundaries</strong><span>Claims, authority, failure modes</span></a><a href="#sources-sources"><strong>Sources</strong><span>Targeted, not exhaustive</span></a><a href="#research-research"><strong>Research</strong><span>Unrun · no results</span></a><a href="#history-history"><strong>History</strong><span>V13 origin, not current topology</span></a></div></section>
   </section>
       </section>
 <section class="standalone-section" id="examples" aria-label="Examples">
@@ -1671,6 +1907,120 @@ main { overflow: visible; }
     <div class="footer-links"><a href="#home-top">Back to the beginning</a><a href="#sources-sources">Targeted sources</a><a href="#history-history">Lineage and history</a></div>
   </footer>
   <script>(() => {
+  const allowed = {
+    consequence: new Set(["reversible", "consequential"]),
+    uncertainty: new Set(["low", "mixed", "high"]),
+    budget: new Set(["quick", "bounded", "substantial"]),
+    permission: new Set(["supplied", "restricted", "human-gate"]),
+  };
+
+  const INITIAL_OBSERVED_STATE = Object.freeze({
+    executionState: "NOT_RUN",
+    stopOutcome: "NOT_TRIGGERED",
+    outcomeState: "NOT_OBSERVED",
+    learningReview: "NOT_AVAILABLE",
+    humanDisposition: "NOT_RECORDED",
+  });
+
+  const assertValid = (input) => {
+    for (const [field, values] of Object.entries(allowed)) {
+      if (!values.has(input?.[field])) {
+        throw new TypeError(`Invalid ${field} choice.`);
+      }
+    }
+  };
+
+  const levelFor = ({ consequence, uncertainty, budget }) => {
+    if (budget === "substantial" || (consequence === "consequential" && uncertainty === "high")) {
+      return "advanced";
+    }
+    if (consequence === "consequential" || uncertainty === "high") return "moderate";
+    if (uncertainty === "mixed" || budget === "bounded") return "lightweight";
+    return "ordinary";
+  };
+
+  const levelCopy = {
+    ordinary: {
+      title: "Do less when the task is simple.",
+      summary: "Use the supplied material and keep the assumptions visible. No evidence workflow is required unless the task introduces an evidence-selection decision.",
+      action: "ANSWER",
+      gate: "No additional gate identified; consequential action still remains with the named person.",
+      stop: "Finish the supplied-material transformation. Do not begin external acquisition unless the brief changes.",
+      learning: "No learning route is planned. A later outcome would need its own expectation and review window.",
+    },
+    lightweight: {
+      title: "Use one alternate route and one clear limit.",
+      summary: "A bounded pass can compare one additional route, challenge the leading interpretation, and preserve the main uncertainty without creating a full evidence system.",
+      action: "ANSWER_PROVISIONALLY",
+      gate: "Human review before any consequential use of the provisional answer.",
+      stop: "Stop after one authorized alternate route and one challenge, or when the stated time limit is reached.",
+      learning: "Optional only if an expectation and outcome window are defined before execution.",
+    },
+    moderate: {
+      title: "Make consequential or repeated work reproducible.",
+      summary: "Keep source identity, comparison, uncertainty, permission, influence, and a human checkpoint visible before material shapes a consequential answer.",
+      action: "COMPARE",
+      gate: "Named human review before the recommendation is used for a consequential decision.",
+      stop: "Stop when the named comparison is complete, a critical gap remains, or the authorized budget is reached.",
+      learning: "Plan only after recording an expectation and outcome window; no outcome has been observed yet.",
+    },
+    advanced: {
+      title: "Engineer only when hidden mistakes justify the cost.",
+      summary: "Queryable records and review queues may be warranted, but this recommendation grants no permission to acquire, disclose, spend, publish, or act.",
+      action: "COMPARE",
+      gate: "Explicit permission and accountable human review before influence or external action.",
+      stop: "Stop at the approved resource boundary or when unresolved permission, identity, or evidence gaps block safe influence.",
+      learning: "Define and lock the expectation, attribution boundary, and review window before any run.",
+    },
+  };
+
+  const recommend = (input) => {
+    assertValid(input);
+    const recommendedLevel = levelFor(input);
+    const base = levelCopy[recommendedLevel];
+
+    if (input.permission === "restricted") {
+      return Object.freeze({
+        recommendedLevel,
+        recommendedAction: "CLARIFY",
+        requiredGate: "Clarify permission to acquire, use, retain, disclose, and act before the material can influence an answer.",
+        plannedStopCondition: "Hold while permission is absent, restricted, or ambiguous.",
+        learningOption: "No learning path can be recommended until permission is resolved and an actual outcome route is defined.",
+        title: "Clarify permission before influence.",
+        summary: "Restricted material cannot be converted into an answer recommendation merely because the task is quick, reversible, or low consequence.",
+      });
+    }
+
+    if (input.permission === "human-gate") {
+      return Object.freeze({
+        recommendedLevel,
+        recommendedAction: "HOLD",
+        requiredGate: "The named human must approve the proposed use before the material influences an answer or action.",
+        plannedStopCondition: "Remain on hold until that explicit gate is satisfied; technical access does not satisfy it.",
+        learningOption: "No learning path can be recommended until an authorized run defines an expectation and outcome window.",
+        title: "Keep the human gate in front of influence.",
+        summary: "The system may prepare a question or comparison for review, but it cannot treat the person’s decision as already recorded.",
+      });
+    }
+
+    return Object.freeze({
+      recommendedLevel,
+      recommendedAction: base.action,
+      requiredGate: base.gate,
+      plannedStopCondition: base.stop,
+      learningOption: base.learning,
+      title: base.title,
+      summary: base.summary,
+    });
+  };
+
+  globalThis.PatternMapRecommendation = Object.freeze({
+    INITIAL_OBSERVED_STATE,
+    recommend,
+  });
+})();
+
+(() => {
   const familyGrid = document.querySelector(".family-grid");
   const focusStatus = document.querySelector("#family-focus-status");
   const familyCards = [...document.querySelectorAll("[data-family-card]")];
@@ -1681,8 +2031,10 @@ main { overflow: visible; }
   const mapFocusTitle = document.querySelector("[data-map-focus-title]");
   const mapFocusQuestion = document.querySelector("[data-map-focus-question]");
   const mapFocusInputs = document.querySelector("[data-map-focus-inputs]");
+  const mapFocusComparison = document.querySelector("[data-map-focus-comparison]");
   const mapFocusRecord = document.querySelector("[data-map-focus-record]");
   const mapFocusBoundary = document.querySelector("[data-map-focus-boundary]");
+  const mapFocusConnections = document.querySelector("[data-map-focus-connections]");
   const mapFocusStatus = document.querySelector("[data-map-focus-status]");
 
   const mapButtonFor = (family) => mapButtons.find((button) => button.dataset.mapFamily === family);
@@ -1699,10 +2051,12 @@ main { overflow: visible; }
       button.classList.remove("is-selected");
     });
     if (mapFocusTitle) mapFocusTitle.textContent = "All six families remain in view.";
-    if (mapFocusQuestion) mapFocusQuestion.textContent = "Choose a family to inspect its question, inputs, comparison, boundary, record, and adjacent connections. Focus adds emphasis; it never hides essential meaning.";
-    if (mapFocusInputs) mapFocusInputs.textContent = "decision brief, permission, evidence, baselines, gaps, comparisons, and outcomes";
-    if (mapFocusRecord) mapFocusRecord.textContent = "the route keeps observation, interpretation, recommendation, and human disposition distinct";
-    if (mapFocusBoundary) mapFocusBoundary.textContent = "unknown relations stay unknown; human authority remains explicit";
+    if (mapFocusQuestion) mapFocusQuestion.textContent = "Choose a family to inspect it. Focus adds emphasis; it never hides essential meaning.";
+    if (mapFocusInputs) mapFocusInputs.textContent = "decision, permission, evidence, baselines, gaps, comparisons, or observed outcomes";
+    if (mapFocusComparison) mapFocusComparison.textContent = "the comparison changes with the family; no single score governs the map";
+    if (mapFocusRecord) mapFocusRecord.textContent = "records are created only when the task warrants them";
+    if (mapFocusBoundary) mapFocusBoundary.textContent = "unknown relations stay unknown; candidates do not become truth by status";
+    if (mapFocusConnections) mapFocusConnections.textContent = "baseline, common-origin, influence-gate, and conditional-learning relationships remain explicit";
     if (mapFocusStatus) mapFocusStatus.textContent = "All six families are available for comparison.";
     if (announce && focusStatus) focusStatus.textContent = "All six families are visible. Focus controls add emphasis; they never hide essential meaning.";
   };
@@ -1729,11 +2083,13 @@ main { overflow: visible; }
     });
 
     if (mapFocusTitle) mapFocusTitle.textContent = `${mapButton.dataset.mapFamily} · ${mapButton.dataset.mapName}`;
-    if (mapFocusQuestion) mapFocusQuestion.textContent = `Question: ${mapButton.dataset.mapQuestion}`;
-    if (mapFocusInputs) mapFocusInputs.textContent = `${mapButton.dataset.mapInputs}. Compare: ${mapButton.dataset.mapComparison}. Adjacent connection: ${mapButton.dataset.mapConnections}.`;
+    if (mapFocusQuestion) mapFocusQuestion.textContent = mapButton.dataset.mapQuestion;
+    if (mapFocusInputs) mapFocusInputs.textContent = mapButton.dataset.mapInputs;
+    if (mapFocusComparison) mapFocusComparison.textContent = mapButton.dataset.mapComparison;
     if (mapFocusRecord) mapFocusRecord.textContent = mapButton.dataset.mapRecords;
     if (mapFocusBoundary) mapFocusBoundary.textContent = mapButton.dataset.mapBoundary;
-    if (mapFocusStatus) mapFocusStatus.textContent = `${family} is focused in the relationship view. Its question, inputs, comparison, record, boundary, and connections remain visible.`;
+    if (mapFocusConnections) mapFocusConnections.textContent = mapButton.dataset.mapConnections;
+    if (mapFocusStatus) mapFocusStatus.textContent = `${family} is focused. Question, inputs, comparison, record, boundary, and connections are shown separately.`;
     if (focusStatus) focusStatus.textContent = `${family} is focused. The other families remain visible for comparison.`;
     sourceButton?.setAttribute("aria-pressed", "true");
   };
@@ -1757,24 +2113,56 @@ main { overflow: visible; }
     const isOpen = moreButton.getAttribute("aria-expanded") === "true";
     setMoreOpen(!isOpen, !isOpen);
   });
+
+  const termTriggers = [...document.querySelectorAll("[data-term-trigger]")];
+  const closeTerm = (trigger, restoreFocus = false) => {
+    const panel = trigger?.getAttribute("aria-controls")
+      ? document.getElementById(trigger.getAttribute("aria-controls"))
+      : null;
+    trigger?.setAttribute("aria-expanded", "false");
+    if (panel) panel.hidden = true;
+    if (restoreFocus) trigger?.focus();
+  };
+  const closeOtherTerms = (except) => {
+    termTriggers.forEach((trigger) => {
+      if (trigger !== except && trigger.getAttribute("aria-expanded") === "true") closeTerm(trigger);
+    });
+  };
+  termTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+      if (!panel) return;
+      const opening = trigger.getAttribute("aria-expanded") !== "true";
+      closeOtherTerms(trigger);
+      trigger.setAttribute("aria-expanded", String(opening));
+      panel.hidden = !opening;
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest?.("[data-term-help]")) return;
+    closeOtherTerms(null);
+  });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && moreButton?.getAttribute("aria-expanded") === "true") {
+    if (event.key !== "Escape") return;
+    const openTerm = termTriggers.find((trigger) => trigger.getAttribute("aria-expanded") === "true");
+    if (openTerm) {
+      closeTerm(openTerm, true);
+      return;
+    }
+    if (moreButton?.getAttribute("aria-expanded") === "true") {
       setMoreOpen(false);
       moreButton.focus();
     }
-    if (event.key === "Escape") {
-      document.querySelectorAll(".orientation-mobile[open]").forEach((details) => {
-        details.removeAttribute("open");
-        details.querySelector("summary")?.focus();
-      });
-    }
   });
 
-  const readingSections = [...document.querySelectorAll("[data-reading-section]")];
-  const readingLinks = [...document.querySelectorAll("[data-reading-link]")];
-  const progress = document.querySelector("[data-reading-progress]");
-  const progressValue = document.querySelector("[data-reading-progress-value]");
-  if (readingSections.length) {
+  const readingRoutes = [...document.querySelectorAll("[data-reading-route]")];
+  readingRoutes.forEach((route) => {
+    const readingSections = [...route.querySelectorAll("[data-reading-section]")];
+    const readingLinks = [...route.querySelectorAll("[data-reading-link]")];
+    const progress = route.querySelector("[data-reading-progress]");
+    const progressValue = route.querySelector("[data-reading-progress-value]");
+    if (!readingSections.length) return;
     const setReadingActive = (id) => {
       readingLinks.forEach((link) => {
         const active = link.getAttribute("href") === `#${id}`;
@@ -1784,117 +2172,118 @@ main { overflow: visible; }
       });
     };
     const updateReadingProgress = () => {
-      const route = document.querySelector(".reading-route");
-      if (!route || !progress) return;
+      if (!progress) return;
       const start = route.getBoundingClientRect().top + window.scrollY;
       const end = start + route.scrollHeight - window.innerHeight;
       const percent = end <= start ? 100 : Math.max(0, Math.min(100, ((window.scrollY - start) / (end - start)) * 100));
       progress.querySelector("span")?.style.setProperty("width", `${percent}%`);
       progress.setAttribute("aria-valuenow", String(Math.round(percent)));
-      progress.setAttribute("aria-valuetext", `${Math.round(percent)} percent of the reading route`);
+      progress.setAttribute("aria-valuetext", `${Math.round(percent)} percent of this reading path`);
       if (progressValue) progressValue.textContent = `${Math.round(percent)}%`;
     };
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (visible[0]?.target.id) setReadingActive(visible[0].target.id);
-    }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
-    readingSections.forEach((section) => observer.observe(section));
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]?.target.id) setReadingActive(visible[0].target.id);
+      }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
+      readingSections.forEach((section) => observer.observe(section));
+    }
     window.addEventListener("scroll", updateReadingProgress, { passive: true });
     window.addEventListener("resize", updateReadingProgress);
     updateReadingProgress();
-  }
+  });
 
   const routeStudio = document.querySelector("[data-route-studio]");
-  const receipt = document.querySelector("[data-route-receipt]");
-  if (routeStudio && receipt) {
+  const recommendationCard = document.querySelector("[data-route-recommendation]");
+  if (routeStudio && recommendationCard) {
+    const recommendationApi = globalThis.PatternMapRecommendation;
+    if (!recommendationApi?.recommend || !recommendationApi?.INITIAL_OBSERVED_STATE) return;
+
     const fieldValue = (name) => routeStudio.querySelector(`input[name="${name}"]:checked`)?.value ?? "";
-    const setReceiptText = (selector, value) => {
-      const element = receipt.querySelector(selector);
+    const setCardText = (selector, value) => {
+      const element = recommendationCard.querySelector(selector);
       if (element) element.textContent = value;
     };
-    const buildReceipt = () => {
-      const consequence = fieldValue("consequence");
-      const uncertainty = fieldValue("uncertainty");
-      const budget = fieldValue("budget");
-      const permission = fieldValue("permission");
-      let route = "ordinary";
-      let routeToken = "ANSWER";
-      let stop = "COMPLETE";
-      let learning = "LEARNING_NOT_APPLICABLE";
-      let authority = "HUMAN_DISPOSITION_RECORDED";
-      let title = "Do less when the task is simple.";
-      let summary = "For reversible work with low uncertainty, keep the route small and leave the important distinctions visible.";
-      if (budget === "substantial" || (consequence === "consequential" && uncertainty === "high")) {
-        route = "advanced";
-        routeToken = "CLARIFY";
-        stop = "STOPPED_DEADLINE";
-        learning = "LEARNING_PLANNED";
-        authority = "HUMAN_DISPOSITION_REQUIRED";
-        title = "Engineer only when hidden mistakes justify it.";
-        summary = "A larger route is a proposal for queryable lineage and review, not permission to acquire, disclose, spend, or act.";
-      } else if (consequence === "consequential" || uncertainty === "high" || permission === "human-gate") {
-        route = "moderate";
-        routeToken = permission === "supplied" ? "COMPARE" : "HOLD";
-        stop = "STOPPED_OTHER";
-        learning = "LEARNING_PENDING_OUTCOME";
-        authority = "HUMAN_DISPOSITION_REQUIRED";
-        title = "Make repeated or consequential work reproducible.";
-        summary = "Keep identity, comparison, uncertainty, permission, a stop reason, and a human checkpoint visible before influence.";
-      } else if (uncertainty === "mixed" || budget === "bounded" || permission === "restricted") {
-        route = "lightweight";
-        routeToken = "ANSWER_PROVISIONALLY";
-        stop = "STOPPED_BUDGET";
-        learning = "LEARNING_PLANNED";
-        title = "One brief, one alternate route, one clear stop.";
-        summary = "A bounded pass records the decision, one peripheral candidate, one comparison, one challenge, and what remains uncertain.";
-      }
-      const routeBadge = receipt.querySelector("[data-receipt-route]");
-      if (routeBadge) routeBadge.textContent = route;
-      setReceiptText("[data-receipt-title]", title);
-      setReceiptText("[data-receipt-summary]", summary);
-      setReceiptText("[data-receipt-route-value]", routeToken);
-      setReceiptText("[data-receipt-stop]", stop);
-      setReceiptText("[data-receipt-learning]", learning);
-      setReceiptText("[data-receipt-authority]", authority);
-      setReceiptText("[data-receipt-status]", `Receipt built for ${route}. Route, stop, learning, and authority remain separate fields.`);
-      const flow = receipt.querySelector("[data-receipt-flow-state]");
-      if (flow) {
-        flow.querySelector("strong").textContent = route === "ordinary" ? "complete" : route === "lightweight" ? "stop" : route === "moderate" ? "disposition" : "clarify";
-        flow.querySelector("small").textContent = route === "ordinary" ? "ordinary path" : route === "lightweight" ? "budget boundary" : route === "moderate" ? "human gate" : "question authority";
-      }
-      receipt.dataset.route = route;
+    const renderObservedState = () => {
+      const observed = recommendationApi.INITIAL_OBSERVED_STATE;
+      setCardText("[data-observed-execution]", observed.executionState);
+      setCardText("[data-observed-stop]", observed.stopOutcome);
+      setCardText("[data-observed-outcome]", observed.outcomeState);
+      setCardText("[data-observed-learning]", observed.learningReview);
+      setCardText("[data-observed-human]", observed.humanDisposition);
     };
+    const resetSimulation = () => {
+      setCardText("[data-simulation-state]", "NOT_SIMULATED");
+      setCardText("[data-simulation-reason]", "Use the controls only to inspect example state changes. They do not record a real person, run, stop, or outcome.");
+      setCardText("[data-simulation-time]", "NOT_RECORDED");
+      recommendationCard.dataset.simulation = "none";
+    };
+    const renderRecommendation = () => {
+      let plan;
+      try {
+        plan = recommendationApi.recommend({
+          consequence: fieldValue("consequence"),
+          uncertainty: fieldValue("uncertainty"),
+          budget: fieldValue("budget"),
+          permission: fieldValue("permission"),
+        });
+      } catch {
+        setCardText("[data-recommendation-status]", "Choose one valid option in all four groups before building a recommendation.");
+        return;
+      }
+      setCardText("[data-recommendation-level]", plan.recommendedLevel);
+      setCardText("[data-recommendation-title]", plan.title);
+      setCardText("[data-recommendation-summary]", plan.summary);
+      setCardText("[data-recommendation-action]", plan.recommendedAction);
+      setCardText("[data-recommendation-gate]", plan.requiredGate);
+      setCardText("[data-recommendation-stop]", plan.plannedStopCondition);
+      setCardText("[data-recommendation-learning]", plan.learningOption);
+      setCardText("[data-recommendation-status]", `${plan.recommendedLevel} route recommendation built; no execution or human decision has been recorded.`);
+      recommendationCard.dataset.level = plan.recommendedLevel;
+      renderObservedState();
+      resetSimulation();
+    };
+
     routeStudio.addEventListener("submit", (event) => {
       event.preventDefault();
-      buildReceipt();
+      renderRecommendation();
     });
     routeStudio.querySelector("[data-route-reset]")?.addEventListener("click", () => {
       routeStudio.reset();
-      buildReceipt();
+      renderRecommendation();
     });
-    receipt.querySelectorAll("[data-route-action]").forEach((button) => {
+    recommendationCard.querySelectorAll("[data-simulation-action]").forEach((button) => {
       button.addEventListener("click", () => {
-        const action = button.dataset.routeAction;
-        const actionDetails = {
-          hold: { route: "HOLD", stop: "STOPPED_OTHER", authority: "HUMAN_DISPOSITION_REQUIRED", message: "HOLD recorded. A person must decide whether the route may continue." },
-          escalate: { route: "ESCALATE", stop: "STOPPED_OTHER", authority: "HUMAN_DISPOSITION_REQUIRED", message: "ESCALATE recorded. Consequential authority remains with a person." },
-          stop: { route: "ANSWER_PROVISIONALLY", stop: "STOPPED_BUDGET", authority: "HUMAN_DISPOSITION_RECORDED", message: "STOPPED_BUDGET recorded. Remaining uncertainty stays visible." },
-        }[action];
-        if (!actionDetails) return;
-        setReceiptText("[data-receipt-route-value]", actionDetails.route);
-        setReceiptText("[data-receipt-stop]", actionDetails.stop);
-        setReceiptText("[data-receipt-authority]", actionDetails.authority);
-        setReceiptText("[data-receipt-status]", actionDetails.message);
-        const flow = receipt.querySelector("[data-receipt-flow-state]");
-        if (flow) {
-          flow.querySelector("strong").textContent = action === "stop" ? "stop" : action;
-          flow.querySelector("small").textContent = action === "stop" ? "budget boundary" : "human disposition";
+        const action = button.dataset.simulationAction;
+        if (action === "reset") {
+          resetSimulation();
+          setCardText("[data-recommendation-status]", "Simulation reset; observed state remains not run and not observed.");
+          return;
         }
-        receipt.dataset.state = action;
+        const details = {
+          hold: {
+            state: "SIMULATED_HOLD",
+            reason: "Example only: a person pauses influence pending review. This is not a real human disposition.",
+          },
+          clarify: {
+            state: "SIMULATED_CLARIFICATION_RECEIVED",
+            reason: "Example only: clarification is supplied for reconsideration. It does not itself grant permission.",
+          },
+        }[action];
+        if (!details) return;
+        setCardText("[data-simulation-state]", details.state);
+        setCardText("[data-simulation-reason]", details.reason);
+        setCardText("[data-simulation-time]", new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+        setCardText("[data-recommendation-status]", `${details.state} displayed as a local simulation; observed state remains unchanged.`);
+        recommendationCard.dataset.simulation = action;
       });
     });
-    buildReceipt();
+    renderRecommendation();
   }
+
+  document.documentElement.classList.remove("no-js");
+  document.documentElement.classList.add("js");
+  document.documentElement.dataset.enhanced = "true";
 })();
 </script>
 </body>

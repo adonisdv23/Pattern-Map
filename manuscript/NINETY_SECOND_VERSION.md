@@ -1,34 +1,31 @@
 # Pattern Recognition: The Discrimination Layer
 
-AI answers can sound generic before the model writes a word. The weakness may
-be upstream: the search followed the obvious path, familiar sources crowded
-out a specialist perspective, no one compared the case with a useful peer or
-baseline, an expected piece of information was missing, or the system had no
-memory of what happened before. The answer inherits those choices.
+An AI answer can sound polished yet be generic because weakness can begin
+before writing. Ask a system to assess a product release. The obvious
+search finds familiar coverage. A stronger pass also checks a specialist note,
+compares earlier releases, and notices that the monitoring window and rollback
+owner are missing. Those checks do not decide the answer; they improve the
+information available to it.
 
-Pattern Recognition is the discipline of improving them. The Discrimination
-Layer names the responsibility for deciding what the system should notice,
-acquire, compare, preserve, question, and allow to influence an answer—and for
-making those choices visible enough to correct. Here “discrimination” means
-differentiating among information candidates and possible next actions, not
-classifying people; “layer” means a responsibility, not a mandatory
-architecture.
+Pattern Recognition makes those upstream choices deliberate and correctable.
+Its six families ask:
 
-The six families are: look beyond the default path for a peripheral signal;
-weigh sources by their role and support for this exact claim; notice velocity
-against a meaningful baseline; notice expected absences while preserving
-versioned memory; compare peers, periods, and structures without forcing false
-equivalence; and learn from defined outcomes without rewriting history.
+1. What might the obvious path have missed?
+2. What can each source actually support?
+3. What is changing against a useful baseline?
+4. What expected information is missing, and what should memory preserve?
+5. What appears when peers, periods, structures, or origins are compared?
+6. After a defined outcome, what bounded update should be proposed?
 
-Peripheral material is a candidate for inspection, not a truth signal. Repeated
-reports are observations, not automatically separate confirmation. Access is
-not permission, and knowing where something came from does not prove it is
-correct. People still make the judgment and keep authority for consequential
-action.
+The Discrimination Layer names that responsibility: deciding what the system
+should notice, compare, preserve, question, and allow to shape an answer. It is
+not mandatory software. Peripheral material is a candidate for inspection,
+not a truth signal. Repetition is not automatically independent confirmation.
+Technical access is not permission. People retain judgment and authority for
+consequential action.
 
-Sometimes this needs only a short note naming the decision and assumptions.
-Higher-stakes work may merit a reviewable evidence record, clear cost and
-stopping rules, and a person who can correct the route. Low-stakes rewrites and
-obvious transformations may need almost none. The proposal is broader than
-origin counting and narrower than a claim to replace expertise. It asks us to
-improve the room before we ask AI to make the room sound finished.
+A supplied-text rewrite may need almost none of this. Higher-stakes work may
+need an evidence record, cost limit, planned stopping condition, and human
+checkpoint. This is a design proposal, not a settled empirical result or a
+replacement for expertise. The aim is to improve the room before asking AI to
+make it sound finished.

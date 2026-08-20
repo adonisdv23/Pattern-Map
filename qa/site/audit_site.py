@@ -23,6 +23,7 @@ ROUTES = {
     "read/index.html": "Read the idea",
     "map/index.html": "Explore the map",
     "apply/index.html": "Apply it",
+    "guided/index.html": "Take the guided read",
     "examples/index.html": "Examples",
     "boundaries/index.html": "Boundaries",
     "sources/index.html": "Sources",
@@ -94,7 +95,7 @@ def audit_route(relative: str, expected_title: str) -> list[str]:
     require(file.is_file(), f"missing built route: {relative}")
     text, parser = parse(file)
     messages: list[str] = []
-    require('<html lang="en">' in text, f"{relative}: missing lang=en")
+    require(re.search(r'<html\b[^>]*\blang="en"', text) is not None, f"{relative}: missing lang=en")
     require(text.count('<main id="main"') == 1, f"{relative}: expected one main landmark")
     require('<a class="skip-link" href="#main">' in text, f"{relative}: skip link missing")
     require(any(label == "Principal routes" for tag, label in parser.landmarks if tag == "nav"), f"{relative}: principal nav label missing")
@@ -124,6 +125,7 @@ def main() -> None:
     root_text = (DIST / "index.html").read_text(encoding="utf-8")
     map_text = (DIST / "map/index.html").read_text(encoding="utf-8")
     apply_text = (DIST / "apply/index.html").read_text(encoding="utf-8")
+    guided_text = (DIST / "guided/index.html").read_text(encoding="utf-8")
     read_text = (DIST / "read/index.html").read_text(encoding="utf-8")
     sources_text = (DIST / "sources/index.html").read_text(encoding="utf-8")
     examples_text = (DIST / "examples/index.html").read_text(encoding="utf-8")
@@ -146,6 +148,20 @@ def main() -> None:
     for value in ["ordinary", "lightweight", "moderate", "advanced", "ACQUIRE", "STOPPED_BUDGET", "LEARNING_PENDING_OUTCOME"]:
         require(value.lower() in apply_text.lower(), f"Apply vocabulary missing: {value}")
     output.append("PASS Apply route exposes ordinary/lightweight/moderate/advanced and route/stop/learning vocabularies")
+
+    recommendation_match = re.search(r'<aside class="route-recommendation-card"[\s\S]*?</aside>', apply_text)
+    require(recommendation_match is not None, "Apply planning recommendation card missing")
+    recommendation_text = recommendation_match.group(0)
+    for token in ("COMPLETE", "STOPPED_", "HUMAN_DISPOSITION_RECORDED", "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED"):
+        require(token not in recommendation_text, f"Apply planning card fabricates observed event: {token}")
+    for token in ("NOT_RUN", "NOT_TRIGGERED", "NOT_OBSERVED", "NOT_AVAILABLE", "NOT_RECORDED"):
+        require(token in recommendation_text, f"Apply initial observed state missing: {token}")
+    output.append("PASS Apply recommendation separates plans, simulations, and unobserved state")
+
+    for section_id in ("guided-opening", "guided-families", "guided-relations", "guided-apply", "guided-examples", "guided-boundary"):
+        require(f'id="{section_id}"' in guided_text, f"Guided route section missing: {section_id}")
+    require("editorial estimate only" in guided_text, "Guided route reading-time caveat missing")
+    output.append("PASS optional Guided route preserves a continuous authored reading path")
 
     for value in ["@media print", "prefers-reduced-motion", "forced-colors", "details > summary"]:
         require(value in (ROOT / "site" / "src" / "site.css").read_text(encoding="utf-8"), f"responsive/accessibility CSS hook missing: {value}")
@@ -178,7 +194,7 @@ def main() -> None:
     require(sum(level == 1 for level, _ in standalone_parser.headings) == 1, "standalone export must have exactly one h1")
     for previous, current in zip(standalone_parser.headings, standalone_parser.headings[1:]):
         require(current[0] <= previous[0] + 1, f"standalone export heading jump {previous} -> {current}")
-    for route_id in ("home", "read", "map", "apply", "examples", "boundaries", "sources", "research", "history"):
+    for route_id in ("home", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"):
         require(f'<section class="standalone-section" id="{route_id}"' in standalone_text, f"standalone route section missing: {route_id}")
     output.append("PASS standalone HTML is self-contained with one h1, unique IDs, and named route sections")
 

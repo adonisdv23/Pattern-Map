@@ -5,6 +5,24 @@ An agent that follows it leaves records; it does not merely claim that it
 “thought differently.” The guide does not grant permission to spend, contact,
 publish, deploy, or act externally.
 
+## 0. Decide whether evidence-selection work exists
+
+Before choosing a level, ask: **Must the agent select, acquire, compare,
+preserve, or weigh information beyond the user-supplied material?**
+
+- If no, use the ordinary path: perform the reversible supplied-material
+  transformation, state any material assumption, and stop. Keep the
+  instruction, input, and output; do not manufacture evidence, route, outcome,
+  or learning records.
+- If yes, continue to the operating levels below. Choose only the records and
+  checks justified by consequence, uncertainty, repetition, and cost.
+
+Formatting, translation, extraction, summarization, or creative transformation
+of supplied material normally stays ordinary unless the task introduces a
+material evidence-selection decision. This gate prevents the playbook from
+turning routine work into ceremony; it does not excuse hidden acquisition or a
+consequential judgment.
+
 ## 1. Choose the operating level
 
 Select LIGHTWEIGHT, MODERATE, or ADVANCED using the consequence, reversibility,
@@ -17,9 +35,8 @@ evidence volume, sensitivity, reuse, and expected outcome. Record the choice.
 - ADVANCED: queryable lineage, access and retention policy, relationship/time
   views, route policy, replay, and approved evaluation.
 
-If the task is only formatting, translation, or creative transformation of
-supplied text, use the ordinary path and state that no evidence-selection work
-was required.
+Record why the selected level is proportionate. Do not escalate an ordinary
+task merely because more infrastructure is available.
 
 ## 2. Define the real decision
 
@@ -238,6 +255,11 @@ untyped `ABSTAIN` route.
 Every route receipt includes route, stop status, reason, expected benefit,
 cost, permission, uncertainty, and stop or resume condition. Budget exhaustion
 is not evidence sufficiency.
+
+A planning surface may recommend a route, gate, or stopping condition before a
+run. That recommendation is not an observed route receipt. Record `COMPLETE`, a
+`STOPPED_*` status, a human disposition, or an outcome-learning state only
+after the corresponding event has actually occurred.
 
 ## 13. Build the context and influence receipt
 
