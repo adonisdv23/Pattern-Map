@@ -17,7 +17,26 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
-CONTENT_CHECKPOINT = "a319794f5cf2d395c34e5af4935c9299f12dfd5c"
+BRANCH_STATE = ROOT / "handoff" / "BRANCH_AND_PR_STATE.md"
+
+
+def content_checkpoint() -> str:
+    """Read the current checkpoint from its single source of truth.
+
+    The previous package hard-coded a hash here and in fourteen other files.
+    Two of those hashes named commits that were never created (D-025). Reading
+    the value from one register means a checkpoint can be wrong in exactly one
+    place, and `PENDING` stays visible instead of being quietly replaced by an
+    invented hash.
+    """
+    for line in BRANCH_STATE.read_text().splitlines():
+        if line.startswith("| Round-one correction"):
+            cells = [cell.strip() for cell in line.split("|")]
+            return cells[2].strip("`")
+    raise AssertionError("no round-one correction row found in handoff/BRANCH_AND_PR_STATE.md")
+
+
+CONTENT_CHECKPOINT = content_checkpoint()
 
 
 REQUIRED_PATHS = [
@@ -71,6 +90,7 @@ REQUIRED_PATHS = [
     "site/check.mjs",
     "site/src/site.css",
     "site/src/site.js",
+    "site/src/recommendation.js",
     "site/scripts/generate_review_pdf.py",
     "site/exports/standalone/pattern-map-v16.html",
     "site/exports/pattern-map-v16-owner-review.pdf",
@@ -110,45 +130,60 @@ REQUIRED_PATHS = [
     "qa/site/SITE_POLISH_QA.md",
     "qa/site/audit_site.py",
     "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
+    "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md",
+    "qa/site/RENDERED_VERIFICATION_ROUND_2_2026-08-20.md",
+    "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
     "qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md",
+    "qa/interaction/apply-state-contract.spec.mjs",
+    "qa/interaction/layout-probe.js",
+    "qa/interaction/summarize_sweep.py",
+    "qa/interaction/evidence/rendered-sweep-2026-08-20.json",
+    "qa/interaction/evidence/RENDERED_SWEEP_SUMMARY.md",
+    "qa/interaction/evidence/apply-planning-states-2026-08-20.json",
+    "qa/interaction/enhancement-probe.js",
+    "qa/interaction/layout-sweep-driver.js",
+    "qa/interaction/map-layout-contract.spec.mjs",
+    "qa/content/reader-language-contract.spec.mjs",
+    "qa/site/css-selector-use.spec.mjs",
     "qa/visual/README.md",
+    "qa/visual/verify_image_formats.py",
     "qa/visual/POLISH_PLAN.md",
     "qa/visual/VISUAL_NEEDS.md",
     "qa/visual/VISUAL_QA_REPORT.md",
     "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
-    "qa/visual/screenshots/home-desktop-1440x1000.png",
-    "qa/visual/screenshots/home-tablet-1024x768.png",
-    "qa/visual/screenshots/home-mobile-390x844.png",
-    "qa/visual/screenshots/map-desktop-1440x1000.png",
-    "qa/visual/screenshots/apply-tablet-1024x768.png",
-    "qa/visual/screenshots/history-desktop-1440x1000.png",
-    "qa/visual/screenshots/history-full.png",
-    "qa/visual/screenshots-final-v16-polish/home-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/home-1280x720.png",
-    "qa/visual/screenshots-final-v16-polish/home-1024x768.png",
-    "qa/visual/screenshots-final-v16-polish/home-768x1024.png",
-    "qa/visual/screenshots-final-v16-polish/home-390x844.png",
-    "qa/visual/screenshots-final-v16-polish/home-360x800.png",
-    "qa/visual/screenshots-final-v16-polish/read-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/read-390x844.png",
-    "qa/visual/screenshots-final-v16-polish/map-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/map-1280x720.png",
-    "qa/visual/screenshots-final-v16-polish/map-1024x768.png",
-    "qa/visual/screenshots-final-v16-polish/map-768x1024.png",
-    "qa/visual/screenshots-final-v16-polish/map-390x844.png",
-    "qa/visual/screenshots-final-v16-polish/map-360x800.png",
-    "qa/visual/screenshots-final-v16-polish/apply-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/apply-1280x720.png",
-    "qa/visual/screenshots-final-v16-polish/apply-1024x768.png",
-    "qa/visual/screenshots-final-v16-polish/apply-768x1024.png",
-    "qa/visual/screenshots-final-v16-polish/apply-390x844.png",
-    "qa/visual/screenshots-final-v16-polish/apply-360x800.png",
-    "qa/visual/screenshots-final-v16-polish/examples-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/examples-390x844.png",
-    "qa/visual/screenshots-final-v16-polish/boundaries-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/sources-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/research-1440x900.png",
-    "qa/visual/screenshots-final-v16-polish/history-1440x900.png",
+    "qa/visual/screenshots/home-desktop-1440x1000.jpg",
+    "qa/visual/screenshots/home-tablet-1024x768.jpg",
+    "qa/visual/screenshots/home-mobile-390x844.jpg",
+    "qa/visual/screenshots/map-desktop-1440x1000.jpg",
+    "qa/visual/screenshots/apply-tablet-1024x768.jpg",
+    "qa/visual/screenshots/history-desktop-1440x1000.jpg",
+    "qa/visual/screenshots/history-full.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-1024x768.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-768x1024.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-360x800.jpg",
+    "qa/visual/screenshots-final-v16-polish/read-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/read-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-1024x768.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-768x1024.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-360x800.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-1024x768.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-768x1024.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-360x800.jpg",
+    "qa/visual/screenshots-final-v16-polish/examples-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/examples-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/boundaries-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/sources-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/research-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/history-1440x900.jpg",
     "qa/visual/screenshots-final-v16-polish/interaction-states/map-f1-focused-1280x720.jpg",
     "qa/visual/screenshots-final-v16-polish/interaction-states/apply-advanced-hold-1280x720.jpg",
     "qa/visual/screenshots-final-v16-polish/interaction-states/standalone-all-routes-1280x720.jpg",
@@ -211,9 +246,9 @@ def write_manifest() -> None:
         "schema_version": 1,
         "package": "pattern-map-v16-owner-review",
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-19",
+        "generated_date": "2026-08-20",
         "content_site_source_and_pdf_checkpoint": CONTENT_CHECKPOINT,
-        "evidence_note": "The manifest includes the authored site-polish source/export checkpoint, current/stale visual index, final responsive captures, visible interaction states, and PDF renders. Manual owner/accessibility/print gates remain open.",
+        "evidence_note": "The manifest includes the ChatGPT Pro round-one corrected source/export checkpoint, planning and responsive regression contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/accessibility/print gates remain open.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),

@@ -2,12 +2,12 @@
   "schema_version": 1,
   "package": "pattern-map-v16-owner-review",
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-  "generated_date": "2026-08-19",
-  "content_site_source_and_pdf_checkpoint": "a319794f5cf2d395c34e5af4935c9299f12dfd5c",
-  "evidence_note": "The manifest includes the authored site-polish source/export checkpoint, current/stale visual index, final responsive captures, visible interaction states, and PDF renders. Manual owner/accessibility/print gates remain open.",
+  "generated_date": "2026-08-20",
+  "content_site_source_and_pdf_checkpoint": "the corrected checkpoint recorded in handoff/BRANCH_AND_PR_STATE.md",
+  "evidence_note": "The manifest includes the ChatGPT Pro round-one corrected source/export checkpoint, planning and responsive regression contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/accessibility/print gates remain open.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 157,
-  "total_bytes": 9169804,
+  "file_count": 163,
+  "total_bytes": 9566141,
   "files": [
     {
       "path": ".gitignore",
@@ -21,8 +21,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5107,
-      "sha256": "8d879c555acb3d784720696728df5f3da5080e6aa4ee46ab254fffee2a3c219f"
+      "bytes": 5431,
+      "sha256": "5ddebb0006d7ae4dae2e4a6f86a18e93d08c971ae7aeada3f225c13882d9ea07"
     },
     {
       "path": "archive/CHECKPOINT_INDEX.json",
@@ -96,8 +96,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 45895,
-      "sha256": "393fc172e208fe9fe9b4c13123e9b0e8534e0907fe6c289247c362941c8d1686"
+      "bytes": 53284,
+      "sha256": "f05b3c7dd628581941f15ce845c851412760ef79dafb732c5a70c4283844772e"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 29826,
-      "sha256": "3eba29fbfc134b29bd231bc8e31bf768a0bcfaf9b0559314e6e4b84319bbbb89"
+      "bytes": 34079,
+      "sha256": "9f868a5da4f1a199eb10c65a04b123b93c3d366b43f1832126acd8023a05f028"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -171,13 +171,13 @@
     },
     {
       "path": "docs/V16_ROADMAP.md",
-      "bytes": 4448,
-      "sha256": "d3ce1ebab0d47ab6aed059c7fd6a1c592944a2f07eb1d0a540593ec0c14c28aa"
+      "bytes": 4700,
+      "sha256": "c43d6756f37112dad4256caeda672afb457407b3a62a2cff97a8af391fb2ba86"
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 1910,
-      "sha256": "1cd198df5d94b5ca12bc48cd9c2425d156ca1c64a23f6653d7ef4952e1cfab63"
+      "bytes": 1992,
+      "sha256": "df042303fb35d0eeceda666f97ea129dc93f0a412f4bfbcc185822705629212e"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -231,8 +231,8 @@
     },
     {
       "path": "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
-      "bytes": 12011,
-      "sha256": "ea7ee04b0790ad5abe82845da47f6a3f1ff7f2efdaec7dbe2bb17277eb4ddfe2"
+      "bytes": 13180,
+      "sha256": "a7035df0e22fdb136311db83e8faa84ab4446e289e6c2afcaa6a4efa95306312"
     },
     {
       "path": "framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md",
@@ -246,23 +246,23 @@
     },
     {
       "path": "framework/agent-playbook/QUICKSTART.md",
-      "bytes": 4788,
-      "sha256": "e405b6bcddcd524db76ab30e3a320f4b41e71c17a29b95c4b8d9295fdcca4fa6"
+      "bytes": 5486,
+      "sha256": "5cfa19c49da97cab1afb2b94b294fc0d8b0f1e8760410aa07c8511bea3d5d572"
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 2026,
-      "sha256": "e0a79dcae1d4fe857fd8daf71e7ecaf72429bdeab796ca95565ea041e1698c0a"
+      "bytes": 2197,
+      "sha256": "959370701abeb83734fc16988341e31e03a5480d7ce64ef92e6a568a029392b4"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 10168,
-      "sha256": "b189d036e91847b264fb9103e2db94275f25a313109b1f10b49b422c539a64d3"
+      "bytes": 11504,
+      "sha256": "a6cf571eefb46f04efc633f642f38e7723fdcb14f52fcb7e90359bfe8a43eb2f"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 6361,
-      "sha256": "d1cefe945a088ccb2f8e32459400ed4b2ec3164b199c8b395e99919e223c2b7b"
+      "bytes": 7149,
+      "sha256": "8ea493cd0568f4f05442628a21f1b3fa6e93cf502e5997cd71cd99f802261ba1"
     },
     {
       "path": "handoff/README.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 12035,
-      "sha256": "18f4ca68798bb244cf02239ac0fc87abdd1661f926e935c68c0acaf055a39339"
+      "bytes": 12492,
+      "sha256": "99bb64c71ff2cd704babd44ee15392e07736190b0275b0406f44174a3f908829"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -281,8 +281,8 @@
     },
     {
       "path": "manuscript/NINETY_SECOND_VERSION.md",
-      "bytes": 2047,
-      "sha256": "e103b0bbc5c2ff8a2fa99d397e09d05363ade04800a8b2c22eabdab568fd432d"
+      "bytes": 1645,
+      "sha256": "0ca136682e0abe6826091a7c995ba1919963d95da2deaf70ddcdf89bc5f53568"
     },
     {
       "path": "manuscript/ORIGIN_NOTE.md",
@@ -306,18 +306,18 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 9936,
-      "sha256": "4514d03c6b0c54a0ad69e8c03f83acbaed10793ac4db708eb625329f1c8d673b"
+      "bytes": 10658,
+      "sha256": "47a799f53da031b9a62575fb496fb2576d10c1b060eee98f0202d3f2be43d635"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
-      "bytes": 4752,
-      "sha256": "73ab526e86644e850b37c713919ad3866c49a22183661d69e0f934234a2e46aa"
+      "bytes": 5470,
+      "sha256": "0553dccd210fa4d0cb0ff75f40958f99dee758b9201c4651b76403f3cc01ace6"
     },
     {
       "path": "qa/README.md",
-      "bytes": 2744,
-      "sha256": "03877747f6c91a1b281c19369506cbff23af37cdb119307c63322c6d0295196f"
+      "bytes": 3100,
+      "sha256": "879937a99479639d5a930168aac07254d97da1f0e5a6853ea47c2097079874d4"
     },
     {
       "path": "qa/applied/README.md",
@@ -345,6 +345,11 @@
       "sha256": "b71404a03c381d26a563db02f3490629b2d6d4bf7d58730f26c526e8ab50b730"
     },
     {
+      "path": "qa/content/reader-language-contract.spec.mjs",
+      "bytes": 1999,
+      "sha256": "c34c4e05379815634de62a8c1decb9a4b90700ad8a50e2d981829b9c379d7f42"
+    },
+    {
       "path": "qa/editorial/MANUSCRIPT_QA_REPORT.md",
       "bytes": 12273,
       "sha256": "6a60ac7353e245c5d0ed112eb3e937c89b5cbd0278362a82a3143b4b1722be32"
@@ -363,6 +368,16 @@
       "path": "qa/editorial/validate_content_interface.py",
       "bytes": 18027,
       "sha256": "f1b1fda36ca0ceffb0eaa0e3b5bfff4a7324ff03fc0a54260bb8b8bfd01d4689"
+    },
+    {
+      "path": "qa/interaction/apply-state-contract.spec.mjs",
+      "bytes": 2300,
+      "sha256": "0e54429c5040ab336849991c1385dca319b7ceaba242d23ecfd58a3f361a89cf"
+    },
+    {
+      "path": "qa/interaction/map-layout-contract.spec.mjs",
+      "bytes": 1364,
+      "sha256": "8d63e2212684a0c9785d7d6b08efc0a11155ead60993864cbb8c5c18ac5bb017"
     },
     {
       "path": "qa/research/advisory/HOSTILE_NOVELTY_REVIEW_2026-08-19_6a29ed8.md",
@@ -386,18 +401,28 @@
     },
     {
       "path": "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
-      "bytes": 5912,
-      "sha256": "447c26354ba084d2744742af1e768ffd5cf7018e2b2479293d0762c2bf34165d"
+      "bytes": 6168,
+      "sha256": "42c637a41d45874c9ba275fbee5a86110afe169e347903aff2ed2a07db6a4973"
+    },
+    {
+      "path": "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md",
+      "bytes": 6132,
+      "sha256": "ab94357f82f4146a82eb8586df1a28c6cc27d201860b4aa50ca93c98b26b910c"
     },
     {
       "path": "qa/site/SITE_POLISH_QA.md",
-      "bytes": 8443,
-      "sha256": "6e3530156eb19778ec3ae37f8fe35003c9272f1e0786f53a2eb2711f713f6ab0"
+      "bytes": 8936,
+      "sha256": "0ce8b27acf3d8080b43d38196e1d16bb4906afbf82463d2ebfa7a1f5fad3585a"
     },
     {
       "path": "qa/site/SITE_QA_REPORT.md",
-      "bytes": 10554,
-      "sha256": "ec50246d2edb23c82b975d8894071aa9aea6a704de7f1df0ba48932488f041d2"
+      "bytes": 10864,
+      "sha256": "ad15a75e778876ecfb305a4e04d06048a3e16298ace20d4fee6e48d7a54a7110"
+    },
+    {
+      "path": "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
+      "bytes": 8172,
+      "sha256": "cfe3a00e07aa719380cb7b0ce996e45d0c166fd48f2c23be2f2a57433faf48b8"
     },
     {
       "path": "qa/site/advisory/SITE_COMPREHENSION_ACCESSIBILITY_2026-08-19_6a29ed8.md",
@@ -416,8 +441,8 @@
     },
     {
       "path": "qa/site/audit_site.py",
-      "bytes": 12042,
-      "sha256": "23dd9f42c17cce92bd2dd83470ac8a98357400e6dfdc5dc3365bbf6d6d419d8b"
+      "bytes": 13412,
+      "sha256": "1e15ab14741ca9200b0e335a4ed2bcaf45d5443f274dd0d8fb1a553f2c4dfeea"
     },
     {
       "path": "qa/visual/POLISH_PLAN.md",
@@ -426,13 +451,13 @@
     },
     {
       "path": "qa/visual/README.md",
-      "bytes": 1637,
-      "sha256": "40d4e92347600efdcfe2cff354dd8940adbab5552e3c40a12e7d9be34b670342"
+      "bytes": 2203,
+      "sha256": "cef7d2daf11aa58e5c1b7e6ec25b9fd45205b599704a80c8b5fdc157a62ae038"
     },
     {
       "path": "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
-      "bytes": 13411,
-      "sha256": "6b22d01edc1598c69f9926860ad9872986be4421556a80dcbfb3bd27894ac94f"
+      "bytes": 13970,
+      "sha256": "d5ff113ee4eed18620db640bffa4d9cfdaff6fba1d58b91d476d5f5e093b739a"
     },
     {
       "path": "qa/visual/VISUAL_NEEDS.md",
@@ -441,23 +466,23 @@
     },
     {
       "path": "qa/visual/VISUAL_QA_REPORT.md",
-      "bytes": 5897,
-      "sha256": "0f80a0bafc235c1bd3c0195586ac19090d1e33e7a4935a3b37e5964c9f148268"
+      "bytes": 6173,
+      "sha256": "5f1dd0d4e17c8574910c12dedb83bf8f79308f3c9dcbb55e9aa1bdfcd983d8fb"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-1.png",
-      "bytes": 180891,
-      "sha256": "d1d3727e420f04def98583aaaddae466a60d363ca2acbfde894dd845a6a60a61"
+      "bytes": 185242,
+      "sha256": "515e0e492c623cdb0dbb38496e45e21772f72baec063360e8d654e2e3bbfa0a4"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-2.png",
-      "bytes": 220421,
-      "sha256": "ff000e961eafb3cba373a6d3256ec4d8eef72badefff901342253af5b0b9f598"
+      "bytes": 245176,
+      "sha256": "7aeecb15a0184eeeafa347ea063a07a02899a34272be25f84e436f76d4b88057"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-3.png",
-      "bytes": 164745,
-      "sha256": "15b702deb01913dc346b1f1009e5e42043f86032c2f2430fe798ae34d03f54e3"
+      "bytes": 178901,
+      "sha256": "ceaea60fe400e57538a984da442c981867fb3425b785623c8ba8633fc10d9f97"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-4.png",
@@ -466,28 +491,28 @@
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-5.png",
-      "bytes": 174209,
-      "sha256": "f7ca3a4e36626c6e3994df14796b1fc39ed23736012256795d30dff97cc75bb4"
+      "bytes": 227851,
+      "sha256": "db09d41c4c4c5f3e9e192eac922798e822711e4251191fc6658b54cb52b5a797"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-6.png",
-      "bytes": 244678,
-      "sha256": "2a8c4165e0286a7fe3df0ef9309f7e5a0edde709c28d909003d6a35967282b3f"
+      "bytes": 264394,
+      "sha256": "8fb0c560d4ac5ab9444cc80d1156adf300750dcdb5ea80ec566dca6018ca1b2e"
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-1.png",
-      "bytes": 180891,
-      "sha256": "d1d3727e420f04def98583aaaddae466a60d363ca2acbfde894dd845a6a60a61"
+      "bytes": 185242,
+      "sha256": "515e0e492c623cdb0dbb38496e45e21772f72baec063360e8d654e2e3bbfa0a4"
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-2.png",
-      "bytes": 220421,
-      "sha256": "ff000e961eafb3cba373a6d3256ec4d8eef72badefff901342253af5b0b9f598"
+      "bytes": 245176,
+      "sha256": "7aeecb15a0184eeeafa347ea063a07a02899a34272be25f84e436f76d4b88057"
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-3.png",
-      "bytes": 164745,
-      "sha256": "15b702deb01913dc346b1f1009e5e42043f86032c2f2430fe798ae34d03f54e3"
+      "bytes": 178901,
+      "sha256": "ceaea60fe400e57538a984da442c981867fb3425b785623c8ba8633fc10d9f97"
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-4.png",
@@ -496,13 +521,13 @@
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-5.png",
-      "bytes": 174209,
-      "sha256": "f7ca3a4e36626c6e3994df14796b1fc39ed23736012256795d30dff97cc75bb4"
+      "bytes": 227851,
+      "sha256": "db09d41c4c4c5f3e9e192eac922798e822711e4251191fc6658b54cb52b5a797"
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-6.png",
-      "bytes": 244678,
-      "sha256": "2a8c4165e0286a7fe3df0ef9309f7e5a0edde709c28d909003d6a35967282b3f"
+      "bytes": 264394,
+      "sha256": "8fb0c560d4ac5ab9444cc80d1156adf300750dcdb5ea80ec566dca6018ca1b2e"
     },
     {
       "path": "qa/visual/screenshots-final-v16-polish/apply-1024x768.png",
@@ -746,28 +771,28 @@
     },
     {
       "path": "site/README.md",
-      "bytes": 1995,
-      "sha256": "d1fb449ff927be56e2fdfbd2a08c70959af0aac86405370dd6d1175c3ab9f011"
+      "bytes": 2323,
+      "sha256": "da6cccbc89be286d19ae9f4d1704feeb0b87d8bc2994172186c63a6398ef0057"
     },
     {
       "path": "site/build.mjs",
-      "bytes": 82104,
-      "sha256": "80f38760157e74cde928ea419e99251e31eff3a0b56e1a45d74b5aa9d28aeb35"
+      "bytes": 102673,
+      "sha256": "d6ceb9f2788f3dbe35d351913957c4b4320083201b3f788c8beb461622dea0be"
     },
     {
       "path": "site/check.mjs",
-      "bytes": 12427,
-      "sha256": "658a8985bf96c1b983c183c7429bc2c5cef698dcb43a0ac5fee4c515c015e3e0"
+      "bytes": 14716,
+      "sha256": "1aede14a613447c845e8994df65270878bdc370232f085bf493bf45f5464b7ce"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
-      "bytes": 17156,
-      "sha256": "05f75136a029e35345c0c3a82a24bb0e9bfe703365c945f2853d6a7e5857ba44"
+      "bytes": 18199,
+      "sha256": "31f701ce11fc0b727eb958ec17c483ce6e4e2af8c6abb0ed3ff9c1851b7f655b"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 367876,
-      "sha256": "f53b82b207b68515d3b95a729b4be10ab9c41a876d311297dae1f80dbab92e8c"
+      "bytes": 436486,
+      "sha256": "46c74ee3514dc7cd6d11e53b49b2d9d3669366bfba6d36891891ea669e73f662"
     },
     {
       "path": "site/package-lock.json",
@@ -776,23 +801,28 @@
     },
     {
       "path": "site/package.json",
-      "bytes": 247,
-      "sha256": "101313eab2c80ef912473e090e7038ead7229fe9c3940ae0f020f5ba31bb183d"
+      "bytes": 414,
+      "sha256": "b38936fe46544244f6eb4a5e8440dfa627d3860b8e29077d6c85a20204a2cf3c"
     },
     {
       "path": "site/scripts/generate_review_pdf.py",
-      "bytes": 25163,
-      "sha256": "d7cba187566d56b163d1b91e05e36ca10c86e5c1c03fc528772a7c395acf0800"
+      "bytes": 26489,
+      "sha256": "37759ef62434443d91b6395ae14da0a4139fe857a2078b4f6e7f613630643c7a"
+    },
+    {
+      "path": "site/src/recommendation.js",
+      "bytes": 5560,
+      "sha256": "bb6fc8d3500fdff7c0fcffe625ef3c9b2bd9fef95c2f273b475bd77bf410c8b8"
     },
     {
       "path": "site/src/site.css",
-      "bytes": 69746,
-      "sha256": "20d85e0ac01e39e53aa028265234f43c368197944e88550faa5bbfc8ae0aa2cb"
+      "bytes": 90041,
+      "sha256": "32bb587463232834cedff1e2a45cd052eccda543f600a4441dd3d96ee9274827"
     },
     {
       "path": "site/src/site.js",
-      "bytes": 13268,
-      "sha256": "d8642d2c0b39f659b93ad9f85bef399608b7312ab7a0e6b5012af6d443d5a4cf"
+      "bytes": 14068,
+      "sha256": "05a4da4a15d7433fb246a2fee1921f969daba92c7c1be15effd63ecb5e73e637"
     }
   ]
 }

@@ -391,7 +391,7 @@ def build_pdf() -> None:
         [
             doors_table,
             Spacer(1, 0.18 * inch),
-            p("A compact companion to the local interactive site. The site keeps the human essay, current relationship view, proportionate application path, targeted sources, research boundaries, and historical lineage in separate but connected routes.", "BodyMuted"),
+            p("A compact companion to the local interactive site. The site keeps the human essay, current relationship view, proportionate application path, targeted sources, research boundaries, and historical lineage in separate but connected routes, with an optional continuous Guided read.", "BodyMuted"),
             p("Accessibility route: this PDF is an untagged visual review companion. Use the standalone HTML for semantic headings, landmarks, links, and assistive-technology navigation.", "Small"),
             tag("Local owner review - not a deployment, publication, or research result", CORAL),
             PageBreak(),
@@ -407,7 +407,7 @@ def build_pdf() -> None:
             rich(f"<b>{markup(first['headline'])}</b><br/>{markup(first['standfirst'])}", "Quote"),
             p("The reading route is cumulative: a short 60-90-second version gives the shape, then the complete canonical essay provides the 10-15-minute treatment. The mentor cover note remains a distinct optional handoff rather than the public opening.", "Body"),
             rule(),
-            kicker("Three routes, one interface"),
+            kicker("Three doors, one optional guided path"),
         ]
     )
     route_cards = [
@@ -428,7 +428,9 @@ def build_pdf() -> None:
     story.extend(
         [
             route_table,
-            Spacer(1, 0.2 * inch),
+            Spacer(1, 0.14 * inch),
+            rich("<b>Optional continuous mode:</b> Take the guided read for one generated 8-12-minute path through the problem, six questions, key relationships, smallest useful application, examples, and boundaries. It reuses canonical components rather than forking the manuscript.", "BodyMuted"),
+            Spacer(1, 0.08 * inch),
             p("What the framing does not claim", "SectionTitle"),
             bullet("The six families are not presented as newly invented categories."),
             bullet("A peripheral signal is a candidate for inspection, not proof of truth."),
@@ -445,7 +447,7 @@ def build_pdf() -> None:
         [
             kicker("02  /  Explore the map"),
             p("Six families, held in one view.", "Headline"),
-            p("The current relationship view is code-native and ordered F1-F6. Focus controls add emphasis but never hide essential meaning. With JavaScript off, the family cards, questions, boundaries, and relationship summary remain in the document.", "Body"),
+            p("The current relationship view is code-native and retains the historical F1-F6 identifiers without turning them into steps. Focus controls add emphasis but never hide essential meaning. With JavaScript off, the family cards, questions, boundaries, and relationship summary remain in the document.", "Body"),
         ]
     )
     family_rows = [[p("ID", "TableHead"), p("FAMILY", "TableHead"), p("READER QUESTION", "TableHead")]]
@@ -479,8 +481,8 @@ def build_pdf() -> None:
             family_table,
             Spacer(1, 0.18 * inch),
             p("Relationship view", "SectionTitle"),
-            p("The map separates three useful questions: what the system can notice, what it can compare or preserve, and what it can learn without silently upgrading an interpretation into a fact. A glossary is available for optional explanation; essential meaning is not trapped in popovers.", "Body"),
-            card("A map is a discrimination layer, not a truth machine.", "It makes upstream choices inspectable and revisable. It does not guarantee that a candidate is true, a recurrence is independent, or a source is correct.", PURPLE, "Boundary"),
+            p("The line-free map names four limited relationships rather than implying one pipeline: a baseline is required before calling something motion or missing; source weighing and structured comparison can reveal a common origin; permission and human authority constrain influence; and a learning update waits for an observed outcome and review.", "Body"),
+            card("A map is a discrimination layer, not a truth machine.", "It makes upstream choices inspectable and revisable. It does not guarantee that a candidate is true, repetition is independent, a source is correct, or every task needs every record.", PURPLE, "Boundary"),
             PageBreak(),
         ]
     )
@@ -515,22 +517,22 @@ def build_pdf() -> None:
     story.extend(
         [
             kicker("04  /  Apply it"),
-            p("Choose the lightest workflow that can carry the decision.", "Headline"),
-            p("The application route offers ordinary, lightweight, moderate, and advanced choices. It also exposes an operator path, agent Quickstart and deeper guide, templates, and observable route / stop / learning behavior.", "Body"),
+            p("First decide whether a workflow is needed at all.", "Headline"),
+            p("Stage 0 asks whether the task requires selecting, acquiring, comparing, preserving, or weighing information beyond supplied material. If not, use the ordinary path and stop. If yes, the local studio can recommend an ordinary, lightweight, moderate, or advanced plan. It does not run work or record an observed stop, outcome, learning review, or human decision.", "Body"),
         ]
     )
     level_rows = [[p("LEVEL", "TableHead"), p("WHEN IT FITS", "TableHead"), p("OBSERVABLE OUTPUT", "TableHead")]]
     levels = [
-        ("Ordinary", "One bounded decision; the normal human workflow is enough.", "A clear decision and a named human owner."),
-        ("Lightweight", "A small ambiguity or comparison deserves a receipt.", "A decision brief, source roles, and one stop condition."),
-        ("Moderate", "Several candidates, sources, or changes need explicit comparison.", "Evidence register, comparison matrix, disconfirmation log, and receipt."),
-        ("Advanced", "The cost of a miss justifies a repeatable agent/operator procedure.", "Preflight, bounded route, stop rules, learning update, and human disposition."),
+        ("Ordinary", "A reversible transformation uses only supplied material.", "Instruction, input, output, and any material assumption - no evidence bureaucracy."),
+        ("Lightweight", "One ambiguity or alternate comparison is worth a bounded pass.", "One alternate route, one challenge, a stated limit, and provisional wording if needed."),
+        ("Moderate", "Repeated, uncertain, or consequential work needs explicit comparison.", "Evidence register, comparison, uncertainty, permission, and named human review."),
+        ("Advanced", "The cost of a hidden miss justifies a repeatable procedure.", "Queryable records and review controls, only after explicit permission and cost approval."),
     ]
     for row in levels:
         level_rows.append([p(row[0], "TableCellBold"), p(row[1], "TableCell"), p(row[2], "TableCell")])
     level_table = Table(level_rows, colWidths=[0.9 * inch, 2.45 * inch, doc.width - 3.35 * inch], repeatRows=1)
     level_table.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, 0), INK), ("BOX", (0, 0), (-1, -1), 0.6, LINE), ("INNERGRID", (0, 1), (-1, -1), 0.35, LINE), ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.HexColor("#faf7f0"), colors.HexColor("#f0eadf")]), ("LEFTPADDING", (0, 0), (-1, -1), 7), ("RIGHTPADDING", (0, 0), (-1, -1), 7), ("TOPPADDING", (0, 0), (-1, -1), 7), ("BOTTOMPADDING", (0, 0), (-1, -1), 7), ("VALIGN", (0, 0), (-1, -1), "TOP")]))
-    story.extend([level_table, Spacer(1, 0.18 * inch), p("Operator path", "SectionTitle")])
+    story.extend([level_table, Spacer(1, 0.14 * inch), card("Planning is not an event record", "The studio recommends an action, gate, planned stopping condition, and optional learning path. Its observed state remains NOT_RUN / NOT_TRIGGERED / NOT_OBSERVED / NOT_AVAILABLE / NOT_RECORDED until separately authorized work actually occurs.", PURPLE, "Apply integrity"), Spacer(1, 0.14 * inch), p("Operator path after Stage 0", "SectionTitle")])
     operator_steps = [
         "Frame the claim and decision.",
         "Name the baseline or expected state.",
@@ -543,7 +545,7 @@ def build_pdf() -> None:
         "Apply the stop condition.",
         "Make the human disposition explicit.",
         "Record a bounded learning update.",
-        "Review the receipt for future use.",
+        "Review the actual record for future use.",
     ]
     step_cells = []
     for index, step in enumerate(operator_steps, start=1):
@@ -565,10 +567,10 @@ def build_pdf() -> None:
         ]
     )
     qa_items = [
-        "Static build and route/link checks pass for nine routes plus the standalone export.",
+        "Static build and route/link checks pass for ten routes plus the standalone export.",
         "Frozen content-interface validator passes; exact first-screen copy, door order, F1-F6 order, route manifests, and claim boundaries are present.",
-        "Rendered checks cover desktop, tablet, mobile, map focus behavior, Apply choices, and the historical route.",
-        "Semantic landmark, heading, accessible-name, no-script, reduced-motion, forced-colors, 200% reflow, print-hook, standalone, and Echo-removal audits pass.",
+        "Live browser checks cover 390-pixel, exact 821-pixel, 1024-pixel, and desktop layouts; map focus, permission precedence, Apply observed-state separation, term explainers, and horizontal overflow.",
+        "Semantic landmark, heading, accessible-name, no-script, reduced-motion, forced-colors, reflow-oriented, print-hook, standalone, and Echo-removal audits pass within their automated scope.",
         "The untagged PDF was reopened, text-checked, rendered with Poppler, and visually inspected for clipping, overlap, and unreadable glyphs; semantic and assistive-technology navigation belongs to the standalone HTML.",
     ]
     qa_rows = [[p("•", "Body"), p(item, "Body")] for item in qa_items]
@@ -589,7 +591,7 @@ def build_pdf() -> None:
     story.extend(
         [
             Spacer(1, 0.06 * inch),
-            card("What this QA does not establish", "QA is implementation evidence, not reader comprehension, persuasion, behavioral effectiveness, model quality, or research evidence. The site retains those questions as future, unrun work.", CORAL, "Explicit residual"),
+            card("What this QA does not establish", "QA is implementation evidence, not reader comprehension, persuasion, behavioral effectiveness, model quality, or research evidence. Physical keyboard, supported screen-reader, real 200% browser/OS zoom, browser print-preview, and owner/mentor judgment remain open.", CORAL, "Explicit residual"),
             Spacer(1, 0.15 * inch),
             p("Local handoff", "SectionTitle"),
             rich("Build from the repository root with <font name='Courier'>cd site &amp;&amp; npm run build &amp;&amp; npm run check</font>. Preview with <font name='Courier'>npm run dev</font> and open <font name='Courier'>http://127.0.0.1:4173/</font>. The semantic standalone export is under <font name='Courier'>site/exports/standalone/pattern-map-v16.html</font>; the untagged visual companion is under <font name='Courier'>site/exports/pattern-map-v16-owner-review.pdf</font>.", "BodyMuted"),

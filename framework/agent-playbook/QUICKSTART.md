@@ -5,10 +5,23 @@ where upstream information choices may matter. It is a procedure, not a
 request to be more creative. The agent must leave artifacts that let a
 reviewer see what it did.
 
-Use the ordinary path for a reversible, low-consequence transformation of
-user-supplied material. Use this quickstart when the task involves new
-acquisition, competing sources, missing expected material, reuse of memory,
-or a consequential recommendation.
+## Stage 0 — decide whether evidence selection exists
+
+Ask one question before opening the playbook: **Does this task require the
+agent to select, acquire, compare, preserve, or weigh information beyond what
+the user supplied?**
+
+- **No:** use the ordinary path. Perform the reversible transformation, keep
+  the user’s instruction and supplied input visible, state any material
+  assumption, and stop. Do not create an evidence register, comparison matrix,
+  or learning plan merely to demonstrate process.
+- **Yes:** use the smallest path below that matches consequence, uncertainty,
+  repetition, and cost. New acquisition, competing sources, missing expected
+  material, scoped memory, or a consequential recommendation usually creates
+  an evidence-selection decision.
+
+Stage 0 is a proportionality gate, not permission to skip a real uncertainty
+or consequential boundary.
 
 ## The ten-minute path
 
@@ -42,7 +55,8 @@ or a consequential recommendation.
 
 ## Minimum output
 
-Return or save:
+For a task that passed Stage 0, return or save only the records the decision
+warrants:
 
 - a decision brief;
 - an acquisition or supplied-material note;

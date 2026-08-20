@@ -3,16 +3,21 @@
 This directory contains the local owner-review site for Pattern Recognition /
 The Discrimination Layer v16. It has three principal doors—Read the idea,
 Explore the map, and Apply it—plus Examples, Boundaries, Sources, Research, and
-History routes. The content hierarchy and source paths are frozen in
+History routes. An optional tenth Guided route composes one continuous reading
+path from the same canonical sources without replacing the three doors. The
+content hierarchy and source paths are frozen in
 `docs/CONTENT_INTERFACE_FREEZE_V16.md` and its JSON companion.
 
 The routed site is the primary owner-review experience. Wide screens use a
 persistent chapter rail; narrow screens use a normal-flow route guide. Map
 opens with the current six-family relationship view and a visible text
 equivalent. Apply includes a local, reversible route studio that produces
-separate route, stop, learning, and human-authority fields without calling a
-provider or making an external change. Read and Examples use distinct editorial
-and teaching rhythms rather than repeating one card grid.
+planning recommendations—level, action, required gate, planned stopping
+condition, and learning option—without pretending a run, stop, outcome,
+learning review, or human decision occurred. The observed-state fields remain
+explicitly unrun/unobserved, and the studio calls no provider or external
+service. Read and Examples use distinct editorial and teaching rhythms rather
+than repeating one card grid.
 
 The build is dependency-free and reads the canonical Markdown/JSON sources at
 build time. It produces ignored transient output under `site/dist/` and a

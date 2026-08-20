@@ -1,5 +1,14 @@
 # Pattern Map v16 site-polish QA
 
+> **Historical checkpoint notice — superseded for current Map and Apply
+> semantics.** This report records the site-polish checkpoint culminating at
+> `a319794f5cf2d395c34e5af4935c9299f12dfd5c`. The current implementation at
+> The current checkpoint uses planning-only Apply output,
+> line-free relationship bands, ten routes including Guided, and contextual
+> terminology helpers. See
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md` for current
+> evidence.
+
 Status: **local owner-review build complete; no deployment performed**
 
 This record covers the material visual and interaction revision from
@@ -131,7 +140,7 @@ essential meaning, unique standalone IDs, and print/reduced-motion/
 forced-colors/200%-friendly hooks. A real assistive-technology audit and a
 reader study were not authorized and were not claimed.
 
-The older `qa/visual/screenshots/home-mobile-390x844.png` is retained as a
+The older `qa/visual/screenshots/home-mobile-390x844.jpg` is retained as a
 stale pre-polish QA artifact and is not current evidence. The warning and
 replacement path are explicit in `qa/visual/README.md`.
 

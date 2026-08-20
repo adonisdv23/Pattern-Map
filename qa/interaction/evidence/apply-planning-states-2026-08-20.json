@@ -1,0 +1,11 @@
+{
+  "surface": "/apply/ route studio, live browser at 1440x900",
+  "liveRegions": [{"selector": "p.recommendation-status", "role": "status", "aria-atomic": "true", "characters": 66}],
+  "cases": [
+    {"input": "reversible + low + quick + restricted", "recommendedAction": "CLARIFY", "requiredGate": "Clarify permission to acquire, use, retain, disclose, and act before the material can influence an answer.", "observed": {"execution": "NOT_RUN", "stopOutcome": "NOT_TRIGGERED", "outcome": "NOT_OBSERVED", "learningReview": "NOT_AVAILABLE", "humanDisposition": "NOT_RECORDED"}},
+    {"input": "consequential + high + substantial + human-gate", "recommendedAction": "HOLD", "recommendedLevel": "advanced", "observed": {"execution": "NOT_RUN", "stopOutcome": "NOT_TRIGGERED", "outcome": "NOT_OBSERVED", "learningReview": "NOT_AVAILABLE", "humanDisposition": "NOT_RECORDED"}},
+    {"input": "consequential + high + substantial + supplied", "recommendedAction": "COMPARE", "recommendedLevel": "advanced", "observed": {"execution": "NOT_RUN", "stopOutcome": "NOT_TRIGGERED", "outcome": "NOT_OBSERVED", "learningReview": "NOT_AVAILABLE", "humanDisposition": "NOT_RECORDED"}},
+    {"input": "click Simulate human HOLD", "simulation": "SIMULATED_HOLD", "localDisplayTime": "recorded only at click time", "observed": {"execution": "NOT_RUN", "stopOutcome": "NOT_TRIGGERED", "outcome": "NOT_OBSERVED", "learningReview": "NOT_AVAILABLE", "humanDisposition": "NOT_RECORDED"}},
+    {"input": "click Reset simulation", "simulation": "NOT_SIMULATED", "localDisplayTime": "NOT_RECORDED", "observed": {"execution": "NOT_RUN", "stopOutcome": "NOT_TRIGGERED", "outcome": "NOT_OBSERVED", "learningReview": "NOT_AVAILABLE", "humanDisposition": "NOT_RECORDED"}}
+  ]
+}

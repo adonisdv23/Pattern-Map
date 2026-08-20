@@ -12,6 +12,7 @@ const requiredRoutes = [
   "read/index.html",
   "map/index.html",
   "apply/index.html",
+  "guided/index.html",
   "examples/index.html",
   "boundaries/index.html",
   "sources/index.html",
@@ -73,6 +74,7 @@ const main = () => {
   const map = read(path.join(DIST_DIR, "map/index.html"));
   const readRoute = read(path.join(DIST_DIR, "read/index.html"));
   const apply = read(path.join(DIST_DIR, "apply/index.html"));
+  const guided = read(path.join(DIST_DIR, "guided/index.html"));
   const examples = read(path.join(DIST_DIR, "examples/index.html"));
   const sources = read(path.join(DIST_DIR, "sources/index.html"));
   const research = read(path.join(DIST_DIR, "research/index.html"));
@@ -85,6 +87,9 @@ const main = () => {
   assert(root.includes(standfirst), "root standfirst missing");
   assert(root.includes(conceptualBridge), "root conceptual-framing bridge missing");
   for (const door of ["Read the idea", "Explore the map", "Apply it"]) assert(root.indexOf(door) >= 0, `principal door missing: ${door}`);
+  assert(root.includes("Take the guided read"), "optional continuous reading path missing from home");
+  assert(root.includes("A QUICK EXAMPLE") && root.indexOf("A QUICK EXAMPLE") < root.indexOf("Three principal doors"), "concrete example does not arrive before the route doors");
+  assert(root.includes("data-term-trigger") && root.includes("term-inline"), "first-use term help is missing visible meaning or an optional explainer");
   const doorEnd = root.indexOf("</nav>", root.indexOf('<nav class="door-grid"'));
   const echoIndex = root.indexOf("Echo");
   assert(doorEnd > 0 && (echoIndex < 0 || echoIndex > doorEnd), "Echo appears before principal doors");
@@ -96,6 +101,8 @@ const main = () => {
   assert(familyOrder.every((position) => position >= 0), "one or more family cards missing");
   assert(familyOrder.every((position, index) => index === 0 || position > familyOrder[index - 1]), "family card order changed");
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) assert(map.includes(familyName), `family name missing: ${familyName}`);
+  assert(!map.includes('class="relationship-connectors"'), "current map still renders detachable connector lines");
+  for (const relationship of ["REQUIRES A BASELINE", "CAN REVEAL A SHARED PATH", "CONSTRAINS INFLUENCE", "MAY UPDATE AFTER AN OUTCOME"]) assert(map.includes(relationship), `map relationship band missing: ${relationship}`);
   for (const plainPurpose of [
     "Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.",
     "Ask what each source can and cannot tell us about this exact claim",
@@ -107,6 +114,17 @@ const main = () => {
   assert(!/<p class="boundary"><strong>Boundary:<\/strong>\s*<\/p>/.test(map), "Map glossary contains an empty boundary");
   assert(!/<details class="glossary-item">[\s\S]*?<p><\/p>/.test(map), "Map glossary contains an empty technical meaning");
   for (const level of ["ordinary", "lightweight", "moderate", "advanced"]) assert(apply.toLowerCase().includes(level), `implementation level missing: ${level}`);
+  const recommendationStart = apply.indexOf('<aside class="route-recommendation-card"');
+  const recommendationEnd = apply.indexOf("</aside>", recommendationStart);
+  assert(recommendationStart >= 0 && recommendationEnd > recommendationStart, "Apply planning recommendation card missing");
+  const recommendationMarkup = apply.slice(recommendationStart, recommendationEnd);
+  for (const eventToken of ["COMPLETE", "STOPPED_", "HUMAN_DISPOSITION_RECORDED", "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED"]) {
+    assert(!recommendationMarkup.includes(eventToken), `planning recommendation fabricates observed event state: ${eventToken}`);
+  }
+  for (const initialState of ["NOT_RUN", "NOT_TRIGGERED", "NOT_OBSERVED", "NOT_AVAILABLE", "NOT_RECORDED"]) assert(recommendationMarkup.includes(initialState), `initial observed state missing: ${initialState}`);
+  assert(apply.includes("complete static decision guide") && apply.includes("data-route-studio"), "Apply no-script equivalent or enhanced form contract missing");
+  for (const guidedSection of ["guided-opening", "guided-families", "guided-relations", "guided-apply", "guided-examples", "guided-boundary"]) assert(guided.includes(`id="${guidedSection}"`), `Guided route section missing: ${guidedSection}`);
+  assert(guided.includes("Approximately 8–12 minutes; editorial estimate only."), "Guided route reading-time caveat missing");
   for (const example of ["specialist signal", "explicit baseline", "independence: UNKNOWN"]) assert(examples.includes(example), `teaching pattern missing: ${example}`);
   assert(examples.includes("ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION"), "Signal Foundry status missing");
   assert(examples.includes("The Echo Problem</strong> is a separate project"), "late Echo boundary missing from examples");
@@ -131,7 +149,7 @@ const main = () => {
   for (let index = 1; index < headingLevels.length; index += 1) {
     assert(headingLevels[index] <= headingLevels[index - 1] + 1, `standalone heading level jumps from h${headingLevels[index - 1]} to h${headingLevels[index]}`);
   }
-  for (const section of ["home", "read", "map", "apply", "examples", "boundaries", "sources", "research", "history"]) {
+  for (const section of ["home", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"]) {
     assert(standalone.includes(`<section class="standalone-section" id="${section}"`), `standalone route section missing: ${section}`);
   }
   for (const html of [sources, standalone]) {
@@ -158,7 +176,7 @@ const main = () => {
   assert(!standalone.includes('href="#source-'), "standalone export contains an unresolved source fragment");
   assert(readRoute.includes('aria-current="page"'), "active principal route lacks aria-current=page");
   assert(research.includes('aria-current="page"'), "active secondary route lacks aria-current=page");
-  assert(root.includes("<noscript><style>.secondary-nav-wrap { display: block; }.nav-more { display: none; }</style></noscript>"), "no-script navigation fallback missing");
+  assert(root.includes("<noscript><style>.secondary-nav-wrap { display: block; }") && root.includes(".no-script-note { display: block !important; }"), "no-script navigation or Apply fallback missing");
   assert(!/\.primary-nav\s+a\s*\{[^}]*display:\s*none/i.test(css), "mobile CSS hides principal route links");
   const paper = cssHexVariable(css, "paper");
   for (const token of ["muted", "teal", "green", "purple", "orange", "ochre", "blue"]) {

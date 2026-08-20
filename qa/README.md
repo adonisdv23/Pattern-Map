@@ -26,17 +26,35 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 - These are artifact gates. They do not establish live-agent compliance,
   product behavior, reader comprehension, or framework effectiveness.
 
-## Current rendered evidence
+## Current implementation and rendered evidence
 
-- `qa/site/SITE_POLISH_QA.md` and
-  `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md` record the authored
-  publication revision: persistent route orientation, the early current-map
-  teaching object, the provider-free Apply studio, final responsive captures,
-  and preserved interaction states.
-- `qa/visual/README.md` is the evidence index. It identifies the current
-  polished capture set and explicitly labels the older black-region mobile PNG
-  as stale QA history rather than current-site evidence.
-- `qa/site/SITE_QA_REPORT.md` records the nine-route build, semantic/static
+- `qa/site/RENDERED_VERIFICATION_ROUND_2_2026-08-20.md` is the current report.
+  It records the round-two evidence-integrity audit — including two named
+  checkpoints that resolved to nothing — the rendered defects that source
+  review could not see, and the measured sweep that replaced the round-one
+  assertions.
+- `qa/interaction/evidence/` holds that measurement: 240 records across ten
+  routes and twelve viewports, summarised in `RENDERED_SWEEP_SUMMARY.md`, which
+  is regenerated from the evidence by `qa/interaction/summarize_sweep.py` and
+  verifiable with its `--check` flag.
+- `qa/interaction/layout-probe.js`, `enhancement-probe.js`, and
+  `layout-sweep-driver.js` are the instruments. They are local QA tools, never
+  part of a committed build, and each states in its own report what it does not
+  establish.
+- `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md` is the round-one response.
+  Read it alongside the round-two report, which corrects three of its claims. It records the ten-route Guided experience,
+  planning-only Apply semantics, line-free relationship Map, terminology
+  helpers, 390/821/1024/default live-browser observations, and executable
+  regression contracts.
+- `qa/site/SITE_POLISH_QA.md`,
+  `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, and the routed-site PNG
+  matrix are preserved evidence for the earlier `a319794` design checkpoint.
+  They are superseded for current Map and Apply semantics and are labeled as
+  such; they must not be represented as current screenshots.
+- `qa/visual/README.md` is the evidence index. It identifies the regenerated
+  current PDF renders and distinguishes current source/live-browser evidence
+  from historical routed-site captures.
+- `qa/site/SITE_QA_REPORT.md` records the earlier nine-route build, semantic/static
   checks, no-script and Echo-removal simulations, link integrity, and explicit
   manual residuals.
 - `qa/visual/VISUAL_QA_REPORT.md` records responsive browser captures,

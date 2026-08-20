@@ -14,19 +14,21 @@ separate bodies of work:
 
 The project is in owner-review development. A materially authored local v16
 site now provides persistent publication orientation, an interactive six-family
-relationship map, and a provider-free Apply studio with inspectable receipts
-and stop states. A semantic standalone HTML export and secondary PDF companion
-also exist, but no public site has been deployed or substituted for the
-historical reference. The framework is not empirically validated and no study
-run is authorized.
+relationship map, inline term explainers, an optional continuous Guided read,
+and a provider-free Apply studio that separates planning recommendations from
+unrun and unobserved states. A semantic standalone HTML export and secondary
+PDF companion also exist, but no public site has been deployed or substituted
+for the historical reference. The framework is not empirically validated and
+no study run is authorized.
 
 ## Current state
 
 The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1
-Echo project, an explicitly unrun broader research agenda, and a nine-route
-local owner-review site. Structural, responsive, no-script, export, interaction,
+Echo project, an explicitly unrun broader research agenda, and a ten-route
+local owner-review site including an optional Guided read. Structural,
+responsive, no-script, export, interaction,
 and visual checks and final independent proxy/operator reviews pass within
 their stated artifact boundaries. Owner/mentor judgment plus manual
 physical-keyboard, supported screen-reader, real-zoom, and browser print-preview
@@ -103,6 +105,9 @@ reportable if a future study is ever separately authorized.
 ## External-action boundary
 
 Feature branches, isolated worktrees, commits, pushes, and draft pull requests
-are authorized for this roadmap. Merging to `main`, deployment, publication,
-GitHub Releases, empirical or participant activity, paid-provider calls,
-spending, external-dataset acquisition, preregistration, and outreach are not.
+are authorized for this roadmap. The owner later exactly authorized one
+ChatGPT Pro advisory review on the existing account; that exception does not
+authorize a study, a research-provider selection, or incremental spend.
+Merging to `main`, deployment, publication, GitHub Releases, empirical or
+participant activity, other provider calls, spending, external-dataset
+acquisition, preregistration, and outreach are not authorized.

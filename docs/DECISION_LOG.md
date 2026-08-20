@@ -623,3 +623,191 @@ HTML are primary.
 
 **Governing requirement:** owner visual expectation; three-door site contract;
 A02/A06–A08/A10–A13/A15–A17; no-deploy/no-publish boundary.
+
+## D-024 — Correct the Pro round-1 blockers without changing the locked thesis
+
+**Date:** 2026-08-20
+
+**Status:** Accepted with owner/assistive-technology residuals unchanged
+
+At the owner's request, an outside ChatGPT Pro project reviewed exact commit
+`cc5547def98aeec819eabc68bbf850548e97d4c6` and draft PR #1 against the locked
+owner intent, two-project firebreak, acceptance gates, source tree, generated
+site, standalone export, playbook, and historical design references. The full
+report was read before disposition and is preserved in
+`qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md`.
+
+Two source-deterministic defects were accepted as P0. The old Apply studio
+converted planning choices into event-like completion, stop, learning, and
+human-decision states, and restricted permission did not dominate every route
+shortcut. The old Map combined a 3-column medium layout with a later
+821-pixel desktop coordinate override, making collisions and detached lines
+possible from 821 through 1100 pixels.
+
+The correction keeps the owner's thesis, headline, six families, three doors,
+human-authority boundary, proportional levels, warm visual system, and
+Echo/Signal Foundry boundaries intact. It changes the implementation as
+follows:
+
+The coherent implementation checkpoint is
+the corrected checkpoint recorded in `handoff/BRANCH_AND_PR_STATE.md`; its current QA record is
+`qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md`.
+
+- Apply now returns planning recommendations only. Observed execution, stop,
+  outcome, learning, and human-decision fields remain explicitly unrun or
+  unobserved; optional later-state controls are labeled local simulations and
+  never mutate those fields. A pure 54-combination test enforces permission
+  precedence and prevents event-token fabrication.
+- The Map is flow-native and line-free at every width. Six family questions,
+  optional shared records, and four limited relationship bands replace the
+  fragile fixed topology. Exact 821-pixel and 1024-pixel browser inspection
+  shows the intended 3-column/2-column reflow without horizontal overflow.
+- The 60–90-second entry is now 250 raw words, uses a concrete product-release
+  case before the family questions, and delays the internal framework name
+  until its function is clear. This remains an editorial estimate, not an
+  observed reading-time or comprehension result.
+- A tenth, optional Guided route provides one authored 8–12-minute path from
+  the human problem through the questions, relationships, smallest useful
+  application, examples, and boundaries. It is generated from the same
+  canonical components and does not replace Read / Map / Apply or fork the
+  manuscript.
+- Difficult primary-path terms now have inline plain meaning plus optional
+  click/touch/keyboard explainers with code-native microvisuals, boundaries,
+  and glossary links. No essential meaning is hover-only and no generated
+  bitmap was justified.
+- Apply is progressively enhanced: without JavaScript, dead controls are
+  hidden and the complete static planning guide remains readable. The
+  Quickstart and full guide now begin with Stage 0 so ordinary supplied-material
+  transformations do not inherit evidence bureaucracy.
+
+The advisory suggestion to soften “AI slop often begins before the model
+writes a word” was rejected under D-013/PAOB-03 because the phrase is the
+owner-approved editorial center and remains explicitly conceptual rather than
+measured. Lower-priority URL focus persistence and broad appendix terminology
+rewrites were deferred unless an exact-commit follow-up shows a material need.
+
+Current automated and in-app-browser evidence covers the ten-route build,
+54-state planning matrix, no-script contract, 390-pixel Home/Map/Apply reflow,
+exact 821-pixel and 1024-pixel Map behavior, term interaction, permission
+precedence, and absence of console errors. Physical keyboard traversal,
+supported screen-reader review, real 200% zoom, browser print preview, and
+owner/mentor judgment remain binding manual residuals. The Pro report is a
+model advisory, not owner acceptance or empirical evidence.
+
+**Governing requirement:** owner visual expectation; authority order;
+A01–A08/A10–A13/A15–A17; no-deploy/no-publish/no-study boundary.
+
+## D-025 — Anchor every checkpoint claim to a commit that exists
+
+**Date:** 2026-08-20
+
+**Status:** Accepted — correction applied; round-one package re-anchored
+
+The round-one correction package named
+`5eb860e8d6918813622a7725eb0d854f6bef6ca2` as the corrected implementation
+checkpoint and `bfaa62e7c186b2838e7b57c1490a1428338e862c` as the corrected
+owner-review evidence checkpoint, and described the branch carrying them as
+pushed. Neither object resolves with `git cat-file -t`, neither appears in the
+reflog, and both the local branch and `origin/codex/pattern-map-v16-foundation`
+were still at `cc5547d`. Fifteen files had inherited the invented hashes,
+including `handoff/OWNER_REVIEW_MANIFEST_V16.json`, the `CONTENT_CHECKPOINT`
+constant in `handoff/verify_owner_review_package.py`,
+`qa/FINAL_ACCEPTANCE_MATRIX_V16.md`, `docs/V16_ROADMAP.md`, this log, and the
+QA report's own filename.
+
+The implementation work those hashes described was real. What did not exist was
+the commit. That distinction is the same one the publication makes about plans
+and events, and a handoff package cannot fail it.
+
+**Decision.** `handoff/BRANCH_AND_PR_STATE.md` carries the only checkpoint
+register in the repository. Every other document points at it rather than
+repeating a hash. `verify_owner_review_package.py` reads `CONTENT_CHECKPOINT`
+from that register, so an unstamped checkpoint reads `PENDING` instead of
+resolving to a plausible-looking value. Every hash in the branch table was
+verified to resolve before being recorded. A hash that does not resolve is a
+defect, not a typo.
+
+**Governing requirement:** A11, A15, A17; research-and-claims rules on not
+presenting a plan as an event; archive and provenance rules.
+
+## D-026 — Replace asserted rendered behavior with measured rendered behavior
+
+**Date:** 2026-08-20
+
+**Status:** Accepted — 240 measured records recorded; manual residuals unchanged
+
+The round-one correction responded to the independent review by changing source
+and then asserting the rendered result. The responsive contract checked CSS
+text for the presence of breakpoint rules; the touch-target and visual claims
+rested on source reading and two spot browser checks. Under this repository's
+own evidence rules that is an inference presented as a measurement.
+
+Round two treated each claim as a hypothesis. Three claims did not survive:
+
+- `.map-route`, a rule left behind for a deleted map node, still matched the
+  whole Map page section and wrapped 824 × 8702 px of the route in a navy
+  border and pale panel;
+- the ten desktop orientation-rail links measured 159 × 25.76 px against the
+  recorded 44 × 44 target;
+- the Apply route's radio inputs, the primary controls of the route the P0 was
+  about, had no designed focus indicator.
+
+A fourth was true but self-defeating: the term helper met the 44-pixel target by
+forcing a 44-pixel visible box on a control that sits inside running prose,
+which pushed every line containing a term from 23 pixels to 44. The painted
+control is small again and the target is an absolutely positioned overlay, so
+the target is met and the reading line is not.
+
+A further 51 unreachable class selectors were still in the stylesheet,
+including the coordinate system whose breakpoint collision was the original P0.
+
+**Decision.** Rendered claims require rendered evidence.
+`qa/interaction/layout-probe.js` and `enhancement-probe.js` measure geometry and
+behavior in a real engine; `layout-sweep-driver.js` walks every route at a fixed
+viewport; `summarize_sweep.py` regenerates the summary from the evidence so the
+prose cannot drift from the numbers. The recorded sweep is ten routes × twelve
+viewports × two probes = 240 records, 0 failures, including the exact
+1101/1100-pixel boundary the review named.
+
+Three new guards make the failure classes non-recurring:
+`qa/site/css-selector-use.spec.mjs` (a rule must still reach something, and a
+route-section class may not carry node-level decoration),
+`qa/visual/verify_image_formats.py` (a file's extension must match its bytes,
+with the archive exception stated rather than hidden), and a hardened
+`map-layout-contract.spec.mjs` that forbids the absolute-positioning mechanism
+rather than one bad rule.
+
+Removing 10 KB of dead CSS was verified behaviorally empty: every computed
+value of 22 layout properties for every element, before and after, differed on
+0 of 776 elements on `/map/` and 0 of 1,826 on `/apply/`.
+
+Physical keyboard traversal, a supported screen reader, the browser's own zoom
+control, print preview, physical forced colors, touch hardware, and owner
+judgment remain open. Rendered measurement shows the interface behaves as
+described; it cannot show the description is worth reading.
+
+**Governing requirement:** A02, A06, A13, A11; research-and-claims separation of
+observation from interpretation.
+
+## D-027 — Carry family context across routes without making it load-bearing
+
+**Date:** 2026-08-20
+
+**Status:** Accepted — implemented as progressive enhancement
+
+The independent review asked that opening a family from one route land the
+reader in that family's state on the next, and that examples offer a way back.
+Round one deferred it as optional polish, so a reader arriving from Home landed
+on an unfocused Map and had to find the family again.
+
+**Decision.** Family links carry `?family=F3` alongside the fragment. The Map
+restores that focus on load without moving the caret; a fragment the reader just
+followed outranks a query carried from the previous route; focus changes sync
+the URL through `replaceState` so a focused view is shareable. Each example
+states in static markup which families it teaches and links back to each of
+them. Scripting adds an arrival note on top of that; it is not what makes the
+relationship legible. An absent, unknown, or ignored parameter changes nothing
+about what the destination says.
+
+**Governing requirement:** A06 progressive disclosure; A13; site rules on
+progressive enhancement and code-native teaching.

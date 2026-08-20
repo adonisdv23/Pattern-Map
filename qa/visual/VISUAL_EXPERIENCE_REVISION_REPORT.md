@@ -1,5 +1,14 @@
 # Pattern Map v16 visual-experience revision
 
+> **Historical checkpoint notice — superseded for current Map and Apply
+> semantics.** This report and its PNG matrix accurately document
+> `a319794f5cf2d395c34e5af4935c9299f12dfd5c`. The current implementation at
+> The current checkpoint replaces fixed connector geometry
+> with line-free relationship bands, makes Apply planning-only, and adds the
+> Guided route and terminology helpers. See
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md`. These historical
+> screenshots must not be presented as current-source evidence.
+
 Status: **final local owner-review evidence captured from the polished source
 tree; no deployment or publication**
 
@@ -64,7 +73,7 @@ Echo-centered framing were intentionally not restored.
 
 ## P0 mobile-capture diagnosis
 
-The pre-existing file `qa/visual/screenshots/home-mobile-390x844.png` contains a
+The pre-existing file `qa/visual/screenshots/home-mobile-390x844.jpg` contains a
 solid black lower region. It was not overwritten. A fresh 390x844 capture from
 the exact starting build at `4b5fc809e84a1d6c32c7565808821332421fa42e` showed
 paper paint through the viewport, `scrollWidth == 390`, and no clipped or
@@ -72,7 +81,7 @@ overflowing boundary. Pixel checks reinforce the diagnosis:
 
 **The pre-existing image is retained as stale QA history and must not be used
 to judge the current site.** The active mobile review image is
-[`screenshots-final-v16-polish/home-390x844.png`](screenshots-final-v16-polish/home-390x844.png).
+[`screenshots-final-v16-polish/home-390x844.jpg`](screenshots-final-v16-polish/home-390x844.jpg).
 
 | Capture | Bottom-center sample | Near-black centerline rows |
 | --- | --- | ---: |
@@ -97,26 +106,26 @@ and Apply at every required viewport, with Read and Examples also captured on
 
 | Route | Desktop evidence | Mobile evidence | Teaching/QA focus |
 | --- | --- | --- | --- |
-| Home / Start here | [`home-1440x900.png`](screenshots-final-v16-polish/home-1440x900.png) | [`home-390x844.png`](screenshots-final-v16-polish/home-390x844.png), [`home-360x800.png`](screenshots-final-v16-polish/home-360x800.png) | Exact human-problem opening, three distinct doors, first-door pacing, no black capture region |
-| Read the idea | [`read-1440x900.png`](screenshots-final-v16-polish/read-1440x900.png) | [`read-390x844.png`](screenshots-final-v16-polish/read-390x844.png) | Index/progress, pull quote, cumulative and complete reading layers |
-| Explore the map | [`map-1440x900.png`](screenshots-final-v16-polish/map-1440x900.png) | [`map-390x844.png`](screenshots-final-v16-polish/map-390x844.png), [`map-360x800.png`](screenshots-final-v16-polish/map-360x800.png) | Current relationship view before family index; F1-F6 visual order; text-equivalent adjacency |
-| Apply it | [`apply-1440x900.png`](screenshots-final-v16-polish/apply-1440x900.png) | [`apply-390x844.png`](screenshots-final-v16-polish/apply-390x844.png), [`apply-360x800.png`](screenshots-final-v16-polish/apply-360x800.png) | Route brief, proportionate choice surface, local receipt/stop path |
-| Examples | [`examples-1440x900.png`](screenshots-final-v16-polish/examples-1440x900.png) | [`examples-390x844.png`](screenshots-final-v16-polish/examples-390x844.png) | Case/narrative mode and three required teaching patterns |
-| Boundaries | [`boundaries-1440x900.png`](screenshots-final-v16-polish/boundaries-1440x900.png) | Core mobile layout checked at 390x844 and 360x800 | Claim and authority limits remain late and attached |
-| Sources | [`sources-1440x900.png`](screenshots-final-v16-polish/sources-1440x900.png) | Core mobile layout checked at 390x844 and 360x800 | Targeted, not exhaustive; no newly reverified-source implication |
-| Research | [`research-1440x900.png`](screenshots-final-v16-polish/research-1440x900.png) | Core mobile layout checked at 390x844 and 360x800 | `UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED` remains subordinate |
-| History | [`history-1440x900.png`](screenshots-final-v16-polish/history-1440x900.png) | Core mobile layout checked at 390x844 and 360x800 | Historical v13 lineage stays separate from current topology |
+| Home / Start here | [`home-1440x900.jpg`](screenshots-final-v16-polish/home-1440x900.jpg) | [`home-390x844.jpg`](screenshots-final-v16-polish/home-390x844.jpg), [`home-360x800.jpg`](screenshots-final-v16-polish/home-360x800.jpg) | Exact human-problem opening, three distinct doors, first-door pacing, no black capture region |
+| Read the idea | [`read-1440x900.jpg`](screenshots-final-v16-polish/read-1440x900.jpg) | [`read-390x844.jpg`](screenshots-final-v16-polish/read-390x844.jpg) | Index/progress, pull quote, cumulative and complete reading layers |
+| Explore the map | [`map-1440x900.jpg`](screenshots-final-v16-polish/map-1440x900.jpg) | [`map-390x844.jpg`](screenshots-final-v16-polish/map-390x844.jpg), [`map-360x800.jpg`](screenshots-final-v16-polish/map-360x800.jpg) | Current relationship view before family index; F1-F6 visual order; text-equivalent adjacency |
+| Apply it | [`apply-1440x900.jpg`](screenshots-final-v16-polish/apply-1440x900.jpg) | [`apply-390x844.jpg`](screenshots-final-v16-polish/apply-390x844.jpg), [`apply-360x800.jpg`](screenshots-final-v16-polish/apply-360x800.jpg) | Route brief, proportionate choice surface, local receipt/stop path |
+| Examples | [`examples-1440x900.jpg`](screenshots-final-v16-polish/examples-1440x900.jpg) | [`examples-390x844.jpg`](screenshots-final-v16-polish/examples-390x844.jpg) | Case/narrative mode and three required teaching patterns |
+| Boundaries | [`boundaries-1440x900.jpg`](screenshots-final-v16-polish/boundaries-1440x900.jpg) | Core mobile layout checked at 390x844 and 360x800 | Claim and authority limits remain late and attached |
+| Sources | [`sources-1440x900.jpg`](screenshots-final-v16-polish/sources-1440x900.jpg) | Core mobile layout checked at 390x844 and 360x800 | Targeted, not exhaustive; no newly reverified-source implication |
+| Research | [`research-1440x900.jpg`](screenshots-final-v16-polish/research-1440x900.jpg) | Core mobile layout checked at 390x844 and 360x800 | `UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED` remains subordinate |
+| History | [`history-1440x900.jpg`](screenshots-final-v16-polish/history-1440x900.jpg) | Core mobile layout checked at 390x844 and 360x800 | Historical v13 lineage stays separate from current topology |
 
 ### Core viewport matrix
 
 | Viewport | Home | Map | Apply | Scroll width equals viewport |
 | --- | --- | --- | --- | --- |
-| 1440x900 | [`home-1440x900.png`](screenshots-final-v16-polish/home-1440x900.png) | [`map-1440x900.png`](screenshots-final-v16-polish/map-1440x900.png) | [`apply-1440x900.png`](screenshots-final-v16-polish/apply-1440x900.png) | yes |
-| 1280x720 | [`home-1280x720.png`](screenshots-final-v16-polish/home-1280x720.png) | [`map-1280x720.png`](screenshots-final-v16-polish/map-1280x720.png) | [`apply-1280x720.png`](screenshots-final-v16-polish/apply-1280x720.png) | yes |
-| 1024x768 | [`home-1024x768.png`](screenshots-final-v16-polish/home-1024x768.png) | [`map-1024x768.png`](screenshots-final-v16-polish/map-1024x768.png) | [`apply-1024x768.png`](screenshots-final-v16-polish/apply-1024x768.png) | yes |
-| 768x1024 | [`home-768x1024.png`](screenshots-final-v16-polish/home-768x1024.png) | [`map-768x1024.png`](screenshots-final-v16-polish/map-768x1024.png) | [`apply-768x1024.png`](screenshots-final-v16-polish/apply-768x1024.png) | yes |
-| 390x844 | [`home-390x844.png`](screenshots-final-v16-polish/home-390x844.png) | [`map-390x844.png`](screenshots-final-v16-polish/map-390x844.png) | [`apply-390x844.png`](screenshots-final-v16-polish/apply-390x844.png) | yes |
-| 360x800 | [`home-360x800.png`](screenshots-final-v16-polish/home-360x800.png) | [`map-360x800.png`](screenshots-final-v16-polish/map-360x800.png) | [`apply-360x800.png`](screenshots-final-v16-polish/apply-360x800.png) | yes |
+| 1440x900 | [`home-1440x900.jpg`](screenshots-final-v16-polish/home-1440x900.jpg) | [`map-1440x900.jpg`](screenshots-final-v16-polish/map-1440x900.jpg) | [`apply-1440x900.jpg`](screenshots-final-v16-polish/apply-1440x900.jpg) | yes |
+| 1280x720 | [`home-1280x720.jpg`](screenshots-final-v16-polish/home-1280x720.jpg) | [`map-1280x720.jpg`](screenshots-final-v16-polish/map-1280x720.jpg) | [`apply-1280x720.jpg`](screenshots-final-v16-polish/apply-1280x720.jpg) | yes |
+| 1024x768 | [`home-1024x768.jpg`](screenshots-final-v16-polish/home-1024x768.jpg) | [`map-1024x768.jpg`](screenshots-final-v16-polish/map-1024x768.jpg) | [`apply-1024x768.jpg`](screenshots-final-v16-polish/apply-1024x768.jpg) | yes |
+| 768x1024 | [`home-768x1024.jpg`](screenshots-final-v16-polish/home-768x1024.jpg) | [`map-768x1024.jpg`](screenshots-final-v16-polish/map-768x1024.jpg) | [`apply-768x1024.jpg`](screenshots-final-v16-polish/apply-768x1024.jpg) | yes |
+| 390x844 | [`home-390x844.jpg`](screenshots-final-v16-polish/home-390x844.jpg) | [`map-390x844.jpg`](screenshots-final-v16-polish/map-390x844.jpg) | [`apply-390x844.jpg`](screenshots-final-v16-polish/apply-390x844.jpg) | yes |
+| 360x800 | [`home-360x800.jpg`](screenshots-final-v16-polish/home-360x800.jpg) | [`map-360x800.jpg`](screenshots-final-v16-polish/map-360x800.jpg) | [`apply-360x800.jpg`](screenshots-final-v16-polish/apply-360x800.jpg) | yes |
 
 At 200%-friendly widths, fixed-height hero treatment is absent; the static
 audit and 768px reflow check found no horizontal overflow. The in-app Browser

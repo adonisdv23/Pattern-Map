@@ -9,8 +9,10 @@
   const mapFocusTitle = document.querySelector("[data-map-focus-title]");
   const mapFocusQuestion = document.querySelector("[data-map-focus-question]");
   const mapFocusInputs = document.querySelector("[data-map-focus-inputs]");
+  const mapFocusComparison = document.querySelector("[data-map-focus-comparison]");
   const mapFocusRecord = document.querySelector("[data-map-focus-record]");
   const mapFocusBoundary = document.querySelector("[data-map-focus-boundary]");
+  const mapFocusConnections = document.querySelector("[data-map-focus-connections]");
   const mapFocusStatus = document.querySelector("[data-map-focus-status]");
 
   const mapButtonFor = (family) => mapButtons.find((button) => button.dataset.mapFamily === family);
@@ -27,10 +29,12 @@
       button.classList.remove("is-selected");
     });
     if (mapFocusTitle) mapFocusTitle.textContent = "All six families remain in view.";
-    if (mapFocusQuestion) mapFocusQuestion.textContent = "Choose a family to inspect its question, inputs, comparison, boundary, record, and adjacent connections. Focus adds emphasis; it never hides essential meaning.";
-    if (mapFocusInputs) mapFocusInputs.textContent = "decision brief, permission, evidence, baselines, gaps, comparisons, and outcomes";
-    if (mapFocusRecord) mapFocusRecord.textContent = "the route keeps observation, interpretation, recommendation, and human disposition distinct";
-    if (mapFocusBoundary) mapFocusBoundary.textContent = "unknown relations stay unknown; human authority remains explicit";
+    if (mapFocusQuestion) mapFocusQuestion.textContent = "Choose a family to inspect it. Focus adds emphasis; it never hides essential meaning.";
+    if (mapFocusInputs) mapFocusInputs.textContent = "decision, permission, evidence, baselines, gaps, comparisons, or observed outcomes";
+    if (mapFocusComparison) mapFocusComparison.textContent = "the comparison changes with the family; no single score governs the map";
+    if (mapFocusRecord) mapFocusRecord.textContent = "records are created only when the task warrants them";
+    if (mapFocusBoundary) mapFocusBoundary.textContent = "unknown relations stay unknown; candidates do not become truth by status";
+    if (mapFocusConnections) mapFocusConnections.textContent = "baseline, common-origin, influence-gate, and conditional-learning relationships remain explicit";
     if (mapFocusStatus) mapFocusStatus.textContent = "All six families are available for comparison.";
     if (announce && focusStatus) focusStatus.textContent = "All six families are visible. Focus controls add emphasis; they never hide essential meaning.";
   };
@@ -57,13 +61,38 @@
     });
 
     if (mapFocusTitle) mapFocusTitle.textContent = `${mapButton.dataset.mapFamily} · ${mapButton.dataset.mapName}`;
-    if (mapFocusQuestion) mapFocusQuestion.textContent = `Question: ${mapButton.dataset.mapQuestion}`;
-    if (mapFocusInputs) mapFocusInputs.textContent = `${mapButton.dataset.mapInputs}. Compare: ${mapButton.dataset.mapComparison}. Adjacent connection: ${mapButton.dataset.mapConnections}.`;
+    if (mapFocusQuestion) mapFocusQuestion.textContent = mapButton.dataset.mapQuestion;
+    if (mapFocusInputs) mapFocusInputs.textContent = mapButton.dataset.mapInputs;
+    if (mapFocusComparison) mapFocusComparison.textContent = mapButton.dataset.mapComparison;
     if (mapFocusRecord) mapFocusRecord.textContent = mapButton.dataset.mapRecords;
     if (mapFocusBoundary) mapFocusBoundary.textContent = mapButton.dataset.mapBoundary;
-    if (mapFocusStatus) mapFocusStatus.textContent = `${family} is focused in the relationship view. Its question, inputs, comparison, record, boundary, and connections remain visible.`;
+    if (mapFocusConnections) mapFocusConnections.textContent = mapButton.dataset.mapConnections;
+    if (mapFocusStatus) mapFocusStatus.textContent = `${family} is focused. Question, inputs, comparison, record, boundary, and connections are shown separately.`;
     if (focusStatus) focusStatus.textContent = `${family} is focused. The other families remain visible for comparison.`;
     sourceButton?.setAttribute("aria-pressed", "true");
+  };
+
+  // Family context carried across routes. The URL is a restorable hint only:
+  // every destination stays complete when the parameter is absent, unknown, or
+  // scripting never runs.
+  const FAMILY_PATTERN = /^F[1-6]$/;
+  const familyFromHash = () => {
+    const value = window.location.hash.replace(/^#family-/, "");
+    return FAMILY_PATTERN.test(value) ? value : "";
+  };
+  const familyFromQuery = () => {
+    const value = new URLSearchParams(window.location.search).get("family");
+    return value && FAMILY_PATTERN.test(value) ? value : "";
+  };
+  // A fragment the reader just followed is newer than a query carried in from
+  // the previous route, so the hash wins whenever it names a family.
+  const readRequestedFamily = () => familyFromHash() || familyFromQuery();
+  const rememberFamilyInUrl = (family) => {
+    if (typeof history?.replaceState !== "function") return;
+    const url = new URL(window.location.href);
+    if (family) url.searchParams.set("family", family);
+    else url.searchParams.delete("family");
+    history.replaceState(history.state, "", `${url.pathname}${url.search}${url.hash}`);
   };
 
   focusButtons.forEach((button) => {
@@ -73,6 +102,64 @@
     button.addEventListener("click", () => focusFamily(button.dataset.mapFamily, button));
   });
   clearButton?.addEventListener("click", () => clearFamilyFocus());
+
+  const exampleRegions = [...document.querySelectorAll("[data-example-families]")];
+  const familyNameFor = (family) =>
+    mapButtonFor(family)?.dataset.mapName ??
+    cardFor(family)?.querySelector("h3")?.textContent ??
+    document.querySelector(`.example-family-return.family-${family.toLowerCase()}`)?.dataset.familyName ??
+    "";
+  const highlightArrivalExamples = (family) => {
+    exampleRegions.forEach((region) => {
+      const teaches = region.dataset.exampleFamilies.split(/\s+/).includes(family);
+      const arrived = Boolean(family) && teaches;
+      region.classList.toggle("is-arrival", arrived);
+      const note = region.querySelector("[data-example-arrival]");
+      if (!note) return;
+      note.hidden = !arrived;
+      const name = familyNameFor(family);
+      note.textContent = arrived
+        ? `You followed ${family}${name ? ` · ${name}` : ""} from the map. This case is one of the places that family becomes observable.`
+        : "";
+    });
+  };
+
+  // Applying context from a URL is a set, never a toggle: asking for the family
+  // that is already open must leave it open.
+  const applyFamilyContext = (family) => {
+    highlightArrivalExamples(family);
+    if (!family || !cardFor(family) || !mapButtonFor(family)) return;
+    if (document.querySelector("[data-family-card].is-focused")?.dataset.familyCard === family) return;
+    focusFamily(family);
+  };
+
+  if (familyCards.length || mapButtons.length || exampleRegions.length) {
+    // Restoring context must not move the caret away from where the browser
+    // placed it after following a fragment link.
+    const requested = readRequestedFamily();
+    if (requested) {
+      applyFamilyContext(requested);
+      rememberFamilyInUrl(requested);
+    }
+    window.addEventListener("hashchange", () => {
+      const next = familyFromHash();
+      if (!next) return;
+      applyFamilyContext(next);
+      rememberFamilyInUrl(next);
+    });
+    // Runs after the focus handlers above, so it reads the settled state.
+    [...focusButtons, ...mapButtons].forEach((button) => {
+      button.addEventListener("click", () => {
+        const active = document.querySelector("[data-family-card].is-focused")?.dataset.familyCard ?? "";
+        highlightArrivalExamples(active);
+        rememberFamilyInUrl(active);
+      });
+    });
+    clearButton?.addEventListener("click", () => {
+      highlightArrivalExamples("");
+      rememberFamilyInUrl("");
+    });
+  }
 
   const moreButton = document.querySelector(".nav-more");
   const secondary = document.querySelector(".secondary-nav-wrap");
@@ -85,24 +172,56 @@
     const isOpen = moreButton.getAttribute("aria-expanded") === "true";
     setMoreOpen(!isOpen, !isOpen);
   });
+
+  const termTriggers = [...document.querySelectorAll("[data-term-trigger]")];
+  const closeTerm = (trigger, restoreFocus = false) => {
+    const panel = trigger?.getAttribute("aria-controls")
+      ? document.getElementById(trigger.getAttribute("aria-controls"))
+      : null;
+    trigger?.setAttribute("aria-expanded", "false");
+    if (panel) panel.hidden = true;
+    if (restoreFocus) trigger?.focus();
+  };
+  const closeOtherTerms = (except) => {
+    termTriggers.forEach((trigger) => {
+      if (trigger !== except && trigger.getAttribute("aria-expanded") === "true") closeTerm(trigger);
+    });
+  };
+  termTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+      if (!panel) return;
+      const opening = trigger.getAttribute("aria-expanded") !== "true";
+      closeOtherTerms(trigger);
+      trigger.setAttribute("aria-expanded", String(opening));
+      panel.hidden = !opening;
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest?.("[data-term-help]")) return;
+    closeOtherTerms(null);
+  });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && moreButton?.getAttribute("aria-expanded") === "true") {
+    if (event.key !== "Escape") return;
+    const openTerm = termTriggers.find((trigger) => trigger.getAttribute("aria-expanded") === "true");
+    if (openTerm) {
+      closeTerm(openTerm, true);
+      return;
+    }
+    if (moreButton?.getAttribute("aria-expanded") === "true") {
       setMoreOpen(false);
       moreButton.focus();
     }
-    if (event.key === "Escape") {
-      document.querySelectorAll(".orientation-mobile[open]").forEach((details) => {
-        details.removeAttribute("open");
-        details.querySelector("summary")?.focus();
-      });
-    }
   });
 
-  const readingSections = [...document.querySelectorAll("[data-reading-section]")];
-  const readingLinks = [...document.querySelectorAll("[data-reading-link]")];
-  const progress = document.querySelector("[data-reading-progress]");
-  const progressValue = document.querySelector("[data-reading-progress-value]");
-  if (readingSections.length) {
+  const readingRoutes = [...document.querySelectorAll("[data-reading-route]")];
+  readingRoutes.forEach((route) => {
+    const readingSections = [...route.querySelectorAll("[data-reading-section]")];
+    const readingLinks = [...route.querySelectorAll("[data-reading-link]")];
+    const progress = route.querySelector("[data-reading-progress]");
+    const progressValue = route.querySelector("[data-reading-progress-value]");
+    if (!readingSections.length) return;
     const setReadingActive = (id) => {
       readingLinks.forEach((link) => {
         const active = link.getAttribute("href") === `#${id}`;
@@ -112,115 +231,116 @@
       });
     };
     const updateReadingProgress = () => {
-      const route = document.querySelector(".reading-route");
-      if (!route || !progress) return;
+      if (!progress) return;
       const start = route.getBoundingClientRect().top + window.scrollY;
       const end = start + route.scrollHeight - window.innerHeight;
       const percent = end <= start ? 100 : Math.max(0, Math.min(100, ((window.scrollY - start) / (end - start)) * 100));
       progress.querySelector("span")?.style.setProperty("width", `${percent}%`);
       progress.setAttribute("aria-valuenow", String(Math.round(percent)));
-      progress.setAttribute("aria-valuetext", `${Math.round(percent)} percent of the reading route`);
+      progress.setAttribute("aria-valuetext", `${Math.round(percent)} percent of this reading path`);
       if (progressValue) progressValue.textContent = `${Math.round(percent)}%`;
     };
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (visible[0]?.target.id) setReadingActive(visible[0].target.id);
-    }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
-    readingSections.forEach((section) => observer.observe(section));
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]?.target.id) setReadingActive(visible[0].target.id);
+      }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
+      readingSections.forEach((section) => observer.observe(section));
+    }
     window.addEventListener("scroll", updateReadingProgress, { passive: true });
     window.addEventListener("resize", updateReadingProgress);
     updateReadingProgress();
-  }
+  });
 
   const routeStudio = document.querySelector("[data-route-studio]");
-  const receipt = document.querySelector("[data-route-receipt]");
-  if (routeStudio && receipt) {
+  const recommendationCard = document.querySelector("[data-route-recommendation]");
+  if (routeStudio && recommendationCard) {
+    const recommendationApi = globalThis.PatternMapRecommendation;
+    if (!recommendationApi?.recommend || !recommendationApi?.INITIAL_OBSERVED_STATE) return;
+
     const fieldValue = (name) => routeStudio.querySelector(`input[name="${name}"]:checked`)?.value ?? "";
-    const setReceiptText = (selector, value) => {
-      const element = receipt.querySelector(selector);
+    const setCardText = (selector, value) => {
+      const element = recommendationCard.querySelector(selector);
       if (element) element.textContent = value;
     };
-    const buildReceipt = () => {
-      const consequence = fieldValue("consequence");
-      const uncertainty = fieldValue("uncertainty");
-      const budget = fieldValue("budget");
-      const permission = fieldValue("permission");
-      let route = "ordinary";
-      let routeToken = "ANSWER";
-      let stop = "COMPLETE";
-      let learning = "LEARNING_NOT_APPLICABLE";
-      let authority = "HUMAN_DISPOSITION_RECORDED";
-      let title = "Do less when the task is simple.";
-      let summary = "For reversible work with low uncertainty, keep the route small and leave the important distinctions visible.";
-      if (budget === "substantial" || (consequence === "consequential" && uncertainty === "high")) {
-        route = "advanced";
-        routeToken = "CLARIFY";
-        stop = "STOPPED_DEADLINE";
-        learning = "LEARNING_PLANNED";
-        authority = "HUMAN_DISPOSITION_REQUIRED";
-        title = "Engineer only when hidden mistakes justify it.";
-        summary = "A larger route is a proposal for queryable lineage and review, not permission to acquire, disclose, spend, or act.";
-      } else if (consequence === "consequential" || uncertainty === "high" || permission === "human-gate") {
-        route = "moderate";
-        routeToken = permission === "supplied" ? "COMPARE" : "HOLD";
-        stop = "STOPPED_OTHER";
-        learning = "LEARNING_PENDING_OUTCOME";
-        authority = "HUMAN_DISPOSITION_REQUIRED";
-        title = "Make repeated or consequential work reproducible.";
-        summary = "Keep identity, comparison, uncertainty, permission, a stop reason, and a human checkpoint visible before influence.";
-      } else if (uncertainty === "mixed" || budget === "bounded" || permission === "restricted") {
-        route = "lightweight";
-        routeToken = "ANSWER_PROVISIONALLY";
-        stop = "STOPPED_BUDGET";
-        learning = "LEARNING_PLANNED";
-        title = "One brief, one alternate route, one clear stop.";
-        summary = "A bounded pass records the decision, one peripheral candidate, one comparison, one challenge, and what remains uncertain.";
-      }
-      const routeBadge = receipt.querySelector("[data-receipt-route]");
-      if (routeBadge) routeBadge.textContent = route;
-      setReceiptText("[data-receipt-title]", title);
-      setReceiptText("[data-receipt-summary]", summary);
-      setReceiptText("[data-receipt-route-value]", routeToken);
-      setReceiptText("[data-receipt-stop]", stop);
-      setReceiptText("[data-receipt-learning]", learning);
-      setReceiptText("[data-receipt-authority]", authority);
-      setReceiptText("[data-receipt-status]", `Receipt built for ${route}. Route, stop, learning, and authority remain separate fields.`);
-      const flow = receipt.querySelector("[data-receipt-flow-state]");
-      if (flow) {
-        flow.querySelector("strong").textContent = route === "ordinary" ? "complete" : route === "lightweight" ? "stop" : route === "moderate" ? "disposition" : "clarify";
-        flow.querySelector("small").textContent = route === "ordinary" ? "ordinary path" : route === "lightweight" ? "budget boundary" : route === "moderate" ? "human gate" : "question authority";
-      }
-      receipt.dataset.route = route;
+    const renderObservedState = () => {
+      const observed = recommendationApi.INITIAL_OBSERVED_STATE;
+      setCardText("[data-observed-execution]", observed.executionState);
+      setCardText("[data-observed-stop]", observed.stopOutcome);
+      setCardText("[data-observed-outcome]", observed.outcomeState);
+      setCardText("[data-observed-learning]", observed.learningReview);
+      setCardText("[data-observed-human]", observed.humanDisposition);
     };
+    const resetSimulation = () => {
+      setCardText("[data-simulation-state]", "NOT_SIMULATED");
+      setCardText("[data-simulation-reason]", "Use the controls only to inspect example state changes. They do not record a real person, run, stop, or outcome.");
+      setCardText("[data-simulation-time]", "NOT_RECORDED");
+      recommendationCard.dataset.simulation = "none";
+    };
+    const renderRecommendation = () => {
+      let plan;
+      try {
+        plan = recommendationApi.recommend({
+          consequence: fieldValue("consequence"),
+          uncertainty: fieldValue("uncertainty"),
+          budget: fieldValue("budget"),
+          permission: fieldValue("permission"),
+        });
+      } catch {
+        setCardText("[data-recommendation-status]", "Choose one valid option in all four groups before building a recommendation.");
+        return;
+      }
+      setCardText("[data-recommendation-level]", plan.recommendedLevel);
+      setCardText("[data-recommendation-title]", plan.title);
+      setCardText("[data-recommendation-summary]", plan.summary);
+      setCardText("[data-recommendation-action]", plan.recommendedAction);
+      setCardText("[data-recommendation-gate]", plan.requiredGate);
+      setCardText("[data-recommendation-stop]", plan.plannedStopCondition);
+      setCardText("[data-recommendation-learning]", plan.learningOption);
+      setCardText("[data-recommendation-status]", `${plan.recommendedLevel} route recommendation built; no execution or human decision has been recorded.`);
+      recommendationCard.dataset.level = plan.recommendedLevel;
+      renderObservedState();
+      resetSimulation();
+    };
+
     routeStudio.addEventListener("submit", (event) => {
       event.preventDefault();
-      buildReceipt();
+      renderRecommendation();
     });
     routeStudio.querySelector("[data-route-reset]")?.addEventListener("click", () => {
       routeStudio.reset();
-      buildReceipt();
+      renderRecommendation();
     });
-    receipt.querySelectorAll("[data-route-action]").forEach((button) => {
+    recommendationCard.querySelectorAll("[data-simulation-action]").forEach((button) => {
       button.addEventListener("click", () => {
-        const action = button.dataset.routeAction;
-        const actionDetails = {
-          hold: { route: "HOLD", stop: "STOPPED_OTHER", authority: "HUMAN_DISPOSITION_REQUIRED", message: "HOLD recorded. A person must decide whether the route may continue." },
-          escalate: { route: "ESCALATE", stop: "STOPPED_OTHER", authority: "HUMAN_DISPOSITION_REQUIRED", message: "ESCALATE recorded. Consequential authority remains with a person." },
-          stop: { route: "ANSWER_PROVISIONALLY", stop: "STOPPED_BUDGET", authority: "HUMAN_DISPOSITION_RECORDED", message: "STOPPED_BUDGET recorded. Remaining uncertainty stays visible." },
-        }[action];
-        if (!actionDetails) return;
-        setReceiptText("[data-receipt-route-value]", actionDetails.route);
-        setReceiptText("[data-receipt-stop]", actionDetails.stop);
-        setReceiptText("[data-receipt-authority]", actionDetails.authority);
-        setReceiptText("[data-receipt-status]", actionDetails.message);
-        const flow = receipt.querySelector("[data-receipt-flow-state]");
-        if (flow) {
-          flow.querySelector("strong").textContent = action === "stop" ? "stop" : action;
-          flow.querySelector("small").textContent = action === "stop" ? "budget boundary" : "human disposition";
+        const action = button.dataset.simulationAction;
+        if (action === "reset") {
+          resetSimulation();
+          setCardText("[data-recommendation-status]", "Simulation reset; observed state remains not run and not observed.");
+          return;
         }
-        receipt.dataset.state = action;
+        const details = {
+          hold: {
+            state: "SIMULATED_HOLD",
+            reason: "Example only: a person pauses influence pending review. This is not a real human disposition.",
+          },
+          clarify: {
+            state: "SIMULATED_CLARIFICATION_RECEIVED",
+            reason: "Example only: clarification is supplied for reconsideration. It does not itself grant permission.",
+          },
+        }[action];
+        if (!details) return;
+        setCardText("[data-simulation-state]", details.state);
+        setCardText("[data-simulation-reason]", details.reason);
+        setCardText("[data-simulation-time]", new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+        setCardText("[data-recommendation-status]", `${details.state} displayed as a local simulation; observed state remains unchanged.`);
+        recommendationCard.dataset.simulation = action;
       });
     });
-    buildReceipt();
+    renderRecommendation();
   }
+
+  document.documentElement.classList.remove("no-js");
+  document.documentElement.classList.add("js");
+  document.documentElement.dataset.enhanced = "true";
 })();

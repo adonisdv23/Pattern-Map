@@ -1,5 +1,10 @@
 # Pattern Map v16 visual QA report
 
+> **Historical implementation notice.** This report predates the ChatGPT Pro
+> round-one correction. Use `qa/visual/README.md` and
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20.md` to distinguish
+> current PDF/live evidence from superseded routed-site screenshots.
+
 Status: local owner-review candidate
 
 Visual QA covers composition, responsive behavior, focus-state rendering, no horizontal overflow, historical/current labeling, and the PDF companion. It is not reader-comprehension, persuasion, behavioral-effectiveness, model-quality, empirical, participant, or research evidence.
@@ -8,13 +13,13 @@ Visual QA covers composition, responsive behavior, focus-state rendering, no hor
 
 Screenshots are retained under `qa/visual/screenshots/`:
 
-- `home-desktop-1440x1000.png` - desktop first screen after hero tightening; the three principal doors are visible in the initial composition.
-- `home-tablet-1024x768.png` - tablet first screen; no horizontal overflow and doors remain present.
-- `home-mobile-390x844.png` - post-revision mobile reflow; all three principal header routes and the compact More control remain visible with no horizontal overflow.
-- `map-desktop-1440x1000.png` - post-revision Map opening with plain-language F1/F2 bridges and darker accessible family tokens.
-- `apply-tablet-1024x768.png` - four implementation choices and the Apply route opening composition.
-- `history-desktop-1440x1000.png` - historical route with the exact v13/current-topology label.
-- `history-full.png` - full-page historical-route capture from the earlier 1024px inspection pass.
+- `home-desktop-1440x1000.jpg` - desktop first screen after hero tightening; the three principal doors are visible in the initial composition.
+- `home-tablet-1024x768.jpg` - tablet first screen; no horizontal overflow and doors remain present.
+- `home-mobile-390x844.jpg` - post-revision mobile reflow; all three principal header routes and the compact More control remain visible with no horizontal overflow.
+- `map-desktop-1440x1000.jpg` - post-revision Map opening with plain-language F1/F2 bridges and darker accessible family tokens.
+- `apply-tablet-1024x768.jpg` - four implementation choices and the Apply route opening composition.
+- `history-desktop-1440x1000.jpg` - historical route with the exact v13/current-topology label.
+- `history-full.jpg` - full-page historical-route capture from the earlier 1024px inspection pass.
 - `home-print-media.png` is not present: the supported local CDP print-media permission was declined by the browser security policy, so no blocked artifact is being represented as evidence.
 
 The two post-revision evidence refreshes are hash-anchored as follows:

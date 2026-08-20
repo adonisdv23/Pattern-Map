@@ -94,8 +94,10 @@ printf '\n[7/10] Site build and route checks\n'
   npm run check
 )
 
-printf '\n[8/10] Site and research-boundary audits\n'
+printf '\n[8/10] Site, visual-evidence, and research-boundary audits\n'
 python3 qa/site/audit_site.py
+python3 qa/visual/verify_image_formats.py
+python3 qa/interaction/summarize_sweep.py --check
 python3 qa/research/validate_research_boundaries.py
 
 printf '\n[9/10] Bounded owner-review manifest\n'
@@ -109,4 +111,8 @@ printf '\nPASS: complete local owner-review verification sequence\n'
 printf '%s\n' \
   "BOUNDARY: artifact checks are not owner comprehension, physical-keyboard," \
   "supported screen-reader, real browser zoom, print-preview, effectiveness," \
-  "or empirical evidence."
+  "or empirical evidence." \
+  "" \
+  "The rendered sweep in qa/interaction/evidence/ measures how the local build" \
+  "lays out and behaves in a real engine. It does not measure whether the" \
+  "publication is worth reading."
