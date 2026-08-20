@@ -1,0 +1,698 @@
+# Decision log
+
+Canonical decisions are append-only. Later changes receive a new entry and do
+not silently rewrite history.
+
+## D-001 — Permanent two-project separation
+
+**Date:** 2026-08-19
+**Status:** Accepted — owner-fixed
+
+Pattern Recognition / The Discrimination Layer v16 is the principal broad work.
+The Echo Problem / ECHO-01 is a separate successor project derived from the
+exact v15.2 checkpoint. V15.2 remains historically named and unchanged. The
+Echo Problem begins at EP v0.1. Origin accounting may illustrate v16 but may
+not define it.
+
+**Governing requirement:** approved v16 handoff, sections 2 and 4.
+
+## D-002 — Authority order
+
+**Date:** 2026-08-19
+**Status:** Accepted — owner-fixed
+
+Owner handoff and locked intent outrank archives; v13 controls historical
+intent; v14/v15 inform rigor and implementation; v15.2 governs Echo; reviews
+are advisory only.
+
+**Affected files:** `AGENTS.md`, `docs/SOURCE_AUTHORITY_AND_LINEAGE.md`.
+
+## D-003 — Preserve v14 as one immutable transfer
+
+**Date:** 2026-08-19
+**Status:** Accepted
+
+The complete v14 transfer moved with Git history into
+`archive/transfers/v14-complete-2026-08-18/`. It is not unpacked into the active
+root. Selective active successors must cite the archive and may not rewrite it.
+
+**Evidence:** complete transfer SHA-256 ledger passed before the move.
+
+## D-004 — Accession the v15.2 payload as verified extracted source
+
+**Date:** 2026-08-19
+**Status:** Accepted for implementation by the Echo task; supersedes the
+uncommitted chunk proposal
+
+Preserve every manifest-listed payload byte and its provenance by extracting
+directly from the verified owner ZIP into an immutable accession, copying the
+original sidecar and manifest unchanged, and automatically verifying every
+file's byte count and SHA-256. Keep the exact 41,436,496-byte ZIP untouched at
+its verified local source path until an exact owner instruction authorizes Git
+LFS or a GitHub Release with known budget controls.
+
+**Evidence:** 102 of 239 payload files and 30,298,057 of 48,717,432 payload bytes
+(62.19%) exactly match files already preserved in the v14 transfer. Git can
+deduplicate those blobs. The remaining new or changed raw payload is 18,419,375
+bytes before Git compression/delta reuse, versus a fully opaque 41,436,496-byte
+ZIP object.
+
+**Alternatives:**
+
+- **One exact ordinary-Git blob — Rejected.** It is below GitHub's 50 MiB warning
+  threshold but adds the full opaque payload to every clone and cannot reuse
+  existing v14 blobs.
+- **Git LFS — Deferred.** It would keep the Git object database small, but LFS is
+  not installed and is metered after the plan allowance. Existing API scope did
+  not expose account usage or budget settings, so zero hidden cost cannot be
+  guaranteed without broader owner-authorized setup.
+- **Canonical extracted source — Accepted.** It is self-contained for every
+  material package file, diffable where possible, deduplicable, independently
+  verifiable, and has no new external dependency.
+- **Deterministic chunks — Rejected.** They would make the exact ZIP
+  reconstructable but would not reduce total Git history or checkout weight and
+  would add ordering, reconstruction, and verification burden.
+
+**Boundary:** Extracted payload cannot reproduce original ZIP container metadata
+by itself. The exact original ZIP remains separately preserved and hash-anchored;
+a later re-zipped copy must never be called byte-identical unless it matches the
+recorded whole-file SHA-256.
+
+## D-005 — External-action boundary
+
+**Date:** 2026-08-19
+**Status:** Accepted — owner-fixed
+
+Scoped branches, worktrees, commits, pushes, and draft PRs are authorized. No
+merge to `main`, deploy, publication, Release, study, paid provider, spending,
+dataset acquisition, preregistration, outreach, or result implication is
+authorized.
+
+## D-006 — Lock the v16 owner intent before downstream drafting
+
+**Date:** 2026-08-19
+
+**Status:** Accepted — owner-fixed
+
+`docs/OWNER_INTENT_V16.md` is the governing intent contract. Agents may improve
+expression but may not alter the underlying proposition, audiences, six-family
+scope, two-project separation, or action boundaries without a new explicit owner
+instruction. Proposed changes remain non-canonical and owner-decision-required.
+
+**Integrity lock:** `docs/OWNER_INTENT_V16.sha256` records the checkpoint's
+byte-level SHA-256. Downstream QA must verify it before integration; wording
+changes intentionally require a new owner-approved checkpoint rather than an
+unexplained hash refresh.
+
+## D-007 — Restore the historical six families as the public map
+
+**Date:** 2026-08-19
+
+**Status:** Accepted — owner-fixed
+
+V16 publicly organizes the framework around peripheral signal, source weighing,
+velocity/motion, absence + memory, structured patterns, and the learning loop.
+V14/v15 components such as authorization, provenance, claim graphs, routing,
+context packets, human disposition, and versioned memory may implement or
+qualify those families but may not replace them as the thesis-facing map.
+
+**Reason:** the v14/v15 decomposition improved rigor but contributed to drift
+away from the original reader problem and ambition.
+
+## D-008 — Enforce artifact firebreaks and Echo independence
+
+**Date:** 2026-08-19
+
+**Status:** Accepted — owner-fixed
+
+The human essay, builder framework, agent companion, broader research agenda,
+The Echo Problem, site, and historical archive have separate canonical paths,
+readers, and evidentiary roles. The removal test governs integration: v16 must
+remain coherent without the Echo example, and Echo must stand independently as
+an unrun origin-accounting project.
+
+## D-009 — Accept the verified v15.2 accession and EP v0.1 successor
+
+**Date:** 2026-08-19
+
+**Status:** Accepted
+
+The immutable accession contains all 239 external-manifest payload files and
+48,717,432 payload bytes, plus the unchanged external manifest and sidecar. The
+complete verifier also confirms the untouched 41,436,496-byte source ZIP, its
+SHA-256, all 240 ZIP members, CRCs, and the embedded-manifest identity. The ZIP
+itself remains outside Git under D-004.
+
+EP v0.1 is accepted as a separate, unrun successor with 82 byte-verified
+preserved source files covering the v15.2 manuscript, site, protocol, harness,
+fixture contract, and prior art. Its QA and status records are preservation and
+implementation evidence only, not research results.
+
+**Source task:** `90c64ad`; integrated as `96f8e32`.
+
+**Governing requirement:** two-project separation; A10/A14/A15.
+
+## D-010 — Preserve runnable historical paths in the curated Echo copy
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The first EP v0.1 commit grouped byte-exact harness and fixture copies under
+role-oriented `harness/` and `fixtures/` paths. An independent replay failed
+before test collection because the preserved test imports
+`tools.origin_accounting` and the preserved loader resolves
+`research/origin_accounting/config/frozen_config.json`.
+
+Only the curated copies were moved to the historical repository-relative
+`tools/`, `tests/`, and `research/origin_accounting/` paths. No preserved file
+byte and no immutable accession path changed. The source-copy verifier still
+passes for all 82 files, and all 15 deterministic local tests now run from the
+documented preserved root. This is a reproducibility correction, not a study
+or result.
+
+**Governing requirement:** canonical reproducibility; archive immutability;
+A10/A14/A15.
+
+## D-011 — Tighten the manuscript without weakening its boundaries
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The first Wave 1 mentor-reader/anti-slop audit passed the broad thesis and Echo
+subordination but found cumulative committee tone in term defense, numbered
+family treatment, noun inventories, implementation detail, repeated caveats,
+research language, and the long cover note.
+
+The integrated revision keeps all six families, all three required examples,
+the technical/social term boundary, the light/moderate/advanced spectrum,
+permission, uncertainty, stopping, human judgment, non-novelty, no-results,
+and unfavorable-outcome boundaries. It adds one owner-supplied coffee-
+conversation anchor, simplifies prose, removes the Echo table, trims the cover
+note from 398 to 247 raw words, and lets the human invitation close the essay.
+
+The resulting essay remains 3,289 raw / 3,149 prose words (an estimated
+13.7–14.3 minutes), and the short version remains an estimated 74–77 seconds.
+No reader timing or comprehension result is claimed.
+
+**Advisory report:**
+`qa/editorial/advisory/MENTOR_READER_ANTI_SLOP_2026-08-19_505d007.md`.
+
+**Implementation:** `51177d9`.
+
+**Governing requirement:** owner-intent voice contract; A01–A06, A10, A11,
+A15–A17.
+
+## D-012 — Integrate the applied framework as an inspectable, proportionate layer
+
+**Date:** 2026-08-19
+
+**Status:** Accepted for advisory review
+
+The first applied-framework lane is integrated with all six historical
+families as the stable public map. Permission envelopes, evidence spines,
+typed relationships, routing, context packets, receipts, and human disposition
+are supporting mechanisms; they do not replace the six families or impose one
+technical stack.
+
+The companion defines observable acquisition, comparison, disconfirmation,
+uncertainty, cost, stop, escalation, influence, and learning procedures. It
+also includes an ordinary path and explicit when-not-to-use guidance so the
+framework can remain proportionate. Common-origin recurrence remains one F5
+mechanism and example. Signal Foundry remains an invented, read-only fixture
+and not implementation evidence or validation.
+
+The focused validator, JSON parse checks, source-parent/scope audit, and
+owner-intent hash pass. These are structural and procedural checks only. They
+do not establish agent compliance or effectiveness; independent applied and
+v13-continuity audits remain required before the content interface freezes.
+
+**Source task:** `fccfceb`; integrated as `223d190`.
+
+**Integration QA:** `qa/applied/PLAYBOOK_INTEGRATION_QA.md`.
+
+**Governing requirement:** owner-intent operational contract; A03, A07–A09,
+A11, A15–A17.
+
+## D-013 — Keep prior art optional, direct, and claim-constraining
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The Wave 1 prior-art/overclaim audit passed the core manuscript's novelty,
+causality, effectiveness, provenance, recurrence, case, Echo, and no-results
+boundaries. Its source-route corrections are accepted: the optional route now
+links to the already integrated EP v0.1 status, the archived targeted
+prior-art map, its classified reference list, and a small set of primary or
+official entry points.
+
+The route is explicitly targeted rather than exhaustive, stays outside the
+human essay, and records that links require re-verification before any public
+release. The owner-approved “AI slop often begins” framing remains unchanged
+because it is a conceptual editorial proposition, not a measured prevalence
+claim. Future site wording may not present it as an empirical technical fact.
+
+The audit's A07–A09 scope limitation is also accepted: those gates must be
+re-audited against the integrated framework, cases, and eventual site rather
+than inferred from the manuscript-only `ea8a6e2` snapshot.
+
+**Advisory report:**
+`qa/research/advisory/PRIOR_ART_AND_OVERCLAIM_BOUNDARY_2026-08-19_ea8a6e2.md`.
+
+**Governing requirement:** targeted prior-art restraint; two-project
+separation; A07–A11, A15, A16.
+
+## D-014 — Use version indexes instead of duplicate archive copies
+
+**Date:** 2026-08-19
+
+**Status:** Accepted
+
+The version-specific `archive/v13/`, `v14/`, `v15/`, `v15.1/`, and `v15.2/`
+directories are curated indexes into the already preserved immutable transfers,
+not second physical copies. This preserves canonical navigation and explicit
+version status while avoiding duplicate checkout weight and any false claim
+that copying identical bytes improves archival integrity.
+
+`archive/CHECKPOINT_INDEX.json` records size and SHA-256 for 26 selected
+anchors across the five versions. `archive/verify_checkpoint_index.py` checks
+those paths and the exact-ZIP external hash record. Complete integrity remains
+with the v14 checksum ledger and v15.2 accession manifest/verifier. Source
+commit identifiers from earlier repositories remain lineage anchors and are
+not represented as objects available in Pattern-Map's object database.
+
+The indexes preserve material limitations: v13's original standalone HTML was
+not recovered; v15's separate Markdown source is not exposed by the current
+accession index; and the exact v15.2 ZIP container remains outside ordinary Git
+under D-004. No archive byte was rewritten.
+
+**Governing requirement:** canonical reproducibility, historical immutability,
+Git hygiene, and A14.
+
+## D-015 — Keep historical links byte-exact and provide current recovery routes
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with documented limitation
+
+The 82-file EP v0.1 curated source set is intentionally smaller than the
+complete 239-file v15.2 accession. Eight link occurrences in three preserved
+Markdown files refer to five historical repository-relative targets that are
+not all present at the same relative locations in the focused curated view.
+Editing those links would violate the byte-exact preservation boundary.
+
+`research/the-echo-problem/PRESERVED_V15_2_INDEX.md` now maps every unique
+historical target to either its curated copy or its complete-accession copy.
+Active-document link QA must exclude the immutable preserved subtree and verify
+the current routes in that index instead. The project does not claim that the
+historical relative links resolve from the curated placement.
+
+**Governing requirement:** preserve historical v15.2 exactly; canonical
+recoverability; A10/A14.
+
+## D-016 — Accept the applied framework after bounded interoperability revisions
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The first applied checkpoint already supplied the six-family specification,
+implementation spectrum, operator playbook, agent companion, templates, Signal
+Foundry translation, and two domain-neutral fixtures. Advisory review found
+four bounded execution gaps: the Quickstart did not close learning, route/stop
+labels conflicted, preflight statuses were not inspectable, and the Signal
+Foundry fixture lacked a concrete cost/stop/resume envelope.
+
+The integrated revisions preserve the ordinary path and add no mandatory
+architecture. Route, stop, and learning states are now separate canonical
+vocabularies; the relationship map and Signal Foundry procedure map friendly
+packet descriptions to canonical route values. The focused validator and an
+independent post-revision review pass with no remaining APP-02 residue.
+
+This establishes builder and agent artifact completeness for the pre-site
+scope. It does not establish live-agent compliance, Signal Foundry product
+behavior, reader comprehension, or framework effectiveness. A07–A09 remain
+scheduled for a final rendered-site/cross-link review.
+
+**Implementation:** `223d190`, `cd8a756`, and `9ab9b5d`.
+
+**Advisory reports:**
+`qa/applied/advisory/AGENT_PLAYBOOK_AND_SIGNAL_FOUNDRY_AUDIT_2026-08-19_223d190.md`;
+`qa/applied/advisory/APPLIED_POST_REVISION_VERIFICATION_2026-08-19_cd8a756.md`;
+`qa/editorial/advisory/V13_CONTINUITY_AND_INTENT_FIDELITY_2026-08-19_223d190.md`.
+
+**Governing requirement:** A03, A07–A09, A11, A15–A17.
+
+## D-017 — Contain the broader research agenda as an unrun future track
+
+**Date:** 2026-08-19
+
+**Status:** Accepted
+
+The broader v16 research agenda now treats The Echo Problem as independent
+Research Track 01 and defines DL-PLAYBOOK-01 as a separate future flagship
+candidate. The candidate asks whether the operational playbook changes
+usefulness, supported novelty, evidence diversity, missing-perspective
+detection, and human correction effort relative to ordinary prompting under a
+matched total resource envelope.
+
+The protocol counts playbook instructions, context/output tokens, tool calls,
+retries, elapsed time, human review, and any later-authorized cost. It retains
+null, harmful, shortcut-driven, fragile, non-transfer, stopped, invalid, and
+indeterminate outcomes. It selects no provider, model, dataset, participant,
+sample size, registry, or spend and authorizes no execution.
+
+Local validators establish containment and required fields only. They are not
+research evidence, a preregistration, or a completed study.
+
+**Implementation:** `1e376c0`.
+
+**Governing requirement:** research containment; A10/A11/A15/A16.
+
+## D-018 — Freeze the site content interface without claiming a rendered site
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision
+
+The pre-site interface fixes the human-first headline and standfirst, three
+principal doors, five secondary routes, six-family public tuple, source
+manifests, example classes, progressive-disclosure obligations, Echo/history
+placement, claim boundaries, visual policy, output requirements, and external-
+action prohibitions. It freezes hierarchy and meaning while leaving layout and
+technical implementation to the site lane.
+
+An independent audit found that the first validator could pass several forms
+of lockstep drift. The revised validator now compares the immutable owner-
+intent checkpoint, a fixed six-family tuple and boundaries, exact source and
+action manifests, required examples/levels/outputs, Echo and Signal Foundry
+status, glossary coverage, and the bitmap-needs gate. The current visual-needs
+record justifies no generated bitmap: code-native treatments and the preserved
+historical v13 diagram cover the teaching needs.
+
+This checkpoint authorizes the isolated site task to begin. It does not pass
+rendered first-screen, reader comprehension, no-script, keyboard, responsive,
+print, PDF, historical-map-display, link-wording, or site-removal gates. Those
+remain explicit Phase 4/6 work.
+
+**Implementation:** initial freeze `6f672f2`; audit revision `9079fcb`.
+
+**Advisory report:**
+`qa/editorial/advisory/CONTENT_INTERFACE_FREEZE_AUDIT_2026-08-19_6f672f2.md`.
+
+**Governing requirement:** site dependency rule; A01–A17 as scoped.
+
+## D-019 — Integrate the local site with an explicit renderer correction and manual residuals
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision for final advisory review
+
+The site lane produced a dependency-free nine-route local review surface with
+the three frozen principal doors, five secondary routes, all six families,
+progressive technical disclosure, ordinary through advanced application paths,
+three required teaching patterns, bounded Signal Foundry and Echo routes, a
+historical/current topology distinction, a standalone HTML export, and a
+six-page PDF companion. No deployment, hosting API, publication, provider,
+study, external dataset, or spend occurred.
+
+Primary integration review found one defect before any canonical remote push:
+the small Markdown renderer allowed emphasis parsing to alter `_blank` inside
+generated anchor attributes, and its link regex truncated a DOI containing
+parentheses. The renderer now token-protects completed inline markup, preserves
+balanced parentheses in destinations, and tests both safe external attributes
+and the exact parenthesized URL across the Sources route and standalone export.
+All site, content-interface, applied, and research-boundary validators pass
+after the correction.
+
+The visual-needs record found no justified generated-bitmap need. The site uses
+code-native teaching treatments and a byte-identical 1,961,204-byte recovered
+v13 diagram. That active historical copy is an explicit binary-policy
+exception, hash-verified, and labeled `Historical v13 origin — not the current
+v16 topology.` No generated image was created.
+
+Responsive screenshots and rendered PDF pages are implementation QA, not
+reader or research evidence. Static focus order, focus handoff, accessible
+names, no-script meaning, reduced motion, forced colors, reflow, and print CSS
+pass. Physical keyboard traversal and a human print-preview pass remain honest
+owner-review residuals because the automation surface could not establish
+them reliably.
+
+**Implementation:** site task `a3cd7c7`; renderer correction `932366a`.
+
+**Evidence:** `qa/site/SITE_QA_REPORT.md`,
+`qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_NEEDS.md`, and
+`assets/IMAGE_USE_LEDGER.md`.
+
+**Governing requirement:** three-door site contract; progressive disclosure;
+historical integrity; A01–A17 as scoped; no-deploy/no-publish boundary.
+
+## D-020 — Accept final rendered corrections as artifact evidence, not human or effectiveness results
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with revision for owner review
+
+The final advisory wave found bounded, correctable defects in the rendered
+owner-review surface: underscore-bearing operational identifiers could be
+mutated by emphasis parsing; some local source links fell back to inaccurate or
+missing destinations; the standalone export repeated level-one headings and
+IDs; narrow headers hid the principal route links; Map cards led with builder
+vocabulary; several contrast pairs were weak; five promised glossary entries
+were incomplete; and the PDF's untagged status was not explicit enough.
+
+The integrated source checkpoint `2a54b24ec01707bb2a73032ab3f662cd995669ae`
+repairs those implementation defects without changing the locked owner intent
+or the canonical six-family framework. Exact follow-up reviews report one
+standalone `h1`, 282 unique IDs, complete local fragments, intact route/stop/
+learning tokens, direct Echo anchoring, plain-language Map bridges, populated
+glossary entries, visible narrow-width principal routes, stronger contrast,
+and an explicitly visual-only PDF with semantic standalone HTML as the
+accessibility route. A final browser evidence refresh replaced the two stale
+mobile/Map screenshots; it changed review evidence only, not canonical copy.
+
+The post-site applied reviews pass A07, A08, and A09 as artifact gates. That
+means the repository exposes concrete builder paths, specifies observable agent
+records and states, and keeps Signal Foundry bounded as an illustration. It is
+not evidence that a live agent complied, a product improved, a reader
+understood the idea, or the framework is effective.
+
+The cold-reader and site reviews are model proxies and implementation audits.
+A01 and A04 still require owner/mentor judgment; the A05 durations remain
+editorial estimates; and A13 remains partial pending physical keyboard,
+supported screen-reader, and browser print-preview checks. The package must
+therefore be called an owner-review candidate, not a fully accepted,
+accessible, published, deployed, or empirically validated release.
+
+**Evidence:**
+`qa/applied/advisory/APPLIED_FINAL_REGRESSION_CHECK_2026-08-19_2a54b24.md`;
+`qa/editorial/advisory/COLD_READER_POST_REVISION_VERIFICATION_2026-08-19_2a54b24.md`;
+`qa/site/advisory/SITE_POST_REVISION_VERIFICATION_2026-08-19_2a54b24.md`;
+`docs/ADVISORY_REVIEW_DISPOSITIONS.md`; and
+`qa/FINAL_ACCEPTANCE_MATRIX_V16.md`.
+
+**Governing requirement:** A01/A04–A13/A15–A17; review-and-disposition
+protocol; no-results and no-publication boundaries.
+
+## D-021 — Open a draft PR as the bounded owner-review release
+
+**Date:** 2026-08-19
+
+**Status:** Accepted for owner review; owner acceptance remains open
+
+After the 114-file package manifest and full local verification suite passed,
+the foundation branch was pushed at owner-review package checkpoint
+`63e63c123874a7be7ccc9aff6f2bce102a971ae3`. GitHub repository metadata
+confirmed `adonisdv23/Pattern-Map`, default branch `main`, working fetch/push
+connectivity, and no pre-existing open PR for the foundation branch.
+
+Draft pull request [#1](https://github.com/adonisdv23/Pattern-Map/pull/1) now
+targets `main` from `codex/pattern-map-v16-foundation`. Its body states the
+two-project separation, artifact inventory, integrity results, manual owner
+gates, and exact external-action boundary. The PR remains a review surface; it
+does not authorize merge, deployment, public-site replacement, publication,
+Release creation, research execution, provider selection/call, spend, data or
+participant acquisition, preregistration, outreach, or representation of
+unrun work as a result.
+
+The authorized owner-review handoff phase is complete as a repository
+artifact. Binding owner/mentor judgment and physical keyboard, supported
+screen-reader, and browser print-preview checks remain open, so v16 is not
+recorded as fully accepted under every gate.
+
+**Governing requirement:** owner-review release boundary; A01/A04/A05/A13/A15–A17.
+
+## D-022 — Strengthen live-browser evidence without converting automation into manual acceptance
+
+**Date:** 2026-08-19
+
+**Status:** Accepted with manual residuals unchanged
+
+A current-head in-app-browser pass reopened all nine local routes, exercised
+the More focus handoff and Escape return, checked Map focus/reset and live-
+region behavior, inspected visible focus styles, toggled progressive detail,
+and checked route-level headings, landmarks, active links, overflow, and
+console errors. Those live behaviors passed at the available 1280×720
+viewport.
+
+Synthetic Tab traversal and native default keyboard activation still did not
+advance reliably in the automation surface. The browser security layer also
+declined the supported developer capability requested for responsive viewport,
+print-media, and accessibility-tree inspection. The denial was not bypassed
+and no alternate browser-control surface was used.
+
+The evidence therefore improves the live implementation record but does not
+close physical keyboard, supported screen-reader, or browser print-preview
+acceptance. No canonical site correction was indicated, and A13 remains
+partial. Human comprehension, voice, and observed timing remain outside this
+browser check.
+
+**Evidence:**
+`qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md`.
+
+**Governing requirement:** A02/A06/A13/A15/A17; evidence-scope and browser-
+permission boundaries.
+
+## D-023 — Require an authored interactive site before owner review
+
+**Date:** 2026-08-19
+
+**Status:** Accepted for owner review with manual residuals
+
+The owner clarified that the v16 site should feel comparable in ambition to the
+preserved prior site, not like a text dump or a PDF-centered handoff. A direct
+comparison of the pre-polish v16 build with the v14/v15.2 references found that
+the existing build was coherent and accessible in structure but still read as
+a polished documentation surface. It lacked persistent publication
+orientation, placed the relationship view too late, and made Apply primarily
+descriptive.
+
+The bounded site-polish branch restores the useful design qualities without
+restoring the provenance-first thesis drift. The routed site now provides:
+
+- a persistent desktop chapter rail and a normal-flow narrow-screen route
+  guide;
+- three visually distinct principal doors;
+- a current F1–F6 relationship view at the start of Map, including the F4
+  baseline dependency, F6 learning loop, human-authority boundary, focus state,
+  and nearby text equivalent;
+- an editorial Read route with cumulative and full reading layers;
+- a local, provider-free Apply studio that makes ordinary/lightweight/moderate/
+  advanced choice, route, stop, learning, and human disposition visible; and
+- full-width teaching narratives for peripheral signal, motion/absence, and
+  common-origin recurrence while keeping Echo subordinate and unrun.
+
+The first implementation checkpoint was
+`5a37aacccd26d407acf65cea9b33393899514851`. Primary and bounded advisory review
+accepted the substantive visual result but identified evidence and standalone
+residuals. Checkpoint `a319794f5cf2d395c34e5af4935c9299f12dfd5c`
+removes nested standalone route frames, labels the concatenated export `All
+routes`, adds regression assertions, and preserves visible F1, advanced/HOLD,
+and standalone states. Evidence checkpoint
+`85dff94e7b64266a2054d1857b0c012ac9c97736` labels the older black-region mobile
+PNG as stale rather than silently overwriting it.
+
+The expanded visual evidence is accepted under the existing binary policy:
+every new capture/render remains below 1 MB, canonical text/code remains
+diffable, and the files document baseline, revision, final viewport, PDF, and
+interaction states. This does not reopen generated-bitmap work. Code-native
+visuals remain the better responsive and semantic teaching medium, and the
+image-use ledger still records zero generated candidates.
+
+Claude Code/Cowork was attempted as an optional independent reviewer because
+the owner requested it. The installed client returned `401` because its
+existing OAuth token had been revoked. Credentials were not inspected,
+repaired, requested, or replaced; no provider/API call or spend was used; and
+the package makes no claim that Claude reviewed the work. The bounded visual
+review and primary browser/source verification continued without treating that
+optional lane as a blocker.
+
+The site passes artifact, structural, responsive, no-script, interaction-state,
+standalone, and visual-review gates. A01/A04/A05 remain owner/mentor judgments.
+A13 remains partial pending physical-keyboard traversal, a supported
+screen-reader pass, real 200% zoom, and browser print preview. The PDF is still
+an untagged secondary visual companion; the routed site and semantic standalone
+HTML are primary.
+
+**Evidence:** `qa/site/SITE_POLISH_QA.md`,
+`qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md`,
+`qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, `qa/visual/README.md`, and
+`docs/ADVISORY_REVIEW_DISPOSITIONS.md`.
+
+**Governing requirement:** owner visual expectation; three-door site contract;
+A02/A06–A08/A10–A13/A15–A17; no-deploy/no-publish boundary.
+
+## D-024 — Correct the Pro round-1 blockers without changing the locked thesis
+
+**Date:** 2026-08-20
+
+**Status:** Accepted with owner/assistive-technology residuals unchanged
+
+At the owner's request, an outside ChatGPT Pro project reviewed exact commit
+`cc5547def98aeec819eabc68bbf850548e97d4c6` and draft PR #1 against the locked
+owner intent, two-project firebreak, acceptance gates, source tree, generated
+site, standalone export, playbook, and historical design references. The full
+report was read before disposition and is preserved in
+`qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md`.
+
+Two source-deterministic defects were accepted as P0. The old Apply studio
+converted planning choices into event-like completion, stop, learning, and
+human-decision states, and restricted permission did not dominate every route
+shortcut. The old Map combined a 3-column medium layout with a later
+821-pixel desktop coordinate override, making collisions and detached lines
+possible from 821 through 1100 pixels.
+
+The correction keeps the owner's thesis, headline, six families, three doors,
+human-authority boundary, proportional levels, warm visual system, and
+Echo/Signal Foundry boundaries intact. It changes the implementation as
+follows:
+
+The coherent implementation checkpoint is
+`5eb860e8d6918813622a7725eb0d854f6bef6ca2`; its current QA record is
+`qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`.
+
+- Apply now returns planning recommendations only. Observed execution, stop,
+  outcome, learning, and human-decision fields remain explicitly unrun or
+  unobserved; optional later-state controls are labeled local simulations and
+  never mutate those fields. A pure 54-combination test enforces permission
+  precedence and prevents event-token fabrication.
+- The Map is flow-native and line-free at every width. Six family questions,
+  optional shared records, and four limited relationship bands replace the
+  fragile fixed topology. Exact 821-pixel and 1024-pixel browser inspection
+  shows the intended 3-column/2-column reflow without horizontal overflow.
+- The 60–90-second entry is now 250 raw words, uses a concrete product-release
+  case before the family questions, and delays the internal framework name
+  until its function is clear. This remains an editorial estimate, not an
+  observed reading-time or comprehension result.
+- A tenth, optional Guided route provides one authored 8–12-minute path from
+  the human problem through the questions, relationships, smallest useful
+  application, examples, and boundaries. It is generated from the same
+  canonical components and does not replace Read / Map / Apply or fork the
+  manuscript.
+- Difficult primary-path terms now have inline plain meaning plus optional
+  click/touch/keyboard explainers with code-native microvisuals, boundaries,
+  and glossary links. No essential meaning is hover-only and no generated
+  bitmap was justified.
+- Apply is progressively enhanced: without JavaScript, dead controls are
+  hidden and the complete static planning guide remains readable. The
+  Quickstart and full guide now begin with Stage 0 so ordinary supplied-material
+  transformations do not inherit evidence bureaucracy.
+
+The advisory suggestion to soften “AI slop often begins before the model
+writes a word” was rejected under D-013/PAOB-03 because the phrase is the
+owner-approved editorial center and remains explicitly conceptual rather than
+measured. Lower-priority URL focus persistence and broad appendix terminology
+rewrites were deferred unless an exact-commit follow-up shows a material need.
+
+Current automated and in-app-browser evidence covers the ten-route build,
+54-state planning matrix, no-script contract, 390-pixel Home/Map/Apply reflow,
+exact 821-pixel and 1024-pixel Map behavior, term interaction, permission
+precedence, and absence of console errors. Physical keyboard traversal,
+supported screen-reader review, real 200% zoom, browser print preview, and
+owner/mentor judgment remain binding manual residuals. The Pro report is a
+model advisory, not owner acceptance or empirical evidence.
+
+**Governing requirement:** owner visual expectation; authority order;
+A01–A08/A10–A13/A15–A17; no-deploy/no-publish/no-study boundary.

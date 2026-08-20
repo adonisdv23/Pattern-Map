@@ -1,0 +1,40 @@
+{
+  "receipt_id": "DR-BLOCK-001",
+  "consequence": "HIGH",
+  "permission": {
+    "technical_access": true,
+    "authorized": false,
+    "disclosure_allowed": false
+  },
+  "budget": {
+    "remaining_minutes": 15,
+    "limit_minutes": 15
+  },
+  "baseline": {
+    "present": false,
+    "motion_repeated": false,
+    "absence_expected": false
+  },
+  "comparison": {
+    "done": false,
+    "unit": "NOT_STARTED",
+    "origin_state": "UNKNOWN"
+  },
+  "disconfirmation": {
+    "attempted": false,
+    "result": "blocked before acquisition"
+  },
+  "influence": {
+    "recorded": false,
+    "selected_items": [],
+    "withheld_items": []
+  },
+  "route": "ESCALATE",
+  "stop_status": "STOPPED_OTHER",
+  "stop_reason": "Permission is absent; technical access is not authorization.",
+  "uncertainty": ["NOT_AUTHORIZED"],
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}

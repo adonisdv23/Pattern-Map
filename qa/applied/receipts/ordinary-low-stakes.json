@@ -1,0 +1,40 @@
+{
+  "receipt_id": "DR-ORD-001",
+  "consequence": "LOW",
+  "permission": {
+    "technical_access": true,
+    "authorized": true,
+    "disclosure_allowed": true
+  },
+  "budget": {
+    "remaining_minutes": 2,
+    "limit_minutes": 5
+  },
+  "baseline": {
+    "present": true,
+    "motion_repeated": false,
+    "absence_expected": false
+  },
+  "comparison": {
+    "done": true,
+    "unit": "supplied-material contrast",
+    "origin_state": "NOT_APPLICABLE"
+  },
+  "disconfirmation": {
+    "attempted": true,
+    "result": "one limiting assumption recorded"
+  },
+  "influence": {
+    "recorded": true,
+    "selected_items": ["SUPPLIED-001"],
+    "withheld_items": []
+  },
+  "route": "ANSWER_PROVISIONALLY",
+  "stop_status": "COMPLETE",
+  "stop_reason": "Remaining search is not worth the low-consequence task budget.",
+  "uncertainty": ["scope limited to supplied material"],
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}

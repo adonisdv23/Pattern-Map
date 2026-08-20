@@ -1,0 +1,12 @@
+{
+  "name": "pattern-map-v16-local-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node serve.mjs",
+    "preview": "node serve.mjs",
+    "check": "node check.mjs && node ../qa/interaction/apply-state-contract.spec.mjs && node ../qa/interaction/map-layout-contract.spec.mjs && node ../qa/content/reader-language-contract.spec.mjs"
+  }
+}
