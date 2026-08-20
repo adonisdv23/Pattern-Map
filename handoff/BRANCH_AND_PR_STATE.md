@@ -4,7 +4,7 @@ Status date: 2026-08-20
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `5eb860e` ChatGPT Pro round-one correction checkpoint | Local evidence/handoff refresh pending push on the same branch; draft PR #1 remains open and unmerged |
+| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `bfaa62e` corrected owner-review evidence checkpoint | Pushed; draft PR #1 remains open and unmerged; this branch-state/checksum metadata follows on the same branch |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
 | Applied framework and agent playbook | `codex/pattern-map-v16-playbook` | `fccfceb` | Pushed; integrated into foundation |
@@ -17,6 +17,8 @@ Draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate
 - Base: `main` at `5eea2381c86400bacc1bc2a6df0e3af78bd6330a` when opened.
 - Head branch: `codex/pattern-map-v16-foundation`.
 - Corrected implementation checkpoint: `5eb860e8d6918813622a7725eb0d854f6bef6ca2`.
+- Corrected owner-review evidence checkpoint:
+  `bfaa62e7c186b2838e7b57c1490a1428338e862c`.
 - State: open and draft; not merged.
 
 The PR tracks the head branch. The corrected checkpoint above incorporates the

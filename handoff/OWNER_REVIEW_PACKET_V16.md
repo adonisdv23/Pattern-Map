@@ -8,6 +8,10 @@ independent ChatGPT Pro review of exact predecessor
 `cc5547def98aeec819eabc68bbf850548e97d4c6`; the following evidence/handoff
 commit refreshes this packet and the deterministic package manifest.
 
+Integrated corrected owner-review evidence checkpoint:
+`bfaa62e7c186b2838e7b57c1490a1428338e862c`. The following metadata-only
+commit refreshes branch state and the deterministic manifest after the push.
+
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
 and Apply semantics. Current evidence is the exact-checkpoint Pro correction
