@@ -51,9 +51,15 @@ prevents large opaque files from silently becoming ordinary source.
   `8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae`,
   and the active copy lets the standalone local review route work without
   mutating the immutable transfer. It is labeled historical, not current.
-- Committed browser screenshots and six PDF page renders under `qa/visual/`
-  are bounded review evidence. Each individual file is below 1 MB. They are
-  not runtime dependencies, generated-image candidates, or research results.
+- Committed browser screenshots and PDF page renders under `qa/visual/` are
+  bounded review evidence. The site-polish record retains exact-base,
+  intermediate, final viewport, interaction-state, and six final PDF-render
+  captures so the visual change and current state can be inspected. Every new
+  file is below 1 MB; the largest final polish render is below 250 KB. These
+  files are not runtime dependencies, generated-image candidates, reader
+  results, accessibility certification, or research results. The visual index
+  explicitly labels the older black-region mobile capture as stale QA history
+  rather than current-site evidence.
 - `site/exports/pattern-map-v16-owner-review.pdf` is a review companion whose
   Markdown/source artifacts remain canonical. Its current file is below 1 MB.
 

@@ -14,7 +14,7 @@ the project.
 | --- | --- | --- |
 | Create and use `codex/` feature branches and isolated worktrees | Git branch history, source-branch records, and handoff branch map | **USED WITHIN SCOPE** |
 | Reorganize the repository while preserving historical material | V14 transfer moved into the immutable archive boundary; checksum ledger passes | **USED WITHIN SCOPE** |
-| Commit and push coherent feature branches | Foundation, Echo, manuscript, applied, and site branch refs | **USED WITHIN SCOPE** |
+| Commit and push coherent feature branches | Foundation, Echo, manuscript, applied, site, and site-polish branch refs | **USED WITHIN SCOPE** |
 | Create durable tasks and bounded advisory agents | Advisory reports and integration ledger | **USED WITHIN SCOPE** |
 | Build local review artifacts | Nine-route local site, standalone HTML, visual PDF companion, local QA renders | **USED WITHIN SCOPE** |
 | Open a draft pull request for owner review | [PR #1](https://github.com/adonisdv23/Pattern-Map/pull/1) and `handoff/BRANCH_AND_PR_STATE.md` | **USED WITHIN SCOPE; OPEN AND DRAFT** |
@@ -28,7 +28,7 @@ the project.
 | Publish the essay, framework, site, or package | Artifacts are labeled local owner review; no publication action or public announcement | **NOT PERFORMED** |
 | Create a GitHub Release or upload the v15.2 ZIP to a release channel | D-004 keeps the exact ZIP at its verified source path pending separate authorization | **NOT PERFORMED** |
 | Run an empirical, model-evaluation, provider, or participant study | Echo and DL-PLAYBOOK-01 remain explicitly unrun; validators and deterministic fixtures are labeled implementation QA only | **NOT PERFORMED** |
-| Select or call a paid provider, incur spend, or purchase data/services | No provider/model chosen for either future protocol; local tools and supplied fixtures only | **NOT PERFORMED** |
+| Select or call a paid provider, incur spend, or purchase data/services | No provider/model chosen for either future protocol. An optional installed Claude Code review was attempted at the owner's request but stopped at a revoked-token `401` before any model review; no credential repair, paid inference, or spend occurred | **NOT PERFORMED** |
 | Acquire an external dataset or recruit participants | Protocols retain future placeholders; no sample, participant, or dataset acquisition | **NOT PERFORMED** |
 | Preregister research | Future protocols are not represented as preregistrations | **NOT PERFORMED** |
 | Contact people, conduct outreach, or represent the owner externally | No message, invitation, recruitment, or external representation action | **NOT PERFORMED** |
@@ -43,6 +43,9 @@ the project.
   not a model study, participant sample, or evidence that the framework works.
 - Browser screenshots and PDF renders establish layout and implementation
   state only. They do not establish reader comprehension or persuasion.
+- The failed Claude Code authentication attempt is not a completed provider or
+  model review and is not represented as one. It produced no project-content
+  review, research result, or spend.
 - Pushing authorized feature branches and opening a draft PR do not authorize
   merge, release, deployment, or publication.
 - The immutable v14 transfer retains one compiled Python cache member that was

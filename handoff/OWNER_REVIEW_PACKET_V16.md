@@ -3,9 +3,10 @@
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
 Canonical content/site-source/PDF checkpoint:
-`2a54b24ec01707bb2a73032ab3f662cd995669ae`. The final evidence package also
-contains refreshed mobile and Map captures generated from that corrected local
-build after the exact-commit reviewers identified the prior PNGs as stale.
+`a319794f5cf2d395c34e5af4935c9299f12dfd5c`. Final site-polish evidence is
+anchored at `85dff94e7b64266a2054d1857b0c012ac9c97736`. The visual evidence index
+labels the older black-region mobile PNG as stale QA history and points to the
+fully painted final captures.
 
 ## The outcome
 
@@ -35,9 +36,11 @@ GitHub owner-review surface: draft pull request
 1. Read the [60–90-second version](../manuscript/NINETY_SECOND_VERSION.md).
 2. Read the [mentor cover note](../manuscript/MENTOR_COVER_NOTE.md) and the
    [canonical essay](../manuscript/PATTERN_RECOGNITION_V16.md).
-3. Open the [standalone HTML](../site/exports/standalone/pattern-map-v16.html)
-   or run the local site from `site/` and use the three principal doors:
-   **Read the idea / Explore the map / Apply it**.
+3. Run the local site from `site/` (`npm run build && npm run dev`), open
+   <http://127.0.0.1:4173/>, and use the three principal doors: **Read the idea
+   / Explore the map / Apply it**. This routed site is the primary review
+   experience. The [standalone HTML](../site/exports/standalone/pattern-map-v16.html)
+   is the self-contained all-routes companion.
 4. Inspect the [six-family specification](../framework/SIX_FAMILIES.md),
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
    [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
@@ -46,7 +49,9 @@ GitHub owner-review surface: draft pull request
 6. Inspect [The Echo Problem](../research/the-echo-problem/README.md), its
    [status/no-results record](../research/the-echo-problem/STATUS_AND_BOUNDARIES.md),
    and its [relationship to v16](../research/the-echo-problem/RELATION_TO_V16.md).
-7. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
+7. Inspect the [visual-experience report](../qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md)
+   and its [current/stale evidence index](../qa/visual/README.md).
+8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
 
@@ -68,9 +73,12 @@ the semantic accessibility route.
   stop, and learning states.
 - Bounded Signal Foundry and two domain-neutral fixtures; none is represented
   as validation or observed product behavior.
-- Nine local routes, a direct-open standalone HTML export, a six-page visual
-  PDF companion, code-native teaching views, and a byte-identical historical
-  v13 diagram labeled as history rather than current topology.
+- Nine authored local routes with persistent desktop orientation and a mobile
+  route guide; a current six-family relationship object; a provider-free local
+  Apply studio with route/stop/learning/authority states; a direct-open
+  all-routes standalone HTML export; a six-page secondary visual PDF companion;
+  code-native teaching views; and a byte-identical historical v13 diagram
+  labeled as history rather than current topology.
 - EP v0.1 with a complete 239-file v15.2 accession, an 82-file curated set,
   preserved protocol/harness/fixtures/prior art, exact unfavorable-result
   taxonomy, and no-results status.
@@ -90,16 +98,24 @@ the semantic accessibility route.
   tests pass as implementation checks only.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, and historical-asset checks pass.
-- A current-head live-browser pass reopens all nine routes without overflow or
-  console errors and passes More focus handoff/Escape return, Map live-status
-  and reset behavior, visible focus rings, and pointer disclosure behavior. It
-  explicitly leaves physical Tab, supported screen-reader, and print preview
-  open because the automation/browser permission surfaces could not establish
-  them.
+- Final visual evidence covers Home/Map/Apply at six viewport sizes, Read and
+  Examples at desktop/mobile, every route at desktop, focused F1, an
+  advanced/HOLD receipt, and the corrected standalone `All routes` state. The
+  final standalone has one main, one h1, 292 unique IDs, one publication rail,
+  one mobile guide, one page frame, and no falsely current route.
+- Browser passes cover all nine routes, More focus handoff/Escape return, Map
+  live-status and reset behavior, visible focus rings, disclosures, local
+  route-receipt generation, and HOLD/ESCALATE/STOP states. They explicitly
+  leave physical Tab, supported screen reader, real zoom, and print preview
+  open because the automation/browser surfaces could not establish them.
 - Six PDF pages were reopened and rendered with Poppler; no clipping, overlap,
   or unreadable glyphs was observed.
 - Final advisory lanes preserve explicit limits: proxy reader reviews are not
   measured comprehension; validators are not effectiveness evidence.
+- Claude Code/Cowork was attempted as an optional review lane, but the installed
+  client's existing OAuth token was revoked (`401`). Credentials were not
+  inspected or repaired, no paid API was used, and no Claude-review claim is
+  made.
 
 ## Decisions already fixed and preserved
 
@@ -127,7 +143,8 @@ gate. Please record the following before calling v16 fully accepted:
 3. Complete physical keyboard traversal at desktop and narrow width.
 4. Complete a supported screen-reader review of the semantic site/standalone
    HTML.
-5. Inspect browser print preview for the principal and key secondary routes.
+5. Inspect real 200% browser/OS zoom on the principal routes and standalone.
+6. Inspect browser print preview for the principal and key secondary routes.
 
 The exact checklist is in `qa/FINAL_ACCEPTANCE_MATRIX_V16.md`. External source
 destinations should be reverified before any later authorized publication.

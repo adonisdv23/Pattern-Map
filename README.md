@@ -12,10 +12,13 @@ separate bodies of work:
    for preventing repeated or derived reports from being misrepresented as
    independent corroboration.
 
-The project is in owner-review development. A local v16 site, standalone HTML
-export, and PDF companion now exist for review, but no public site has been
-deployed or substituted for the historical reference. The framework is not
-empirically validated and no study run is authorized.
+The project is in owner-review development. A materially authored local v16
+site now provides persistent publication orientation, an interactive six-family
+relationship map, and a provider-free Apply studio with inspectable receipts
+and stop states. A semantic standalone HTML export and secondary PDF companion
+also exist, but no public site has been deployed or substituted for the
+historical reference. The framework is not empirically validated and no study
+run is authorized.
 
 ## Current state
 
@@ -23,10 +26,11 @@ The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1
 Echo project, an explicitly unrun broader research agenda, and a nine-route
-local owner-review site. Structural, responsive, no-script, export, and visual
-checks and final independent proxy/operator reviews pass within their stated
-artifact boundaries. Owner/mentor judgment plus manual physical-keyboard,
-supported screen-reader, and browser print-preview confirmation remain open.
+local owner-review site. Structural, responsive, no-script, export, interaction,
+and visual checks and final independent proxy/operator reviews pass within
+their stated artifact boundaries. Owner/mentor judgment plus manual
+physical-keyboard, supported screen-reader, real-zoom, and browser print-preview
+confirmation remain open.
 The canonical owner-review surface is draft pull request
 [#1](https://github.com/adonisdv23/Pattern-Map/pull/1); it is not authorization
 to merge or publish.

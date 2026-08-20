@@ -16,10 +16,10 @@ home.
 | 1 — Intent freeze | Locked owner intent, thesis/audience, artifact boundaries, acceptance criteria, v13→v16 fidelity matrix | Complete — owner-locked contracts and intent audit |
 | 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | Complete — all production lanes integrated; Wave 1, applied, continuity, and Echo findings dispositioned |
 | 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Complete — frozen contract and strengthened structural validator at `9079fcb`; its rendered gates were subsequently completed in Phases 4/6 within stated proxy limits |
-| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete — site task `a3cd7c7`, integration correction `932366a`; manual keyboard/print confirmation remains a release residual |
+| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete for artifact scope — initial site task `a3cd7c7`; owner-directed authored-site polish at `5a37aac`; standalone/state follow-up at `a319794`; evidence head `85dff94`; manual keyboard/screen-reader/real-zoom/print confirmation remains a release residual |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
-| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Complete for artifact/proxy scope — final operator, hostile novelty, cold-reader, and site/accessibility reports dispositioned; no human comprehension or assistive-technology result inferred |
-| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Complete for authorized repository handoff — package checkpoint `63e63c1` pushed and draft PR #1 open; owner/mentor and physical keyboard/screen-reader/print acceptance gates stay open; no merge/deploy |
+| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Complete for artifact/proxy scope — final operator, hostile novelty, cold-reader, site/accessibility, and post-polish visual-experience reports dispositioned; no human comprehension or assistive-technology result inferred |
+| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Refresh in progress for the polished site — site-polish feature head `85dff94` is pushed and integrated; package checksums/draft PR head are being refreshed; owner/mentor and physical keyboard/screen-reader/real-zoom/print gates stay open; no merge/deploy |
 
 ## Dependency rules
 
@@ -42,6 +42,11 @@ home.
 - A09 passes after every Signal Foundry rendered mention and cross-link is
   inspected at `2a54b24`; the case remains fixture-only, read-only, and not
   validation.
+- The owner-directed site re-audit accepts the routed visual/interaction result
+  through `a319794`: persistent orientation, early six-family topology, local
+  route receipts, no-script equivalence, and explicit human authority pass as
+  artifact behavior. Physical keyboard, supported screen reader, real zoom,
+  browser print preview, and owner pacing judgment remain manual.
 - The final reports supersede the implementation-scope deferral recorded at
   the manuscript-only snapshot `ea8a6e2` without changing its historical
   report.

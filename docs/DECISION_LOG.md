@@ -554,3 +554,72 @@ browser check.
 
 **Governing requirement:** A02/A06/A13/A15/A17; evidence-scope and browser-
 permission boundaries.
+
+## D-023 — Require an authored interactive site before owner review
+
+**Date:** 2026-08-19
+
+**Status:** Accepted for owner review with manual residuals
+
+The owner clarified that the v16 site should feel comparable in ambition to the
+preserved prior site, not like a text dump or a PDF-centered handoff. A direct
+comparison of the pre-polish v16 build with the v14/v15.2 references found that
+the existing build was coherent and accessible in structure but still read as
+a polished documentation surface. It lacked persistent publication
+orientation, placed the relationship view too late, and made Apply primarily
+descriptive.
+
+The bounded site-polish branch restores the useful design qualities without
+restoring the provenance-first thesis drift. The routed site now provides:
+
+- a persistent desktop chapter rail and a normal-flow narrow-screen route
+  guide;
+- three visually distinct principal doors;
+- a current F1–F6 relationship view at the start of Map, including the F4
+  baseline dependency, F6 learning loop, human-authority boundary, focus state,
+  and nearby text equivalent;
+- an editorial Read route with cumulative and full reading layers;
+- a local, provider-free Apply studio that makes ordinary/lightweight/moderate/
+  advanced choice, route, stop, learning, and human disposition visible; and
+- full-width teaching narratives for peripheral signal, motion/absence, and
+  common-origin recurrence while keeping Echo subordinate and unrun.
+
+The first implementation checkpoint was
+`5a37aacccd26d407acf65cea9b33393899514851`. Primary and bounded advisory review
+accepted the substantive visual result but identified evidence and standalone
+residuals. Checkpoint `a319794f5cf2d395c34e5af4935c9299f12dfd5c`
+removes nested standalone route frames, labels the concatenated export `All
+routes`, adds regression assertions, and preserves visible F1, advanced/HOLD,
+and standalone states. Evidence checkpoint
+`85dff94e7b64266a2054d1857b0c012ac9c97736` labels the older black-region mobile
+PNG as stale rather than silently overwriting it.
+
+The expanded visual evidence is accepted under the existing binary policy:
+every new capture/render remains below 1 MB, canonical text/code remains
+diffable, and the files document baseline, revision, final viewport, PDF, and
+interaction states. This does not reopen generated-bitmap work. Code-native
+visuals remain the better responsive and semantic teaching medium, and the
+image-use ledger still records zero generated candidates.
+
+Claude Code/Cowork was attempted as an optional independent reviewer because
+the owner requested it. The installed client returned `401` because its
+existing OAuth token had been revoked. Credentials were not inspected,
+repaired, requested, or replaced; no provider/API call or spend was used; and
+the package makes no claim that Claude reviewed the work. The bounded visual
+review and primary browser/source verification continued without treating that
+optional lane as a blocker.
+
+The site passes artifact, structural, responsive, no-script, interaction-state,
+standalone, and visual-review gates. A01/A04/A05 remain owner/mentor judgments.
+A13 remains partial pending physical-keyboard traversal, a supported
+screen-reader pass, real 200% zoom, and browser print preview. The PDF is still
+an untagged secondary visual companion; the routed site and semantic standalone
+HTML are primary.
+
+**Evidence:** `qa/site/SITE_POLISH_QA.md`,
+`qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md`,
+`qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, `qa/visual/README.md`, and
+`docs/ADVISORY_REVIEW_DISPOSITIONS.md`.
+
+**Governing requirement:** owner visual expectation; three-door site contract;
+A02/A06–A08/A10–A13/A15–A17; no-deploy/no-publish boundary.

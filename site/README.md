@@ -6,6 +6,14 @@ Explore the map, and Apply it—plus Examples, Boundaries, Sources, Research, an
 History routes. The content hierarchy and source paths are frozen in
 `docs/CONTENT_INTERFACE_FREEZE_V16.md` and its JSON companion.
 
+The routed site is the primary owner-review experience. Wide screens use a
+persistent chapter rail; narrow screens use a normal-flow route guide. Map
+opens with the current six-family relationship view and a visible text
+equivalent. Apply includes a local, reversible route studio that produces
+separate route, stop, learning, and human-authority fields without calling a
+provider or making an external change. Read and Examples use distinct editorial
+and teaching rhythms rather than repeating one card grid.
+
 The build is dependency-free and reads the canonical Markdown/JSON sources at
 build time. It produces ignored transient output under `site/dist/` and a
 committed direct-open export under `site/exports/standalone/`.
@@ -25,7 +33,8 @@ workflow. It is an untagged visual review companion, not the accessibility
 route. Use the standalone HTML for semantic headings, landmarks, links, and
 assistive-technology navigation.
 
-The site preserves progressive disclosure, the separate Echo route, the
-historical/current-map distinction, a no-script reading path, print styling,
-and the no-deployment boundary. No public-site replacement, publication, or
-deployment is authorized by this package.
+The standalone HTML has one `All routes` orientation system rather than
+pretending one section is current. The site preserves progressive disclosure,
+the separate Echo route, the historical/current-map distinction, a no-script
+reading path, print styling, and the no-deployment boundary. No public-site
+replacement, publication, or deployment is authorized by this package.

@@ -3,10 +3,10 @@
 Status: **OWNER-REVIEW CANDIDATE — MANUAL GATES REMAIN OPEN**
 
 Canonical content/site-source/PDF checkpoint:
-`2a54b24ec01707bb2a73032ab3f662cd995669ae`. The mobile and Map review
-screenshots in this owner-review package were refreshed from that corrected
-build after the exact-commit advisory reports identified the previously
-committed captures as stale.
+`a319794f5cf2d395c34e5af4935c9299f12dfd5c`. Final site-polish evidence is
+anchored at `85dff94e7b64266a2054d1857b0c012ac9c97736`. The current visual index
+distinguishes the fully painted final mobile captures from the retained stale
+pre-polish black-region PNG.
 
 This matrix distinguishes artifact/implementation evidence from reader,
 screen-reader, or real-world evidence. A `PASS` means the repository contains
@@ -19,18 +19,18 @@ effectiveness result, or substitute for the owner's judgment.
 | Gate | Status | Evidence | Remaining condition or boundary |
 | --- | --- | --- | --- |
 | A01 — broad idea in 90 seconds | **PROXY PASS — OWNER CONFIRMATION REQUIRED** | `manuscript/NINETY_SECOND_VERSION.md` is 303 raw words and states upstream choices, an inspectable/correctable responsibility, all six families, human judgment and consequential authority, peripheral-as-candidate, and breadth beyond origin counting. The cold nontechnical proxy review and its exact-commit follow-up apply the required rubric. | No human participant or the owner's mentor was tested. The owner should confirm that a 60–90-second reader restates the broad idea without reducing it to origin accounting. |
-| A02 — human problem first | **PASS** | Frozen headline/standfirst, route source, desktop/mobile captures, and `site/check.mjs` show the human problem and three principal doors before protocol, research status, or Echo. | This is composition/semantic evidence, not persuasion evidence. |
+| A02 — human problem first | **PASS** | Frozen headline/standfirst, route source, final desktop/mobile captures, and `site/check.mjs` show the human problem and three visually distinct principal doors before protocol, research status, or Echo. | This is composition/semantic evidence, not persuasion evidence. |
 | A03 — all six families visible | **PASS** | Essay, short version, `framework/SIX_FAMILIES.md`, `framework/SIX_FAMILIES.json`, Map route, standalone HTML, PDF table, and validators retain F1–F6 in the locked order. | None for artifact completeness. |
 | A04 — thoughtful conversation | **PROXY PASS — OWNER CONFIRMATION REQUIRED** | Coffee-conversation opening, concise mentor cover note, editorial audit, v13 continuity audit, and cold-reader proxy find a direct voice and invitation to challenge. | The owner decides whether the late research/limitations register and the public name retain the intended warmth. |
 | A05 — 10–15-minute essay | **EDITORIAL PASS — TIMING NOT MEASURED** | Canonical essay is 3,289 raw words; the recorded estimate is approximately 13.7–14.3 minutes. | Confirm with an owner or cold human read if an observed timing claim is desired. Do not call the estimate a measured result. |
-| A06 — progressive disclosure | **PROXY/STRUCTURAL PASS** | Human essay precedes technical routes; Map cards now lead in ordinary language; technical specification is expandable; all seven promised glossary entries have meaning and boundaries; no-script and standalone checks retain essential meaning. | Physical screen-reader and print-preview checks remain under A13. |
-| A07 — concrete builder paths | **PASS** | `framework/IMPLEMENTATION_CHOICES.md`, operator playbook, failure/stop guidance, templates, two neutral cases, rendered Apply route, and the exact post-site builder review cover ordinary/lightweight/moderate/advanced inputs, outputs, trade-offs, cost, stops, and when not to use the framework. | Structural/design pass only; no production effectiveness claim. |
-| A08 — observable agent behavior | **PASS** | Quickstart, full guide, copyable brief, preflight, decision receipt, templates, canonical route/stop/learning states, fixtures, and post-site rendered-token audit make acquisition, comparison, disconfirmation, uncertainty, escalation, influence, cost, stopping, and learning inspectable. | No live-agent compliance or quality result is inferred. |
+| A06 — progressive disclosure | **PROXY/STRUCTURAL PASS** | Human essay precedes technical routes; Read separates a cumulative entry, full essay, and optional mentor handoff; Map opens with ordinary-language relationships and keeps technical specification/glossary in disclosure; no-script and all-routes standalone checks retain essential meaning. | Physical screen-reader and print-preview checks remain under A13. |
+| A07 — concrete builder paths | **PASS** | `framework/IMPLEMENTATION_CHOICES.md`, operator playbook, failure/stop guidance, templates, two neutral cases, and the rendered local Apply studio cover ordinary/lightweight/moderate/advanced inputs, outputs, trade-offs, cost, stops, and when not to use the framework. | Structural/design and local-state pass only; no production effectiveness claim. |
+| A08 — observable agent behavior | **PASS** | Quickstart, full guide, copyable brief, preflight, templates, canonical states, fixtures, and the provider-free route studio make acquisition, comparison, disconfirmation, uncertainty, escalation, influence, cost, stopping, learning, and human disposition inspectable. A committed advanced/HOLD capture preserves separate route/stop/learning/authority fields. | No live-agent compliance or quality result is inferred. The local studio is an explanatory tool, not an autonomous agent run. |
 | A09 — Signal Foundry bounded | **PASS** | Case and rendered surfaces state `ILLUSTRATION_ONLY / READ_ONLY / NOT_VALIDATION`; fixture-only material, zero provider/runtime actions, cost/stop/resume envelope, and no permission/effectiveness claim are explicit. | No Signal Foundry implementation or validation result is claimed. |
 | A10 — Echo separate, preserved, no results | **PASS** | EP v0.1 identity/status/version history; 239-file full accession; 82-file curated set; preserved manuscript/site/protocol/harness/fixtures/prior art; exact unfavorable-result taxonomy; v16-to-Echo link; and removal checks pass. | Exact ZIP container remains at the verified owner-local source path under D-004; extracted payload is clone-verifiable. No study was run. |
 | A11 — claims do not exceed evidence | **PASS** | Claims/source ledger, targeted prior-art route, prior-art audit, hostile novelty review, research boundary validator, no-results language, and first-screen result-language regression checks contain novelty, causality, prevalence, validation, and effectiveness claims. | Targeted source links are not an exhaustive literature review and should be reverified before any future authorized publication. |
 | A12 — generated image ledger | **PASS** | `qa/visual/VISUAL_NEEDS.md` records that no bitmap generation was justified; `assets/IMAGE_USE_LEDGER.md` records zero generated candidates and the one byte-verified historical v13 asset separately. | If future generated imagery is authorized, every candidate and rejection must be added to the ledger. |
-| A13 — responsive, keyboard, print, accessibility | **PARTIAL — OWNER CONFIRMATION REQUIRED** | Automated/static evidence passes desktop/tablet/mobile reflow, no horizontal overflow at 390 px, semantic landmarks/headings/names, visible mobile principal routes, `aria-current`, unique standalone IDs, one standalone h1, complete fragments, 4.5:1 text-token contrast, dual focus rings, reduced motion, forced colors, no-script, print hooks, and six visually inspected PDF renders. The current-head live-browser check also passes all nine routes at 1280×720 with no overflow/console errors, More focus handoff and Escape return, Map pressed/live-region/reset behavior, visible focus styles, and disclosure pointer behavior. | A physical end-to-end Tab/keyboard traversal, supported screen-reader review, and browser print preview remain open. Synthetic Tab/default activation did not advance reliably, and the browser declined developer permission for viewport/print/accessibility-tree inspection; neither limitation was bypassed. The PDF is intentionally labeled an untagged visual companion; standalone HTML is the semantic accessibility route. |
+| A13 — responsive, keyboard, print, accessibility | **PARTIAL — OWNER CONFIRMATION REQUIRED** | Automated/static evidence passes a six-viewport Home/Map/Apply matrix, desktop/mobile Read and Examples captures, no horizontal overflow, semantic landmarks/headings/names, visible mobile principal routes, persistent rail/mobile guide, contrast, focus styles, reduced motion, forced colors, no-script, print hooks, and six PDF renders. The standalone has one h1, 292 unique IDs, one `All routes` rail/guide/frame, complete fragments, and no false current route. Browser evidence preserves F1 focus and advanced/HOLD state behavior. | A physical end-to-end Tab/keyboard traversal, supported screen-reader review, real 200% browser/OS zoom, and browser print preview remain open. Synthetic Tab/default activation did not advance reliably; that limitation was not bypassed. The PDF is intentionally an untagged visual companion; standalone HTML is the semantic accessibility route. |
 | A14 — immutable, labeled history | **PASS** | V14 429-file checksum ledger, five-version checkpoint index, v15.2 accession verifier, EP curated verifier, preserved-source tests, historical asset hash, archive indexes, and visible “historical origin — not current topology” labels pass. | Exact v15.2 ZIP clone-independence remains the documented D-004 archival limitation. No preserved byte was rewritten. |
 | A15 — no prohibited action | **PASS FOR THIS ORCHESTRATION** | `qa/FINAL_ACTION_AUDIT_V16.md`, Git history, local build records, and research status records show no merge to main, deployment, publication, Release, research/model/participant study, paid-provider use, spend, external dataset acquisition, preregistration, or outreach. | Repository/process evidence cannot prove unrelated external-world activity; this finding is scoped to the authorized orchestration. |
 | A16 — research constrains, does not redefine | **PASS** | Owner-intent checksum, v13 fidelity matrix, two-project firebreak, claims ledger, review dispositions, and Echo-removal checks preserve the broad thesis while routing rigor into boundaries and future questions. | No research evidence may silently rewrite the thesis later. |
@@ -45,9 +45,10 @@ effectiveness result, or substitute for the owner's judgment.
    of the coffee conversation, and whether the `Discrimination Layer` name is
    worth its public-reader friction.
 3. Traverse the local site with a physical keyboard at desktop and narrow
-   width: skip link, wordmark, three principal routes, More open/close/Escape,
-   all secondary routes, family focus/Show all, details/summary controls, and
-   local links. Confirm visible focus throughout.
+   width: skip link, wordmark, chapter rail/route guide, three principal routes,
+   More open/close/Escape, all secondary routes, family focus/Show all,
+   details/summary controls, Apply radios/Build/Reset/HOLD/ESCALATE/STOP, and
+   local links. Confirm visible focus and correct focus return throughout.
 4. Run a supported screen reader such as VoiceOver or NVDA through Home, Read,
    Map, Apply, History, and the standalone HTML. Confirm reading order, route
    names, family questions, live focus status, details announcements, historical
@@ -55,6 +56,9 @@ effectiveness result, or substitute for the owner's judgment.
 5. Inspect browser print preview for Home, Read, Map, Apply, Examples, Sources,
    Research, and History. Confirm expanded essential detail, useful URLs, sane
    page breaks, and no clipped tables or historical diagram.
+6. Inspect Home, Map, Apply, Examples, and the standalone export at real 200%
+   browser/OS zoom. Confirm reflow, readable labels, useful route orientation,
+   and no clipped relationship or receipt content.
 
 Until those checks are recorded, the package is an owner-review candidate and
 must not be described as fully accepted, published, deployed, empirically

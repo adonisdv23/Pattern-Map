@@ -52,12 +52,13 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 
 | Artifact | Path | Boundary |
 | --- | --- | --- |
-| Site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free local build; no hosting |
-| Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open review route |
+| Site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored routed site; persistent orientation, current map, local Apply studio; no hosting |
+| Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open all-routes review companion; one rail/guide/frame and no false current route |
 | PDF companion | `site/exports/pattern-map-v16-owner-review.pdf` | Untagged visual companion; not the accessibility route |
 | Site implementation QA | `qa/site/SITE_QA_REPORT.md`, `qa/site/audit_site.py` | Structural/accessibility proxy only |
 | Current-head live browser boundary | `qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md` | Pointer/focus/state evidence; physical keyboard/screen-reader/print remain manual |
-| Visual QA | `qa/visual/VISUAL_QA_REPORT.md`, screenshots, PDF renders | Layout evidence only |
+| Site-polish QA | `qa/site/SITE_POLISH_QA.md`, `qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md` | Final visual/interaction acceptance and manual residuals |
+| Visual QA | `qa/visual/POLISH_PLAN.md`, `qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, final screenshots, interaction states, PDF renders | Design rationale and layout/state evidence only; `qa/visual/README.md` distinguishes current from stale captures |
 | Image decision/use records | `qa/visual/VISUAL_NEEDS.md`, `assets/IMAGE_USE_LEDGER.md` | No generated bitmap candidates |
 
 ## The Echo Problem / ECHO-01

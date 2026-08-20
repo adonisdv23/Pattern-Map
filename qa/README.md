@@ -16,6 +16,14 @@ reviews must state exactly what they establish and what remains manual.
 
 ## Current rendered evidence
 
+- `qa/site/SITE_POLISH_QA.md` and
+  `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md` record the authored
+  publication revision: persistent route orientation, the early current-map
+  teaching object, the provider-free Apply studio, final responsive captures,
+  and preserved interaction states.
+- `qa/visual/README.md` is the evidence index. It identifies the current
+  polished capture set and explicitly labels the older black-region mobile PNG
+  as stale QA history rather than current-site evidence.
 - `qa/site/SITE_QA_REPORT.md` records the nine-route build, semantic/static
   checks, no-script and Echo-removal simulations, link integrity, and explicit
   manual residuals.
@@ -28,6 +36,6 @@ reviews must state exactly what they establish and what remains manual.
 - This evidence establishes implementation structure and rendering only. It
   does not establish comprehension, persuasion, effectiveness, live-agent
   compliance, or a research result.
-- Physical keyboard traversal, a supported screen-reader pass, and a human
-  print-preview pass remain open because the available automation surface
-  could not establish those behaviors reliably.
+- Physical keyboard traversal, a supported screen-reader pass, real 200%
+  browser/OS zoom, and a human print-preview pass remain open because the
+  available automation surface could not establish those behaviors reliably.
