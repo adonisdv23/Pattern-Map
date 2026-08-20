@@ -122,6 +122,11 @@ const main = () => {
   const standaloneIds = idListIn(standalone);
   assert(standaloneIds.length === new Set(standaloneIds).size, "standalone export contains duplicate IDs");
   assert((standalone.match(/<h1\b/g) ?? []).length === 1, "standalone export must contain exactly one level-one heading");
+  assert((standalone.match(/<aside class="orientation-rail"/g) ?? []).length === 1, "standalone export must contain one publication rail");
+  assert((standalone.match(/<details class="orientation-mobile"/g) ?? []).length === 1, "standalone export must contain one mobile route guide");
+  assert((standalone.match(/<div class="page-frame"/g) ?? []).length === 1, "standalone export contains nested publication frames");
+  assert(standalone.includes("<strong>All routes</strong>"), "standalone orientation must describe the complete route set");
+  assert(!standalone.includes('aria-current="location"'), "standalone orientation must not falsely mark one route as current");
   const headingLevels = [...standalone.matchAll(/<h([1-6])\b/g)].map((match) => Number(match[1]));
   for (let index = 1; index < headingLevels.length; index += 1) {
     assert(headingLevels[index] <= headingLevels[index - 1] + 1, `standalone heading level jumps from h${headingLevels[index - 1]} to h${headingLevels[index]}`);

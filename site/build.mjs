@@ -398,7 +398,10 @@ const orientationNext = {
   history: "home",
 };
 
-const routeLabel = (route) => route === "home" ? "Start here" : ROUTES[route]?.label ?? "Start here";
+const routeLabel = (route) => {
+  if (route === "all") return "All routes";
+  return route === "home" ? "Start here" : ROUTES[route]?.label ?? "Start here";
+};
 const routeFragment = (route) => route === "home" ? "top" : route === "read" ? "read-idea" : route;
 
 const orientationLink = (ctx, route, active) => {
@@ -486,8 +489,9 @@ const renderFooter = (ctx) => `
   </footer>`;
 
 const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "page" }) => {
+  const orientationActive = active || (ctx.standalone ? "all" : "home");
   const routeIntro = eyebrow ? `<section class="route-intro"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h1>${escapeHtml(title)}</h1>${intro ? `<p class="route-lede">${intro}</p>` : ""}</section>` : "";
-  const mobileOrientation = active ? renderOrientationMobile(ctx, active) : "";
+  const mobileOrientation = ctx.embedded ? "" : renderOrientationMobile(ctx, orientationActive);
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -503,7 +507,7 @@ const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "pa
   ${renderHeader(ctx, active)}
   <main id="main" tabindex="-1">
     <div class="page-frame">
-      ${renderOrientationRail(ctx, active || "home")}
+      ${renderOrientationRail(ctx, orientationActive)}
       <div class="page-content">
         ${routeIntro}
         ${mobileOrientation}
@@ -624,7 +628,7 @@ const renderRoot = (ctx) => {
       ${renderDoorCard("read", ctx)}${renderDoorCard("map", ctx)}${renderDoorCard("apply", ctx)}
     </nav>
   </section>
-  ${renderOrientationMobile(ctx, "home")}
+  ${ctx.embedded ? "" : renderOrientationMobile(ctx, "home")}
   <section class="home-section home-short" aria-labelledby="short-entry-heading">
     <div class="section-heading"><p class="eyebrow">A CUMULATIVE 60–90 SECOND ENTRY</p><h2 id="short-entry-heading">The idea before the machinery.</h2><p>Start here if you want the broad proposition in one sitting. The longer piece remains a human thought piece, not a protocol preamble.</p></div>
     <div class="short-entry reading-column">${short}</div>
@@ -880,6 +884,13 @@ const normalizeStandaloneMain = (routeKey, main) => {
   return normalized;
 };
 
+const standalonePageContent = (html) => {
+  const main = html.match(/<main id="main"[^>]*>([\s\S]*)<\/main>/i)?.[1] ?? "";
+  const content = main.match(/<div class="page-content">([\s\S]*)<\/div>\s*<\/div>\s*$/i)?.[1];
+  if (!content) throw new Error("Could not extract standalone page content");
+  return content;
+};
+
 const build = () => {
   fs.rmSync(DIST_DIR, { recursive: true, force: true });
   fs.mkdirSync(DIST_DIR, { recursive: true });
@@ -902,11 +913,10 @@ const build = () => {
     );
   });
 
-  const standalonePages = pageDefinitions({ base: "", standalone: true });
+  const standalonePages = pageDefinitions({ base: "", standalone: true, embedded: true });
   const standaloneContent = Object.entries(standalonePages).map(([key, html]) => {
-    const main = html.match(/<main id="main"[^>]*>([\s\S]*)<\/main>/i)?.[1] ?? "";
     const label = key === "home" ? "Home" : ROUTES[key].label;
-    return `<section class="standalone-section" id="${key}" aria-label="${escapeAttribute(label)}">${normalizeStandaloneMain(key, main)}</section>`;
+    return `<section class="standalone-section" id="${key}" aria-label="${escapeAttribute(label)}">${normalizeStandaloneMain(key, standalonePageContent(html))}</section>`;
   }).join("\n");
   const standalone = renderPage({
     title: "Pattern Map v16 — standalone owner-review export",
