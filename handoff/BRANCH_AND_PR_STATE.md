@@ -27,6 +27,11 @@ commit, no document may claim one.
 `handoff/verify_owner_review_package.py` reads `CONTENT_CHECKPOINT` from this
 same value and fails when the manifest disagrees with the artifact bytes.
 
+The register names the **content** checkpoint. A commit that updates this file
+cannot name itself, so the branch tip may sit one or two metadata commits ahead
+of the register while it refreshes this page and the manifest. That gap is
+expected; a hash that does not resolve is not.
+
 ## Branches
 
 | Role | Branch | Integrated checkpoint | State |

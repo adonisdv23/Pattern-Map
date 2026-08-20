@@ -7,7 +7,7 @@
   "evidence_note": "The manifest includes the ChatGPT Pro round-one corrected source/export checkpoint, planning and responsive regression contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/accessibility/print gates remain open.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 173,
-  "total_bytes": 10002233,
+  "total_bytes": 10002515,
   "files": [
     {
       "path": ".gitignore",
@@ -251,8 +251,8 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 4397,
-      "sha256": "6e3e5d8f9d58a47d363530bf525f6603d5e9b96fd0c5a3e63d435479a4d3a594"
+      "bytes": 4679,
+      "sha256": "c49ca7187d1207512cb109817ab22f79efeda96c32fe60e80fcd417f025db01a"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
