@@ -3,11 +3,11 @@
   "package": "pattern-map-v16-owner-review",
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
   "generated_date": "2026-08-19",
-  "content_site_source_and_pdf_checkpoint": "2a54b24ec01707bb2a73032ab3f662cd995669ae",
-  "evidence_note": "The manifest includes final mobile and Map capture refreshes generated from the corrected checkpoint after exact-commit advisory review.",
+  "content_site_source_and_pdf_checkpoint": "a319794f5cf2d395c34e5af4935c9299f12dfd5c",
+  "evidence_note": "The manifest includes the authored site-polish source/export checkpoint, current/stale visual index, final responsive captures, visible interaction states, and PDF renders. Manual owner/accessibility/print gates remain open.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 115,
-  "total_bytes": 5274457,
+  "file_count": 156,
+  "total_bytes": 9165266,
   "files": [
     {
       "path": ".gitignore",
@@ -21,8 +21,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4645,
-      "sha256": "61640c36770e8383508bcd2a365fa9b266ebfce0c562c191dabb84df9cd015b4"
+      "bytes": 4867,
+      "sha256": "62ac38144770ee9e7f771f465120a670efbaf2ea110337dc460a24fda43c4716"
     },
     {
       "path": "archive/CHECKPOINT_INDEX.json",
@@ -96,8 +96,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 43131,
-      "sha256": "3613b2465049269827ef795f557b556a0730601f08123f3d9fbc2cf3a5542c10"
+      "bytes": 45895,
+      "sha256": "393fc172e208fe9fe9b4c13123e9b0e8534e0907fe6c289247c362941c8d1686"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -106,8 +106,8 @@
     },
     {
       "path": "docs/BINARY_ARTIFACT_POLICY.md",
-      "bytes": 7710,
-      "sha256": "8ceb0c0ee8cef7e8fd71c6e17bc0035e4b791bfcfb78a86e126936e4613e883d"
+      "bytes": 8124,
+      "sha256": "bfbf58c3b3b0f5f90b31157534e24d17e97ffee280804ab34b57bb7b83409a7d"
     },
     {
       "path": "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 26061,
-      "sha256": "7cd09fc7d34c87df500b158b31882fd1945a5547dac81d94cc92b9c1b261a308"
+      "bytes": 29826,
+      "sha256": "3eba29fbfc134b29bd231bc8e31bf768a0bcfaf9b0559314e6e4b84319bbbb89"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -171,13 +171,13 @@
     },
     {
       "path": "docs/V16_ROADMAP.md",
-      "bytes": 3784,
-      "sha256": "1c837c80af307d5ef70d39c4e41ff5f4c4828789a7cc3222bde517661f75b627"
+      "bytes": 4448,
+      "sha256": "d3ce1ebab0d47ab6aed059c7fd6a1c592944a2f07eb1d0a540593ec0c14c28aa"
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 1795,
-      "sha256": "9e647c11ebd8bc0c28cb3f06fcbc8666b60792acdb03855f6d55200691b54b45"
+      "bytes": 1910,
+      "sha256": "1cd198df5d94b5ca12bc48cd9c2425d156ca1c64a23f6653d7ef4952e1cfab63"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -251,18 +251,18 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 1753,
-      "sha256": "689f33a711456ccf4bbeeb9ec1c51c43c1af1e9385a299cb31f4e2cc07701c19"
+      "bytes": 1943,
+      "sha256": "04d85f7145150c8161bb57789f6bee40dd8c898ab12712b38777278a70789257"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 8394,
-      "sha256": "ae91b89abe862f7db710b9e4779d346f7765854d4e9106c5f78735019bfe7865"
+      "bytes": 9831,
+      "sha256": "4c6b8f77634dabe56234dd15b0874077fb6dcdfa484de469b9e7542ec3a36643"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 5777,
-      "sha256": "605538633402aff39142370f83aaf4976f7027ed58ec2f3c70e3706895bad961"
+      "bytes": 6288,
+      "sha256": "8c850267b9c8618baf87ed7c27b85ca88367b1b51ac9fe89932eb0f4d488c84c"
     },
     {
       "path": "handoff/README.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 9350,
-      "sha256": "dea391d439ef8be9e0687109af914d35053fcd71a785838608a572fe8d64a18e"
+      "bytes": 11998,
+      "sha256": "c4e2e785c1b05bad954bdcd76f4d3be6510ab41daa9172b6f393b53824f2e3a8"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -306,13 +306,18 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 9580,
-      "sha256": "b5d363211d82f74aa17829a608f1779a068fc45fe434e40e985662d0d4d909e5"
+      "bytes": 9936,
+      "sha256": "4514d03c6b0c54a0ad69e8c03f83acbaed10793ac4db708eb625329f1c8d673b"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
-      "bytes": 4389,
-      "sha256": "ac2592ae863ff8ba7bea4d4cb0190fba7deb0aae4b191f2efe4f69ad7d75f259"
+      "bytes": 4752,
+      "sha256": "73ab526e86644e850b37c713919ad3866c49a22183661d69e0f934234a2e46aa"
+    },
+    {
+      "path": "qa/README.md",
+      "bytes": 2311,
+      "sha256": "8392f974799392af13cbc2ff9eed79be3a01b2f0f1ab43b941864eec3ca6c066"
     },
     {
       "path": "qa/applied/README.md",
@@ -380,6 +385,11 @@
       "sha256": "447c26354ba084d2744742af1e768ffd5cf7018e2b2479293d0762c2bf34165d"
     },
     {
+      "path": "qa/site/SITE_POLISH_QA.md",
+      "bytes": 8443,
+      "sha256": "6e3530156eb19778ec3ae37f8fe35003c9272f1e0786f53a2eb2711f713f6ab0"
+    },
+    {
       "path": "qa/site/SITE_QA_REPORT.md",
       "bytes": 10554,
       "sha256": "ec50246d2edb23c82b975d8894071aa9aea6a704de7f1df0ba48932488f041d2"
@@ -395,19 +405,69 @@
       "sha256": "70f6838512c2ebd376b584ea30a883325343a7d57aa28c771a3efc577eab7cf6"
     },
     {
+      "path": "qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md",
+      "bytes": 5290,
+      "sha256": "e10e40244175d896beac6e15a047aa36672a4e74a81f3e1f3af7ef0ca711361a"
+    },
+    {
       "path": "qa/site/audit_site.py",
       "bytes": 12042,
       "sha256": "23dd9f42c17cce92bd2dd83470ac8a98357400e6dfdc5dc3365bbf6d6d419d8b"
     },
     {
+      "path": "qa/visual/POLISH_PLAN.md",
+      "bytes": 5290,
+      "sha256": "12d7e2cf0ae89a3f7fd3dadf4c11a3f8e7c8031964a4758ca0b4c6e6fd1d021a"
+    },
+    {
+      "path": "qa/visual/README.md",
+      "bytes": 1637,
+      "sha256": "40d4e92347600efdcfe2cff354dd8940adbab5552e3c40a12e7d9be34b670342"
+    },
+    {
+      "path": "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
+      "bytes": 13411,
+      "sha256": "6b22d01edc1598c69f9926860ad9872986be4421556a80dcbfb3bd27894ac94f"
+    },
+    {
       "path": "qa/visual/VISUAL_NEEDS.md",
-      "bytes": 2527,
-      "sha256": "64d4effb52d17c30896798f036f0e01b7e99a40b72ac1ba062c708d72291ba85"
+      "bytes": 2974,
+      "sha256": "548aa8460930ea5b4c1cbfc54cdfe9cbb5db7119c8c0b23574933686842eea9f"
     },
     {
       "path": "qa/visual/VISUAL_QA_REPORT.md",
       "bytes": 5897,
       "sha256": "0f80a0bafc235c1bd3c0195586ac19090d1e33e7a4935a3b37e5964c9f148268"
+    },
+    {
+      "path": "qa/visual/pdf-renders-final-v16-polish/page-1.png",
+      "bytes": 180891,
+      "sha256": "d1d3727e420f04def98583aaaddae466a60d363ca2acbfde894dd845a6a60a61"
+    },
+    {
+      "path": "qa/visual/pdf-renders-final-v16-polish/page-2.png",
+      "bytes": 220421,
+      "sha256": "ff000e961eafb3cba373a6d3256ec4d8eef72badefff901342253af5b0b9f598"
+    },
+    {
+      "path": "qa/visual/pdf-renders-final-v16-polish/page-3.png",
+      "bytes": 164745,
+      "sha256": "15b702deb01913dc346b1f1009e5e42043f86032c2f2430fe798ae34d03f54e3"
+    },
+    {
+      "path": "qa/visual/pdf-renders-final-v16-polish/page-4.png",
+      "bytes": 197201,
+      "sha256": "2c3dbcb0625fb848c1d718b2afa1d1705ba57e31d9753922bdf99ba2e6e0714a"
+    },
+    {
+      "path": "qa/visual/pdf-renders-final-v16-polish/page-5.png",
+      "bytes": 174209,
+      "sha256": "f7ca3a4e36626c6e3994df14796b1fc39ed23736012256795d30dff97cc75bb4"
+    },
+    {
+      "path": "qa/visual/pdf-renders-final-v16-polish/page-6.png",
+      "bytes": 244678,
+      "sha256": "2a8c4165e0286a7fe3df0ef9309f7e5a0edde709c28d909003d6a35967282b3f"
     },
     {
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-1.png",
@@ -438,6 +498,151 @@
       "path": "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-6.png",
       "bytes": 244678,
       "sha256": "2a8c4165e0286a7fe3df0ef9309f7e5a0edde709c28d909003d6a35967282b3f"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/apply-1024x768.png",
+      "bytes": 85271,
+      "sha256": "8892e9613e0a15b1ce0e321bd6271919355512d0408ba6ede779492422b6d0f3"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/apply-1280x720.png",
+      "bytes": 83222,
+      "sha256": "739a7db787723ba91520661b2ba34c11102cb0d81e17be1d88e228443899c62d"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/apply-1440x900.png",
+      "bytes": 102940,
+      "sha256": "d0aaa3a5ff1b6565aaf9db3fd20f1222801d17de13f2fbd99a70a2b512e5b65b"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/apply-360x800.png",
+      "bytes": 45803,
+      "sha256": "52a8fffce778d366871f48e807ba58d2358334536ee55b7faff432d1d0d74a1c"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/apply-390x844.png",
+      "bytes": 51545,
+      "sha256": "24ccbf0af19945048770784fd061ee72897aad62827f65cf7c0ab5bf3dd320d5"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/apply-768x1024.png",
+      "bytes": 70719,
+      "sha256": "ae3045c3481fddcb7e21893625367cc9dbfe8e5cc6a9f29ef604b3d968bcf7b2"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/boundaries-1440x900.png",
+      "bytes": 102015,
+      "sha256": "3b6d397cc76709e6aff3febb0e0cb6e66615f7cebd4941176612afd13957adce"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/examples-1440x900.png",
+      "bytes": 109630,
+      "sha256": "d99b762b8f8ec819392748f00263abb95124f1f8f7f7f7f2e27f7e960279e360"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/examples-390x844.png",
+      "bytes": 50814,
+      "sha256": "1893acf3ceeb58c4201f8acd06d376d54411aece5c13a616a87778573adc738a"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/history-1440x900.png",
+      "bytes": 104008,
+      "sha256": "cebd59b075b68f363c761e39e48254260e05dd5022baadcb2d8d4f09b37f6b82"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/home-1024x768.png",
+      "bytes": 109160,
+      "sha256": "d26a64a22d0ea416923b15575ccf942bcb6918e5845046f9bbaf3a5998cb5993"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/home-1280x720.png",
+      "bytes": 104771,
+      "sha256": "d8450b1f79e8e05a60d19f461650e0652ba4a0db0353ec6fc5e2d7f10cc3d3a9"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/home-1440x900.png",
+      "bytes": 141825,
+      "sha256": "d5a06635ab0ddac90f46a53f2d445d0fda91579be6c3f2bcb0c0518388ee032f"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/home-360x800.png",
+      "bytes": 55574,
+      "sha256": "aa482c222496ab7555c9b85f35d969e90ee1823a6939463155fb1b7fe632667f"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/home-390x844.png",
+      "bytes": 61244,
+      "sha256": "e62b0ff0b439dd55c3e8194b14b3446691aa10a929d39b5c35f6d1adf6f0ae41"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/home-768x1024.png",
+      "bytes": 119808,
+      "sha256": "e8cbb988a94c4cfa8d02a8831dc6916f18bfd2618acb741019678828e96a3336"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/interaction-states/apply-advanced-hold-1280x720.jpg",
+      "bytes": 79859,
+      "sha256": "59ce47504b9f83e4f61aea68d6978fd1411d2184c3c3e1e35a402bb9dfccb980"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/interaction-states/map-f1-focused-1280x720.jpg",
+      "bytes": 134412,
+      "sha256": "ee203ada9c3afaf66caee7ccc39f4ca628f205551f361629ee9b128114b8c0d6"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/interaction-states/standalone-all-routes-1280x720.jpg",
+      "bytes": 80010,
+      "sha256": "db52b8cf74d7de08822bd01ec480ee32dae24dfba7579fd00a1fafaf74d3d79a"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/map-1024x768.png",
+      "bytes": 85880,
+      "sha256": "db069415312ca4cc9015a4426eba85aa7c3b935a756338469d478c3c2281dd1d"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/map-1280x720.png",
+      "bytes": 87835,
+      "sha256": "af67620ae67c09604d8d5bdc4f244a5dddfcc3dac977073940f14d4a9f6c6832"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/map-1440x900.png",
+      "bytes": 127672,
+      "sha256": "f5638bb5d9dd969ac7d26c526d8ba775b9fac381cf6723d53671fdeb968d012a"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/map-360x800.png",
+      "bytes": 47730,
+      "sha256": "13c0900e3b86ac7a19fd769e7a13912968b6bbcb9c670af467bc01474b42a8f4"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/map-390x844.png",
+      "bytes": 56725,
+      "sha256": "637584433a6b2ce45a5c6e4e783ae86892ad4ca2a1c294ecc1c09799c0144a11"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/map-768x1024.png",
+      "bytes": 101689,
+      "sha256": "ce0fce6f7667db786e35a1da52714d40afa033ad6a621f7aafad181dd0389336"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/read-1440x900.png",
+      "bytes": 88138,
+      "sha256": "54b4f36df8e31e06b201cf34804e1be9c88be376e5062ec7abfe96575fbbaa22"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/read-390x844.png",
+      "bytes": 44373,
+      "sha256": "5e684a860e754a74ad217467863c4fcbb203fd3ea373591e0d8ae31ebf7bff06"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/research-1440x900.png",
+      "bytes": 92749,
+      "sha256": "ca1c15291bbc77ba70f7f685f3d370a1532f7d62bcecc2803b4a345cb102e8a1"
+    },
+    {
+      "path": "qa/visual/screenshots-final-v16-polish/sources-1440x900.png",
+      "bytes": 93111,
+      "sha256": "acb99be026167bd3e41ad623489befe4a371ec12ea67fa371778dc4783361cca"
     },
     {
       "path": "qa/visual/screenshots/apply-tablet-1024x768.png",
@@ -536,28 +741,28 @@
     },
     {
       "path": "site/README.md",
-      "bytes": 1377,
-      "sha256": "37f0db558a5251aaf1e91ca53394c5ca79f5a9535e97cb0e0871aaafc71207f6"
+      "bytes": 1995,
+      "sha256": "d1fb449ff927be56e2fdfbd2a08c70959af0aac86405370dd6d1175c3ab9f011"
     },
     {
       "path": "site/build.mjs",
-      "bytes": 60464,
-      "sha256": "792dc7360e45f1743d3b673f71acffd44cd8aa450f4cf3179d4cc16bb79e51a7"
+      "bytes": 82104,
+      "sha256": "80f38760157e74cde928ea419e99251e31eff3a0b56e1a45d74b5aa9d28aeb35"
     },
     {
       "path": "site/check.mjs",
-      "bytes": 11755,
-      "sha256": "639ba0f8eb4d2740c9c17a8338644cde0ec4b8229791742dd013e8f15479bc71"
+      "bytes": 12427,
+      "sha256": "658a8985bf96c1b983c183c7429bc2c5cef698dcb43a0ac5fee4c515c015e3e0"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
       "bytes": 17156,
-      "sha256": "864a298d5149f88c1613b41461decff50f86a6da7f360f7b1844ce3401935507"
+      "sha256": "05f75136a029e35345c0c3a82a24bb0e9bfe703365c945f2853d6a7e5857ba44"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 297092,
-      "sha256": "4d9cf2bac4f60c1045517dfcffde30720dc52cb75d346235f4243119a1812e0d"
+      "bytes": 367876,
+      "sha256": "f53b82b207b68515d3b95a729b4be10ab9c41a876d311297dae1f80dbab92e8c"
     },
     {
       "path": "site/package-lock.json",
@@ -576,13 +781,13 @@
     },
     {
       "path": "site/src/site.css",
-      "bytes": 34687,
-      "sha256": "59e4ce5b1ee5fb3c14e74490fd1c30a2440095a75725fed2b7900acf6554fcfe"
+      "bytes": 69746,
+      "sha256": "20d85e0ac01e39e53aa028265234f43c368197944e88550faa5bbfc8ae0aa2cb"
     },
     {
       "path": "site/src/site.js",
-      "bytes": 2187,
-      "sha256": "d28115e858cb52577605fe2054856a3c3259f396e4a06cf079fd733bb8bac65a"
+      "bytes": 13268,
+      "sha256": "d8642d2c0b39f659b93ad9f85bef399608b7312ab7a0e6b5012af6d443d5a4cf"
     }
   ]
 }

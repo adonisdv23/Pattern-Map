@@ -8,6 +8,10 @@ anchored at `85dff94e7b64266a2054d1857b0c012ac9c97736`. The visual evidence inde
 labels the older black-region mobile PNG as stale QA history and points to the
 fully painted final captures.
 
+Integrated polished owner-review package checkpoint:
+`d8cc3ef7e1350a5afa8538e57692c3520d8f99ee`. The following metadata-only
+commit refreshes the branch-state record and deterministic package manifest.
+
 ## The outcome
 
 Pattern Map is now a canonical, reproducible home for two permanently separate

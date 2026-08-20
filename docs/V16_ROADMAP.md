@@ -19,7 +19,7 @@ home.
 | 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete for artifact scope — initial site task `a3cd7c7`; owner-directed authored-site polish at `5a37aac`; standalone/state follow-up at `a319794`; evidence head `85dff94`; manual keyboard/screen-reader/real-zoom/print confirmation remains a release residual |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
 | 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Complete for artifact/proxy scope — final operator, hostile novelty, cold-reader, site/accessibility, and post-polish visual-experience reports dispositioned; no human comprehension or assistive-technology result inferred |
-| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Refresh in progress for the polished site — site-polish feature head `85dff94` is pushed and integrated; package checksums/draft PR head are being refreshed; owner/mentor and physical keyboard/screen-reader/real-zoom/print gates stay open; no merge/deploy |
+| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Complete for repository owner-review scope — polished package checkpoint `d8cc3ef` and site-polish head `85dff94` are pushed; the bounded manifest is refreshed in the following metadata commit; draft PR #1 remains open/draft; owner/mentor and physical keyboard/screen-reader/real-zoom/print gates stay open; no merge/deploy |
 
 ## Dependency rules
 
