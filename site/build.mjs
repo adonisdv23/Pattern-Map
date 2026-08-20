@@ -386,12 +386,80 @@ const renderSourceManifest = (surfaceId, ctx) => {
   return `<details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul>${surface.sources.map((source) => `<li><code>${escapeHtml(source)}</code></li>`).join("")}</ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>`;
 };
 
+const orientationNext = {
+  home: "read",
+  read: "map",
+  map: "apply",
+  apply: "examples",
+  examples: "boundaries",
+  boundaries: "sources",
+  sources: "research",
+  research: "history",
+  history: "home",
+};
+
+const routeLabel = (route) => route === "home" ? "Start here" : ROUTES[route]?.label ?? "Start here";
+const routeFragment = (route) => route === "home" ? "top" : route === "read" ? "read-idea" : route;
+
+const orientationLink = (ctx, route, active) => {
+  const fragment = routeFragment(route);
+  const isCurrent = active === route;
+  return `<a class="orientation-link orientation-${route}${isCurrent ? " is-current" : ""}"${isCurrent ? ' aria-current="location"' : ""} href="${routeHref(ctx, route, fragment)}"><span class="orientation-number">${route === "home" ? "00" : String(Object.keys(ROUTES).indexOf(route) + 1).padStart(2, "0")}</span><span>${escapeHtml(routeLabel(route))}</span></a>`;
+};
+
+const renderOrientationRail = (ctx, active = "home") => {
+  const next = orientationNext[active] ?? "read";
+  const secondary = ["examples", "boundaries", "sources", "research", "history"];
+  return `<aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>${escapeHtml(routeLabel(active))}</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      ${orientationLink(ctx, "home", active)}
+      ${contentInterface.doors.map((door) => orientationLink(ctx, door.id, active)).join("")}
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      ${secondary.map((route) => orientationLink(ctx, route, active)).join("")}
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="${routeHref(ctx, next, routeFragment(next))}">${escapeHtml(routeLabel(next))} <span aria-hidden="true">→</span></a></p>
+  </aside>`;
+};
+
+const renderOrientationMobile = (ctx, active = "home") => {
+  const next = orientationNext[active] ?? "read";
+  const secondary = ["examples", "boundaries", "sources", "research", "history"];
+  return `<details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>${escapeHtml(routeLabel(active))}</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>${escapeHtml(routeLabel(active))}</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        ${orientationLink(ctx, "home", active)}
+        ${contentInterface.doors.map((door) => orientationLink(ctx, door.id, active)).join("")}
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        ${secondary.map((route) => orientationLink(ctx, route, active)).join("")}
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="${routeHref(ctx, next, routeFragment(next))}">${escapeHtml(routeLabel(next))} <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>`;
+};
+
+const renderDoorPreview = (id) => {
+  if (id === "read") {
+    return `<span class="door-preview door-preview-reading" aria-hidden="true"><span class="preview-line preview-line-long"></span><span class="preview-line preview-line-mid"></span><span class="preview-line preview-line-short"></span><span class="preview-caption">60–90 sec → full essay</span></span>`;
+  }
+  if (id === "map") {
+    return `<span class="door-preview door-preview-map" aria-hidden="true"><span class="preview-map-node">F1</span><span class="preview-map-node">F2</span><span class="preview-map-node">F3</span><span class="preview-map-node">F4</span><span class="preview-map-node">F5</span><span class="preview-map-node">F6</span><span class="preview-map-link preview-map-link-a"></span><span class="preview-map-link preview-map-link-b"></span><span class="preview-caption">notice → compare → learn</span></span>`;
+  }
+  return `<span class="door-preview door-preview-apply" aria-hidden="true"><span class="preview-receipt-line preview-receipt-label">DECISION BRIEF</span><span class="preview-receipt-line preview-receipt-route">route <b>→</b> stop</span><span class="preview-receipt-line preview-receipt-human">human disposition</span><span class="preview-caption">choose → record → hold</span></span>`;
+};
+
 const renderDoorCard = (id, ctx) => {
   const door = contentInterface.doors.find((item) => item.id === id);
   return `<a class="door-card door-${id}" href="${routeHref(ctx, id, id === "read" ? "read-idea" : id)}">
-    <span class="door-number">0${contentInterface.doors.findIndex((item) => item.id === id) + 1}</span>
+    <span class="door-topline"><span class="door-number">0${contentInterface.doors.findIndex((item) => item.id === id) + 1}</span><span class="door-mode">${id === "read" ? "follow the thread" : id === "map" ? "see the relations" : "make a bounded choice"}</span></span>
     <span class="door-title">${escapeHtml(door.label)}</span>
     <span class="door-promise">${escapeHtml(door.promise)}</span>
+    ${renderDoorPreview(id)}
     <span class="door-arrow" aria-hidden="true">↗</span>
   </a>`;
 };
@@ -417,7 +485,10 @@ const renderFooter = (ctx) => `
     <div class="footer-links"><a href="${routeHref(ctx, "home", "top")}">Back to the beginning</a><a href="${routeHref(ctx, "sources", "sources")}">Targeted sources</a><a href="${routeHref(ctx, "history", "history")}">Lineage and history</a></div>
   </footer>`;
 
-const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "page" }) => `<!doctype html>
+const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "page" }) => {
+  const routeIntro = eyebrow ? `<section class="route-intro"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h1>${escapeHtml(title)}</h1>${intro ? `<p class="route-lede">${intro}</p>` : ""}</section>` : "";
+  const mobileOrientation = active ? renderOrientationMobile(ctx, active) : "";
+  return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -431,13 +502,20 @@ const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "pa
   <a class="skip-link" href="#main">Skip to main content</a>
   ${renderHeader(ctx, active)}
   <main id="main" tabindex="-1">
-    ${eyebrow ? `<section class="route-intro"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h1>${escapeHtml(title)}</h1>${intro ? `<p class="route-lede">${intro}</p>` : ""}</section>` : ""}
-    ${content}
+    <div class="page-frame">
+      ${renderOrientationRail(ctx, active || "home")}
+      <div class="page-content">
+        ${routeIntro}
+        ${mobileOrientation}
+        ${content}
+      </div>
+    </div>
   </main>
   ${renderFooter(ctx)}
   ${ctx.standalone ? `<script>${scripts}</script>` : `<script src="${ctx.base}assets/site.js" defer></script>`}
 </body>
 </html>`;
+};
 
 const renderFamilyCard = (family, ctx) => {
   const colorClass = `family-${family.id.toLowerCase()}`;
@@ -454,31 +532,83 @@ const renderFamilyCard = (family, ctx) => {
   </article>`;
 };
 
-const renderCurrentTopology = (ctx) => `
-  <section class="topology-section" aria-labelledby="topology-heading">
+const familyMapDetails = {
+  F1: { inputs: "default path + peripheral candidate", comparison: "prominence, specialist relevance, and what the default path omitted", records: "candidate source role + disconfirmation note", connections: "widens the field before F2 weighs it", boundary: "underweighted is a reason to inspect, not a reason to believe" },
+  F2: { inputs: "claim + source identity + source role", comparison: "support, challenge, relevance, origin, and permission", records: "evidence register + typed source relationship", connections: "weighs F1 candidates and feeds F5 comparisons", boundary: "recurrence is not independent corroboration" },
+  F3: { inputs: "comparable observations + time window", comparison: "current movement against a relevant baseline", records: "velocity note + measurement caveat", connections: "adds motion context before a route is chosen", boundary: "one observation is not velocity" },
+  F4: { inputs: "explicit expectation + prior context", comparison: "what should be present against what is present", records: "gap record + versioned memory", connections: "absence depends on a baseline and memory", boundary: "a gap is not proof of nonexistence" },
+  F5: { inputs: "named peers, periods, structures, or origins", comparison: "recurrence, difference, missing perspective, and common pathways", records: "comparison matrix + origin note", connections: "makes F2 relationships and F6 updates inspectable", boundary: "common-origin recurrence keeps independence UNKNOWN" },
+  F6: { inputs: "recorded expectation + later outcome", comparison: "what happened, what it cost, and what remains confounded", records: "outcome review + bounded update proposal", connections: "loops later learning back to the next decision", boundary: "a later outcome does not rewrite the old record" },
+};
+
+const renderCurrentTopology = (ctx) => {
+  const mapFamilies = familySource.families.map((family) => {
+    const detail = familyMapDetails[family.id];
+    return `<button type="button" class="map-family-node family-${family.id.toLowerCase()}" data-map-family="${escapeAttribute(family.id)}" data-map-name="${escapeAttribute(family.name)}" data-map-question="${escapeAttribute(family.reader_question)}" data-map-inputs="${escapeAttribute(detail.inputs)}" data-map-comparison="${escapeAttribute(detail.comparison)}" data-map-records="${escapeAttribute(detail.records)}" data-map-boundary="${escapeAttribute(detail.boundary)}" data-map-connections="${escapeAttribute(detail.connections)}" aria-controls="map-focus-detail" aria-pressed="false"><span class="map-family-id">${escapeHtml(family.id)}</span><strong>${escapeHtml(family.name)}</strong><span class="map-family-question">${escapeHtml(family.reader_question)}</span><span class="map-family-connection">${escapeHtml(detail.connections)}</span></button>`;
+  }).join("");
+  const textEquivalent = familySource.families.map((family) => {
+    const detail = familyMapDetails[family.id];
+    return `<li><strong>${escapeHtml(family.id)} · ${escapeHtml(family.name)}</strong><span>${escapeHtml(family.reader_question)}</span><small>Inputs: ${escapeHtml(detail.inputs)}. Compare: ${escapeHtml(detail.comparison)}. Record: ${escapeHtml(detail.records)}. Boundary: ${escapeHtml(detail.boundary)}.</small></li>`;
+  }).join("");
+  return `
+  <section class="topology-section" id="current-map" aria-labelledby="topology-heading">
     <div class="section-heading">
       <p class="eyebrow">CURRENT V16 RELATIONSHIP VIEW</p>
       <h2 id="topology-heading">A connected movement, not a mandatory pipeline.</h2>
-      <p>The current map keeps the six families visible while showing the supporting records around them. A lightweight operator may realize this as a few tables; an advanced builder may distribute it across tools. The arrows describe relationships, not an instruction to run every step.</p>
+      <p>The map starts with a real decision and permission envelope, widens and weighs what enters, compares motion and gaps, routes a bounded response, preserves influence, and lets later learning loop back without rewriting history. The relationships are a teaching aid, not an instruction to run every family.</p>
     </div>
-    <figure class="topology-figure" aria-labelledby="topology-caption">
-      <figcaption id="topology-caption" class="sr-only">Current v16 relationship view. A decision brief and permission envelope shape all six families. Evidence, baselines, gaps, comparisons, and disconfirmation feed a bounded route. Human disposition can correct any stage. Selected material reaches an influence receipt and generation; later outcomes feed the learning loop back to a bounded update.</figcaption>
-      <div class="topology-grid">
-        <div class="topology-node topology-start"><span class="node-kicker">STARTING CONTEXT</span><strong>Decision brief + permission envelope</strong><small>real decision · audience · stakes · budget · allowed operations</small></div>
-        <div class="topology-family-row" aria-label="Six families">
-          ${familySource.families.map((family) => `<a class="topology-node topology-family family-${family.id.toLowerCase()}" href="${routeHref(ctx, "map", `family-${family.id}`)}"><span>${escapeHtml(family.id)}</span><strong>${escapeHtml(family.name)}</strong><small>${escapeHtml(family.reader_question)}</small></a>`).join("")}
+    <figure class="relationship-map" aria-labelledby="topology-caption">
+      <div class="map-canvas" data-map-stage>
+        <svg class="relationship-connectors" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M500 84 C430 120 190 125 86 196" data-map-edge="F1"></path>
+          <path d="M500 84 C450 124 315 136 245 196" data-map-edge="F2"></path>
+          <path d="M500 84 C484 135 416 154 403 196" data-map-edge="F3"></path>
+          <path d="M500 84 C516 135 585 154 561 196" data-map-edge="F4"></path>
+          <path d="M500 84 C550 124 688 136 719 196" data-map-edge="F5"></path>
+          <path d="M500 84 C570 120 810 125 880 196" data-map-edge="F6"></path>
+          <path d="M86 292 C166 332 262 340 338 364" data-map-edge="F1-record"></path>
+          <path d="M245 292 C278 330 314 342 382 364" data-map-edge="F2-record"></path>
+          <path d="M403 292 C405 330 414 342 426 364" data-map-edge="F3-record"></path>
+          <path d="M561 292 C548 330 532 342 514 364" data-map-edge="F4-record"></path>
+          <path d="M719 292 C682 330 635 342 558 364" data-map-edge="F5-record"></path>
+          <path d="M880 292 C792 332 726 340 602 364" data-map-edge="F6-record"></path>
+          <path d="M500 456 C500 488 500 500 500 528" data-map-edge="route"></path>
+          <path d="M628 574 C744 620 792 574 744 526" data-map-edge="learning"></path>
+          <path d="M744 526 C720 490 656 482 612 506" data-map-edge="learning-back"></path>
+        </svg>
+        <div class="map-canvas-label map-label-top">frame the decision <span aria-hidden="true">↓</span> widen the field <span aria-hidden="true">↓</span> weigh the relation</div>
+        <div class="map-node map-start"><span class="node-kicker">STARTING QUESTION</span><strong>Decision brief + permission envelope</strong><small>real decision · audience · consequence · budget · allowed operations</small></div>
+        <div class="map-family-grid" aria-label="Six current v16 families in order">${mapFamilies}</div>
+        <div class="map-record-row" aria-label="Supporting records">
+          <div class="map-node map-record"><span class="node-kicker">NOTICE</span><strong>Evidence + capture</strong><small>what entered, what failed, what remains unknown</small></div>
+          <div class="map-node map-record"><span class="node-kicker">WEIGH</span><strong>Source role + claim</strong><small>support, challenge, relevance, origin, permission</small></div>
+          <div class="map-node map-record"><span class="node-kicker">COMPARE</span><strong>Baseline + gap + origin</strong><small>motion, expected absence, peers, common pathways</small></div>
+          <div class="map-node map-record"><span class="node-kicker">REMEMBER</span><strong>Versioned context</strong><small>dated memory stays visible; history is not overwritten</small></div>
         </div>
-        <div class="topology-records" aria-label="Supporting records">
-          <div class="topology-node"><span class="node-kicker">OBSERVE</span><strong>Evidence register + capture receipts</strong><small>what entered, what failed, what remains unknown</small></div>
-          <div class="topology-node"><span class="node-kicker">COMPARE</span><strong>Baseline · gap · memory · origin records</strong><small>time, peers, missing expected fields, shared pathways</small></div>
-          <div class="topology-node"><span class="node-kicker">CHALLENGE</span><strong>Disconfirmation + uncertainty review</strong><small>contrary, missing, differently rooted, or limiting material</small></div>
+        <div class="map-output-row">
+          <div class="map-node map-baseline"><span class="node-kicker">F4 DEPENDENCY</span><strong>Baseline → absence + memory</strong><small>what should be present must be stated before a gap can be interpreted</small></div>
+          <div class="map-node map-route"><span class="node-kicker">ROUTE / STOP</span><strong>ACQUIRE · COMPARE · CLARIFY</strong><small>or HOLD · DEFER · ESCALATE · REFUSE when the route or authority requires it</small></div>
+          <div class="map-node map-human"><span class="node-kicker">GENERATION + AUTHORITY</span><strong>Influence receipt → human disposition</strong><small>selected material can shape an answer; a person may hold, correct, or override</small></div>
         </div>
-        <div class="topology-route"><span class="route-arrow" aria-hidden="true">↓</span><div class="topology-node route-node"><span class="node-kicker">BOUNDED ROUTE</span><strong>ACQUIRE · COMPARE · CLARIFY</strong><small>or HOLD · DEFER · ESCALATE · REFUSE</small></div><div class="route-branch"><span>ANSWER / ANSWER_PROVISIONALLY</span><span>HUMAN DISPOSITION</span></div></div>
-        <div class="topology-endpoints"><div class="topology-node"><span class="node-kicker">INFLUENCE</span><strong>Influence receipt + context packet</strong><small>selected and withheld material stays inspectable</small></div><div class="topology-node"><span class="node-kicker">LEARN</span><strong>F6 Learning loop</strong><small>recorded expectation → outcome → bounded update proposal</small></div></div>
+        <div class="map-node map-learning"><span class="node-kicker">F6 LEARNING LOOP</span><strong>expect → outcome → bounded update</strong><small>later learning returns to the next decision without turning an outcome into proof</small><span class="map-loop-mark" aria-hidden="true">↺</span></div>
+        <div class="map-canvas-label map-label-bottom">The loop changes the next brief; it does not rewrite the evidence behind the last one.</div>
       </div>
+      <figcaption id="topology-caption" class="relationship-caption"><strong>Current v16 topology.</strong> Six families stay in view as connected responsibilities around a bounded, human-correctable route. The dashed loop is later learning, not an automatic policy update.</figcaption>
     </figure>
+    <aside class="map-focus-detail" id="map-focus-detail" aria-live="polite" aria-atomic="true">
+      <div><p class="eyebrow">MAP INSPECTION</p><h3 data-map-focus-title>All six families remain in view.</h3><p data-map-focus-question>Choose a family to inspect its question, inputs, comparison, boundary, record, and adjacent connections. Focus adds emphasis; it never hides essential meaning.</p></div>
+      <dl><div><dt>Inputs</dt><dd data-map-focus-inputs>decision brief, permission, evidence, baselines, gaps, comparisons, and outcomes</dd></div><div><dt>Record</dt><dd data-map-focus-record>the route keeps observation, interpretation, recommendation, and human disposition distinct</dd></div><div><dt>Boundary</dt><dd data-map-focus-boundary>unknown relations stay unknown; human authority remains explicit</dd></div></dl>
+      <p class="map-focus-status" data-map-focus-status>All six families are available for comparison.</p>
+    </aside>
+    <details class="map-text-equivalent" open>
+      <summary>Text equivalent: how the current v16 map connects</summary>
+      <p>Read the visual from the starting question through the six family questions, supporting records, bounded route, generation boundary, and learning loop. The family list below is the complete accessible equivalent.</p>
+      <ol>${textEquivalent}</ol>
+      <p><strong>Across the map:</strong> F4's absence claim depends on an explicit baseline and retained memory. F2/F5 can surface common-origin recurrence, but independence remains <code>UNKNOWN</code>. F6 compares a recorded expectation with a later outcome and proposes a bounded update for human disposition.</p>
+    </details>
     <p class="topology-note"><strong>Human correction remains in the loop.</strong> A person may revise a brief, correct a relationship, change a permission, hold a route, or override a recommendation. That disposition is a record of a decision, not a new fact.</p>
   </section>`;
+};
 
 const renderRoot = (ctx) => {
   const short = renderMarkdown(readText("manuscript/NINETY_SECOND_VERSION.md"), { ctx, headingOffset: 2, idPrefix: "short-" });
@@ -494,6 +624,7 @@ const renderRoot = (ctx) => {
       ${renderDoorCard("read", ctx)}${renderDoorCard("map", ctx)}${renderDoorCard("apply", ctx)}
     </nav>
   </section>
+  ${renderOrientationMobile(ctx, "home")}
   <section class="home-section home-short" aria-labelledby="short-entry-heading">
     <div class="section-heading"><p class="eyebrow">A CUMULATIVE 60–90 SECOND ENTRY</p><h2 id="short-entry-heading">The idea before the machinery.</h2><p>Start here if you want the broad proposition in one sitting. The longer piece remains a human thought piece, not a protocol preamble.</p></div>
     <div class="short-entry reading-column">${short}</div>
@@ -522,10 +653,17 @@ const renderRead = (ctx) => {
   const abstract = renderMarkdown(readText("manuscript/PUBLIC_ABSTRACT.md"), { ctx, headingOffset: 2, idPrefix: "abstract-" });
   return `
   <section class="reading-route" id="read-idea">
-    <div class="reading-index" aria-label="Reading path"><span class="is-current">1. Enter in 60–90 seconds</span><span>2. Read the complete thought</span><span>3. Optional mentor handoff</span></div>
-    <section class="short-entry reading-column" aria-labelledby="read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h2 id="read-short-heading">The broad idea first.</h2>${short}</section>
-    <section class="essay-section" aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2><p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p></div><article class="reading-column essay-content">${essay}</article></section>
-    <section class="optional-handoff" aria-labelledby="mentor-heading"><details><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column">${cover}</div></details></section>
+    <div class="route-brief" aria-label="How to use the Read route"><span><strong>What this is</strong> A human thought piece about upstream choices.</span><span><strong>What you can do</strong> Start short, then read deep.</span><span><strong>Next</strong> Explore the six-family map.</span></div>
+    <nav class="reading-index" aria-label="Reading path">
+      <a class="is-current" data-reading-link href="#read-quick"><span>01</span><strong>Enter in 60–90 seconds</strong></a>
+      <a data-reading-link href="#read-essay"><span>02</span><strong>Read the complete thought</strong></a>
+      <a data-reading-link href="#read-mentor"><span>03</span><strong>Optional mentor handoff</strong></a>
+    </nav>
+    <div class="reading-progress-wrap"><span>Reading progress</span><div class="reading-progress" data-reading-progress role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><span data-reading-progress-value>0%</span></div>
+    <blockquote class="pull-quote"><p>“The answer inherits those upstream choices.”</p><cite>Frozen v16 standfirst</cite></blockquote>
+    <section class="short-entry reading-column reading-section" id="read-quick" data-reading-section aria-labelledby="read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h2 id="read-short-heading">The broad idea first.</h2>${short}</section>
+    <section class="essay-section reading-section" id="read-essay" data-reading-section aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2><p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p></div><article class="reading-column essay-content">${essay}</article></section>
+    <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column">${cover}</div></details></section>
     <section class="abstract-box" aria-labelledby="abstract-heading"><details><summary id="abstract-heading">Public abstract and concise metadata context</summary><div class="reading-column">${abstract}</div></details></section>
     ${renderSourceManifest("read", ctx)}
   </section>`;
@@ -533,9 +671,9 @@ const renderRead = (ctx) => {
 
 const renderMap = (ctx) => `
   <section class="map-route" id="map">
-    <div class="map-control-bar" aria-labelledby="map-controls-heading"><div><p class="eyebrow">ACCESSIBLE INTERACTIVE MAP</p><h2 id="map-controls-heading">Select a family to focus the reading.</h2><p class="muted" id="family-focus-status" aria-live="polite">All six families are visible. Focus controls add emphasis; they never hide essential meaning.</p></div><button type="button" class="quiet-button" data-family-clear>Show all</button></div>
-    <div class="family-grid">${familySource.families.map((family) => renderFamilyCard(family, ctx)).join("")}</div>
     ${renderCurrentTopology(ctx)}
+    <div class="map-control-bar" aria-labelledby="map-controls-heading"><div><p class="eyebrow">FAMILY INSPECTION</p><h2 id="map-controls-heading">Then open the family records.</h2><p class="muted" id="family-focus-status" aria-live="polite">All six families are visible. Focus controls add emphasis; they never hide essential meaning.</p></div><button type="button" class="quiet-button" data-family-clear>Show all</button></div>
+    <div class="family-grid">${familySource.families.map((family) => renderFamilyCard(family, ctx)).join("")}</div>
     ${renderGlossary(ctx)}
     <section class="map-boundary callout" aria-labelledby="map-boundary-heading"><p class="eyebrow">MAP BOUNDARY</p><h2 id="map-boundary-heading">The order is a teaching aid, not a compulsory sequence.</h2><p>Skip a family when it has no observable input, record why, and keep unknown relations unknown. Common-origin recurrence is one mechanism inside source weighing and structured patterns; it is not the map's definition.</p></section>
     ${renderSourceManifest("map", ctx)}
@@ -576,8 +714,35 @@ const renderTemplateShelf = (ctx) => {
   return `<section class="template-section" aria-labelledby="template-heading"><div class="section-heading"><p class="eyebrow">COPYABLE RECORDS</p><h2 id="template-heading">Templates keep the route inspectable.</h2><p>Use only the records the decision warrants. A skipped family should be marked skipped or not applicable, not silently inferred.</p></div><div class="template-grid">${templates.map(([label, source]) => `<details class="template-card"><summary>${escapeHtml(label)}</summary><div class="source-markdown">${renderMarkdown(readText(source), { ctx, headingOffset: 2, idPrefix: `template-${slugify(label)}-` })}</div></details>`).join("")}</div></section>`;
 };
 
+const renderRouteStudio = () => `
+  <section class="route-studio-section" id="route-studio" aria-labelledby="route-studio-heading">
+    <div class="route-brief" aria-label="How to use the Apply route"><span><strong>What this is</strong> A local decision surface.</span><span><strong>What you can do</strong> Match consequence to route size.</span><span><strong>Next</strong> Inspect the receipt and choose a stop.</span></div>
+    <div class="section-heading"><p class="eyebrow">LOCAL ROUTE STUDIO / NO PROVIDER</p><h2 id="route-studio-heading">Let consequence set the size of the route.</h2><p>This small, reversible interaction stays in the browser. Choose four conditions, build a local receipt, then mark a bounded stop or human gate. It does not acquire data, call a provider, or decide for anyone.</p></div>
+    <div class="route-studio-layout">
+      <form class="route-studio-form" data-route-studio>
+        <fieldset><legend>01 · Consequence</legend><label><input type="radio" name="consequence" value="reversible" checked> Reversible / supplied input <small>an ordinary path may fit</small></label><label><input type="radio" name="consequence" value="consequential"> Consequential / downstream effect <small>keep a human gate visible</small></label></fieldset>
+        <fieldset><legend>02 · Uncertainty</legend><label><input type="radio" name="uncertainty" value="low" checked> Low <small>the question and material are clear</small></label><label><input type="radio" name="uncertainty" value="mixed"> Mixed <small>one comparison or challenge is warranted</small></label><label><input type="radio" name="uncertainty" value="high"> High <small>gaps, conflicts, or unknown origins remain</small></label></fieldset>
+        <fieldset><legend>03 · Budget</legend><label><input type="radio" name="budget" value="quick" checked> Quick <small>short bounded pass</small></label><label><input type="radio" name="budget" value="bounded"> Bounded <small>repeated work needs a record</small></label><label><input type="radio" name="budget" value="substantial"> Substantial <small>engineering is justified only if value is visible</small></label></fieldset>
+        <fieldset><legend>04 · Permission</legend><label><input type="radio" name="permission" value="supplied" checked> Supplied / ordinary authority <small>access and use are clear</small></label><label><input type="radio" name="permission" value="restricted"> Restricted / clarify before influence <small>hold ambiguous operations</small></label><label><input type="radio" name="permission" value="human-gate"> Human gate required <small>route can propose; a person decides</small></label></fieldset>
+        <div class="studio-actions"><button class="studio-submit" type="submit">Build local receipt <span aria-hidden="true">→</span></button><button class="quiet-button" type="button" data-route-reset>Reset choices</button></div>
+        <p class="studio-boundary"><strong>Local only.</strong> The controls create no network request and make no external change.</p>
+      </form>
+      <aside class="route-receipt-card" data-route-receipt aria-live="polite" aria-atomic="true">
+        <div class="receipt-card-header"><span class="receipt-card-kicker">DECISION RECEIPT / LOCAL</span><span class="receipt-route-badge" data-receipt-route>lightweight</span></div>
+        <h3 data-receipt-title>One brief, one alternate route, one clear stop.</h3>
+        <p data-receipt-summary>For a reversible task with low uncertainty, keep the route small and leave the important distinctions visible.</p>
+        <dl class="receipt-facts"><div><dt>Route</dt><dd data-receipt-route-value>ANSWER</dd></div><div><dt>Stop status</dt><dd data-receipt-stop>STOPPED_BUDGET</dd></div><div><dt>Learning</dt><dd data-receipt-learning>LEARNING_NOT_APPLICABLE</dd></div><div><dt>Authority</dt><dd data-receipt-authority>HUMAN_DISPOSITION_RECORDED</dd></div></dl>
+        <ol class="receipt-flow" aria-label="Observable route state"><li class="is-done"><span>01</span><strong>frame</strong><small>decision brief</small></li><li class="is-done"><span>02</span><strong>inspect</strong><small>compare / challenge</small></li><li class="is-current" data-receipt-flow-state><span>03</span><strong>disposition</strong><small>choose a bounded state</small></li><li><span>04</span><strong>learn</strong><small>later outcome</small></li></ol>
+        <div class="receipt-state-actions"><p class="eyebrow">Choose a recorded next state</p><div><button type="button" data-route-action="hold">HOLD for human</button><button type="button" data-route-action="escalate">ESCALATE</button><button type="button" data-route-action="stop">STOPPED_BUDGET</button></div></div>
+        <p class="receipt-status" data-receipt-status role="status">Receipt ready. The route is a proposal; human authority stays explicit.</p>
+      </aside>
+    </div>
+    <details class="static-route-equivalent" open><summary>Static route key: complete no-script equivalent</summary><div class="static-route-body"><p>When JavaScript is unavailable, the four choices remain readable here and the sample receipt remains a copyable record. The interaction adds convenience; it does not carry essential meaning.</p><div class="table-wrap"><table><caption>Proportionate choices and observable states</caption><thead><tr><th scope="col">Choice</th><th scope="col">Fit</th><th scope="col">Route</th><th scope="col">Stop</th><th scope="col">Learning</th></tr></thead><tbody><tr><th scope="row">ordinary</th><td>reversible, clear, supplied input</td><td><code>ANSWER</code></td><td><code>COMPLETE</code></td><td><code>LEARNING_NOT_APPLICABLE</code></td></tr><tr><th scope="row">lightweight</th><td>bounded comparison or one alternate route</td><td><code>ANSWER_PROVISIONALLY</code></td><td><code>STOPPED_BUDGET</code></td><td><code>LEARNING_PLANNED</code></td></tr><tr><th scope="row">moderate</th><td>repeated work, mixed uncertainty, or a human gate</td><td><code>HOLD</code> / <code>ESCALATE</code></td><td><code>STOPPED_OTHER</code></td><td><code>LEARNING_PENDING_OUTCOME</code></td></tr><tr><th scope="row">advanced</th><td>queryable lineage and review are worth the cost</td><td><code>CLARIFY</code> / <code>HOLD</code></td><td><code>STOPPED_DEADLINE</code></td><td><code>LEARNING_PLANNED</code></td></tr></tbody></table></div><p class="static-receipt"><strong>Sample receipt:</strong> Route <code>ANSWER_PROVISIONALLY</code> · stop <code>STOPPED_BUDGET</code> · learning <code>LEARNING_PENDING_OUTCOME</code> · disposition <code>HOLD</code>. A person may correct the route or decide not to continue.</p></div></details>
+  </section>`;
+
 const renderApply = (ctx) => `
   <section class="apply-route" id="apply">
+    ${renderRouteStudio()}
     ${renderImplementationLevels(ctx)}
     <section class="operator-section" aria-labelledby="operator-heading"><div class="section-heading"><p class="eyebrow">OPERATOR PATH</p><h2 id="operator-heading">Twelve observable moves from decision to learning.</h2><p>Frame the real decision, set permission and cost, widen one bounded route, compare, challenge, route, preserve influence, and close the loop without rewriting the original record.</p></div><div class="operator-steps">${[
       ["01", "Frame the decision", "Write the decision, intended use, audience, consequence, deadline, and useful-answer condition."],
@@ -599,8 +764,6 @@ const renderApply = (ctx) => `
     ${renderSourceManifest("apply", ctx)}
   </section>`;
 
-const renderExample = (title, eyebrow, content, accent) => `<article class="example-card ${accent ?? ""}"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h3>${escapeHtml(title)}</h3>${content}</article>`;
-
 const renderExamples = (ctx) => {
   const specialist = extractSection(essaySource, "#### Worked example 1: a specialist signal", "### 2. Source weighing");
   const motion = extractSection(essaySource, "#### Worked example 2: motion and expected absence", "### 5. Structured patterns");
@@ -608,12 +771,21 @@ const renderExamples = (ctx) => {
   const ordinary = readText("framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md");
   return `
   <section class="examples-route" id="examples">
-    <div class="section-heading"><p class="eyebrow">TEACHING PATTERNS</p><h2>Three ways a pattern can improve the room without becoming a verdict.</h2><p>These are bounded illustrations. They are not validation, and they do not authorize acquisition or action.</p></div>
-    <div class="example-grid">
-      ${renderExample("A specialist signal is a candidate, not a truth", "01 / PERIPHERAL SIGNAL", `<div class="microvisual specialist-visual" role="img" aria-label="A default path with a smaller specialist route entering as a candidate for inspection"><span class="micro-path main-path">default path</span><span class="micro-path peripheral-path">specialist route</span><span class="micro-node">inspect</span><span class="micro-node">weigh</span><span class="micro-node">disconfirm</span></div><div class="source-markdown">${renderMarkdown(specialist, { ctx, headingOffset: 0, idPrefix: "example-specialist-" })}</div><p class="boundary-line"><strong>Boundary:</strong> underweighted is a reason to inspect, not a reason to believe.</p>`, "example-specialist")}
-      ${renderExample("Motion and absence need an explicit baseline", "02 / VELOCITY + EXPECTED ABSENCE", `<div class="microvisual baseline-visual" role="img" aria-label="A baseline with five prior releases, a current packet missing two fields, and a support count rising from five to eighteen"><div class="baseline-bars"><span style="height:32%">5</span><span style="height:38%">6</span><span style="height:35%">5</span><span style="height:42%">7</span><span class="current-bar" style="height:100%">18</span></div><div class="baseline-labels"><span>prior</span><span>prior</span><span>prior</span><span>prior</span><span>current</span></div><p>current packet: exposure present / rollback owner missing / monitoring window missing</p></div><div class="source-markdown">${renderMarkdown(motion, { ctx, headingOffset: 0, idPrefix: "example-motion-" })}</div><p class="boundary-line"><strong>Boundary:</strong> one observation is not velocity; a gap is not proof of nonexistence.</p>`, "example-motion")}
+    <div class="section-heading"><p class="eyebrow">TEACHING PATTERNS</p><h2>Three ways a pattern can improve the room without becoming a verdict.</h2><p>These are bounded illustrations. They are not validation, and they do not authorize acquisition or action. Each visual is a short case before the detailed prose.</p></div>
+    <div class="example-narratives">
+      <article class="example-narrative example-specialist" id="example-specialist">
+        <div class="narrative-marker"><span>01</span><small>peripheral signal</small></div>
+        <div class="narrative-body"><p class="eyebrow">SPECIALIST / PERIPHERAL CANDIDATE</p><h3>A specialist signal enters the default path as a candidate.</h3><figure class="narrative-visual specialist-story"><div class="story-track"><div class="story-step story-default"><span>01</span><strong>DEFAULT PATH</strong><small>familiar query<br>familiar sources</small></div><span class="story-arrow" aria-hidden="true">→</span><div class="story-step story-candidate"><span>02</span><strong>PERIPHERAL CANDIDATE</strong><small>specialist route<br>low prominence</small></div><span class="story-arrow" aria-hidden="true">→</span><div class="story-step story-weigh"><span>03</span><strong>WEIGH + CHALLENGE</strong><small>role, relevance,<br>disconfirmation</small></div></div><figcaption><strong>Visual reading:</strong> widen the field, then make the candidate earn a role. It may be useful, limited, or wrong.</figcaption></figure><div class="source-markdown">${renderMarkdown(specialist, { ctx, headingOffset: 0, idPrefix: "example-specialist-" })}</div><p class="boundary-line"><strong>Boundary:</strong> underweighted is a reason to inspect, not a reason to believe.</p></div>
+      </article>
+      <article class="example-narrative example-motion" id="example-motion">
+        <div class="narrative-marker"><span>02</span><small>velocity + absence</small></div>
+        <div class="narrative-body"><p class="eyebrow">VELOCITY / EXPECTED ABSENCE</p><h3>Motion and missing fields become meaningful only beside an explicit baseline.</h3><figure class="narrative-visual motion-story"><div class="motion-visual-grid"><div class="motion-series"><span class="visual-label">SUPPORT COUNT</span><div class="motion-bars"><span style="--bar:32%">5</span><span style="--bar:38%">6</span><span style="--bar:35%">5</span><span style="--bar:42%">7</span><span class="motion-current" style="--bar:100%">18</span></div><div class="motion-axis"><span>prior</span><span>prior</span><span>prior</span><span>prior</span><span>now</span></div></div><div class="absence-ledger"><span class="visual-label">CURRENT PACKET</span><div><span class="presence yes"><b>present</b> exposure</span><span class="presence no"><b>missing</b> rollback owner</span><span class="presence no"><b>missing</b> monitoring window</span></div></div></div><figcaption><strong>Visual reading:</strong> the rising count is motion against a baseline; the missing fields are gaps against an expectation. Neither is a verdict by itself.</figcaption></figure><div class="source-markdown">${renderMarkdown(motion, { ctx, headingOffset: 0, idPrefix: "example-motion-" })}</div><p class="boundary-line"><strong>Boundary:</strong> one observation is not velocity; a gap is not proof of nonexistence.</p></div>
+      </article>
+      <article class="example-narrative example-recurrence" id="example-recurrence">
+        <div class="narrative-marker"><span>03</span><small>structured pattern</small></div>
+        <div class="narrative-body"><p class="eyebrow">COMMON-ORIGIN RECURRENCE</p><h3>Nine recurring reports can resolve to one known origin while independence stays unknown.</h3><figure class="narrative-visual recurrence-story"><div class="recurrence-map"><div class="report-cluster">${Array.from({ length: 9 }, (_, index) => `<span class="report-chip">R${index + 1}</span>`).join("")}</div><div class="recurrence-traces" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="origin-chip"><span>KNOWN SHARED PATH</span><strong>one announcement</strong></div></div><div class="recurrence-counts"><span><b>09</b> observations</span><span><b>01</b> known origin</span><span><b>00</b> counted support paths</span><span class="unknown-chip"><b>independence: UNKNOWN</b></span></div></figure><div class="source-markdown">${renderMarkdown(recurrence, { ctx, headingOffset: 1, idPrefix: "example-recurrence-" })}</div><p class="boundary-line"><strong>Boundary:</strong> repeated reports are observations; recurrence is not independent corroboration. Keep the relationship <code>UNKNOWN</code> until it is actually established.</p><p class="echo-label"><span class="status-dot" aria-hidden="true"></span><strong>The Echo Problem</strong> is a separate project — unrun — no results. It is linked here only as a subordinate origin-accounting route.</p></div>
+      </article>
     </div>
-    <div class="example-late"><p class="eyebrow">03 / STRUCTURED PATTERNS</p><h2>Recurrence can be one origin wearing nine outfits.</h2><div class="recurrence-visual" role="img" aria-label="Nine report cards point to one shared announcement origin, with independence shown as unknown"><div class="report-cluster">${Array.from({ length: 9 }, (_, index) => `<span class="report-chip">report ${index + 1}</span>`).join("")}</div><span class="origin-arrow" aria-hidden="true">↓</span><span class="origin-chip">one shared announcement</span><span class="unknown-chip">independence: UNKNOWN</span></div><div class="source-markdown">${renderMarkdown(recurrence, { ctx, headingOffset: 1, idPrefix: "example-recurrence-" })}</div><p class="boundary-line"><strong>Boundary:</strong> repeated reports are observations; recurrence is not independent corroboration.</p><p class="echo-label"><span class="status-dot" aria-hidden="true"></span><strong>The Echo Problem</strong> is a separate project — unrun — no results. It is linked here only as a subordinate origin-accounting route.</p></div>
     <section class="case-section" aria-labelledby="cases-heading"><div class="section-heading"><p class="eyebrow">BOUNDED CASES</p><h2 id="cases-heading">From illustration to inspectable practice.</h2><p>Signal Foundry is labeled every time it appears: <strong>ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION.</strong> The neutral cases show how the same records can stay proportionate across domains.</p></div><div class="case-grid"><details class="case-card signal-foundry" open><summary>Signal Foundry — ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION</summary><div class="source-markdown">${renderMarkdown(readText("cases/signal-foundry/README.md"), { ctx, headingOffset: 2, idPrefix: "case-signal-foundry-" })}</div></details><details class="case-card"><summary>Domain-neutral case A — a second weekly session</summary><div class="source-markdown">${renderMarkdown(readText("cases/general-research/README.md"), { ctx, headingOffset: 2, idPrefix: "case-general-" })}</div></details><details class="case-card"><summary>Domain-neutral case B — an intake process</summary><div class="source-markdown">${renderMarkdown(readText("cases/product-and-process/README.md"), { ctx, headingOffset: 2, idPrefix: "case-process-" })}</div></details></div></section>
     <section class="ordinary-contrast" aria-labelledby="ordinary-heading"><details><summary id="ordinary-heading">Ordinary work versus the Discrimination Layer</summary><div class="source-markdown">${renderMarkdown(ordinary, { ctx, headingOffset: 2, idPrefix: "ordinary-" })}</div></details></section>
     ${renderSourceManifest("examples", ctx)}

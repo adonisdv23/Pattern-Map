@@ -1,6 +1,13 @@
 # V16 visual-needs record
 
-Status: **PRE-SITE ASSESSMENT / NO GENERATED BITMAP NEED JUSTIFIED**
+Status: **REASSESSED FOR SITE-POLISH REVISION / NO GENERATED BITMAP NEED JUSTIFIED**
+
+The owner's higher visual bar requires richer teaching objects, but the
+reassessment still finds that semantic HTML, CSS, code-native relationship
+views, and the preserved historical diagram are materially better than new
+bitmap imagery for the current needs. The polish plan therefore increases
+visual authorship through relationship maps, route receipts, timelines,
+contrasts, loops, and case narratives rather than decoration.
 
 This record is the required gate before any bitmap generation. It assesses
 teaching needs, not decoration. At this checkpoint the site can meet every

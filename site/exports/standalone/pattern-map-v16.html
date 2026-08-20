@@ -478,6 +478,23 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
   .wordmark span { font-size: 1.08rem; }.wordmark small { font-size: 0.53rem; }.primary-nav { gap: 0; }.nav-more { padding-inline: 0.45rem; }
 }
 
+@media (min-width: 821px) {
+  .topology-section > .section-heading { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr); column-gap: clamp(1.5rem, 4vw, 4rem); align-items: end; max-width: none; margin-bottom: 1.25rem; }
+  .topology-section > .section-heading .eyebrow { grid-column: 1 / -1; }
+  .topology-section > .section-heading h2 { grid-column: 1; max-width: 17ch; margin-bottom: 0; }
+  .topology-section > .section-heading p:last-child { grid-column: 2; grid-row: 2; align-self: end; margin-bottom: 0.2rem; font-size: 0.88rem; }
+}
+
+@media (max-width: 600px) {
+  .route-brief { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; padding-block: 0.6rem; }
+  .route-brief span { padding-left: 0.4rem; font-size: 0.64rem; line-height: 1.28; }
+  .route-brief strong { font-size: 0.5rem; letter-spacing: 0.06em; }
+  .topology-section > .section-heading { margin-bottom: 0; }
+  .topology-section > .section-heading h2 { max-width: 17ch; font-size: 2rem; }
+  .topology-section > .section-heading p:last-child { font-size: 0.78rem; line-height: 1.38; }
+  .relationship-map { margin-top: 0.65rem; }
+}
+
 @media (forced-colors: active) {
   * { box-shadow: none !important; }
   .door-card, .family-card, .topology-node, .implementation-card, .example-card, .example-late, details, .callout, .boundary-banner, .source-notice, .research-status, .echo-callout { border: 2px solid CanvasText; }
@@ -503,6 +520,108 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; overflow-wrap: anywhere; }
   .historical-figure img { max-height: 22cm; object-fit: contain; }
 }
+
+/* v16 site-polish system: publication frame, teaching objects, and route states */
+html { scroll-padding-top: 1.25rem; }
+body { overflow-x: clip; }
+main { overflow: visible; }
+.page-frame { display: grid; grid-template-columns: minmax(9rem, 11rem) minmax(0, 1fr); gap: clamp(1.6rem, 4vw, 4.3rem); width: min(100% - 2rem, 88rem); margin: 0 auto; }
+.page-content { min-width: 0; }
+.page-content > .hero, .page-content > .home-section, .page-content > .reading-route, .page-content > .map-route, .page-content > .apply-route, .page-content > .examples-route, .page-content > .boundaries-route, .page-content > .sources-route, .page-content > .research-route, .page-content > .history-route, .page-content > .route-intro { width: 100%; margin-left: 0; margin-right: 0; }
+.orientation-rail { position: sticky; top: 1rem; align-self: start; display: flex; min-height: min(40rem, calc(100vh - 2rem)); flex-direction: column; gap: 1.15rem; margin-top: clamp(2rem, 5vw, 4.4rem); padding: 0.2rem 1rem 1rem 0; border-right: 1px solid var(--line); }
+.orientation-brand { display: flex; align-items: center; gap: 0.6rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--ink); }
+.orientation-brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; background: var(--navy); color: var(--paper-light); font: 0.68rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.06em; }
+.orientation-brand strong, .orientation-brand small { display: block; }
+.orientation-brand strong { font-family: Georgia, "Times New Roman", serif; font-size: 0.95rem; line-height: 1; }
+.orientation-brand small { margin-top: 0.3rem; color: var(--muted); font: 0.56rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+.orientation-status { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.45rem; align-items: center; color: var(--muted); font: 0.6rem/1.3 "SFMono-Regular", Consolas, monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+.orientation-status strong { grid-column: 2; color: var(--ink); font-size: 0.68rem; letter-spacing: 0.02em; }
+.orientation-status-dot { display: inline-block; width: 0.48rem; height: 0.48rem; border: 1px solid var(--teal); border-radius: 50%; background: var(--teal); }
+.orientation-nav { display: grid; gap: 0.1rem; }
+.orientation-label { margin: 0.2rem 0 0.35rem; color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+.orientation-label-secondary { margin-top: 1rem; }
+.orientation-link { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.35rem; align-items: baseline; padding: 0.38rem 0.25rem; border-left: 0.2rem solid transparent; color: var(--ink-soft); font: 0.68rem/1.25 "SFMono-Regular", Consolas, monospace; text-decoration: none; }
+.orientation-link:hover, .orientation-link:focus-visible, .orientation-link.is-current { border-left-color: var(--teal); color: var(--teal); background: rgba(39,127,126,0.06); }
+.orientation-link.is-current { font-weight: 800; }
+.orientation-number { color: var(--muted); font-size: 0.58rem; }
+.orientation-next { margin: auto 0 0; padding-top: 0.9rem; border-top: 1px solid var(--line); font: 0.62rem/1.35 "SFMono-Regular", Consolas, monospace; }
+.orientation-next span, .orientation-mobile-next span { display: block; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+.orientation-next a { display: block; margin-top: 0.35rem; font-weight: 800; }
+.orientation-mobile { display: none; }
+.route-intro { padding: clamp(2.8rem, 6vw, 5rem) 0 clamp(1.6rem, 3vw, 2.8rem); }
+.route-intro h1 { max-width: 15ch; }
+.route-lede { max-width: 44rem; }
+.hero { padding-top: clamp(2.8rem, 5vw, 4.4rem); padding-bottom: clamp(2rem, 3vw, 3rem); }
+.hero-copy { max-width: 68rem; }
+.hero-bridge { max-width: 48rem; }
+.door-card { min-height: 13.5rem; gap: 0.75rem; padding: 1.15rem 1.2rem 1.1rem; }
+.door-topline { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.door-mode { color: var(--muted); font: 0.57rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.07em; text-align: right; text-transform: uppercase; }
+.door-promise { max-width: 31ch; }
+.door-preview { position: relative; display: block; min-height: 2.8rem; margin-top: 0.2rem; border-top: 1px solid var(--line); }
+.preview-caption { position: absolute; right: 0; bottom: 0; color: var(--muted); font: 0.56rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.05em; text-transform: uppercase; }
+.preview-line { position: absolute; left: 0; height: 0.25rem; border-radius: 999px; background: var(--accent); }
+.preview-line-long { top: 0.75rem; width: 72%; }.preview-line-mid { top: 1.35rem; width: 48%; background: var(--teal); }.preview-line-short { top: 1.95rem; width: 28%; background: var(--purple); }
+.door-preview-map { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.28rem; align-items: center; padding-right: 0.2rem; }
+.preview-map-node { position: relative; z-index: 1; display: grid; min-height: 1.1rem; place-items: center; border: 1px solid var(--teal); border-radius: 0.25rem; background: var(--paper-light); color: var(--teal); font: 0.52rem "SFMono-Regular", Consolas, monospace; font-weight: 800; }
+.preview-map-link { position: absolute; left: 8%; right: 8%; height: 1px; background: var(--teal); opacity: 0.55; transform: rotate(10deg); }.preview-map-link-b { transform: rotate(-10deg); background: var(--purple); }
+.door-preview-map .preview-caption { bottom: -0.2rem; }
+.door-preview-apply { display: grid; grid-template-columns: 1.1fr 0.65fr 1.3fr; grid-template-rows: repeat(2, 1.3rem); gap: 0.28rem; padding-top: 0.55rem; }
+.preview-receipt-line { display: flex; align-items: center; padding: 0 0.35rem; border: 1px solid var(--purple); color: var(--purple); font: 0.52rem "SFMono-Regular", Consolas, monospace; font-weight: 800; }
+.preview-receipt-label { grid-column: 1 / -1; color: var(--ink-soft); border-color: var(--line-strong); }.preview-receipt-route { grid-column: 1 / 3; }.preview-receipt-human { grid-column: 3; color: var(--accent-deep); border-color: var(--accent); }.preview-receipt-route b { margin-left: auto; color: var(--accent-deep); }
+.route-brief { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin: 0 0 clamp(1.5rem, 3vw, 2.8rem); padding: 0.85rem 0; border-block: 1px solid var(--line); color: var(--ink-soft); font-size: 0.78rem; }
+.route-brief span { padding-left: 0.75rem; border-left: 0.18rem solid var(--line-strong); }.route-brief span:nth-child(1) { border-left-color: var(--teal); }.route-brief span:nth-child(2) { border-left-color: var(--accent); }.route-brief span:nth-child(3) { border-left-color: var(--purple); }.route-brief strong { display: block; margin-bottom: 0.18rem; color: var(--ink); font: 0.59rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+.reading-route, .map-route, .apply-route, .examples-route { padding-top: 0.4rem; }
+.reading-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; margin: 0 0 0.85rem; }
+.reading-index a { display: grid; grid-template-columns: auto 1fr; gap: 0.55rem; align-items: baseline; padding: 0.7rem 0.75rem; border: 1px solid var(--line); color: var(--ink-soft); text-decoration: none; }.reading-index a:hover, .reading-index a.is-current { border-color: var(--accent); color: var(--ink); background: rgba(210,110,69,0.06); }.reading-index span { color: var(--accent-deep); font: 0.62rem "SFMono-Regular", Consolas, monospace; font-weight: 800; }.reading-index strong { font-size: 0.76rem; }
+.reading-progress-wrap { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 2rem; color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.07em; text-transform: uppercase; }.reading-progress { flex: 1; height: 0.3rem; border-radius: 999px; background: var(--paper-deep); }.reading-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--accent); transition: width 180ms ease; }.pull-quote { max-width: 47rem; margin: 0 0 3rem; padding: 1.2rem 1.4rem; border-left: 0.3rem solid var(--teal); background: rgba(39,127,126,0.06); color: var(--ink); }.pull-quote p { margin: 0; font: 1.5rem/1.25 Georgia, "Times New Roman", serif; }.pull-quote cite { display: block; margin-top: 0.65rem; color: var(--muted); font: 0.6rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; text-transform: uppercase; }.reading-section { scroll-margin-top: 1.25rem; }
+.essay-section { margin-top: 4rem; }.essay-content > h2 { scroll-margin-top: 1.25rem; }.essay-content > h2::before { content: "— "; color: var(--teal); }
+
+.topology-section { margin-top: 0; padding-top: 0; border-top: 0; }.relationship-map { margin: 1.5rem 0 0; }.map-canvas { position: relative; min-height: 51rem; overflow: hidden; border: 1px solid var(--navy); background: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(230,223,210,0.42)); }.relationship-connectors { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--teal); stroke-width: 2; stroke-dasharray: 5 8; opacity: 0.34; pointer-events: none; }.map-canvas-label { position: absolute; z-index: 2; color: var(--muted); font: 0.56rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }.map-label-top { top: 0.75rem; left: 50%; transform: translateX(-50%); white-space: nowrap; }.map-label-bottom { bottom: 0.85rem; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.map-node { position: absolute; z-index: 1; display: grid; gap: 0.28rem; min-height: 5rem; padding: 0.78rem 0.85rem; border: 1px solid var(--line-strong); border-radius: 0.5rem; background: rgba(251,250,246,0.93); box-shadow: 0 0.35rem 0 rgba(21,32,34,0.05); }.map-node strong { line-height: 1.15; }.map-node small { color: var(--ink-soft); font-size: 0.69rem; line-height: 1.32; }.map-start { top: 2rem; left: 35%; width: 30%; border-top: 0.35rem solid var(--accent); text-align: center; }.map-family-grid { position: absolute; z-index: 1; top: 10.5rem; left: 2%; right: 2%; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.55rem; }.map-family-node { display: grid; align-content: start; gap: 0.3rem; min-height: 9.1rem; padding: 0.7rem; border: 1px solid var(--family); border-top-width: 0.35rem; border-radius: 0.5rem; color: var(--ink); background: rgba(251,250,246,0.96); cursor: pointer; text-align: left; transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; }.map-family-node:hover, .map-family-node:focus-visible, .map-family-node.is-selected { color: var(--ink); background: var(--paper-light); box-shadow: 0 0.45rem 0 rgba(21,32,34,0.1); transform: translateY(-3px); }.map-family-node.is-selected { outline: 2px solid var(--family); outline-offset: 3px; }.map-family-id { color: var(--family); font: 0.63rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; }.map-family-node strong { font: 700 1rem/1.08 Georgia, "Times New Roman", serif; }.map-family-question { color: var(--ink-soft); font: italic 0.72rem/1.3 Georgia, "Times New Roman", serif; }.map-family-connection { margin-top: auto; padding-top: 0.3rem; border-top: 1px solid var(--line); color: var(--muted); font: 0.58rem/1.3 "SFMono-Regular", Consolas, monospace; }
+.map-record-row { position: absolute; z-index: 1; top: 23rem; left: 5%; right: 5%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }.map-record { position: relative; min-height: 6.2rem; border-top: 0.28rem solid var(--teal); }.map-record:nth-child(2) { border-top-color: var(--green); }.map-record:nth-child(3) { border-top-color: var(--ochre); }.map-record:nth-child(4) { border-top-color: var(--blue); }.map-output-row { position: absolute; z-index: 1; top: 32.2rem; left: 5%; right: 5%; display: grid; grid-template-columns: 1fr 1.55fr 1fr; gap: 0.6rem; }.map-output-row .map-node { position: relative; min-height: 8.1rem; }.map-baseline { border-left: 0.28rem solid var(--orange); }.map-route { border: 2px solid var(--navy); background: #e7f1f0; }.map-human { border-right: 0.28rem solid var(--purple); }.map-learning { top: 42.3rem; left: 35%; width: 30%; min-height: 6.2rem; border: 2px dashed var(--blue); background: rgba(225,235,240,0.9); }.map-loop-mark { position: absolute; right: 0.75rem; bottom: 0.35rem; color: var(--blue); font-size: 2rem; line-height: 1; }.relationship-caption { max-width: 62rem; margin-top: 0.8rem; color: var(--ink-soft); font-size: 0.8rem; }.map-focus-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr); gap: 1rem 2rem; margin-top: 1.1rem; padding: 1.25rem; border-left: 0.3rem solid var(--teal); background: rgba(39,127,126,0.06); }.map-focus-detail h3 { margin-bottom: 0.35rem; font-size: 1.7rem; }.map-focus-detail p { color: var(--ink-soft); }.map-focus-detail dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin: 0; }.map-focus-detail dl > div { padding: 0.7rem; border: 1px solid var(--line); background: rgba(255,255,255,0.45); }.map-focus-detail dt { color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }.map-focus-detail dd { margin: 0.35rem 0 0; font-size: 0.78rem; }.map-focus-status { grid-column: 1 / -1; margin: 0; font: 0.66rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.03em; }.map-text-equivalent { margin-top: 1rem; }.map-text-equivalent > p, .map-text-equivalent > ol { padding-bottom: 0; }.map-text-equivalent ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem 2rem; }.map-text-equivalent li { padding-left: 0.2rem; }.map-text-equivalent li strong, .map-text-equivalent li span, .map-text-equivalent li small { display: block; }.map-text-equivalent li strong { color: var(--ink); }.map-text-equivalent li span { margin-top: 0.25rem; color: var(--ink-soft); font: italic 0.92rem/1.35 Georgia, "Times New Roman", serif; }.map-text-equivalent li small { margin-top: 0.35rem; color: var(--muted); font-size: 0.78rem; line-height: 1.4; }
+.family-grid.has-focus .family-card:not(.is-focused) { opacity: 1; transform: none; box-shadow: none; }.family-card.is-focused { outline: 2px solid var(--family); outline-offset: 4px; }
+
+.route-studio-section { padding-top: 0; }.route-studio-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: start; }.route-studio-form { padding: 1.2rem; border: 1px solid var(--navy); background: rgba(255,255,255,0.36); }.route-studio-form fieldset { display: grid; gap: 0.4rem; margin: 0; padding: 0.85rem 0; border: 0; border-top: 1px solid var(--line); }.route-studio-form fieldset:first-child { padding-top: 0; border-top: 0; }.route-studio-form legend { padding: 0; color: var(--accent-deep); font: 0.63rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }.route-studio-form label { display: grid; grid-template-columns: auto 1fr; gap: 0.45rem; align-items: start; padding: 0.35rem 0.4rem; border-left: 0.18rem solid transparent; cursor: pointer; font-size: 0.84rem; }.route-studio-form label:has(input:checked) { border-left-color: var(--teal); background: rgba(39,127,126,0.06); }.route-studio-form input { margin-top: 0.2rem; accent-color: var(--teal); }.route-studio-form label small { grid-column: 2; color: var(--muted); font-size: 0.72rem; }.studio-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1rem; }.studio-submit, .receipt-state-actions button { padding: 0.68rem 0.82rem; border: 1px solid var(--navy); background: var(--navy); color: var(--paper-light); cursor: pointer; font-weight: 800; }.studio-submit:hover, .receipt-state-actions button:hover { background: var(--navy-soft); }.studio-boundary { margin: 1rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.73rem; }.route-receipt-card { border: 1px solid var(--navy); border-top: 0.45rem solid var(--purple); background: var(--paper-light); box-shadow: var(--shadow); }.receipt-card-header { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; padding: 1rem 1.15rem 0.7rem; }.receipt-card-kicker { color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; }.receipt-route-badge { padding: 0.3rem 0.45rem; border: 1px solid var(--purple); color: var(--purple); font: 0.62rem "SFMono-Regular", Consolas, monospace; font-weight: 800; text-transform: uppercase; }.route-receipt-card h3, .route-receipt-card > p { padding-inline: 1.15rem; }.route-receipt-card h3 { margin-top: 0.6rem; font-size: 1.8rem; }.route-receipt-card > p { color: var(--ink-soft); font-size: 0.87rem; }.receipt-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 1rem 0; border-block: 1px solid var(--line); background: var(--line); }.receipt-facts > div { padding: 0.75rem 0.9rem; background: var(--paper-light); }.receipt-facts dt { color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }.receipt-facts dd { margin: 0.35rem 0 0; color: var(--ink); font: 0.72rem "SFMono-Regular", Consolas, monospace; font-weight: 800; overflow-wrap: anywhere; }.receipt-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; margin: 1rem 1.15rem; padding: 0; list-style: none; }.receipt-flow li { display: grid; gap: 0.25rem; min-height: 4.8rem; padding: 0.55rem; border-top: 0.25rem solid var(--line); background: rgba(230,223,210,0.5); }.receipt-flow li.is-done { border-top-color: var(--teal); }.receipt-flow li.is-current { border-top-color: var(--accent); background: rgba(210,110,69,0.08); }.receipt-flow span { color: var(--muted); font: 0.55rem "SFMono-Regular", Consolas, monospace; }.receipt-flow strong { font-size: 0.75rem; text-transform: uppercase; }.receipt-flow small { color: var(--muted); font-size: 0.65rem; line-height: 1.25; }.receipt-state-actions { padding: 0.9rem 1.15rem; border-top: 1px solid var(--line); }.receipt-state-actions .eyebrow { margin-bottom: 0.55rem; }.receipt-state-actions > div { display: flex; flex-wrap: wrap; gap: 0.4rem; }.receipt-state-actions button { padding: 0.48rem 0.58rem; border-color: var(--line-strong); background: transparent; color: var(--ink); font: 0.62rem "SFMono-Regular", Consolas, monospace; }.receipt-state-actions button:hover { color: var(--paper-light); border-color: var(--navy); }.receipt-status { margin: 0; padding: 0.8rem 1.15rem 1rem; border-top: 1px solid var(--line); font: 0.69rem "SFMono-Regular", Consolas, monospace !important; }.static-route-equivalent { margin-top: 1rem; }.static-route-body { padding-bottom: 0.3rem; }.static-route-body table { font-size: 0.78rem; }.static-receipt { padding: 0.85rem; border-left: 0.25rem solid var(--teal); background: rgba(39,127,126,0.06); font-size: 0.82rem; }
+.operator-section { margin-top: 4rem; }.operator-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }.operator-step { min-height: 12rem; border: 0; border-right: 1px solid var(--line); border-radius: 0; background: transparent; }.operator-step:last-child { border-right: 0; }.operator-step:nth-child(n+5) { border-top: 1px solid var(--line); }.operator-step h3 { font-size: 1.22rem; }.step-number { color: var(--teal); }
+
+.example-narratives { display: grid; gap: 1.2rem; }.example-narrative { display: grid; grid-template-columns: minmax(7rem, 0.2fr) minmax(0, 1fr); gap: clamp(1rem, 3vw, 2.5rem); padding: 1.6rem 0 2.2rem; border-top: 1px solid var(--line); }.narrative-marker { position: sticky; top: 1rem; align-self: start; display: grid; gap: 0.2rem; }.narrative-marker span { color: var(--teal); font: italic 2.6rem/1 Georgia, "Times New Roman", serif; }.narrative-marker small { color: var(--muted); font: 0.58rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }.narrative-body h3 { max-width: 34rem; font-size: clamp(1.7rem, 3.1vw, 2.7rem); }.narrative-visual { margin: 1.2rem 0 1.3rem; padding: 1rem; border: 1px solid var(--line-strong); background: var(--paper-light); }.story-track { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0.55rem; align-items: stretch; }.story-step { display: grid; gap: 0.25rem; min-height: 8.2rem; padding: 0.85rem; border-top: 0.35rem solid var(--teal); background: rgba(39,127,126,0.08); }.story-step span { color: var(--muted); font: 0.6rem "SFMono-Regular", Consolas, monospace; }.story-step strong { font: 1.05rem/1.08 Georgia, "Times New Roman", serif; }.story-step small { color: var(--muted); font-size: 0.72rem; }.story-candidate { border-top-color: var(--accent); background: rgba(210,110,69,0.08); }.story-weigh { border-top-color: var(--purple); background: rgba(103,75,137,0.08); }.story-arrow { align-self: center; color: var(--accent-deep); font-size: 1.4rem; }.narrative-visual figcaption { margin-top: 0.9rem; padding-top: 0.75rem; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.78rem; }.motion-visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }.visual-label { display: block; margin-bottom: 0.6rem; color: var(--muted); font: 0.59rem "SFMono-Regular", Consolas, monospace; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }.motion-bars { display: flex; align-items: end; gap: 0.55rem; height: 7rem; padding: 0.2rem 0.35rem 0; border-bottom: 2px solid var(--ink-soft); }.motion-bars span { display: flex; align-items: start; justify-content: center; width: 2.6rem; height: var(--bar); min-height: 1.3rem; padding-top: 0.22rem; border-radius: 0.25rem 0.25rem 0 0; background: #c8d8d5; color: var(--ink); font: 0.65rem "SFMono-Regular", Consolas, monospace; }.motion-bars .motion-current { background: var(--purple); color: white; }.motion-axis { display: flex; gap: 0.55rem; padding: 0.35rem; }.motion-axis span { width: 2.6rem; color: var(--muted); font: 0.55rem "SFMono-Regular", Consolas, monospace; text-align: center; }.absence-ledger { padding-left: 1rem; border-left: 1px solid var(--line); }.absence-ledger > div { display: grid; gap: 0.5rem; }.presence { display: block; padding: 0.58rem; border-left: 0.25rem solid var(--line-strong); background: rgba(230,223,210,0.45); font-size: 0.76rem; }.presence b { display: inline-block; margin-right: 0.3rem; font: 0.58rem "SFMono-Regular", Consolas, monospace; text-transform: uppercase; }.presence.yes { border-left-color: var(--teal); }.presence.no { border-left-color: var(--orange); }.recurrence-map { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 12rem; gap: 1.4rem; align-items: center; min-height: 11rem; }.report-cluster { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }.report-chip { padding: 0.55rem; border: 1px solid var(--ochre); border-radius: 0.25rem; background: #f4ebcb; color: var(--ink); font: 0.66rem "SFMono-Regular", Consolas, monospace; font-weight: 800; text-align: center; }.recurrence-traces { position: absolute; z-index: 0; top: 0.8rem; right: 8rem; bottom: 0.8rem; left: 23%; }.recurrence-traces i { position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: var(--ochre); transform-origin: left center; }.recurrence-traces i:nth-child(1) { transform: rotate(-27deg); }.recurrence-traces i:nth-child(2) { transform: rotate(-20deg); }.recurrence-traces i:nth-child(3) { transform: rotate(-14deg); }.recurrence-traces i:nth-child(4) { transform: rotate(-7deg); }.recurrence-traces i:nth-child(5) { transform: rotate(0); }.recurrence-traces i:nth-child(6) { transform: rotate(7deg); }.recurrence-traces i:nth-child(7) { transform: rotate(14deg); }.recurrence-traces i:nth-child(8) { transform: rotate(20deg); }.recurrence-traces i:nth-child(9) { transform: rotate(27deg); }.origin-chip { position: relative; z-index: 1; display: grid; gap: 0.35rem; padding: 1rem; border-radius: 0.4rem; background: var(--navy); color: var(--paper-light); text-align: center; }.origin-chip span { color: #bcd7d6; font: 0.56rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; }.origin-chip strong { font: 1.05rem/1.1 Georgia, "Times New Roman", serif; }.recurrence-counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; margin-top: 1rem; }.recurrence-counts span { display: grid; gap: 0.15rem; padding: 0.55rem; border-top: 1px solid var(--line); color: var(--muted); font: 0.61rem "SFMono-Regular", Consolas, monospace; }.recurrence-counts b { color: var(--ink); font-size: 1.2rem; }.recurrence-counts .unknown-chip { border-top-color: var(--purple); color: var(--purple); }.recurrence-counts .unknown-chip b { color: var(--purple); font-size: 0.68rem; }.example-recurrence { border-bottom: 1px solid var(--line); }.example-recurrence .narrative-marker span { color: var(--ochre); }
+
+@media (max-width: 1100px) { .page-frame { grid-template-columns: minmax(7rem, 9rem) minmax(0, 1fr); gap: 1.5rem; }.orientation-link { grid-template-columns: 1.25rem 1fr; font-size: 0.62rem; }.map-family-node { min-height: 10rem; }.map-family-node strong { font-size: 0.9rem; }.map-family-question { font-size: 0.66rem; }.map-family-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); top: 10rem; }.map-canvas { min-height: 62rem; }.map-record-row { top: 35rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }.map-output-row { top: 47rem; }.map-learning { top: 57rem; }.map-label-bottom { bottom: 0.7rem; }.operator-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }.operator-step:nth-child(n+4) { border-top: 1px solid var(--line); }.operator-step:nth-child(3n) { border-right: 0; }.operator-step:nth-child(4n) { border-right: 1px solid var(--line); } }
+@media (max-width: 820px) { .page-frame { display: block; width: min(100% - 2rem, 46rem); }.orientation-rail { display: none; }.orientation-mobile { display: block; margin: 0 0 1.25rem; border-block: 1px solid var(--line); }.orientation-mobile > summary { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.75rem 0; color: var(--ink); font: 0.65rem "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; text-transform: uppercase; }.orientation-mobile > summary strong { color: var(--teal); font-size: 0.62rem; }.orientation-mobile-body { padding: 0.25rem 0 1rem; }.orientation-mobile-current { display: flex; align-items: center; gap: 0.4rem; margin: 0 0 0.8rem; color: var(--muted); font-size: 0.75rem; }.orientation-mobile nav { display: grid; gap: 0.15rem; }.orientation-mobile .orientation-link { font-size: 0.7rem; }.orientation-mobile-next { margin: 0.9rem 0 0; padding-top: 0.7rem; border-top: 1px solid var(--line); font-size: 0.78rem; }.orientation-mobile-next span { display: inline; }.route-brief { grid-template-columns: 1fr; gap: 0.55rem; }.route-brief span { padding-block: 0.15rem; }.map-focus-detail { grid-template-columns: 1fr; }.map-focus-detail dl { grid-template-columns: 1fr 1fr 1fr; }.map-text-equivalent ol { grid-template-columns: 1fr; }.route-studio-layout { grid-template-columns: 1fr; }.example-narrative { grid-template-columns: 1fr; gap: 0.7rem; }.narrative-marker { position: static; display: flex; align-items: baseline; gap: 0.65rem; }.narrative-marker span { font-size: 2rem; }.motion-visual-grid { grid-template-columns: 1fr; }.absence-ledger { padding: 0; border-left: 0; border-top: 1px solid var(--line); padding-top: 1rem; }.operator-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }.operator-step:nth-child(3n) { border-right: 1px solid var(--line); }.operator-step:nth-child(2n) { border-right: 0; }.operator-step:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 600px) { .site-header { width: min(100% - 1.25rem, var(--measure)); }.page-frame { width: min(100% - 1.25rem, 46rem); }.hero, .home-section, .reading-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro { width: 100%; }.hero { padding-top: 2.25rem; padding-bottom: 1.7rem; }.hero h1 { max-width: 11ch; font-size: clamp(2.45rem, 12.2vw, 4.2rem); line-height: 0.98; }.standfirst { max-width: none; margin-top: 0.8rem; font-size: 1.03rem; line-height: 1.42; }.hero-bridge { margin-top: 0.55rem; font-size: 0.78rem; line-height: 1.4; }.door-grid { gap: 0.65rem; margin-top: 1.2rem; }.door-card { min-height: 10.6rem; padding: 0.95rem; }.door-title { font-size: 1.65rem; }.door-promise { font-size: 0.78rem; }.door-mode { max-width: 13ch; font-size: 0.5rem; }.door-preview { min-height: 2.45rem; }.route-intro { padding-top: 2.3rem; padding-bottom: 1.4rem; }.route-intro h1 { font-size: clamp(2.6rem, 13vw, 4.6rem); }.route-lede { font-size: 1.08rem; line-height: 1.4; }.reading-index { grid-template-columns: 1fr; }.reading-progress-wrap { margin-bottom: 1.3rem; }.pull-quote { margin-bottom: 2rem; }.map-canvas { display: grid; gap: 0.7rem; min-height: 0; overflow: visible; padding: 0.8rem; }.relationship-connectors { display: none; }.map-canvas-label { position: static; transform: none; white-space: normal; }.map-label-top { order: -2; }.map-start, .map-family-grid, .map-record-row, .map-output-row, .map-learning { position: static; width: auto; }.map-start { text-align: left; }.map-family-grid { grid-template-columns: 1fr 1fr; }.map-family-node { min-height: 10.5rem; }.map-record-row, .map-output-row { display: grid; grid-template-columns: 1fr; gap: 0.55rem; }.map-output-row .map-node { min-height: 6rem; }.map-learning { min-height: 5.4rem; }.map-label-bottom { order: 5; }.map-focus-detail dl { grid-template-columns: 1fr; }.map-text-equivalent ol { padding-left: 1.2rem; }.receipt-facts { grid-template-columns: 1fr; }.receipt-flow { grid-template-columns: 1fr 1fr; }.receipt-flow li { min-height: 4.4rem; }.story-track { grid-template-columns: 1fr; }.story-arrow { justify-self: center; transform: rotate(90deg); }.recurrence-map { grid-template-columns: 1fr; }.recurrence-traces { display: none; }.recurrence-counts { grid-template-columns: 1fr 1fr; }.recurrence-counts span { min-height: 3.3rem; }.operator-steps { grid-template-columns: 1fr; }.operator-step, .operator-step:nth-child(n) { min-height: auto; border-right: 0; border-top: 1px solid var(--line); }.operator-step:first-child { border-top: 0; }.narrative-visual { padding: 0.75rem; } }
+
+/* These late narrow-screen rules deliberately follow the tablet map rules above. */
+@media (max-width: 600px) {
+  .route-brief { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; padding-block: 0.6rem; }
+  .route-brief span { min-width: 0; padding-left: 0.4rem; font-size: 0.64rem; line-height: 1.28; }
+  .route-brief strong { font-size: 0.5rem; letter-spacing: 0.06em; white-space: nowrap; }
+}
+
+@media (min-width: 821px) {
+  .map-family-grid { top: 8.5rem; }
+  .map-record-row { top: 21rem; }
+  .map-output-row { top: 29.5rem; }
+  .map-learning { top: 39.5rem; }
+}
+
+@media (forced-colors: active) {
+  .orientation-rail, .orientation-mobile, .route-brief, .door-preview, .map-canvas, .map-node, .map-family-node, .map-focus-detail, .route-studio-form, .route-receipt-card, .static-route-equivalent, .narrative-visual { border-color: CanvasText; background: Canvas; color: CanvasText; box-shadow: none; }.relationship-connectors { stroke: CanvasText; opacity: 1; }.map-family-node:hover, .map-family-node:focus-visible, .map-family-node.is-selected { outline: 3px solid Highlight; background: Canvas; }.orientation-link:hover, .orientation-link:focus-visible, .orientation-link.is-current { border-color: Highlight; color: LinkText; background: Canvas; }.receipt-route-badge, .receipt-state-actions button { border-color: CanvasText; color: CanvasText; }.map-route .map-loop-mark { color: CanvasText; }.presence.yes, .presence.no { border-color: CanvasText; }.preview-line, .preview-map-link, .preview-receipt-line { background: Canvas; border-color: CanvasText; color: CanvasText; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress span { transition: none; }
+  .map-family-node, .door-card { transition: none; }
+}
+
+@media print {
+  html { scroll-padding-top: 0; }
+  body { overflow: visible; }
+  .page-frame { display: block; width: 100%; }
+  .orientation-rail, .orientation-mobile, .route-brief, .reading-index, .reading-progress-wrap, .studio-actions, .studio-boundary, .receipt-state-actions, .map-family-node .map-family-connection, .map-label-top, .map-label-bottom { display: none !important; }
+  .page-content > .hero, .page-content > .home-section, .page-content > .reading-route, .page-content > .map-route, .page-content > .apply-route, .page-content > .examples-route, .page-content > .boundaries-route, .page-content > .sources-route, .page-content > .research-route, .page-content > .history-route, .page-content > .route-intro { width: 100%; }
+  .relationship-connectors { opacity: 0.8; }.map-canvas { min-height: 47rem; break-inside: avoid; }.map-focus-detail, .static-route-equivalent, .route-receipt-card, .narrative-visual { break-inside: avoid; box-shadow: none; }.route-studio-layout { grid-template-columns: 1fr 1fr; }.example-narrative { break-inside: avoid; }.narrative-marker { position: static; }.static-route-equivalent { display: block !important; }.static-route-equivalent > summary { display: none; }.static-route-body { display: block !important; padding: 1rem; }.reading-section { scroll-margin-top: 0; }
+}
 </style>
   <noscript><style>.secondary-nav-wrap { display: block; }.nav-more { display: none; }</style></noscript>
 </head>
@@ -521,8 +640,38 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
   </nav></div>
   </header>
   <main id="main" tabindex="-1">
-    <section class="route-intro"><p class="eyebrow">STANDALONE REVIEW EXPORT</p><h1>Pattern Map v16 — standalone owner-review export</h1><p class="route-lede">A self-contained local HTML companion. All principal doors and secondary routes are included below as readable sections.</p></section>
-    <div class="standalone-intro"><p class="callout-inline"><strong>Local owner review only.</strong> This file is designed to open directly from disk. It contains no deployed URL, external runtime, or research result.</p></div><section class="standalone-section" id="home" aria-label="Home">
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Start here</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home is-current" aria-current="location" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#read-read-idea">Read the idea <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">STANDALONE REVIEW EXPORT</p><h1>Pattern Map v16 — standalone owner-review export</h1><p class="route-lede">A self-contained local HTML companion. All principal doors and secondary routes are included below as readable sections.</p></section>
+
+        <div class="standalone-intro"><p class="callout-inline"><strong>Local owner review only.</strong> This file is designed to open directly from disk. It contains no deployed URL, external runtime, or research result.</p></div><section class="standalone-section" id="home" aria-label="Home">
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Start here</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home is-current" aria-current="location" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#read-read-idea">Read the idea <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+
 
 
   <section class="hero" id="home-top">
@@ -534,23 +683,40 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
     </div>
     <nav class="door-grid" aria-label="Three principal doors">
       <a class="door-card door-read" href="#read-read-idea">
-    <span class="door-number">01</span>
+    <span class="door-topline"><span class="door-number">01</span><span class="door-mode">follow the thread</span></span>
     <span class="door-title">Read the idea</span>
     <span class="door-promise">Continue the coffee conversation: why choices made before generation shape what an answer can become.</span>
+    <span class="door-preview door-preview-reading" aria-hidden="true"><span class="preview-line preview-line-long"></span><span class="preview-line preview-line-mid"></span><span class="preview-line preview-line-short"></span><span class="preview-caption">60–90 sec → full essay</span></span>
     <span class="door-arrow" aria-hidden="true">↗</span>
   </a><a class="door-card door-map" href="#map-map">
-    <span class="door-number">02</span>
+    <span class="door-topline"><span class="door-number">02</span><span class="door-mode">see the relations</span></span>
     <span class="door-title">Explore the map</span>
     <span class="door-promise">See six ways to improve what the system notices, compares, preserves, questions, and learns from.</span>
+    <span class="door-preview door-preview-map" aria-hidden="true"><span class="preview-map-node">F1</span><span class="preview-map-node">F2</span><span class="preview-map-node">F3</span><span class="preview-map-node">F4</span><span class="preview-map-node">F5</span><span class="preview-map-node">F6</span><span class="preview-map-link preview-map-link-a"></span><span class="preview-map-link preview-map-link-b"></span><span class="preview-caption">notice → compare → learn</span></span>
     <span class="door-arrow" aria-hidden="true">↗</span>
   </a><a class="door-card door-apply" href="#apply-apply">
-    <span class="door-number">03</span>
+    <span class="door-topline"><span class="door-number">03</span><span class="door-mode">make a bounded choice</span></span>
     <span class="door-title">Apply it</span>
     <span class="door-promise">Turn the idea into a proportionate workflow, from one decision brief to an inspectable agent procedure.</span>
+    <span class="door-preview door-preview-apply" aria-hidden="true"><span class="preview-receipt-line preview-receipt-label">DECISION BRIEF</span><span class="preview-receipt-line preview-receipt-route">route <b>→</b> stop</span><span class="preview-receipt-line preview-receipt-human">human disposition</span><span class="preview-caption">choose → record → hold</span></span>
     <span class="door-arrow" aria-hidden="true">↗</span>
   </a>
     </nav>
   </section>
+  <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Start here</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Start here</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home is-current" aria-current="location" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#read-read-idea">Read the idea <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
   <section class="home-section home-short" aria-labelledby="home-short-entry-heading">
     <div class="section-heading"><p class="eyebrow">A CUMULATIVE 60–90 SECOND ENTRY</p><h3 id="home-short-entry-heading">The idea before the machinery.</h3><p>Start here if you want the broad proposition in one sitting. The longer piece remains a human thought piece, not a protocol preamble.</p></div>
     <div class="short-entry reading-column"><h4 id="home-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
@@ -578,19 +744,56 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
     <a class="" href="#examples-examples">Examples</a><a class="" href="#boundaries-boundaries">Boundaries</a><a class="" href="#sources-sources">Sources</a><a class="" href="#research-research">Research</a><a class="" href="#history-history">History</a>
   </nav>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="read" aria-label="Read the idea">
-    <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 01</p><h2>Read the idea</h2><p class="route-lede">Continue the coffee conversation: why choices made before generation shape what an answer can become.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Read the idea</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read is-current" aria-current="location" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#map-map">Explore the map <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 01</p><h2>Read the idea</h2><p class="route-lede">Continue the coffee conversation: why choices made before generation shape what an answer can become.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Read the idea</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Read the idea</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read is-current" aria-current="location" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#map-map">Explore the map <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="reading-route" id="read-read-idea">
-    <div class="reading-index" aria-label="Reading path"><span class="is-current">1. Enter in 60–90 seconds</span><span>2. Read the complete thought</span><span>3. Optional mentor handoff</span></div>
-    <section class="short-entry reading-column" aria-labelledby="read-read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h3 id="read-read-short-heading">The broad idea first.</h3><h4 id="read-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
+    <div class="route-brief" aria-label="How to use the Read route"><span><strong>What this is</strong> A human thought piece about upstream choices.</span><span><strong>What you can do</strong> Start short, then read deep.</span><span><strong>Next</strong> Explore the six-family map.</span></div>
+    <nav class="reading-index" aria-label="Reading path">
+      <a class="is-current" data-reading-link href="#read-read-quick"><span>01</span><strong>Enter in 60–90 seconds</strong></a>
+      <a data-reading-link href="#read-read-essay"><span>02</span><strong>Read the complete thought</strong></a>
+      <a data-reading-link href="#read-read-mentor"><span>03</span><strong>Optional mentor handoff</strong></a>
+    </nav>
+    <div class="reading-progress-wrap"><span>Reading progress</span><div class="reading-progress" data-reading-progress role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><span data-reading-progress-value>0%</span></div>
+    <blockquote class="pull-quote"><p>“The answer inherits those upstream choices.”</p><cite>Frozen v16 standfirst</cite></blockquote>
+    <section class="short-entry reading-column reading-section" id="read-read-quick" data-reading-section aria-labelledby="read-read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h3 id="read-read-short-heading">The broad idea first.</h3><h4 id="read-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
 <p>AI answers can sound generic before the model writes a word. The weakness may be upstream: the search followed the obvious path, familiar sources crowded out a specialist perspective, no one compared the case with a useful peer or baseline, an expected piece of information was missing, or the system had no memory of what happened before. The answer inherits those choices.</p>
 <p>Pattern Recognition is the discipline of improving them. The Discrimination Layer names the responsibility for deciding what the system should notice, acquire, compare, preserve, question, and allow to influence an answer—and for making those choices visible enough to correct. Here “discrimination” means differentiating among information candidates and possible next actions, not classifying people; “layer” means a responsibility, not a mandatory architecture.</p>
 <p>The six families are: look beyond the default path for a peripheral signal; weigh sources by their role and support for this exact claim; notice velocity against a meaningful baseline; notice expected absences while preserving versioned memory; compare peers, periods, and structures without forcing false equivalence; and learn from defined outcomes without rewriting history.</p>
 <p>Peripheral material is a candidate for inspection, not a truth signal. Repeated reports are observations, not automatically separate confirmation. Access is not permission, and knowing where something came from does not prove it is correct. People still make the judgment and keep authority for consequential action.</p>
 <p>Sometimes this needs only a short note naming the decision and assumptions. Higher-stakes work may merit a reviewable evidence record, clear cost and stopping rules, and a person who can correct the route. Low-stakes rewrites and obvious transformations may need almost none. The proposal is broader than origin counting and narrower than a claim to replace expertise. It asks us to improve the room before we ask AI to make the room sound finished.</p></section>
-    <section class="essay-section" aria-labelledby="read-complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h3 id="read-complete-essay-heading">Pattern Recognition: The Discrimination Layer</h3><p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p></div><article class="reading-column essay-content"><h3 id="read-essay-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h3>
+    <section class="essay-section reading-section" id="read-read-essay" data-reading-section aria-labelledby="read-complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h3 id="read-complete-essay-heading">Pattern Recognition: The Discrimination Layer</h3><p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p></div><article class="reading-column essay-content"><h3 id="read-essay-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h3>
 <h4 id="read-essay-what-an-ai-system-should-notice-before-it-writes">What an AI system should notice before it writes</h4>
 <p>Some AI answers are wrong in an obvious way. More unsettling are the answers that are polished, reasonable, and strangely familiar. They sound as if the system found the same few articles everyone else found, asked the same safe question, and returned the same middle-of-the-road summary. The words are competent. The work still feels generic.</p>
 <p>We tend to blame the writing. Sometimes that is fair. But the answer may have become generic earlier, before the model wrote a sentence: the search followed the default path; familiar sources crowded out a specialist perspective; no one compared the case with a useful peer or an earlier period; an expected piece of information was missing; or the system had no memory of what had already been tried and what happened next.</p>
@@ -660,7 +863,7 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>Sometimes the answer will be: nothing special. The task is simple, the source is clear, the permission is obvious, and the cost of extra structure exceeds the likely benefit. Sometimes the answer will be: we need one specialist perspective, one meaningful baseline, one missing field, or one honest look at whether nine apparent sources are really one path.</p>
 <p>That is the ambition of Pattern Recognition in v16: raise the floor of disciplined upstream attention without pretending to automate the ceiling of expertise. It can scaffold comparison, source tracing, memory, gap detection, and outcome review. It cannot replace taste, accountability, permission, contextual judgment, or the sense needed when the situation is genuinely new.</p>
 <p>I would like this to remain an intelligent continuation of a coffee conversation, not a demand to adopt a complete system. The invitation is smaller and more useful: look at the room before the answer, make the important choices visible, and leave enough of the route open that another person can challenge it.</p></article></section>
-    <section class="optional-handoff" aria-labelledby="read-mentor-heading"><details><summary id="read-mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column"><h4 id="read-cover-cover-note-for-mentor-review">Cover note for mentor review</h4>
+    <section class="optional-handoff reading-section" id="read-read-mentor" data-reading-section aria-labelledby="read-mentor-heading"><details><summary id="read-mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column"><h4 id="read-cover-cover-note-for-mentor-review">Cover note for mentor review</h4>
 <p>I’m sending this as a new v16 manuscript because I want to recover the thing I was trying to say in our original coffee conversation, before the project grew more technical than the idea needed to be.</p>
 <p>The center is deliberately broad: an AI answer inherits choices made before generation. What was searched, missed, compared, remembered, or allowed to shape the context can matter as much as the final prose. I’m calling the responsibility for those choices Pattern Recognition / the Discrimination Layer. The six original families remain, but as ways of seeing rather than a product specification.</p>
 <p>The common-origin case—nine reports tracing to one announcement—now arrives as one later example. It no longer defines the project, and The Echo Problem remains a separate, unrun research track.</p>
@@ -674,12 +877,100 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>This is a conceptual framework and a set of testable questions, not empirical validation or a claim that the six families are newly invented. It may be implemented as a lightweight decision brief, a richer evidence record, or a distributed workflow—and may be unnecessary for simple tasks. The invitation is to inspect the room before asking AI to make the room sound finished.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/NINETY_SECOND_VERSION.md</code></li><li><code>manuscript/PATTERN_RECOGNITION_V16.md</code></li><li><code>manuscript/MENTOR_COVER_NOTE.md</code></li><li><code>manuscript/PUBLIC_ABSTRACT.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="map" aria-label="Explore the map">
-    <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 02</p><h2>Explore the map</h2><p class="route-lede">See six ways to improve what the system notices, compares, preserves, questions, and learns from.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Explore the map</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map is-current" aria-current="location" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#apply-apply">Apply it <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 02</p><h2>Explore the map</h2><p class="route-lede">See six ways to improve what the system notices, compares, preserves, questions, and learns from.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Explore the map</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Explore the map</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map is-current" aria-current="location" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#apply-apply">Apply it <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="map-route" id="map-map">
-    <div class="map-control-bar" aria-labelledby="map-map-controls-heading"><div><p class="eyebrow">ACCESSIBLE INTERACTIVE MAP</p><h3 id="map-map-controls-heading">Select a family to focus the reading.</h3><p class="muted" id="map-family-focus-status" aria-live="polite">All six families are visible. Focus controls add emphasis; they never hide essential meaning.</p></div><button type="button" class="quiet-button" data-family-clear>Show all</button></div>
+
+  <section class="topology-section" id="map-current-map" aria-labelledby="map-topology-heading">
+    <div class="section-heading">
+      <p class="eyebrow">CURRENT V16 RELATIONSHIP VIEW</p>
+      <h3 id="map-topology-heading">A connected movement, not a mandatory pipeline.</h3>
+      <p>The map starts with a real decision and permission envelope, widens and weighs what enters, compares motion and gaps, routes a bounded response, preserves influence, and lets later learning loop back without rewriting history. The relationships are a teaching aid, not an instruction to run every family.</p>
+    </div>
+    <figure class="relationship-map" aria-labelledby="map-topology-caption">
+      <div class="map-canvas" data-map-stage>
+        <svg class="relationship-connectors" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M500 84 C430 120 190 125 86 196" data-map-edge="F1"></path>
+          <path d="M500 84 C450 124 315 136 245 196" data-map-edge="F2"></path>
+          <path d="M500 84 C484 135 416 154 403 196" data-map-edge="F3"></path>
+          <path d="M500 84 C516 135 585 154 561 196" data-map-edge="F4"></path>
+          <path d="M500 84 C550 124 688 136 719 196" data-map-edge="F5"></path>
+          <path d="M500 84 C570 120 810 125 880 196" data-map-edge="F6"></path>
+          <path d="M86 292 C166 332 262 340 338 364" data-map-edge="F1-record"></path>
+          <path d="M245 292 C278 330 314 342 382 364" data-map-edge="F2-record"></path>
+          <path d="M403 292 C405 330 414 342 426 364" data-map-edge="F3-record"></path>
+          <path d="M561 292 C548 330 532 342 514 364" data-map-edge="F4-record"></path>
+          <path d="M719 292 C682 330 635 342 558 364" data-map-edge="F5-record"></path>
+          <path d="M880 292 C792 332 726 340 602 364" data-map-edge="F6-record"></path>
+          <path d="M500 456 C500 488 500 500 500 528" data-map-edge="route"></path>
+          <path d="M628 574 C744 620 792 574 744 526" data-map-edge="learning"></path>
+          <path d="M744 526 C720 490 656 482 612 506" data-map-edge="learning-back"></path>
+        </svg>
+        <div class="map-canvas-label map-label-top">frame the decision <span aria-hidden="true">↓</span> widen the field <span aria-hidden="true">↓</span> weigh the relation</div>
+        <div class="map-node map-start"><span class="node-kicker">STARTING QUESTION</span><strong>Decision brief + permission envelope</strong><small>real decision · audience · consequence · budget · allowed operations</small></div>
+        <div class="map-family-grid" aria-label="Six current v16 families in order"><button type="button" class="map-family-node family-f1" data-map-family="F1" data-map-name="Peripheral signal" data-map-question="What might the default path have overlooked?" data-map-inputs="default path + peripheral candidate" data-map-comparison="prominence, specialist relevance, and what the default path omitted" data-map-records="candidate source role + disconfirmation note" data-map-boundary="underweighted is a reason to inspect, not a reason to believe" data-map-connections="widens the field before F2 weighs it" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F1</span><strong>Peripheral signal</strong><span class="map-family-question">What might the default path have overlooked?</span><span class="map-family-connection">widens the field before F2 weighs it</span></button><button type="button" class="map-family-node family-f2" data-map-family="F2" data-map-name="Source weighing" data-map-question="What role does each source play for this exact claim?" data-map-inputs="claim + source identity + source role" data-map-comparison="support, challenge, relevance, origin, and permission" data-map-records="evidence register + typed source relationship" data-map-boundary="recurrence is not independent corroboration" data-map-connections="weighs F1 candidates and feeds F5 comparisons" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F2</span><strong>Source weighing</strong><span class="map-family-question">What role does each source play for this exact claim?</span><span class="map-family-connection">weighs F1 candidates and feeds F5 comparisons</span></button><button type="button" class="map-family-node family-f3" data-map-family="F3" data-map-name="Velocity / motion" data-map-question="What is changing unusually relative to a relevant baseline?" data-map-inputs="comparable observations + time window" data-map-comparison="current movement against a relevant baseline" data-map-records="velocity note + measurement caveat" data-map-boundary="one observation is not velocity" data-map-connections="adds motion context before a route is chosen" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F3</span><strong>Velocity / motion</strong><span class="map-family-question">What is changing unusually relative to a relevant baseline?</span><span class="map-family-connection">adds motion context before a route is chosen</span></button><button type="button" class="map-family-node family-f4" data-map-family="F4" data-map-name="Absence + memory" data-map-question="What should be present but is not, and what prior context changes the meaning of now?" data-map-inputs="explicit expectation + prior context" data-map-comparison="what should be present against what is present" data-map-records="gap record + versioned memory" data-map-boundary="a gap is not proof of nonexistence" data-map-connections="absence depends on a baseline and memory" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F4</span><strong>Absence + memory</strong><span class="map-family-question">What should be present but is not, and what prior context changes the meaning of now?</span><span class="map-family-connection">absence depends on a baseline and memory</span></button><button type="button" class="map-family-node family-f5" data-map-family="F5" data-map-name="Structured patterns" data-map-question="What becomes visible through explicit comparison?" data-map-inputs="named peers, periods, structures, or origins" data-map-comparison="recurrence, difference, missing perspective, and common pathways" data-map-records="comparison matrix + origin note" data-map-boundary="common-origin recurrence keeps independence UNKNOWN" data-map-connections="makes F2 relationships and F6 updates inspectable" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F5</span><strong>Structured patterns</strong><span class="map-family-question">What becomes visible through explicit comparison?</span><span class="map-family-connection">makes F2 relationships and F6 updates inspectable</span></button><button type="button" class="map-family-node family-f6" data-map-family="F6" data-map-name="Learning loop" data-map-question="What did we expect, what happened, and what bounded update is justified?" data-map-inputs="recorded expectation + later outcome" data-map-comparison="what happened, what it cost, and what remains confounded" data-map-records="outcome review + bounded update proposal" data-map-boundary="a later outcome does not rewrite the old record" data-map-connections="loops later learning back to the next decision" aria-controls="map-map-focus-detail" aria-pressed="false"><span class="map-family-id">F6</span><strong>Learning loop</strong><span class="map-family-question">What did we expect, what happened, and what bounded update is justified?</span><span class="map-family-connection">loops later learning back to the next decision</span></button></div>
+        <div class="map-record-row" aria-label="Supporting records">
+          <div class="map-node map-record"><span class="node-kicker">NOTICE</span><strong>Evidence + capture</strong><small>what entered, what failed, what remains unknown</small></div>
+          <div class="map-node map-record"><span class="node-kicker">WEIGH</span><strong>Source role + claim</strong><small>support, challenge, relevance, origin, permission</small></div>
+          <div class="map-node map-record"><span class="node-kicker">COMPARE</span><strong>Baseline + gap + origin</strong><small>motion, expected absence, peers, common pathways</small></div>
+          <div class="map-node map-record"><span class="node-kicker">REMEMBER</span><strong>Versioned context</strong><small>dated memory stays visible; history is not overwritten</small></div>
+        </div>
+        <div class="map-output-row">
+          <div class="map-node map-baseline"><span class="node-kicker">F4 DEPENDENCY</span><strong>Baseline → absence + memory</strong><small>what should be present must be stated before a gap can be interpreted</small></div>
+          <div class="map-node map-route"><span class="node-kicker">ROUTE / STOP</span><strong>ACQUIRE · COMPARE · CLARIFY</strong><small>or HOLD · DEFER · ESCALATE · REFUSE when the route or authority requires it</small></div>
+          <div class="map-node map-human"><span class="node-kicker">GENERATION + AUTHORITY</span><strong>Influence receipt → human disposition</strong><small>selected material can shape an answer; a person may hold, correct, or override</small></div>
+        </div>
+        <div class="map-node map-learning"><span class="node-kicker">F6 LEARNING LOOP</span><strong>expect → outcome → bounded update</strong><small>later learning returns to the next decision without turning an outcome into proof</small><span class="map-loop-mark" aria-hidden="true">↺</span></div>
+        <div class="map-canvas-label map-label-bottom">The loop changes the next brief; it does not rewrite the evidence behind the last one.</div>
+      </div>
+      <figcaption id="map-topology-caption" class="relationship-caption"><strong>Current v16 topology.</strong> Six families stay in view as connected responsibilities around a bounded, human-correctable route. The dashed loop is later learning, not an automatic policy update.</figcaption>
+    </figure>
+    <aside class="map-focus-detail" id="map-map-focus-detail" aria-live="polite" aria-atomic="true">
+      <div><p class="eyebrow">MAP INSPECTION</p><h4 data-map-focus-title>All six families remain in view.</h4><p data-map-focus-question>Choose a family to inspect its question, inputs, comparison, boundary, record, and adjacent connections. Focus adds emphasis; it never hides essential meaning.</p></div>
+      <dl><div><dt>Inputs</dt><dd data-map-focus-inputs>decision brief, permission, evidence, baselines, gaps, comparisons, and outcomes</dd></div><div><dt>Record</dt><dd data-map-focus-record>the route keeps observation, interpretation, recommendation, and human disposition distinct</dd></div><div><dt>Boundary</dt><dd data-map-focus-boundary>unknown relations stay unknown; human authority remains explicit</dd></div></dl>
+      <p class="map-focus-status" data-map-focus-status>All six families are available for comparison.</p>
+    </aside>
+    <details class="map-text-equivalent" open>
+      <summary>Text equivalent: how the current v16 map connects</summary>
+      <p>Read the visual from the starting question through the six family questions, supporting records, bounded route, generation boundary, and learning loop. The family list below is the complete accessible equivalent.</p>
+      <ol><li><strong>F1 · Peripheral signal</strong><span>What might the default path have overlooked?</span><small>Inputs: default path + peripheral candidate. Compare: prominence, specialist relevance, and what the default path omitted. Record: candidate source role + disconfirmation note. Boundary: underweighted is a reason to inspect, not a reason to believe.</small></li><li><strong>F2 · Source weighing</strong><span>What role does each source play for this exact claim?</span><small>Inputs: claim + source identity + source role. Compare: support, challenge, relevance, origin, and permission. Record: evidence register + typed source relationship. Boundary: recurrence is not independent corroboration.</small></li><li><strong>F3 · Velocity / motion</strong><span>What is changing unusually relative to a relevant baseline?</span><small>Inputs: comparable observations + time window. Compare: current movement against a relevant baseline. Record: velocity note + measurement caveat. Boundary: one observation is not velocity.</small></li><li><strong>F4 · Absence + memory</strong><span>What should be present but is not, and what prior context changes the meaning of now?</span><small>Inputs: explicit expectation + prior context. Compare: what should be present against what is present. Record: gap record + versioned memory. Boundary: a gap is not proof of nonexistence.</small></li><li><strong>F5 · Structured patterns</strong><span>What becomes visible through explicit comparison?</span><small>Inputs: named peers, periods, structures, or origins. Compare: recurrence, difference, missing perspective, and common pathways. Record: comparison matrix + origin note. Boundary: common-origin recurrence keeps independence UNKNOWN.</small></li><li><strong>F6 · Learning loop</strong><span>What did we expect, what happened, and what bounded update is justified?</span><small>Inputs: recorded expectation + later outcome. Compare: what happened, what it cost, and what remains confounded. Record: outcome review + bounded update proposal. Boundary: a later outcome does not rewrite the old record.</small></li></ol>
+      <p><strong>Across the map:</strong> F4's absence claim depends on an explicit baseline and retained memory. F2/F5 can surface common-origin recurrence, but independence remains <code>UNKNOWN</code>. F6 compares a recorded expectation with a later outcome and proposes a bounded update for human disposition.</p>
+    </details>
+    <p class="topology-note"><strong>Human correction remains in the loop.</strong> A person may revise a brief, correct a relationship, change a permission, hold a route, or override a recommendation. That disposition is a record of a decision, not a new fact.</p>
+  </section>
+    <div class="map-control-bar" aria-labelledby="map-map-controls-heading"><div><p class="eyebrow">FAMILY INSPECTION</p><h3 id="map-map-controls-heading">Then open the family records.</h3><p class="muted" id="map-family-focus-status" aria-live="polite">All six families are visible. Focus controls add emphasis; they never hide essential meaning.</p></div><button type="button" class="quiet-button" data-family-clear>Show all</button></div>
     <div class="family-grid"><article id="map-family-F1" class="family-card family-f1" data-family-card="F1">
     <div class="family-meta"><span class="family-id">F1</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="F1" aria-pressed="false">Focus this family</button></div>
     <h4>Peripheral signal</h4>
@@ -724,31 +1015,6 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
     <details class="family-detail"><summary>Implementation detail</summary><p><strong>Specification:</strong> Compare recorded expectations, routes, decisions, costs, and defined outcomes, then propose a bounded update while preserving the original record.</p><p><strong>Technical mechanism:</strong> Outcome review with a predeclared outcome window, attribution boundary, missingness state, and dispositioned update proposal.</p><dl><div><dt>lightweight</dt><dd>Expectation/outcome table with one proposed change.</dd></div><div><dt>moderate</dt><dd>Append-only outcome reviews linked to receipts and versions.</dd></div><div><dt>advanced</dt><dd>Approved matched-budget policy comparisons preserving null, harmful, shortcut, fragility, and non-transfer results.</dd></div></dl><p class="muted"><strong>When not to use:</strong> there is no defined outcome or measurement window the proposed update would affect external people or systems without an authorized review</p></details>
   </article></div>
 
-  <section class="topology-section" aria-labelledby="map-topology-heading">
-    <div class="section-heading">
-      <p class="eyebrow">CURRENT V16 RELATIONSHIP VIEW</p>
-      <h3 id="map-topology-heading">A connected movement, not a mandatory pipeline.</h3>
-      <p>The current map keeps the six families visible while showing the supporting records around them. A lightweight operator may realize this as a few tables; an advanced builder may distribute it across tools. The arrows describe relationships, not an instruction to run every step.</p>
-    </div>
-    <figure class="topology-figure" aria-labelledby="map-topology-caption">
-      <figcaption id="map-topology-caption" class="sr-only">Current v16 relationship view. A decision brief and permission envelope shape all six families. Evidence, baselines, gaps, comparisons, and disconfirmation feed a bounded route. Human disposition can correct any stage. Selected material reaches an influence receipt and generation; later outcomes feed the learning loop back to a bounded update.</figcaption>
-      <div class="topology-grid">
-        <div class="topology-node topology-start"><span class="node-kicker">STARTING CONTEXT</span><strong>Decision brief + permission envelope</strong><small>real decision · audience · stakes · budget · allowed operations</small></div>
-        <div class="topology-family-row" aria-label="Six families">
-          <a class="topology-node topology-family family-f1" href="#map-family-F1"><span>F1</span><strong>Peripheral signal</strong><small>What might the default path have overlooked?</small></a><a class="topology-node topology-family family-f2" href="#map-family-F2"><span>F2</span><strong>Source weighing</strong><small>What role does each source play for this exact claim?</small></a><a class="topology-node topology-family family-f3" href="#map-family-F3"><span>F3</span><strong>Velocity / motion</strong><small>What is changing unusually relative to a relevant baseline?</small></a><a class="topology-node topology-family family-f4" href="#map-family-F4"><span>F4</span><strong>Absence + memory</strong><small>What should be present but is not, and what prior context changes the meaning of now?</small></a><a class="topology-node topology-family family-f5" href="#map-family-F5"><span>F5</span><strong>Structured patterns</strong><small>What becomes visible through explicit comparison?</small></a><a class="topology-node topology-family family-f6" href="#map-family-F6"><span>F6</span><strong>Learning loop</strong><small>What did we expect, what happened, and what bounded update is justified?</small></a>
-        </div>
-        <div class="topology-records" aria-label="Supporting records">
-          <div class="topology-node"><span class="node-kicker">OBSERVE</span><strong>Evidence register + capture receipts</strong><small>what entered, what failed, what remains unknown</small></div>
-          <div class="topology-node"><span class="node-kicker">COMPARE</span><strong>Baseline · gap · memory · origin records</strong><small>time, peers, missing expected fields, shared pathways</small></div>
-          <div class="topology-node"><span class="node-kicker">CHALLENGE</span><strong>Disconfirmation + uncertainty review</strong><small>contrary, missing, differently rooted, or limiting material</small></div>
-        </div>
-        <div class="topology-route"><span class="route-arrow" aria-hidden="true">↓</span><div class="topology-node route-node"><span class="node-kicker">BOUNDED ROUTE</span><strong>ACQUIRE · COMPARE · CLARIFY</strong><small>or HOLD · DEFER · ESCALATE · REFUSE</small></div><div class="route-branch"><span>ANSWER / ANSWER_PROVISIONALLY</span><span>HUMAN DISPOSITION</span></div></div>
-        <div class="topology-endpoints"><div class="topology-node"><span class="node-kicker">INFLUENCE</span><strong>Influence receipt + context packet</strong><small>selected and withheld material stays inspectable</small></div><div class="topology-node"><span class="node-kicker">LEARN</span><strong>F6 Learning loop</strong><small>recorded expectation → outcome → bounded update proposal</small></div></div>
-      </div>
-    </figure>
-    <p class="topology-note"><strong>Human correction remains in the loop.</strong> A person may revise a brief, correct a relationship, change a permission, hold a route, or override a recommendation. That disposition is a record of a decision, not a new fact.</p>
-  </section>
-
   <section class="glossary-section" aria-labelledby="map-glossary-heading">
     <div class="section-heading compact-heading">
       <p class="eyebrow">OPTIONAL GLOSSARY</p>
@@ -762,11 +1028,66 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
     <section class="map-boundary callout" aria-labelledby="map-map-boundary-heading"><p class="eyebrow">MAP BOUNDARY</p><h3 id="map-map-boundary-heading">The order is a teaching aid, not a compulsory sequence.</h3><p>Skip a family when it has no observable input, record why, and keep unknown relations unknown. Common-origin recurrence is one mechanism inside source weighing and structured patterns; it is not the map's definition.</p></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/SIX_FAMILIES.json</code></li><li><code>framework/SIX_FAMILIES.md</code></li><li><code>framework/RELATIONSHIP_MAP.md</code></li><li><code>framework/GLOSSARY.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="apply" aria-label="Apply it">
-    <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 03</p><h2>Apply it</h2><p class="route-lede">Turn the idea into a proportionate workflow, from one decision brief to an inspectable agent procedure.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Apply it</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply is-current" aria-current="location" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#examples-examples">Examples <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 03</p><h2>Apply it</h2><p class="route-lede">Turn the idea into a proportionate workflow, from one decision brief to an inspectable agent procedure.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Apply it</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Apply it</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply is-current" aria-current="location" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#examples-examples">Examples <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="apply-route" id="apply-apply">
+
+  <section class="route-studio-section" id="apply-route-studio" aria-labelledby="apply-route-studio-heading">
+    <div class="route-brief" aria-label="How to use the Apply route"><span><strong>What this is</strong> A local decision surface.</span><span><strong>What you can do</strong> Match consequence to route size.</span><span><strong>Next</strong> Inspect the receipt and choose a stop.</span></div>
+    <div class="section-heading"><p class="eyebrow">LOCAL ROUTE STUDIO / NO PROVIDER</p><h3 id="apply-route-studio-heading">Let consequence set the size of the route.</h3><p>This small, reversible interaction stays in the browser. Choose four conditions, build a local receipt, then mark a bounded stop or human gate. It does not acquire data, call a provider, or decide for anyone.</p></div>
+    <div class="route-studio-layout">
+      <form class="route-studio-form" data-route-studio>
+        <fieldset><legend>01 · Consequence</legend><label><input type="radio" name="consequence" value="reversible" checked> Reversible / supplied input <small>an ordinary path may fit</small></label><label><input type="radio" name="consequence" value="consequential"> Consequential / downstream effect <small>keep a human gate visible</small></label></fieldset>
+        <fieldset><legend>02 · Uncertainty</legend><label><input type="radio" name="uncertainty" value="low" checked> Low <small>the question and material are clear</small></label><label><input type="radio" name="uncertainty" value="mixed"> Mixed <small>one comparison or challenge is warranted</small></label><label><input type="radio" name="uncertainty" value="high"> High <small>gaps, conflicts, or unknown origins remain</small></label></fieldset>
+        <fieldset><legend>03 · Budget</legend><label><input type="radio" name="budget" value="quick" checked> Quick <small>short bounded pass</small></label><label><input type="radio" name="budget" value="bounded"> Bounded <small>repeated work needs a record</small></label><label><input type="radio" name="budget" value="substantial"> Substantial <small>engineering is justified only if value is visible</small></label></fieldset>
+        <fieldset><legend>04 · Permission</legend><label><input type="radio" name="permission" value="supplied" checked> Supplied / ordinary authority <small>access and use are clear</small></label><label><input type="radio" name="permission" value="restricted"> Restricted / clarify before influence <small>hold ambiguous operations</small></label><label><input type="radio" name="permission" value="human-gate"> Human gate required <small>route can propose; a person decides</small></label></fieldset>
+        <div class="studio-actions"><button class="studio-submit" type="submit">Build local receipt <span aria-hidden="true">→</span></button><button class="quiet-button" type="button" data-route-reset>Reset choices</button></div>
+        <p class="studio-boundary"><strong>Local only.</strong> The controls create no network request and make no external change.</p>
+      </form>
+      <aside class="route-receipt-card" data-route-receipt aria-live="polite" aria-atomic="true">
+        <div class="receipt-card-header"><span class="receipt-card-kicker">DECISION RECEIPT / LOCAL</span><span class="receipt-route-badge" data-receipt-route>lightweight</span></div>
+        <h4 data-receipt-title>One brief, one alternate route, one clear stop.</h4>
+        <p data-receipt-summary>For a reversible task with low uncertainty, keep the route small and leave the important distinctions visible.</p>
+        <dl class="receipt-facts"><div><dt>Route</dt><dd data-receipt-route-value>ANSWER</dd></div><div><dt>Stop status</dt><dd data-receipt-stop>STOPPED_BUDGET</dd></div><div><dt>Learning</dt><dd data-receipt-learning>LEARNING_NOT_APPLICABLE</dd></div><div><dt>Authority</dt><dd data-receipt-authority>HUMAN_DISPOSITION_RECORDED</dd></div></dl>
+        <ol class="receipt-flow" aria-label="Observable route state"><li class="is-done"><span>01</span><strong>frame</strong><small>decision brief</small></li><li class="is-done"><span>02</span><strong>inspect</strong><small>compare / challenge</small></li><li class="is-current" data-receipt-flow-state><span>03</span><strong>disposition</strong><small>choose a bounded state</small></li><li><span>04</span><strong>learn</strong><small>later outcome</small></li></ol>
+        <div class="receipt-state-actions"><p class="eyebrow">Choose a recorded next state</p><div><button type="button" data-route-action="hold">HOLD for human</button><button type="button" data-route-action="escalate">ESCALATE</button><button type="button" data-route-action="stop">STOPPED_BUDGET</button></div></div>
+        <p class="receipt-status" data-receipt-status role="status">Receipt ready. The route is a proposal; human authority stays explicit.</p>
+      </aside>
+    </div>
+    <details class="static-route-equivalent" open><summary>Static route key: complete no-script equivalent</summary><div class="static-route-body"><p>When JavaScript is unavailable, the four choices remain readable here and the sample receipt remains a copyable record. The interaction adds convenience; it does not carry essential meaning.</p><div class="table-wrap"><table><caption>Proportionate choices and observable states</caption><thead><tr><th scope="col">Choice</th><th scope="col">Fit</th><th scope="col">Route</th><th scope="col">Stop</th><th scope="col">Learning</th></tr></thead><tbody><tr><th scope="row">ordinary</th><td>reversible, clear, supplied input</td><td><code>ANSWER</code></td><td><code>COMPLETE</code></td><td><code>LEARNING_NOT_APPLICABLE</code></td></tr><tr><th scope="row">lightweight</th><td>bounded comparison or one alternate route</td><td><code>ANSWER_PROVISIONALLY</code></td><td><code>STOPPED_BUDGET</code></td><td><code>LEARNING_PLANNED</code></td></tr><tr><th scope="row">moderate</th><td>repeated work, mixed uncertainty, or a human gate</td><td><code>HOLD</code> / <code>ESCALATE</code></td><td><code>STOPPED_OTHER</code></td><td><code>LEARNING_PENDING_OUTCOME</code></td></tr><tr><th scope="row">advanced</th><td>queryable lineage and review are worth the cost</td><td><code>CLARIFY</code> / <code>HOLD</code></td><td><code>STOPPED_DEADLINE</code></td><td><code>LEARNING_PLANNED</code></td></tr></tbody></table></div><p class="static-receipt"><strong>Sample receipt:</strong> Route <code>ANSWER_PROVISIONALLY</code> · stop <code>STOPPED_BUDGET</code> · learning <code>LEARNING_PENDING_OUTCOME</code> · disposition <code>HOLD</code>. A person may correct the route or decide not to continue.</p></div></details>
+  </section>
 
   <section class="implementation-section" aria-labelledby="apply-levels-heading">
     <div class="section-heading"><p class="eyebrow">FOUR PROPORTIONATE CHOICES</p><h3 id="apply-levels-heading">Choose the smallest route that fits the decision.</h3><p>No provider, model, database, graph, or custom service is required. The ordinary path is a valid choice when the work is reversible and evidence is supplied.</p></div>
@@ -1030,27 +1351,66 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>Learning proposes a bounded update. It does not silently change policy, overwrite evidence, or turn one outcome into causal proof.</p></div></details></div></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/OPERATOR_PLAYBOOK.md</code></li><li><code>framework/IMPLEMENTATION_CHOICES.md</code></li><li><code>framework/BOUNDARIES_AND_FAILURES.md</code></li><li><code>framework/agent-playbook/QUICKSTART.md</code></li><li><code>framework/agent-playbook/FULL_OPERATING_GUIDE.md</code></li><li><code>framework/agent-playbook/COPYABLE_AGENT_BRIEF.md</code></li><li><code>framework/agent-playbook/PREFLIGHT_CHECKLIST.md</code></li><li><code>framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md</code></li><li><code>framework/templates/README.md</code></li><li><code>framework/templates/DECISION_BRIEF.md</code></li><li><code>framework/templates/ACQUISITION_RECEIPT.md</code></li><li><code>framework/templates/EVIDENCE_REGISTER.md</code></li><li><code>framework/templates/COMPARISON_MATRIX.md</code></li><li><code>framework/templates/DISCONFIRMATION_LOG.md</code></li><li><code>framework/templates/INFLUENCE_RECEIPT.md</code></li><li><code>framework/templates/OUTCOME_REVIEW.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="examples" aria-label="Examples">
-    <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Examples</h2><p class="route-lede">See the distinctions in motion through bounded teaching patterns and illustrative cases.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Examples</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples is-current" aria-current="location" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#boundaries-boundaries">Boundaries <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Examples</h2><p class="route-lede">See the distinctions in motion through bounded teaching patterns and illustrative cases.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Examples</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Examples</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples is-current" aria-current="location" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#boundaries-boundaries">Boundaries <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="examples-route" id="examples-examples">
-    <div class="section-heading"><p class="eyebrow">TEACHING PATTERNS</p><h3>Three ways a pattern can improve the room without becoming a verdict.</h3><p>These are bounded illustrations. They are not validation, and they do not authorize acquisition or action.</p></div>
-    <div class="example-grid">
-      <article class="example-card example-specialist"><p class="eyebrow">01 / PERIPHERAL SIGNAL</p><h4>A specialist signal is a candidate, not a truth</h4><div class="microvisual specialist-visual" role="img" aria-label="A default path with a smaller specialist route entering as a candidate for inspection"><span class="micro-path main-path">default path</span><span class="micro-path peripheral-path">specialist route</span><span class="micro-node">inspect</span><span class="micro-node">weigh</span><span class="micro-node">disconfirm</span></div><div class="source-markdown"><h5 id="examples-example-specialist-worked-example-1-a-specialist-signal">Worked example 1: a specialist signal</h5>
+    <div class="section-heading"><p class="eyebrow">TEACHING PATTERNS</p><h3>Three ways a pattern can improve the room without becoming a verdict.</h3><p>These are bounded illustrations. They are not validation, and they do not authorize acquisition or action. Each visual is a short case before the detailed prose.</p></div>
+    <div class="example-narratives">
+      <article class="example-narrative example-specialist" id="examples-example-specialist">
+        <div class="narrative-marker"><span>01</span><small>peripheral signal</small></div>
+        <div class="narrative-body"><p class="eyebrow">SPECIALIST / PERIPHERAL CANDIDATE</p><h4>A specialist signal enters the default path as a candidate.</h4><figure class="narrative-visual specialist-story"><div class="story-track"><div class="story-step story-default"><span>01</span><strong>DEFAULT PATH</strong><small>familiar query<br>familiar sources</small></div><span class="story-arrow" aria-hidden="true">→</span><div class="story-step story-candidate"><span>02</span><strong>PERIPHERAL CANDIDATE</strong><small>specialist route<br>low prominence</small></div><span class="story-arrow" aria-hidden="true">→</span><div class="story-step story-weigh"><span>03</span><strong>WEIGH + CHALLENGE</strong><small>role, relevance,<br>disconfirmation</small></div></div><figcaption><strong>Visual reading:</strong> widen the field, then make the candidate earn a role. It may be useful, limited, or wrong.</figcaption></figure><div class="source-markdown"><h5 id="examples-example-specialist-worked-example-1-a-specialist-signal">Worked example 1: a specialist signal</h5>
 <p>Imagine a small product team asking an AI system to suggest improvements to a customer onboarding flow. The first search produces familiar product advice: shorter forms, clearer buttons, fewer steps. A specialist accessibility practitioner describes a less visible failure: a keyboard user can complete the form, but the focus order makes the error state easy to miss. That account changes what deserves inspection. It does not, by itself, establish that the team&#39;s product has that failure, that the practitioner speaks for every user, or that a redesign is authorized.</p>
-<p>The team can record the specialist account as a candidate, check the original context and the person&#39;s role, compare it with an authorized support or testing record, and state what remains unknown. The output is not “the peripheral source is true.” It is “this perspective was missing from the initial room; here is the bounded next check, if its cost and permission make sense.”</p></div><p class="boundary-line"><strong>Boundary:</strong> underweighted is a reason to inspect, not a reason to believe.</p></article>
-      <article class="example-card example-motion"><p class="eyebrow">02 / VELOCITY + EXPECTED ABSENCE</p><h4>Motion and absence need an explicit baseline</h4><div class="microvisual baseline-visual" role="img" aria-label="A baseline with five prior releases, a current packet missing two fields, and a support count rising from five to eighteen"><div class="baseline-bars"><span style="height:32%">5</span><span style="height:38%">6</span><span style="height:35%">5</span><span style="height:42%">7</span><span class="current-bar" style="height:100%">18</span></div><div class="baseline-labels"><span>prior</span><span>prior</span><span>prior</span><span>prior</span><span>current</span></div><p>current packet: exposure present / rollback owner missing / monitoring window missing</p></div><div class="source-markdown"><h5 id="examples-example-motion-worked-example-2-motion-and-expected-absence">Worked example 2: motion and expected absence</h5>
+<p>The team can record the specialist account as a candidate, check the original context and the person&#39;s role, compare it with an authorized support or testing record, and state what remains unknown. The output is not “the peripheral source is true.” It is “this perspective was missing from the initial room; here is the bounded next check, if its cost and permission make sense.”</p></div><p class="boundary-line"><strong>Boundary:</strong> underweighted is a reason to inspect, not a reason to believe.</p></div>
+      </article>
+      <article class="example-narrative example-motion" id="examples-example-motion">
+        <div class="narrative-marker"><span>02</span><small>velocity + absence</small></div>
+        <div class="narrative-body"><p class="eyebrow">VELOCITY / EXPECTED ABSENCE</p><h4>Motion and missing fields become meaningful only beside an explicit baseline.</h4><figure class="narrative-visual motion-story"><div class="motion-visual-grid"><div class="motion-series"><span class="visual-label">SUPPORT COUNT</span><div class="motion-bars"><span style="--bar:32%">5</span><span style="--bar:38%">6</span><span style="--bar:35%">5</span><span style="--bar:42%">7</span><span class="motion-current" style="--bar:100%">18</span></div><div class="motion-axis"><span>prior</span><span>prior</span><span>prior</span><span>prior</span><span>now</span></div></div><div class="absence-ledger"><span class="visual-label">CURRENT PACKET</span><div><span class="presence yes"><b>present</b> exposure</span><span class="presence no"><b>missing</b> rollback owner</span><span class="presence no"><b>missing</b> monitoring window</span></div></div></div><figcaption><strong>Visual reading:</strong> the rising count is motion against a baseline; the missing fields are gaps against an expectation. Neither is a verdict by itself.</figcaption></figure><div class="source-markdown"><h5 id="examples-example-motion-worked-example-2-motion-and-expected-absence">Worked example 2: motion and expected absence</h5>
 <p>Suppose an operations team is reviewing a hypothetical service release. In four previous releases, the review packet included the intended exposure, rollback owner, and monitoring window. The current packet includes the exposure but not the other two. At the same time, a support queue shows a jump from roughly five reports a week to eighteen after the release.</p>
 <p>The two patterns deserve attention, but neither is self-interpreting. The report count might have risen because the release reached four times as many people; the rate per exposed user might be unchanged. The missing rollback owner might be a collection gap rather than a real organizational gap. A careful next step is to state the baseline, check the denominator, retrieve the missing fields if access permits, and compare the new reports with the earlier failure categories. If the cost or permission boundary says stop, the record should say stop—not silently fill the gap.</p>
-<p>The memory of the earlier releases also matters. It lets the team ask whether the present pattern is genuinely new, whether the same issue was previously seen, and whether the earlier expectation was ever tested. That is more useful than merely telling a model to “remember context.”</p></div><p class="boundary-line"><strong>Boundary:</strong> one observation is not velocity; a gap is not proof of nonexistence.</p></article>
-    </div>
-    <div class="example-late"><p class="eyebrow">03 / STRUCTURED PATTERNS</p><h3>Recurrence can be one origin wearing nine outfits.</h3><div class="recurrence-visual" role="img" aria-label="Nine report cards point to one shared announcement origin, with independence shown as unknown"><div class="report-cluster"><span class="report-chip">report 1</span><span class="report-chip">report 2</span><span class="report-chip">report 3</span><span class="report-chip">report 4</span><span class="report-chip">report 5</span><span class="report-chip">report 6</span><span class="report-chip">report 7</span><span class="report-chip">report 8</span><span class="report-chip">report 9</span></div><span class="origin-arrow" aria-hidden="true">↓</span><span class="origin-chip">one shared announcement</span><span class="unknown-chip">independence: UNKNOWN</span></div><div class="source-markdown"><h4 id="examples-example-recurrence-a-narrower-example-nine-reports-one-announcement">A narrower example: nine reports, one announcement</h4>
+<p>The memory of the earlier releases also matters. It lets the team ask whether the present pattern is genuinely new, whether the same issue was previously seen, and whether the earlier expectation was ever tested. That is more useful than merely telling a model to “remember context.”</p></div><p class="boundary-line"><strong>Boundary:</strong> one observation is not velocity; a gap is not proof of nonexistence.</p></div>
+      </article>
+      <article class="example-narrative example-recurrence" id="examples-example-recurrence">
+        <div class="narrative-marker"><span>03</span><small>structured pattern</small></div>
+        <div class="narrative-body"><p class="eyebrow">COMMON-ORIGIN RECURRENCE</p><h4>Nine recurring reports can resolve to one known origin while independence stays unknown.</h4><figure class="narrative-visual recurrence-story"><div class="recurrence-map"><div class="report-cluster"><span class="report-chip">R1</span><span class="report-chip">R2</span><span class="report-chip">R3</span><span class="report-chip">R4</span><span class="report-chip">R5</span><span class="report-chip">R6</span><span class="report-chip">R7</span><span class="report-chip">R8</span><span class="report-chip">R9</span></div><div class="recurrence-traces" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="origin-chip"><span>KNOWN SHARED PATH</span><strong>one announcement</strong></div></div><div class="recurrence-counts"><span><b>09</b> observations</span><span><b>01</b> known origin</span><span><b>00</b> counted support paths</span><span class="unknown-chip"><b>independence: UNKNOWN</b></span></div></figure><div class="source-markdown"><h4 id="examples-example-recurrence-a-narrower-example-nine-reports-one-announcement">A narrower example: nine reports, one announcement</h4>
 <p>Common-origin recurrence is one particularly vivid case of source weighing and structured comparison. It belongs inside the broader picture, not above it.</p>
 <p>Consider a fictional decision about whether a software tool is broadly validated. Nine favorable reports appear on nine sites. Their headlines and layouts differ. A quick summary says that nine sources agree. A backward check finds that all nine reports trace to the same launch announcement.</p>
 <p>The reports have not become false. They may still tell us that the announcement travelled, how it was framed, or what the vendor said. But repetition alone did not create eight new origins. If the relationship disappears when the material is summarized, a generator can inherit an inflated sense of corroboration.</p>
 <p>One small record could preserve all nine observations while saying: one shared information path is known; independence has not been established for the broad validation claim; hold that claim and inspect another origin if the decision warrants the cost. That does not make the reports false or useless, and it does not erase what the vendor can say about its own announcement. It simply keeps their apparent plurality from doing more work than the known relationship supports.</p>
-<p>This is the subordinate Echo example. <strong>The Echo Problem</strong> is a separate origin-accounting research track derived from the v15.2 checkpoint, and its study remains unrun. V16 uses the example to make one distinction memorable; it does not turn origin accounting into the definition of Pattern Recognition. Remove this example and the upstream-choice thesis, the other five families, the learning loop, and the human judgment boundary still stand.</p></div><p class="boundary-line"><strong>Boundary:</strong> repeated reports are observations; recurrence is not independent corroboration.</p><p class="echo-label"><span class="status-dot" aria-hidden="true"></span><strong>The Echo Problem</strong> is a separate project — unrun — no results. It is linked here only as a subordinate origin-accounting route.</p></div>
+<p>This is the subordinate Echo example. <strong>The Echo Problem</strong> is a separate origin-accounting research track derived from the v15.2 checkpoint, and its study remains unrun. V16 uses the example to make one distinction memorable; it does not turn origin accounting into the definition of Pattern Recognition. Remove this example and the upstream-choice thesis, the other five families, the learning loop, and the human judgment boundary still stand.</p></div><p class="boundary-line"><strong>Boundary:</strong> repeated reports are observations; recurrence is not independent corroboration. Keep the relationship <code>UNKNOWN</code> until it is actually established.</p><p class="echo-label"><span class="status-dot" aria-hidden="true"></span><strong>The Echo Problem</strong> is a separate project — unrun — no results. It is linked here only as a subordinate origin-accounting route.</p></div>
+      </article>
+    </div>
     <section class="case-section" aria-labelledby="examples-cases-heading"><div class="section-heading"><p class="eyebrow">BOUNDED CASES</p><h3 id="examples-cases-heading">From illustration to inspectable practice.</h3><p>Signal Foundry is labeled every time it appears: <strong>ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION.</strong> The neutral cases show how the same records can stay proportionate across domains.</p></div><div class="case-grid"><details class="case-card signal-foundry" open><summary>Signal Foundry — ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION</summary><div class="source-markdown"><h4 id="examples-case-signal-foundry-signal-foundry-bounded-applied-illustration">Signal Foundry — bounded applied illustration</h4>
 <p>Status: ILLUSTRATION_ONLY / READ_ONLY / NOT_VALIDATION</p>
 <p>Signal Foundry is used here as a serious bounded translation of an evidence-boundary problem: a transcript-first product may need to preserve different context classes, source and artifact identity, capture receipts, gaps, recurrence, enrichment choices, and human correction before downstream reasoning. This file does not assert that the product implements the v16 framework, that its current behavior is effective, or that any study has run.</p>
@@ -1161,9 +1521,39 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>The layered path is justified by the decision and its failure modes, not by the label itself. A builder should be able to remove the common-origin example and still explain all six families, comparison, permission, uncertainty, stopping, and learning.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/PATTERN_RECOGNITION_V16.md</code></li><li><code>framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md</code></li><li><code>cases/README.md</code></li><li><code>cases/signal-foundry/README.md</code></li><li><code>cases/general-research/README.md</code></li><li><code>cases/product-and-process/README.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="boundaries" aria-label="Boundaries">
-    <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Boundaries</h2><p class="route-lede">Know when to add structure, when to stop, and what the framework cannot claim or authorize.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Boundaries</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries is-current" aria-current="location" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#sources-sources">Sources <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Boundaries</h2><p class="route-lede">Know when to add structure, when to stop, and what the framework cannot claim or authorize.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Boundaries</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Boundaries</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries is-current" aria-current="location" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#sources-sources">Sources <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="boundaries-route" id="boundaries-boundaries">
     <div class="boundary-banner"><p class="eyebrow">CLAIM + AUTHORITY BOUNDARY</p><h3>Make upstream choices visible without pretending they are settled science.</h3><p>The framework is a design proposal and a set of testable questions. A fixture, validator, protocol, case, or review can establish integrity or inspectability; it is not an effectiveness result.</p></div>
@@ -1213,9 +1603,39 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>Any proposed cross-boundary move must name the source artifact, destination, reason, reader benefit, status-language impact, and governing requirement in <code>docs/DECISION_LOG.md</code>. The primary orchestrator decides integration; intent changes still require a new explicit owner instruction.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/BOUNDARIES_AND_FAILURES.md</code></li><li><code>docs/ARTIFACT_BOUNDARIES.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="sources" aria-label="Sources">
-    <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Sources</h2><p class="route-lede">A targeted route for authority, continuity, and claim-constraining prior art.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Sources</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources is-current" aria-current="location" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#research-research">Research <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Sources</h2><p class="route-lede">A targeted route for authority, continuity, and claim-constraining prior art.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Sources</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Sources</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources is-current" aria-current="location" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#research-research">Research <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="sources-route" id="sources-sources">
     <div class="source-notice"><p class="eyebrow">TARGETED, NOT EXHAUSTIVE</p><h3>Sources are a wayfinding route, not a literature-defense opening.</h3><p>The links below inherit their status from the canonical source files. They are not presented as newly reverified for public release. Re-verify links before any future publication.</p></div>
@@ -1248,9 +1668,39 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>Every material new public claim must receive an ID, strongest actual status, canonical basis, and prohibited upgrade before integration. A source may constrain or contextualize a claim without validating the six-family arrangement. Research-driven edits may narrow a claim; they may not silently replace the owner-approved thesis. Later evidence changes receive a new ledger entry or explicit revision record rather than retroactive inflation of the current basis.</p></div></details>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/SOURCES_AND_RESEARCH_ROUTE.md</code></li><li><code>docs/CLAIMS_AND_SOURCE_LEDGER_V16.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="research" aria-label="Research">
-    <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Research</h2><p class="route-lede">Future questions and explicit no-results boundaries, kept subordinate to the human idea.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>Research</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research is-current" aria-current="location" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#history-history">History <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Research</h2><p class="route-lede">Future questions and explicit no-results boundaries, kept subordinate to the human idea.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>Research</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>Research</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research is-current" aria-current="location" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#history-history">History <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="research-route" id="research-research">
     <div class="research-status"><span class="status-dot" aria-hidden="true"></span><div><p class="eyebrow">RESEARCH ROUTE / STATUS</p><h3>UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED</h3><p>This route describes future questions and boundaries only. It does not authorize a model call, provider selection, participant activity, dataset acquisition, preregistration, publication, deployment, or spend.</p></div></div>
@@ -1392,9 +1842,39 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>The current branch performs preservation, local verification, and offline source checks only. It does not deploy, publish, create a Release, preregister, spend, acquire data, contact people, or imply that unrun research produced a result.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>research/README.md</code></li><li><code>research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md</code></li><li><code>research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md</code></li><li><code>research/the-echo-problem/README.md</code></li><li><code>research/the-echo-problem/STATUS_AND_BOUNDARIES.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
 <section class="standalone-section" id="history" aria-label="History">
-    <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>History</h2><p class="route-lede">How the broad v16 map returns to the historical origin without redrawing it as current topology.</p></section>
+    <div class="page-frame">
+      <aside class="orientation-rail" aria-label="Publication orientation">
+    <div class="orientation-brand"><span class="orientation-brand-mark">PM</span><span><strong>Pattern Map</strong><small>v16 / local review</small></span></div>
+    <div class="orientation-status"><span class="orientation-status-dot" aria-hidden="true"></span><span>Now here</span><strong>History</strong></div>
+    <nav class="orientation-nav" aria-label="Publication route index">
+      <p class="orientation-label">Principal doors</p>
+      <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+      <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+      <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+      <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history is-current" aria-current="location" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+    </nav>
+    <p class="orientation-next"><span>Next</span><a href="#home-top">Start here <span aria-hidden="true">→</span></a></p>
+  </aside>
+      <div class="page-content">
+        <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>History</h2><p class="route-lede">How the broad v16 map returns to the historical origin without redrawing it as current topology.</p></section>
+        <details class="orientation-mobile">
+    <summary><span>Route guide</span><strong>History</strong></summary>
+    <div class="orientation-mobile-body">
+      <p class="orientation-mobile-current"><span class="orientation-status-dot" aria-hidden="true"></span>Current route: <strong>History</strong></p>
+      <nav aria-label="Mobile publication route index">
+        <p class="orientation-label">Principal doors</p>
+        <a class="orientation-link orientation-home" href="#home-top"><span class="orientation-number">00</span><span>Start here</span></a>
+        <a class="orientation-link orientation-read" href="#read-read-idea"><span class="orientation-number">01</span><span>Read the idea</span></a><a class="orientation-link orientation-map" href="#map-map"><span class="orientation-number">02</span><span>Explore the map</span></a><a class="orientation-link orientation-apply" href="#apply-apply"><span class="orientation-number">03</span><span>Apply it</span></a>
+        <p class="orientation-label orientation-label-secondary">Then, if useful</p>
+        <a class="orientation-link orientation-examples" href="#examples-examples"><span class="orientation-number">04</span><span>Examples</span></a><a class="orientation-link orientation-boundaries" href="#boundaries-boundaries"><span class="orientation-number">05</span><span>Boundaries</span></a><a class="orientation-link orientation-sources" href="#sources-sources"><span class="orientation-number">06</span><span>Sources</span></a><a class="orientation-link orientation-research" href="#research-research"><span class="orientation-number">07</span><span>Research</span></a><a class="orientation-link orientation-history is-current" aria-current="location" href="#history-history"><span class="orientation-number">08</span><span>History</span></a>
+      </nav>
+      <p class="orientation-mobile-next"><span>Next:</span> <a href="#home-top">Start here <span aria-hidden="true">→</span></a></p>
+    </div>
+  </details>
 
   <section class="history-route" id="history-history">
     <div class="history-intro"><p class="eyebrow">LINEAGE WITHOUT MYTHOLOGY</p><h3>V13 is an origin anchor, not today's topology.</h3><p>V16 returns to the broad reader problem and keeps the six families visible. V14 and v15 contributed rigor and limits; v15.2 is the source checkpoint for the separate Echo project.</p></div>
@@ -1427,7 +1907,11 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 <p>The exact original standalone v13 HTML was not recovered. The HTML above is a rendered-DOM snapshot and may depend on resources not captured with it. The diagram&#39;s recorded SHA-256 is <code>8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae</code>. It may be shown as historical origin only, never as the current v16 topology or evidence that the framework works.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/ORIGIN_NOTE.md</code></li><li><code>docs/SOURCE_AUTHORITY_AND_LINEAGE.md</code></li><li><code>archive/README.md</code></li><li><code>archive/v13/README.md</code></li><li><code>archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/LIVE_SITE_REFERENCE_MANIFEST.json</code></li><li><code>archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/pattern-recognition-diagram-v12.png</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
+      </div>
+    </div>
   </section>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -1439,31 +1923,76 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
   const focusStatus = document.querySelector("#family-focus-status");
   const familyCards = [...document.querySelectorAll("[data-family-card]")];
   const focusButtons = [...document.querySelectorAll("[data-family-focus]")];
+  const mapStage = document.querySelector("[data-map-stage]");
+  const mapButtons = [...document.querySelectorAll("[data-map-family]")];
   const clearButton = document.querySelector("[data-family-clear]");
+  const mapFocusTitle = document.querySelector("[data-map-focus-title]");
+  const mapFocusQuestion = document.querySelector("[data-map-focus-question]");
+  const mapFocusInputs = document.querySelector("[data-map-focus-inputs]");
+  const mapFocusRecord = document.querySelector("[data-map-focus-record]");
+  const mapFocusBoundary = document.querySelector("[data-map-focus-boundary]");
+  const mapFocusStatus = document.querySelector("[data-map-focus-status]");
 
-  const clearFamilyFocus = () => {
+  const mapButtonFor = (family) => mapButtons.find((button) => button.dataset.mapFamily === family);
+  const cardFor = (family) => familyCards.find((card) => card.dataset.familyCard === family);
+
+  const clearFamilyFocus = (announce = true) => {
     familyGrid?.classList.remove("has-focus");
+    mapStage?.classList.remove("has-map-focus");
+    if (mapStage) delete mapStage.dataset.activeFamily;
     familyCards.forEach((card) => card.classList.remove("is-focused"));
     focusButtons.forEach((button) => button.setAttribute("aria-pressed", "false"));
-    if (focusStatus) focusStatus.textContent = "All six families are visible. Focus controls add emphasis; they never hide essential meaning.";
+    mapButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", "false");
+      button.classList.remove("is-selected");
+    });
+    if (mapFocusTitle) mapFocusTitle.textContent = "All six families remain in view.";
+    if (mapFocusQuestion) mapFocusQuestion.textContent = "Choose a family to inspect its question, inputs, comparison, boundary, record, and adjacent connections. Focus adds emphasis; it never hides essential meaning.";
+    if (mapFocusInputs) mapFocusInputs.textContent = "decision brief, permission, evidence, baselines, gaps, comparisons, and outcomes";
+    if (mapFocusRecord) mapFocusRecord.textContent = "the route keeps observation, interpretation, recommendation, and human disposition distinct";
+    if (mapFocusBoundary) mapFocusBoundary.textContent = "unknown relations stay unknown; human authority remains explicit";
+    if (mapFocusStatus) mapFocusStatus.textContent = "All six families are available for comparison.";
+    if (announce && focusStatus) focusStatus.textContent = "All six families are visible. Focus controls add emphasis; they never hide essential meaning.";
+  };
+
+  const focusFamily = (family, sourceButton) => {
+    const card = cardFor(family);
+    const mapButton = mapButtonFor(family);
+    if (!card || !mapButton) return;
+    const alreadyFocused = card.classList.contains("is-focused");
+    clearFamilyFocus(false);
+    if (alreadyFocused) {
+      if (focusStatus) focusStatus.textContent = "All six families are visible. Focus controls add emphasis; they never hide essential meaning.";
+      return;
+    }
+    familyGrid?.classList.add("has-focus");
+    mapStage?.classList.add("has-map-focus");
+    if (mapStage) mapStage.dataset.activeFamily = family;
+    card.classList.add("is-focused");
+    focusButtons.find((button) => button.dataset.familyFocus === family)?.setAttribute("aria-pressed", "true");
+    mapButtons.forEach((button) => {
+      const selected = button === mapButton;
+      button.setAttribute("aria-pressed", String(selected));
+      button.classList.toggle("is-selected", selected);
+    });
+
+    if (mapFocusTitle) mapFocusTitle.textContent = `${mapButton.dataset.mapFamily} · ${mapButton.dataset.mapName}`;
+    if (mapFocusQuestion) mapFocusQuestion.textContent = `Question: ${mapButton.dataset.mapQuestion}`;
+    if (mapFocusInputs) mapFocusInputs.textContent = `${mapButton.dataset.mapInputs}. Compare: ${mapButton.dataset.mapComparison}. Adjacent connection: ${mapButton.dataset.mapConnections}.`;
+    if (mapFocusRecord) mapFocusRecord.textContent = mapButton.dataset.mapRecords;
+    if (mapFocusBoundary) mapFocusBoundary.textContent = mapButton.dataset.mapBoundary;
+    if (mapFocusStatus) mapFocusStatus.textContent = `${family} is focused in the relationship view. Its question, inputs, comparison, record, boundary, and connections remain visible.`;
+    if (focusStatus) focusStatus.textContent = `${family} is focused. The other families remain visible for comparison.`;
+    sourceButton?.setAttribute("aria-pressed", "true");
   };
 
   focusButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const family = button.dataset.familyFocus;
-      const card = document.querySelector(`[data-family-card="${CSS.escape(family)}"]`);
-      const wasFocused = card?.classList.contains("is-focused");
-      clearFamilyFocus();
-      if (!wasFocused && card) {
-        familyGrid?.classList.add("has-focus");
-        card.classList.add("is-focused");
-        button.setAttribute("aria-pressed", "true");
-        if (focusStatus) focusStatus.textContent = `${family} is focused. The other families remain visible for comparison.`;
-      }
-    });
+    button.addEventListener("click", () => focusFamily(button.dataset.familyFocus, button));
   });
-
-  clearButton?.addEventListener("click", clearFamilyFocus);
+  mapButtons.forEach((button) => {
+    button.addEventListener("click", () => focusFamily(button.dataset.mapFamily, button));
+  });
+  clearButton?.addEventListener("click", () => clearFamilyFocus());
 
   const moreButton = document.querySelector(".nav-more");
   const secondary = document.querySelector(".secondary-nav-wrap");
@@ -1477,10 +2006,143 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
     setMoreOpen(!isOpen, !isOpen);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape" || moreButton?.getAttribute("aria-expanded") !== "true") return;
-    setMoreOpen(false);
-    moreButton.focus();
+    if (event.key === "Escape" && moreButton?.getAttribute("aria-expanded") === "true") {
+      setMoreOpen(false);
+      moreButton.focus();
+    }
+    if (event.key === "Escape") {
+      document.querySelectorAll(".orientation-mobile[open]").forEach((details) => {
+        details.removeAttribute("open");
+        details.querySelector("summary")?.focus();
+      });
+    }
   });
+
+  const readingSections = [...document.querySelectorAll("[data-reading-section]")];
+  const readingLinks = [...document.querySelectorAll("[data-reading-link]")];
+  const progress = document.querySelector("[data-reading-progress]");
+  const progressValue = document.querySelector("[data-reading-progress-value]");
+  if (readingSections.length) {
+    const setReadingActive = (id) => {
+      readingLinks.forEach((link) => {
+        const active = link.getAttribute("href") === `#${id}`;
+        link.classList.toggle("is-current", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+    const updateReadingProgress = () => {
+      const route = document.querySelector(".reading-route");
+      if (!route || !progress) return;
+      const start = route.getBoundingClientRect().top + window.scrollY;
+      const end = start + route.scrollHeight - window.innerHeight;
+      const percent = end <= start ? 100 : Math.max(0, Math.min(100, ((window.scrollY - start) / (end - start)) * 100));
+      progress.querySelector("span")?.style.setProperty("width", `${percent}%`);
+      progress.setAttribute("aria-valuenow", String(Math.round(percent)));
+      progress.setAttribute("aria-valuetext", `${Math.round(percent)} percent of the reading route`);
+      if (progressValue) progressValue.textContent = `${Math.round(percent)}%`;
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]?.target.id) setReadingActive(visible[0].target.id);
+    }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
+    readingSections.forEach((section) => observer.observe(section));
+    window.addEventListener("scroll", updateReadingProgress, { passive: true });
+    window.addEventListener("resize", updateReadingProgress);
+    updateReadingProgress();
+  }
+
+  const routeStudio = document.querySelector("[data-route-studio]");
+  const receipt = document.querySelector("[data-route-receipt]");
+  if (routeStudio && receipt) {
+    const fieldValue = (name) => routeStudio.querySelector(`input[name="${name}"]:checked`)?.value ?? "";
+    const setReceiptText = (selector, value) => {
+      const element = receipt.querySelector(selector);
+      if (element) element.textContent = value;
+    };
+    const buildReceipt = () => {
+      const consequence = fieldValue("consequence");
+      const uncertainty = fieldValue("uncertainty");
+      const budget = fieldValue("budget");
+      const permission = fieldValue("permission");
+      let route = "ordinary";
+      let routeToken = "ANSWER";
+      let stop = "COMPLETE";
+      let learning = "LEARNING_NOT_APPLICABLE";
+      let authority = "HUMAN_DISPOSITION_RECORDED";
+      let title = "Do less when the task is simple.";
+      let summary = "For reversible work with low uncertainty, keep the route small and leave the important distinctions visible.";
+      if (budget === "substantial" || (consequence === "consequential" && uncertainty === "high")) {
+        route = "advanced";
+        routeToken = "CLARIFY";
+        stop = "STOPPED_DEADLINE";
+        learning = "LEARNING_PLANNED";
+        authority = "HUMAN_DISPOSITION_REQUIRED";
+        title = "Engineer only when hidden mistakes justify it.";
+        summary = "A larger route is a proposal for queryable lineage and review, not permission to acquire, disclose, spend, or act.";
+      } else if (consequence === "consequential" || uncertainty === "high" || permission === "human-gate") {
+        route = "moderate";
+        routeToken = permission === "supplied" ? "COMPARE" : "HOLD";
+        stop = "STOPPED_OTHER";
+        learning = "LEARNING_PENDING_OUTCOME";
+        authority = "HUMAN_DISPOSITION_REQUIRED";
+        title = "Make repeated or consequential work reproducible.";
+        summary = "Keep identity, comparison, uncertainty, permission, a stop reason, and a human checkpoint visible before influence.";
+      } else if (uncertainty === "mixed" || budget === "bounded" || permission === "restricted") {
+        route = "lightweight";
+        routeToken = "ANSWER_PROVISIONALLY";
+        stop = "STOPPED_BUDGET";
+        learning = "LEARNING_PLANNED";
+        title = "One brief, one alternate route, one clear stop.";
+        summary = "A bounded pass records the decision, one peripheral candidate, one comparison, one challenge, and what remains uncertain.";
+      }
+      const routeBadge = receipt.querySelector("[data-receipt-route]");
+      if (routeBadge) routeBadge.textContent = route;
+      setReceiptText("[data-receipt-title]", title);
+      setReceiptText("[data-receipt-summary]", summary);
+      setReceiptText("[data-receipt-route-value]", routeToken);
+      setReceiptText("[data-receipt-stop]", stop);
+      setReceiptText("[data-receipt-learning]", learning);
+      setReceiptText("[data-receipt-authority]", authority);
+      setReceiptText("[data-receipt-status]", `Receipt built for ${route}. Route, stop, learning, and authority remain separate fields.`);
+      const flow = receipt.querySelector("[data-receipt-flow-state]");
+      if (flow) {
+        flow.querySelector("strong").textContent = route === "ordinary" ? "complete" : route === "lightweight" ? "stop" : route === "moderate" ? "disposition" : "clarify";
+        flow.querySelector("small").textContent = route === "ordinary" ? "ordinary path" : route === "lightweight" ? "budget boundary" : route === "moderate" ? "human gate" : "question authority";
+      }
+      receipt.dataset.route = route;
+    };
+    routeStudio.addEventListener("submit", (event) => {
+      event.preventDefault();
+      buildReceipt();
+    });
+    routeStudio.querySelector("[data-route-reset]")?.addEventListener("click", () => {
+      routeStudio.reset();
+      buildReceipt();
+    });
+    receipt.querySelectorAll("[data-route-action]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const action = button.dataset.routeAction;
+        const actionDetails = {
+          hold: { route: "HOLD", stop: "STOPPED_OTHER", authority: "HUMAN_DISPOSITION_REQUIRED", message: "HOLD recorded. A person must decide whether the route may continue." },
+          escalate: { route: "ESCALATE", stop: "STOPPED_OTHER", authority: "HUMAN_DISPOSITION_REQUIRED", message: "ESCALATE recorded. Consequential authority remains with a person." },
+          stop: { route: "ANSWER_PROVISIONALLY", stop: "STOPPED_BUDGET", authority: "HUMAN_DISPOSITION_RECORDED", message: "STOPPED_BUDGET recorded. Remaining uncertainty stays visible." },
+        }[action];
+        if (!actionDetails) return;
+        setReceiptText("[data-receipt-route-value]", actionDetails.route);
+        setReceiptText("[data-receipt-stop]", actionDetails.stop);
+        setReceiptText("[data-receipt-authority]", actionDetails.authority);
+        setReceiptText("[data-receipt-status]", actionDetails.message);
+        const flow = receipt.querySelector("[data-receipt-flow-state]");
+        if (flow) {
+          flow.querySelector("strong").textContent = action === "stop" ? "stop" : action;
+          flow.querySelector("small").textContent = action === "stop" ? "budget boundary" : "human disposition";
+        }
+        receipt.dataset.state = action;
+      });
+    });
+    buildReceipt();
+  }
 })();
 </script>
 </body>
