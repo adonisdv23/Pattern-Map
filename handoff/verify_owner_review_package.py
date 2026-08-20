@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
-CONTENT_CHECKPOINT = "a319794f5cf2d395c34e5af4935c9299f12dfd5c"
+CONTENT_CHECKPOINT = "5eb860e8d6918813622a7725eb0d854f6bef6ca2"
 
 
 REQUIRED_PATHS = [
@@ -71,6 +71,7 @@ REQUIRED_PATHS = [
     "site/check.mjs",
     "site/src/site.css",
     "site/src/site.js",
+    "site/src/recommendation.js",
     "site/scripts/generate_review_pdf.py",
     "site/exports/standalone/pattern-map-v16.html",
     "site/exports/pattern-map-v16-owner-review.pdf",
@@ -110,7 +111,12 @@ REQUIRED_PATHS = [
     "qa/site/SITE_POLISH_QA.md",
     "qa/site/audit_site.py",
     "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
+    "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
+    "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
     "qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md",
+    "qa/interaction/apply-state-contract.spec.mjs",
+    "qa/interaction/map-layout-contract.spec.mjs",
+    "qa/content/reader-language-contract.spec.mjs",
     "qa/visual/README.md",
     "qa/visual/POLISH_PLAN.md",
     "qa/visual/VISUAL_NEEDS.md",
@@ -211,9 +217,9 @@ def write_manifest() -> None:
         "schema_version": 1,
         "package": "pattern-map-v16-owner-review",
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-19",
+        "generated_date": "2026-08-20",
         "content_site_source_and_pdf_checkpoint": CONTENT_CHECKPOINT,
-        "evidence_note": "The manifest includes the authored site-polish source/export checkpoint, current/stale visual index, final responsive captures, visible interaction states, and PDF renders. Manual owner/accessibility/print gates remain open.",
+        "evidence_note": "The manifest includes the ChatGPT Pro round-one corrected source/export checkpoint, planning and responsive regression contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/accessibility/print gates remain open.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),

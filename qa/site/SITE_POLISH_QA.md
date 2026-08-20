@@ -1,5 +1,14 @@
 # Pattern Map v16 site-polish QA
 
+> **Historical checkpoint notice — superseded for current Map and Apply
+> semantics.** This report records the site-polish checkpoint culminating at
+> `a319794f5cf2d395c34e5af4935c9299f12dfd5c`. The current implementation at
+> `5eb860e8d6918813622a7725eb0d854f6bef6ca2` uses planning-only Apply output,
+> line-free relationship bands, ten routes including Guided, and contextual
+> terminology helpers. See
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md` for current
+> evidence.
+
 Status: **local owner-review build complete; no deployment performed**
 
 This record covers the material visual and interaction revision from

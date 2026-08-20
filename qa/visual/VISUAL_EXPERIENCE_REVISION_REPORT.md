@@ -1,5 +1,14 @@
 # Pattern Map v16 visual-experience revision
 
+> **Historical checkpoint notice — superseded for current Map and Apply
+> semantics.** This report and its PNG matrix accurately document
+> `a319794f5cf2d395c34e5af4935c9299f12dfd5c`. The current implementation at
+> `5eb860e8d6918813622a7725eb0d854f6bef6ca2` replaces fixed connector geometry
+> with line-free relationship bands, makes Apply planning-only, and adds the
+> Guided route and terminology helpers. See
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`. These historical
+> screenshots must not be presented as current-source evidence.
+
 Status: **final local owner-review evidence captured from the polished source
 tree; no deployment or publication**
 

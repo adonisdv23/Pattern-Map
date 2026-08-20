@@ -649,6 +649,10 @@ human-authority boundary, proportional levels, warm visual system, and
 Echo/Signal Foundry boundaries intact. It changes the implementation as
 follows:
 
+The coherent implementation checkpoint is
+`5eb860e8d6918813622a7725eb0d854f6bef6ca2`; its current QA record is
+`qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`.
+
 - Apply now returns planning recommendations only. Observed execution, stop,
   outcome, learning, and human-decision fields remain explicitly unrun or
   unobserved; optional later-state controls are labeled local simulations and

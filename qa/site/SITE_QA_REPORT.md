@@ -1,5 +1,11 @@
 # Pattern Map v16 site QA report
 
+> **Historical implementation notice.** This report covers the earlier
+> nine-route site. The current ten-route, planning-only Apply and line-free Map
+> implementation is recorded in
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md` at exact checkpoint
+> `5eb860e8d6918813622a7725eb0d854f6bef6ca2`.
+
 Status: local owner-review candidate
 
 This report records implementation and artifact QA only. It is not reader-comprehension, persuasion, behavioral-effectiveness, model-quality, empirical, participant, or research evidence.

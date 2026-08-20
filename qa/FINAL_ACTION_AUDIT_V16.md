@@ -2,7 +2,7 @@
 
 Status: **PASS FOR THE PATTERN MAP V16 OWNER-REVIEW ORCHESTRATION**
 
-Audit date: 2026-08-19
+Audit date: 2026-08-20
 
 This is a scoped repository/process audit. It records actions taken or not
 taken in this orchestration; it is not a claim about unrelated activity outside
@@ -16,7 +16,8 @@ the project.
 | Reorganize the repository while preserving historical material | V14 transfer moved into the immutable archive boundary; checksum ledger passes | **USED WITHIN SCOPE** |
 | Commit and push coherent feature branches | Foundation, Echo, manuscript, applied, site, and site-polish branch refs | **USED WITHIN SCOPE** |
 | Create durable tasks and bounded advisory agents | Advisory reports and integration ledger | **USED WITHIN SCOPE** |
-| Build local review artifacts | Nine-route local site, standalone HTML, visual PDF companion, local QA renders | **USED WITHIN SCOPE** |
+| Build local review artifacts | Ten-route local site, standalone HTML, visual PDF companion, local QA renders | **USED WITHIN SCOPE** |
+| Obtain an outside ChatGPT Pro advisory review | The owner gave a later exact instruction to use the already logged-in ChatGPT Pro account; exact-commit report, dispositions, and correction QA are preserved | **USED WITHIN THE LATER EXACT AUTHORIZATION; NO INCREMENTAL PURCHASE OR STUDY** |
 | Open a draft pull request for owner review | [PR #1](https://github.com/adonisdv23/Pattern-Map/pull/1) and `handoff/BRANCH_AND_PR_STATE.md` | **USED WITHIN SCOPE; OPEN AND DRAFT** |
 
 ## Prohibited or separately authorized actions
@@ -28,7 +29,7 @@ the project.
 | Publish the essay, framework, site, or package | Artifacts are labeled local owner review; no publication action or public announcement | **NOT PERFORMED** |
 | Create a GitHub Release or upload the v15.2 ZIP to a release channel | D-004 keeps the exact ZIP at its verified source path pending separate authorization | **NOT PERFORMED** |
 | Run an empirical, model-evaluation, provider, or participant study | Echo and DL-PLAYBOOK-01 remain explicitly unrun; validators and deterministic fixtures are labeled implementation QA only | **NOT PERFORMED** |
-| Select or call a paid provider, incur spend, or purchase data/services | No provider/model chosen for either future protocol. An optional installed Claude Code review was attempted at the owner's request but stopped at a revoked-token `401` before any model review; no credential repair, paid inference, or spend occurred | **NOT PERFORMED** |
+| Select or call a provider for either research protocol, incur new spend, or purchase data/services | No provider/model was chosen or called for Echo or DL-PLAYBOOK-01. The only completed outside-model action was the separately and exactly authorized ChatGPT Pro advisory review on the owner's existing account; it was not a protocol run, purchase, or new subscription. An optional Claude Code review stopped at a revoked-token `401`; no credential repair or paid API use occurred | **NO RESEARCH-PROVIDER ACTION OR INCREMENTAL SPEND PERFORMED** |
 | Acquire an external dataset or recruit participants | Protocols retain future placeholders; no sample, participant, or dataset acquisition | **NOT PERFORMED** |
 | Preregister research | Future protocols are not represented as preregistrations | **NOT PERFORMED** |
 | Contact people, conduct outreach, or represent the owner externally | No message, invitation, recruitment, or external representation action | **NOT PERFORMED** |
@@ -41,6 +42,9 @@ the project.
   checks. They are not an empirical run and provide no effectiveness result.
 - Model-based advisory reviews are editorial/implementation proxies. They are
   not a model study, participant sample, or evidence that the framework works.
+- The ChatGPT Pro advisory was performed only after the owner's later exact
+  instruction. It does not select a provider for a future protocol, expand
+  research authority, or authorize spending beyond the existing account.
 - Browser screenshots and PDF renders establish layout and implementation
   state only. They do not establish reader comprehension or persuasion.
 - The failed Claude Code authentication attempt is not a completed provider or

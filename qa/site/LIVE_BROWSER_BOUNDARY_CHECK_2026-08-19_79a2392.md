@@ -1,5 +1,10 @@
 # Pattern Map v16 live-browser boundary check
 
+> **Historical implementation notice.** This check remains exact evidence for
+> `79a2392`, but its nine-route Map/Apply behavior is superseded. Current
+> exact-checkpoint browser evidence is in
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`.
+
 Status: **PASS FOR LIVE POINTER/FOCUS LOGIC; MANUAL A13 GATES REMAIN OPEN**
 
 Review date: 2026-08-19

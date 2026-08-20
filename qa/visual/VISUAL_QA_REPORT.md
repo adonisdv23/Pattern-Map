@@ -1,5 +1,10 @@
 # Pattern Map v16 visual QA report
 
+> **Historical implementation notice.** This report predates the ChatGPT Pro
+> round-one correction. Use `qa/visual/README.md` and
+> `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md` to distinguish
+> current PDF/live evidence from superseded routed-site screenshots.
+
 Status: local owner-review candidate
 
 Visual QA covers composition, responsive behavior, focus-state rendering, no horizontal overflow, historical/current labeling, and the PDF companion. It is not reader-comprehension, persuasion, behavioral-effectiveness, model-quality, empirical, participant, or research evidence.

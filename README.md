@@ -105,6 +105,9 @@ reportable if a future study is ever separately authorized.
 ## External-action boundary
 
 Feature branches, isolated worktrees, commits, pushes, and draft pull requests
-are authorized for this roadmap. Merging to `main`, deployment, publication,
-GitHub Releases, empirical or participant activity, paid-provider calls,
-spending, external-dataset acquisition, preregistration, and outreach are not.
+are authorized for this roadmap. The owner later exactly authorized one
+ChatGPT Pro advisory review on the existing account; that exception does not
+authorize a study, a research-provider selection, or incremental spend.
+Merging to `main`, deployment, publication, GitHub Releases, empirical or
+participant activity, other provider calls, spending, external-dataset
+acquisition, preregistration, and outreach are not authorized.
