@@ -31,7 +31,7 @@ same value and fails when the manifest disagrees with the artifact bytes.
 
 | Role | Branch | Integrated checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `7202746` | Draft PR #1 open and unmerged |
+| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `7202746` + `6711b3b` | **Committed locally, not yet pushed.** Draft PR #1 is open and unmerged, and still shows `cc5547d` |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
 | Applied framework and agent playbook | `codex/pattern-map-v16-playbook` | `fccfceb` | Pushed; integrated into foundation |
@@ -41,6 +41,27 @@ same value and fails when the manifest disagrees with the artifact bytes.
 
 Every hash in the branch table was verified to resolve with `git cat-file -t`
 on 2026-08-20. A hash that does not resolve is a defect, not a typo.
+
+### The round-two work is committed but not pushed
+
+A push was attempted and refused: the stored GitHub credential for
+`adonisdv23` is invalid (`gh auth status` reports the token in the default
+account as invalid). Re-authenticating requires the owner's own credentials, so
+it was not attempted.
+
+This row therefore says "not yet pushed," which is the state that exists. The
+defect this whole register was created for (D-025) was a package claiming a
+push that had not happened; recording an intended push as a completed one here
+would repeat it exactly.
+
+To publish the branch to the open draft PR, the owner runs:
+
+```sh
+gh auth login -h github.com && git push origin codex/pattern-map-v16-foundation
+```
+
+After the push, change this row's state to `Pushed` and nothing else — the
+hashes are already correct.
 
 ## Draft pull request
 
