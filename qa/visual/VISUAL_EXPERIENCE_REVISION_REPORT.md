@@ -5,9 +5,14 @@ tree; no deployment or publication**
 
 Base: `4b5fc809e84a1d6c32c7565808821332421fa42e`
 
+Final implementation/evidence checkpoint:
+`a319794f5cf2d395c34e5af4935c9299f12dfd5c`
+
 Branch: `codex/pattern-map-v16-site-polish`
 
 Final evidence folder: `qa/visual/screenshots-final-v16-polish/`
+
+Current-evidence index and stale-capture warning: [`README.md`](README.md)
 
 Plan: [`POLISH_PLAN.md`](POLISH_PLAN.md)
 
@@ -65,6 +70,10 @@ the exact starting build at `4b5fc809e84a1d6c32c7565808821332421fa42e` showed
 paper paint through the viewport, `scrollWidth == 390`, and no clipped or
 overflowing boundary. Pixel checks reinforce the diagnosis:
 
+**The pre-existing image is retained as stale QA history and must not be used
+to judge the current site.** The active mobile review image is
+[`screenshots-final-v16-polish/home-390x844.png`](screenshots-final-v16-polish/home-390x844.png).
+
 | Capture | Bottom-center sample | Near-black centerline rows |
 | --- | --- | ---: |
 | Stale pre-existing screenshot | `(0, 0, 0)` | 141 |
@@ -116,6 +125,16 @@ reported as a reflow-oriented implementation check, not a claim of actual
 200%-zoom certification.
 
 ## Interaction evidence
+
+Visible state captures:
+
+- [`map-f1-focused-1280x720.jpg`](screenshots-final-v16-polish/interaction-states/map-f1-focused-1280x720.jpg)
+  — F1 focused while all six families remain available;
+- [`apply-advanced-hold-1280x720.jpg`](screenshots-final-v16-polish/interaction-states/apply-advanced-hold-1280x720.jpg)
+  — advanced route with a recorded human HOLD and separate route/stop/learning/
+  authority fields; and
+- [`standalone-all-routes-1280x720.jpg`](screenshots-final-v16-polish/interaction-states/standalone-all-routes-1280x720.jpg)
+  — corrected standalone orientation with one `All routes` publication rail.
 
 - F1 family focus updated the current map state, `aria-pressed`, live status,
   text panel, and focused family card without dimming other content below usable

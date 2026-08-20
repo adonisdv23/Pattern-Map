@@ -8,6 +8,13 @@ This record covers the material visual and interaction revision from
 it is not reader-comprehension, persuasion, effectiveness, screen-reader
 certification, model-quality, or empirical evidence.
 
+Final implementation/evidence checkpoint:
+`a319794f5cf2d395c34e5af4935c9299f12dfd5c`. The first site-polish delivery was
+`5a37aacccd26d407acf65cea9b33393899514851`; the final checkpoint adds exact
+interaction-state captures and corrects the standalone export to one `All
+routes` orientation system instead of nested route frames or a false Home
+current state.
+
 ## Scope and ownership
 
 - Site implementation, standalone export, PDF companion, screenshots, and QA
@@ -92,6 +99,10 @@ production URL were accessed.
   fields. `HOLD for human`, `ESCALATE`, and `STOPPED_BUDGET` each produced a
   visible reversible status; Reset returned to `ORDINARY`. Submit also worked
   through keyboard activation.
+- Exact visible-state evidence is preserved under
+  `qa/visual/screenshots-final-v16-polish/interaction-states/`: focused F1,
+  advanced/HOLD, and standalone `All routes` states. The captures supplement
+  the DOM/status record; they do not replace the manual keyboard gate.
 - Disclosure and menu controls: the Map text-equivalent summary activated with
   Enter; the More menu opened, moved focus into its links, and closed on Escape
   with focus returned to More.
@@ -120,6 +131,10 @@ essential meaning, unique standalone IDs, and print/reduced-motion/
 forced-colors/200%-friendly hooks. A real assistive-technology audit and a
 reader study were not authorized and were not claimed.
 
+The older `qa/visual/screenshots/home-mobile-390x844.png` is retained as a
+stale pre-polish QA artifact and is not current evidence. The warning and
+replacement path are explicit in `qa/visual/README.md`.
+
 ## Standalone export
 
 The committed export is under the owned, non-ignored path:
@@ -128,9 +143,11 @@ The committed export is under the owned, non-ignored path:
 
 The in-app Browser blocks direct `file://` navigation by policy, so the export
 was served only through a loopback static server at
-`http://127.0.0.1:4174/pattern-map-v16.html`. The served audit found one
-`main`, one `h1`, 293 unique IDs, one inline script, one inline stylesheet, the
-three principal doors, and local fragment links. No workaround around the
+`http://127.0.0.1:4174/pattern-map-v16.html`. The final served audit found one
+`main`, one `h1`, 292 unique IDs, one publication rail, one mobile route guide,
+one page frame, one inline script, one inline stylesheet, the three principal
+doors, and local fragment links. The orientation says `All routes` and does not
+falsely mark one section as the current route. No workaround around the
 `file://` policy was attempted.
 
 ## PDF companion
