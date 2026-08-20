@@ -20,9 +20,10 @@ Draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate
 - State: open and draft; not merged.
 
 The PR tracks the head branch. The package checkpoint above anchors the
-reviewed artifact set, including the authored site revision; the subsequent
-metadata-only commit records the final branch state and refreshes the bounded
-package manifest.
+reviewed artifact set, including the authored site revision; subsequent
+handoff and verification commits record branch state, refresh the bounded
+package manifest, and add a single-command replay without changing canonical
+content or the site experience.
 
 The draft PR is an owner-review surface only. It does not authorize merge,
 deployment, public-site replacement, publication, GitHub Release creation,

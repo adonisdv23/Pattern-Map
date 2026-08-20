@@ -65,6 +65,15 @@ and the review companion is
 [`site/exports/pattern-map-v16-owner-review.pdf`](site/exports/pattern-map-v16-owner-review.pdf).
 These are local artifacts, not a deployment or publication.
 
+Run the complete provider-free repository verification with:
+
+```sh
+qa/run_owner_review_checks.sh
+```
+
+Pass `--source-zip PATH` only when the separately preserved exact v15.2 ZIP is
+available and its container hash should also be checked.
+
 ## Repository map
 
 - `docs/` — governing contracts, lineage, roadmap, decisions, and editorial

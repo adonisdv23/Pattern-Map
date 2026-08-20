@@ -92,6 +92,12 @@ the semantic accessibility route.
 
 ## Verification summary
 
+The clone-contained sequence can be replayed with
+`qa/run_owner_review_checks.sh`. Supplying `--source-zip PATH` additionally
+checks the exact owner-local v15.2 distribution container; the default run
+still verifies its complete extracted accession, manifest, sidecar, and hash
+anchors without pretending the external ZIP lives in Git.
+
 - Locked owner intent: SHA-256 checkpoint passes.
 - V14 transfer: 429 files pass the original SHA-256 ledger.
 - Historical checkpoint index: 5 versions, 26 anchors, 15,790,560 bytes pass.

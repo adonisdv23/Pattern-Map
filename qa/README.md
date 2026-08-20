@@ -4,6 +4,18 @@ QA evidence is grouped by editorial fidelity, applied usefulness, research
 boundaries, site behavior, and visual integrity. Machine checks and advisory
 reviews must state exactly what they establish and what remains manual.
 
+Run the complete clone-contained verification sequence from the repository
+root with:
+
+```sh
+qa/run_owner_review_checks.sh
+```
+
+When the exact owner-local v15.2 ZIP is available, add its separately verified
+container check with `--source-zip PATH`. Omitting that option does not weaken
+the complete extracted-accession check; it only preserves the documented
+boundary that the 41,436,496-byte distribution container is outside Git.
+
 ## Completed artifact-gate rechecks
 
 - A07/A08: exact post-site and final-regression reviews pass for framework

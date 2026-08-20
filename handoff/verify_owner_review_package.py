@@ -100,6 +100,7 @@ REQUIRED_PATHS = [
     "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
     "qa/FINAL_ACTION_AUDIT_V16.md",
     "qa/README.md",
+    "qa/run_owner_review_checks.sh",
     "qa/editorial/MANUSCRIPT_QA_REPORT.md",
     "qa/editorial/validate_content_interface.py",
     "qa/applied/README.md",

@@ -6,8 +6,8 @@
   "content_site_source_and_pdf_checkpoint": "a319794f5cf2d395c34e5af4935c9299f12dfd5c",
   "evidence_note": "The manifest includes the authored site-polish source/export checkpoint, current/stale visual index, final responsive captures, visible interaction states, and PDF renders. Manual owner/accessibility/print gates remain open.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 156,
-  "total_bytes": 9165266,
+  "file_count": 157,
+  "total_bytes": 9169804,
   "files": [
     {
       "path": ".gitignore",
@@ -21,8 +21,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4867,
-      "sha256": "62ac38144770ee9e7f771f465120a670efbaf2ea110337dc460a24fda43c4716"
+      "bytes": 5107,
+      "sha256": "8d879c555acb3d784720696728df5f3da5080e6aa4ee46ab254fffee2a3c219f"
     },
     {
       "path": "archive/CHECKPOINT_INDEX.json",
@@ -251,18 +251,18 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 1943,
-      "sha256": "04d85f7145150c8161bb57789f6bee40dd8c898ab12712b38777278a70789257"
+      "bytes": 2026,
+      "sha256": "e0a79dcae1d4fe857fd8daf71e7ecaf72429bdeab796ca95565ea041e1698c0a"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 9831,
-      "sha256": "4c6b8f77634dabe56234dd15b0874077fb6dcdfa484de469b9e7542ec3a36643"
+      "bytes": 10168,
+      "sha256": "b189d036e91847b264fb9103e2db94275f25a313109b1f10b49b422c539a64d3"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 6288,
-      "sha256": "8c850267b9c8618baf87ed7c27b85ca88367b1b51ac9fe89932eb0f4d488c84c"
+      "bytes": 6361,
+      "sha256": "d1cefe945a088ccb2f8e32459400ed4b2ec3164b199c8b395e99919e223c2b7b"
     },
     {
       "path": "handoff/README.md",
@@ -271,8 +271,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 11998,
-      "sha256": "c4e2e785c1b05bad954bdcd76f4d3be6510ab41daa9172b6f393b53824f2e3a8"
+      "bytes": 12035,
+      "sha256": "18f4ca68798bb244cf02239ac0fc87abdd1661f926e935c68c0acaf055a39339"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -316,8 +316,8 @@
     },
     {
       "path": "qa/README.md",
-      "bytes": 2311,
-      "sha256": "8392f974799392af13cbc2ff9eed79be3a01b2f0f1ab43b941864eec3ca6c066"
+      "bytes": 2744,
+      "sha256": "03877747f6c91a1b281c19369506cbff23af37cdb119307c63322c6d0295196f"
     },
     {
       "path": "qa/applied/README.md",
@@ -378,6 +378,11 @@
       "path": "qa/research/validate_research_boundaries.py",
       "bytes": 4355,
       "sha256": "c94f1862e0098a5167b03d9ad22d21c448460e505bb9af72e97cf1e7a667bc85"
+    },
+    {
+      "path": "qa/run_owner_review_checks.sh",
+      "bytes": 3335,
+      "sha256": "fd9c7c928a0e35828d27773310fbaf38bcb939b6598b85dd18aa1c459008d479"
     },
     {
       "path": "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",

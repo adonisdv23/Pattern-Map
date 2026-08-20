@@ -99,6 +99,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | --- | --- |
 | Acceptance matrix | `qa/FINAL_ACCEPTANCE_MATRIX_V16.md` |
 | External-action audit | `qa/FINAL_ACTION_AUDIT_V16.md` |
+| Complete local verification runner | `qa/run_owner_review_checks.sh` |
 | Advisory ledger | `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Owner packet | `handoff/OWNER_REVIEW_PACKET_V16.md` |
 | Branch/PR state | `handoff/BRANCH_AND_PR_STATE.md` |
