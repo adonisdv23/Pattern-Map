@@ -90,6 +90,11 @@ const main = () => {
   assert(root.includes("Take the guided read"), "optional continuous reading path missing from home");
   assert(root.includes("A QUICK EXAMPLE") && root.indexOf("A QUICK EXAMPLE") < root.indexOf("Three principal doors"), "concrete example does not arrive before the route doors");
   assert(root.includes("data-term-trigger") && root.includes("term-inline"), "first-use term help is missing visible meaning or an optional explainer");
+  const termTriggerTags = [...[root, map, apply, guided].join("\n").matchAll(/<button\b[^>]*data-term-trigger[^>]*>/g)].map((match) => match[0]);
+  assert(termTriggerTags.length > 0, "no contextual term triggers were rendered");
+  const termTriggerNames = termTriggerTags.map((tag) => tag.match(/\baria-label="([^"]+)"/)?.[1] ?? "");
+  assert(termTriggerNames.every((name) => /^Explain\s+\S/.test(name)), "a contextual term trigger lacks a descriptive accessible name");
+  assert(new Set(termTriggerNames).size >= 6, "contextual term triggers do not expose distinct concept names");
   const doorEnd = root.indexOf("</nav>", root.indexOf('<nav class="door-grid"'));
   const echoIndex = root.indexOf("Echo");
   assert(doorEnd > 0 && (echoIndex < 0 || echoIndex > doorEnd), "Echo appears before principal doors");
@@ -123,6 +128,10 @@ const main = () => {
   }
   for (const initialState of ["NOT_RUN", "NOT_TRIGGERED", "NOT_OBSERVED", "NOT_AVAILABLE", "NOT_RECORDED"]) assert(recommendationMarkup.includes(initialState), `initial observed state missing: ${initialState}`);
   assert(apply.includes("complete static decision guide") && apply.includes("data-route-studio"), "Apply no-script equivalent or enhanced form contract missing");
+  assert(apply.includes('name="evidenceSelection"') && apply.includes("Stage 0 comes first"), "Apply does not encode the Stage 0 evidence-selection gate");
+  const applyPreview = root.match(/<span class="door-preview door-preview-apply"[\s\S]*?<\/span><\/span>/)?.[0] ?? "";
+  assert(applyPreview.includes("TASK CONDITIONS") && applyPreview.includes("recommendation") && applyPreview.includes("planned boundary"), "Home Apply preview does not use planning semantics");
+  assert(!applyPreview.includes("DECISION BRIEF") && !applyPreview.includes("human disposition"), "Home Apply preview still implies completed records or decisions");
   for (const guidedSection of ["guided-opening", "guided-families", "guided-relations", "guided-apply", "guided-examples", "guided-boundary"]) assert(guided.includes(`id="${guidedSection}"`), `Guided route section missing: ${guidedSection}`);
   assert(guided.includes("Approximately 8–12 minutes; editorial estimate only."), "Guided route reading-time caveat missing");
   for (const example of ["specialist signal", "explicit baseline", "independence: UNKNOWN"]) assert(examples.includes(example), `teaching pattern missing: ${example}`);
@@ -178,6 +187,10 @@ const main = () => {
   assert(research.includes('aria-current="page"'), "active secondary route lacks aria-current=page");
   assert(root.includes("<noscript><style>.secondary-nav-wrap { display: block; }") && root.includes(".no-script-note { display: block !important; }"), "no-script navigation or Apply fallback missing");
   assert(!/\.primary-nav\s+a\s*\{[^}]*display:\s*none/i.test(css), "mobile CSS hides principal route links");
+  assert(css.includes(".no-js .term-popover-trigger") && css.includes(".no-js .reading-progress-wrap"), "no-script mode leaves optional term or progress controls visible");
+  assert(/@media \(min-width: 601px\) and \(max-width: 1100px\)[\s\S]*?\.term-popover\s*\{[^}]*position:\s*static/i.test(css), "medium-width term popovers are not flow-native");
+  assert(!/@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3/i.test(css), "narrow route brief regressed to three compressed columns");
+  assert(/\.primary-nav a,[^\n]*\.secondary-nav a,[^\n]*\.orientation-link,[^\n]*\.orientation-mobile > summary\s*\{\s*min-height:\s*2\.75rem/i.test(css), "route controls do not share the 44px minimum target contract");
   const paper = cssHexVariable(css, "paper");
   for (const token of ["muted", "teal", "green", "purple", "orange", "ochre", "blue"]) {
     const ratio = contrastRatio(cssHexVariable(css, token), paper);
@@ -194,6 +207,7 @@ const main = () => {
   console.log("PASS exact underscore-bearing state vocabulary and standalone fragments");
   console.log("PASS standalone heading hierarchy and unique IDs");
   console.log("PASS responsive/no-script navigation and active-route semantics");
+  console.log("PASS Stage 0, descriptive term controls, mobile route brief, and medium-popover contracts");
   console.log("PASS normal-text and dual-focus contrast thresholds");
   console.log("PASS standalone export exists");
 };

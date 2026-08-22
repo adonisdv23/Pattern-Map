@@ -109,6 +109,8 @@ def audit_route(relative: str, expected_title: str) -> list[str]:
             raise AssertionError(f"{relative}: anchor without href")
         if tag in {"button", "summary"}:
             require(accessible_name(attrs, text_value), f"{relative}: {tag} without accessible name")
+        if tag == "button" and "data-term-trigger" in attrs:
+            require(accessible_name(attrs, text_value).startswith("Explain "), f"{relative}: term trigger does not name its concept")
     for image in parser.images:
         require("alt" in image, f"{relative}: image without alt attribute")
     if expected_title != "Pattern Recognition / The Discrimination Layer":
@@ -129,6 +131,7 @@ def main() -> None:
     read_text = (DIST / "read/index.html").read_text(encoding="utf-8")
     sources_text = (DIST / "sources/index.html").read_text(encoding="utf-8")
     examples_text = (DIST / "examples/index.html").read_text(encoding="utf-8")
+    css_text = (ROOT / "site" / "src" / "site.css").read_text(encoding="utf-8")
 
     essential = [
         "AI slop often begins before the model writes a word.",
@@ -147,7 +150,15 @@ def main() -> None:
 
     for value in ["ordinary", "lightweight", "moderate", "advanced", "ACQUIRE", "STOPPED_BUDGET", "LEARNING_PENDING_OUTCOME"]:
         require(value.lower() in apply_text.lower(), f"Apply vocabulary missing: {value}")
+    require('name="evidenceSelection"' in apply_text and "Stage 0 comes first" in apply_text, "Apply Stage 0 evidence-selection gate missing")
     output.append("PASS Apply route exposes ordinary/lightweight/moderate/advanced and route/stop/learning vocabularies")
+
+    term_names = re.findall(r'<button\b[^>]*data-term-trigger[^>]*aria-label="(Explain [^"]+)"', root_text + map_text + apply_text + guided_text)
+    require(term_names and len(set(term_names)) >= 6, "contextual term triggers lack distinct descriptive names")
+    require(".no-js .term-popover-trigger" in css_text and ".no-js .reading-progress-wrap" in css_text, "no-script optional-control suppression missing")
+    require(re.search(r'@media \(min-width: 601px\) and \(max-width: 1100px\)[\s\S]*?\.term-popover\s*\{[^}]*position:\s*static', css_text) is not None, "medium-width term popover is not flow-native")
+    require(re.search(r'@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3', css_text) is None, "narrow route brief regressed to three columns")
+    output.append("PASS descriptive term controls, no-script suppression, and responsive route-help contracts")
 
     recommendation_match = re.search(r'<aside class="route-recommendation-card"[\s\S]*?</aside>', apply_text)
     require(recommendation_match is not None, "Apply planning recommendation card missing")
@@ -164,7 +175,7 @@ def main() -> None:
     output.append("PASS optional Guided route preserves a continuous authored reading path")
 
     for value in ["@media print", "prefers-reduced-motion", "forced-colors", "details > summary"]:
-        require(value in (ROOT / "site" / "src" / "site.css").read_text(encoding="utf-8"), f"responsive/accessibility CSS hook missing: {value}")
+        require(value in css_text, f"responsive/accessibility CSS hook missing: {value}")
     output.append("PASS reduced-motion, forced-colors, 200%-friendly reflow, and print hooks present")
 
     stripped = re.sub(r"<script\b[^>]*>[\s\S]*?</script>", "", root_text + map_text + apply_text, flags=re.IGNORECASE)
@@ -196,7 +207,7 @@ def main() -> None:
         require(current[0] <= previous[0] + 1, f"standalone export heading jump {previous} -> {current}")
     for route_id in ("home", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"):
         require(f'<section class="standalone-section" id="{route_id}"' in standalone_text, f"standalone route section missing: {route_id}")
-    output.append("PASS standalone HTML is self-contained with one h1, unique IDs, and named route sections")
+    output.append("PASS direct-open all-routes HTML has embedded runtime, one h1, unique IDs, named sections, and its documented repository-local image")
 
     metareasoning_href = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"'
     require(metareasoning_href in sources_text, "parenthesized external URL was not preserved")

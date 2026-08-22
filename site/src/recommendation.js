@@ -1,5 +1,6 @@
 (() => {
   const allowed = {
+    evidenceSelection: new Set(["none", "needed"]),
     consequence: new Set(["reversible", "consequential"]),
     uncertainty: new Set(["low", "mixed", "high"]),
     budget: new Set(["quick", "bounded", "substantial"]),
@@ -22,19 +23,19 @@
     }
   };
 
-  const levelFor = ({ consequence, uncertainty, budget }) => {
+  const levelFor = ({ evidenceSelection, consequence, uncertainty, budget }) => {
+    if (evidenceSelection === "none") return "ordinary";
     if (budget === "substantial" || (consequence === "consequential" && uncertainty === "high")) {
       return "advanced";
     }
     if (consequence === "consequential" || uncertainty === "high") return "moderate";
-    if (uncertainty === "mixed" || budget === "bounded") return "lightweight";
-    return "ordinary";
+    return "lightweight";
   };
 
   const levelCopy = {
     ordinary: {
       title: "Do less when the task is simple.",
-      summary: "Use the supplied material and keep the assumptions visible. No evidence workflow is required unless the task introduces an evidence-selection decision.",
+      summary: "Stage 0 found no evidence-selection work. Transform only the supplied material, keep material assumptions visible, and do not manufacture an evidence workflow.",
       action: "ANSWER",
       gate: "No additional gate identified; consequential action still remains with the named person.",
       stop: "Finish the supplied-material transformation. Do not begin external acquisition unless the brief changes.",

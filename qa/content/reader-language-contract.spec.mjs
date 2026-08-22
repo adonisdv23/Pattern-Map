@@ -3,6 +3,7 @@ import fs from "node:fs";
 
 const short = fs.readFileSync(new URL("../../manuscript/NINETY_SECOND_VERSION.md", import.meta.url), "utf8");
 const build = fs.readFileSync(new URL("../../site/build.mjs", import.meta.url), "utf8");
+const styles = fs.readFileSync(new URL("../../site/src/site.css", import.meta.url), "utf8");
 const words = short.match(/\b[\w’'-]+\b/g) ?? [];
 const normalizedShort = short.replace(/\s+/g, " ");
 
@@ -32,6 +33,10 @@ for (const boundary of [
 assert.equal(short.slice(0, short.indexOf("Its six families ask:")).toLowerCase().includes("echo"), false, "origin-accounting track displaced the broad opening");
 assert.ok(build.includes("const renderGuided"), "continuous guided reading route is missing");
 assert.ok(build.includes("data-term-trigger"), "interactive term-help contract is missing");
+assert.ok(build.includes('aria-label="Explain ${escapeAttribute(term.label)}"'), "term triggers do not expose their concept in the accessible name");
 assert.ok(build.includes("Every essential definition remains visible at first use"), "term meaning depends on an optional popover");
+assert.ok(styles.includes(".no-js .term-popover-trigger") && styles.includes(".no-js .reading-progress-wrap"), "no-script mode leaves optional controls visible");
+assert.match(styles, /@media \(min-width: 601px\) and \(max-width: 1100px\)[\s\S]*?\.term-popover\s*\{[^}]*position:\s*static/i, "term popovers are not flow-native at medium widths");
+assert.equal(/@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3/i.test(styles), false, "narrow route briefs use compressed columns");
 
-console.log(`PASS reader-language contract (${words.length} words, six families, guided and term-help routes)`);
+console.log(`PASS reader-language contract (${words.length} words, six families, guided and accessible term-help routes)`);

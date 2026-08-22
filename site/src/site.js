@@ -200,13 +200,14 @@
       let plan;
       try {
         plan = recommendationApi.recommend({
+          evidenceSelection: fieldValue("evidenceSelection"),
           consequence: fieldValue("consequence"),
           uncertainty: fieldValue("uncertainty"),
           budget: fieldValue("budget"),
           permission: fieldValue("permission"),
         });
       } catch {
-        setCardText("[data-recommendation-status]", "Choose one valid option in all four groups before building a recommendation.");
+        setCardText("[data-recommendation-status]", "Choose one valid option in all five groups before building a recommendation.");
         return;
       }
       setCardText("[data-recommendation-level]", plan.recommendedLevel);
