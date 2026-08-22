@@ -108,5 +108,5 @@ git diff --check
 printf '\nPASS: complete local owner-review verification sequence\n'
 printf '%s\n' \
   "BOUNDARY: artifact checks are not owner comprehension, physical-keyboard," \
-  "supported screen-reader, real browser zoom, print-preview, effectiveness," \
-  "or empirical evidence."
+  "supported screen-reader, real browser zoom, real forced-colors, print-preview," \
+  "hardware-touch, effectiveness, or empirical evidence."

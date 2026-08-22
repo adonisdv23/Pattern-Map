@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
-CONTENT_CHECKPOINT = "5eb860e8d6918813622a7725eb0d854f6bef6ca2"
+CONTENT_CHECKPOINT = "c88926034cd75773dcc42d3842983c879dda5b58"
 
 
 REQUIRED_PATHS = [
@@ -112,7 +112,9 @@ REQUIRED_PATHS = [
     "qa/site/audit_site.py",
     "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
     "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
+    "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
+    "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md",
     "qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md",
     "qa/interaction/apply-state-contract.spec.mjs",
     "qa/interaction/map-layout-contract.spec.mjs",
@@ -217,9 +219,9 @@ def write_manifest() -> None:
         "schema_version": 1,
         "package": "pattern-map-v16-owner-review",
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-20",
+        "generated_date": "2026-08-22",
         "content_site_source_and_pdf_checkpoint": CONTENT_CHECKPOINT,
-        "evidence_note": "The manifest includes the ChatGPT Pro round-one corrected source/export checkpoint, planning and responsive regression contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/accessibility/print gates remain open.",
+        "evidence_note": "The manifest includes the ChatGPT Pro Round 2 corrected source/export checkpoint, the exhaustive 108-case Stage 0/permission/state contract, descriptive/no-script/medium-safe term help, mobile route-target and layout contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/print/touch gates remain open.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),

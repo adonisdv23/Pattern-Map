@@ -2,20 +2,17 @@
 
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
-Canonical corrected implementation checkpoint:
-`5eb860e8d6918813622a7725eb0d854f6bef6ca2`. It incorporates the first
-independent ChatGPT Pro review of exact predecessor
-`cc5547def98aeec819eabc68bbf850548e97d4c6`; the following evidence/handoff
+Canonical Round 2 correction implementation checkpoint:
+`c88926034cd75773dcc42d3842983c879dda5b58`. It incorporates the bounded
+second ChatGPT Pro review of exact predecessor
+`4d2505e7f3d325fe7b8ef5e2e5c3a634a11aa9fe`; the following evidence/handoff
 commit refreshes this packet and the deterministic package manifest.
-
-Integrated corrected owner-review evidence checkpoint:
-`bfaa62e7c186b2838e7b57c1490a1428338e862c`. The following metadata-only
-commit refreshes branch state and the deterministic manifest after the push.
 
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
 and Apply semantics. Current evidence is the exact-checkpoint Pro correction
-QA, executable contracts, live 390/821/1024/default browser inspection, and
+QA, executable contracts, live 320/390/480/600 and
+601/768/821/1024/1100/default browser inspection, and
 regenerated PDF renders. No older screenshot is presented as current.
 
 ## The outcome
@@ -52,7 +49,7 @@ GitHub owner-review surface: draft pull request
    continuous authored path through the publication. This routed site is the
    primary review experience. The
    [standalone HTML](../site/exports/standalone/pattern-map-v16.html) is the
-   self-contained all-routes companion.
+   direct-open all-routes companion within the repository package.
 4. Inspect the [six-family specification](../framework/SIX_FAMILIES.md),
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
    [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
@@ -61,7 +58,7 @@ GitHub owner-review surface: draft pull request
 6. Inspect [The Echo Problem](../research/the-echo-problem/README.md), its
    [status/no-results record](../research/the-echo-problem/STATUS_AND_BOUNDARIES.md),
    and its [relationship to v16](../research/the-echo-problem/RELATION_TO_V16.md).
-7. Inspect the [current Pro correction QA](../qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md)
+7. Inspect the [current Pro correction QA](../qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md)
    and the [current/historical visual evidence index](../qa/visual/README.md).
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
@@ -90,7 +87,8 @@ the semantic accessibility route.
   route guide, and an optional continuous Guided read; a current six-family,
   line-free relationship view; contextual plain-language term helpers with
   code-native microvisuals; a provider-free local Apply studio that recommends
-  a plan without fabricating actual event states; a direct-open all-routes
+  a plan from an explicit Stage 0 gate without fabricating actual event states;
+  a direct-open all-routes
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.
@@ -123,11 +121,12 @@ anchors without pretending the external ZIP lives in Git.
 - The current standalone has one main, one h1, 339 unique IDs, ten named route
   sections, one publication rail, one mobile guide, one page frame, and no
   falsely current route.
-- Live browser inspection covers Home, Map, Apply, Guided, and a term helper at
-  the default desktop viewport; 390-pixel Home/Map/Apply/term-helper reflow;
-  and the exact 821- and 1024-pixel Map regimes. No inspected view had
-  horizontal overflow. Permission precedence and unchanged observed state pass
-  in Apply, and the console ended without errors or warnings.
+- Live browser inspection covers the new Home planning preview at 390 pixels;
+  one-column Apply route briefs and 44-pixel discrete route targets at
+  320/390/480/600; flow-native term panels at
+  601/768/821/1024/1100; and the default desktop Apply state. No inspected
+  document had horizontal overflow. Stage 0, permission precedence, and
+  unchanged observed state pass in Apply.
 - The older routed screenshot matrix is explicitly historical because it
   shows superseded Map connectors and Apply event-writing behavior. It is not
   current evidence.
@@ -135,11 +134,12 @@ anchors without pretending the external ZIP lives in Git.
   or unreadable glyphs was observed.
 - Final advisory lanes preserve explicit limits: proxy reader reviews are not
   measured comprehension; validators are not effectiveness evidence.
-- Independent ChatGPT Pro review of exact commit `cc5547d` returned two P0s,
-  eight P1/P2 corrections, one protected-headline suggestion, and optional
-  polish. Every finding is dispositioned; accepted corrections are implemented
-  at `5eb860e`, the protected headline is retained under the locked owner
-  intent, and taste-level items remain deferred.
+- ChatGPT Pro Round 1 of exact commit `cc5547d` returned two P0s and bounded
+  corrections implemented at `5eb860e`. Round 2 of exact commit `4d2505e`
+  confirmed both P0s resolved and found five bounded P1 residues. Every Round 2
+  finding is dispositioned; source corrections are implemented at `c889260`,
+  the protected headline remains under locked owner intent, and only physical,
+  publication-time, or owner-taste gates remain after the final PR readback.
 - Claude Code/Cowork was attempted earlier as an optional review lane, but the
   installed client's existing OAuth token was revoked (`401`). Credentials
   were not inspected or repaired, no paid API was used, and no Claude-review
@@ -174,6 +174,8 @@ gate. Please record the following before calling v16 fully accepted:
    HTML.
 5. Inspect real 200% browser/OS zoom on the principal routes and standalone.
 6. Inspect browser print preview for the principal and key secondary routes.
+7. Inspect forced-colors behavior and hardware-touch activation on navigation,
+   term helpers, Map focus, and Apply.
 
 The exact checklist is in `qa/FINAL_ACCEPTANCE_MATRIX_V16.md`. External source
 destinations should be reverified before any later authorized publication.
@@ -199,7 +201,8 @@ No merge to `main`, deployment, public-site replacement, publication, GitHub
 Release, empirical/model/participant study, research-provider selection/call,
 incremental spend, external-dataset acquisition, preregistration, outreach, or
 representation of unrun work as results occurred. The owner later gave an
-exact instruction for an outside ChatGPT Pro advisory review on the existing
-account; that review is not a study, protocol provider selection, or result.
+exact instruction for an outside ChatGPT Pro advisory review loop on the
+existing account; its two rounds are not a study, protocol provider selection,
+or result.
 The draft pull request is for owner review only and does not expand that
 authority.

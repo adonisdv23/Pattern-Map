@@ -11,8 +11,9 @@ content hierarchy and source paths are frozen in
 The routed site is the primary owner-review experience. Wide screens use a
 persistent chapter rail; narrow screens use a normal-flow route guide. Map
 opens with the current six-family relationship view and a visible text
-equivalent. Apply includes a local, reversible route studio that produces
-planning recommendations—level, action, required gate, planned stopping
+equivalent. Apply includes a local, reversible route studio that first asks
+the Stage 0 evidence-selection question and produces planning recommendations—
+level, action, required gate, planned stopping
 condition, and learning option—without pretending a run, stop, outcome,
 learning review, or human decision occurred. The observed-state fields remain
 explicitly unrun/unobserved, and the studio calls no provider or external
@@ -38,7 +39,9 @@ workflow. It is an untagged visual review companion, not the accessibility
 route. Use the standalone HTML for semantic headings, landmarks, links, and
 assistive-technology navigation.
 
-The standalone HTML has one `All routes` orientation system rather than
+The standalone HTML is direct-open within the repository package: CSS and
+JavaScript are embedded, while the preserved historical v13 image remains an
+explicit repository-relative asset. It has one `All routes` orientation system rather than
 pretending one section is current. The site preserves progressive disclosure,
 the separate Echo route, the historical/current-map distinction, a no-script
 reading path, print styling, and the no-deployment boundary. No public-site

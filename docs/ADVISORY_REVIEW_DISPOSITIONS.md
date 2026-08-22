@@ -124,3 +124,32 @@ Round-one implementation is anchored at exact commit
 `5eb860e8d6918813622a7725eb0d854f6bef6ca2`; current verification and
 live-browser boundaries are recorded in
 `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`.
+
+## ChatGPT Pro Round 2 dispositions
+
+Round 2 reviewed exact commit
+`4d2505e7f3d325fe7b8ef5e2e5c3a634a11aa9fe`. Its complete advisory text is
+preserved without granting it authority in
+`qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md`.
+The bounded implementation checkpoint is
+`c88926034cd75773dcc42d3842983c879dda5b58`.
+
+| Finding ID | Recommendation | Disposition | Integrator reason | Affected files or surface | Governing requirement | Action / verification |
+| --- | --- | --- | --- | --- | --- | --- |
+| PM16-R2-01 | Encode Stage 0 as an independent Apply input and prevent evidence-selection work from resolving to ordinary | **Accepted with revision** | Reversibility, consequence, and supplied input cannot stand in for the governing selection/acquisition/comparison decision | Recommender, Apply renderer/script, interaction contract, export | Proportionality; ordinary-path escape; A07/A08/A13 | Explicit `none / needed` field; full 108-combination contract; permission precedence and immutable observed state pass |
+| PM16-R2-02 | Replace the stale draft PR description | **Accepted** | The owner-review entrypoint must not describe the superseded 303-word, nine-route, event-writing version | Draft PR #1 metadata | Accurate owner-review surface; A11/A15 | Refresh after final evidence push; verify draft/open/unmerged state, intended base/head, current semantics, and removal of stale claims by remote readback |
+| PM16-R2-03 | Replace receipt/event language in the Home Apply preview | **Accepted** | A prominent visual preview must match the planning-only route even though it is aria-hidden | Home renderer/CSS and generated outputs | Three-door truthfulness; A02/A07/A08 | New task/recommendation/gate/planned-boundary sequence; source assertion and 390-pixel live observation pass |
+| PM16-R2-04 | Give term controls descriptive names; hide inert no-script controls; contain panels at medium widths | **Accepted with revision** | Inline meaning remains canonical while optional depth should be operable and non-clipping across input modes | Term renderer/CSS, content/site checks, outputs | Progressive disclosure and accessibility; A06/A13 | Descriptive names, no-script suppression, print suppression, and 601/768/821/1024/1100 in-flow checks pass; physical keyboard/screen-reader checks remain Deferred |
+| PM16-R2-05 | Restore one-column mobile route briefs and 44-pixel discrete route targets | **Accepted with revision** | The late compact override contradicted the mobile reading and internal target-size contract | Responsive CSS and site checks | Mobile legibility/navigation; A02/A06/A13 | 320/390/480/600 checks show one column, 44-pixel visible route targets, principal links present, and no document overflow; hardware touch remains Deferred |
+| PM16-R2-P2-01 | Reduce duplicate Map focus announcements | **Accepted** | Two polite regions announced one action; one concise live status is enough | Map markup/script | A13 | Detailed focus status is now ordinary visible text; the existing family status remains live; screen-reader confirmation remains manual |
+| PM16-R2-P2-02 | Hide no-script Read/Guided progress at 0% | **Accepted** | A nonfunctional 0% widget adds noise when enhancement never initializes | Site CSS | No-script truthfulness; A06/A13 | `.no-js .reading-progress-wrap` is hidden; full static reading content remains |
+| PM16-R2-P2-03 | Correct the Round 1 “repeatability” wording without rewriting historical evidence | **Accepted with revision** | The old fourth axis was budget; historical exact-checkpoint evidence must remain auditable | New Round 2 QA note | Evidence integrity; A11/A14 | Transparent addendum in `PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`; old report untouched |
+| PM16-R2-P2-04 | Delete overridden legacy Map CSS | **Deferred** | It does not govern current line-free markup; broad cleanup adds regression risk without closing an owner-review gate | Earlier unused Map CSS | Proportionality; A13 | Keep current narrow/medium/wide layout contracts; revisit only in a separately bounded maintenance pass |
+| PM16-R2-P2-05 | Narrow standalone “self-contained” wording | **Accepted with revision** | The direct-open HTML embeds its runtime but intentionally references one repository-local historical image | Builder, export intro, QA/handoff language | Packaging truthfulness; A06/A11/A13 | Current artifact says direct-open within the repository package and names the relative image dependency |
+| PM16-R2-TASTE-01 | Continue late-route density, metadata, rail, name, voice, and memorability revisions | **Deferred** | These are now owner taste rather than correctness blockers and may not silently reopen locked intent | Human/site experience | A01/A04/A06/A17 | Owner review only; no automatic edit inferred |
+| PM16-R2-MANUAL-01 | Treat keyboard, screen reader, real zoom, forced colors, print, and hardware touch as passed | **Rejected as an inference; Deferred as work** | Source, contract, and computed-layout evidence cannot certify physical assistive-technology behavior | Routed site and all-routes export | A13 | Exact manual checklist remains open; no accessibility certification claimed |
+| PM16-R2-PUB-01 | Recheck links, public metadata, and package paths now | **Deferred** | Publication is not authorized and these checks belong at the actual publication boundary | Sources/metadata/package | A11/A15 | Perform only after a later exact publication instruction |
+
+The correction evidence is
+`qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`. Advisory detail did
+not change locked owner intent.

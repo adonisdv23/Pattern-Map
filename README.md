@@ -15,8 +15,9 @@ separate bodies of work:
 The project is in owner-review development. A materially authored local v16
 site now provides persistent publication orientation, an interactive six-family
 relationship map, inline term explainers, an optional continuous Guided read,
-and a provider-free Apply studio that separates planning recommendations from
-unrun and unobserved states. A semantic standalone HTML export and secondary
+and a provider-free Apply studio that begins with the Stage 0 evidence-selection
+gate and separates planning recommendations from unrun and unobserved states. A
+direct-open semantic all-routes HTML export and secondary
 PDF companion also exist, but no public site has been deployed or substituted
 for the historical reference. The framework is not empirically validated and
 no study run is authorized.
@@ -28,11 +29,11 @@ transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1
 Echo project, an explicitly unrun broader research agenda, and a ten-route
 local owner-review site including an optional Guided read. Structural,
-responsive, no-script, export, interaction,
+responsive, no-script, export, 108-case planning-state, interaction,
 and visual checks and final independent proxy/operator reviews pass within
 their stated artifact boundaries. Owner/mentor judgment plus manual
-physical-keyboard, supported screen-reader, real-zoom, and browser print-preview
-confirmation remain open.
+physical-keyboard, supported screen-reader, real-zoom, forced-colors, browser
+print-preview, and hardware-touch confirmation remain open.
 The canonical owner-review surface is draft pull request
 [#1](https://github.com/adonisdv23/Pattern-Map/pull/1); it is not authorization
 to merge or publish.
@@ -105,8 +106,8 @@ reportable if a future study is ever separately authorized.
 ## External-action boundary
 
 Feature branches, isolated worktrees, commits, pushes, and draft pull requests
-are authorized for this roadmap. The owner later exactly authorized one
-ChatGPT Pro advisory review on the existing account; that exception does not
+are authorized for this roadmap. The owner later exactly authorized a
+ChatGPT Pro advisory review loop on the existing account; that exception does not
 authorize a study, a research-provider selection, or incremental spend.
 Merging to `main`, deployment, publication, GitHub Releases, empirical or
 participant activity, other provider calls, spending, external-dataset

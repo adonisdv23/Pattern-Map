@@ -28,11 +28,12 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
-- `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md` is the current
+- `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` is the current
   exact-checkpoint report. It records the ten-route Guided experience,
-  planning-only Apply semantics, line-free relationship Map, terminology
-  helpers, 390/821/1024/default live-browser observations, and executable
-  regression contracts.
+  Stage 0 planning-only Apply semantics, line-free relationship Map,
+  descriptive/no-script/medium-safe terminology helpers,
+  320/390/480/600 and 601/768/821/1024/1100/default live-browser observations,
+  and executable 108-case regression contracts.
 - `qa/site/SITE_POLISH_QA.md`,
   `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, and the routed-site PNG
   matrix are preserved evidence for the earlier `a319794` design checkpoint.
@@ -54,5 +55,6 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   does not establish comprehension, persuasion, effectiveness, live-agent
   compliance, or a research result.
 - Physical keyboard traversal, a supported screen-reader pass, real 200%
-  browser/OS zoom, and a human print-preview pass remain open because the
-  available automation surface could not establish those behaviors reliably.
+  browser/OS zoom, real forced-colors, human print preview, and hardware touch
+  remain open because the available automation surface cannot certify those
+  behaviors reliably.

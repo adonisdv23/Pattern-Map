@@ -696,3 +696,57 @@ model advisory, not owner acceptance or empirical evidence.
 
 **Governing requirement:** owner visual expectation; authority order;
 A01–A08/A10–A13/A15–A17; no-deploy/no-publish/no-study boundary.
+
+## D-025 — Close the bounded Pro Round 2 findings and stop at owner/manual gates
+
+**Date:** 2026-08-22
+
+**Status:** Accepted with final draft-PR readback and manual residuals
+
+ChatGPT Pro Round 2 reviewed exact commit
+`4d2505e7f3d325fe7b8ef5e2e5c3a634a11aa9fe`. Its full output is preserved in
+`qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md`
+and remains advisory under the authority order. The review found no remaining
+P0 and confirmed that the Round 1 Apply event-state and Map collision defects
+were resolved. It identified five bounded P1 corrections.
+
+Implementation checkpoint
+`c88926034cd75773dcc42d3842983c879dda5b58` closes the source findings without
+reopening the thesis:
+
+- Apply now asks the independent Stage 0 evidence-selection question before
+  consequence, uncertainty, budget, and permission. The complete 108-case
+  contract prevents Stage 0 `yes` from resolving to ordinary, keeps Stage 0
+  `no` free of evidence bureaucracy, preserves permission/human-gate
+  precedence, and never fabricates an event.
+- Home previews Apply as a recommendation and planned boundary, not a receipt,
+  stop event, or recorded human disposition.
+- contextual term helpers name their concepts for assistive technology, hide
+  inert optional controls without JavaScript, and become flow-native across
+  601–1100 pixels;
+- the mobile route brief remains one column and discrete route controls meet
+  the 44-pixel source/computed-layout contract;
+- one Map status remains live, no-script progress is hidden, Round 1’s
+  budget/repeatability wording is corrected transparently in new evidence,
+  and standalone packaging language is narrowed to direct-open within the
+  repository.
+
+The old overridden Map CSS is left for a separately bounded maintenance pass:
+it does not govern current markup and is not an owner-review blocker. Visual
+density, mono labels, rail feel, the public name, voice, and memorability are
+owner-taste decisions. Physical keyboard, supported screen reader, real zoom,
+forced colors, print preview, and hardware touch remain manual A13 gates.
+External-link and public-metadata checks remain publication-time work only.
+
+The draft PR body must be refreshed and read back after the final evidence
+push so that it describes the actual head while remaining draft, open,
+unmerged, and bounded. No self-referential repository file is treated as proof
+of that later GitHub state.
+
+**Evidence:**
+`qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`, the full advisory
+record, executable contracts, and current in-app-browser layout observations.
+
+**Governing requirement:** authority order; proportionality; three-door and
+six-family locks; A02/A06–A08/A11/A13–A17; no-merge/no-deploy/no-publish/no-
+study/no-spend boundary.

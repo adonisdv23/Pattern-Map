@@ -53,13 +53,14 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Artifact | Path | Boundary |
 | --- | --- | --- |
 | Site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored ten-route site; persistent orientation, continuous Guided read, line-free current Map, contextual term helpers, and planning-only Apply studio; no hosting |
-| Apply recommendation model | `site/src/recommendation.js`, `qa/interaction/apply-state-contract.spec.mjs` | Pure 54-combination permission/state contract; never records actual events from planning inputs |
+| Apply recommendation model | `site/src/recommendation.js`, `qa/interaction/apply-state-contract.spec.mjs` | Pure 108-combination Stage 0/consequence/uncertainty/budget/permission contract; never records actual events from planning inputs |
 | Map and reader regressions | `qa/interaction/map-layout-contract.spec.mjs`, `qa/content/reader-language-contract.spec.mjs` | Narrow/medium/wide layout contract and cumulative-entry/plain-language contract |
 | Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open ten-section review companion; one rail/guide/frame and no false current route |
 | PDF companion | `site/exports/pattern-map-v16-owner-review.pdf` | Untagged visual companion; not the accessibility route |
 | Site implementation QA | `qa/site/SITE_QA_REPORT.md`, `qa/site/audit_site.py` | Structural/accessibility proxy only |
 | Current-head live browser boundary | `qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md` | Pointer/focus/state evidence; physical keyboard/screen-reader/print remain manual |
-| Current Pro correction QA | `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md` | Exact reviewed/corrected checkpoints, dispositions, live viewports, and current residuals |
+| Current Pro correction QA | `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md` | Round 2 exact review/correction, 108-case Stage 0 contract, mobile/medium live viewports, transparent P2 dispositions, and current manual residuals |
+| Prior Pro correction QA | `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md` | Round 1 exact review history; superseded for the current Apply matrix and term/mobile behavior |
 | Historical site-polish QA | `qa/site/SITE_POLISH_QA.md`, `qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md` | Earlier `a319794` design checkpoint; superseded for current Map/Apply semantics |
 | Visual QA | `qa/visual/POLISH_PLAN.md`, `qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, historical routed-site screenshots, current PDF renders | Design history and bounded rendered evidence; `qa/visual/README.md` distinguishes current from superseded captures |
 | Image decision/use records | `qa/visual/VISUAL_NEEDS.md`, `assets/IMAGE_USE_LEDGER.md` | No generated bitmap candidates |

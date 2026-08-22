@@ -1,10 +1,10 @@
 # Branch and draft pull-request state
 
-Status date: 2026-08-20
+Status date: 2026-08-22
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `bfaa62e` corrected owner-review evidence checkpoint | Pushed; draft PR #1 remains open and unmerged; this branch-state/checksum metadata follows on the same branch |
+| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `c889260` Round 2 correction implementation; evidence/checksum commit follows | Authorized push target; draft PR #1 remains open and unmerged; final metadata readback occurs after the evidence push |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
 | Applied framework and agent playbook | `codex/pattern-map-v16-playbook` | `fccfceb` | Pushed; integrated into foundation |
@@ -16,15 +16,18 @@ Draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate
 
 - Base: `main` at `5eea2381c86400bacc1bc2a6df0e3af78bd6330a` when opened.
 - Head branch: `codex/pattern-map-v16-foundation`.
-- Corrected implementation checkpoint: `5eb860e8d6918813622a7725eb0d854f6bef6ca2`.
-- Corrected owner-review evidence checkpoint:
-  `bfaa62e7c186b2838e7b57c1490a1428338e862c`.
+- Round 2 correction implementation checkpoint:
+  `c88926034cd75773dcc42d3842983c879dda5b58`.
+- Round 2 reviewed predecessor:
+  `4d2505e7f3d325fe7b8ef5e2e5c3a634a11aa9fe`.
 - State: open and draft; not merged.
 
 The PR tracks the head branch. The corrected checkpoint above incorporates the
-first independent ChatGPT Pro review of exact predecessor `cc5547d`; the
-following handoff and verification commit records current evidence and
-refreshes the bounded package manifest. The routed-site screenshots from
+bounded second independent ChatGPT Pro review of exact predecessor `4d2505e`;
+the following handoff and verification commit records current evidence and
+refreshes the bounded package manifest. After that final push, the PR body is
+read back from GitHub so no self-referential file is mistaken for proof of its
+later metadata state. The routed-site screenshots from
 `a319794` remain historical QA, not current Map/Apply evidence.
 
 The draft PR is an owner-review surface only. It does not authorize merge,

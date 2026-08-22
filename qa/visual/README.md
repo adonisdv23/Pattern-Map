@@ -8,11 +8,11 @@ Use these paths for the current v16 review:
 
 - `pdf-renders-final-v16-polish/` — six rendered pages from the secondary PDF
   companion; and
-- `../site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md` — exact-checkpoint
+- `../site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` — exact-checkpoint
   source, contract, and live-browser evidence for the current ten-route site.
 
 The corrected implementation checkpoint is
-`5eb860e8d6918813622a7725eb0d854f6bef6ca2`.
+`c88926034cd75773dcc42d3842983c879dda5b58`.
 
 ## Superseded routed-site captures
 
@@ -24,7 +24,7 @@ line-free relationship bands, Apply produces planning recommendations without
 fabricating actual event states, and the site now has a Guided route and term
 helpers.
 
-No replacement routed-site screenshot binaries are claimed for `5eb860e`.
+No replacement routed-site screenshot binaries are claimed for `c889260`.
 Current visual evidence consists of the regenerated PDF renders plus the live
 viewport observations and executable layout/interaction contracts in the
 current correction report.

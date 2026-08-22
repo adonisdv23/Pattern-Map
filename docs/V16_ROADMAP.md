@@ -16,10 +16,10 @@ home.
 | 1 — Intent freeze | Locked owner intent, thesis/audience, artifact boundaries, acceptance criteria, v13→v16 fidelity matrix | Complete — owner-locked contracts and intent audit |
 | 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | Complete — all production lanes integrated; Wave 1, applied, continuity, and Echo findings dispositioned |
 | 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Complete — frozen contract and strengthened structural validator at `9079fcb`; its rendered gates were subsequently completed in Phases 4/6 within stated proxy limits |
-| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete for artifact scope — initial site task `a3cd7c7`; owner-directed authored-site polish through `a319794`; ChatGPT Pro round-one correction at `5eb860e` adds Guided continuity, contextual term helpers, a line-free responsive Map, planning-only Apply semantics, and exact regression contracts; manual keyboard/screen-reader/real-zoom/print confirmation remains a release residual |
+| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete for artifact scope — initial site task `a3cd7c7`; owner-directed authored-site polish through `a319794`; ChatGPT Pro corrections through `c889260` provide Guided continuity, descriptive contextual term helpers, a line-free responsive Map, an explicit Stage 0 planning-only Apply studio, mobile legibility, and exact regression contracts; manual keyboard/screen-reader/real-zoom/forced-colors/print/touch confirmation remains a release residual |
 | 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
-| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Active exact-commit outside-review loop — final operator, hostile novelty, cold-reader, site/accessibility, post-polish visual-experience, and ChatGPT Pro round-one reports are dispositioned; round-one blockers are corrected at `5eb860e`; no human comprehension or assistive-technology result inferred |
-| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Pending the exact-commit Pro follow-up and refreshed handoff push — draft PR #1 remains open/draft; owner/mentor and physical keyboard/screen-reader/real-zoom/print gates stay open; no merge/deploy |
+| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Terminal for model/artifact review after Round 2 bounded corrections at `c889260`; every material finding is dispositioned; no human comprehension or assistive-technology result inferred |
+| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Pending only the final evidence push and draft-PR metadata readback in this orchestration turn; owner/mentor and physical keyboard/screen-reader/real-zoom/forced-colors/print/touch gates stay open; no merge/deploy |
 
 ## Dependency rules
 
@@ -46,10 +46,14 @@ home.
   checkpoint through `a319794`. ChatGPT Pro then identified two deterministic
   blockers at `cc5547d`; `5eb860e` replaces the fragile connector topology and
   event-writing Apply receipt with a line-free relationship view and
-  planning-only recommendation contract. Ten-route, no-script, 54-combination,
-  and 390/821/1024/default viewport checks pass. Physical keyboard, supported
-  screen reader, real zoom, browser print preview, and owner pacing judgment
-  remain manual.
+  planning-only recommendation contract. Round 2 at `4d2505e` found five
+  bounded P1 residues; `c889260` closes them with an explicit Stage 0 Apply
+  field, accurate Home planning preview, descriptive/no-script/medium-safe term
+  help, one-column mobile route briefs, and 44-pixel route targets. Ten-route,
+  no-script, 108-combination, 320/390/480/600 mobile, 601/768/821/1024/1100
+  medium, and default viewport checks pass. Physical keyboard, supported screen
+  reader, real zoom, forced colors, hardware touch, browser print preview, and
+  owner pacing judgment remain manual.
 - The final reports supersede the implementation-scope deferral recorded at
   the manuscript-only snapshot `ea8a6e2` without changing its historical
   report.
