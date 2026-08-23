@@ -2,11 +2,12 @@
 
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
-Canonical Round 2 correction implementation checkpoint:
-`c88926034cd75773dcc42d3842983c879dda5b58`. It incorporates the bounded
-second ChatGPT Pro review of exact predecessor
-`4d2505e7f3d325fe7b8ef5e2e5c3a634a11aa9fe`; the following evidence/handoff
-commit refreshes this packet and the deterministic package manifest.
+Canonical converged source checkpoint:
+`ad964dd91eff521b0442f613c55bc4e9e97c2f2a`. It incorporates the bounded
+second ChatGPT Pro correction checkpoint `c889260`, site/visual hygiene,
+Signal Foundry transfer, and EP v1.1 design reconciliation. The following
+evidence/checksum commit refreshes this packet and deterministic manifest
+without replacing that source checkpoint.
 
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
@@ -155,9 +156,10 @@ anchors without pretending the external ZIP lives in Git.
 - ChatGPT Pro Round 1 of exact commit `cc5547d` returned two P0s and bounded
   corrections implemented at `5eb860e`. Round 2 of exact commit `4d2505e`
   confirmed both P0s resolved and found five bounded P1 residues. Every Round 2
-  finding is dispositioned; source corrections are implemented at `c889260`,
-  the protected headline remains under locked owner intent, and only physical,
-  publication-time, or owner-taste gates remain after the final PR readback.
+  finding is dispositioned; Pro source corrections are implemented at
+  `c889260` and the full converged source is `ad964dd`. The protected headline
+  remains under locked owner intent, and only physical, publication-time, or
+  owner-taste gates remain after the final PR readback.
 - Claude Code/Cowork was attempted earlier as an optional review lane, but the
   installed client's existing OAuth token was revoked (`401`). Credentials
   were not inspected or repaired, no paid API was used, and no Claude-review

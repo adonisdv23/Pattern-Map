@@ -2,8 +2,8 @@
 
 Status: **OWNER-REVIEW CANDIDATE — MANUAL GATES REMAIN OPEN**
 
-Canonical corrected implementation checkpoint:
-`c88926034cd75773dcc42d3842983c879dda5b58`. The current evidence index
+Canonical converged source checkpoint:
+`ad964dd91eff521b0442f613c55bc4e9e97c2f2a`. The current evidence index
 distinguishes regenerated PDF renders and exact-checkpoint live/source
 evidence from the superseded `a319794` routed-site screenshot matrix.
 

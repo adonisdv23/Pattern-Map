@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
-CONTENT_CHECKPOINT = "c88926034cd75773dcc42d3842983c879dda5b58"
+CONTENT_CHECKPOINT = "ad964dd91eff521b0442f613c55bc4e9e97c2f2a"
 
 
 REQUIRED_PATHS = [
@@ -238,9 +238,9 @@ def write_manifest() -> None:
         "schema_version": 1,
         "package": "pattern-map-v16-owner-review",
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-22",
+        "generated_date": "2026-08-23",
         "content_site_source_and_pdf_checkpoint": CONTENT_CHECKPOINT,
-        "evidence_note": "The manifest includes the ChatGPT Pro Round 2 corrected source/export checkpoint, the exhaustive 108-case Stage 0/permission/state contract, descriptive/no-script/medium-safe term help, mobile route-target and layout contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/print/touch gates remain open.",
+        "evidence_note": "The manifest covers canonical converged source ad964dd: ChatGPT Pro Round 2 corrections; the exhaustive 108-case Stage 0/permission/state contract; descriptive/no-script/medium-safe term help; responsive line-free Map; human-first standalone; truthful current image formats; two Signal Foundry handoff artifacts; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; regenerated PDF renders; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/print/touch gates remain open. No study, deployment, publication, merge, or provider call is implied.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),

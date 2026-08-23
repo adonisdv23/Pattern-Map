@@ -8,15 +8,15 @@ deployment**
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Inspect `codex/pattern-map-v16-foundation` at audited predecessor anchor `d4b7b9e481165b3f692986cdda1b8a0da8b4388b` (`c88926034cd75773dcc42d3842983c879dda5b58` for content/site), then have the primary integrator refresh HEAD, content, and PR fields after all lanes converge.
+2. Inspect `codex/pattern-map-v16-foundation` at canonical source checkpoint `ad964dd91eff521b0442f613c55bc4e9e97c2f2a`; preserve `d4b7b9e` and `c889260` only as audited predecessor anchors.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
 
 This is the one place to start when another task asks for the Pattern Map /
-Discrimination Layer. It names the exact audited predecessor checkpoint, the
-required refresh rule, the artifacts that matter, what is historical, and what
-a downstream Signal Foundry task may safely do.
+Discrimination Layer. It names the exact canonical source checkpoint, the
+audited predecessor anchors, the artifacts that matter, what is historical,
+and what a downstream Signal Foundry task may safely do.
 
 The product is **Signal Foundry**, not “Sigma Foundry.” Signal Foundry’s own
 README names the product explicitly. Legacy infrastructure slugs such as
@@ -25,33 +25,28 @@ not the user-facing product name.
 
 ## Start here
 
-### Audited Pattern Map source checkpoint
+### Canonical Pattern Map source checkpoint
 
 Repository: <https://github.com/adonisdv23/Pattern-Map>
 
-Audited predecessor branch and checkpoints when this handoff lane began:
+Canonical source checkpoint after all content, site, Echo, and handoff lanes
+converged:
 
 ```text
 branch:  codex/pattern-map-v16-foundation
-HEAD:    d4b7b9e481165b3f692986cdda1b8a0da8b4388b
-remote:  origin/codex/pattern-map-v16-foundation contains the same commit
-content: c88926034cd75773dcc42d3842983c879dda5b58
+source:  ad964dd91eff521b0442f613c55bc4e9e97c2f2a
+content: ad964dd91eff521b0442f613c55bc4e9e97c2f2a
 PR:      https://github.com/adonisdv23/Pattern-Map/pull/1
-state:   draft/open/unmerged at audit time; owner review remains open
+state:   draft/open/unmerged; owner review and manual gates remain open
 ```
 
-> **Primary-integrator refresh marker:** `d4b7b9e` and `c889260` are accurate,
-> audited predecessor anchors. Before the final owner handoff, the primary
-> integrator must resolve the branch again and refresh the Pattern Map HEAD,
-> content/site checkpoint, and PR state everywhere in these two files. This
-> lane does not invent a later hash.
-
-`d4b7b9e` was the verified repository/handoff head when this lane began.
-`c889260` is the content and site implementation checkpoint that its final
-evidence commit documents; it is not a different project. Do not substitute
-older `5eb860e`, `bfaa62e`, or `4d2505e` for this audited anchor. After lane
-convergence, use Git—not these sentences—to determine whether a later
-integrated checkpoint exists.
+The independently audited predecessor head was
+`d4b7b9e481165b3f692986cdda1b8a0da8b4388b`; the ChatGPT Pro Round 2 content
+checkpoint was `c88926034cd75773dcc42d3842983c879dda5b58`. They remain audit
+anchors, not the current source. The evidence/checksum commit that follows
+`ad964dd` may advance the branch head without changing the canonical source
+checkpoint. Resolve Git before editing and do not substitute an older
+conversation, screenshot, or deep link for this source commit.
 
 Canonical local checkout used by the orchestration work:
 
@@ -152,6 +147,7 @@ human judgment.
 | v15 / v15.1 | Historical intermediate checkpoints | Historical context only; do not treat as current v16 source |
 | v15.2 | Exact source checkpoint for **The Echo Problem / ECHO-01** | Preserve unchanged and use only for Echo or selectively reusable interface/research patterns |
 | EP v0.1 | Curated successor under `research/the-echo-problem/` | Separate unrun research track with explicit no-results boundary |
+| EP v1.1 | Active design-only successor under `research/the-echo-problem/v1_1/` | Narrowed protocol, provider-free checks, and prospective research order; never a result or v16 definition |
 | v16 | Current broad Pattern Map project | Canonical standalone framework and site described in this handoff |
 
 Nothing is deleted or silently renamed. Origin accounting is one worked
@@ -353,8 +349,8 @@ summary below is the current resolution.
 
 | Claude item | What it meant | Current resolution |
 | --- | --- | --- |
-| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved for the audited predecessor: `origin/codex/pattern-map-v16-foundation` contains `d4b7b9e`. The primary integrator must refresh the remote head after lane convergence. This handoff branch is intentionally not pushed by the assigned task. The separate Signal Foundry audit branch remains local-only. |
-| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; audited predecessor source/evidence is on `d4b7b9e`/`c889260`. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
+| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: canonical source is `ad964dd` on `codex/pattern-map-v16-foundation`; the authorized final evidence push and remote PR readback are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
+| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; current source is `ad964dd`, with Pro correction history at `c889260`. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
 | **Decide if the evidence rule bites too hard** | Claude tightened guards around unreachable CSS, false file extensions, exact checkpoints, and planning-versus-event language. | The strictness is now the canonical safety posture recorded in the locked intent, D-025, the acceptance matrix, and the current QA. No new owner decision is needed to consume v16. If an owner later wants a guard relaxed, record an explicit decision and revise the affected contract; do not silently weaken it. |
 
 ## “Orphaned” work in plain language
@@ -419,8 +415,8 @@ untouched.
 
 - The product-name question is settled: Signal Foundry.
 - The six-family framework, agent playbook, and site source are present.
-- The audited Pattern Map predecessor was on its remote at `d4b7b9e`; the
-  primary integrator must refresh this field after lane convergence.
+- Canonical Pattern Map source is frozen at `ad964dd`; a later evidence-only
+  branch head does not replace that content checkpoint.
 - The local Signal Foundry transfer audit is recoverable and its orphan status
   is understood.
 - Signal Foundry’s existing deterministic Signals v0 is not a missing Pattern
