@@ -32,6 +32,35 @@ const idsIn = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match
 
 const idListIn = (html) => [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
 
+const assertBalancedMainMarkup = (html) => {
+  const main = html.match(/<main id="main"[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? "";
+  const voidElements = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
+  const stack = [];
+  const pageFrameChildren = [];
+  const standaloneParents = new Map();
+  for (const match of main.matchAll(/<(\/)?([a-z][a-z0-9-]*)\b[^>]*>/gi)) {
+    const closing = Boolean(match[1]);
+    const tag = match[2].toLowerCase();
+    if (voidElements.has(tag) || match[0].endsWith("/>")) continue;
+    if (!closing) {
+      const className = match[0].match(/\bclass="([^"]*)"/i)?.[1] ?? "";
+      const classes = new Set(className.split(/\s+/).filter(Boolean));
+      const id = match[0].match(/\bid="([^"]*)"/i)?.[1] ?? "";
+      const parent = stack.at(-1);
+      if (parent?.classes.has("page-frame")) pageFrameChildren.push(className || tag);
+      if (classes.has("standalone-section")) {
+        standaloneParents.set(id, parent?.className ?? parent?.tag ?? "none");
+      }
+      stack.push({ tag, className, classes, id });
+      continue;
+    }
+    const openNode = stack.pop();
+    assert(openNode?.tag === tag, `standalone main markup closes <${tag}> while <${openNode?.tag ?? "none"}> is open`);
+  }
+  assert(stack.length === 0, `standalone main markup leaves <${stack.at(-1)?.tag}> unclosed`);
+  return { pageFrameChildren, standaloneParents };
+};
+
 const relativeLuminance = (hex) => {
   const channels = [1, 3, 5].map((index) => Number.parseInt(hex.slice(index, index + 2), 16) / 255);
   const linear = channels.map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4);
@@ -135,6 +164,11 @@ const main = () => {
   for (const guidedSection of ["guided-opening", "guided-families", "guided-relations", "guided-apply", "guided-examples", "guided-boundary"]) assert(guided.includes(`id="${guidedSection}"`), `Guided route section missing: ${guidedSection}`);
   assert(guided.includes("Approximately 8–12 minutes; editorial estimate only."), "Guided route reading-time caveat missing");
   for (const example of ["specialist signal", "explicit baseline", "independence: UNKNOWN"]) assert(examples.includes(example), `teaching pattern missing: ${example}`);
+  assert(examples.includes('class="recurrence-traces"'), "common-origin teaching bridge is missing");
+  const recurrenceFlowStart = css.indexOf(".recurrence-traces {\n  position: static;");
+  const recurrenceFlowRule = recurrenceFlowStart >= 0 ? css.slice(recurrenceFlowStart, css.indexOf("}", recurrenceFlowStart)) : "";
+  assert(recurrenceFlowRule.includes("display: grid;"), "common-origin bridge is not flow-native");
+  assert(/\.recurrence-traces i\s*\{\s*display:\s*none/i.test(css), "legacy rotated common-origin traces remain visible");
   assert(examples.includes("ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION"), "Signal Foundry status missing");
   assert(examples.includes("The Echo Problem</strong> is a separate project"), "late Echo boundary missing from examples");
   assert(research.includes("UNRUN") && research.includes("NO RESULTS") && research.includes("NO PROVIDER OR MODEL SELECTED"), "research no-results status missing");
@@ -166,6 +200,14 @@ const main = () => {
   assert((standalone.match(/<aside class="orientation-rail"/g) ?? []).length === 1, "standalone export must contain one publication rail");
   assert((standalone.match(/<details class="orientation-mobile"/g) ?? []).length === 1, "standalone export must contain one mobile route guide");
   assert((standalone.match(/<div class="page-frame"/g) ?? []).length === 1, "standalone export contains nested publication frames");
+  const standaloneStructure = assertBalancedMainMarkup(standalone);
+  assert(
+    JSON.stringify(standaloneStructure.pageFrameChildren) === JSON.stringify(["orientation-rail", "page-content"]),
+    `standalone page-frame direct children are ${standaloneStructure.pageFrameChildren.join(", ")}`
+  );
+  const standaloneContentStart = standalone.indexOf("<!-- PATTERN_MAP_PAGE_CONTENT_START -->");
+  const standaloneContentEnd = standalone.indexOf("<!-- PATTERN_MAP_PAGE_CONTENT_END -->", standaloneContentStart);
+  assert(standaloneContentStart >= 0 && standaloneContentEnd > standaloneContentStart, "standalone page-content boundaries are missing or reversed");
   assert(standalone.includes("<strong>All routes</strong>"), "standalone orientation must describe the complete route set");
   assert(!standalone.includes('aria-current="location"'), "standalone orientation must not falsely mark one route as current");
   const headingLevels = [...standalone.matchAll(/<h([1-6])\b/g)].map((match) => Number(match[1]));
@@ -173,7 +215,10 @@ const main = () => {
     assert(headingLevels[index] <= headingLevels[index - 1] + 1, `standalone heading level jumps from h${headingLevels[index - 1]} to h${headingLevels[index]}`);
   }
   for (const section of ["home", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"]) {
-    assert(standalone.includes(`<section class="standalone-section" id="${section}"`), `standalone route section missing: ${section}`);
+    const sectionIndex = standalone.indexOf(`<section class="standalone-section" id="${section}"`);
+    assert(sectionIndex >= 0, `standalone route section missing: ${section}`);
+    assert(sectionIndex > standaloneContentStart && sectionIndex < standaloneContentEnd, `standalone route escaped page-content: ${section}`);
+    assert(standaloneStructure.standaloneParents.get(section) === "page-content", `standalone route is not a direct page-content child: ${section}`);
   }
   for (const html of [sources, standalone]) {
     assert(!/<a\b[^>]*<(?:\/?em|\/?strong|\/?code)\b/i.test(html), "inline markup corrupted an anchor start tag");
@@ -203,7 +248,12 @@ const main = () => {
   assert(!/\.primary-nav\s+a\s*\{[^}]*display:\s*none/i.test(css), "mobile CSS hides principal route links");
   assert(css.includes(".no-js .term-popover-trigger") && css.includes(".no-js .reading-progress-wrap"), "no-script mode leaves optional term or progress controls visible");
   assert(/@media \(min-width: 601px\) and \(max-width: 1100px\)[\s\S]*?\.term-popover\s*\{[^}]*position:\s*static/i.test(css), "medium-width term popovers are not flow-native");
+  assert(css.includes("--term-popover-shift") && css.includes("max-width: calc(100vw - 2rem)"), "desktop term popovers lack viewport containment");
+  assert(/@media \(max-width: 480px\)[\s\S]*?\.term-mini-chain,[\s\S]*?grid-template-columns:\s*1fr/i.test(css), "complex term microvisuals do not stack at narrow widths");
   assert(!/@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3/i.test(css), "narrow route brief regressed to three compressed columns");
+  assert(/@media print[\s\S]*?\.standalone-section\s*\{\s*break-before:\s*page/i.test(css), "standalone print routes do not start on deliberate pages");
+  assert(/@media print[\s\S]*?\.page-content,[\s\S]*?\.sources-route,[\s\S]*?\.research-route,[\s\S]*?\.history-route[\s\S]*?min-width:\s*0\s*!important/i.test(css), "evidence routes lack explicit print-width containment");
+  assert(/@media print[\s\S]*?table\s*\{\s*table-layout:\s*fixed;\s*font-size:\s*7\.5pt/i.test(css), "wide evidence tables lack a print layout contract");
   assert(/\.primary-nav a,[^\n]*\.secondary-nav a,[^\n]*\.orientation-link,[^\n]*\.orientation-mobile > summary\s*\{\s*min-height:\s*2\.75rem/i.test(css), "route controls do not share the 44px minimum target contract");
   const paper = cssHexVariable(css, "paper");
   for (const token of ["muted", "teal", "green", "purple", "orange", "ochre", "blue"]) {

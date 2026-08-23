@@ -122,6 +122,16 @@ the PDF is intentionally a visual companion. No public v16 URL has been
 authorized or deployed. Do not invent a “V14 pass deep link.” V14 is a
 historical source, not the current v16 site.
 
+For transfer to another computer, send the committed standalone HTML together
+with its repository-relative historical image, or use the verified portable
+bundle. For PDF review, use the deliberately composed six-page companion above.
+Do not substitute a browser extension's full-page capture or a custom jsPDF
+export: those paths can combine routes, expand technical appendices, or impose
+a non-print viewport. A receiving agent should rebuild locally and inspect the
+routed site before attributing a visual defect to current source. The current
+standalone build also verifies balanced main markup and requires every route to
+remain inside the publication content column.
+
 ## What v16 is
 
 Pattern Recognition / The Discrimination Layer v16 is the broad principal

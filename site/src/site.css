@@ -758,3 +758,98 @@ main { overflow: visible; }
   .static-route-equivalent { display: block !important; }
   .guided-family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Owner-review closeout: keep the common-origin example flow-native and make
+   browser print/export resilient to stale or unusual capture viewports. */
+.recurrence-map {
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 0.42fr) minmax(10rem, 0.7fr);
+  gap: clamp(0.7rem, 2vw, 1.2rem);
+  min-height: 0;
+}
+
+.recurrence-traces {
+  position: static;
+  inset: auto;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  align-self: stretch;
+  padding: 0.8rem 0.55rem;
+  border-block: 1px solid var(--line);
+  color: var(--ochre);
+  text-align: center;
+}
+
+.recurrence-traces::before {
+  content: "trace known paths";
+  font: 800 0.58rem/1.35 "SFMono-Regular", Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recurrence-traces::after {
+  content: "\2192";
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.recurrence-traces i { display: none; }
+
+.term-popover {
+  max-width: calc(100vw - 2rem);
+  transform: translateX(var(--term-popover-shift, 0px));
+}
+
+@media (max-width: 600px) {
+  .recurrence-map { grid-template-columns: 1fr; }
+  .recurrence-traces { display: none; }
+}
+
+@media (max-width: 480px) {
+  .term-mini-chain,
+  .term-mini-candidate,
+  .term-mini-authority,
+  .term-mini-learning,
+  .term-mini-stop,
+  .term-mini-origin {
+    grid-template-columns: 1fr;
+  }
+
+  .term-mini-chain > i,
+  .term-mini-candidate > i,
+  .term-mini-authority > i,
+  .term-mini-learning > i,
+  .term-mini-stop > i,
+  .term-mini-origin > i {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .term-mini-origin > span { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media print {
+  @page { size: Letter portrait; margin: 1.6cm; }
+
+  .page-content,
+  .standalone-section,
+  .standalone-section > section,
+  .sources-route,
+  .research-route,
+  .history-route,
+  .history-intro,
+  .history-notes,
+  .long-source {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .standalone-section { break-before: page; }
+  .standalone-section:first-of-type { break-before: auto; }
+  .source-notice, .research-status, .echo-callout, .historical-figure { break-inside: avoid; }
+  .table-wrap { width: 100%; max-width: none; overflow: visible; }
+  table { table-layout: fixed; font-size: 7.5pt; }
+  th, td { padding: 0.38rem; overflow-wrap: anywhere; word-break: normal; }
+  .recurrence-map { grid-template-columns: minmax(0, 1fr) 7rem 10rem; }
+}

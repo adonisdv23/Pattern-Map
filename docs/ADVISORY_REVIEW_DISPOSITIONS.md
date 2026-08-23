@@ -187,3 +187,27 @@ because its existing OAuth state returned `401`/revoked token. Credentials were
 not inspected or repaired and no paid provider call was made. The owner-
 supplied Claude package was nevertheless audited directly, reproduced where
 checkable, and red-teamed by the primary integrator and a Luna Max agent.
+
+## Owner visual/export closeout dispositions
+
+The owner-attached 11-page jsPDF artifact and exact source at starting head
+`eca11399bc8ec156e16bf33a732168511b6873bf` were inspected separately. The
+complete evidence and measurements are in
+`qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md`.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Verification / residual |
+| --- | --- | --- | --- | --- | --- |
+| OVE-01 | Treat the attached Sources/Research collision as a current routed-site failure | **Accepted with revision** | Routed pages were healthy, but the standalone export had a real malformed-markup defect after Boundaries; fix the generator rather than relabel the routed site as broken | `site/build.mjs`, standalone export, structural checks | All ten standalone sections now remain inside `.page-content`; 1440/821/390 Chromium widths and no-overflow pass |
+| OVE-02 | Repair collapsed History and compressed evidence tables | **Accepted** | Remove the standalone structural cause and retain explicit print-width/table contracts | History/Sources/Research standalone and print rules | Screen widths pass at 1440/821/390; at 1056 print media each route fills the frame and representative tables use fixed full-width layout; native target-browser print preview remains manual |
+| OVE-03 | Replace the common-origin fan of nine rotated lines | **Accepted** | The absolute fan visibly crossed/overshot and did not attach to the report chips | Examples recurrence visual | Flow-native observations → trace known paths → shared origin bridge; legacy lines hidden; 1440/390 DOM checks pass |
+| OVE-04 | Stack dense term microvisuals at narrow widths | **Accepted with revision** | Optional visuals should aid rather than compete with adjacent plain language | Term microvisual CSS | One-column computed layout at 390 px; inline meaning remains canonical |
+| OVE-05 | Prevent desktop right-edge term-panel clipping | **Accepted** | A bounded calculated shift is smaller and safer than a new popover framework | Term helper CSS/JS | 1440-pixel edge case retains a 16-pixel guard and does not enlarge document width; 601–1100 remains flow-native |
+| OVE-06 | Redesign the entire site because the alternate export is broken | **Rejected** | The current authored ten-route publication, three doors, Guided path, line-free Map, and planning-only Apply are not invalidated by a mismatched export path | Whole site | Existing source, route, and interaction contracts continue to pass |
+| OVE-07 | Generate bitmap/network imagery for the confirmed visual defects | **Rejected** | The failures are responsive geometry and export containment; semantic HTML/CSS is more inspectable and adaptable | Visual-needs/image ledger | Generation gate remains closed; zero candidates |
+| OVE-08 | Treat the existing six-page PDF as broken or regenerate it from browser print | **Rejected** | The composed ReportLab companion renders cleanly and is a deliberately different artifact | PDF companion | Existing six rendered pages inspected; browser print remains an optional separately verified path |
+
+The named authenticated Claude web thread could not be attached through the
+in-app Browser runtime, its cloud identifier/title did not map to a local
+Claude Code session, and a new read-only Opus/max Plan attempt returned revoked
+OAuth. No successful Claude review or response is claimed, and credentials
+were not inspected or repaired.

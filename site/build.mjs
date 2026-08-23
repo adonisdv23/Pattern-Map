@@ -615,9 +615,11 @@ const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "pa
     <div class="page-frame">
       ${renderOrientationRail(ctx, orientationActive)}
       <div class="page-content">
+        <!-- PATTERN_MAP_PAGE_CONTENT_START -->
         ${routeIntro}
         ${mobileOrientation}
         ${content}
+        <!-- PATTERN_MAP_PAGE_CONTENT_END -->
       </div>
     </div>
   </main>
@@ -920,7 +922,7 @@ const renderBoundaries = (ctx) => `
   <section class="boundaries-route" id="boundaries">
     <div class="boundary-banner"><p class="eyebrow">CLAIM + AUTHORITY BOUNDARY</p><h2>Make upstream choices visible without pretending they are settled science.</h2><p>The framework is a design proposal and a set of testable questions. A fixture, validator, protocol, case, or review can establish integrity or inspectability; it is not an effectiveness result.</p></div>
     <div class="source-markdown long-source">${renderMarkdown(readText("framework/BOUNDARIES_AND_FAILURES.md"), { ctx, headingOffset: 1, idPrefix: "boundaries-source-" })}</div>
-    <section class="firebreak-grid" aria-label="Permanent project boundaries"><article><p class="eyebrow">TWO PROJECTS</p><h3>V16 is broad.</h3><p>The Echo Problem is a separate origin-accounting research track. Removing it leaves the six-family idea intact.</p></article><article><p class="eyebrow">HUMAN JUDGMENT</p><h3>Scaffold the floor; do not automate the ceiling.</h3><p>Comparison, memory, gap detection, and source tracing can be scaffolded. Taste, accountability, permission, contextual judgment, and consequential authority remain human.</p></article><article><p class="eyebrow">WHEN NOT TO USE IT</p><h3>Ordinary is a valid route.</h3><p>Use less structure for creative transformations, supplied-input formatting, reversible low-stakes work, or any task where the record would cost more than the consequence of being wrong.</p></article></div></section>
+    <section class="firebreak-grid" aria-label="Permanent project boundaries"><article><p class="eyebrow">TWO PROJECTS</p><h3>V16 is broad.</h3><p>The Echo Problem is a separate origin-accounting research track. Removing it leaves the six-family idea intact.</p></article><article><p class="eyebrow">HUMAN JUDGMENT</p><h3>Scaffold the floor; do not automate the ceiling.</h3><p>Comparison, memory, gap detection, and source tracing can be scaffolded. Taste, accountability, permission, contextual judgment, and consequential authority remain human.</p></article><article><p class="eyebrow">WHEN NOT TO USE IT</p><h3>Ordinary is a valid route.</h3><p>Use less structure for creative transformations, supplied-input formatting, reversible low-stakes work, or any task where the record would cost more than the consequence of being wrong.</p></article></section>
     <section class="artifact-boundaries"><details><summary>Artifact firebreaks and the five collapse tests</summary><div class="source-markdown">${renderMarkdown(readText("docs/ARTIFACT_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "artifact-boundary-" })}</div></details></section>
     ${renderSourceManifest("boundaries", ctx)}
   </section>`;
@@ -1006,10 +1008,14 @@ const normalizeStandaloneMain = (routeKey, main) => {
 };
 
 const standalonePageContent = (html) => {
-  const main = html.match(/<main id="main"[^>]*>([\s\S]*)<\/main>/i)?.[1] ?? "";
-  const content = main.match(/<div class="page-content">([\s\S]*)<\/div>\s*<\/div>\s*$/i)?.[1];
-  if (!content) throw new Error("Could not extract standalone page content");
-  return content;
+  const startMarker = "<!-- PATTERN_MAP_PAGE_CONTENT_START -->";
+  const endMarker = "<!-- PATTERN_MAP_PAGE_CONTENT_END -->";
+  const start = html.indexOf(startMarker);
+  const end = html.indexOf(endMarker, start + startMarker.length);
+  if (start < 0 || end < 0 || end <= start) {
+    throw new Error("Could not extract standalone page content");
+  }
+  return html.slice(start + startMarker.length, end);
 };
 
 const build = () => {

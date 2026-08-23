@@ -765,6 +765,101 @@ main { overflow: visible; }
   .static-route-equivalent { display: block !important; }
   .guided-family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Owner-review closeout: keep the common-origin example flow-native and make
+   browser print/export resilient to stale or unusual capture viewports. */
+.recurrence-map {
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 0.42fr) minmax(10rem, 0.7fr);
+  gap: clamp(0.7rem, 2vw, 1.2rem);
+  min-height: 0;
+}
+
+.recurrence-traces {
+  position: static;
+  inset: auto;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  align-self: stretch;
+  padding: 0.8rem 0.55rem;
+  border-block: 1px solid var(--line);
+  color: var(--ochre);
+  text-align: center;
+}
+
+.recurrence-traces::before {
+  content: "trace known paths";
+  font: 800 0.58rem/1.35 "SFMono-Regular", Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recurrence-traces::after {
+  content: "\2192";
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.recurrence-traces i { display: none; }
+
+.term-popover {
+  max-width: calc(100vw - 2rem);
+  transform: translateX(var(--term-popover-shift, 0px));
+}
+
+@media (max-width: 600px) {
+  .recurrence-map { grid-template-columns: 1fr; }
+  .recurrence-traces { display: none; }
+}
+
+@media (max-width: 480px) {
+  .term-mini-chain,
+  .term-mini-candidate,
+  .term-mini-authority,
+  .term-mini-learning,
+  .term-mini-stop,
+  .term-mini-origin {
+    grid-template-columns: 1fr;
+  }
+
+  .term-mini-chain > i,
+  .term-mini-candidate > i,
+  .term-mini-authority > i,
+  .term-mini-learning > i,
+  .term-mini-stop > i,
+  .term-mini-origin > i {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .term-mini-origin > span { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media print {
+  @page { size: Letter portrait; margin: 1.6cm; }
+
+  .page-content,
+  .standalone-section,
+  .standalone-section > section,
+  .sources-route,
+  .research-route,
+  .history-route,
+  .history-intro,
+  .history-notes,
+  .long-source {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .standalone-section { break-before: page; }
+  .standalone-section:first-of-type { break-before: auto; }
+  .source-notice, .research-status, .echo-callout, .historical-figure { break-inside: avoid; }
+  .table-wrap { width: 100%; max-width: none; overflow: visible; }
+  table { table-layout: fixed; font-size: 7.5pt; }
+  th, td { padding: 0.38rem; overflow-wrap: anywhere; word-break: normal; }
+  .recurrence-map { grid-template-columns: minmax(0, 1fr) 7rem 10rem; }
+}
 </style>
   <noscript><style>.secondary-nav-wrap { display: block; }.nav-more, [data-route-studio], [data-route-recommendation] { display: none !important; }.no-script-note { display: block !important; }</style></noscript>
 </head>
@@ -797,6 +892,7 @@ main { overflow: visible; }
     <p class="orientation-next"><span>Next</span><a href="#read-read-idea">Read the idea <span aria-hidden="true">→</span></a></p>
   </aside>
       <div class="page-content">
+        <!-- PATTERN_MAP_PAGE_CONTENT_START -->
 
         <details class="orientation-mobile">
     <summary><span>Route guide</span><strong>All routes</strong></summary>
@@ -881,7 +977,7 @@ main { overflow: visible; }
     <a class="" href="#guided-guided">Guided read</a><a class="" href="#examples-examples">Examples</a><a class="" href="#boundaries-boundaries">Boundaries</a><a class="" href="#sources-sources">Sources</a><a class="" href="#research-research">Research</a><a class="" href="#history-history">History</a>
   </nav>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="read" aria-label="Read the idea">
         <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 01</p><h2>Read the idea</h2><p class="route-lede">Continue the coffee conversation: why choices made before generation shape what an answer can become.</p></section>
 
@@ -985,7 +1081,7 @@ main { overflow: visible; }
 <p>This is a conceptual framework and a set of testable questions, not empirical validation or a claim that the six families are newly invented. It may be implemented as a lightweight decision brief, a richer evidence record, or a distributed workflow—and may be unnecessary for simple tasks. The invitation is to inspect the room before asking AI to make the room sound finished.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/NINETY_SECOND_VERSION.md</code></li><li><code>manuscript/PATTERN_RECOGNITION_V16.md</code></li><li><code>manuscript/MENTOR_COVER_NOTE.md</code></li><li><code>manuscript/PUBLIC_ABSTRACT.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="map" aria-label="Explore the map">
         <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 02</p><h2>Explore the map</h2><p class="route-lede">See six ways to improve what the system notices, compares, preserves, questions, and learns from.</p></section>
 
@@ -1093,7 +1189,7 @@ main { overflow: visible; }
     <section class="map-boundary callout" aria-labelledby="map-map-boundary-heading"><p class="eyebrow">MAP BOUNDARY</p><h3 id="map-map-boundary-heading">The order is a teaching aid, not a compulsory sequence.</h3><p>Skip a family when it has no observable input, record why, and keep unknown relations unknown. Common-origin recurrence is one mechanism inside source weighing and structured patterns; it is not the map's definition.</p></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/SIX_FAMILIES.json</code></li><li><code>framework/SIX_FAMILIES.md</code></li><li><code>framework/RELATIONSHIP_MAP.md</code></li><li><code>framework/GLOSSARY.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="apply" aria-label="Apply it">
         <section class="route-intro"><p class="eyebrow">PRINCIPAL DOOR 03</p><h2>Apply it</h2><p class="route-lede">Turn the idea into a proportionate workflow, from one decision brief to an inspectable agent procedure.</p></section>
 
@@ -1397,7 +1493,7 @@ main { overflow: visible; }
 <p>Learning proposes a bounded update. It does not silently change policy, overwrite evidence, or turn one outcome into causal proof.</p></div></details></div></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/OPERATOR_PLAYBOOK.md</code></li><li><code>framework/IMPLEMENTATION_CHOICES.md</code></li><li><code>framework/BOUNDARIES_AND_FAILURES.md</code></li><li><code>framework/agent-playbook/QUICKSTART.md</code></li><li><code>framework/agent-playbook/FULL_OPERATING_GUIDE.md</code></li><li><code>framework/agent-playbook/COPYABLE_AGENT_BRIEF.md</code></li><li><code>framework/agent-playbook/PREFLIGHT_CHECKLIST.md</code></li><li><code>framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md</code></li><li><code>framework/templates/README.md</code></li><li><code>framework/templates/DECISION_BRIEF.md</code></li><li><code>framework/templates/ACQUISITION_RECEIPT.md</code></li><li><code>framework/templates/EVIDENCE_REGISTER.md</code></li><li><code>framework/templates/COMPARISON_MATRIX.md</code></li><li><code>framework/templates/DISCONFIRMATION_LOG.md</code></li><li><code>framework/templates/INFLUENCE_RECEIPT.md</code></li><li><code>framework/templates/OUTCOME_REVIEW.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="guided" aria-label="Guided read">
         <section class="route-intro"><p class="eyebrow">CONTINUOUS READING MODE</p><h2>Take the guided read</h2><p class="route-lede">Follow one authored path from the human problem through the six questions, their key relationships, and the smallest useful application.</p></section>
 
@@ -1431,7 +1527,7 @@ main { overflow: visible; }
     <section class="guided-section" id="guided-guided-examples" data-reading-section aria-labelledby="guided-guided-examples-heading"><div class="section-heading"><p class="eyebrow">05 · TWO SCALES</p><h3 id="guided-guided-examples-heading">Ordinary work can stay ordinary. Consequential work earns more inspection.</h3></div><div class="guided-example-grid"><article><span class="level-pill level-ordinary">ordinary</span><h4>Rewrite supplied prose.</h4><p>Instruction, supplied text, returned draft. No source hunt, family checklist, influence record, or learning loop is needed.</p></article><article><span class="level-pill level-moderate">consequential</span><h4>Assess a release with conflicting signals.</h4><p>Name the decision, permission, baseline, comparison, missing fields, main challenge, planned stop condition, and human review point before consequential use.</p></article><article><span class="level-pill level-light">relationship</span><h4>Nine reports, one source path.</h4><p>Record nine observations and one known origin without converting repetition into nine independent confirmations. The Echo project remains separate and unrun.</p></article></div><p class="guided-transition"><a href="#examples-examples">Explore all worked examples and bounded cases <span aria-hidden="true">→</span></a></p></section>
     <section class="guided-section guided-boundary" id="guided-guided-boundary" data-reading-section aria-labelledby="guided-guided-boundary-heading"><div class="section-heading"><p class="eyebrow">06 · HUMAN BOUNDARY</p><h3 id="guided-guided-boundary-heading">Scaffold the floor; do not automate the ceiling.</h3><p>The framework can make comparisons, memory, gaps, source pathways, uncertainty, cost, and influence more inspectable. It cannot replace expertise, taste, accountability, contextual judgment, or permission. A plan is not an event. A recommendation is not a human decision. A later outcome is not automatic proof.</p></div><div class="guided-appendices"><a href="#boundaries-boundaries"><strong>Boundaries</strong><span>Claims, authority, failure modes</span></a><a href="#sources-sources"><strong>Sources</strong><span>Targeted, not exhaustive</span></a><a href="#research-research"><strong>Research</strong><span>Unrun · no results</span></a><a href="#history-history"><strong>History</strong><span>V13 origin, not current topology</span></a></div></section>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="examples" aria-label="Examples">
         <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Examples</h2><p class="route-lede">See the distinctions in motion through bounded teaching patterns and illustrative cases.</p></section>
 
@@ -1572,7 +1668,7 @@ main { overflow: visible; }
 <p>The layered path is justified by the decision and its failure modes, not by the label itself. A builder should be able to remove the common-origin example and still explain all six families, comparison, permission, uncertainty, stopping, and learning.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/PATTERN_RECOGNITION_V16.md</code></li><li><code>framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md</code></li><li><code>cases/README.md</code></li><li><code>cases/signal-foundry/README.md</code></li><li><code>cases/general-research/README.md</code></li><li><code>cases/product-and-process/README.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="boundaries" aria-label="Boundaries">
         <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Boundaries</h2><p class="route-lede">Know when to add structure, when to stop, and what the framework cannot claim or authorize.</p></section>
 
@@ -1608,7 +1704,7 @@ main { overflow: visible; }
 <h4 id="boundaries-boundaries-source-non-negotiable-language">Non-negotiable language</h4>
 <p>Every implementation, case, and receipt should preserve these boundaries:</p>
 <ul><li>peripheral is a candidate, not truth;</li><li>recurrence is not independent corroboration;</li><li>provenance is not correctness;</li><li>technical access is not permission;</li><li>a disposition is not a fact;</li><li>an outcome proposes a bounded update and preserves history;</li><li>a protocol, case, fixture, or planning simulation is not a result;</li><li>Signal Foundry is a bounded illustration, not validation;</li><li>no artifact grants authority to deploy, publish, spend, contact, or act.</li></ul></div>
-    <section class="firebreak-grid" aria-label="Permanent project boundaries"><article><p class="eyebrow">TWO PROJECTS</p><h4>V16 is broad.</h4><p>The Echo Problem is a separate origin-accounting research track. Removing it leaves the six-family idea intact.</p></article><article><p class="eyebrow">HUMAN JUDGMENT</p><h4>Scaffold the floor; do not automate the ceiling.</h4><p>Comparison, memory, gap detection, and source tracing can be scaffolded. Taste, accountability, permission, contextual judgment, and consequential authority remain human.</p></article><article><p class="eyebrow">WHEN NOT TO USE IT</p><h4>Ordinary is a valid route.</h4><p>Use less structure for creative transformations, supplied-input formatting, reversible low-stakes work, or any task where the record would cost more than the consequence of being wrong.</p></article></div></section>
+    <section class="firebreak-grid" aria-label="Permanent project boundaries"><article><p class="eyebrow">TWO PROJECTS</p><h4>V16 is broad.</h4><p>The Echo Problem is a separate origin-accounting research track. Removing it leaves the six-family idea intact.</p></article><article><p class="eyebrow">HUMAN JUDGMENT</p><h4>Scaffold the floor; do not automate the ceiling.</h4><p>Comparison, memory, gap detection, and source tracing can be scaffolded. Taste, accountability, permission, contextual judgment, and consequential authority remain human.</p></article><article><p class="eyebrow">WHEN NOT TO USE IT</p><h4>Ordinary is a valid route.</h4><p>Use less structure for creative transformations, supplied-input formatting, reversible low-stakes work, or any task where the record would cost more than the consequence of being wrong.</p></article></section>
     <section class="artifact-boundaries"><details><summary>Artifact firebreaks and the five collapse tests</summary><div class="source-markdown"><h4 id="boundaries-artifact-boundary-artifact-boundaries">Artifact boundaries</h4>
 <p>Status: <strong>BINDING FIREBREAKS FOR V16 DEVELOPMENT</strong></p>
 <p>This contract prevents the human essay, builder framework, agent companion, Echo Problem research track, site, and historical archives from silently collapsing into one artifact again.</p>
@@ -1625,7 +1721,7 @@ main { overflow: visible; }
 <p>Any proposed cross-boundary move must name the source artifact, destination, reason, reader benefit, status-language impact, and governing requirement in <code>docs/DECISION_LOG.md</code>. The primary orchestrator decides integration; intent changes still require a new explicit owner instruction.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>framework/BOUNDARIES_AND_FAILURES.md</code></li><li><code>docs/ARTIFACT_BOUNDARIES.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="sources" aria-label="Sources">
         <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Sources</h2><p class="route-lede">A targeted route for authority, continuity, and claim-constraining prior art.</p></section>
 
@@ -1661,7 +1757,7 @@ main { overflow: visible; }
 <p>Every material new public claim must receive an ID, strongest actual status, canonical basis, and prohibited upgrade before integration. A source may constrain or contextualize a claim without validating the six-family arrangement. Research-driven edits may narrow a claim; they may not silently replace the owner-approved thesis. Later evidence changes receive a new ledger entry or explicit revision record rather than retroactive inflation of the current basis.</p></div></details>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/SOURCES_AND_RESEARCH_ROUTE.md</code></li><li><code>docs/CLAIMS_AND_SOURCE_LEDGER_V16.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="research" aria-label="Research">
         <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>Research</h2><p class="route-lede">Future questions and explicit no-results boundaries, kept subordinate to the human idea.</p></section>
 
@@ -1812,7 +1908,7 @@ main { overflow: visible; }
 <p>The strategic research order is: controlled F0/F1/F2 first-paper candidate; typed real-world measurement second-paper candidate, contingent on prior-art, rights, labelled-validation, and owner-authorization gates.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>research/README.md</code></li><li><code>research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md</code></li><li><code>research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md</code></li><li><code>research/the-echo-problem/README.md</code></li><li><code>research/the-echo-problem/STATUS_AND_BOUNDARIES.md</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
 <section class="standalone-section" id="history" aria-label="History">
         <section class="route-intro"><p class="eyebrow">SECONDARY ROUTE</p><h2>History</h2><p class="route-lede">How the broad v16 map returns to the historical origin without redrawing it as current topology.</p></section>
 
@@ -1848,7 +1944,8 @@ main { overflow: visible; }
 <p>The exact original standalone v13 HTML was not recovered. The HTML above is a rendered-DOM snapshot and may depend on resources not captured with it. The diagram&#39;s recorded SHA-256 is <code>8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae</code>. It may be shown as historical origin only, never as the current v16 topology or evidence that the framework works.</p></div></details></section>
     <details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul><li><code>manuscript/ORIGIN_NOTE.md</code></li><li><code>docs/SOURCE_AUTHORITY_AND_LINEAGE.md</code></li><li><code>archive/README.md</code></li><li><code>archive/v13/README.md</code></li><li><code>archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/LIVE_SITE_REFERENCE_MANIFEST.json</code></li><li><code>archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/pattern-recognition-diagram-v12.png</code></li></ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>
   </section>
-      </section>
+        </section>
+        <!-- PATTERN_MAP_PAGE_CONTENT_END -->
       </div>
     </div>
   </main>
@@ -2067,12 +2164,31 @@ main { overflow: visible; }
   });
 
   const termTriggers = [...document.querySelectorAll("[data-term-trigger]")];
+  const positionTermPanel = (panel) => {
+    if (!panel) return;
+    panel.style.removeProperty("--term-popover-shift");
+    if (!window.matchMedia("(min-width: 1101px)").matches) return;
+    const viewportInset = 16;
+    const bounds = panel.getBoundingClientRect();
+    let shift = 0;
+    if (bounds.right > window.innerWidth - viewportInset) {
+      shift -= bounds.right - (window.innerWidth - viewportInset);
+    }
+    if (bounds.left + shift < viewportInset) {
+      shift += viewportInset - (bounds.left + shift);
+    }
+    const boundedShift = shift < 0 ? Math.floor(shift) : Math.ceil(shift);
+    panel.style.setProperty("--term-popover-shift", `${boundedShift}px`);
+  };
   const closeTerm = (trigger, restoreFocus = false) => {
     const panel = trigger?.getAttribute("aria-controls")
       ? document.getElementById(trigger.getAttribute("aria-controls"))
       : null;
     trigger?.setAttribute("aria-expanded", "false");
-    if (panel) panel.hidden = true;
+    if (panel) {
+      panel.hidden = true;
+      panel.style.removeProperty("--term-popover-shift");
+    }
     if (restoreFocus) trigger?.focus();
   };
   const closeOtherTerms = (except) => {
@@ -2088,7 +2204,14 @@ main { overflow: visible; }
       closeOtherTerms(trigger);
       trigger.setAttribute("aria-expanded", String(opening));
       panel.hidden = !opening;
+      if (opening) positionTermPanel(panel);
     });
+  });
+
+  window.addEventListener("resize", () => {
+    const openTrigger = termTriggers.find((trigger) => trigger.getAttribute("aria-expanded") === "true");
+    if (!openTrigger) return;
+    positionTermPanel(document.getElementById(openTrigger.getAttribute("aria-controls")));
   });
 
   document.addEventListener("click", (event) => {

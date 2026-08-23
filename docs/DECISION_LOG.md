@@ -878,3 +878,59 @@ Signal Foundry audit summarized in the owner-review packet.
 
 **Governing requirement:** smallest useful seam; closed-schema truth;
 A07–A11/A15–A17; no external mutation or invented implementation.
+
+## D-029 — Repair standalone structure, visual geometry, and export containment
+
+**Date:** 2026-08-23
+
+**Status:** Accepted with revision; owner/manual gates remain open
+
+The owner's 83,215,636-byte, 11-page attachment is a jsPDF 2.5.1 full-page-
+style export with 3572 × 14400 pt pages, not the repository's 18,199-byte,
+six-page US-letter ReportLab companion. Its Sources/Research collision,
+collapsed History pages, and unreadable evidence tables are accepted as real.
+The routed site and dedicated PDF did not reproduce the narrow columns, but a
+later standalone-DOM red team did: an extra closing `</div>` in Boundaries let
+later sections escape the main content column. A broad redesign is rejected;
+the generator defect is fixed at its source.
+
+Standalone extraction now uses explicit page-content markers rather than a
+greedy closing-tag regex. The build contract checks balanced main markup and
+requires all ten standalone route sections to remain inside `.page-content`.
+Post-repair Chromium measurements at 1440, 821, and 390 px show Sources,
+Research, and History in the intended content column with no document overflow.
+
+The source also makes browser print/export more defensive: standalone routes
+start on deliberate pages; Sources, Research, History, their notes, and page
+content occupy the full print frame; and wide evidence tables receive an
+explicit fixed full-width print contract. Transfer guidance names the routed
+site and standalone HTML as primary and the composed six-page PDF as secondary,
+and warns that custom full-page/jsPDF captures are not equivalent artifacts.
+
+One genuine current-source visual defect is accepted directly. The common-
+origin example's nine absolutely positioned rotated lines are no longer
+painted. A flow-native bridge now reads from nine observations through traced
+known paths to one known shared origin, while `independence: UNKNOWN` remains
+explicit. Complex term microvisuals stack below 480 px, and desktop term panels
+receive a calculated bounded shift so a right-edge trigger cannot be clipped.
+No bitmap generation or decorative network graph is justified.
+
+Real Chromium DOM checks scrolled the long routes at desktop and mobile widths,
+exercised the revised recurrence and term controls, and emulated print media.
+They found no horizontal document overflow; the three evidence routes occupy
+the full print frame and representative tables use the declared print layout.
+These are implementation checks, not reader or accessibility results.
+
+The requested authenticated Claude web thread could not be attached because
+the in-app Browser runtime rejected its trusted service path. The cloud session
+ID/title also did not map to a local Claude Code session, and a new read-only
+Opus/max Plan review returned a revoked-OAuth `401`. Credentials were not
+inspected or repaired, and no successful Claude review is claimed.
+
+**Evidence:** `qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md`, current
+site build/check contracts, exact rendered PDF inspection, and bounded
+Chromium DOM/print observations.
+
+**Governing requirement:** owner visual expectation; progressive disclosure;
+flow-native teaching objects; A02/A03/A06/A08/A12/A13/A15–A17; no-merge/no-
+deploy/no-publish/no-study/no-spend boundary.

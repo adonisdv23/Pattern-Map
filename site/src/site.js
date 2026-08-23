@@ -93,12 +93,31 @@
   });
 
   const termTriggers = [...document.querySelectorAll("[data-term-trigger]")];
+  const positionTermPanel = (panel) => {
+    if (!panel) return;
+    panel.style.removeProperty("--term-popover-shift");
+    if (!window.matchMedia("(min-width: 1101px)").matches) return;
+    const viewportInset = 16;
+    const bounds = panel.getBoundingClientRect();
+    let shift = 0;
+    if (bounds.right > window.innerWidth - viewportInset) {
+      shift -= bounds.right - (window.innerWidth - viewportInset);
+    }
+    if (bounds.left + shift < viewportInset) {
+      shift += viewportInset - (bounds.left + shift);
+    }
+    const boundedShift = shift < 0 ? Math.floor(shift) : Math.ceil(shift);
+    panel.style.setProperty("--term-popover-shift", `${boundedShift}px`);
+  };
   const closeTerm = (trigger, restoreFocus = false) => {
     const panel = trigger?.getAttribute("aria-controls")
       ? document.getElementById(trigger.getAttribute("aria-controls"))
       : null;
     trigger?.setAttribute("aria-expanded", "false");
-    if (panel) panel.hidden = true;
+    if (panel) {
+      panel.hidden = true;
+      panel.style.removeProperty("--term-popover-shift");
+    }
     if (restoreFocus) trigger?.focus();
   };
   const closeOtherTerms = (except) => {
@@ -114,7 +133,14 @@
       closeOtherTerms(trigger);
       trigger.setAttribute("aria-expanded", String(opening));
       panel.hidden = !opening;
+      if (opening) positionTermPanel(panel);
     });
+  });
+
+  window.addEventListener("resize", () => {
+    const openTrigger = termTriggers.find((trigger) => trigger.getAttribute("aria-expanded") === "true");
+    if (!openTrigger) return;
+    positionTermPanel(document.getElementById(openTrigger.getAttribute("aria-controls")));
   });
 
   document.addEventListener("click", (event) => {

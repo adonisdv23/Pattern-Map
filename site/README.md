@@ -39,6 +39,17 @@ workflow. It is an untagged visual review companion, not the accessibility
 route. Use the standalone HTML for semantic headings, landmarks, links, and
 assistive-technology navigation.
 
+For visual review, use the routed local preview or the committed standalone
+HTML. For a PDF, use `site/exports/pattern-map-v16-owner-review.pdf`; it is the
+deliberately composed six-page companion. A browser extension's full-page
+capture or a custom jsPDF export is not an equivalent artifact: it may combine
+route sections, expand technical disclosures, or impose a non-print viewport.
+If a fresh browser print is needed, build first, print one routed page at a
+time, and confirm Sources, Research, History, and wide evidence tables in print
+preview before sharing the file. The committed standalone is also structurally
+checked: every route must remain inside the main publication column before the
+build can pass.
+
 The standalone HTML is direct-open within the repository package: CSS and
 JavaScript are embedded, while the preserved historical v13 image remains an
 explicit repository-relative asset. It has one `All routes` orientation system rather than

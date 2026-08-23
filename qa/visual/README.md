@@ -9,7 +9,11 @@ Use these paths for the current v16 review:
 - `pdf-renders-final-v16-polish/` — six rendered pages from the secondary PDF
   companion; and
 - `../site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` — exact-checkpoint
-  source, contract, and live-browser evidence for the current ten-route site.
+  source, contract, and live-browser evidence for the current ten-route site;
+  and
+- `../site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md` — disposition of the
+  owner's alternate 11-page jsPDF export, the repaired common-origin visual,
+  term-helper containment, and browser-print safeguards.
 
 The corrected implementation checkpoint is
 `c88926034cd75773dcc42d3842983c879dda5b58`.
