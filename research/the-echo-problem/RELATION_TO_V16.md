@@ -56,3 +56,13 @@ EP v0.1 does not edit canonical v16 prose, framework, site, or decision logs;
 does not claim the six families are newly invented; does not select a model or
 provider; and does not grant authorization for an empirical, model,
 participant, deployment, publication, or external-action workflow.
+
+## EP v1.1 research-order clarification
+
+The active EP v1.1 design checkpoint does not make origin accounting the v16
+thesis. The controlled F0/F1/F2 cue-use design remains the first-paper
+candidate for ECHO-01. A typed, graded, real-world dependence measurement
+instrument is a prospective second-paper candidate only after the targeted
+prior-measurement route, labelled instrument validation, rights/version review,
+and a new owner authorization. Neither ordering is a completed paper or a
+result.

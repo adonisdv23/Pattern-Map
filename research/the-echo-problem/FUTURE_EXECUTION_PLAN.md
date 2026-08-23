@@ -7,6 +7,16 @@ action requires a later exact owner instruction and its own evidence record.
 
 ## Proposed sequence
 
+### Design checkpoint before any live work
+
+EP v1.1 records Amendment A1 as **adopted with the NEWS-COPY narrowing**, not
+as written wholesale. NEWS-COPY is an optional same-original/origin-cluster
+validation route only; Newswire is aggregate context only; unknown relations
+stay unknown. The controlled F0/F1/F2 design remains the first-paper candidate.
+A typed, real-world measurement instrument is a prospective second-paper
+candidate and must first pass the targeted prior-art matrix, labelled threshold
+validation, rights/version review, and a separate owner decision.
+
 ### 0. Reconfirm the checkpoint
 
 Re-run the owner-intent checksum, accession verifier, and preserved-source

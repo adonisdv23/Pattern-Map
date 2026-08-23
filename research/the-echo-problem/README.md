@@ -1,8 +1,8 @@
 # The Echo Problem: When Repetition Masquerades as Corroboration
 
 **Project code:** ECHO-01
-**Curated identity:** EP v0.1
-**Status:** preserved internal owner-review successor; unrun; no results; not published
+**Curated identity:** EP v0.1; active design checkpoint EP v1.1
+**Status:** preserved internal owner-review successor; v1.1 design-only; unrun; no results; not published
 
 The Echo Problem is a focused origin-accounting research track. It asks a
 bounded question for future work: when several reports repeat the same claim,
@@ -25,6 +25,7 @@ fixtures, or prior-art records.
 - [Relation to v16](RELATION_TO_V16.md) — why this track is related to, but does not define, the broad Pattern Map v16 work.
 - [Status and evidence boundary](STATUS_AND_BOUNDARIES.md) — the exact no-results state and the unfavorable-result classes that remain preserved.
 - [EP v0.1 version history](VERSION_HISTORY.md) — identity and change control.
+- [EP v1.1 design checkpoint](v1_1/README.md) — protocol reconciliation, planning surface, typed-dependence boundary, and provider-free harness.
 - [Preserved v15.2 index](PRESERVED_V15_2_INDEX.md) — the exact manuscript, site, protocol, harness, fixtures, and prior-art copies with accession paths.
 - [Future execution plan](FUTURE_EXECUTION_PLAN.md) — planning only; no model, empirical, or participant study is authorized or run here.
 - [QA evidence](qa/EP_V0_1_QA.md) — integrity, source-preservation, and scope checks.
@@ -47,3 +48,9 @@ results, zero model/provider study calls, zero participants, and no acquired
 external dataset. A passing hash or offline test is an integrity result, not a
 research result. Unknown origin relations remain unknown; a human hold or
 quarantine remains a disposition, not a fact about the claim.
+
+EP v1.1 records the strategic order without authorizing either paper: the
+controlled F0/F1/F2 cue-use design remains the first-paper candidate; a typed,
+real-world dependence measurement instrument remains a prospective second
+paper only after a targeted prior-art review, labelled instrument validation,
+rights/version review, and separate owner authorization.

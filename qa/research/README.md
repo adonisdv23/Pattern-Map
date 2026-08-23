@@ -13,6 +13,17 @@ unrun/no-results language, and future-protocol authorization boundaries. It
 does not call a model, provider, participant, dataset, registry, publication,
 or deployment channel.
 
+The active EP v1.1 design checkpoint has its own provider-free deterministic
+checks:
+
+```sh
+python3 -m unittest discover -s research/the-echo-problem/v1_1/harness -p 'test_*.py' -v
+```
+
+See [ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md](ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md)
+for dispositions, exact real-tokenizer scope, and the boundary between local
+implementation checks and unrun research.
+
 For Markdown link QA, `research/the-echo-problem/preserved/v15.2/**` is an
 immutable, byte-verified historical subset rather than an active-document
 surface. Do not rewrite its historical relative links. Exclude that subtree

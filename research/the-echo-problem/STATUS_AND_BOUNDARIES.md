@@ -1,6 +1,7 @@
 # EP v0.1 status and evidence boundary
 
 **Status:** `PRESERVED_SUCCESSOR_UNRUN_NO_RESULTS_NOT_PUBLISHED`
+**Active design checkpoint:** `EP_V1_1_DESIGN_ONLY_UNRUN_NO_RESULTS_NOT_PUBLISHED`
 **Source package status:** `LOCAL_OWNER_REVIEW_NO_EMPIRICAL_RESULTS_NOT_PUBLISHED`
 **Source commit:** `36568cb6e8afce9544606c968319b063fc9b79ce`
 **Accession:** `archive/transfers/v15.2-owner-handoff/`
@@ -72,3 +73,30 @@ The current branch performs preservation, local verification, and offline
 source checks only. It does not deploy, publish, create a Release, preregister,
 spend, acquire data, contact people, or imply that unrun research produced a
 result.
+
+## EP v1.1 design boundary
+
+EP v1.1 is a non-authorizing reconciliation of the preserved v1.0 protocol.
+It adopts Amendment A1 **with the NEWS-COPY narrowing**, not wholesale:
+NEWS-COPY may validate same-original/origin-cluster recovery only; it cannot
+supply claim support, truth, `FC_cons`, VOR, or independence, and nonduplicate
+pairs remain `UNKNOWN`. Newswire is aggregate recurrence context only unless a
+later review verifies member/version and rights truth.
+
+The controlled F0/F1/F2 labels remain simple stipulated cues. Typed, graded,
+and uncertain dependence is reserved for real-world measurement records. The
+planning surface varies paired discordance, effect size, invalidity, and N;
+its output is explicitly synthetic planning information, not observed power or
+effectiveness.
+
+The active offline harness and real-tokenizer parity solver are implementation
+checks only. Exact parity has been demonstrated on all 300 seed-1 F1/F2 prompt
+pairs rendered by Claude's supplied reimplementation, using a temporary
+`tiktoken 0.14.0` `cl100k_base` environment and the new solver's reserved
+padding slot. The source archive, generator, renderer, prompt bytes, report
+order, and hashes are fixed in the checked audit fixture. This is not a
+selected model/chat-template receipt and does not authorize a live run.
+
+The strategic research order is: controlled F0/F1/F2 first-paper candidate;
+typed real-world measurement second-paper candidate, contingent on prior-art,
+rights, labelled-validation, and owner-authorization gates.

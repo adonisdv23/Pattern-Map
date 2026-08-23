@@ -7,6 +7,7 @@ bytes are not retroactively renamed.
 | --- | --- | --- | --- |
 | v15.2 owner checkpoint | 2026-08-19 | Historical source; unchanged | Exact source commit `36568cb6e8afce9544606c968319b063fc9b79ce`; local owner-review package with no empirical results. This is not an EP version. |
 | EP v0.1 | 2026-08-19 | Accepted curated successor; unrun; no results | Establishes ECHO-01 identity, preserves the v15.2-derived source set, records the v16 firebreak, preserves all unfavorable-result classes, and documents a future low/no-cost route. |
+| EP v1.1 design checkpoint | 2026-08-23 | Design-only; unrun; no results; not published | Reconciles Amendment A1 with canonical v1.0; narrows NEWS-COPY to same-original/origin-cluster validation; keeps unknown relations unknown; adds typed/graded real-world dependence fields, a targeted non-exhaustive prior-measurement matrix, a deterministic exact-paired planning surface, and a provider-free strict/parity harness. |
 
 ## EP v0.1 change record
 
@@ -30,3 +31,18 @@ historical copies, and record changes as `Accepted`, `Accepted with revision`,
 `Deferred`, or `Rejected` with a reason. A future protocol or study cannot be
 described as a result until it has actually run under explicit owner
 authorization and its evidence boundary is separately recorded.
+
+## EP v1.1 change record
+
+- Amendment A1 is adopted with the NEWS-COPY narrowing, not as a wholesale
+  replacement for canonical v1.0. Newswire remains aggregate context only.
+- The F0/F1/F2 controlled labels remain simple benchmark-stipulated labels;
+  typed, graded, and uncertain dependence is specified only for prospective
+  real-world measurement records.
+- The active provider-free harness implements strict parsing, canonical
+  `FC_cons`/VOR scoring, separate content and ordered-membership hashes, exact
+  paired McNemar logic, deterministic planning, and a real-tokenizer parity
+  solver. It does not edit or replace preserved v15.2 code.
+- The first-paper candidate remains the controlled F0/F1/F2 cue-use question;
+  typed real-world measurement remains a prospective second paper pending
+  prior-art and labelled-validation gates. No study, paper, or result exists.
