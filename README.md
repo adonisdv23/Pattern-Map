@@ -27,11 +27,12 @@ no study run is authorized.
 The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1
-Echo project, an explicitly unrun broader research agenda, and a ten-route
-local owner-review site including an optional Guided read. Structural,
-responsive, no-script, export, 108-case planning-state, interaction,
-and visual checks and final independent proxy/operator reviews pass within
-their stated artifact boundaries. Owner/mentor judgment plus manual
+Echo project with an EP v1.1 design-only successor checkpoint, an explicitly
+unrun broader research agenda, and a ten-route local owner-review site
+including an optional Guided read. Structural, responsive, no-script, export,
+108-case planning-state, interaction, visual, Echo implementation, and final
+independent proxy/operator checks pass within their stated artifact
+boundaries. Owner/mentor judgment plus manual
 physical-keyboard, supported screen-reader, real-zoom, forced-colors, browser
 print-preview, and hardware-touch confirmation remain open.
 The canonical owner-review surface is draft pull request
@@ -67,6 +68,17 @@ Then open <http://127.0.0.1:4173/>. The direct-open HTML export is
 and the review companion is
 [`site/exports/pattern-map-v16-owner-review.pdf`](site/exports/pattern-map-v16-owner-review.pdf).
 These are local artifacts, not a deployment or publication.
+
+For the downstream Signal Foundry handoff, give the next operator these two
+files together:
+
+1. [`handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md`](handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md)
+2. [`handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`](handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md)
+
+They identify the exact Pattern Map and Signal Foundry checkpoints, explain
+the recoverable local audit branch, and make clear that no V14 deep link,
+Pattern Map classifier, schema mutation, or app integration should be
+invented.
 
 Run the complete provider-free repository verification with:
 

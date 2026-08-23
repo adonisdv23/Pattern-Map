@@ -750,3 +750,131 @@ record, executable contracts, and current in-app-browser layout observations.
 **Governing requirement:** authority order; proportionality; three-door and
 six-family locks; A02/A06–A08/A11/A13–A17; no-merge/no-deploy/no-publish/no-
 study/no-spend boundary.
+
+## D-026 — Adopt the Claude research package selectively and keep F0/F1/F2 first
+
+**Date:** 2026-08-23
+
+**Status:** Accepted with revision; no study or provider call authorized
+
+The owner supplied `PATTERN_MAP_CLAUDE_SESSION_2026-08-19.zip` for adversarial
+review. Its SHA-256 is
+`b544b734324699a93abbb8cf0bcef3d61cc590ff7b603fc167a46b8f8539a253`.
+The handoff, transcript, and Claude self-red-team were read in the requested
+order, but remained advisory under the repository authority order.
+
+EP v1.1 adopts Amendment A1 only with the NEWS-COPY narrowing. NEWS-COPY may
+support same-original/origin-cluster instrument validation, never claim truth,
+support, `FC_cons`, VOR, independence, or a full endpoint arm; nonduplicates
+remain unknown. Newswire remains aggregate recurrence context. Pochampally's
+graded-correlation lesson is accepted for prospective real-world measurement,
+while the controlled F0/F1/F2 labels stay deliberately simple and stipulated.
+
+The proposal to replace the controlled paper with a measurement paper is
+rejected as an exclusive reframe. Existing measurements make the claimed
+empty field indefensible. The controlled cue-use question remains the
+first-paper candidate; a typed, graded, provenance-aware measurement
+instrument is a prospective second-paper candidate after targeted prior-art,
+rights/version, labelled-threshold, and separate owner gates.
+
+Claude's reported `n=300` planning values (`0.873` at effect `0.10`; `0.327`
+at `0.05`) were reproduced as conditional simulations. The active exact-
+McNemar surface makes discordance explicit: under one declared cell,
+`-0.08` is below the approximate 80% resolution at `n=300`, while `n=400`
+reaches about `0.82`. These are design calculations, not observed power.
+
+Claude's claimed exact real-BPE parity fix was independently refuted: its own
+suite produced three failures and six passes. The replacement bounded solver
+passes all 300 checked F1/F2 prompt pairs from Claude's frozen seed-1 renderer
+under `tiktoken 0.14.0` / `cl100k_base`, with exact source, renderer, prompt,
+tokenizer, and receipt hashes. This is an offline implementation check, not a
+selected-model/chat-template receipt or research result.
+
+An independent Luna Max audit then found two defects in the replacement
+planning helper: its documented invalidity sweep was not exposed by the
+surface/CLI, and its naive exact-binomial tail could become negative or
+overflow. Both were accepted and corrected with explicit equal/unequal
+invalidity pairs, a stable bounded lower-tail calculation, and regression
+tests through 2,000 discordant pairs. The active EP v1.1 suite now has 12
+tests; the optional real-tokenizer test passes when the pinned dependency is
+present.
+
+The installed Claude Code client was also tried as an optional second-model
+path, but its existing OAuth state returned `401`/revoked token. Credentials
+were not inspected or repaired, no paid API was called, and no successful
+Claude Code review is claimed. The supplied Claude package was instead
+audited directly and independently.
+
+**Evidence:** `qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md`,
+`research/the-echo-problem/v1_1/**`, integrated checkpoint `9fa2355`.
+
+**Governing requirement:** D-001/D-008; A01/A10/A11/A14–A17; authority order;
+unknown-stays-unknown; no-results/no-provider/no-study boundary.
+
+## D-027 — Finish site hygiene without reducing the publication to text or PDF
+
+**Date:** 2026-08-23
+
+**Status:** Accepted for artifact scope; owner and physical checks remain open
+
+The owner required an authored interactive site comparable in ambition to the
+prior site, not a crude text page or a PDF substitute. The current ten-route
+site, continuous Guided path, line-free Map, contextual term explainers with
+code-native microvisuals, and planning-only Apply studio remain canonical.
+
+The final hygiene pass removes stale unreachable Map CSS, gives current JPEG
+QA images truthful `.jpg` extensions, adds an image-signature verifier, and
+makes the standalone export begin with the locked human problem as its only
+`h1`. The complete Home hero now precedes package metadata. Immutable archive
+image/type mismatches remain unchanged and explicitly exempt under archive
+policy. No bitmap generation was justified, so the image-use ledger remains at
+zero generated candidates.
+
+The routed site is the primary review experience; the direct-open all-routes
+HTML is the semantic portable companion; the six-page untagged PDF is a
+secondary visual review artifact. None is deployed or published. Physical
+keyboard, supported screen reader, real 200% zoom, forced colors, browser
+print preview, hardware touch, and owner/mentor taste remain manual gates.
+
+**Evidence:** commits `de3535f`, `28b936b`, and `5e5bfef`;
+`qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md`;
+`qa/visual/verify_image_formats.py`; site build/check contracts.
+
+**Governing requirement:** owner visual expectation; first-screen human
+problem; progressive disclosure; A02/A03/A06–A08/A12/A13/A15–A17.
+
+## D-028 — Give Signal Foundry two exact handoff artifacts and reuse its smallest seam
+
+**Date:** 2026-08-23
+
+**Status:** Accepted with downstream implementation still unauthorized
+
+The owner's garbled downstream request is resolved by two canonical artifacts:
+`handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and
+`handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`. They must travel
+together. If either is absent from the receiving checkout, the next operator
+must attach/copy the exact file or stop and request it rather than infer it.
+
+Signal Foundry `main` and `origin/main` were independently verified at
+`f9bf3775ca3d5b52ea5083cea52306c025727e23`; its pre-existing modified
+`.gitignore` and untracked `AGENTS.md`/`CLAUDE.md` were preserved. The local
+read-only audit branch `codex/pattern-map-signal-foundry-transfer-audit` at
+`4a6ed78` is recoverable but not integrated or pushed.
+
+The smallest valid design seam is the existing closed-schema
+`OPERATOR_DECISION` plus `RATIONALE` pair, proven first with an offline fixture
+showing a real before/after decision delta. The proposed
+`CONTEXT_DISPOSITION` object is conceptual, not valid against the current
+schema, and cannot become a new event unless a later authorized fixture shows
+the existing pair is insufficient. `VISUAL_NOT_REVIEWED` is likewise proposed
+local vocabulary, not an existing accepted enum.
+
+No verified V14 deep link or Pattern Map classifier exists. Neither may be
+invented. The handoff does not mutate Signal Foundry, deploy it, rename it
+“Sigma,” run its models, or claim integration/validation.
+
+**Evidence:** commits `c73c470` and `59a11ca`; both handoff files; independent
+Signal Foundry audit summarized in the owner-review packet.
+
+**Governing requirement:** smallest useful seam; closed-schema truth;
+A07–A11/A15–A17; no external mutation or invented implementation.

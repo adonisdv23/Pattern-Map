@@ -25,9 +25,10 @@ projects:
    builder framework, an observable agent playbook, and a local interactive
    owner-review site.
 2. **The Echo Problem / Research Track 01 / ECHO-01** preserves v15.2 as its
-   source checkpoint and begins a curated EP v0.1 successor with an explicit
-   `unrun / no results` boundary. It is a subordinate worked-example route for
-   v16, not v16's opening or definition.
+   source checkpoint, begins a curated EP v0.1 successor, and adds an EP v1.1
+   design-only reconciliation with an explicit `unrun / no results` boundary.
+   It is a subordinate worked-example route for v16, not v16's opening or
+   definition.
 
 The broad thesis reaches the reader before protocol, literature defense, or
 origin accounting. All six original families remain visible: peripheral
@@ -54,10 +55,13 @@ GitHub owner-review surface: draft pull request
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
    [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
 5. Inspect the bounded [Signal Foundry illustration](../cases/signal-foundry/README.md)
-   and the two domain-neutral cases.
+   and the two domain-neutral cases. For the actual downstream transfer, give
+   Claude both the [canonical handoff](signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md)
+   and the [integration brief](signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md).
 6. Inspect [The Echo Problem](../research/the-echo-problem/README.md), its
    [status/no-results record](../research/the-echo-problem/STATUS_AND_BOUNDARIES.md),
-   and its [relationship to v16](../research/the-echo-problem/RELATION_TO_V16.md).
+   [relationship to v16](../research/the-echo-problem/RELATION_TO_V16.md), and
+   [EP v1.1 design checkpoint](../research/the-echo-problem/v1_1/README.md).
 7. Inspect the [current Pro correction QA](../qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md)
    and the [current/historical visual evidence index](../qa/visual/README.md).
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
@@ -82,7 +86,11 @@ the semantic accessibility route.
   decision receipt, and ordinary-versus-layered examples. Stage 0 makes the
   ordinary supplied-material path explicit before any evidence bureaucracy.
 - Bounded Signal Foundry and two domain-neutral fixtures; none is represented
-  as validation or observed product behavior.
+  as validation or observed product behavior. Two explicit Signal Foundry
+  transfer artifacts identify the exact current repositories, reuse the
+  existing `OPERATOR_DECISION` plus `RATIONALE` seam by default, mark
+  `CONTEXT_DISPOSITION` conceptual/not schema-valid, and refuse to invent a
+  V14 deep link or Pattern Map classifier.
 - Ten authored local routes with persistent desktop orientation, a mobile
   route guide, and an optional continuous Guided read; a current six-family,
   line-free relationship view; contextual plain-language term helpers with
@@ -94,7 +102,11 @@ the semantic accessibility route.
   topology.
 - EP v0.1 with a complete 239-file v15.2 accession, an 82-file curated set,
   preserved protocol/harness/fixtures/prior art, exact unfavorable-result
-  taxonomy, and no-results status.
+  taxonomy, and no-results status; plus EP v1.1's narrowed NEWS-COPY boundary,
+  targeted non-exhaustive prior-measurement route, conditional planning/MDE
+  record, strict provider-free harness, and frozen 300-pair real-tokenizer
+  render fixture. These are design and implementation checks, not study
+  results.
 - A separate, explicitly unrun future DL-PLAYBOOK-01 matched-budget research
   protocol. No provider, model, dataset, sample, participant, or spend was
   selected.
@@ -115,6 +127,12 @@ anchors without pretending the external ZIP lives in Git.
   pass at the verified local source path.
 - EP curated set: 82 files / 11,323,689 bytes pass; 15 deterministic harness
   tests pass as implementation checks only.
+- EP v1.1: 12 deterministic tests pass with the standard interpreter (one
+  optional tokenizer test explicitly skipped); all 12 pass in an ephemeral
+  `tiktoken 0.14.0` environment. The frozen 300-pair F1/F2 render fixture
+  reaches exact `cl100k_base` token parity under the replacement solver. The
+  original Claude solver remains refuted by its own three failing tests. No
+  model or corpus was called.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, planning-state, Map-layout,
   reader-language, and historical-asset checks pass.
@@ -143,7 +161,9 @@ anchors without pretending the external ZIP lives in Git.
 - Claude Code/Cowork was attempted earlier as an optional review lane, but the
   installed client's existing OAuth token was revoked (`401`). Credentials
   were not inspected or repaired, no paid API was used, and no Claude-review
-  claim is made.
+  claim is made. The owner-supplied two-day Claude package was instead read,
+  reproduced where checkable, dispositioned claim by claim, and independently
+  audited; the resulting report does not represent a study.
 
 ## Decisions already fixed and preserved
 

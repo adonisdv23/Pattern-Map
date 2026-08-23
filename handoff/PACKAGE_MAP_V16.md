@@ -37,6 +37,13 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Signal Foundry | `cases/signal-foundry/README.md` |
 | Neutral cases | `cases/general-research/README.md`, `cases/product-and-process/README.md` |
 
+## Signal Foundry transfer
+
+| Artifact | Path | Role |
+| --- | --- | --- |
+| Canonical Pattern Map handoff | `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` | Exact source-of-truth hierarchy, six-family translation, smallest schema seam, unsupported-request refusals, and orphan recovery |
+| Copyable integration brief | `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md` | Tired-owner fast path, design-only offline fixture plan, exact checkpoints, and safe Claude Code prompt |
+
 ## Agent-facing v16
 
 | Artifact | Path |
@@ -74,10 +81,13 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Relationship to v16 | `research/the-echo-problem/RELATION_TO_V16.md` |
 | EP version history | `research/the-echo-problem/VERSION_HISTORY.md` |
 | Future low/no-cost plan | `research/the-echo-problem/FUTURE_EXECUTION_PLAN.md` |
+| EP v1.1 design checkpoint | `research/the-echo-problem/v1_1/README.md`, `research/the-echo-problem/v1_1/PROTOCOL_V1_1_DESIGN_CHECKPOINT.md` |
+| Targeted prior-measurement route | `research/the-echo-problem/v1_1/PRIOR_MEASUREMENT_MATRIX.md` |
+| Provider-free v1.1 harness and frozen render fixture | `research/the-echo-problem/v1_1/harness/**`, `research/the-echo-problem/v1_1/fixtures/CLAUDE_PRIMARY_RENDER_AUDIT_SEED1_N300.json` |
 | Preserved v15.2 map | `research/the-echo-problem/PRESERVED_V15_2_INDEX.md` |
 | Curated source checkpoint | `research/the-echo-problem/preserved/v15.2/**` |
 | Complete accession | `archive/transfers/v15.2-owner-handoff/**` |
-| EP QA | `research/the-echo-problem/qa/**` |
+| EP QA | `research/the-echo-problem/qa/**`, `qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md` |
 
 ## Broader unrun research agenda
 

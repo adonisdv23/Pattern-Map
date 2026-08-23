@@ -153,3 +153,37 @@ The bounded implementation checkpoint is
 The correction evidence is
 `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`. Advisory detail did
 not change locked owner intent.
+
+## Claude package and final convergence dispositions
+
+The complete claim-by-claim Claude disagreement table is preserved in
+`qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md`. The package is
+advisory; no package instruction was treated as owner authority and no
+synthetic check was treated as an empirical result.
+
+| Finding ID | Recommendation or claim | Disposition | Integrator reason | Affected surface | Verification / residual |
+| --- | --- | --- | --- | --- | --- |
+| CPK-01/07 | Pochampally was already covered; use graded typed dependence | **Accepted with revision** | Binary independence is too coarse for real-world measurement, but simple stipulated labels remain appropriate for the controlled F0/F1/F2 manipulation | EP v1.1 protocol and prior matrix | Controlled labels cannot be exported as discovered independence; unknown remains unknown |
+| CPK-02/03 | Public corpora defeat the synthetic premise; add NEWS-COPY/Newswire as full arms | **Accepted with revision / Rejected as full arms** | NEWS-COPY labels reproduction, not claim support/truth/independence; Newswire is aggregate context | Corpus-transfer firewall | Optional cluster validation only; no FC/VOR/confirmatory inference and no corpus acquired |
+| CPK-04 | Frozen manifest was content-blind | **Rejected as a proven canonical defect; Accepted as a safeguard** | Current package and preserved canonical helpers already separate content and membership; the alleged pre-fix version is unavailable | EP v1.1 canonical receipts | Tests mutate content and reorder membership independently |
+| CPK-05 | Calibration was confounded by distinct rather than supporting origins | **Accepted with revision** | Supporting-origin scope and invalid/valid decomposition are required; calibration remains exploratory | Scorer and endpoint boundary | No calibration or model result claimed |
+| CPK-06 | The package fixed exact token parity | **Rejected for the package; Accepted with replacement** | Real `cl100k_base` execution produced three failing package tests; a bounded context-sensitive solver passes the frozen 300-pair F1/F2 fixture | EP v1.1 parity scaffold | Exact offline fixture hashes pass; selected model/chat-template gate remains open |
+| CPK-08 | `n=300` has about 87% power at `0.10`, 33% at `0.05`, and `-0.08` is near resolution | **Accepted with revision** | Numbers reproduce only under declared simulation assumptions; active paired-discordance surface puts conditional 80% MDE near `0.09–0.095` at `n=300` and about 0.82 decision probability for `-0.08` at `n=400` | Protocol planning section | Planning-only; final interval, invalidity, target power, and N remain future gates |
+| CPK-09/10/11 | Make measurement the first paper; seven systems omit independence; EvidentialRAG never engages | **Rejected as an exclusive/systematic claim; Accepted as a second-paper and mechanism-specific route** | Prior measurements occupy adjacent ground; only EvidentialRAG was fully checked; same-singleton copies leave its `lambda K` conflict-transfer term at zero, but other accumulation still operates | Targeted non-exhaustive prior matrix | F0/F1/F2 remains first-paper candidate; measurement remains prospective second paper |
+| CPK-12/13 | Heavy transformation makes every origin-rate figure a lower bound; 0.40 is ready | **Rejected as universal; Accepted as validation requirement** | False merges and bridge documents can bias upward, so error is bidirectional | Instrument boundary | Threshold must be tuned on labelled real text before any reported number |
+| CPK-14/15/16 | Adopt the package harness, expanded amendment, and synthetic diagnostics wholesale | **Rejected as wholesale adoption** | Package endpoint/parser/pairing semantics diverge from preserved v1; synthetic ARI/power/mock checks cannot support efficacy | New bounded harness only | No provider/network path; 12 deterministic tests, one optional real-BPE dependency |
+| CPK-17/18 | Treat package site/history views as current and move Echo into the v16 opening | **Rejected / Deferred to owning lane** | Current Git and locked broad thesis govern; site hygiene was handled independently | Site lane and two-project firebreak | EP remains separate and subordinate |
+| E11-AUDIT-01 | Planning docs promised an invalidity sweep the surface/CLI could not produce | **Accepted with revision** | Implementation and documentation must agree | `planning.py`, tests, harness README | Repeatable equal/unequal invalidity pairs now pass deterministic tests; bounded default is `0,0` |
+| E11-AUDIT-02 | Naive exact binomial tail could become negative or overflow | **Accepted with revision** | A planning helper cannot emit an invalid p-value | `planning.py`, tests | Stable bounded lower-tail calculation passes all-discordant `n=100/400/2000` and concordant controls |
+| SF-HANDOFF-01 | Reuse current Signal Foundry decision memory before inventing a new event | **Accepted with revision** | `OPERATOR_DECISION` plus `RATIONALE` is the smallest current closed-schema seam | Two Signal handoff files | `CONTEXT_DISPOSITION` remains conceptual and invalid unless later separately authorized |
+| SF-HANDOFF-02 | Add a tired-owner fast path and stop if exact handoff files are missing | **Accepted** | The handoff must work when the receiving Claude checkout lacks Pattern Map files | Two Signal handoff files and package map | Five-line summaries and attach/copy-or-stop instruction included |
+| SITE-HYGIENE-01 | Normalize current image extensions and remove unreachable Map CSS | **Accepted with revision** | Current authored artifacts should be truthful; immutable archives must not be rewritten | Site/visual QA | 49 current images renamed to `.jpg`; 40 archive mismatches preserved by policy; selector/image guards pass |
+| SITE-STANDALONE-02 | Begin the direct-open export with the human problem, not package metadata | **Accepted** | First-screen contract applies to the portable review surface too | Standalone builder/check/export | One human-problem `h1`; full Home hero precedes metadata; build/check pass |
+| FINAL-OP-01 | Add both Signal handoffs and EP v1.1 to the bounded owner package, then refresh exact checkpoints | **Accepted** | These are now the operational artifacts the owner needs | Package map, manifest, owner packet, branch state | Completed in the final source/evidence checkpoint sequence |
+| FINAL-MANUAL-01 | Infer physical keyboard, screen reader, real zoom, forced colors, print, touch, or owner taste from automation | **Rejected as an inference; Deferred as owner work** | Artifact and proxy evidence cannot certify physical or human experience | Site/standalone/PDF | Manual checklist remains open and explicit |
+
+The installed Claude Code client could not supply a fresh independent review
+because its existing OAuth state returned `401`/revoked token. Credentials were
+not inspected or repaired and no paid provider call was made. The owner-
+supplied Claude package was nevertheless audited directly, reproduced where
+checkable, and red-teamed by the primary integrator and a Luna Max agent.

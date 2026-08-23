@@ -28,6 +28,17 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md` is the active
+  claim-by-claim Claude-package adjudication and EP v1.1 implementation record.
+  It preserves the no-results boundary, reports the real-tokenizer parity
+  correction and conditional planning calculations as offline checks only,
+  and records the independent audit corrections to invalidity sweeps and exact
+  binomial tails.
+- `qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md` plus
+  `qa/visual/verify_image_formats.py` record current image-format truth,
+  immutable archive exceptions, stale-selector removal, and the human-first
+  standalone-export correction. They supplement rather than rewrite the exact
+  ChatGPT Pro reports.
 - `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` is the current
   exact-checkpoint report. It records the ten-route Guided experience,
   Stage 0 planning-only Apply semantics, line-free relationship Map,

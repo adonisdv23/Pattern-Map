@@ -16,10 +16,10 @@ home.
 | 1 — Intent freeze | Locked owner intent, thesis/audience, artifact boundaries, acceptance criteria, v13→v16 fidelity matrix | Complete — owner-locked contracts and intent audit |
 | 2 — First-wave parallel work | Echo curation, manuscript, framework/playbook, bounded advisory audits | Complete — all production lanes integrated; Wave 1, applied, continuity, and Echo findings dispositioned |
 | 3 — Convergence | Integrate content, verify broad first 90 seconds and six-family continuity, freeze site interface | Complete — frozen contract and strengthened structural validator at `9079fcb`; its rendered gates were subsequently completed in Phases 4/6 within stated proxy limits |
-| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete for artifact scope — initial site task `a3cd7c7`; owner-directed authored-site polish through `a319794`; ChatGPT Pro corrections through `c889260` provide Guided continuity, descriptive contextual term helpers, a line-free responsive Map, an explicit Stage 0 planning-only Apply studio, mobile legibility, and exact regression contracts; manual keyboard/screen-reader/real-zoom/forced-colors/print/touch confirmation remains a release residual |
-| 5 — Research containment | Echo EP v0.1 and broader future matched-budget agenda, no study run | Complete — Tracks 01/02 separated; agenda and unrun protocol candidate validated |
-| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Terminal for model/artifact review after Round 2 bounded corrections at `c889260`; every material finding is dispositioned; no human comprehension or assistive-technology result inferred |
-| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Pending only the final evidence push and draft-PR metadata readback in this orchestration turn; owner/mentor and physical keyboard/screen-reader/real-zoom/forced-colors/print/touch gates stay open; no merge/deploy |
+| 4 — Site and visual system | Three-door local site, progressive definitions, map, exports, accessibility and print QA | Complete for artifact scope — initial site task `a3cd7c7`; owner-directed authored-site polish through `a319794`; ChatGPT Pro corrections through `c889260`; later hygiene removes unreachable Map CSS, gives current JPEG assets truthful extensions, and makes the standalone export begin with the human problem. Guided continuity, descriptive contextual term helpers, a line-free responsive Map, an explicit Stage 0 planning-only Apply studio, mobile legibility, and exact regression contracts pass; manual keyboard/screen-reader/real-zoom/forced-colors/print/touch confirmation remains a release residual |
+| 5 — Research containment | Echo EP v0.1/v1.1 and broader future matched-budget agenda, no study run | Complete for design scope — Tracks 01/02 remain separate; EP v1.1 adopts Amendment A1 only with the NEWS-COPY narrowing, adds targeted claim restraint, conditional power/MDE planning, strict offline checks, and a real-tokenizer parity fixture without calling a model or acquiring a corpus; both paper routes remain candidates, not results |
+| 6 — Deliberate review loops | Intent/voice; comprehension/executability; research/design/accessibility/technical integrity | Terminal for model/artifact review after ChatGPT Pro Round 2, bounded Claude-package adjudication, Signal Foundry audits, site/operator audits, and an independent EP v1.1 audit; every material finding is dispositioned and corrected or explicitly deferred; no human comprehension or assistive-technology result inferred |
+| 7 — Owner-review release | Canonical artifacts, package map, checksums, pushed branches, draft PRs | Pending only the final source/evidence checkpoints, complete verification, browser/PDF recheck, authorized branch push, and draft-PR metadata readback in this orchestration turn; owner/mentor and physical keyboard/screen-reader/real-zoom/forced-colors/print/touch gates stay open; no merge/deploy |
 
 ## Dependency rules
 
@@ -57,6 +57,17 @@ home.
 - The final reports supersede the implementation-scope deferral recorded at
   the manuscript-only snapshot `ea8a6e2` without changing its historical
   report.
+- The Claude package is treated as fallible advisory input. EP v1.1 accepts
+  the public-corpus narrowing, graded real-world dependence, conditional
+  power/MDE warning, and threshold-validation requirement; rejects a wholesale
+  harness or measurement-first reframe; independently refutes Claude's claimed
+  real-BPE parity fix; and corrects the replacement planning helper after a
+  Luna Max audit found an invalidity-grid mismatch and unstable exact tail.
+- The Signal Foundry transfer is now two explicit handoff artifacts. It reuses
+  the current closed-schema `OPERATOR_DECISION` plus `RATIONALE` seam by
+  default, treats `CONTEXT_DISPOSITION` as conceptual and invalid against the
+  current schema, and refuses to invent the requested V14 deep link or Pattern
+  Map classifier.
 
 ## Release boundary
 

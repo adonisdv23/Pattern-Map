@@ -6,6 +6,10 @@ This directory contains the local owner-review handoff:
   decisions/checks;
 - `PACKAGE_MAP_V16.md` — canonical artifact map;
 - `BRANCH_AND_PR_STATE.md` — pushed branch and draft-PR state;
+- `signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` — canonical v16 source,
+  downstream seam, and orphan-recovery record for Signal Foundry;
+- `signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md` — copyable tired-owner
+  and Claude Code handoff; give it together with the canonical handoff;
 - `OWNER_REVIEW_MANIFEST_V16.json` — checksums for the bounded review package;
 - `verify_owner_review_package.py` — deterministic manifest writer/verifier.
 

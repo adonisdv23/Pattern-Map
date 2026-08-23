@@ -41,7 +41,8 @@ or repetition does not raise a review's authority.
 - V15.2 remains exactly what it was: a local owner-review checkpoint and unrun
   research program. It is not retroactively renamed.
 - The curated successor under `research/the-echo-problem/` begins its own
-  version sequence at EP v0.1.
+  version sequence at EP v0.1. EP v1.1 is an active design successor; it does
+  not rewrite EP v0.1 or any preserved v15.2 byte.
 - The Echo Problem is related to the broader Discrimination Layer as a worked
   mechanism and research track; it is not the broad framework's opening or
   definition.

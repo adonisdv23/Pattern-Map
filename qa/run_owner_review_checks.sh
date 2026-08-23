@@ -42,13 +42,13 @@ done
 
 cd "$qa_repository_root"
 
-printf '\n[1/10] Locked owner intent\n'
+printf '\n[1/11] Locked owner intent\n'
 (
   cd docs
   shasum -a 256 -c OWNER_INTENT_V16.sha256
 )
 
-printf '\n[2/10] Immutable v14 transfer ledger\n'
+printf '\n[2/11] Immutable v14 transfer ledger\n'
 qa_v14_log=$(mktemp -t pattern-map-v14-ledger.XXXXXX)
 trap 'rm -f "$qa_v14_log"' EXIT HUP INT TERM
 (
@@ -62,10 +62,10 @@ if [ "$qa_v14_count" -ne 429 ]; then
 fi
 printf 'PASS: %s v14 ledger entries\n' "$qa_v14_count"
 
-printf '\n[3/10] Historical checkpoint index\n'
+printf '\n[3/11] Historical checkpoint index\n'
 python3 archive/verify_checkpoint_index.py
 
-printf '\n[4/10] Complete extracted v15.2 accession\n'
+printf '\n[4/11] Complete extracted v15.2 accession\n'
 if [ -n "$qa_source_zip" ]; then
   python3 archive/transfers/v15.2-owner-handoff/verify_accession.py \
     --source-zip "$qa_source_zip"
@@ -76,32 +76,37 @@ else
     "      --source-zip PATH when the preserved owner-local ZIP is available."
 fi
 
-printf '\n[5/10] Echo curated preservation and deterministic harness\n'
+printf '\n[5/11] Echo curated preservation and preserved deterministic harness\n'
 python3 research/the-echo-problem/qa/verify_preserved_sources.py
 (
   cd research/the-echo-problem/preserved/v15.2
   PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
 )
 
-printf '\n[6/10] Content-interface and applied-framework contracts\n'
+printf '\n[6/11] Active EP v1.1 provider-free design harness\n'
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s research/the-echo-problem/v1_1/harness -p 'test_v1_1.py' -v
+
+printf '\n[7/11] Content-interface and applied-framework contracts\n'
 python3 qa/editorial/validate_content_interface.py
 python3 qa/applied/validate_framework.py
 
-printf '\n[7/10] Site build and route checks\n'
+printf '\n[8/11] Site build and route checks\n'
 (
   cd site
   npm run build
   npm run check
 )
 
-printf '\n[8/10] Site and research-boundary audits\n'
+printf '\n[9/11] Site, visual, and research-boundary audits\n'
 python3 qa/site/audit_site.py
+python3 qa/visual/verify_image_formats.py
 python3 qa/research/validate_research_boundaries.py
 
-printf '\n[9/10] Bounded owner-review manifest\n'
+printf '\n[10/11] Bounded owner-review manifest\n'
 python3 handoff/verify_owner_review_package.py
 
-printf '\n[10/10] Reproducible export and clean authored diff\n'
+printf '\n[11/11] Reproducible export and clean authored diff\n'
 git diff --exit-code -- site/exports/standalone/pattern-map-v16.html
 git diff --check
 

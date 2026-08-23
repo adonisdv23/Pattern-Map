@@ -96,6 +96,7 @@ const sourceRouteFor = (href) => {
     ["the_discrimination_layer_research_agenda", "research"],
     ["future-studies", "research"],
     ["the-echo-problem", "research"],
+    ["v1_1", "research"],
     ["origin_note", "history"],
     ["source_authority_and_lineage", "history"],
     ["archive/", "history"],
@@ -112,6 +113,7 @@ const sourceFragmentFor = (href) => {
     "ep_v0_1_qa",
     "relation_to_v16",
     "status_and_boundaries",
+    "v1_1",
   ];
   return echoSources.some((needle) => normalized.includes(needle)) ? "echo" : "";
 };

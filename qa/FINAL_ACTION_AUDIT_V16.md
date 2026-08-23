@@ -2,7 +2,7 @@
 
 Status: **PASS FOR THE PATTERN MAP V16 OWNER-REVIEW ORCHESTRATION**
 
-Audit date: 2026-08-22
+Audit date: 2026-08-23
 
 This is a scoped repository/process audit. It records actions taken or not
 taken in this orchestration; it is not a claim about unrelated activity outside
@@ -28,7 +28,7 @@ the project.
 | Deploy, host, or replace the public site | Build uses a loopback local server only; no hosting configuration/API or production URL | **NOT PERFORMED** |
 | Publish the essay, framework, site, or package | Artifacts are labeled local owner review; no publication action or public announcement | **NOT PERFORMED** |
 | Create a GitHub Release or upload the v15.2 ZIP to a release channel | D-004 keeps the exact ZIP at its verified source path pending separate authorization | **NOT PERFORMED** |
-| Run an empirical, model-evaluation, provider, or participant study | Echo and DL-PLAYBOOK-01 remain explicitly unrun; validators and deterministic fixtures are labeled implementation QA only | **NOT PERFORMED** |
+| Run an empirical, model-evaluation, provider, corpus, or participant study | Echo EP v0.1/v1.1 and DL-PLAYBOOK-01 remain explicitly unrun; validators, synthetic render fixtures, planning calculations, mock outputs, and tokenizer checks are labeled implementation/design QA only | **NOT PERFORMED** |
 | Select or call a provider for either research protocol, incur new spend, or purchase data/services | No provider/model was chosen or called for Echo or DL-PLAYBOOK-01. The only completed outside-model action was the separately and exactly authorized two-round ChatGPT Pro advisory loop on the owner's existing account; it was not a protocol run, purchase, or new subscription. An optional Claude Code review stopped at a revoked-token `401`; no credential repair or paid API use occurred | **NO RESEARCH-PROVIDER ACTION OR INCREMENTAL SPEND PERFORMED** |
 | Acquire an external dataset or recruit participants | Protocols retain future placeholders; no sample, participant, or dataset acquisition | **NOT PERFORMED** |
 | Preregister research | Future protocols are not represented as preregistrations | **NOT PERFORMED** |
@@ -38,8 +38,10 @@ the project.
 
 ## Important distinctions
 
-- The 15 Echo harness tests are deterministic implementation/reproducibility
-  checks. They are not an empirical run and provide no effectiveness result.
+- The 15 preserved Echo v15.2 harness tests and 12 active EP v1.1 tests are
+  deterministic implementation/reproducibility checks. The optional EP v1.1
+  real-tokenizer test uses frozen synthetic prompt renders and no model output.
+  None is an empirical run or effectiveness result.
 - Model-based advisory reviews are editorial/implementation proxies. They are
   not a model study, participant sample, or evidence that the framework works.
 - The ChatGPT Pro advisory loop was performed only after the owner's later exact
@@ -50,6 +52,10 @@ the project.
 - The failed Claude Code authentication attempt is not a completed provider or
   model review and is not represented as one. It produced no project-content
   review, research result, or spend.
+- The owner-supplied Claude session ZIP was read as advisory material and its
+  checkable code claims were reproduced locally where possible. That package
+  review, its power calculations, and the independent Luna audit are not a
+  model study, dataset measurement, participant sample, or research result.
 - Pushing authorized feature branches and opening a draft PR do not authorize
   merge, release, deployment, or publication.
 - The immutable v14 transfer retains one compiled Python cache member that was
