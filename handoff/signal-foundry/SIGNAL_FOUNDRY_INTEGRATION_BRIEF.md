@@ -1,5 +1,13 @@
 # Signal Foundry integration brief
 
+## If you only read five lines
+
+1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
+2. Inspect `codex/pattern-map-v16-foundation` at audited predecessor anchor `d4b7b9e481165b3f692986cdda1b8a0da8b4388b` (`c88926034cd75773dcc42d3842983c879dda5b58` for content/site), then have the primary integrator refresh HEAD, content, and PR fields after all lanes converge.
+3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
+4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
+5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
+
 ## Start here
 
 Read this brief together with:
@@ -21,6 +29,12 @@ Signal Foundry:
   main == origin/main @ f9bf3775ca3d5b52ea5083cea52306c025727e23
   product name: Signal Foundry
 ```
+
+> **Primary-integrator refresh marker:** the Pattern Map hashes and PR state in
+> these two handoff files are accurate audited predecessor anchors. After the
+> other lanes converge, the primary integrator must resolve Git and refresh
+> the Pattern Map HEAD, content/site checkpoint, and PR fields consistently.
+> This lane does not invent a later hash.
 
 This is an integration brief, not a Signal Foundry code change or authorization
 to run anything live. Signal Foundry remains the authority for its own records,
@@ -74,28 +88,40 @@ permitted action, gap/hold state, or correction path, do not add it.
   untracked `AGENTS.md`/`CLAUDE.md`. Do not clean, overwrite, stage, or delete
   those files.
 
-## The smallest useful integration artifact
+## The smallest useful integration seam
 
 The prior Pattern Map → Signal Foundry transfer audit at local commit `4a6ed78`
-identified one missing seam: Signal Foundry has evidence, provenance, graph,
-Visual, transcript, and decision receipts, but not one small record that says
-why a particular context was allowed to influence one named operator question.
+identified a possible missing explanation seam: Signal Foundry has evidence,
+provenance, graph, Visual, transcript, and decision receipts, but may need a
+clearer account of why particular context influenced one named operator
+question. That is a hypothesis to test, not an established schema gap.
 
-The recommended design is an append-only **context-disposition event**, or the
-smallest equivalent using existing `OPERATOR_DECISION` plus `RATIONALE` events.
-It should reference existing records and receipts rather than duplicate them.
+The **default seam to test** is an append-only event batch using Signal
+Foundry's existing, valid `OPERATOR_DECISION` plus `RATIONALE` event types. The
+fixture should reuse the current `subject_binding`, `evidence_digest`,
+`evidence_ref`, receipts, and `statement` fields. It should test whether the
+existing pair can bind the bounded decision to its evidence and explain the
+reasoning without adding fields or duplicating canonical records.
 
-### Minimum conceptual shape
+### Conceptual completeness worksheet—not a valid event
+
+The object below is intentionally **not valid** against the current closed
+`docs/schemas/decision_memory_v1/decision_memory.schema.json`.
+`CONTEXT_DISPOSITION` is not in the allowed `event_type` enum, and event
+objects reject additional properties. `VISUAL_NOT_REVIEWED`,
+`HOLD_MANUAL_WATCH`, and similar all-caps values below are proposed local
+reason/disposition vocabulary, not existing Signal Foundry enums.
 
 ```json
 {
-  "event_type": "CONTEXT_DISPOSITION",
+  "concept_name": "CONTEXT_DISPOSITION",
+  "schema_status": "NOT_VALID_AGAINST_CURRENT_SIGNAL_FOUNDRY_DECISION_MEMORY_V1",
   "subject_ref": "canonical://signal-foundry/<source-specific-record>",
   "question_ref": "bounded operator question or packet reference",
   "decision_cutoff_at": "2026-08-19T14:00:00Z",
   "included_evidence_refs": ["existing transcript / visual / graph refs"],
   "excluded_or_missing": [
-    {"ref": "existing gap or artifact ref", "reason_code": "VISUAL_NOT_REVIEWED"}
+    {"ref": "existing gap or artifact ref", "proposed_local_reason_code": "VISUAL_NOT_REVIEWED"}
   ],
   "disposition": "HOLD_MANUAL_WATCH",
   "actor_ref": "trusted operator or system actor",
@@ -105,13 +131,17 @@ It should reference existing records and receipts rather than duplicate them.
 }
 ```
 
-This is a proposal only. A separately authorized implementation must decide
-whether this is a new event type or an existing decision-memory pair, define
-schema and migration rules, add offline validation, and prove a before/after
-decision delta. It must:
+Do not implement that conceptual object. Start with the valid existing pair.
+Consider a new event type only if a separately authorized offline fixture proves
+the pair insufficient, records the exact material failure, and shows a useful
+before/after decision delta that cannot be obtained within the current schema.
+Only then may a separately reviewed proposal define schema and migration rules.
+Either path must:
 
-- carry pointers, IDs, digests, and reason codes—not transcript bodies, image
-  bytes, raw provider responses, credentials, or copied secrets;
+- carry pointers, IDs, and digests plus plain-language reasoning—not transcript
+  bodies, image bytes, raw provider responses, credentials, or copied secrets;
+- keep any proposed local reason-code vocabulary inside the fixture unless a
+  later reviewed schema explicitly adopts it;
 - preserve `NOT_OBSERVED`, `NOT_REQUESTED`, `NOT_AUTHORIZED`, `NOT_TESTED`,
   `UNAVAILABLE`, `PRIVATE_OR_DELETED`, `PARTIAL`, `STALE`,
   `EXPECTED_BUT_MISSING`, `ABSENCE_CONFIRMED`, and `UNKNOWN` distinctly;
@@ -162,7 +192,9 @@ or validation study.
 
 ### Phase 0 — recover the state
 
-- Inspect Pattern Map at `d4b7b9e` and verify the owner-intent checksum.
+- Inspect Pattern Map at audited predecessor `d4b7b9e`, verify the owner-intent
+  checksum, and resolve whether the primary integrator has produced a later
+  integrated head.
 - Inspect Signal Foundry at `main`/`f9bf377`, preserving local dirty files.
 - Read the transfer audit from local branch `codex/pattern-map-signal-foundry-transfer-audit`
   at `4a6ed78`; treat it as a read-only report.
@@ -171,11 +203,12 @@ or validation study.
 
 ### Phase 1 — offline contract proof
 
-If the owner later authorizes a Signal Foundry implementation branch, start with
-one fixture and tests for:
+If the owner later authorizes a Signal Foundry implementation branch, start
+with one fixture for the existing `OPERATOR_DECISION` + `RATIONALE` pair. Use
+only current schema fields and evidence refs, and test:
 
 - bounded question, intended use, actor, cutoff, and permission;
-- exact included/excluded evidence references and reason codes;
+- exact evidence references and plain-language inclusion/exclusion reasoning;
 - attention-versus-support separation;
 - identity-pending/record-only versus provider/task authorization;
 - transcript lifecycle and Visual Evidence non-contamination;
@@ -186,7 +219,11 @@ one fixture and tests for:
 
 The fixture must fail closed on stale digests, unknown actors, missing reasons,
 late evidence, unbound references, or unauthorized actions. A passing offline
-fixture is a contract check, not an outcome claim.
+fixture is a contract check, not an outcome claim. Any local helper reason code
+used by the fixture—including `VISUAL_NOT_REVIEWED`—must be labeled proposed
+test vocabulary and must not be persisted as though it were an existing enum.
+Only a documented material failure of this pair may advance a proposal for a
+new `CONTEXT_DISPOSITION` type.
 
 ### Phase 2 — bounded product review
 
@@ -258,6 +295,11 @@ loosely.
 ```text
 You are reviewing the Pattern Map v16 → Signal Foundry handoff.
 
+If either of the first two handoff files is not present in your checkout,
+attach or copy the exact missing file, or stop and request that exact file.
+Never infer its contents from an older conversation, screenshot, summary, or
+similarly named document.
+
 Read these first, in order:
 
 1. handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md
@@ -274,12 +316,15 @@ Read these first, in order:
 12. Signal Foundry docs/decision_memory_retrospective_v1.md
 13. Signal Foundry docs/pattern_recognition_evidence_boundary.md
 
-Use exact current source identities:
+Use the exact audited source identities below, then re-resolve Git:
 
 - Pattern Map v16 is the broad human-first Pattern Recognition / Discrimination
-  Layer project at branch codex/pattern-map-v16-foundation, commit
-  d4b7b9e481165b3f692986cdda1b8a0da8b4388b. Its content/site implementation
-  checkpoint is c88926034cd75773dcc42d3842983c879dda5b58.
+  Layer project at branch codex/pattern-map-v16-foundation. Its audited
+  predecessor anchor is d4b7b9e481165b3f692986cdda1b8a0da8b4388b and its
+  audited content/site checkpoint is
+  c88926034cd75773dcc42d3842983c879dda5b58. Resolve Git before relying on these
+  fields; the primary integrator must refresh HEAD, content, and PR state after
+  all lanes converge.
 - Signal Foundry is the product name, not Sigma Foundry. Its current main and
   origin/main are f9bf3775ca3d5b52ea5083cea52306c025727e23.
 - The local Pattern Map → Signal Foundry transfer audit is branch
@@ -319,13 +364,16 @@ Preserve these boundaries:
 - A fixture, QA run, proxy review, or planning recommendation is not an
   empirical result or product validation.
 
-Evaluate the smallest proposed seam: an append-only context-disposition event
-(or existing OPERATOR_DECISION + RATIONALE pair) that binds a named question,
-intended use, decision cutoff, included evidence pointers, excluded/missing
-references with reason codes, disposition, actor, next allowed action, and
-limitations. Reuse existing receipts and decision memory. Do not copy raw
-transcripts, images, provider bodies, credentials, or secrets. Do not add a
-score, rank, source weight, truth label, or automatic recommendation.
+Evaluate the smallest seam by testing the existing, schema-valid
+OPERATOR_DECISION + RATIONALE pair first, using its current subject binding,
+evidence digest/ref, statement, and receipt path. CONTEXT_DISPOSITION is only a
+conceptual worksheet and is not valid against the current closed schema. Do not
+propose a new event type unless an authorized offline fixture proves the
+existing pair materially insufficient and records the exact failure. Treat
+VISUAL_NOT_REVIEWED and similar values as proposed local reason-code vocabulary,
+not existing enums. Reuse existing receipts and decision memory. Do not copy
+raw transcripts, images, provider bodies, credentials, or secrets. Do not add
+a score, rank, source weight, truth label, or automatic recommendation.
 
 Return:
 
@@ -357,6 +405,8 @@ checklist, not an authorization receipt or a product result.
     "branch": "codex/pattern-map-v16-foundation",
     "head": "d4b7b9e481165b3f692986cdda1b8a0da8b4388b",
     "content_checkpoint": "c88926034cd75773dcc42d3842983c879dda5b58",
+    "checkpoint_role": "audited_predecessor_anchor",
+    "primary_integrator_refresh_required_after_lane_convergence": true,
     "site_status": "local_owner_review_only",
     "research_status": "unrun_no_results"
   },
@@ -374,15 +424,22 @@ checklist, not an authorization receipt or a product result.
     "upstream": null,
     "status": "recoverable_local_read_only_not_integrated"
   },
-  "proposed_seam": {
-    "name": "CONTEXT_DISPOSITION",
-    "status": "design_only",
+  "default_seam_to_test": {
+    "name": "OPERATOR_DECISION_PLUS_RATIONALE",
+    "status": "existing_allowed_event_types_offline_fixture_not_yet_run",
     "reuses": ["existing_evidence_refs", "existing_receipt_refs", "decision_memory"],
     "forbidden": ["score", "rank", "truth_label", "automatic_provider_call", "raw_body_copy"]
+  },
+  "conditional_schema_candidate": {
+    "name": "CONTEXT_DISPOSITION",
+    "status": "conceptual_not_valid_against_current_closed_schema",
+    "gate": "only_if_authorized_offline_fixture_proves_existing_pair_materially_insufficient",
+    "example_reason_codes": "proposed_local_vocabulary_not_existing_enums"
   },
   "required_checks": [
     "verify_pattern_map_owner_intent_checksum",
     "verify_exact_git_heads",
+    "refresh_pattern_map_head_content_and_pr_after_lane_convergence",
     "preserve_signal_foundry_dirty_user_files",
     "keep_related_independent_unknown_distinct",
     "keep_visual_separate_from_transcript",
@@ -394,8 +451,9 @@ checklist, not an authorization receipt or a product result.
 
 ## Owner handoff in one sentence
 
-Give Claude the two Markdown files named here and the exact Pattern Map commit;
-ask it to assess or prepare the smallest offline, receipt-referencing
-context-disposition seam inside existing Signal Foundry boundaries. Do not give
-it a fictional deep link or classifier, and do not let an ended thread or
-unupstreamed branch masquerade as current application state.
+Give Claude the two Markdown files named here and the audited Pattern Map
+checkpoint; ask it to test the existing offline, receipt-referencing
+`OPERATOR_DECISION` + `RATIONALE` seam inside Signal Foundry's current schema.
+Do not give it a fictional deep link or classifier, do not treat the conceptual
+`CONTEXT_DISPOSITION` worksheet as valid schema, and do not let an ended thread
+or unupstreamed branch masquerade as current application state.

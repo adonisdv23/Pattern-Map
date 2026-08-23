@@ -5,10 +5,18 @@
 Status: **ready to consume; owner-review development, not publication or
 deployment**
 
-This is the one place to start when another task asks for the current Pattern
-Map / Discrimination Layer. It names the exact current checkpoint, the
-artifacts that matter, what is historical, and what a downstream Signal
-Foundry task may safely do.
+## If you only read five lines
+
+1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
+2. Inspect `codex/pattern-map-v16-foundation` at audited predecessor anchor `d4b7b9e481165b3f692986cdda1b8a0da8b4388b` (`c88926034cd75773dcc42d3842983c879dda5b58` for content/site), then have the primary integrator refresh HEAD, content, and PR fields after all lanes converge.
+3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
+4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
+5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
+
+This is the one place to start when another task asks for the Pattern Map /
+Discrimination Layer. It names the exact audited predecessor checkpoint, the
+required refresh rule, the artifacts that matter, what is historical, and what
+a downstream Signal Foundry task may safely do.
 
 The product is **Signal Foundry**, not “Sigma Foundry.” Signal Foundry’s own
 README names the product explicitly. Legacy infrastructure slugs such as
@@ -17,11 +25,11 @@ not the user-facing product name.
 
 ## Start here
 
-### Pattern Map source of truth
+### Audited Pattern Map source checkpoint
 
 Repository: <https://github.com/adonisdv23/Pattern-Map>
 
-Current canonical branch and checkpoint:
+Audited predecessor branch and checkpoints when this handoff lane began:
 
 ```text
 branch:  codex/pattern-map-v16-foundation
@@ -29,14 +37,21 @@ HEAD:    d4b7b9e481165b3f692986cdda1b8a0da8b4388b
 remote:  origin/codex/pattern-map-v16-foundation contains the same commit
 content: c88926034cd75773dcc42d3842983c879dda5b58
 PR:      https://github.com/adonisdv23/Pattern-Map/pull/1
-state:   draft/open/unmerged; owner review remains open
+state:   draft/open/unmerged at audit time; owner review remains open
 ```
 
-`d4b7b9e` is the current repository/handoff head. `c889260` is the content
-and site implementation checkpoint that the final evidence commit documents;
-it is not a different project. Do not use older `5eb860e`, `bfaa62e`, or
-`4d2505e` as the current implementation. They remain historical review
-checkpoints and predecessors.
+> **Primary-integrator refresh marker:** `d4b7b9e` and `c889260` are accurate,
+> audited predecessor anchors. Before the final owner handoff, the primary
+> integrator must resolve the branch again and refresh the Pattern Map HEAD,
+> content/site checkpoint, and PR state everywhere in these two files. This
+> lane does not invent a later hash.
+
+`d4b7b9e` was the verified repository/handoff head when this lane began.
+`c889260` is the content and site implementation checkpoint that its final
+evidence commit documents; it is not a different project. Do not substitute
+older `5eb860e`, `bfaa62e`, or `4d2505e` for this audited anchor. After lane
+convergence, use Git—not these sentences—to determine whether a later
+integrated checkpoint exists.
 
 Canonical local checkout used by the orchestration work:
 
@@ -271,17 +286,31 @@ The existing Signal Foundry transfer surface is:
 | Record influence and human disposition | `decision_memory.py`, `docs/decision_memory_retrospective_v1.md`, existing Apply receipts | Reuse the existing append-only decision-memory path; do not add a duplicate universal receipt. |
 | Learn without rewriting history | `decision_memory.py`, `evidence_evaluation.py`, `docs/evidence_workbench_v1.md` | Record expectations, later outcomes, corrections, and limitations; a later outcome is not automatic proof. |
 
-The smallest useful future integration is one append-only context-disposition
-event (or an equivalent existing operator decision plus rationale) that records:
+The **default seam to test** is Signal Foundry's existing, valid append-only
+decision-memory pair: `OPERATOR_DECISION` plus `RATIONALE`. Bind the pair to the
+current subject and evidence snapshot using the schema's existing
+`subject_binding` and the event pair's current `evidence_digest`,
+`evidence_ref`, and `statement` fields where applicable. An authorized
+offline fixture should first test whether that pair produces a useful decision
+delta without changing the schema.
+
+The following object is only a conceptual completeness worksheet. It is
+**not valid** against the current closed
+`decision_memory.schema.json`: `CONTEXT_DISPOSITION` is not an allowed
+`event_type`, and the current event schema has `additionalProperties: false`.
+`VISUAL_NOT_REVIEWED`, `HOLD_MANUAL_WATCH`, and any similar all-caps value here
+are proposed local reason/disposition vocabulary, not existing Signal Foundry
+enums.
 
 ```json
 {
-  "event_type": "CONTEXT_DISPOSITION",
+  "concept_name": "CONTEXT_DISPOSITION",
+  "schema_status": "NOT_VALID_AGAINST_CURRENT_SIGNAL_FOUNDRY_DECISION_MEMORY_V1",
   "question_ref": "bounded operator question or packet reference",
   "subject_ref": "canonical Signal Foundry record pointer",
   "decision_cutoff_at": "UTC instant",
   "included_evidence_refs": ["existing transcript / visual / graph refs"],
-  "excluded_or_missing": [{"ref": "existing gap or artifact ref", "reason_code": "VISUAL_NOT_REVIEWED"}],
+  "excluded_or_missing": [{"ref": "existing gap or artifact ref", "proposed_local_reason_code": "VISUAL_NOT_REVIEWED"}],
   "disposition": "HOLD_MANUAL_WATCH",
   "actor_ref": "trusted operator or system actor",
   "source_receipt_refs": ["existing operation / Visual / Apply receipt refs"],
@@ -289,12 +318,14 @@ event (or an equivalent existing operator decision plus rationale) that records:
 }
 ```
 
-This is a **design recommendation**, not an implemented Signal Foundry schema,
-migration, or authorization. It must not copy transcript bodies, images, raw
-provider responses, credentials, or secrets. It must not contain a master score,
-rank, confidence scalar, source weight, truth label, or automatic recommendation.
-Implement it only in a separately reviewed Signal Foundry change with its own
-write authority and offline tests.
+Do not implement that conceptual object. Consider a new event type only if a
+separately authorized offline fixture first proves that the valid
+`OPERATOR_DECISION` + `RATIONALE` pair cannot express a material, useful
+decision delta and records the exact insufficiency. Any later schema proposal
+would require its own review, migration plan, write authority, and tests. No
+option may copy transcript bodies, images, raw provider responses, credentials,
+or secrets, or add a master score, rank, confidence scalar, source weight,
+truth label, or automatic recommendation.
 
 ## What not to do
 
@@ -322,8 +353,8 @@ summary below is the current resolution.
 
 | Claude item | What it meant | Current resolution |
 | --- | --- | --- |
-| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved for the canonical Pattern Map branch: `origin/codex/pattern-map-v16-foundation` contains `d4b7b9e`. This handoff branch is intentionally not pushed by the assigned task. The separate Signal Foundry audit branch remains local-only. |
-| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; current source/evidence is on `d4b7b9e`/`c889260`. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
+| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved for the audited predecessor: `origin/codex/pattern-map-v16-foundation` contains `d4b7b9e`. The primary integrator must refresh the remote head after lane convergence. This handoff branch is intentionally not pushed by the assigned task. The separate Signal Foundry audit branch remains local-only. |
+| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; audited predecessor source/evidence is on `d4b7b9e`/`c889260`. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
 | **Decide if the evidence rule bites too hard** | Claude tightened guards around unreachable CSS, false file extensions, exact checkpoints, and planning-versus-event language. | The strictness is now the canonical safety posture recorded in the locked intent, D-025, the acceptance matrix, and the current QA. No new owner decision is needed to consume v16. If an owner later wants a guard relaxed, record an explicit decision and revise the affected contract; do not silently weaken it. |
 
 ## “Orphaned” work in plain language
@@ -369,10 +400,11 @@ untouched.
 
 ### Genuine blockers for a Pattern Map integration
 
-1. **No integration code is currently on Signal Foundry `main`.** The existing
-   Pattern Map transfer is a read-only audit and the repository has existing
-   evidence/decision contracts; the proposed context-disposition event is not
-   implemented.
+1. **No Pattern Map integration fixture is currently on Signal Foundry
+   `main`.** The valid `OPERATOR_DECISION` and `RATIONALE` event types already
+   exist, but no authorized offline fixture has yet shown whether that pair is
+   sufficient for the bounded transfer. The local transfer audit is a report,
+   not an implementation, and no need for a new event type has been established.
 2. **No current owner authorization exists for a Signal Foundry schema/write
    change, migration, provider/model call, deployment, or production data.**
    The integration must remain a design brief until separately authorized.
@@ -387,7 +419,8 @@ untouched.
 
 - The product-name question is settled: Signal Foundry.
 - The six-family framework, agent playbook, and site source are present.
-- The current Pattern Map feature branch is on its remote at `d4b7b9e`.
+- The audited Pattern Map predecessor was on its remote at `d4b7b9e`; the
+  primary integrator must refresh this field after lane convergence.
 - The local Signal Foundry transfer audit is recoverable and its orphan status
   is understood.
 - Signal Foundry’s existing deterministic Signals v0 is not a missing Pattern
@@ -402,8 +435,11 @@ Give Claude these two repository artifacts:
 2. `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`
 
 If the Claude task cannot see the repository, provide the GitHub repository and
-the exact v16 branch/commit above. Do not provide secrets, cookies, credentials,
-private transcripts, or a made-up deep link.
+the exact audited v16 branch/commit above. If either handoff file is absent from
+Claude's checkout, attach or copy the exact file, or stop and request that exact
+file; never infer its contents from this summary or an older conversation. Do
+not provide secrets, cookies, credentials, private transcripts, or a made-up
+deep link.
 
 ## Governing boundary
 
