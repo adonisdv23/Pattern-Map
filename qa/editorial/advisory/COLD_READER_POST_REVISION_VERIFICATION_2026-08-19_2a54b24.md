@@ -159,7 +159,7 @@ still shows the pre-revision defect.
 
 **Evidence of the remaining package defect:**
 
-- The committed `qa/visual/screenshots/map-desktop-1440x1000.png` still shows
+- The committed `qa/visual/screenshots/map-desktop-1440x1000.jpg` still shows
   the old visible F1/F2 purpose copy: “Widen a task-scoped information
   aperture...” and “Keep source role, claim-scoped authority...” in the first
   cards a reviewer sees.
@@ -178,7 +178,7 @@ renderer.
 **Gates:** A04 and A06.
 
 **Recommendation:** **Required before a clean package-level pass:** regenerate
-`qa/visual/screenshots/map-desktop-1440x1000.png` from commit `2a54b24` and
+`qa/visual/screenshots/map-desktop-1440x1000.jpg` from commit `2a54b24` and
 recheck that its visible F1/F2 cards match the standalone/current route. If
 the old capture must be retained for comparison, move or label it as a
 pre-revision artifact and add a current capture beside it. No source wording

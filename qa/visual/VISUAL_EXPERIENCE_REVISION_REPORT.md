@@ -73,7 +73,7 @@ Echo-centered framing were intentionally not restored.
 
 ## P0 mobile-capture diagnosis
 
-The pre-existing file `qa/visual/screenshots/home-mobile-390x844.png` contains a
+The pre-existing file `qa/visual/screenshots/home-mobile-390x844.jpg` contains a
 solid black lower region. It was not overwritten. A fresh 390x844 capture from
 the exact starting build at `4b5fc809e84a1d6c32c7565808821332421fa42e` showed
 paper paint through the viewport, `scrollWidth == 390`, and no clipped or

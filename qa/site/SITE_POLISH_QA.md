@@ -140,7 +140,7 @@ essential meaning, unique standalone IDs, and print/reduced-motion/
 forced-colors/200%-friendly hooks. A real assistive-technology audit and a
 reader study were not authorized and were not claimed.
 
-The older `qa/visual/screenshots/home-mobile-390x844.png` is retained as a
+The older `qa/visual/screenshots/home-mobile-390x844.jpg` is retained as a
 stale pre-polish QA artifact and is not current evidence. The warning and
 replacement path are explicit in `qa/visual/README.md`.
 

@@ -56,7 +56,7 @@ thesis. The sequence works as follows:
    absent comparison/baseline, missing information, and missing memory before
    generation. The Home standfirst uses the same broad framing in the exact
    first-screen composition (`site/exports/standalone/pattern-map-v16.html:523–528`;
-   `qa/visual/screenshots/home-desktop-1440x1000.png`).
+   `qa/visual/screenshots/home-desktop-1440x1000.jpg`).
 2. **The Discrimination Layer is an inspectable/correctable responsibility —
    PASS WITH A PLAIN-LANGUAGE CAVEAT.** Lines 9–15 say it decides what the
    system should notice, acquire, compare, preserve, question, and allow to
@@ -130,7 +130,7 @@ a change to owner intent or the name of the layer.
 purpose lines include “task-scoped information aperture” (F1), “claim-scoped
 authority” and “typed relationships” (F2), “typed gaps” and “source-bound
 memory” (F4), and a “dispositioned update proposal” (F6). The desktop Map
-capture (`qa/visual/screenshots/map-desktop-1440x1000.png`) shows this register
+capture (`qa/visual/screenshots/map-desktop-1440x1000.jpg`) shows this register
 on the first F1/F2 cards, before a reader reaches examples or the optional
 glossary.
 

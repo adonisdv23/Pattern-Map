@@ -104,7 +104,7 @@ Target evidence:
 
 Recorded-render discrepancy:
 
-- The committed `qa/visual/screenshots/home-mobile-390x844.png` visibly shows
+- The committed `qa/visual/screenshots/home-mobile-390x844.jpg` visibly shows
   `Pattern Map` and `More+` at the top, with no visible `Read the idea`,
   `Explore the map`, or `Apply it` links. It is the old rendered state, not
   evidence of the target source correction.
@@ -294,7 +294,7 @@ Target evidence:
 
 Recorded-render discrepancy:
 
-- The committed `qa/visual/screenshots/map-desktop-1440x1000.png` visibly
+- The committed `qa/visual/screenshots/map-desktop-1440x1000.jpg` visibly
   contains the prior F1/F2 lead copy (“Widen a task-scoped information
   aperture...” and “Keep source role, claim-scoped authority...”), not the
   target's plain bridges.
@@ -457,8 +457,8 @@ review intentionally did not browse.
 
 ### `OWNER-RESIDUAL-013` — exact-target visual capture freshness
 
-`qa/visual/screenshots/home-mobile-390x844.png` and
-`qa/visual/screenshots/map-desktop-1440x1000.png` visibly retain pre-revision
+`qa/visual/screenshots/home-mobile-390x844.jpg` and
+`qa/visual/screenshots/map-desktop-1440x1000.jpg` visibly retain pre-revision
 states even though the target source/export has the mobile and plain-copy
 corrections. Regenerate and inspect those captures from
 `2a54b24ec01707bb2a73032ab3f662cd995669ae` before treating A13 responsive and

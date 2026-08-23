@@ -19,7 +19,7 @@ deployment plan.
   first mobile viewport has no principal-door affordance, the Map's current
   relationship view appears after the six family cards, Apply begins as a
   static four-card index, and route orientation has no persistent chapter rail.
-- The pre-existing `qa/visual/screenshots/home-mobile-390x844.png` showed a
+- The pre-existing `qa/visual/screenshots/home-mobile-390x844.jpg` showed a
   solid dark lower region. A fresh 390x844 capture from this exact starting
   build paints the paper background through the viewport with `scrollWidth`
   equal to 390 and no clipped/overflowing boundary. The dark region is
