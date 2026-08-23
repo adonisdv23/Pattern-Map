@@ -1034,15 +1034,27 @@ const build = () => {
   });
 
   const standalonePages = pageDefinitions({ base: "", standalone: true, embedded: true });
+  const standaloneHeadline = escapeHtml(contentInterface.first_screen.headline);
+  const standaloneStatusNote = `<aside class="standalone-export-note callout-inline" aria-label="Standalone export status"><p class="eyebrow">STANDALONE OWNER-REVIEW EXPORT</p><p><strong>Direct-open · local only · no results.</strong> This all-routes file opens from disk inside the repository package. It uses no deployed URL or external runtime; its one historical image is repository-relative.</p></aside>`;
   const standaloneContent = Object.entries(standalonePages).map(([key, html]) => {
     const label = key === "home" ? "Home" : ROUTES[key].label;
-    return `<section class="standalone-section" id="${key}" aria-label="${escapeAttribute(label)}">${normalizeStandaloneMain(key, standalonePageContent(html))}</section>`;
+    let normalized = normalizeStandaloneMain(key, standalonePageContent(html));
+    if (key === "home") {
+      normalized = normalized.replace(/<(\/?)h([2-6])(\b[^>]*)>/g, (_, closing, level, attributes) =>
+        `<${closing}h${Number(level) - 1}${attributes}>`
+      );
+      if (!normalized.includes(`<h1>${standaloneHeadline}</h1>`)) throw new Error("Standalone Home is missing the frozen human-problem headline");
+      const heroStart = normalized.indexOf('<section class="hero" id="home-top">');
+      const heroEnd = normalized.indexOf("</section>", heroStart);
+      if (heroStart < 0 || heroEnd < 0) throw new Error("Standalone Home hero could not be located");
+      const insertAt = heroEnd + "</section>".length;
+      normalized = `${normalized.slice(0, insertAt)}\n${standaloneStatusNote}${normalized.slice(insertAt)}`;
+    }
+    return `<section class="standalone-section" id="${key}" aria-label="${escapeAttribute(label)}">${normalized}</section>`;
   }).join("\n");
   const standalone = renderPage({
-    title: "Pattern Map v16 — standalone owner-review export",
-    eyebrow: "STANDALONE REVIEW EXPORT",
-    intro: "A direct-open all-routes companion within the repository package. All principal doors and secondary routes are included below as readable sections.",
-    content: `<div class="standalone-intro"><p class="callout-inline"><strong>Local owner review only.</strong> This file opens directly from disk inside the repository package and uses one repository-relative historical image. It contains no deployed URL, external runtime, or research result.</p></div>${standaloneContent}`,
+    title: contentInterface.first_screen.headline,
+    content: standaloneContent,
     ctx: { base: "", standalone: true },
     id: "standalone-export",
   });

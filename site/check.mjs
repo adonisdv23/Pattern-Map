@@ -149,6 +149,20 @@ const main = () => {
   const standaloneIds = idListIn(standalone);
   assert(standaloneIds.length === new Set(standaloneIds).size, "standalone export contains duplicate IDs");
   assert((standalone.match(/<h1\b/g) ?? []).length === 1, "standalone export must contain exactly one level-one heading");
+  const standaloneMain = standalone.match(/<main id="main"[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? "";
+  const standaloneHeadline = `<h1>${headline}</h1>`;
+  const standaloneHeadlineIndex = standaloneMain.indexOf(standaloneHeadline);
+  const standaloneStatusIndex = standaloneMain.indexOf("STANDALONE OWNER-REVIEW EXPORT");
+  const standaloneHeroStart = standaloneMain.indexOf('<section class="hero" id="home-top">');
+  const standaloneHeroEnd = standaloneMain.indexOf("</section>", standaloneHeroStart);
+  assert(standaloneHeadlineIndex >= 0, "standalone export must promote the frozen human-problem headline to h1");
+  assert(standaloneMain.match(/<h[1-6]\b[^>]*>[\s\S]*?<\/h[1-6]>/i)?.[0] === standaloneHeadline, "standalone human problem must be its first heading");
+  assert(standaloneHeroStart >= 0 && standaloneHeroEnd > standaloneHeadlineIndex, "standalone human-problem hero is missing or malformed");
+  assert(standaloneStatusIndex > standaloneHeroEnd, "standalone export metadata must follow the human-problem hero");
+  for (const metadata of ["Direct-open", "local only", "no results", "repository package"]) {
+    const metadataIndex = standaloneMain.indexOf(metadata);
+    assert(metadataIndex > standaloneHeadlineIndex, `standalone package metadata precedes the human problem: ${metadata}`);
+  }
   assert((standalone.match(/<aside class="orientation-rail"/g) ?? []).length === 1, "standalone export must contain one publication rail");
   assert((standalone.match(/<details class="orientation-mobile"/g) ?? []).length === 1, "standalone export must contain one mobile route guide");
   assert((standalone.match(/<div class="page-frame"/g) ?? []).length === 1, "standalone export contains nested publication frames");
@@ -205,7 +219,7 @@ const main = () => {
   console.log("PASS local route/assets link integrity");
   console.log("PASS external Markdown links preserve URLs and safe anchor attributes");
   console.log("PASS exact underscore-bearing state vocabulary and standalone fragments");
-  console.log("PASS standalone heading hierarchy and unique IDs");
+  console.log("PASS standalone human-first opening, heading hierarchy, and unique IDs");
   console.log("PASS responsive/no-script navigation and active-route semantics");
   console.log("PASS Stage 0, descriptive term controls, mobile route brief, and medium-popover contracts");
   console.log("PASS normal-text and dual-focus contrast thresholds");
