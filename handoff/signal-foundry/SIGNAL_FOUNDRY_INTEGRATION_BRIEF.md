@@ -3,7 +3,7 @@
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Inspect `codex/pattern-map-v16-foundation` at canonical source checkpoint `ad964dd91eff521b0442f613c55bc4e9e97c2f2a`; preserve `d4b7b9e` and `c889260` only as audited predecessors.
+2. Inspect `codex/pattern-map-v16-foundation` at canonical source checkpoint `bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`; preserve `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessors.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
@@ -21,8 +21,8 @@ Then inspect the two repositories at their exact stated checkpoints:
 ```text
 Pattern Map:
   https://github.com/adonisdv23/Pattern-Map
-  codex/pattern-map-v16-foundation source @ ad964dd91eff521b0442f613c55bc4e9e97c2f2a
-  audited predecessors @ d4b7b9e481165b3f692986cdda1b8a0da8b4388b / c88926034cd75773dcc42d3842983c879dda5b58
+  codex/pattern-map-v16-foundation source @ bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91
+  audited predecessors @ d4b7b9e481165b3f692986cdda1b8a0da8b4388b / c88926034cd75773dcc42d3842983c879dda5b58 / ad964dd91eff521b0442f613c55bc4e9e97c2f2a
 
 Signal Foundry:
   https://github.com/adonisdv23/Signal-Foundry
@@ -30,10 +30,10 @@ Signal Foundry:
   product name: Signal Foundry
 ```
 
-> **Checkpoint rule:** `ad964dd` is the canonical converged source. A later
+> **Checkpoint rule:** `bc7e7c5` is the canonical converged source. A later
 > evidence/checksum commit may advance the branch head without changing that
 > content checkpoint. Resolve Git before editing; retain `d4b7b9e` and
-> `c889260` only as exact review-history anchors.
+> `c889260` and `ad964dd` only as exact review-history anchors.
 
 This is an integration brief, not a Signal Foundry code change or authorization
 to run anything live. Signal Foundry remains the authority for its own records,
@@ -191,7 +191,7 @@ or validation study.
 
 ### Phase 0 — recover the state
 
-- Inspect Pattern Map at canonical source `ad964dd`, verify the owner-intent
+- Inspect Pattern Map at canonical source `bc7e7c5`, verify the owner-intent
   checksum, and resolve the branch head only to identify later evidence-only
   commits.
 - Inspect Signal Foundry at `main`/`f9bf377`, preserving local dirty files.
@@ -320,9 +320,10 @@ Use the exact audited source identities below, then re-resolve Git:
 - Pattern Map v16 is the broad human-first Pattern Recognition / Discrimination
   Layer project at branch codex/pattern-map-v16-foundation. Its canonical
   converged source checkpoint is
-  ad964dd91eff521b0442f613c55bc4e9e97c2f2a. The audited predecessor head
+  bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91. The audited predecessor head
   d4b7b9e481165b3f692986cdda1b8a0da8b4388b and Pro content checkpoint
-  c88926034cd75773dcc42d3842983c879dda5b58 are review history only. Resolve Git
+  c88926034cd75773dcc42d3842983c879dda5b58 and earlier converged source
+  ad964dd91eff521b0442f613c55bc4e9e97c2f2a are review history only. Resolve Git
   before editing; later evidence-only commits do not replace the source hash.
 - Signal Foundry is the product name, not Sigma Foundry. Its current main and
   origin/main are f9bf3775ca3d5b52ea5083cea52306c025727e23.
@@ -402,8 +403,8 @@ checklist, not an authorization receipt or a product result.
   "pattern_map": {
     "repository": "https://github.com/adonisdv23/Pattern-Map",
     "branch": "codex/pattern-map-v16-foundation",
-    "head": "ad964dd91eff521b0442f613c55bc4e9e97c2f2a",
-    "content_checkpoint": "ad964dd91eff521b0442f613c55bc4e9e97c2f2a",
+    "head": "bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91",
+    "content_checkpoint": "bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91",
     "checkpoint_role": "canonical_converged_source",
     "resolve_branch_head_before_editing": true,
     "site_status": "local_owner_review_only",

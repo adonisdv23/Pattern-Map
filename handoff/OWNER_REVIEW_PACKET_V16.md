@@ -3,9 +3,10 @@
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
 Canonical converged source checkpoint:
-`ad964dd91eff521b0442f613c55bc4e9e97c2f2a`. It incorporates the bounded
+`bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`. It incorporates the bounded
 second ChatGPT Pro correction checkpoint `c889260`, site/visual hygiene,
-Signal Foundry transfer, and EP v1.1 design reconciliation. The following
+Signal Foundry transfer, EP v1.1 design reconciliation, and the standalone
+layout/owner-export correction after predecessor `ad964dd`. The following
 evidence/checksum commit refreshes this packet and deterministic manifest
 without replacing that source checkpoint.
 
@@ -138,14 +139,21 @@ anchors without pretending the external ZIP lives in Git.
   standalone-semantic, contrast, no-script, planning-state, Map-layout,
   reader-language, and historical-asset checks pass.
 - The current standalone has one main, one h1, 339 unique IDs, ten named route
-  sections, one publication rail, one mobile guide, one page frame, and no
-  falsely current route.
+  sections, one publication rail, one mobile guide, one page frame, balanced
+  main markup, exactly two frame children, every route inside `.page-content`,
+  and no falsely current route.
 - Live browser inspection covers the new Home planning preview at 390 pixels;
   one-column Apply route briefs and 44-pixel discrete route targets at
   320/390/480/600; flow-native term panels at
   601/768/821/1024/1100; and the default desktop Apply state. No inspected
   document had horizontal overflow. Stage 0, permission precedence, and
   unchanged observed state pass in Apply.
+- Owner visual/export closeout reproduces and repairs the standalone
+  Sources/History narrow-column defect. Post-repair Chromium checks place
+  Sources, Research, and History in `.page-content` at 1440/821/390 pixels;
+  print-media checks keep all three routes and their evidence tables within the
+  full 1056-pixel frame. The common-origin example is flow-native and legacy
+  rotated traces are hidden.
 - The older routed screenshot matrix is explicitly historical because it
   shows superseded Map connectors and Apply event-writing behavior. It is not
   current evidence.
@@ -157,7 +165,9 @@ anchors without pretending the external ZIP lives in Git.
   corrections implemented at `5eb860e`. Round 2 of exact commit `4d2505e`
   confirmed both P0s resolved and found five bounded P1 residues. Every Round 2
   finding is dispositioned; Pro source corrections are implemented at
-  `c889260` and the full converged source is `ad964dd`. The protected headline
+  `c889260`; the earlier converged source was `ad964dd`; and the full current
+  converged source, including owner visual/export corrections, is `bc7e7c5`.
+  The protected headline
   remains under locked owner intent, and only physical, publication-time, or
   owner-taste gates remain after the final PR readback.
 - Claude Code/Cowork was attempted earlier as an optional review lane, but the

@@ -3,11 +3,11 @@
   "package": "pattern-map-v16-owner-review",
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
   "generated_date": "2026-08-23",
-  "content_site_source_and_pdf_checkpoint": "ad964dd91eff521b0442f613c55bc4e9e97c2f2a",
-  "evidence_note": "The manifest covers canonical converged source ad964dd: ChatGPT Pro Round 2 corrections; the exhaustive 108-case Stage 0/permission/state contract; descriptive/no-script/medium-safe term help; responsive line-free Map; human-first standalone; truthful current image formats; two Signal Foundry handoff artifacts; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; regenerated PDF renders; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/print/touch gates remain open. No study, deployment, publication, merge, or provider call is implied.",
+  "content_site_source_and_pdf_checkpoint": "bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91",
+  "evidence_note": "The manifest covers canonical converged source bc7e7c5: ChatGPT Pro Round 2 corrections; the exhaustive 108-case Stage 0/permission/state contract; descriptive/no-script/medium-safe term help; responsive line-free Map; flow-native common-origin teaching visual; viewport-contained term panels; structurally contained human-first standalone routes; print-safe evidence routes and tables; two Signal Foundry handoff artifacts; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. No study, deployment, publication, merge, or provider call is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 184,
-  "total_bytes": 11271887,
+  "file_count": 185,
+  "total_bytes": 11302504,
   "files": [
     {
       "path": ".gitignore",
@@ -96,8 +96,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 66004,
-      "sha256": "b63ff6c9d9c2f49c6065ad9a784cc0b5da07855831665cff50cbcea8520f9703"
+      "bytes": 69480,
+      "sha256": "b38e6645eaaa83494097e5f3da9bae578955b348eaf6bb6f201b6f504376754a"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 43772,
-      "sha256": "27090b99f30f1b209a2d92ed9ad24ae87c74831c631f6bdc0c2bbf7338dad620"
+      "bytes": 47040,
+      "sha256": "647fbed151b46ed1f9f956aa3c6fe8db23e81d574b504e3b6b3d1396accc1c91"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -176,8 +176,8 @@
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 2612,
-      "sha256": "92f6dea5d071390aca180dc8ad9ea5d572963ecb2c6d96a859710540a679b7f0"
+      "bytes": 2717,
+      "sha256": "843fba9cd6fc0331177e93d0ca96b9135510c14cbfb63780c8a5c5004f78f7a8"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -251,18 +251,18 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 2653,
-      "sha256": "88345ab7cecc19c6feaa2281067e80ab10d2d5f87320e39f40f983c61ba6b807"
+      "bytes": 2868,
+      "sha256": "9443fae17b9cbf01a99bd343a7d0ebbbff90bfed0b7e9eefcae61ce13872be83"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 13258,
-      "sha256": "d2a6c87d8057fd5b10404f244ffebe30ea8929b35fcb4e894a00b44208325bb8"
+      "bytes": 13927,
+      "sha256": "b4638f2f040311ce9267c35f93483e977df53970a4a5bc61adb09ad01123e600"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 8745,
-      "sha256": "5f02986174ed38b1e7e87eb6d68780817d4b5c625754f1b5527e86b1dc15aada"
+      "bytes": 9037,
+      "sha256": "fb079afb705e6b3b6013b0b442076fa4b4730aab93914c7cc49f3180ba737f03"
     },
     {
       "path": "handoff/README.md",
@@ -271,18 +271,18 @@
     },
     {
       "path": "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
-      "bytes": 22534,
-      "sha256": "faa574b3387da56750e3582155316741fbaca8184a3af68d06c4e5d319407b75"
+      "bytes": 23377,
+      "sha256": "07af539edbceaa90a98b007d20917d33cafbdd359ca7a288ca1f5a9f319beea2"
     },
     {
       "path": "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
-      "bytes": 24325,
-      "sha256": "ac501efcacd403fbd64b9e394490e14bc03dd3133552e09a12f8dcfb987be48d"
+      "bytes": 24466,
+      "sha256": "a012c3462d77ee0269b22b26db4117cdd602b2ba8812bf6f11adea17c754b325"
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 14159,
-      "sha256": "70a5a1c4021373bb28b4aa3b344d973476a86504b8ee4545f2897b22ab72e57f"
+      "bytes": 14342,
+      "sha256": "52869bb09a9ea1fbd8d147239d8e231b6d0ac64755e0eb7382d69d83dbbd5a45"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -316,8 +316,8 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 12669,
-      "sha256": "cf1e4a94f46b347aff74152383290899ac881311d5779ede4bc72217a7453362"
+      "bytes": 13029,
+      "sha256": "5e9bd13026eb8d0d2209dbbc3652e370840c6832189a9a9331e6a647c9b0e3a6"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
@@ -420,6 +420,11 @@
       "sha256": "42c637a41d45874c9ba275fbee5a86110afe169e347903aff2ed2a07db6a4973"
     },
     {
+      "path": "qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md",
+      "bytes": 8973,
+      "sha256": "d11aabfa7a1d2b01f1cbf644d15c7e5c06155bf46ba49d318550e3c0357b9ae1"
+    },
+    {
       "path": "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
       "bytes": 6132,
       "sha256": "ab94357f82f4146a82eb8586df1a28c6cc27d201860b4aa50ca93c98b26b910c"
@@ -486,8 +491,8 @@
     },
     {
       "path": "qa/visual/README.md",
-      "bytes": 2203,
-      "sha256": "8a0f73082c14b94115a69fa42b07433f8260708bf943b98e41f2441a5e975ee8"
+      "bytes": 2421,
+      "sha256": "c75f993eca881aaf93564bedb7739d6cc8b2c85ae02b229982cc14bbd4587132"
     },
     {
       "path": "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
@@ -876,18 +881,18 @@
     },
     {
       "path": "site/README.md",
-      "bytes": 2549,
-      "sha256": "d2347b8fe685af0b30079c7043a8374b97eff2a4b95a9d00b735a43b587f70a3"
+      "bytes": 3267,
+      "sha256": "ee51be6ccd035171d4e6d8adfa464d6efcbd7cbc22c17da466f71f5451f70677"
     },
     {
       "path": "site/build.mjs",
-      "bytes": 104612,
-      "sha256": "08d514d844d3035639316e98975232a83b310ef3fa1dba7d8f7627f749d8841d"
+      "bytes": 104833,
+      "sha256": "ca2be7ada97f8b9d1c47d6864bec9404585fad7acbd33cb25b8ff79de5a5a4a8"
     },
     {
       "path": "site/check.mjs",
-      "bytes": 18130,
-      "sha256": "d7e0951a4d63c1e089aff5675754861e26f8cf92b64b401c3ce8a1142d9e3bc1"
+      "bytes": 21975,
+      "sha256": "d610ac06fff3abc40e56e5d8a598d50618af843704749d6fc3a7b0199c48406b"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
@@ -896,8 +901,8 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 428529,
-      "sha256": "66ad8098a674759c187786a71bf9deea26b093565222747d9ad6683e1e407edc"
+      "bytes": 432128,
+      "sha256": "a3cfc65ea2c941c695d663563fa4d698ac3764a7cbdd16e0956246e8d7936d9b"
     },
     {
       "path": "site/package-lock.json",
@@ -921,13 +926,13 @@
     },
     {
       "path": "site/src/site.css",
-      "bytes": 77285,
-      "sha256": "1269162a3acb187b36092eef3c3698ad938225536c9cc04d81e3dbcbc8993fee"
+      "bytes": 79700,
+      "sha256": "3fc3d2ca853e1cdd4247443eb639c5b546ecac1adb08c9b3c1cc73e4317433dc"
     },
     {
       "path": "site/src/site.js",
-      "bytes": 14130,
-      "sha256": "0bbfd726e958ea4deb7c59d39a959df529c2c7beece37c5ef9d9ed8d18b7ed97"
+      "bytes": 15206,
+      "sha256": "9e4814db342262bf157859af781110230dc6641e51f609f07872277bf157c1bb"
     }
   ]
 }

@@ -4,7 +4,7 @@ Status date: 2026-08-23
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `ad964dd` canonical converged source; evidence/checksum commit follows | Authorized push target; draft PR #1 remains open and unmerged; final metadata readback occurs after the evidence push |
+| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `bc7e7c5` canonical converged source; evidence/checksum commit follows | Authorized push target; draft PR #1 remains open and unmerged; final metadata readback occurs after the evidence push |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | EP v1.1 design checkpoint | `codex/pattern-map-v16-echo-v1-1` | `c141eac` | Integrated into foundation as `9fa2355`; local source branch not required by the downstream handoff |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
@@ -18,7 +18,9 @@ Draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate
 - Base: `main` at `5eea2381c86400bacc1bc2a6df0e3af78bd6330a` when opened.
 - Head branch: `codex/pattern-map-v16-foundation`.
 - Canonical converged source checkpoint:
-  `ad964dd91eff521b0442f613c55bc4e9e97c2f2a`.
+  `bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`.
+- Earlier converged source checkpoint before the owner visual/export repair:
+  `ad964dd91eff521b0442f613c55bc4e9e97c2f2a` (review history).
 - Round 2 correction implementation checkpoint:
   `c88926034cd75773dcc42d3842983c879dda5b58` (review history).
 - Round 2 reviewed predecessor:
@@ -26,7 +28,8 @@ Draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate
 - State: open and draft; not merged.
 
 The PR tracks the head branch. The canonical source checkpoint above includes
-the bounded ChatGPT Pro corrections, site hygiene, Signal handoff, and EP v1.1;
+the bounded ChatGPT Pro corrections, site hygiene, Signal handoff, EP v1.1,
+and the owner visual/export repair that restores standalone route containment;
 the following handoff and verification commit records current evidence and
 refreshes the bounded package manifest. After that final push, the PR body is
 read back from GitHub so no self-referential file is mistaken for proof of its
