@@ -31,7 +31,7 @@ current correction report.
 
 ## Stale pre-polish evidence warning
 
-`screenshots/home-mobile-390x844.png` contains a large black lower region and
+`screenshots/home-mobile-390x844.jpg` contains a large black lower region and
 is **not a current-site capture**. It is retained as dated QA history because
 it triggered the P0 visual review. Fresh exact-base and polished captures show
 that the region was an incomplete/stale capture artifact rather than a current

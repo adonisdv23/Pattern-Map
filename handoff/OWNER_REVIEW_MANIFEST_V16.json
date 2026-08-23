@@ -6,8 +6,8 @@
   "content_site_source_and_pdf_checkpoint": "c88926034cd75773dcc42d3842983c879dda5b58",
   "evidence_note": "The manifest includes the ChatGPT Pro Round 2 corrected source/export checkpoint, the exhaustive 108-case Stage 0/permission/state contract, descriptive/no-script/medium-safe term help, mobile route-target and layout contracts, exact-checkpoint QA, regenerated PDF renders, and an evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/print/touch gates remain open.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 165,
-  "total_bytes": 9601895,
+  "file_count": 168,
+  "total_bytes": 9614584,
   "files": [
     {
       "path": ".gitignore",
@@ -271,8 +271,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 12777,
-      "sha256": "a27be899a2dbeb8fe5694acc36d6f41963079e1cfc22ba73d6c422af91d04767"
+      "bytes": 12912,
+      "sha256": "578fcd053f1e33dc7b4960a1797fa2e9c90fa7f3549e352bd0418d2ece9f26e0"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -415,6 +415,11 @@
       "sha256": "c18e622cd7c50c711baae8eedd58a638ffdb325a6663937664780072ee95336a"
     },
     {
+      "path": "qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md",
+      "bytes": 5299,
+      "sha256": "73fae83453363329cf41aa03121ddb648ede37e113231d60f6e5a59227569880"
+    },
+    {
       "path": "qa/site/SITE_POLISH_QA.md",
       "bytes": 8936,
       "sha256": "8040b92cd30987378a5dfe0d5ac0dfb36bfc6a250f215424b67b49382c976e5a"
@@ -455,6 +460,11 @@
       "sha256": "3201a7657a7a46c2e309139a732f695a5ed04e7ab1cad66b6a6eecd983d9b21f"
     },
     {
+      "path": "qa/site/css-selector-use.spec.mjs",
+      "bytes": 3981,
+      "sha256": "e86af33936c335f313cb52fe840b0820b32b665ee2499a68484f354f357e7482"
+    },
+    {
       "path": "qa/visual/POLISH_PLAN.md",
       "bytes": 5290,
       "sha256": "50d5bb8a210cc4459d742712827a060a98a7dabb00bb6626e1d46895841d090e"
@@ -462,12 +472,12 @@
     {
       "path": "qa/visual/README.md",
       "bytes": 2203,
-      "sha256": "1745cfc7f72333b5f4c27f30c845769f578ee349436d5e41fe5588982804f110"
+      "sha256": "8a0f73082c14b94115a69fa42b07433f8260708bf943b98e41f2441a5e975ee8"
     },
     {
       "path": "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
       "bytes": 13970,
-      "sha256": "0a904e8e4739266e50df28767e3f4fff2ff8b74b2167a8e2a4d03f2c148542e3"
+      "sha256": "b209533d449161cc9478660af065dcdc2ffeb1c34cad8679820e817a670f3aa3"
     },
     {
       "path": "qa/visual/VISUAL_NEEDS.md",
@@ -718,6 +728,11 @@
       "path": "qa/visual/screenshots/map-desktop-1440x1000.jpg",
       "bytes": 94179,
       "sha256": "cefa9111c99f03574f140d1f92080ee7c8d76f5c4411da540070470f3cbdf1ea"
+    },
+    {
+      "path": "qa/visual/verify_image_formats.py",
+      "bytes": 3274,
+      "sha256": "1afd25471be76bcd1ddda06fc0b77d913e7d9ff25bf50a4bacec35643555ea42"
     },
     {
       "path": "research/README.md",
