@@ -44,8 +44,10 @@ generation when:
 7. the decision owner or required domain reviewer is unavailable for an action
    that cannot be reversed safely.
 
-Record STOPPED or ESCALATED, the no-action boundary, and the condition needed
-to resume. Do not hide a hard stop behind a polished answer.
+Record the route as `ESCALATE` where required and use a canonical
+`STOPPED_*` status such as `STOPPED_OTHER`, together with the no-action
+boundary and the condition needed to resume. Do not hide a hard stop behind a
+polished answer.
 
 ### Soft stops
 
@@ -67,7 +69,7 @@ Soft stopping preserves uncertainty. It does not announce certainty.
 Every hold or defer record should name one resume condition, such as a
 clarified question, authorized source, new time point, corrected identity,
 domain review, or defined outcome. Without a resume condition, the record is
-closed as STOPPED rather than left in an invisible queue.
+closed with `STOPPED_OTHER` rather than left in an invisible queue.
 
 ## Cost boundary
 

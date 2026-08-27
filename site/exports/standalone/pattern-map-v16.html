@@ -804,7 +804,10 @@ main { overflow: visible; }
 
 .term-popover {
   max-width: calc(100vw - 2rem);
-  transform: translateX(var(--term-popover-shift, 0px));
+  transform: translate(
+    var(--term-popover-shift, 0px),
+    var(--term-popover-block-shift, 0px)
+  );
 }
 
 @media (max-width: 600px) {
@@ -1683,13 +1686,13 @@ main { overflow: visible; }
 <h5 id="boundaries-boundaries-source-hard-stops">Hard stops</h5>
 <p>Stop the current route and do not allow the blocked material to influence generation when:</p>
 <ol><li>permission is absent, revoked, or materially ambiguous;</li><li>the action would disclose, publish, spend, or affect an external system or person beyond the operator’s authority;</li><li>a critical source, artifact, identity, or provenance check fails;</li><li>a high-consequence claim has no support and no approved provisional wording;</li><li>the observed boundary cannot distinguish failed capture from absence;</li><li>retention, privacy, security, or safety constraints are violated;</li><li>the decision owner or required domain reviewer is unavailable for an action that cannot be reversed safely.</li></ol>
-<p>Record STOPPED or ESCALATED, the no-action boundary, and the condition needed to resume. Do not hide a hard stop behind a polished answer.</p>
+<p>Record the route as <code>ESCALATE</code> where required and use a canonical <code>STOPPED_*</code> status such as <code>STOPPED_OTHER</code>, together with the no-action boundary and the condition needed to resume. Do not hide a hard stop behind a polished answer.</p>
 <h5 id="boundaries-boundaries-source-soft-stops">Soft stops</h5>
 <p>Stop acquisition and answer provisionally, hold, or defer when:</p>
 <ul><li>the next action is expected to add mostly duplicates;</li><li>the remaining budget cannot buy enough information to change the route;</li><li>the answer is supported for a narrow claim but broader interpretation remains unresolved;</li><li>comparison coverage is sufficient for the stated decision;</li><li>the deadline makes additional work less valuable than an explicit caveat;</li><li>the task is low consequence and a full record would cost more than a correction.</li></ul>
 <p>Soft stopping preserves uncertainty. It does not announce certainty.</p>
 <h5 id="boundaries-boundaries-source-resume-conditions">Resume conditions</h5>
-<p>Every hold or defer record should name one resume condition, such as a clarified question, authorized source, new time point, corrected identity, domain review, or defined outcome. Without a resume condition, the record is closed as STOPPED rather than left in an invisible queue.</p>
+<p>Every hold or defer record should name one resume condition, such as a clarified question, authorized source, new time point, corrected identity, domain review, or defined outcome. Without a resume condition, the record is closed with <code>STOPPED_OTHER</code> rather than left in an invisible queue.</p>
 <h4 id="boundaries-boundaries-source-cost-boundary">Cost boundary</h4>
 <p>Before the first nontrivial acquisition or enrichment, record:</p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Dimension</th><th scope="col">Example boundary</th></tr></thead><tbody><tr><td>Time</td><td>20 minutes or one research pass</td></tr><tr><td>Money</td><td>No paid source; or a named authorized amount</td></tr><tr><td>Tokens/compute</td><td>One model call, fixed context size, or local processing only</td></tr><tr><td>Human attention</td><td>One reviewer pass and one correction request</td></tr><tr><td>Privacy</td><td>No new sensitive content; pointers instead of copied material</td></tr><tr><td>Disclosure</td><td>Internal use only; no external sharing</td></tr><tr><td>Latency</td><td>Answer by a stated deadline</td></tr><tr><td>Consequence</td><td>No automatic external action; human decision required</td></tr></tbody></table></div>
@@ -2070,6 +2073,48 @@ main { overflow: visible; }
 })();
 
 (() => {
+  const translateTermPanel = ({
+    panel,
+    trigger,
+    viewportWidth,
+    viewportInset = 16,
+    blockClearance = 8,
+  }) => {
+    const required = [
+      panel?.left,
+      panel?.right,
+      panel?.top,
+      trigger?.bottom,
+      viewportWidth,
+      viewportInset,
+      blockClearance,
+    ];
+    if (!required.every(Number.isFinite)) {
+      throw new TypeError("term-panel geometry requires finite numeric bounds");
+    }
+    if (viewportWidth <= 0 || viewportInset < 0 || blockClearance < 0) {
+      throw new RangeError("term-panel viewport and clearance values are invalid");
+    }
+
+    let inline = 0;
+    if (panel.right > viewportWidth - viewportInset) {
+      inline -= panel.right - (viewportWidth - viewportInset);
+    }
+    if (panel.left + inline < viewportInset) {
+      inline += viewportInset - (panel.left + inline);
+    }
+
+    const block = Math.max(0, trigger.bottom + blockClearance - panel.top);
+    return {
+      inline: inline < 0 ? Math.floor(inline) : Math.ceil(inline),
+      block: Math.ceil(block),
+    };
+  };
+
+  globalThis.PatternMapTermPopoverGeometry = Object.freeze({ translateTermPanel });
+})();
+
+(() => {
   const familyGrid = document.querySelector(".family-grid");
   const focusStatus = document.querySelector("#family-focus-status");
   const familyCards = [...document.querySelectorAll("[data-family-card]")];
@@ -2164,21 +2209,20 @@ main { overflow: visible; }
   });
 
   const termTriggers = [...document.querySelectorAll("[data-term-trigger]")];
-  const positionTermPanel = (panel) => {
-    if (!panel) return;
+  const positionTermPanel = (trigger, panel) => {
+    if (!trigger || !panel) return;
     panel.style.removeProperty("--term-popover-shift");
+    panel.style.removeProperty("--term-popover-block-shift");
     if (!window.matchMedia("(min-width: 1101px)").matches) return;
-    const viewportInset = 16;
-    const bounds = panel.getBoundingClientRect();
-    let shift = 0;
-    if (bounds.right > window.innerWidth - viewportInset) {
-      shift -= bounds.right - (window.innerWidth - viewportInset);
-    }
-    if (bounds.left + shift < viewportInset) {
-      shift += viewportInset - (bounds.left + shift);
-    }
-    const boundedShift = shift < 0 ? Math.floor(shift) : Math.ceil(shift);
-    panel.style.setProperty("--term-popover-shift", `${boundedShift}px`);
+    const geometry = globalThis.PatternMapTermPopoverGeometry?.translateTermPanel;
+    if (!geometry) return;
+    const translation = geometry({
+      panel: panel.getBoundingClientRect(),
+      trigger: trigger.getBoundingClientRect(),
+      viewportWidth: window.innerWidth,
+    });
+    panel.style.setProperty("--term-popover-shift", `${translation.inline}px`);
+    panel.style.setProperty("--term-popover-block-shift", `${translation.block}px`);
   };
   const closeTerm = (trigger, restoreFocus = false) => {
     const panel = trigger?.getAttribute("aria-controls")
@@ -2188,6 +2232,7 @@ main { overflow: visible; }
     if (panel) {
       panel.hidden = true;
       panel.style.removeProperty("--term-popover-shift");
+      panel.style.removeProperty("--term-popover-block-shift");
     }
     if (restoreFocus) trigger?.focus();
   };
@@ -2204,14 +2249,17 @@ main { overflow: visible; }
       closeOtherTerms(trigger);
       trigger.setAttribute("aria-expanded", String(opening));
       panel.hidden = !opening;
-      if (opening) positionTermPanel(panel);
+      if (opening) positionTermPanel(trigger, panel);
     });
   });
 
   window.addEventListener("resize", () => {
     const openTrigger = termTriggers.find((trigger) => trigger.getAttribute("aria-expanded") === "true");
     if (!openTrigger) return;
-    positionTermPanel(document.getElementById(openTrigger.getAttribute("aria-controls")));
+    positionTermPanel(
+      openTrigger,
+      document.getElementById(openTrigger.getAttribute("aria-controls")),
+    );
   });
 
   document.addEventListener("click", (event) => {

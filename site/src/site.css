@@ -797,7 +797,10 @@ main { overflow: visible; }
 
 .term-popover {
   max-width: calc(100vw - 2rem);
-  transform: translateX(var(--term-popover-shift, 0px));
+  transform: translate(
+    var(--term-popover-shift, 0px),
+    var(--term-popover-block-shift, 0px)
+  );
 }
 
 @media (max-width: 600px) {

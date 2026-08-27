@@ -265,7 +265,7 @@ Change:             one read-only 533-line transfer audit
 Recovery checklist, read-only first:
 
 ```sh
-cd /Users/gpt/Documents/Codex/projects/Signal-Foundry
+# Run from the receiving Signal Foundry repository root.
 git status --short --branch
 git show --stat 4a6ed78
 git branch --contains 4a6ed78

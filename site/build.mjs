@@ -37,6 +37,7 @@ const essaySource = readText("manuscript/PATTERN_RECOGNITION_V16.md");
 const glossarySource = readText("framework/GLOSSARY.md");
 const styles = fs.readFileSync(path.join(SITE_DIR, "src", "site.css"), "utf8");
 const recommendationScript = fs.readFileSync(path.join(SITE_DIR, "src", "recommendation.js"), "utf8");
+const termPopoverGeometryScript = fs.readFileSync(path.join(SITE_DIR, "src", "term-popover-geometry.js"), "utf8");
 const scripts = fs.readFileSync(path.join(SITE_DIR, "src", "site.js"), "utf8");
 
 const ROUTES = {
@@ -624,7 +625,7 @@ const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "pa
     </div>
   </main>
   ${renderFooter(ctx)}
-  ${ctx.standalone ? `<script>${recommendationScript}\n${scripts}</script>` : `<script src="${ctx.base}assets/recommendation.js" defer></script><script src="${ctx.base}assets/site.js" defer></script>`}
+  ${ctx.standalone ? `<script>${recommendationScript}\n${termPopoverGeometryScript}\n${scripts}</script>` : `<script src="${ctx.base}assets/recommendation.js" defer></script><script src="${ctx.base}assets/term-popover-geometry.js" defer></script><script src="${ctx.base}assets/site.js" defer></script>`}
 </body>
 </html>`;
 };
@@ -1024,6 +1025,7 @@ const build = () => {
   fs.mkdirSync(path.join(DIST_DIR, "assets", "diagrams"), { recursive: true });
   fs.copyFileSync(path.join(SITE_DIR, "src", "site.css"), path.join(DIST_DIR, "assets", "site.css"));
   fs.copyFileSync(path.join(SITE_DIR, "src", "recommendation.js"), path.join(DIST_DIR, "assets", "recommendation.js"));
+  fs.copyFileSync(path.join(SITE_DIR, "src", "term-popover-geometry.js"), path.join(DIST_DIR, "assets", "term-popover-geometry.js"));
   fs.copyFileSync(path.join(SITE_DIR, "src", "site.js"), path.join(DIST_DIR, "assets", "site.js"));
   const diagramSource = path.join(ROOT, "assets", "diagrams", HISTORICAL_DIAGRAM);
   if (!fs.existsSync(diagramSource)) {

@@ -50,16 +50,11 @@ advance the branch head without changing the canonical source
 checkpoint. Resolve Git before editing and do not substitute an older
 conversation, screenshot, or deep link for this source commit.
 
-Canonical local checkout used by the orchestration work:
-
-```text
-/Users/gpt/Documents/Codex/projects/Pattern-Map
-```
-
-If your task is running in another checkout, resolve the branch and commit
-with Git before editing. Do not infer currentness from a conversation title,
-an old screenshot, a self-referential handoff paragraph, or a deep link that
-is not present in the repository.
+No source-machine filesystem path is canonical. From your own Pattern Map
+repository root, resolve the branch and commit with Git before editing. Do not
+infer currentness from a conversation title, an old screenshot, a
+self-referential handoff paragraph, or a deep link that is not present in the
+repository.
 
 ### The fastest useful review path
 
@@ -80,7 +75,6 @@ Read these in order:
 The locked intent must verify before integration:
 
 ```sh
-cd /Users/gpt/Documents/Codex/projects/Pattern-Map
 (cd docs && shasum -a 256 -c OWNER_INTENT_V16.sha256)
 ```
 
@@ -100,7 +94,7 @@ and History routes. `site/dist/` is generated and should not be committed.
 Build and serve it locally:
 
 ```sh
-cd /Users/gpt/Documents/Codex/projects/Pattern-Map/site
+cd site
 npm ci
 npm run build
 npm run check
@@ -110,13 +104,13 @@ npm run dev
 The current direct-open companion is:
 
 ```text
-/Users/gpt/Documents/Codex/projects/Pattern-Map/site/exports/standalone/pattern-map-v16.html
+site/exports/standalone/pattern-map-v16.html
 ```
 
 The secondary visual review companion is:
 
 ```text
-/Users/gpt/Documents/Codex/projects/Pattern-Map/site/exports/pattern-map-v16-owner-review.pdf
+site/exports/pattern-map-v16-owner-review.pdf
 ```
 
 The semantic routed site and standalone HTML are the primary review surfaces;
@@ -374,7 +368,7 @@ branch, an upstream remote, or an integrated pull request.
 The concrete Signal Foundry example is:
 
 ```text
-repository:  /Users/gpt/Documents/Codex/projects/Signal-Foundry
+repository:  receiving Signal Foundry repository root
 current:     main == origin/main == f9bf3775ca3d5b52ea5083cea52306c025727e23
 orphan:      codex/pattern-map-signal-foundry-transfer-audit
 commit:      4a6ed78 (one commit ahead of main)
@@ -389,7 +383,7 @@ handoff. If an owner later wants to preserve it remotely, the recovery sequence
 is:
 
 ```sh
-cd /Users/gpt/Documents/Codex/projects/Signal-Foundry
+# Run from the receiving Signal Foundry repository root.
 git status --short --branch                 # preserve existing user changes
 git show --stat 4a6ed78                     # confirm the exact object
 git branch --contains 4a6ed78

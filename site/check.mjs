@@ -249,6 +249,7 @@ const main = () => {
   assert(css.includes(".no-js .term-popover-trigger") && css.includes(".no-js .reading-progress-wrap"), "no-script mode leaves optional term or progress controls visible");
   assert(/@media \(min-width: 601px\) and \(max-width: 1100px\)[\s\S]*?\.term-popover\s*\{[^}]*position:\s*static/i.test(css), "medium-width term popovers are not flow-native");
   assert(css.includes("--term-popover-shift") && css.includes("max-width: calc(100vw - 2rem)"), "desktop term popovers lack viewport containment");
+  assert(css.includes("--term-popover-block-shift"), "desktop term popovers lack trigger clearance");
   assert(/@media \(max-width: 480px\)[\s\S]*?\.term-mini-chain,[\s\S]*?grid-template-columns:\s*1fr/i.test(css), "complex term microvisuals do not stack at narrow widths");
   assert(!/@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3/i.test(css), "narrow route brief regressed to three compressed columns");
   assert(/@media print[\s\S]*?\.standalone-section\s*\{\s*break-before:\s*page/i.test(css), "standalone print routes do not start on deliberate pages");

@@ -93,21 +93,20 @@
   });
 
   const termTriggers = [...document.querySelectorAll("[data-term-trigger]")];
-  const positionTermPanel = (panel) => {
-    if (!panel) return;
+  const positionTermPanel = (trigger, panel) => {
+    if (!trigger || !panel) return;
     panel.style.removeProperty("--term-popover-shift");
+    panel.style.removeProperty("--term-popover-block-shift");
     if (!window.matchMedia("(min-width: 1101px)").matches) return;
-    const viewportInset = 16;
-    const bounds = panel.getBoundingClientRect();
-    let shift = 0;
-    if (bounds.right > window.innerWidth - viewportInset) {
-      shift -= bounds.right - (window.innerWidth - viewportInset);
-    }
-    if (bounds.left + shift < viewportInset) {
-      shift += viewportInset - (bounds.left + shift);
-    }
-    const boundedShift = shift < 0 ? Math.floor(shift) : Math.ceil(shift);
-    panel.style.setProperty("--term-popover-shift", `${boundedShift}px`);
+    const geometry = globalThis.PatternMapTermPopoverGeometry?.translateTermPanel;
+    if (!geometry) return;
+    const translation = geometry({
+      panel: panel.getBoundingClientRect(),
+      trigger: trigger.getBoundingClientRect(),
+      viewportWidth: window.innerWidth,
+    });
+    panel.style.setProperty("--term-popover-shift", `${translation.inline}px`);
+    panel.style.setProperty("--term-popover-block-shift", `${translation.block}px`);
   };
   const closeTerm = (trigger, restoreFocus = false) => {
     const panel = trigger?.getAttribute("aria-controls")
@@ -117,6 +116,7 @@
     if (panel) {
       panel.hidden = true;
       panel.style.removeProperty("--term-popover-shift");
+      panel.style.removeProperty("--term-popover-block-shift");
     }
     if (restoreFocus) trigger?.focus();
   };
@@ -133,14 +133,17 @@
       closeOtherTerms(trigger);
       trigger.setAttribute("aria-expanded", String(opening));
       panel.hidden = !opening;
-      if (opening) positionTermPanel(panel);
+      if (opening) positionTermPanel(trigger, panel);
     });
   });
 
   window.addEventListener("resize", () => {
     const openTrigger = termTriggers.find((trigger) => trigger.getAttribute("aria-expanded") === "true");
     if (!openTrigger) return;
-    positionTermPanel(document.getElementById(openTrigger.getAttribute("aria-controls")));
+    positionTermPanel(
+      openTrigger,
+      document.getElementById(openTrigger.getAttribute("aria-controls")),
+    );
   });
 
   document.addEventListener("click", (event) => {

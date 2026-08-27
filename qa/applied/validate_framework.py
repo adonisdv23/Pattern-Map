@@ -215,6 +215,17 @@ def validate_artifact_inventory() -> None:
             require(value in content,
                     f"{relative} is missing canonical route/stop/learning value {value}")
 
+    mechanisms = read_text("framework/MECHANISMS.md")
+    require("UNAUTHORIZED" not in mechanisms,
+            "Mechanisms uses UNAUTHORIZED instead of canonical NOT_AUTHORIZED")
+    boundaries = read_text("framework/BOUNDARIES_AND_FAILURES.md")
+    require("Record STOPPED or ESCALATED" not in boundaries,
+            "boundaries file uses noncanonical bare STOPPED/ESCALATED states")
+    require("closed as STOPPED" not in boundaries,
+            "boundaries file uses noncanonical bare STOPPED status")
+    require("`ESCALATE`" in boundaries and "`STOPPED_OTHER`" in boundaries,
+            "boundaries file does not distinguish canonical route and stop values")
+
     relationship = read_text("framework/RELATIONSHIP_MAP.md")
     for value in route_values:
         require(value in relationship,
