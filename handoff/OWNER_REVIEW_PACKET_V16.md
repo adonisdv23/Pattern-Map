@@ -3,10 +3,12 @@
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
 Canonical converged source checkpoint:
-`bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`. It incorporates the bounded
+`874a0a8e09f0bde11532cf873087865addb7d973`. It incorporates the bounded
 second ChatGPT Pro correction checkpoint `c889260`, site/visual hygiene,
 Signal Foundry transfer, EP v1.1 design reconciliation, and the standalone
-layout/owner-export correction after predecessor `ad964dd`. The following
+layout/owner-export correction after predecessor `ad964dd`, plus the terminal
+term-panel geometry, operator-vocabulary, path-neutral handoff, and portable-
+package corrections after immediate predecessor `bc7e7c5`. The following
 evidence/checksum commit refreshes this packet and deterministic manifest
 without replacing that source checkpoint.
 
@@ -15,7 +17,8 @@ earlier `a319794` site-polish checkpoint, but it is superseded for current Map
 and Apply semantics. Current evidence is the exact-checkpoint Pro correction
 QA, executable contracts, live 320/390/480/600 and
 601/768/821/1024/1100/default browser inspection, and
-regenerated PDF renders. No older screenshot is presented as current.
+regenerated PDF renders, and the 2026-08-27 terminal audit. No older screenshot
+is presented as current.
 
 ## The outcome
 
@@ -102,6 +105,11 @@ the semantic accessibility route.
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.
+- A deterministic exact-commit Signal Foundry portable builder with one plain
+  `START_HERE.md`, copyable downstream prompt, sorted per-file path/byte/hash
+  manifest, standard-library verifier, whole-ZIP checksum sidecar, source-path
+  and cache/dependency exclusions, overwrite refusal, and regression coverage.
+  The packet is read-only context and grants no Signal Foundry mutation.
 - EP v0.1 with a complete 239-file v15.2 accession, an 82-file curated set,
   preserved protocol/harness/fixtures/prior art, exact unfavorable-result
   taxonomy, and no-results status; plus EP v1.1's narrowed NEWS-COPY boundary,
@@ -115,7 +123,7 @@ the semantic accessibility route.
 
 ## Verification summary
 
-The clone-contained sequence can be replayed with
+The twelve-stage clone-contained sequence can be replayed with
 `qa/run_owner_review_checks.sh`. Supplying `--source-zip PATH` additionally
 checks the exact owner-local v15.2 distribution container; the default run
 still verifies its complete extracted accession, manifest, sidecar, and hash
@@ -148,6 +156,14 @@ anchors without pretending the external ZIP lives in Git.
   601/768/821/1024/1100; and the default desktop Apply state. No inspected
   document had horizontal overflow. Stage 0, permission precedence, and
   unchanged observed state pass in Apply.
+- The terminal live audit covers all ten routes plus standalone at 1440, 1101,
+  1100, 1024, 821, 768, 601, 600, 480, 390, and 320 pixels where meaningful,
+  all 108 Apply combinations, Map/More/no-script state, print proxies, and all
+  six PDF pages. Its sole actionable visual finding was a 6.4–7.8px desktop
+  term-panel/trigger overlap. Source `874a0a8` retains horizontal viewport
+  clamping and adds a deterministic minimum 8px vertical clearance contract.
+  Native radio focus remained visible in computed evidence; custom styling,
+  breakpoint cadence, and term-control sizing remain deferred/manual taste.
 - Owner visual/export closeout reproduces and repairs the standalone
   Sources/History narrow-column defect. Post-repair Chromium checks place
   Sources, Research, and History in `.page-content` at 1440/821/390 pixels;
@@ -166,16 +182,18 @@ anchors without pretending the external ZIP lives in Git.
   confirmed both P0s resolved and found five bounded P1 residues. Every Round 2
   finding is dispositioned; Pro source corrections are implemented at
   `c889260`; the earlier converged source was `ad964dd`; and the full current
-  converged source, including owner visual/export corrections, is `bc7e7c5`.
+  converged predecessor including owner visual/export corrections is
+  `bc7e7c5`; the terminal accepted source is `874a0a8`.
   The protected headline
   remains under locked owner intent, and only physical, publication-time, or
   owner-taste gates remain after the final PR readback.
-- Claude Code/Cowork was attempted earlier as an optional review lane, but the
-  installed client's existing OAuth token was revoked (`401`). Credentials
-  were not inspected or repaired, no paid API was used, and no Claude-review
-  claim is made. The owner-supplied two-day Claude package was instead read,
-  reproduced where checkable, dispositioned claim by claim, and independently
-  audited; the resulting report does not represent a study.
+- An earlier optional Claude Code/Cowork attempt stopped at revoked OAuth and
+  remains historical. Under the later exact terminal authorization, the
+  authenticated local Claude Pro CLI completed one read-only audit of exact
+  `e565502`, found no P0/P1, and made no edits. Its P2 focus/term-control
+  suggestions are dispositioned in the terminal QA. No credential was
+  inspected or repaired, no paid API key was used, and neither that review nor
+  the owner-supplied Claude package represents a study or result.
 
 ## Decisions already fixed and preserved
 
@@ -235,6 +253,8 @@ incremental spend, external-dataset acquisition, preregistration, outreach, or
 representation of unrun work as results occurred. The owner later gave an
 exact instruction for an outside ChatGPT Pro advisory review loop on the
 existing account; its two rounds are not a study, protocol provider selection,
-or result.
+or result. The later bounded Claude Pro review was likewise an authorized
+read-only implementation/editorial audit on existing access, not a research
+provider selection, model experiment, result, or incremental purchase.
 The draft pull request is for owner review only and does not expand that
 authority.

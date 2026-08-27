@@ -28,6 +28,16 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md` consolidates the exact
+  `e565502` intent, operator, package, live visual/interaction, and bounded
+  Claude audits; the accepted `874a0a8` geometry/vocabulary/portability/package
+  corrections; and every remaining manual limit. The browser result is
+  explicitly synthetic DOM/CDP/computed evidence, not a physical accessibility
+  pass.
+- `qa/handoff/test_portable_bundle.py` verifies exact-commit bundle
+  determinism, the complete START_HERE contract, manifest path/byte/hash
+  records, embedded verification, whole-ZIP sidecar, path safety, and overwrite
+  refusal.
 - `qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md` is the active
   claim-by-claim Claude-package adjudication and EP v1.1 implementation record.
   It preserves the no-results boundary, reports the real-tokenizer parity

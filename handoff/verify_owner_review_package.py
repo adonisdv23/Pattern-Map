@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
-CONTENT_CHECKPOINT = "bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91"
+CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
 
 
 REQUIRED_PATHS = [
@@ -39,6 +39,7 @@ REQUIRED_PATHS = [
     "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md",
     "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
     "docs/DECISION_LOG.md",
+    "docs/REVIEW_AND_DISPOSITION_PROTOCOL.md",
     "docs/VERSION_HISTORY.md",
     "docs/BINARY_ARTIFACT_POLICY.md",
     "manuscript/PATTERN_RECOGNITION_V16.md",
@@ -54,6 +55,7 @@ REQUIRED_PATHS = [
     "framework/GLOSSARY.md",
     "framework/OPERATOR_PLAYBOOK.md",
     "framework/IMPLEMENTATION_CHOICES.md",
+    "framework/MECHANISMS.md",
     "framework/BOUNDARIES_AND_FAILURES.md",
     "framework/agent-playbook/QUICKSTART.md",
     "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
@@ -66,6 +68,7 @@ REQUIRED_PATHS = [
     "cases/product-and-process/README.md",
     "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
     "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
+    "handoff/signal-foundry/build_portable_bundle.py",
     "site/README.md",
     "site/package.json",
     "site/package-lock.json",
@@ -73,6 +76,7 @@ REQUIRED_PATHS = [
     "site/check.mjs",
     "site/src/site.css",
     "site/src/site.js",
+    "site/src/term-popover-geometry.js",
     "site/src/recommendation.js",
     "site/scripts/generate_review_pdf.py",
     "site/exports/standalone/pattern-map-v16.html",
@@ -129,11 +133,15 @@ REQUIRED_PATHS = [
     "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
     "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
     "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
+    "qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md",
+    "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md",
     "qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md",
     "qa/interaction/apply-state-contract.spec.mjs",
     "qa/interaction/map-layout-contract.spec.mjs",
+    "qa/interaction/term-popover-geometry-contract.spec.mjs",
+    "qa/handoff/test_portable_bundle.py",
     "qa/content/reader-language-contract.spec.mjs",
     "qa/visual/README.md",
     "qa/visual/POLISH_PLAN.md",
@@ -239,9 +247,9 @@ def write_manifest() -> None:
         "schema_version": 1,
         "package": "pattern-map-v16-owner-review",
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-23",
+        "generated_date": "2026-08-27",
         "content_site_source_and_pdf_checkpoint": CONTENT_CHECKPOINT,
-        "evidence_note": "The manifest covers canonical converged source bc7e7c5: ChatGPT Pro Round 2 corrections; the exhaustive 108-case Stage 0/permission/state contract; descriptive/no-script/medium-safe term help; responsive line-free Map; flow-native common-origin teaching visual; viewport-contained term panels; structurally contained human-first standalone routes; print-safe evidence routes and tables; two Signal Foundry handoff artifacts; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. No study, deployment, publication, merge, or provider call is implied.",
+        "evidence_note": "The manifest covers canonical converged source 874a0a8: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes; print-safe evidence routes and tables; canonical operator-state vocabulary; path-neutral Signal Foundry handoffs; deterministic exact-commit portable bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. The authorized Claude Pro audit was advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),

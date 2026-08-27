@@ -2,7 +2,7 @@
 
 Status: **PASS FOR THE PATTERN MAP V16 OWNER-REVIEW ORCHESTRATION**
 
-Audit date: 2026-08-23
+Audit date: 2026-08-27
 
 This is a scoped repository/process audit. It records actions taken or not
 taken in this orchestration; it is not a claim about unrelated activity outside
@@ -18,6 +18,7 @@ the project.
 | Create durable tasks and bounded advisory agents | Advisory reports and integration ledger | **USED WITHIN SCOPE** |
 | Build local review artifacts | Ten-route local site, standalone HTML, visual PDF companion, local QA renders | **USED WITHIN SCOPE** |
 | Obtain an outside ChatGPT Pro advisory review loop | The owner gave a later exact instruction to use the already logged-in ChatGPT Pro account; two exact-commit reports, dispositions, and correction QA records are preserved | **USED WITHIN THE LATER EXACT AUTHORIZATION; NO INCREMENTAL PURCHASE OR STUDY** |
+| Obtain one bounded Claude Pro exact-checkpoint advisory review | The terminal instruction authorized the already authenticated local Claude CLI for a read-only audit of exact `e565502`; the report and integrator dispositions are preserved in `qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md` | **USED WITHIN THE LATER EXACT AUTHORIZATION; NO EDIT, INCREMENTAL PURCHASE, OR STUDY** |
 | Open a draft pull request for owner review | [PR #1](https://github.com/adonisdv23/Pattern-Map/pull/1) and `handoff/BRANCH_AND_PR_STATE.md` | **USED WITHIN SCOPE; OPEN AND DRAFT** |
 
 ## Prohibited or separately authorized actions
@@ -29,7 +30,7 @@ the project.
 | Publish the essay, framework, site, or package | Artifacts are labeled local owner review; no publication action or public announcement | **NOT PERFORMED** |
 | Create a GitHub Release or upload the v15.2 ZIP to a release channel | D-004 keeps the exact ZIP at its verified source path pending separate authorization | **NOT PERFORMED** |
 | Run an empirical, model-evaluation, provider, corpus, or participant study | Echo EP v0.1/v1.1 and DL-PLAYBOOK-01 remain explicitly unrun; validators, synthetic render fixtures, planning calculations, mock outputs, and tokenizer checks are labeled implementation/design QA only | **NOT PERFORMED** |
-| Select or call a provider for either research protocol, incur new spend, or purchase data/services | No provider/model was chosen or called for Echo or DL-PLAYBOOK-01. The only completed outside-model action was the separately and exactly authorized two-round ChatGPT Pro advisory loop on the owner's existing account; it was not a protocol run, purchase, or new subscription. An optional Claude Code review stopped at a revoked-token `401`; no credential repair or paid API use occurred | **NO RESEARCH-PROVIDER ACTION OR INCREMENTAL SPEND PERFORMED** |
+| Select or call a provider for either research protocol, incur new spend, or purchase data/services | No provider/model was chosen or called for Echo or DL-PLAYBOOK-01. The completed outside-model actions were separately and exactly authorized editorial/implementation reviews on the owner's existing ChatGPT Pro and Claude Pro access. They were not protocol runs, research-provider selection, purchases, or new subscriptions. The earlier Claude `401` remains historical; credentials were never inspected or repaired and no paid API key was used | **NO RESEARCH-PROVIDER ACTION OR INCREMENTAL SPEND PERFORMED** |
 | Acquire an external dataset or recruit participants | Protocols retain future placeholders; no sample, participant, or dataset acquisition | **NOT PERFORMED** |
 | Preregister research | Future protocols are not represented as preregistrations | **NOT PERFORMED** |
 | Contact people, conduct outreach, or represent the owner externally | No message, invitation, recruitment, or external representation action | **NOT PERFORMED** |
@@ -49,9 +50,11 @@ the project.
   research authority, or authorize spending beyond the existing account.
 - Browser screenshots and PDF renders establish layout and implementation
   state only. They do not establish reader comprehension or persuasion.
-- The failed Claude Code authentication attempt is not a completed provider or
-  model review and is not represented as one. It produced no project-content
-  review, research result, or spend.
+- The earlier failed Claude Code authentication attempt is not retroactively
+  represented as a completed review. The later exact `e565502` Claude Pro
+  review occurred only under a new explicit authorization, made no edit, and
+  is preserved as advisory model feedback—not a project-content study,
+  research result, provider selection, or spend.
 - The owner-supplied Claude session ZIP was read as advisory material and its
   checkable code claims were reproduced locally where possible. That package
   review, its power calculations, and the independent Luna audit are not a

@@ -2,12 +2,12 @@
   "schema_version": 1,
   "package": "pattern-map-v16-owner-review",
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-  "generated_date": "2026-08-23",
-  "content_site_source_and_pdf_checkpoint": "bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91",
-  "evidence_note": "The manifest covers canonical converged source bc7e7c5: ChatGPT Pro Round 2 corrections; the exhaustive 108-case Stage 0/permission/state contract; descriptive/no-script/medium-safe term help; responsive line-free Map; flow-native common-origin teaching visual; viewport-contained term panels; structurally contained human-first standalone routes; print-safe evidence routes and tables; two Signal Foundry handoff artifacts; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. No study, deployment, publication, merge, or provider call is implied.",
+  "generated_date": "2026-08-27",
+  "content_site_source_and_pdf_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",
+  "evidence_note": "The manifest covers canonical converged source 874a0a8: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes; print-safe evidence routes and tables; canonical operator-state vocabulary; path-neutral Signal Foundry handoffs; deterministic exact-commit portable bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. The authorized Claude Pro audit was advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 185,
-  "total_bytes": 11302504,
+  "file_count": 193,
+  "total_bytes": 11400167,
   "files": [
     {
       "path": ".gitignore",
@@ -96,8 +96,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 69480,
-      "sha256": "b38e6645eaaa83494097e5f3da9bae578955b348eaf6bb6f201b6f504376754a"
+      "bytes": 73975,
+      "sha256": "689c023a5557c588c0ef864b0fddf2031d32cf610a8c669aab9c800603dc0a66"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 47040,
-      "sha256": "647fbed151b46ed1f9f956aa3c6fe8db23e81d574b504e3b6b3d1396accc1c91"
+      "bytes": 49796,
+      "sha256": "c6f55dc5c72e2c6f2299c9577311609e530e3970880c02a0f7db89656bea717f"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -143,6 +143,11 @@
       "path": "docs/OWNER_INTENT_V16.sha256",
       "bytes": 86,
       "sha256": "42b54e908f38cc80f45c9fb8e5a5b83e80b726c75bec683edd99dc4760516366"
+    },
+    {
+      "path": "docs/REVIEW_AND_DISPOSITION_PROTOCOL.md",
+      "bytes": 5212,
+      "sha256": "3641bc066cfaa3973148ff1abaeefc8f31754035ceac61f1b421d6f1fdcb1251"
     },
     {
       "path": "docs/SOURCE_AUTHORITY_AND_LINEAGE.md",
@@ -171,18 +176,18 @@
     },
     {
       "path": "docs/V16_ROADMAP.md",
-      "bytes": 6409,
-      "sha256": "76fdcaaa0b63c750bb9704922c4597927faf998f13cb1a91b6db27b3068c4f88"
+      "bytes": 6634,
+      "sha256": "3a02ed4e7c41da40896a87ad65216bcb3d2349d6e3088d2a590ffa651241b3da"
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 2717,
-      "sha256": "843fba9cd6fc0331177e93d0ca96b9135510c14cbfb63780c8a5c5004f78f7a8"
+      "bytes": 3053,
+      "sha256": "ba795360f03f7b06afc9d6fd6c364a379ad67da3a8317e2f12fcd9ba82378b88"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
-      "bytes": 7552,
-      "sha256": "91b876daae721d158fddc154cac1cb69af04d8a1b87e00834eaf3228ba959569"
+      "bytes": 7656,
+      "sha256": "a8548c8fde81f2bbe6d47d87b55644d958efc9b620f0caa29c32d7517619ed41"
     },
     {
       "path": "framework/GLOSSARY.md",
@@ -193,6 +198,11 @@
       "path": "framework/IMPLEMENTATION_CHOICES.md",
       "bytes": 6698,
       "sha256": "da17f612e48f9d267a3d147f338731bb952f6a397077cdb5ec7c68e72b153d86"
+    },
+    {
+      "path": "framework/MECHANISMS.md",
+      "bytes": 12626,
+      "sha256": "38191a6188b046a308e8a89a65ecf0e17f7520dac7e899903869688c38ced2df"
     },
     {
       "path": "framework/OPERATOR_PLAYBOOK.md",
@@ -251,38 +261,43 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 2868,
-      "sha256": "9443fae17b9cbf01a99bd343a7d0ebbbff90bfed0b7e9eefcae61ce13872be83"
+      "bytes": 3174,
+      "sha256": "c74f66b5c293c1a561410118eaaba4b04af56a0915c0cce81bd87153ecdba30d"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 13927,
-      "sha256": "b4638f2f040311ce9267c35f93483e977df53970a4a5bc61adb09ad01123e600"
+      "bytes": 15461,
+      "sha256": "c02ccda25de3cd088bd1212dea242af4ebaa57dc35cd34c35287c18a7f9bd46d"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 9037,
-      "sha256": "fb079afb705e6b3b6013b0b442076fa4b4730aab93914c7cc49f3180ba737f03"
+      "bytes": 9730,
+      "sha256": "697cee5921220d1bfb62133fa1f028b007b8489fbacfec6f75347228f2315711"
     },
     {
       "path": "handoff/README.md",
-      "bytes": 882,
-      "sha256": "41d8b7350d746dc8b831ef9f14df6521b90a6c8b3435af5ae45c4f074307848e"
+      "bytes": 1013,
+      "sha256": "36a71ebb1958ba087e6ce4cf28a2a00adc7cb8067d3840b4403f4f9129ec1a7f"
     },
     {
       "path": "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
-      "bytes": 23377,
-      "sha256": "07af539edbceaa90a98b007d20917d33cafbdd359ca7a288ca1f5a9f319beea2"
+      "bytes": 23295,
+      "sha256": "d8a6c7c92e22b59a9594cd69639722ef751c4f560c99c4f0a07b719e0a812b4d"
     },
     {
       "path": "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
-      "bytes": 24466,
-      "sha256": "a012c3462d77ee0269b22b26db4117cdd602b2ba8812bf6f11adea17c754b325"
+      "bytes": 24562,
+      "sha256": "becda94e7dc0a7dce0817a52e66bc1fecbbde1c2517c5a790f794c0a6c8bbf6b"
+    },
+    {
+      "path": "handoff/signal-foundry/build_portable_bundle.py",
+      "bytes": 37719,
+      "sha256": "6a16841d8a99300fc8a7b7c2f28355ecd6e1c462ea8861012e5fe0a60f32e0cf"
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 14342,
-      "sha256": "52869bb09a9ea1fbd8d147239d8e231b6d0ac64755e0eb7382d69d83dbbd5a45"
+      "bytes": 14964,
+      "sha256": "67a5216d93bf72bb5a0b91e1d981db0b3e3aca52087376d54aae5ee4f54943f5"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -316,18 +331,18 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 13029,
-      "sha256": "5e9bd13026eb8d0d2209dbbc3652e370840c6832189a9a9331e6a647c9b0e3a6"
+      "bytes": 14802,
+      "sha256": "d6feb788d19364f43067901f01955ecc4d0236e6fef7a309c7c361bc0235147c"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
-      "bytes": 6024,
-      "sha256": "5759af7be68a50f2e7cb2915a224c73c3c7dd7152978119e23ce9b83018fe9bd"
+      "bytes": 6636,
+      "sha256": "7ca339fbc5a95fbb081f7a070ecaee7af84a859db6c313fd231f86c1afdac95c"
     },
     {
       "path": "qa/README.md",
-      "bytes": 3914,
-      "sha256": "d05dc45d9625cd89f7e6ea5cf7f198ecb9b3456a3fca498b52f8aa054a840a6a"
+      "bytes": 4534,
+      "sha256": "2321af4a59c48c275c1b77062692566f64ad107591cc4aa727bb7c5af1abca52"
     },
     {
       "path": "qa/applied/README.md",
@@ -351,8 +366,8 @@
     },
     {
       "path": "qa/applied/validate_framework.py",
-      "bytes": 16827,
-      "sha256": "b71404a03c381d26a563db02f3490629b2d6d4bf7d58730f26c526e8ab50b730"
+      "bytes": 17495,
+      "sha256": "c81c78bac9e27ef363ab5d91364b200f3af5b023fffdf6be397b63f48c3bfa65"
     },
     {
       "path": "qa/content/reader-language-contract.spec.mjs",
@@ -380,6 +395,11 @@
       "sha256": "f1b1fda36ca0ceffb0eaa0e3b5bfff4a7324ff03fc0a54260bb8b8bfd01d4689"
     },
     {
+      "path": "qa/handoff/test_portable_bundle.py",
+      "bytes": 11168,
+      "sha256": "06d06d0017664ec2af5a9960225856336ab265aa1cf73eef55b471998b26d897"
+    },
+    {
       "path": "qa/interaction/apply-state-contract.spec.mjs",
       "bytes": 3688,
       "sha256": "8acc6bf56eb51f976c1d8631ed5868fabbd032953af6d0379edbab99b6374131"
@@ -388,6 +408,11 @@
       "path": "qa/interaction/map-layout-contract.spec.mjs",
       "bytes": 2443,
       "sha256": "a648e25b9abeb9ef50aff0cf230e5762be9f376bf7ed4a59727a32b0710e9916"
+    },
+    {
+      "path": "qa/interaction/term-popover-geometry-contract.spec.mjs",
+      "bytes": 1748,
+      "sha256": "67403fe5bce60967428ec1c10b49783c94893a627b967f997200c661a1d6cbcc"
     },
     {
       "path": "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
@@ -411,8 +436,8 @@
     },
     {
       "path": "qa/run_owner_review_checks.sh",
-      "bytes": 3620,
-      "sha256": "b5a7042b988c4e51a4fa59bdee5fed7d233d1ad9141fd2380ca8722042ba993d"
+      "bytes": 3766,
+      "sha256": "e27bcd54b7c7a03fdef2fabe8375e81e9ff62f5c0dfc9160536e21736049e503"
     },
     {
       "path": "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
@@ -450,6 +475,11 @@
       "sha256": "ad15a75e778876ecfb305a4e04d06048a3e16298ace20d4fee6e48d7a54a7110"
     },
     {
+      "path": "qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md",
+      "bytes": 7257,
+      "sha256": "44040d27fa5b87b302e6632da2418c8c7e81a5703e6ef26b827897adec2801dc"
+    },
+    {
       "path": "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
       "bytes": 8172,
       "sha256": "cfe3a00e07aa719380cb7b0ce996e45d0c166fd48f2c23be2f2a57433faf48b8"
@@ -458,6 +488,11 @@
       "path": "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md",
       "bytes": 30825,
       "sha256": "7e1abafa09c34d3e91efd0390f5f78e7ff0cd2772afd55438054f132bcec4b7e"
+    },
+    {
+      "path": "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
+      "bytes": 3524,
+      "sha256": "5da84686d00943e85a02b04da87c5c69d8abdcc7dccdcce40e035f31378374d5"
     },
     {
       "path": "qa/site/advisory/SITE_COMPREHENSION_ACCESSIBILITY_2026-08-19_6a29ed8.md",
@@ -886,13 +921,13 @@
     },
     {
       "path": "site/build.mjs",
-      "bytes": 104833,
-      "sha256": "ca2be7ada97f8b9d1c47d6864bec9404585fad7acbd33cb25b8ff79de5a5a4a8"
+      "bytes": 105184,
+      "sha256": "7d907cc971d4491ddffb0c96925f25738dc521caa4444431eede3d9464dafe77"
     },
     {
       "path": "site/check.mjs",
-      "bytes": 21975,
-      "sha256": "d610ac06fff3abc40e56e5d8a598d50618af843704749d6fc3a7b0199c48406b"
+      "bytes": 22077,
+      "sha256": "2cd97e2ffd72b660431f2bb2ba6aa614e14780d700aac7e3c70dee233aeed2c1"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
@@ -901,8 +936,8 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 432128,
-      "sha256": "a3cfc65ea2c941c695d663563fa4d698ac3764a7cbdd16e0956246e8d7936d9b"
+      "bytes": 433630,
+      "sha256": "c9cee3090c52685b28d1b52896ea3534bcb36aa6eb27570aea41bbce2159218f"
     },
     {
       "path": "site/package-lock.json",
@@ -911,8 +946,8 @@
     },
     {
       "path": "site/package.json",
-      "bytes": 459,
-      "sha256": "311c8293a563e4b0b3142a48d26eec05f6f0df3b15436c9f4b7e76a8c5c3e1dd"
+      "bytes": 525,
+      "sha256": "b9e4317f8b4d6d5993e3a18a5c3365c8c3aa0913a0ae5e741971f56400a50e1d"
     },
     {
       "path": "site/scripts/generate_review_pdf.py",
@@ -926,13 +961,18 @@
     },
     {
       "path": "site/src/site.css",
-      "bytes": 79700,
-      "sha256": "3fc3d2ca853e1cdd4247443eb639c5b546ecac1adb08c9b3c1cc73e4317433dc"
+      "bytes": 79749,
+      "sha256": "e8d1630e04c2307dec48e5f352a5995935742abf8472cef9575de243d095fe7e"
     },
     {
       "path": "site/src/site.js",
-      "bytes": 15206,
-      "sha256": "9e4814db342262bf157859af781110230dc6641e51f609f07872277bf157c1bb"
+      "bytes": 15356,
+      "sha256": "ea8f5e2466e0e3809bd7ec709af582d0a85e6ff10e0da83286ae4f9303f47018"
+    },
+    {
+      "path": "site/src/term-popover-geometry.js",
+      "bytes": 1154,
+      "sha256": "1279586471e858fa9149128978c70e86b1c8fb1471184b43bf7ca62da24d7130"
     }
   ]
 }

@@ -934,3 +934,54 @@ Chromium DOM/print observations.
 **Governing requirement:** owner visual expectation; progressive disclosure;
 flow-native teaching objects; A02/A03/A06/A08/A12/A13/A15–A17; no-merge/no-
 deploy/no-publish/no-study/no-spend boundary.
+
+## D-030 — Close terminal defects with geometry evidence and a portable exact-commit packet
+
+**Date:** 2026-08-27
+
+**Status:** Accepted with revision; owner/manual gates remain open
+
+Independent intent, operator, package, live visual/interaction, and bounded
+Claude reviews of exact baseline
+`e565502317282433a323a83f855ace2274ce13ab` found no undispositioned P0 and one
+actionable visual defect: above 1100px, an absolute term panel could overlap
+the lower 6.4–7.8px of its own 44px trigger. The smallest correction preserves
+the existing horizontal viewport clamp and adds trigger-relative translation
+for at least 8px of vertical clearance. A pure geometry contract replays the
+measured first, right-edge, and left-clamp cases. The flow-native panel at
+1100px and below is unchanged.
+
+Custom radio/label focus styling is deferred because current computed evidence
+shows a visible native `:focus-visible` outline and no physical keyboard defect
+was reproduced. Shrinking the visible 44px term-helper control or adding an
+overlapping invisible hit target is likewise deferred/rejected pending hardware
+touch and owner-taste evidence. The 1101/1100 and 601/600 Map transitions are
+contained P2 cadence questions, not functional failures.
+
+The operator record now uses canonical `NOT_AUTHORIZED` and `STOPPED_*` state
+language, with regressions that reject stale tokens. The two Signal Foundry
+handoffs use receiving-repository-relative instructions rather than executable
+source-machine paths. Signal Foundry's existing `OPERATOR_DECISION` plus
+`RATIONALE` seam remains the first seam to test;
+`CONTEXT_DISPOSITION` remains conceptual and not current-schema-valid.
+
+The new portable builder reads an exact Git commit, creates one complete
+`START_HERE.md`, an exact copyable prompt, sorted per-file path/byte/SHA-256
+manifest, portable hash list, standard-library verifier, and whole-ZIP sidecar.
+It is deterministic, refuses overwrite, excludes dependencies/caches/unsafe
+paths/source-machine absolute paths, and records the prior `e565502` packet as
+superseded without deleting it. This packet grants no downstream app mutation.
+
+The accepted source checkpoint is
+`874a0a8e09f0bde11532cf873087865addb7d973`. The evidence commit that records
+this decision may advance the branch head without changing that source
+checkpoint.
+
+**Evidence:** `qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md`;
+`qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md`;
+`qa/interaction/term-popover-geometry-contract.spec.mjs`;
+`qa/handoff/test_portable_bundle.py`; full owner-review runner.
+
+**Governing requirement:** locked owner intent; progressive disclosure;
+cross-computer reproducibility; A01–A17; no-merge/no-deploy/no-publish/no-
+study/no-spend boundary.

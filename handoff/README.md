@@ -10,6 +10,8 @@ This directory contains the local owner-review handoff:
   downstream seam, and orphan-recovery record for Signal Foundry;
 - `signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md` — copyable tired-owner
   and Claude Code handoff; give it together with the canonical handoff;
+- `signal-foundry/build_portable_bundle.py` — deterministic exact-commit
+  cross-computer ZIP/manifest/verifier/sidecar builder;
 - `OWNER_REVIEW_MANIFEST_V16.json` — checksums for the bounded review package;
 - `verify_owner_review_package.py` — deterministic manifest writer/verifier.
 

@@ -211,3 +211,29 @@ in-app Browser runtime, its cloud identifier/title did not map to a local
 Claude Code session, and a new read-only Opus/max Plan attempt returned revoked
 OAuth. No successful Claude review or response is claimed, and credentials
 were not inspected or repaired.
+
+## Terminal-finalization dispositions — 2026-08-27
+
+The earlier authentication paragraph above is preserved as history for that
+checkpoint. Under the owner's later exact terminal-finalization authorization,
+the existing Claude Pro CLI session was authenticated and supplied one bounded,
+read-only review of exact `e565502317282433a323a83f855ace2274ce13ab`. That
+later review is preserved separately and is not retroactively attributed to an
+older checkpoint.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| TF-INTENT-01 | Keep the human problem, 90-second explanation, full essay, and six families as the entry path; do not lead with provenance, protocol, or Echo | **Accepted — no edit** | Independent intent audit found no P0/P1 and no evidence for a late voice rewrite | Home, short version, essay, Guided, Map | Locked intent; A01–A06/A16/A17; owner/mentor taste remains manual |
+| VIS-TERM-001 | Desktop absolute term panels overlap the bottom of their own 44px triggers by about 6.4–7.8px | **Accepted with revision** | Reproduced at 1440 and 1101px; the horizontal clamp was correct but did not create vertical clearance | `site/src/site.js`, `site/src/site.css`, geometry module/build/export | A06/A13; exact geometry contract preserves at least 8px while retaining viewport insets; 1100px-and-below flow layout unchanged |
+| VIS-FOCUS-002 | Add custom Apply radio/label focus styling for consistency | **Deferred** | Native `:focus-visible` produced a visible 1px auto outline inside an approximately 44px label; no physical Tab defect was reproduced | Apply form controls/CSS | A13; physical keyboard traversal remains open; do not add decorative clutter as a proxy for testing |
+| VIS-TERM-003 | Shrink the visible term-helper control or use an expanded invisible pseudo-element hit area | **Deferred; invisible overlap rejected** | Current 44px visible target is clear and stable; touch/accidental-hit and prose-rhythm tradeoffs lack hardware evidence | Inline term helpers/CSS | A06/A13; owner taste and hardware touch remain open |
+| VIS-MAP-004 | Change the 1101/1100 or 601/600 Map breakpoint cadence | **Deferred** | Both sides remain contained, readable, and functional; the sharp transition is P2 owner taste | Map CSS | A03/A06/A13; no functional regression depends on it |
+| OP-HANDOFF-01 | Reconcile `UNAUTHORIZED` and bare `STOPPED` with the canonical operational vocabulary | **Accepted with revision** | Operator instructions and validators should use one inspectable state family | Framework mechanisms/failures and applied validator | A07/A08/A11; canonical `NOT_AUTHORIZED` and `STOPPED_*` regressions pass |
+| OP-HANDOFF-02 | Remove executable-looking source-computer paths from the two Signal Foundry handoffs | **Accepted** | The cross-computer task must resolve its own repository roots and cannot rely on one workstation | Two Signal Foundry handoffs | A09/A11; bundle rejects source-machine absolute paths |
+| PKG-TERM-01 | Add a literal complete START_HERE and an internal manifest with path, byte size, and SHA-256 | **Accepted with revision** | The old ZIP was safe but the terminal packet required a single complete receiving path and recorded sizes | Portable builder, embedded verifier, regression suite | A09/A11/A14; deterministic ZIP/sidecar and five package tests pass |
+| CLAUDE-TF-01 | Exact-checkpoint Claude review found no undispositioned P0/P1; suggested optional radio and term-control P2 polish | **Accepted as advisory result; P2 work deferred** | Consistent with independent current-tree audits; model detail is not authority or empirical evidence | Whole artifact; focus/term-helper CSS | Review file `qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md`; A11/A13/A15 |
+| TF-MANUAL-01 | Infer physical keyboard, screen reader, real zoom, forced colors, native print, touch, or human comprehension from DOM/proxy checks | **Rejected as an inference; Deferred as owner/manual work** | Synthetic DOM/CDP, computed geometry, Poppler, and source contracts cannot certify those experiences | Site, standalone, PDF | A01/A04/A05/A13; manual checklist remains open |
+
+The full consolidated evidence and browser-tool limitation are recorded in
+`qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md`. No audit record is treated as
+a participant result, model experiment, study result, or framework validation.

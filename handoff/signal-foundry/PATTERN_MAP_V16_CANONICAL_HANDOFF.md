@@ -8,7 +8,7 @@ deployment**
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Inspect `codex/pattern-map-v16-foundation` at canonical source checkpoint `bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`; preserve `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessor anchors.
+2. Inspect `codex/pattern-map-v16-foundation` at canonical source checkpoint `874a0a8e09f0bde11532cf873087865addb7d973`; preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessor anchors.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
@@ -34,18 +34,21 @@ converged:
 
 ```text
 branch:  codex/pattern-map-v16-foundation
-source:  bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91
-content: bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91
+source:  874a0a8e09f0bde11532cf873087865addb7d973
+content: 874a0a8e09f0bde11532cf873087865addb7d973
 PR:      https://github.com/adonisdv23/Pattern-Map/pull/1
 state:   draft/open/unmerged; owner review and manual gates remain open
 ```
 
-The independently audited predecessor head was
+The immediate predecessor before terminal geometry, vocabulary, portability,
+and package corrections was
+`bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`. The independently audited
+predecessor head was
 `d4b7b9e481165b3f692986cdda1b8a0da8b4388b`; the ChatGPT Pro Round 2 content
 checkpoint was `c88926034cd75773dcc42d3842983c879dda5b58`, and the earlier
 converged source before the owner visual/export repair was
 `ad964dd91eff521b0442f613c55bc4e9e97c2f2a`. They remain audit anchors, not
-the current source. The evidence/checksum commit that follows `bc7e7c5` may
+the current source. The evidence/checksum commit that follows `874a0a8` may
 advance the branch head without changing the canonical source
 checkpoint. Resolve Git before editing and do not substitute an older
 conversation, screenshot, or deep link for this source commit.
@@ -355,8 +358,8 @@ summary below is the current resolution.
 
 | Claude item | What it meant | Current resolution |
 | --- | --- | --- |
-| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: canonical source is `bc7e7c5` on `codex/pattern-map-v16-foundation`; the authorized final evidence push and remote PR readback are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
-| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; current source is `bc7e7c5`, with Pro correction history at `c889260` and earlier converged source `ad964dd`. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
+| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: canonical source is `874a0a8` on `codex/pattern-map-v16-foundation`; the authorized final evidence push and remote PR readback are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
+| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; current source is `874a0a8`, with terminal predecessor `bc7e7c5`, Pro correction history at `c889260`, and earlier converged source `ad964dd`. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
 | **Decide if the evidence rule bites too hard** | Claude tightened guards around unreachable CSS, false file extensions, exact checkpoints, and planning-versus-event language. | The strictness is now the canonical safety posture recorded in the locked intent, D-025, the acceptance matrix, and the current QA. No new owner decision is needed to consume v16. If an owner later wants a guard relaxed, record an explicit decision and revise the affected contract; do not silently weaken it. |
 
 ## “Orphaned” work in plain language
@@ -421,7 +424,7 @@ untouched.
 
 - The product-name question is settled: Signal Foundry.
 - The six-family framework, agent playbook, and site source are present.
-- Canonical Pattern Map source is frozen at `bc7e7c5`; a later evidence-only
+- Canonical Pattern Map source is frozen at `874a0a8`; a later evidence-only
   branch head does not replace that content checkpoint.
 - The local Signal Foundry transfer audit is recoverable and its orphan status
   is understood.

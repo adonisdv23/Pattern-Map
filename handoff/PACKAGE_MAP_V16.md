@@ -43,6 +43,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | --- | --- | --- |
 | Canonical Pattern Map handoff | `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` | Exact source-of-truth hierarchy, six-family translation, smallest schema seam, unsupported-request refusals, and orphan recovery |
 | Copyable integration brief | `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md` | Tired-owner fast path, design-only offline fixture plan, exact checkpoints, and safe Claude Code prompt |
+| Portable bundle builder | `handoff/signal-foundry/build_portable_bundle.py` | Deterministic exact-commit ZIP, START_HERE, manifest, verifier, sidecar, and path/cache/dependency safety contract |
 
 ## Agent-facing v16
 
@@ -61,13 +62,14 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | --- | --- | --- |
 | Site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored ten-route site; persistent orientation, continuous Guided read, line-free current Map, contextual term helpers, and planning-only Apply studio; no hosting |
 | Apply recommendation model | `site/src/recommendation.js`, `qa/interaction/apply-state-contract.spec.mjs` | Pure 108-combination Stage 0/consequence/uncertainty/budget/permission contract; never records actual events from planning inputs |
-| Map and reader regressions | `qa/interaction/map-layout-contract.spec.mjs`, `qa/content/reader-language-contract.spec.mjs` | Narrow/medium/wide layout contract and cumulative-entry/plain-language contract |
+| Map, term, and reader regressions | `qa/interaction/map-layout-contract.spec.mjs`, `qa/interaction/term-popover-geometry-contract.spec.mjs`, `qa/content/reader-language-contract.spec.mjs` | Narrow/medium/wide Map contract, measured desktop term-panel clearance/viewport clamp, and cumulative-entry/plain-language contract |
 | Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open ten-section review companion; one rail/guide/frame and no false current route |
 | PDF companion | `site/exports/pattern-map-v16-owner-review.pdf` | Untagged visual companion; not the accessibility route |
 | Site implementation QA | `qa/site/SITE_QA_REPORT.md`, `qa/site/audit_site.py` | Structural/accessibility proxy only |
 | Current-head live browser boundary | `qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md` | Pointer/focus/state evidence; physical keyboard/screen-reader/print remain manual |
 | Current Pro correction QA | `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md` | Round 2 exact review/correction, 108-case Stage 0 contract, mobile/medium live viewports, transparent P2 dispositions, and current manual residuals |
 | Owner visual/export closeout | `qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md` | Traces the attached export failure to a real standalone-markup defect, records its structural repair, and verifies the flow-native recurrence visual, term-helper containment, and print-width safeguards |
+| Terminal finalization QA | `qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md`, `qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md` | Exact-baseline independent audits, accepted desktop term-panel correction, deferred focus/touch/taste items, package closeout, and honest synthetic-browser limits |
 | Final site hygiene | `qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md`, `qa/visual/verify_image_formats.py` | Stale-selector removal, truthful current image signatures, immutable archive exceptions, and human-first standalone regression |
 | Prior Pro correction QA | `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md` | Round 1 exact review history; superseded for the current Apply matrix and term/mobile behavior |
 | Historical site-polish QA | `qa/site/SITE_POLISH_QA.md`, `qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md` | Earlier `a319794` design checkpoint; superseded for current Map/Apply semantics |
@@ -116,6 +118,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Acceptance matrix | `qa/FINAL_ACCEPTANCE_MATRIX_V16.md` |
 | External-action audit | `qa/FINAL_ACTION_AUDIT_V16.md` |
 | Complete local verification runner | `qa/run_owner_review_checks.sh` |
+| Portable-bundle regression | `qa/handoff/test_portable_bundle.py` |
 | Advisory ledger | `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Owner packet | `handoff/OWNER_REVIEW_PACKET_V16.md` |
 | Branch/PR state | `handoff/BRANCH_AND_PR_STATE.md` |

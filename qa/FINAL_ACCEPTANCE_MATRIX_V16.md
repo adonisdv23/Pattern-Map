@@ -3,7 +3,10 @@
 Status: **OWNER-REVIEW CANDIDATE — MANUAL GATES REMAIN OPEN**
 
 Canonical converged source checkpoint:
-`bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91`. The current evidence index
+`874a0a8e09f0bde11532cf873087865addb7d973`. It advances the immediate
+predecessor `bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91` only for terminal
+geometry, operator-vocabulary, cross-computer handoff, and package-integrity
+corrections. The current evidence index
 distinguishes regenerated PDF renders and exact-checkpoint live/source
 evidence from the superseded `a319794` routed-site screenshot matrix.
 
@@ -34,6 +37,32 @@ effectiveness result, or substitute for the owner's judgment.
 | A15 — no prohibited action | **PASS FOR THIS ORCHESTRATION** | `qa/FINAL_ACTION_AUDIT_V16.md`, Git history, local build records, and research status records show no merge to main, deployment, publication, Release, research/model/participant study, research-provider selection/call, incremental spend, external dataset acquisition, preregistration, or outreach. The owner later gave an exact instruction for an outside ChatGPT Pro advisory review loop on the existing account; its two preserved rounds are model feedback, not a study or result. | Repository/process evidence cannot prove unrelated external-world activity; this finding is scoped to the authorized orchestration. |
 | A16 — research constrains, does not redefine | **PASS** | Owner-intent checksum, v13 fidelity matrix, two-project firebreak, claims ledger, review dispositions, and Echo-removal checks preserve the broad thesis while routing rigor into boundaries and future questions. The measurement-paper recommendation was explicitly argued against and rejected as an exclusive reframe; EP v1.1 remains optional research depth and does not alter the v16 opening, map, or six-family structure. | No research evidence may silently rewrite the thesis later. |
 | A17 — locked owner intent unchanged | **PASS** | `docs/OWNER_INTENT_V16.sha256` matches the locked file and the independent constant/JSON checks; the decision log records no owner-intent revision. | Any future change requires an explicit new owner instruction and a new logged checkpoint. |
+
+### Terminal evidence addendum for A13 and A15
+
+The exact-baseline live audit additionally covered all ten routes plus the
+standalone at 1440, 1101, 1100, 1024, 821, 768, 601, 600, 480, 390, and 320
+pixels where meaningful; all 108 Apply combinations; Map and More-menu state;
+no-script; right-edge term placement; print-media proxies; and all six PDF
+pages. It found one actionable geometry defect. At desktop widths above
+1100px, the term panel overlapped the bottom of its own trigger by about
+6.4–7.8px. Source checkpoint `874a0a8` preserves horizontal viewport clamping
+and deterministically translates the panel to retain at least 8px of vertical
+clearance. The 1100px-and-below flow layout is unchanged. The new geometry
+contract replays first-trigger, right-edge, and left-clamp rectangles.
+
+Native radio `:focus-visible` remained visibly outlined in computed evidence,
+so custom label decoration is deferred pending a physical Tab pass. The
+1101/1100 and 601/600 Map transitions and the 44px visible term-helper rhythm
+remain owner/touch-taste questions, not accepted defects. High-level browser
+click/keyboard/screenshot calls timed out; the evidence is explicitly bounded
+to local source, synthetic DOM/CDP events, computed geometry, print emulation,
+and Poppler rendering.
+
+A15 also covers the later, exactly authorized read-only Claude Pro audit of
+baseline `e565502` on the owner's existing subscription. It found no P0/P1 and
+made no edits. It was advisory model feedback, not a research provider
+selection, model experiment, study, result, or incremental purchase.
 
 ## Manual owner checklist required to close A01/A04/A05/A13
 
