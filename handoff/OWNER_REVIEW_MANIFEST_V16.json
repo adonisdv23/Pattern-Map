@@ -7,7 +7,7 @@
   "evidence_note": "The manifest covers canonical converged source 874a0a8: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes; print-safe evidence routes and tables; canonical operator-state vocabulary; path-neutral Signal Foundry handoffs; deterministic exact-commit portable bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. The authorized Claude Pro audit was advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 193,
-  "total_bytes": 11400167,
+  "total_bytes": 11400165,
   "files": [
     {
       "path": ".gitignore",
@@ -476,8 +476,8 @@
     },
     {
       "path": "qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md",
-      "bytes": 7257,
-      "sha256": "44040d27fa5b87b302e6632da2418c8c7e81a5703e6ef26b827897adec2801dc"
+      "bytes": 7256,
+      "sha256": "1dfe5bc65480cfce86e757e10784d6969b573a9f39abc7c78368cf71fb48a24e"
     },
     {
       "path": "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
@@ -491,8 +491,8 @@
     },
     {
       "path": "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
-      "bytes": 3524,
-      "sha256": "5da84686d00943e85a02b04da87c5c69d8abdcc7dccdcce40e035f31378374d5"
+      "bytes": 3523,
+      "sha256": "51bde608e5f5460b5fbe09147cd11bf62f46558668d8d11b051572b58b86d6e6"
     },
     {
       "path": "qa/site/advisory/SITE_COMPREHENSION_ACCESSIBILITY_2026-08-19_6a29ed8.md",
