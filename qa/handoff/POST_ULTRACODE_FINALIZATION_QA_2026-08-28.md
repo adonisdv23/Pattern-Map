@@ -1,6 +1,6 @@
 # Post-Ultracode finalization QA
 
-Status: **SOURCE CONTRACTS ACCEPTED; FINAL PACKAGE SEAL AND OWNER/MANUAL GATES REMAIN**
+Status: **FINAL SOURCE ACCEPTED; PACKAGE SEAL AND OWNER/MANUAL GATES REMAIN**
 
 Audit date: 2026-08-28
 
@@ -97,9 +97,15 @@ family.
 - portable bundle regression: 10/10 pass in 68.049 seconds;
 - authored diff check: pass.
 
-The complete twelve-stage provider-free owner-review runner must still pass on
-the final evidence commit before a new packet is sealed. The final handoff may
-report that exact later execution; this record does not preclaim a future run.
+The complete twelve-stage provider-free owner-review runner passed on exact
+visual-correction checkpoint
+`81a29827579209d28b803a68757dc37ba6163d73`. It verified 199 bounded owner-
+review files / 11,467,971 bytes and completed all ten portable-bundle tests.
+The runner retained one documented optional skip for the uninstalled
+`tiktoken` dependency in the active Echo design harness; the frozen offline
+parity fixture and every required check passed. A new packet may be sealed only
+from the later clean final evidence head after its manifest and generated
+export are reverified.
 
 ## Final live browser pass
 
