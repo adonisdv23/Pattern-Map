@@ -147,6 +147,21 @@ def validate_artifact_inventory() -> None:
     for relative in required:
         require((ROOT / relative).stat().st_size > 0, f"empty required artifact: {relative}")
 
+    evidence_register = read_text("framework/templates/EVIDENCE_REGISTER.md")
+    require("Source role / authority" not in evidence_register,
+            "evidence register collapses source role and claim-scoped authority")
+    require("| Source role | Claim-scoped authority |" in evidence_register,
+            "evidence register must keep source role and claim-scoped authority separate")
+
+    decision_receipt = read_text("framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md")
+    disposition_section = decision_receipt.split("## Disposition", 1)[1].split(
+        "## Outcome learning", 1
+    )[0]
+    require("ESCALATED:" not in disposition_section,
+            "decision receipt treats the ESCALATE route as a human disposition")
+    require("`ESCALATE` belongs in the route field" in disposition_section,
+            "decision receipt does not explain route-versus-disposition separation")
+
     all_text = "\n".join(read_text(relative) for relative in required if relative.endswith(".md"))
     for phrase in (
         "peripheral is a candidate",

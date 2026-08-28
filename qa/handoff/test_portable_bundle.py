@@ -10,9 +10,11 @@ path runs.
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from pathlib import Path, PurePosixPath
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -55,17 +57,16 @@ WINDOWS_ABSOLUTE_PREFIXES = (
     "C" + ":/",
     "D" + ":/",
 )
-FORBIDDEN_TEXT_MARKERS = ABSOLUTE_TEXT_PREFIXES + WINDOWS_ABSOLUTE_PREFIXES + (
+FORBIDDEN_PATH_MARKERS = ABSOLUTE_TEXT_PREFIXES + WINDOWS_ABSOLUTE_PREFIXES + (
     "file" + "://",
+)
+FORBIDDEN_PRIVATE_KEY_MARKERS = (
     "-----BEGIN " + "PRIVATE KEY-----",
     "-----BEGIN " + "OPENSSH PRIVATE KEY-----",
     "-----BEGIN " + "RSA PRIVATE KEY-----",
     "-----BEGIN " + "EC PRIVATE KEY-----",
 )
-TEXT_SUFFIXES = {
-    ".css", ".html", ".js", ".json", ".md", ".mjs", ".py", ".sh",
-    ".txt", ".yaml", ".yml",
-}
+PRINTABLE_ASCII_RUN = re.compile(rb"[\x20-\x7e]{5,}")
 
 
 def sha256(path: Path) -> str:
@@ -95,6 +96,19 @@ def safe_bundle_path(value: str) -> bool:
     )
 
 
+def forbidden_marker(data: bytes) -> str | None:
+    lowered_data = data.lower()
+    for marker in FORBIDDEN_PRIVATE_KEY_MARKERS:
+        if marker.lower().encode("ascii") in lowered_data:
+            return marker
+    for run in PRINTABLE_ASCII_RUN.findall(data):
+        lowered_run = run.lower()
+        for marker in FORBIDDEN_PATH_MARKERS:
+            if marker.lower().encode("ascii") in lowered_run:
+                return marker
+    return None
+
+
 def run_builder(output_dir: Path) -> tuple[subprocess.CompletedProcess[str], dict[str, object]]:
     result = subprocess.run(
         [
@@ -118,6 +132,15 @@ def run_builder(output_dir: Path) -> tuple[subprocess.CompletedProcess[str], dic
     if result.returncode != 0:
         return result, {}
     return result, json.loads(result.stdout)
+
+
+def load_builder_module():
+    spec = importlib.util.spec_from_file_location("pattern_map_portable_builder", BUILDER)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("could not load portable builder module")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 class PortableBundleTests(unittest.TestCase):
@@ -160,12 +183,22 @@ class PortableBundleTests(unittest.TestCase):
             bad = archive.testzip()
             self.assertIsNone(bad, msg=f"corrupt ZIP member: {bad}")
             archive.extractall(self.extract)
+        self.resolve_bundle_root()
+
+    def resolve_bundle_root(self) -> None:
         roots = [path for path in self.extract.iterdir() if path.is_dir()]
         self.assertEqual(len(roots), 1)
         self.bundle_root = roots[0]
 
-    def test_embedded_verifier_and_manifest_cover_extracted_files(self) -> None:
-        verifier = subprocess.run(
+    def restore_extracted_bundle(self) -> None:
+        shutil.rmtree(self.extract)
+        self.extract.mkdir()
+        with zipfile.ZipFile(self.zip_path) as archive:
+            archive.extractall(self.extract)
+        self.resolve_bundle_root()
+
+    def run_embedded_verifier(self) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
             [sys.executable, str(self.bundle_root / "verify_bundle.py")],
             cwd=self.bundle_root,
             text=True,
@@ -173,6 +206,41 @@ class PortableBundleTests(unittest.TestCase):
             stderr=subprocess.PIPE,
             check=False,
         )
+
+    def reseal_payload(self, relative: str, suffix: bytes) -> None:
+        """Modify one payload and consistently reseal all non-circular controls."""
+
+        target = self.bundle_root / Path(*PurePosixPath(relative).parts)
+        target.write_bytes(target.read_bytes() + suffix)
+
+        manifest_path = self.bundle_root / "BUNDLE_MANIFEST.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        records = {str(record["path"]): record for record in manifest["files"]}
+        self.assertIn(relative, records)
+        records[relative]["bytes"] = target.stat().st_size
+        records[relative]["sha256"] = sha256(target)
+
+        checksums_path = self.bundle_root / "SHA256SUMS.txt"
+        checksums: dict[str, str] = {}
+        for line in checksums_path.read_text(encoding="utf-8").splitlines():
+            digest, path_value = line.split("  ", 1)
+            checksums[path_value] = digest
+        self.assertIn(relative, checksums)
+        checksums[relative] = sha256(target)
+        checksums_path.write_text(
+            "".join(f"{checksums[path]}  {path}\n" for path in sorted(checksums)),
+            encoding="utf-8",
+        )
+        records["SHA256SUMS.txt"]["bytes"] = checksums_path.stat().st_size
+        records["SHA256SUMS.txt"]["sha256"] = sha256(checksums_path)
+        manifest["total_bytes"] = sum(int(record["bytes"]) for record in manifest["files"])
+        manifest_path.write_text(
+            json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+
+    def test_embedded_verifier_and_manifest_cover_extracted_files(self) -> None:
+        verifier = self.run_embedded_verifier()
         self.assertEqual(verifier.returncode, 0, msg=verifier.stdout + verifier.stderr)
         self.assertRegex(verifier.stdout, r"PASS portable bundle: [0-9]+ files / [0-9]+ bytes")
 
@@ -213,6 +281,8 @@ class PortableBundleTests(unittest.TestCase):
             "no app mutation",
             "missing files or materially changed contracts must be requested and reconciled",
             "do not infer",
+            "some selected markdown intentionally retains links",
+            "subset boundary",
             "site/exports/standalone/pattern-map-v16.html",
             "site/exports/pattern-map-v16-owner-review.pdf",
             "research/the-echo-problem/",
@@ -224,6 +294,45 @@ class PortableBundleTests(unittest.TestCase):
         self.assertIn("read-only", start.lower())
         self.assertIn(self.zip_path.name + ".sha256", start)
         self.assertIn("Stop if the outer checksum fails", start)
+
+        copyable = (self.bundle_root / "COPYABLE_PROMPT.md").read_text(encoding="utf-8")
+        normalized_copyable = " ".join(copyable.split()).lower()
+        self.assertIn("some bundled markdown intentionally links", normalized_copyable)
+        self.assertIn("request the exact missing file", normalized_copyable)
+        self.assertIn("do not infer, recreate, or silently substitute", normalized_copyable)
+
+    def test_handoff_distinguishes_content_checkpoint_from_resolved_head(self) -> None:
+        canonical = (
+            self.bundle_root
+            / "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md"
+        ).read_text(encoding="utf-8")
+        summary = " ".join(canonical.splitlines()[:20]).lower()
+        self.assertIn("content checkpoint", summary)
+        self.assertIn("resolve the current", summary)
+        self.assertIn("bundle_metadata.json.source_commit", summary)
+
+        brief = (
+            self.bundle_root
+            / "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md"
+        ).read_text(encoding="utf-8")
+        objects = []
+        for source in re.findall(r"```json\n(.*?)\n```", brief, flags=re.DOTALL):
+            try:
+                objects.append(json.loads(source))
+            except json.JSONDecodeError:
+                continue
+        checklist = next(value for value in objects if "pattern_map" in value)
+        pattern_map = checklist["pattern_map"]
+        self.assertEqual(
+            pattern_map["content_checkpoint"],
+            "874a0a8e09f0bde11532cf873087865addb7d973",
+        )
+        self.assertIsNone(pattern_map["head"])
+        self.assertEqual(pattern_map["head_resolution"]["status"], "resolve_at_use")
+        self.assertEqual(
+            pattern_map["head_resolution"]["sealed_packet_field"],
+            "BUNDLE_METADATA.json.source_commit",
+        )
 
     def test_zip_sidecar_safety_and_forbidden_payloads(self) -> None:
         sidecar = self.sidecar_path.read_text(encoding="utf-8")
@@ -252,12 +361,7 @@ class PortableBundleTests(unittest.TestCase):
             relative = path.relative_to(self.bundle_root).as_posix()
             self.assertTrue(safe_bundle_path(relative), relative)
             self.assertFalse(path.is_symlink(), relative)
-            if path.suffix.lower() not in TEXT_SUFFIXES:
-                continue
-            lowered = path.read_bytes().decode("utf-8", errors="ignore").lower()
-            for marker in FORBIDDEN_TEXT_MARKERS:
-                with self.subTest(path=relative, marker=marker):
-                    self.assertNotIn(marker.lower(), lowered)
+            self.assertIsNone(forbidden_marker(path.read_bytes()), relative)
 
         self.assertNotIn("/" + "Users" + "/" + "gpt", BUILDER.read_text(encoding="utf-8"))
         archive_files = [path for path in self.bundle_root.rglob("*") if path.is_file()]
@@ -266,6 +370,55 @@ class PortableBundleTests(unittest.TestCase):
             self.summary["archive_total_bytes"],
             sum(path.stat().st_size for path in archive_files),
         )
+
+    def test_resealed_binary_markers_fail_closed(self) -> None:
+        targets = (
+            "assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png",
+            "site/exports/pattern-map-v16-owner-review.pdf",
+        )
+        markers = (
+            b"\x00/Users/example-machine/private-path\x00",
+            b"\x00-----BEGIN PRIVATE KEY-----\x00",
+        )
+        for index, (relative, marker) in enumerate(
+            (pair for target in targets for pair in ((target, markers[0]), (target, markers[1])))
+        ):
+            with self.subTest(relative=relative, marker=marker):
+                if index:
+                    self.restore_extracted_bundle()
+                self.reseal_payload(relative, marker)
+                verifier = self.run_embedded_verifier()
+                self.assertNotEqual(verifier.returncode, 0, verifier.stdout + verifier.stderr)
+                self.assertIn(
+                    "source-machine or private-key marker",
+                    (verifier.stdout + verifier.stderr).lower(),
+                )
+
+    def test_resealed_benign_binary_payloads_pass(self) -> None:
+        targets = (
+            "assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png",
+            "site/exports/pattern-map-v16-owner-review.pdf",
+        )
+        for index, relative in enumerate(targets):
+            with self.subTest(relative=relative):
+                if index:
+                    self.restore_extracted_bundle()
+                self.reseal_payload(relative, b"\x00BENIGN_BINARY_CONTROL_2026\x00")
+                verifier = self.run_embedded_verifier()
+                self.assertEqual(verifier.returncode, 0, verifier.stdout + verifier.stderr)
+
+    def test_builder_marker_helper_covers_unknown_binary_suffixes(self) -> None:
+        builder = load_builder_module()
+        samples = (
+            (b"\x89BIN\x00/Users/example-machine/private\x00", True),
+            (b"\x89BIN\x00-----BEGIN OPENSSH PRIVATE KEY-----\x00", True),
+            (b"\x89BIN\x00BENIGN_BINARY_CONTROL_2026\x00", False),
+        )
+        for data, forbidden in samples:
+            with self.subTest(data=data):
+                marker = builder._forbidden_marker("payload.unknown", data)
+                self.assertEqual(marker is not None, forbidden)
+                self.assertEqual(marker is not None, forbidden_marker(data) is not None)
 
     def test_same_commit_and_date_produce_identical_zip(self) -> None:
         second_output = self.workspace / "second-output"

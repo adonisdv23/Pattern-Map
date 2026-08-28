@@ -134,6 +134,13 @@ const main = () => {
   const familyOrder = ["F1", "F2", "F3", "F4", "F5", "F6"].map((id) => map.indexOf(`id="family-${id}"`));
   assert(familyOrder.every((position) => position >= 0), "one or more family cards missing");
   assert(familyOrder.every((position, index) => index === 0 || position > familyOrder[index - 1]), "family card order changed");
+  const mapFamilyNodes = [...map.matchAll(/<button\b[^>]*\bdata-map-family="([^"]+)"[^>]*>/g)];
+  assert(mapFamilyNodes.map((match) => match[1]).join(",") === "F1,F2,F3,F4,F5,F6", "current map presentation does not cover exactly the six canonical family IDs");
+  for (const match of mapFamilyNodes) {
+    for (const field of ["name", "question", "inputs", "comparison", "records", "boundary", "connections"]) {
+      assert(new RegExp(`\\bdata-map-${field}="[^"]+"`).test(match[0]), `current map ${match[1]} is missing presentation field: ${field}`);
+    }
+  }
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) assert(map.includes(familyName), `family name missing: ${familyName}`);
   assert(!map.includes('class="relationship-connectors"'), "current map still renders detachable connector lines");
   for (const relationship of ["REQUIRES A BASELINE", "CAN REVEAL A SHARED PATH", "CONSTRAINS INFLUENCE", "MAY UPDATE AFTER AN OUTCOME"]) assert(map.includes(relationship), `map relationship band missing: ${relationship}`);

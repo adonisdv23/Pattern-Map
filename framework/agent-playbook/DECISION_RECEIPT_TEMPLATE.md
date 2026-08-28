@@ -107,11 +107,14 @@ It is a compact audit trail, not a claim that the answer is correct.
 
 ## Disposition
 
-- ACCEPTED / REJECTED / DEFERRED / OVERRIDDEN / REQUEST_ENRICHMENT /
-  ESCALATED:
+- ACCEPTED / REJECTED / DEFERRED / OVERRIDDEN / REQUEST_ENRICHMENT:
 - Decision maker and authority:
 - Reason:
 - Correction or supersession link:
+
+`ESCALATE` belongs in the route field above. After an accountable person acts,
+record that person's disposition with the existing disposition vocabulary;
+do not treat the act of routing as the human decision.
 
 ## Outcome learning
 

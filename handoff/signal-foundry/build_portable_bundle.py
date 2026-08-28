@@ -22,6 +22,7 @@ import datetime as _datetime
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
+import re
 import subprocess
 import sys
 import tempfile
@@ -132,9 +133,6 @@ GENERATED_PAYLOAD_NAMES: tuple[str, ...] = (
 )
 MANIFEST_NAME = "BUNDLE_MANIFEST.json"
 CHECKSUMS_NAME = "SHA256SUMS.txt"
-TEXT_SUFFIXES = frozenset(
-    {".css", ".html", ".js", ".json", ".md", ".mjs", ".py", ".sh", ".txt", ".yaml", ".yml"}
-)
 
 # The strings are assembled instead of written as literal source-machine path
 # prefixes.  This keeps the builder and generated verifier portable and makes
@@ -148,13 +146,16 @@ WINDOWS_ABSOLUTE_PREFIXES = (
     "C" + ":/",
     "D" + ":/",
 )
-FORBIDDEN_TEXT_MARKERS = ABSOLUTE_TEXT_PREFIXES + WINDOWS_ABSOLUTE_PREFIXES + (
+FORBIDDEN_PATH_MARKERS = ABSOLUTE_TEXT_PREFIXES + WINDOWS_ABSOLUTE_PREFIXES + (
     "file" + "://",
+)
+FORBIDDEN_PRIVATE_KEY_MARKERS = (
     "-----BEGIN " + "PRIVATE KEY-----",
     "-----BEGIN " + "OPENSSH PRIVATE KEY-----",
     "-----BEGIN " + "RSA PRIVATE KEY-----",
     "-----BEGIN " + "EC PRIVATE KEY-----",
 )
+PRINTABLE_ASCII_RUN = re.compile(rb"[\x20-\x7e]{5,}")
 FORBIDDEN_PATH_SEGMENTS = frozenset(
     {
         ".git",
@@ -267,16 +268,19 @@ def _path_is_safe(relative: str) -> bool:
 
 
 def _forbidden_marker(relative: str, data: bytes) -> str | None:
-    # Decode only for path/secret markers.  The raw bytes remain byte-for-byte
-    # unchanged in the bundle; ignoring undecodable binary bytes avoids
-    # treating arbitrary compressed image data as prose.
-    if PurePosixPath(relative).suffix.lower() not in TEXT_SUFFIXES:
-        return None
-    text = data.decode("utf-8", errors="ignore")
-    lowered = text.lower()
-    for marker in FORBIDDEN_TEXT_MARKERS:
-        if marker.lower() in lowered:
+    # Private-key headers are high-signal byte markers and must fail closed in
+    # every payload type.  Source-machine paths are checked only inside
+    # printable ASCII runs, which catches raw PDF/image metadata without
+    # decoding arbitrary compressed bytes as prose.
+    lowered_data = data.lower()
+    for marker in FORBIDDEN_PRIVATE_KEY_MARKERS:
+        if marker.lower().encode("ascii") in lowered_data:
             return marker
+    for run in PRINTABLE_ASCII_RUN.findall(data):
+        lowered_run = run.lower()
+        for marker in FORBIDDEN_PATH_MARKERS:
+            if marker.lower().encode("ascii") in lowered_run:
+                return marker
     return None
 
 
@@ -331,6 +335,8 @@ Context packet identity:
 - The audited Signal Foundry anchor is {SIGNAL_FOUNDRY_AUDITED_CHECKPOINT}; compare against it read-only and never reset the receiving checkout to it.
 
 Before editing, read the nearest Signal Foundry AGENTS.md and inspect its own checkout, branch, remotes, worktrees, modified files, and untracked files. Preserve existing local work. Then read this packet's START_HERE.md and the two canonical handoff files under handoff/signal-foundry/.
+
+This is a selected packet, not the full Pattern Map repository. Some bundled Markdown intentionally links to historical archives or other repository files outside the packet. If a relative link does not resolve, request the exact missing file or current repository state; do not infer, recreate, or silently substitute its contents.
 
 Use the existing OPERATOR_DECISION plus RATIONALE pair as the first seam to inspect. Do not invent a Pattern Map classifier, a V14 deep link, “Sigma Foundry,” a second ledger, a universal score, or a new event type. CONTEXT_DISPOSITION is a conceptual completeness worksheet only; it is not valid against the current Signal Foundry decision-memory schema and must not be implemented from this packet.
 
@@ -400,6 +406,10 @@ bytes), the repaired standalone HTML, the secondary six-page PDF companion,
 and the historical v13 diagram required by the standalone's relative image
 path. It is a selected handoff, not the complete repository, Git history,
 dependency tree, v14 transfer, v15.2 archive, or Signal Foundry source.
+Some selected Markdown intentionally retains links to historical archives or
+other repository files outside this packet. An unresolved relative link is a
+subset boundary, not evidence that the target is absent or permission to infer
+it; request the exact file or current repository state when it matters.
 
 ## Downstream guardrails
 
@@ -472,10 +482,6 @@ import sys
 
 MANIFEST_NAME = "BUNDLE_MANIFEST.json"
 CHECKSUMS_NAME = "SHA256SUMS.txt"
-TEXT_SUFFIXES = frozenset({
-    ".css", ".html", ".js", ".json", ".md", ".mjs", ".py", ".sh",
-    ".txt", ".yaml", ".yml",
-})
 FORBIDDEN_PATH_SEGMENTS = frozenset({
     ".git", ".hg", ".svn", ".venv", "venv", "env", "node_modules",
     "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".tox",
@@ -488,13 +494,16 @@ ABSOLUTE_TEXT_PREFIXES = tuple("/" + part + "/" for part in (
 WINDOWS_ABSOLUTE_PREFIXES = (
     "C" + ":" + "\\", "D" + ":" + "\\", "C" + ":/", "D" + ":/"
 )
-FORBIDDEN_TEXT_MARKERS = ABSOLUTE_TEXT_PREFIXES + WINDOWS_ABSOLUTE_PREFIXES + (
+FORBIDDEN_PATH_MARKERS = ABSOLUTE_TEXT_PREFIXES + WINDOWS_ABSOLUTE_PREFIXES + (
     "file" + "://",
+)
+FORBIDDEN_PRIVATE_KEY_MARKERS = (
     "-----BEGIN " + "PRIVATE KEY-----",
     "-----BEGIN " + "OPENSSH PRIVATE KEY-----",
     "-----BEGIN " + "RSA PRIVATE KEY-----",
     "-----BEGIN " + "EC PRIVATE KEY-----",
 )
+PRINTABLE_ASCII_RUN = re.compile(rb"[\x20-\x7e]{5,}")
 SHA_LINE = re.compile(r"^([0-9a-f]{64})  ([^\n]+)$")
 
 
@@ -523,13 +532,16 @@ def safe_relative(value: object) -> str:
     return value
 
 
-def text_marker(relative: str, data: bytes) -> str | None:
-    if PurePosixPath(relative).suffix.lower() not in TEXT_SUFFIXES:
-        return None
-    text = data.decode("utf-8", errors="ignore").lower()
-    for marker in FORBIDDEN_TEXT_MARKERS:
-        if marker.lower() in text:
+def forbidden_marker(relative: str, data: bytes) -> str | None:
+    lowered_data = data.lower()
+    for marker in FORBIDDEN_PRIVATE_KEY_MARKERS:
+        if marker.lower().encode("ascii") in lowered_data:
             return marker
+    for run in PRINTABLE_ASCII_RUN.findall(data):
+        lowered_run = run.lower()
+        for marker in FORBIDDEN_PATH_MARKERS:
+            if marker.lower().encode("ascii") in lowered_run:
+                return marker
     return None
 
 
@@ -597,7 +609,7 @@ def main() -> int:
     for record in normalized:
         path = root / Path(*PurePosixPath(str(record["path"])).parts)
         data = path.read_bytes()
-        marker = text_marker(str(record["path"]), data)
+        marker = forbidden_marker(str(record["path"]), data)
         if marker is not None:
             fail("source-machine or private-key marker in " + str(record["path"]))
         if path.stat().st_size != int(record["bytes"]):
@@ -686,6 +698,10 @@ def _metadata_payload(
             "Generated control files describe and verify that selected snapshot; "
             "the bundle does not include a source-machine path."
         ),
+        "selected_subset_link_policy": {
+            "scope": "Bundled Markdown may retain relative links to archives or repository files outside the selected packet.",
+            "unresolved_link_action": "Request the exact missing file or current repository state; do not infer, recreate, or silently substitute it.",
+        },
         "scope": (
             "Selected human thesis, framework, operator and agent playbook, bounded cases, "
             "handoff records, research-separation boundaries, standalone HTML, PDF companion, "

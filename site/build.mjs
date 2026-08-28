@@ -663,6 +663,30 @@ const familyMapDetails = {
   F6: { inputs: "recorded expectation + later outcome", comparison: "what happened, what it cost, and what remains confounded", records: "outcome review + bounded update proposal", connections: "loops later learning back to the next decision", boundary: "a later outcome does not rewrite the old record" },
 };
 
+const assertFamilyPresentationCoverage = () => {
+  const canonicalIds = familySource.families.map((family) => family.id);
+  const canonicalSet = new Set(canonicalIds);
+  const adapters = [
+    ["familyPublicCopy", familyPublicCopy, ["purpose", "mechanism"]],
+    ["familyMapDetails", familyMapDetails, ["inputs", "comparison", "records", "connections", "boundary"]],
+  ];
+  for (const [label, adapter, fields] of adapters) {
+    const adapterIds = Object.keys(adapter);
+    if (adapterIds.length !== canonicalIds.length || adapterIds.some((id) => !canonicalSet.has(id))) {
+      throw new Error(`${label} must contain exactly the canonical family IDs: ${canonicalIds.join(", ")}`);
+    }
+    for (const id of canonicalIds) {
+      for (const field of fields) {
+        if (typeof adapter[id]?.[field] !== "string" || !adapter[id][field].trim()) {
+          throw new Error(`${label}.${id}.${field} must be a non-empty presentation field`);
+        }
+      }
+    }
+  }
+};
+
+assertFamilyPresentationCoverage();
+
 const renderCurrentTopology = (ctx) => {
   const mapFamilies = familySource.families.map((family) => {
     const detail = familyMapDetails[family.id];

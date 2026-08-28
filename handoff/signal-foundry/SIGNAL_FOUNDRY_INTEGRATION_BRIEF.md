@@ -3,7 +3,7 @@
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Inspect `codex/pattern-map-v16-foundation` at canonical source checkpoint `874a0a8e09f0bde11532cf873087865addb7d973`; preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessors.
+2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` as the fixed **content checkpoint**, then resolve the current `codex/pattern-map-v16-foundation` head with Git (or `BUNDLE_METADATA.json.source_commit` in a sealed packet); preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessors.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
@@ -21,7 +21,8 @@ Then inspect the two repositories at their exact stated checkpoints:
 ```text
 Pattern Map:
   https://github.com/adonisdv23/Pattern-Map
-  codex/pattern-map-v16-foundation source @ 874a0a8e09f0bde11532cf873087865addb7d973
+  codex/pattern-map-v16-foundation content checkpoint @ 874a0a8e09f0bde11532cf873087865addb7d973
+  current head: resolve with Git; sealed packet head: BUNDLE_METADATA.json.source_commit
   audited predecessors @ d4b7b9e481165b3f692986cdda1b8a0da8b4388b / c88926034cd75773dcc42d3842983c879dda5b58 / ad964dd91eff521b0442f613c55bc4e9e97c2f2a
 
 Signal Foundry:
@@ -30,9 +31,9 @@ Signal Foundry:
   product name: Signal Foundry
 ```
 
-> **Checkpoint rule:** `874a0a8` is the canonical converged source. A later
-> evidence/checksum commit may advance the branch head without changing that
-> content checkpoint. Resolve Git before editing; retain `d4b7b9e` and
+> **Checkpoint rule:** `874a0a8` is the canonical converged content checkpoint.
+> Later evidence, QA, handoff, or packaging commits may advance the branch head
+> without changing it. Resolve Git before editing; retain `d4b7b9e` and
 > `c889260` and `ad964dd` only as exact review-history anchors.
 
 This is an integration brief, not a Signal Foundry code change or authorization
@@ -191,9 +192,9 @@ or validation study.
 
 ### Phase 0 — recover the state
 
-- Inspect Pattern Map at canonical source `874a0a8`, verify the owner-intent
-  checksum, and resolve the branch head only to identify later evidence-only
-  commits.
+- Inspect Pattern Map at content checkpoint `874a0a8`, verify the owner-intent
+  checksum, and resolve the current branch head to include later evidence, QA,
+  handoff, or packaging corrections.
 - Inspect Signal Foundry at `main`/`f9bf377`, preserving local dirty files.
 - Read the transfer audit from local branch `codex/pattern-map-signal-foundry-transfer-audit`
   at `4a6ed78`; treat it as a read-only report.
@@ -320,12 +321,13 @@ Use the exact audited source identities below, then re-resolve Git:
 - Pattern Map v16 is the broad human-first Pattern Recognition / Discrimination
   Layer project at branch codex/pattern-map-v16-foundation. Its canonical
   converged source checkpoint is
-  874a0a8e09f0bde11532cf873087865addb7d973. The immediate terminal
+  874a0a8e09f0bde11532cf873087865addb7d973. Resolve the current branch head
+  with Git; in a sealed packet use `BUNDLE_METADATA.json.source_commit`. The immediate terminal
   predecessor is bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91. The audited predecessor head
   d4b7b9e481165b3f692986cdda1b8a0da8b4388b and Pro content checkpoint
   c88926034cd75773dcc42d3842983c879dda5b58 and earlier converged source
   ad964dd91eff521b0442f613c55bc4e9e97c2f2a are review history only. Resolve Git
-  before editing; later evidence-only commits do not replace the source hash.
+  before editing; later commits do not replace the fixed content checkpoint.
 - Signal Foundry is the product name, not Sigma Foundry. Its current main and
   origin/main are f9bf3775ca3d5b52ea5083cea52306c025727e23.
 - The local Pattern Map → Signal Foundry transfer audit is branch
@@ -404,7 +406,12 @@ checklist, not an authorization receipt or a product result.
   "pattern_map": {
     "repository": "https://github.com/adonisdv23/Pattern-Map",
     "branch": "codex/pattern-map-v16-foundation",
-    "head": "874a0a8e09f0bde11532cf873087865addb7d973",
+    "head": null,
+    "head_resolution": {
+      "status": "resolve_at_use",
+      "git_command": "git rev-parse --verify refs/heads/codex/pattern-map-v16-foundation",
+      "sealed_packet_field": "BUNDLE_METADATA.json.source_commit"
+    },
     "content_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",
     "checkpoint_role": "canonical_converged_source",
     "resolve_branch_head_before_editing": true,
