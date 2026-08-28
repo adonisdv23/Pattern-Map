@@ -1,0 +1,76 @@
+{
+  "schema_version": "pattern-map.archive-checkpoint-index.v1",
+  "status": "curated-indexes-into-immutable-transfers",
+  "generated_on": "2026-08-19",
+  "policy": "Selected anchors are indexed, not duplicated. Transfer manifests remain authoritative for complete contents.",
+  "versions": [
+    {
+      "version": "v13",
+      "source_anchor": "historical-live-reference-partial-recovery",
+      "status": "historical-origin-not-current-topology",
+      "anchors": [
+        {"path": "archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/LIVE_SITE_REFERENCE_MANIFEST.json", "bytes": 5338, "sha256": "67d6b6e708a4c8751183388b2a34dfaa7c2e4ade6660519c25eaa2ff2986397e"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/V13_RECOVERY_AND_INTENT_MEMO.md", "bytes": 17763, "sha256": "6770cad9ab6dbfd02d545b6d535cc1a3557fb4f305b9962ca388aa34b70760e1"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/live-v13-rendered-dom-snapshot.html", "bytes": 85105, "sha256": "3c7a191ac44404828309cbfd8c58fa04eb9742bbbebe96879dd640a94e3645ec"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/05_HISTORICAL_V13/pattern-recognition-diagram-v12.png", "bytes": 1961204, "sha256": "8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae"}
+      ]
+    },
+    {
+      "version": "v14",
+      "source_anchor": "d0d26e28236e50d49e57bea9554e2a3a7b392198 / 261c516710f67998224a16c056bba0aefd5c26f4",
+      "status": "immutable-transfer-superseded-not-published",
+      "anchors": [
+        {"path": "archive/transfers/v14-complete-2026-08-18/00_START_HERE/COMPLETE_TRANSFER_GUIDE.md", "bytes": 23343, "sha256": "77fe540591ed60bb20e54f9d197a51f2266b40186c735c562328a62a31676e9f"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/00_START_HERE/PACKAGE_MANIFEST.md", "bytes": 3257, "sha256": "053572d691e09c67dbcde19920761541e090cea3140b0ea297b3b5f6dfd8c423"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/00_START_HERE/SHA256SUMS.txt", "bytes": 58040, "sha256": "f79d608e55ca26827c24b053fba4668fe65867a59f9f2e4b59d9c8c0701f59ed"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/01_FINAL_OUTPUTS/THOUGHT_PIECE_V14.md", "bytes": 53439, "sha256": "52c78b94543b55b427531d783447fe4deef6e66a11acbaa070260083dd15227f"},
+        {"path": "archive/transfers/v14-complete-2026-08-18/01_FINAL_OUTPUTS/THOUGHT_PIECE_V14.pdf", "bytes": 3252782, "sha256": "c96b5f062fec5dd9a09b7a592dc88c915839a872bb172f1a621bdbb53d0612f7"}
+      ]
+    },
+    {
+      "version": "v15",
+      "source_anchor": "82f87b1d57414d4e7b1d2637a8fa53799d5ccf4d",
+      "status": "sealed-predecessor-superseded-unrun-not-published",
+      "anchors": [
+        {"path": "archive/transfers/v15.2-owner-handoff/04_REASONING_AND_QA/handoff-records/OWNER_REVIEW_PACKET_V15.md", "bytes": 19345, "sha256": "aaa8c1cec7f3cb8981737fe7ce183a837d672a9841cd36297d0781f37e6b39df"},
+        {"path": "archive/transfers/v15.2-owner-handoff/04_REASONING_AND_QA/handoff-records/V15_PACKAGE_MANIFEST.json", "bytes": 29143, "sha256": "0d19752ef499f223cc299695683751369f9ab2a5f6ff5f018ba315612d45bc53"},
+        {"path": "archive/transfers/v15.2-owner-handoff/04_REASONING_AND_QA/handoff-records/V15_SHA256SUMS.txt", "bytes": 10450, "sha256": "0c3d5b89faa84df9633a2483eac323a4ead40f4eedc85cb21161b5df630cd34e"},
+        {"path": "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-version-surfaces/THOUGHT_PIECE_V15.pdf", "bytes": 3331543, "sha256": "0542cdd14311fd07f7d9fa5e02c05584e83ed31d4d2cb07f305c5e3751254dca"},
+        {"path": "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-standalone-html/v15.html", "bytes": 46004, "sha256": "28e73fb3ff5c7cd3e97350e2379a5634ed9c3f092de9da04a5bf28bacb164eed"}
+      ]
+    },
+    {
+      "version": "v15.1",
+      "source_anchor": "22f232701184812489843731b6fe27592118eb29",
+      "status": "sealed-convergence-predecessor-superseded-unrun-not-published",
+      "anchors": [
+        {"path": "archive/transfers/v15.2-owner-handoff/04_REASONING_AND_QA/sealed-v15.1-handoff/OWNER_REVIEW_PACKET_V15_1.md", "bytes": 9906, "sha256": "799f0c768c15fd28e937a8ebd996cf0b36ab29573dcef1e6d129c239aa821067"},
+        {"path": "archive/transfers/v15.2-owner-handoff/04_REASONING_AND_QA/sealed-v15.1-handoff/PACKAGE_MAP_V15_1.md", "bytes": 4082, "sha256": "78e4dba1602d1a9e198ff9094f2aac295ddf7a0e1960380f518c43029b226204"},
+        {"path": "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-version-surfaces/THOUGHT_PIECE_V15_1.md", "bytes": 34802, "sha256": "7b73506f644a19c6c5f50d291004ba121210bee11501edf1b63d23e1a6364864"},
+        {"path": "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-review-pdfs/PATTERN_MAP_V15_1_REVIEW_COMPANION.pdf", "bytes": 3331634, "sha256": "73640db72162d6a8bd79099eebbcf185edb08fb3f59491b39ecd624b80decff1"},
+        {"path": "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-standalone-html/v15-1.html", "bytes": 49241, "sha256": "47726e8b160bb7b3f48826a0ee7903212c484c3f054b264c9a0dc1d8c3d77a8a"}
+      ]
+    },
+    {
+      "version": "v15.2",
+      "source_anchor": "36568cb6e8afce9544606c968319b063fc9b79ce",
+      "status": "exact-extracted-accession-owner-review-unrun-no-results-not-published",
+      "anchors": [
+        {"path": "archive/transfers/v15.2-owner-handoff/00_START_HERE/OWNER_REVIEW_PACKET_V15_2.md", "bytes": 14678, "sha256": "53cf6e734c0c51096856a637e20aded4bb7b186cbd788710db032cb75f97eeb9"},
+        {"path": "archive/transfers/v15.2-owner-handoff/00_START_HERE/PACKAGE_MAP_V15_2.md", "bytes": 7985, "sha256": "210bab704aaec8bb989d44567e529ce777ca69ed743024f65c57532e9ab4bbd8"},
+        {"path": "archive/transfers/v15.2-owner-handoff/01_FINAL_OUTPUT/canonical-manuscript/THOUGHT_PIECE_V15_2.md", "bytes": 15217, "sha256": "b454b56221f005f8caee539d8b003716eceb34d0c49d68cae66772d910aea69b"},
+        {"path": "archive/transfers/v15.2-owner-handoff/01_FINAL_OUTPUT/pdf-review/PATTERN_MAP_V15_2_REVIEW_COMPANION.pdf", "bytes": 3331910, "sha256": "c5bd7b2ac43b11bd6a5007403f86c702e5ea2cd7be779d6673b0549055e15f02"},
+        {"path": "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-standalone-html/v15-2.html", "bytes": 24560, "sha256": "4ffebe1b3743eeff6bf7cc1535d1cb2eb193228cde47a1de5cbfce60af65a9d0"},
+        {"path": "archive/transfers/v15.2-owner-handoff/PATTERN_MAP_V15_2_OWNER_HANDOFF-manifest.json", "bytes": 69680, "sha256": "05aedafc2f5cb3f589cfdc69d1eff5c854c3bef97071324f9845d63a7a1028eb"},
+        {"path": "archive/transfers/v15.2-owner-handoff/PATTERN_MAP_V15_2_OWNER_HANDOFF.zip.sha256", "bytes": 109, "sha256": "2eef19557580340df49cf95ad7d5ebe23c3bc2f350c29d7d992ad3bedc6b6870"}
+      ],
+      "external_container": {
+        "filename": "PATTERN_MAP_V15_2_OWNER_HANDOFF.zip",
+        "bytes": 41436496,
+        "sha256": "f8b71db0bda7f7564e5d3cec1f697bee38b3fcb17b56f47c79bf653f39b549b5",
+        "stored_in_git": false,
+        "reason": "Accepted extracted-payload strategy under docs/BINARY_ARTIFACT_POLICY.md; exact source container remains untouched pending an authorized LFS or Release channel."
+      }
+    }
+  ]
+}

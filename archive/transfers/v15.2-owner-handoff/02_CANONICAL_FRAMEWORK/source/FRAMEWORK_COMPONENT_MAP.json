@@ -1,0 +1,703 @@
+{
+  "schema_version": "1.0",
+  "status": "CANONICAL_V15_OWNER_REVIEW_CONCEPTUAL_SYNTHESIS",
+  "canonical": true,
+  "canonical_since": "v15",
+  "title": "Pattern Recognition: discrimination-layer component map",
+  "purpose": "Represent the smallest currently coherent systems responsibility for inspectable, cost-bounded, source-aware, and human-correctable context judgment before generation.",
+  "claim_boundary": "This is the canonical v15 conceptual map for owner review, reconciled with the owner-designated live v13 reference and its hash-verified original diagram. It is not an exact-byte reconstruction of the unavailable standalone v13 HTML, a claim of mechanism novelty, or a validated implementation.",
+  "source_dependencies": {
+    "owner_premise": "source/THESIS_AND_TERMINOLOGY_CONTRACT.md",
+    "live_v13_reference": "reports/V13_RECOVERY_AND_INTENT_MEMO.md",
+    "claim_register": "research/CLAIMS_AND_EVIDENCE_REGISTER.csv",
+    "prior_art": "research/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md",
+    "prior_art_v15_delta": "research/PRIOR_ART_DELTA_V1.md",
+    "v15_manuscript": "source/THOUGHT_PIECE_V15.md",
+    "v15_protocol": "research/ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V1.md",
+    "verified_historical_material": [
+      {
+        "path": "archive/v13/pattern-recognition-diagram-v12.png",
+        "sha256": "8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae",
+        "status": "EXACT_HASH_VERIFIED"
+      },
+      {
+        "path": "archive/v13/live-v13-rendered-dom-snapshot.html",
+        "sha256": "3c7a191ac44404828309cbfd8c58fa04eb9742bbbebe96879dd640a94e3645ec",
+        "status": "RENDERED_STATE_REFERENCE_NOT_ORIGINAL_STANDALONE_HTML"
+      }
+    ],
+    "missing_exact_historical_material": [
+      "Pattern Recognition — Visual Map (v13).html",
+      "Research.zip",
+      "Alpha_Solver_Brain_New_Thread_Migration_Packet_v18.md"
+    ]
+  },
+  "compatibility": {
+    "component_ids_preserved": true,
+    "family_ids_preserved": true,
+    "judgment_dimension_ids_preserved": true,
+    "legacy_independence_label": "D04 was previously named independence; v15 names the construct origin_relation while preserving D04 as its audit and compatibility identifier.",
+    "historical_v13_assets_immutable": true
+  },
+  "design_principles": [
+    "Keep observations, interpretations, decisions, and outcomes separately versioned.",
+    "Represent different judgments as typed dimensions rather than one universal score.",
+    "Bind derived material to its origin through transformations.",
+    "Require an expected baseline before labeling an absence meaningful.",
+    "Require repeated time-stamped observations before inferring velocity.",
+    "Treat recurrence and origin relation as different relationships; never infer real-world independence from count or formatting.",
+    "Treat acquisition as an action decision, not a factual conclusion.",
+    "Separate domain source authority from operational authorization.",
+    "Expose budgets, exclusions, uncertainty, and human overrides.",
+    "Update policies only against defined outcomes; preserve prior states."
+  ],
+  "mechanism_families": [
+    {
+      "id": "F1",
+      "name": "Intent and authorization envelope",
+      "purpose": "Define the question, consequence, permissions, baselines, and budgets before information is allowed to influence the workflow.",
+      "component_ids": ["C01"]
+    },
+    {
+      "id": "F2",
+      "name": "Evidence spine",
+      "purpose": "Acquire, identify, normalize, version, and trace artifacts without confusing capture with acceptance.",
+      "component_ids": ["C02", "C03"]
+    },
+    {
+      "id": "F3",
+      "name": "Relationship and claim graph",
+      "purpose": "Represent grouping, common origin, recurrence, comparison, atomic claims, support, contradiction, and gaps.",
+      "component_ids": ["C04", "C05"]
+    },
+    {
+      "id": "F4",
+      "name": "Discrimination policy",
+      "purpose": "Keep judgment dimensions separate, choose bounded next actions, and prepare an inspectable context packet.",
+      "component_ids": ["C06", "C07", "C08"]
+    },
+    {
+      "id": "F5",
+      "name": "Human disposition and memory",
+      "purpose": "Capture acceptance, rejection, deferral, override, and versioned retention without converting preference into fact.",
+      "component_ids": ["C09", "C10"]
+    },
+    {
+      "id": "F6",
+      "name": "Outcome feedback",
+      "purpose": "Compare expected and observed outcomes and propose revisable policy updates.",
+      "component_ids": ["C11"]
+    }
+  ],
+  "components": [
+    {
+      "id": "C01",
+      "name": "Decision brief and authorization envelope",
+      "family_id": "F1",
+      "what_it_is": "A versioned declaration of the question, intended use, decision owner, stakes, expected baselines, allowed operations, sensitive-source rules, and resource limits.",
+      "why_needed": "Relevance, meaningful absence, cost, and permissible action cannot be evaluated without a task and authority boundary.",
+      "consumes": [
+        "owner question or decision",
+        "intended audience and use",
+        "known constraints and protected categories",
+        "privacy, retention, disclosure, and tool permissions",
+        "time, money, token, compute, and attention budgets",
+        "expected sources, perspectives, fields, or observations"
+      ],
+      "produces": [
+        "decision_brief_version",
+        "authorization_policy_version",
+        "expected_baseline",
+        "cost_envelope",
+        "success, abstention, and escalation criteria"
+      ],
+      "interactions": [
+        "Constrains C02 acquisition and every later transformation.",
+        "Supplies the task frame for C06 relevance and action judgments.",
+        "Supplies expected baselines for C04 gap detection.",
+        "Defines outcomes and measurement windows used by C11."
+      ],
+      "known_failure_modes": [
+        "An underspecified question makes relevance arbitrary.",
+        "Permissions are inferred from technical access.",
+        "A missing baseline turns any absence into a supposed signal.",
+        "Budgets omit human review or privacy exposure.",
+        "The decision brief changes without invalidating downstream work."
+      ],
+      "bounded_implementation_example": "A research assistant records that it may search public sources for two hours, may not upload confidential material, must compare three named stakeholder perspectives, and must escalate unsupported high-impact claims.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_CONCEPTUAL_SYNTHESIS",
+        "supporting_claim_ids": ["C-002", "C-010"],
+        "prior_art_families": ["value of information", "mixed initiative", "decision quality", "AI risk management"]
+      },
+      "speculative_elements": [
+        "Whether one portable envelope schema can serve materially different domains.",
+        "Whether an automated system can reliably detect that the brief is insufficient."
+      ],
+      "human_decisions": ["approve scope", "grant or deny operations", "set stakes and budgets", "revise or cancel the brief"],
+      "cost_boundaries": ["planning time", "authorized search spend", "latency", "tokens", "review attention", "privacy exposure"],
+      "provenance_boundaries": ["Every downstream record references the exact brief and policy version."],
+      "open_questions": ["What is the minimum usable brief?", "Which changes require re-running earlier stages?"]
+    },
+    {
+      "id": "C02",
+      "name": "Acquisition controller",
+      "family_id": "F2",
+      "what_it_is": "A policy-governed mechanism that proposes, authorizes, records, and stops retrieval or collection actions.",
+      "why_needed": "Useful evidence may be absent from current context, but more acquisition has cost and risk and must not silently become belief.",
+      "consumes": [
+        "decision brief and authorization policy",
+        "candidate sources, queries, tools, and expected information gain",
+        "current evidence gaps and uncertainty",
+        "remaining cost envelope"
+      ],
+      "produces": [
+        "acquisition proposal",
+        "authorization decision",
+        "capture receipt or failure receipt",
+        "raw immutable artifact reference",
+        "updated remaining budget"
+      ],
+      "interactions": [
+        "Receives gaps and enrichment proposals from C04, C05, and C07.",
+        "Hands captured artifacts to C03.",
+        "Reports cost and failure to C07 and C11."
+      ],
+      "known_failure_modes": [
+        "Search scope expands without authorization.",
+        "Similarity or novelty is mistaken for value.",
+        "Paid, private, or sensitive retrieval occurs without explicit permission.",
+        "A failed capture is represented as negative evidence.",
+        "The system continues searching because no stopping rule is encoded."
+      ],
+      "bounded_implementation_example": "The system proposes obtaining one primary standard because the current claim cites only commentary; it records expected benefit, estimated cost, permission, retrieval result, and why it stopped.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_DESIGN_HYPOTHESIS",
+        "supporting_claim_ids": ["C-002", "C-003"],
+        "prior_art_families": ["information foraging", "relevance feedback", "active learning", "value of information"]
+      },
+      "speculative_elements": ["Accurate expected-value estimates in open-world research.", "General stopping policies across domains."],
+      "human_decisions": ["authorize sensitive or costly acquisition", "approve expanded scope", "stop or redirect search"],
+      "cost_boundaries": ["money", "time", "latency", "tokens", "compute", "privacy", "review burden"],
+      "provenance_boundaries": ["The proposal, permission, query/tool version, response, capture time, and failure state remain linked."],
+      "open_questions": ["How should unknown costs be represented?", "When is human escalation worth more than another retrieval?"]
+    },
+    {
+      "id": "C03",
+      "name": "Source, artifact, normalization, and provenance spine",
+      "family_id": "F2",
+      "what_it_is": "A set of stable identities and append-only derivation records for sources, artifacts, captures, versions, transformations, agents, and timestamps.",
+      "why_needed": "Comparison and audit fail when a source is confused with an artifact, normalization erases differences, or summaries become detached from origin.",
+      "consumes": ["raw capture and receipt", "source observations", "artifact bytes or stable reference", "transformation specification", "agent and tool versions"],
+      "produces": ["source identity record", "artifact identity and version", "content hash where available", "normalized representation", "provenance and derivation edges", "confidence or ambiguity in identity resolution"],
+      "interactions": [
+        "Supplies identity and derivation to C04 and C05.",
+        "Travels with C08 context packets and C10 memory records.",
+        "Allows C09 corrections to point to exact evidence rather than prose alone."
+      ],
+      "known_failure_modes": [
+        "Two reports are merged because names look alike.",
+        "One artifact is duplicated and counted twice.",
+        "Normalization removes a meaningful qualifier or time reference.",
+        "A summary or embedding loses its origin binding.",
+        "Mutable pages change without a capture or version record.",
+        "Lineage is mistaken for correctness."
+      ],
+      "bounded_implementation_example": "A captured web page, its issuing organization, retrieval time, hash, extracted text, parser version, and paragraph offsets are separate linked records.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_CONCEPTUAL_SYNTHESIS",
+        "supporting_claim_ids": ["C-006"],
+        "prior_art_families": ["W3C PROV", "data lineage", "evidence synthesis"]
+      },
+      "speculative_elements": ["Reliable identity resolution across aliases and mutable web artifacts.", "Complete provenance across opaque provider transformations."],
+      "human_decisions": ["resolve ambiguous identity", "approve a loss-bearing transformation", "mark a source or artifact merge as uncertain"],
+      "cost_boundaries": ["storage", "hashing and extraction compute", "manual identity resolution", "retention obligations"],
+      "provenance_boundaries": ["Raw captures are immutable audit evidence; normalized and derived representations are new versioned entities, not replacements."],
+      "open_questions": ["Which transformations require byte-level retention?", "How should inaccessible or legally restricted originals be cited and reviewed?"]
+    },
+    {
+      "id": "C04",
+      "name": "Relationship, recurrence, common-origin, and gap graph",
+      "family_id": "F3",
+      "what_it_is": "A typed graph linking sources, artifacts, events, groups, observations, time points, copies, derivations, recurrences, comparisons, and expected-but-missing perspectives.",
+      "why_needed": "Repeated claims can share one origin, cohorts may be analytical roles, and absence or velocity is meaningful only under explicit baselines and time observations.",
+      "consumes": ["identified artifacts and sources", "provenance edges", "timestamps", "decision-specific grouping rules", "expected baseline", "observed similarities and citations"],
+      "produces": ["typed relationship edges", "candidate common-origin clusters", "recurrence counts with dependence status", "comparison sets", "cohort role assignments", "gap records", "velocity observations where longitudinal data exists", "signal candidates labeled as derived outputs"],
+      "interactions": [
+        "Uses C03 identities and provenance.",
+        "Informs C05 origin-relation, support, and contradiction analysis.",
+        "Informs C06 attention and enrichment judgments.",
+        "Can request C02 acquisition when a baseline gap is consequential."
+      ],
+      "known_failure_modes": [
+        "Syndicated copies are counted as distinct-origin support.",
+        "Unknown origin is silently classified as separately rooted.",
+        "Topical similarity is treated as shared causal origin.",
+        "A group becomes an essentialized or permanent identity.",
+        "One timestamp is used to claim velocity.",
+        "Unspecified expectations manufacture a meaningful absence.",
+        "A signal candidate is stored or displayed as a verified event."
+      ],
+      "bounded_implementation_example": "Nine articles repeating a vendor announcement are linked to the same press release; recurrence remains nine observations while the declared graph contains one known origin plus any explicitly unresolved origins.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_DESIGN_HYPOTHESIS",
+        "supporting_claim_ids": ["C-007"],
+        "prior_art_families": ["evidence synthesis", "provenance", "coordinated-amplification research", "sensemaking"]
+      },
+      "speculative_elements": ["Automated common-origin inference at acceptable precision.", "Cross-domain definitions of meaningful recurrence, velocity, and gaps."],
+      "human_decisions": ["confirm or contest grouping", "set expected baselines", "review suspected coordination", "promote or dismiss a signal candidate"],
+      "cost_boundaries": ["graph construction", "entity resolution", "temporal observation window", "manual common-origin review"],
+      "provenance_boundaries": ["Every inferred edge records method, inputs, time, confidence, and reviewer disposition; observed and inferred edges remain distinct."],
+      "open_questions": ["How should partial dependence be represented?", "What evidence is sufficient to label coordination rather than ordinary reuse?"]
+    },
+    {
+      "id": "C05",
+      "name": "Claim, evidence, comparison, and contradiction graph",
+      "family_id": "F3",
+      "what_it_is": "A claim-level representation connecting atomic propositions to exact evidence spans, support states, qualifications, contradictions, alternatives, and unresolved questions.",
+      "why_needed": "A credible source can make an unsupported claim, one artifact can contain claims with different support, and document-level ranking cannot show what a conclusion rests on.",
+      "consumes": ["artifacts and exact spans", "atomic claim candidates", "source and artifact identity", "common-origin relationships", "domain-specific evidence standards", "comparison frames"],
+      "produces": ["claim records", "support, contradiction, qualification, and insufficiency edges", "evidence rationales", "unresolved-claim list", "alternative explanations", "comparison matrix"],
+      "interactions": [
+        "Uses C03 provenance and C04 origin-relation hypotheses.",
+        "Supplies C06 claim support and uncertainty without deciding action priority.",
+        "Supplies cited material and unresolved states to C08."
+      ],
+      "known_failure_modes": [
+        "Claims remain too broad to test.",
+        "Citation presence is treated as support.",
+        "A source's domain authority is transferred to unrelated claims.",
+        "Evidence entailment is inferred from lexical overlap.",
+        "Contradictory time frames or definitions are compared as equivalents.",
+        "Open-world unknowns are forced into supported or refuted."
+      ],
+      "bounded_implementation_example": "A report sentence is split into a measured result and a causal explanation; the first links to a table, while the second remains insufficient because the study design does not identify causality.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_CONCEPTUAL_SYNTHESIS",
+        "supporting_claim_ids": ["C-004", "C-005", "C-007"],
+        "prior_art_families": ["FEVER", "SciFact", "FActScore", "structured analytic techniques", "evidence synthesis"]
+      },
+      "speculative_elements": ["Reliable domain-general atomic claim extraction.", "Evidence standards that transfer without flattening domain expertise."],
+      "human_decisions": ["approve material claim decomposition", "adjudicate contested support", "choose comparison dimensions", "retain unresolved states"],
+      "cost_boundaries": ["claim extraction and review", "span-level citation work", "domain expert time"],
+      "provenance_boundaries": ["Each claim version and evidence edge points to exact artifact versions and spans; generated rationales are labeled derived."],
+      "open_questions": ["What claim granularity maximizes correction without overwhelming reviewers?", "How should evidence standards be represented by domain?"]
+    },
+    {
+      "id": "C06",
+      "name": "Multidimensional assessment",
+      "family_id": "F4",
+      "what_it_is": "An inspectable set of separate, task-scoped judgments for attention priority, domain source authority, claim support, origin relation or stipulated distinctness, relevance, enrichment value, action priority, and owner disposition. Uncertainty and possible consequence are explicit qualifying attributes, not interchangeable scoring dimensions.",
+      "why_needed": "Collapsing unlike judgments into one relevance or trust score hides the reasons an item can influence a decision and makes correction difficult.",
+      "consumes": ["decision brief", "source and artifact records", "relationship graph", "claim-evidence graph", "current uncertainty", "potential consequences"],
+      "produces": ["typed assessment records", "reason and evidence for each dimension", "unknown or contested states", "candidate action considerations", "review queue"],
+      "interactions": [
+        "Receives task framing from C01 and evidence structure from C03-C05.",
+        "Supplies assessments to C07 without making the routing decision itself.",
+        "Exposes individual dimensions to C09 for correction."
+      ],
+      "known_failure_modes": [
+        "A universal trust score launders one dimension into another.",
+        "Owner interest becomes endorsement.",
+        "First-party evidence is rejected categorically or trusted universally.",
+        "Model confidence substitutes for evidential support.",
+        "Uncertain identity or origin is hidden behind a precise score.",
+        "The assessed dimension has no decision-specific definition."
+      ],
+      "bounded_implementation_example": "A regulator's filing can have high authority for what was filed, strong support for a filing date, limited support for a company's causal explanation, high task relevance, and an unresolved origin relation to a press release—all at once.",
+      "evidence_basis": {
+        "maturity": "CONCEPTUAL_SYNTHESIS_REQUIRING_EVALUATION",
+        "supporting_claim_ids": ["C-003", "C-004", "C-006", "C-007", "C-010"],
+        "prior_art_families": ["source credibility", "epistemic vigilance", "claim verification", "relevance feedback", "calibration"]
+      },
+      "speculative_elements": ["Whether human and model assessors can apply the dimensions reliably.", "Whether explicit separation improves outcomes enough to justify complexity."],
+      "human_decisions": ["define domain authority criteria", "contest assessments", "mark unknown", "decide when expert review is required"],
+      "cost_boundaries": ["assessment compute", "review time", "expert adjudication", "interface complexity"],
+      "provenance_boundaries": ["Each assessment is a versioned interpretation with assessor, inputs, rubric, time, and confidence; it is not written into raw evidence."],
+      "open_questions": ["Which dimensions are necessary by task type?", "Can ordinal states outperform misleading numerical precision?"]
+    },
+    {
+      "id": "C07",
+      "name": "Enrichment, stopping, and action router",
+      "family_id": "F4",
+      "what_it_is": "A policy that compares next actions under uncertainty and resource constraints, including acquire, compare, enrich, clarify, answer, answer provisionally, hold, defer, escalate, or refuse.",
+      "why_needed": "Assessment has no operational value until it guides a bounded next step, but selecting an action must not masquerade as a factual conclusion.",
+      "consumes": ["separate C06 assessments", "evidence and gap states", "authorized action set", "remaining budgets", "estimated value and consequence", "deadline and stopping criteria"],
+      "produces": ["recommended action", "ranked alternatives where appropriate", "reason code", "expected benefit and cost range", "uncertainty", "stop or escalation receipt"],
+      "interactions": [
+        "Can request C02 acquisition or additional C04-C05 comparison.",
+        "Routes selected context to C08.",
+        "Requests human authorization or disposition from C09.",
+        "Sends prediction and cost to C11 for later comparison."
+      ],
+      "known_failure_modes": [
+        "An enrichment-value estimate becomes acceptance or dictates action priority.",
+        "A brittle utility estimate creates false precision.",
+        "Search stops because a convenient answer appeared.",
+        "Search never stops because certainty is impossible.",
+        "The router recommends an unauthorized action.",
+        "High attention priority is treated as high truth probability."
+      ],
+      "bounded_implementation_example": "For a high-impact claim with one vendor-linked source and no separately rooted support established, the router recommends one primary-source search within a fifteen-minute budget; if unavailable, it routes to a provisional answer that names the evidence gap.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_DESIGN_HYPOTHESIS",
+        "supporting_claim_ids": ["C-001", "C-002", "C-008"],
+        "prior_art_families": ["value of information", "metareasoning", "resource rationality", "mixed initiative"]
+      },
+      "speculative_elements": ["Reliable utility estimation for heterogeneous evidence tasks.", "A portable policy vocabulary across low- and high-stakes settings."],
+      "human_decisions": ["approve costly or consequential action", "accept provisional output", "override route", "change stopping threshold"],
+      "cost_boundaries": ["explicit remaining budget on every route", "maximum retry or search scope", "human escalation capacity", "privacy and disclosure limits"],
+      "provenance_boundaries": ["The route records the exact assessments, policy version, alternatives, budget, and human authorization used."],
+      "open_questions": ["Which baselines best test routing value?", "How should asymmetric harms and unknown utility be represented?"]
+    },
+    {
+      "id": "C08",
+      "name": "Bounded context packet",
+      "family_id": "F4",
+      "what_it_is": "A versioned package of selected content plus provenance, claim links, reasons for inclusion and exclusion, unresolved states, budgets, and generation constraints.",
+      "why_needed": "A model needs a usable context, while a reviewer needs to know what influenced it, what was withheld, and why; a long unstructured prompt provides neither guarantee.",
+      "consumes": ["authorized route", "selected artifact spans and claim records", "provenance", "assessment dimensions", "exclusions and unresolved gaps", "token and disclosure budget"],
+      "produces": ["context_packet_version", "selection and exclusion manifest", "citation map", "uncertainty and abstention instructions", "generator input receipt"],
+      "interactions": [
+        "Receives the route from C07 and exact evidence from C03-C05.",
+        "Is reviewed or overridden through C09.",
+        "Its use and generated output are linked in C10-C11."
+      ],
+      "known_failure_modes": [
+        "Compression changes a claim or drops a qualifier.",
+        "Ordering over-amplifies convenient evidence.",
+        "Exclusions are invisible.",
+        "Provenance is stripped to save tokens.",
+        "Context is called evidence without claim-level support.",
+        "Sensitive information crosses a disclosure boundary."
+      ],
+      "bounded_implementation_example": "A packet contains three exact passages, their claim links and common-origin notes, one excluded duplicate, an unresolved counterclaim, a token budget, and an instruction to state insufficiency rather than fill the gap.",
+      "evidence_basis": {
+        "maturity": "DESIGN_HYPOTHESIS_WITH_ADJACENT_PRECEDENT",
+        "supporting_claim_ids": ["C-006", "C-008", "C-009"],
+        "prior_art_families": ["retrieval-augmented generation", "context engineering", "long-context behavior", "provenance"]
+      },
+      "speculative_elements": ["Optimal packet structure and ordering.", "How much provenance can be compressed without losing audit value."],
+      "human_decisions": ["approve sensitive inclusion", "review material exclusions", "accept bounded uncertainty", "change generation constraints"],
+      "cost_boundaries": ["token limit", "latency", "human readability", "disclosure scope"],
+      "provenance_boundaries": ["Every included or transformed unit retains an origin pointer; packet version and generator invocation remain linked."],
+      "open_questions": ["What packet fields measurably improve correction?", "How should conflicting evidence be ordered without implying a verdict?"]
+    },
+    {
+      "id": "C09",
+      "name": "Owner disposition, review, and override",
+      "family_id": "F5",
+      "what_it_is": "An explicit human control surface for accept, reject, defer, hold, override, request enrichment, correct relationships, and revise task constraints.",
+      "why_needed": "The proposed responsibility is meant to remain correctable, and many judgments require domain knowledge or authority the system does not have.",
+      "consumes": ["assessment and route receipts", "context packet", "evidence and provenance views", "uncertainties, conflicts, costs, and consequences", "reviewer role and authority"],
+      "produces": ["versioned disposition", "reason and optional evidence", "override record", "correction request", "updated permission or task constraint", "escalation destination"],
+      "interactions": [
+        "Can amend C01 constraints, correct C03-C06 records, approve C07 routes, and alter C08 packets.",
+        "Supplies versioned decisions to C10 and review outcomes to C11."
+      ],
+      "known_failure_modes": [
+        "Rubber-stamping or automation bias.",
+        "The reviewer sees a conclusion without its evidence path.",
+        "Owner preference is stored as factual truth.",
+        "An override has no reason, authority, or audit record.",
+        "Review burden exceeds the available attention budget.",
+        "Role-based access hides necessary correction context."
+      ],
+      "bounded_implementation_example": "An analyst rejects a proposed separately-rooted label, links both reports to a shared study, records the reason, and asks the system to recompute the route without altering the original captures.",
+      "evidence_basis": {
+        "maturity": "PRIOR_ART_SUPPORTED_DESIGN_HYPOTHESIS",
+        "supporting_claim_ids": ["C-010"],
+        "prior_art_families": ["mixed initiative", "human-AI interaction", "structured analytic techniques", "AI risk management"]
+      },
+      "speculative_elements": ["Interfaces that enable meaningful rather than ceremonial review.", "Portable division of authority between operator, domain expert, and system owner."],
+      "human_decisions": ["accept", "reject", "defer", "hold", "override", "request enrichment", "escalate", "revoke permission"],
+      "cost_boundaries": ["review queue size", "time per decision", "expert availability", "escalation latency"],
+      "provenance_boundaries": ["Human disposition is linked to reviewer role, time, object version, displayed evidence, and reason; prior dispositions remain preserved."],
+      "open_questions": ["Which decisions require mandatory review?", "How can interfaces reveal uncertainty without overwhelming the reviewer?"]
+    },
+    {
+      "id": "C10",
+      "name": "Versioned evidence, decision, and memory ledger",
+      "family_id": "F5",
+      "what_it_is": "Append-only retention of observations, derived interpretations, decisions, context packets, generated outputs, corrections, and supersession relationships.",
+      "why_needed": "Learning and audit require history, while mutable memory can launder old errors or erase why a decision was made.",
+      "consumes": ["raw and derived records from C01-C09", "retention and access policy", "supersession and correction events", "generator and prompt/model versions"],
+      "produces": ["immutable event records", "current materialized views", "supersession links", "retrieval indexes with origin binding", "audit timeline", "staleness or review flags"],
+      "interactions": [
+        "Preserves every stage without forcing all stages into one storage model.",
+        "Supplies prior cases to C06-C07 only under C01 authorization.",
+        "Provides the decision history that C11 compares with outcomes."
+      ],
+      "known_failure_modes": [
+        "A summary overwrites raw evidence.",
+        "Retrieved memory loses source or epistemic type.",
+        "An old owner preference becomes a factual prior.",
+        "Sensitive records persist beyond authorization.",
+        "Version proliferation makes the current state unintelligible.",
+        "Poisoned or echoed content gains apparent authority through repetition."
+      ],
+      "bounded_implementation_example": "A corrected claim does not delete its earlier form; the ledger marks it superseded, preserves the evidence and decision visible at each point, and blocks the stale version from default retrieval.",
+      "evidence_basis": {
+        "maturity": "DESIGN_HYPOTHESIS_WITH_ADJACENT_PRECEDENT",
+        "supporting_claim_ids": ["C-006", "C-009", "C-010"],
+        "prior_art_families": ["provenance", "agent memory", "organizational learning", "data lineage"]
+      },
+      "speculative_elements": ["Safe cross-task reuse of prior decisions.", "Scalable provenance preservation through memory consolidation."],
+      "human_decisions": ["set retention", "approve cross-task reuse", "correct or supersede", "quarantine suspected poisoning", "restore a prior view"],
+      "cost_boundaries": ["storage", "indexing", "retention compliance", "review of stale or poisoned memory"],
+      "provenance_boundaries": ["Observed evidence, generated interpretation, owner disposition, and outcome are different record types; consolidation creates a derived record and never deletes origin links."],
+      "open_questions": ["What may safely transfer between tasks?", "How should conflicting owner dispositions be scoped and retrieved?"]
+    },
+    {
+      "id": "C11",
+      "name": "Outcome feedback and revisable policy update",
+      "family_id": "F6",
+      "what_it_is": "A controlled loop that compares recorded predictions, decisions, costs, and expected outcomes with defined later observations, then proposes bounded updates.",
+      "why_needed": "A framework cannot claim to learn without a defined outcome, measurement window, attribution boundary, and preserved prior decision state.",
+      "consumes": ["decision and route receipts", "predicted outcome or decision objective", "actual cost", "time-stamped outcome observation", "confounders and missingness", "current policy and rubric versions"],
+      "produces": ["expected-versus-observed comparison", "calibration and error records", "candidate policy or rubric update", "do-not-update decision", "new evidence gap or research question"],
+      "interactions": [
+        "Reads histories from C10.",
+        "Can propose but not silently apply changes to C01, C06, or C07.",
+        "Routes proposed updates to C09 for human disposition."
+      ],
+      "known_failure_modes": [
+        "No outcome was defined before the decision.",
+        "A proxy is treated as the desired consequence.",
+        "Hindsight creates a causal story from correlation.",
+        "Selective outcome capture rewards visible successes.",
+        "A single operator's preference becomes universal policy.",
+        "The system updates automatically from adversarial or contaminated feedback."
+      ],
+      "bounded_implementation_example": "The system records that an extra search was expected to resolve a source-dependence question within twenty minutes; later it records whether it did, the actual cost, and proposes a stopping-rule adjustment for owner review.",
+      "evidence_basis": {
+        "maturity": "DESIGN_AND_EMPIRICAL_HYPOTHESIS",
+        "supporting_claim_ids": ["C-001", "C-002", "C-010"],
+        "prior_art_families": ["calibration", "organizational learning", "decision quality", "human-in-the-loop systems"]
+      },
+      "speculative_elements": ["Causal attribution of decision outcomes in field settings.", "Whether outcome feedback improves routing without reinforcing local bias."],
+      "human_decisions": ["validate outcome definition", "approve or reject policy update", "flag confounders", "scope learning to a domain or operator"],
+      "cost_boundaries": ["measurement effort", "delay to outcome", "expert adjudication", "monitoring and retention"],
+      "provenance_boundaries": ["Outcome observations retain measurement source and time; policy changes are new versions linked to the evidence and approval that motivated them."],
+      "open_questions": ["Which outcomes are observable soon enough to guide learning?", "How can policy improvement be separated from preference fitting?"]
+    }
+  ],
+  "judgment_dimensions": [
+    {
+      "id": "D01",
+      "name": "attention_priority",
+      "question": "What deserves inspection now within this task?",
+      "not_equivalent_to": ["truth", "authority", "general importance"]
+    },
+    {
+      "id": "D02",
+      "name": "domain_source_authority",
+      "question": "For which narrow kinds of claims does this source have relevant competence or standing?",
+      "not_equivalent_to": ["universal trust", "claim support", "operational permission"]
+    },
+    {
+      "id": "D03",
+      "name": "claim_support",
+      "question": "How does exact evidence relate to this exact claim?",
+      "not_equivalent_to": ["source popularity", "recurrence", "model confidence"]
+    },
+    {
+      "id": "D04",
+      "name": "origin_relation",
+      "legacy_compatibility_name": "independence",
+      "question": "Under the declared graph and task, do the observations share a known origin, remain unresolved, or count as separately rooted by stipulation?",
+      "not_equivalent_to": ["different URLs", "different wording", "recurrence", "real-world causal or epistemic independence"]
+    },
+    {
+      "id": "D05",
+      "name": "relevance",
+      "question": "How does this bear on the current question or decision?",
+      "not_equivalent_to": ["truth", "general importance", "owner endorsement"]
+    },
+    {
+      "id": "D06",
+      "name": "enrichment_value",
+      "question": "What could one more operation resolve, at what expected cost and risk?",
+      "not_equivalent_to": ["acceptance", "certainty", "permission"]
+    },
+    {
+      "id": "D07",
+      "name": "action_priority",
+      "question": "Which permitted next step best fits consequence, uncertainty, and budget?",
+      "not_equivalent_to": ["factual conclusion", "attention priority", "truth probability"]
+    },
+    {
+      "id": "D08",
+      "name": "owner_disposition",
+      "question": "What explicit human choice applies to this version in this context?",
+      "not_equivalent_to": ["proof", "objective truth", "permanent preference"]
+    }
+  ],
+  "assessment_attributes": [
+    {
+      "name": "uncertainty",
+      "meaning": "A qualifier on the evidence, assessment, estimate, or route that records what remains unknown or contested; it does not substitute for claim support."
+    },
+    {
+      "name": "possible_consequence",
+      "meaning": "A task-scoped estimate used in review and routing; it does not establish probability, truth, or authorization."
+    }
+  ],
+  "object_types": [
+    "decision_brief",
+    "authorization_policy",
+    "source",
+    "artifact",
+    "capture",
+    "observation",
+    "claim",
+    "evidence_span",
+    "relationship",
+    "assessment",
+    "gap",
+    "signal_candidate",
+    "route",
+    "context_packet",
+    "human_disposition",
+    "generated_output",
+    "outcome",
+    "policy_version"
+  ],
+  "primary_inputs": [
+    "a bounded question or decision",
+    "authorization and privacy constraints",
+    "information candidates and source observations",
+    "expected baselines and existing evidence",
+    "resource budgets",
+    "human corrections and dispositions",
+    "defined outcome observations"
+  ],
+  "primary_outputs": [
+    "a traceable evidence and relationship graph",
+    "separate judgment records rather than a master score",
+    "a reasoned and authorized next action",
+    "a bounded context packet with inclusion and exclusion receipts",
+    "an auditable human disposition",
+    "a versioned outcome comparison and proposed update"
+  ],
+  "state_model": {
+    "note": "States are typed by object; this is a conceptual lifecycle, not one compulsory linear pipeline.",
+    "states": [
+      "PROPOSED",
+      "AUTHORIZED",
+      "NOT_AUTHORIZED",
+      "OBSERVED",
+      "IDENTIFIED",
+      "RELATED",
+      "ASSESSED",
+      "ROUTED",
+      "HELD",
+      "EXCLUDED",
+      "DISPOSED",
+      "PACKAGED",
+      "USED",
+      "OUTCOME_RECORDED",
+      "PRIOR_UPDATE_PROPOSED",
+      "FAILED",
+      "STALE",
+      "SUPERSEDED"
+    ],
+    "transitions": [
+      {"from": "PROPOSED", "to": "AUTHORIZED", "condition": "operation permitted under the current envelope", "receipt_required": true},
+      {"from": "PROPOSED", "to": "NOT_AUTHORIZED", "condition": "permission denied or absent", "receipt_required": true},
+      {"from": "AUTHORIZED", "to": "OBSERVED", "condition": "capture or observation succeeds", "receipt_required": true},
+      {"from": "AUTHORIZED", "to": "FAILED", "condition": "operation fails or yields no usable artifact", "receipt_required": true},
+      {"from": "OBSERVED", "to": "IDENTIFIED", "condition": "source and artifact identity recorded, ambiguity allowed", "receipt_required": true},
+      {"from": "IDENTIFIED", "to": "RELATED", "condition": "typed relationships or explicit unknowns recorded", "receipt_required": true},
+      {"from": "RELATED", "to": "ASSESSED", "condition": "applicable dimensions evaluated separately", "receipt_required": true},
+      {"from": "ASSESSED", "to": "ROUTED", "condition": "permitted next action selected under budget", "receipt_required": true},
+      {"from": "ROUTED", "to": "HELD", "condition": "uncertainty, permission, safety, or cost blocks influence", "receipt_required": true},
+      {"from": "ROUTED", "to": "EXCLUDED", "condition": "material is intentionally omitted for a stated reason", "receipt_required": true},
+      {"from": "ROUTED", "to": "DISPOSED", "condition": "human or authorized policy records a decision", "receipt_required": true},
+      {"from": "DISPOSED", "to": "PACKAGED", "condition": "selected context and receipts are assembled", "receipt_required": true},
+      {"from": "PACKAGED", "to": "USED", "condition": "exact packet is supplied to a named model or human process", "receipt_required": true},
+      {"from": "USED", "to": "OUTCOME_RECORDED", "condition": "predefined outcome is observed with source and time", "receipt_required": true},
+      {"from": "OUTCOME_RECORDED", "to": "PRIOR_UPDATE_PROPOSED", "condition": "comparison warrants a candidate change", "receipt_required": true},
+      {"from": "PRIOR_UPDATE_PROPOSED", "to": "SUPERSEDED", "condition": "authorized new version replaces current use while history remains", "receipt_required": true}
+    ]
+  },
+  "feedback_relationships": [
+    {"from": "C04", "to": "C02", "relationship": "baseline gaps can motivate bounded acquisition"},
+    {"from": "C05", "to": "C02", "relationship": "insufficient or contradictory evidence can motivate targeted acquisition"},
+    {"from": "C06", "to": "C07", "relationship": "separate assessments inform but do not dictate routing"},
+    {"from": "C07", "to": "C02", "relationship": "the router can authorize another acquisition cycle within budget"},
+    {"from": "C09", "to": "C01", "relationship": "owner correction can revise the decision brief or permission envelope"},
+    {"from": "C09", "to": "C03-C08", "relationship": "human review can correct identity, relationships, assessments, routes, or packets without rewriting raw evidence"},
+    {"from": "C10", "to": "C06-C07", "relationship": "authorized prior cases can inform current assessment and routing with provenance"},
+    {"from": "C11", "to": "C01,C06,C07", "relationship": "outcomes can motivate a new policy version only after disposition"}
+  ],
+  "cross_cutting_cost_boundaries": [
+    "money and provider spend",
+    "elapsed time and latency",
+    "tokens, compute, and storage",
+    "human attention and domain-expert capacity",
+    "privacy, confidentiality, and disclosure exposure",
+    "retention and compliance burden",
+    "opportunity cost of delay or abstention"
+  ],
+  "cross_cutting_provenance_boundaries": [
+    "Raw acquisition artifacts remain audit evidence rather than analysis-ready conclusions.",
+    "Normalized, summarized, embedded, or generated material is a new derived entity.",
+    "Observed metadata and inferred relationships use different record types.",
+    "Every assessment and route names its input versions, policy, actor, and time.",
+    "Human dispositions and outcomes never overwrite observations.",
+    "Unknown origin and unresolved origin relation remain explicit unknowns.",
+    "Context packets retain inclusion and exclusion manifests.",
+    "Memory consolidation cannot sever origin binding."
+  ],
+  "cross_cutting_failure_modes": [
+    "single-score collapse",
+    "authority or provenance laundering",
+    "recurrence counted as separately rooted support",
+    "unauthorized acquisition or disclosure",
+    "confirmation-seeking enrichment",
+    "missing or self-serving stopping rule",
+    "meaningful-absence claim without baseline",
+    "velocity claim without repeated time observations",
+    "signal candidate presented as fact",
+    "rubber-stamp human review",
+    "silent memory overwrite",
+    "outcome-free claims of learning",
+    "false precision in utility or confidence",
+    "framework overhead exceeding decision benefit"
+  ],
+  "evidence_maturity_scale": [
+    {"level": "OWNER_PREMISE", "meaning": "Project intent, not external evidence."},
+    {"level": "PRIOR_ART_SUPPORTED", "meaning": "A bounded mechanism or distinction has direct precedent."},
+    {"level": "CONCEPTUAL_SYNTHESIS", "meaning": "The integration or boundary is reasoned from multiple sources but not itself validated."},
+    {"level": "DESIGN_HYPOTHESIS", "meaning": "A proposed component, interface, or policy requiring evaluation."},
+    {"level": "CASE_ILLUSTRATION", "meaning": "A bounded product artifact illustrates a need or pattern but does not validate the framework."},
+    {"level": "EMPIRICAL_HYPOTHESIS", "meaning": "A falsifiable prediction for later study; no result is asserted."}
+  ],
+  "implementation_boundary": {
+    "required_conceptual_responsibilities": [
+      "task and authorization framing",
+      "identity and provenance",
+      "claim and relationship representation",
+      "separate assessment dimensions",
+      "bounded routing and stopping",
+      "human correction",
+      "versioned outcome feedback when learning is claimed"
+    ],
+    "not_required_as_separate_services": true,
+    "not_a_universal_object_model": true,
+    "not_evidence_of_enterprise_readiness": true,
+    "not_validation": ["Alpha Solver", "Signal Foundry", "this JSON map", "a local interactive site"]
+  },
+  "open_framework_questions": [
+    "What is the smallest set of typed objects and judgments that measurably improves a decision?",
+    "Which tasks warrant this overhead and which should use simpler retrieval or direct generation?",
+    "Can reviewers apply the distinctions consistently across domains?",
+    "How should dependence and common origin be represented when only partially known?",
+    "How should utilities, asymmetric harms, and unmeasured costs shape stopping rules?",
+    "What provenance survives summarization and memory while remaining usable?",
+    "How can outcome learning avoid preference capture, hindsight bias, and causal overclaim?",
+    "How does the framework behave under source manipulation, coordinated amplification, or memory poisoning?",
+    "Would the exact standalone v13 archive reveal any material difference from the inspected live reference?"
+  ]
+}

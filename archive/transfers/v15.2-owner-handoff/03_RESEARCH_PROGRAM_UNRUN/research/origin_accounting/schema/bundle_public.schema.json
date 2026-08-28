@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/bundle-public.schema.json",
+  "title": "Prompt-visible origin-accounting bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundle_id", "proposition_family_id", "claim_text", "report_ids", "report_order", "domain", "observed_date_range", "bundle_text_sha256"],
+  "properties": {
+    "bundle_id": {"type": "string", "pattern": "^BD-[A-Z2-7]{10}$"},
+    "proposition_family_id": {"type": "string", "pattern": "^PF-[A-Z2-7]{10}$"},
+    "claim_text": {"type": "string", "minLength": 40, "maxLength": 300},
+    "report_ids": {"type": "array", "minItems": 4, "maxItems": 6, "uniqueItems": true, "items": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"}},
+    "report_order": {"type": "array", "minItems": 4, "maxItems": 6, "uniqueItems": true, "items": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"}},
+    "domain": {"enum": ["technical", "environmental"]},
+    "observed_date_range": {"type": "object", "additionalProperties": false, "required": ["start", "end"], "properties": {"start": {"type": "string"}, "end": {"type": "string"}}},
+    "bundle_text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

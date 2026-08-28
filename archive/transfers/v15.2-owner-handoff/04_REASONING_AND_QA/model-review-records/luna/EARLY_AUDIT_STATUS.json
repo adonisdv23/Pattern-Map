@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-17T21:48:55Z",
+  "review_policy": {
+    "direct_agents_authorized": 4,
+    "direct_agents_started": 4,
+    "recursive_agents_allowed": false,
+    "write_access_allowed": false,
+    "model_output_is_evidence": false
+  },
+  "agents": [
+    {
+      "sequence": 1,
+      "task": "/root/v13_recovery_audit",
+      "role": "V13_RECOVERY_AND_AUTHORIAL_INTENT_AUDIT",
+      "requested_model": "gpt-5.6-luna",
+      "selected_model": null,
+      "reasoning_effort": "max",
+      "fork_turns": "none",
+      "status": "COMPLETED_WITH_MISSING_SOURCE_LIMITATION",
+      "file_mutation": "NONE_REPORTED"
+    },
+    {
+      "sequence": 2,
+      "task": "/root/prior_art_audit",
+      "role": "PRIOR_ART_AND_ADJACENT_FIELDS_AUDIT",
+      "requested_model": "gpt-5.6-luna",
+      "selected_model": null,
+      "reasoning_effort": "max",
+      "fork_turns": "none",
+      "status": "COMPLETED_READ_ONLY",
+      "file_mutation": "NONE_REPORTED"
+    },
+    {
+      "sequence": 3,
+      "task": "/root/framework_boundary_audit",
+      "role": "FRAMEWORK_ENTERPRISE_AND_CASE_STUDY_BOUNDARY_AUDIT",
+      "requested_model": "gpt-5.6-luna",
+      "selected_model": null,
+      "reasoning_effort": "max",
+      "fork_turns": "none",
+      "status": "COMPLETED_READ_ONLY",
+      "file_mutation": "NONE_REPORTED"
+    },
+    {
+      "sequence": 4,
+      "task": "/root/final_reader_audit",
+      "role": "FINAL_READER_EXPERIENCE_AND_VISUAL_SYSTEM_AUDIT",
+      "requested_model": "gpt-5.6-luna",
+      "selected_model": null,
+      "reasoning_effort": "max",
+      "fork_turns": "all",
+      "status": "COMPLETED_READ_ONLY",
+      "file_mutation": "NONE_REPORTED",
+      "summary_file": "reviews/luna/FINAL_READER_AUDIT_SUMMARY.md",
+      "disposition_file": "reviews/luna/CODEX_DISPOSITION_OF_FINAL_LUNA_READER_AUDIT.md"
+    }
+  ]
+}

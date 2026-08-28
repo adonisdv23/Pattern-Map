@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "pattern-map.six-families.v16",
+  "framework_id": "pattern-map-discrimination-layer-v16",
+  "status": "design-framework-not-validated",
+  "description": "Stable six-family map for the Pattern Recognition / Discrimination Layer v16. The layer is a responsibility, not a mandatory technical component.",
+  "public_map": true,
+  "families": [
+    {
+      "id": "F1",
+      "slug": "peripheral-signal",
+      "name": "Peripheral signal",
+      "reader_question": "What might the default path have overlooked?",
+      "purpose": "Widen a task-scoped information aperture beyond the obvious route while treating every result as a candidate for inspection.",
+      "mechanism": "Bounded alternate acquisition routes followed by source weighing, comparison, and disconfirmation.",
+      "inputs": ["decision brief", "default-path record", "expected perspectives", "allowed sources", "remaining budget"],
+      "observable_actions": ["write the default path", "choose one to three bounded expansion routes", "record candidate identity and acquisition result", "send candidates through weighing and comparison before influence"],
+      "outputs": ["expansion route", "candidate signal record", "capture or failure receipt", "inspect/hold/exclude/escalate disposition"],
+      "dependencies": ["decision-brief", "permission-envelope", "source-weighing", "structured-patterns"],
+      "failure_modes": ["obscurity treated as truth", "novelty treated as relevance", "failed capture treated as absence", "unbounded scope expansion"],
+      "boundaries": ["less-visible is a reason to inspect, not a reason to believe", "peripheral is relative to the task and observed corpus", "technical access is not permission"],
+      "implementation_levels": {
+        "lightweight": "One bounded alternate route recorded in an evidence register.",
+        "moderate": "Route coverage, source identities, exclusion reasons, and missing-perspective check.",
+        "advanced": "Task-scoped route planner or corpus-coverage view with human review and a hard enrichment budget."
+      },
+      "when_not_to_use": ["the question is purely administrative and no evidence choice is at issue", "the task has no permission to acquire beyond supplied material", "the consequence and time window make any expansion less valuable than a clear abstention"]
+    },
+    {
+      "id": "F2",
+      "slug": "source-weighing",
+      "name": "Source weighing",
+      "reader_question": "What role does each source play for this exact claim?",
+      "purpose": "Keep source role, relevant track-record evidence, claim-scoped authority, support, relevance, recurrence, origin, provenance, and permission distinct.",
+      "mechanism": "Claim-level evidence records with typed relationships and explicit source roles.",
+      "inputs": ["source and artifact identity", "exact evidence spans", "candidate claims", "domain evidence standard", "relevant track-record evidence or UNKNOWN", "origin relations", "permission policy"],
+      "observable_actions": ["split the answer into checkable claims", "link each claim to exact passages", "record source role, relevant track-record evidence, and claim-scoped authority separately", "assess support, contradiction, qualification, or insufficiency separately", "record origin and recurrence state", "record acquisition, retention, disclosure, and action permissions"],
+      "outputs": ["source-role record", "claim/evidence relationship", "uncertainty and contradiction links", "influence recommendation"],
+      "dependencies": ["evidence-spine", "decision-brief", "structured-patterns"],
+      "failure_modes": ["universal trust score", "citation treated as entailment", "authority transferred across claims", "recurrence treated as corroboration"],
+      "boundaries": ["provenance is not correctness", "authority is not universal trust", "recurrence is not independent support", "technical access is not permission"],
+      "implementation_levels": {
+        "lightweight": "Four-column note: source role, relevant track-record evidence, what it supports, and what remains unknown.",
+        "moderate": "Claim-level evidence register with typed relationship states.",
+        "advanced": "Versioned source, artifact, derivation, and claim graphs with domain review."
+      },
+      "when_not_to_use": ["the output is a purely creative transformation of user-supplied text and no factual claim is added", "the task has no external evidence and a simple uncertainty note is sufficient"]
+    },
+    {
+      "id": "F3",
+      "slug": "velocity-motion",
+      "name": "Velocity / motion",
+      "reader_question": "What is changing unusually relative to a relevant baseline?",
+      "purpose": "Notice a rate, direction, or change that merits examination against a defined history or comparison set.",
+      "mechanism": "Repeated comparable time-stamped observations plus a stated baseline and measurement-change check.",
+      "inputs": ["time-stamped observations", "measured attribute", "denominator", "baseline", "comparison set", "collection-change notes"],
+      "observable_actions": ["define the measure and event-time rule", "collect at least two comparable observations", "state the baseline", "check seasonality, measurement, denominator, and collection changes", "label motion as observed, uncertain, or unsupported"],
+      "outputs": ["motion observation", "baseline and assumptions", "anomaly or no-anomaly state", "bounded next action"],
+      "dependencies": ["structured-patterns", "absence-memory", "evidence-spine"],
+      "failure_modes": ["one timestamp called velocity", "measurement drift ignored", "motion treated as forecast", "post-outcome information leaked into expectation"],
+      "boundaries": ["change is an attention prompt, not a conclusion", "one observation is not velocity", "unusual motion is not a forecast"],
+      "implementation_levels": {
+        "lightweight": "Current/prior comparison with written baseline and one alternative explanation.",
+        "moderate": "Versioned series with denominator, time window, and collection-change notes.",
+        "advanced": "Versioned time-series and anomaly tooling with domain-reviewed thresholds."
+      },
+      "when_not_to_use": ["there is only one observation and no defensible baseline", "the task cannot define comparable time or measurement boundaries"]
+    },
+    {
+      "id": "F4",
+      "slug": "absence-memory",
+      "name": "Absence + memory",
+      "reader_question": "What should be present but is not, and what prior context changes the meaning of now?",
+      "purpose": "Detect typed gaps against an expected baseline and retrieve relevant prior observations, decisions, corrections, and outcomes without overwriting history.",
+      "mechanism": "Baseline-linked gap records and versioned, source-bound memory.",
+      "inputs": ["expected baseline", "observation boundary", "retrieval results", "prior records", "retention policy", "version links"],
+      "observable_actions": ["state what was expected and why", "test whether the observation boundary supports a gap", "classify missing, inaccessible, unauthorized, failed, stale, and superseded states", "retrieve prior records by task, time, and source scope", "link current interpretation without overwriting prior records"],
+      "outputs": ["typed gap record", "memory citations", "staleness or supersession flag", "acquire/hold/caveat/escalate route"],
+      "dependencies": ["decision-brief", "evidence-spine", "learning-loop"],
+      "failure_modes": ["absence asserted without baseline", "failed capture called nonexistence", "memory summary overwrites evidence", "stale preference retrieved as fact"],
+      "boundaries": ["a gap is not proof of nonexistence", "private, deleted, unavailable, or unauthorized material is a typed gap", "memory is not a timeless fact store"],
+      "implementation_levels": {
+        "lightweight": "Expected/observed/unknown table with one prior-state citation.",
+        "moderate": "Append-only observations, corrections, and supersession links.",
+        "advanced": "Versioned memory retrieval with source-bound filters, stale flags, and correction workflows."
+      },
+      "when_not_to_use": ["the task has no relevant prior state and no expected baseline", "retaining the material would violate a stated minimization or deletion rule"]
+    },
+    {
+      "id": "F5",
+      "slug": "structured-patterns",
+      "name": "Structured patterns",
+      "reader_question": "What becomes visible through explicit comparison?",
+      "purpose": "Compare peers, periods, attributes, structures, and relationships explicitly enough to expose recurrence, difference, and missing perspective.",
+      "mechanism": "A declared unit of comparison, matched or intentionally asymmetric set, and typed relationship record.",
+      "inputs": ["comparable records", "attributes", "time windows", "relationship evidence", "origin links", "gap baseline"],
+      "observable_actions": ["define the comparison question and unit", "align definitions, time windows, and denominators", "mark matches, differences, unknowns, and incomparable fields", "trace shared origin or pathway where recurrence matters", "state what the comparison cannot establish"],
+      "outputs": ["comparison matrix", "typed relationship edges", "origin clusters or unknowns", "candidate interpretations for review"],
+      "dependencies": ["source-weighing", "evidence-spine", "absence-memory"],
+      "failure_modes": ["different URLs called independent", "similarity called causation", "peer set hides selection bias", "unknown origin forced into a label"],
+      "boundaries": ["comparison is not equivalence", "recurrence is not corroboration", "unknown relations stay unknown"],
+      "implementation_levels": {
+        "lightweight": "Two- or three-row comparison table with explicit not-comparable cells.",
+        "moderate": "Versioned comparison matrices and origin notes.",
+        "advanced": "Typed relationship graph and queryable cohort definitions with human entity-resolution review."
+      },
+      "when_not_to_use": ["there is no defensible comparison unit", "the apparent peers differ on a decision-critical dimension that cannot be normalized"]
+    },
+    {
+      "id": "F6",
+      "slug": "learning-loop",
+      "name": "Learning loop",
+      "reader_question": "What did we expect, what happened, and what bounded update is justified?",
+      "purpose": "Compare recorded expectations, routes, decisions, costs, and defined outcomes, then propose a bounded update while preserving the original record.",
+      "mechanism": "Outcome review with a predeclared outcome window, attribution boundary, missingness state, and dispositioned update proposal.",
+      "inputs": ["original decision and influence receipts", "expected outcome", "outcome window", "observed result", "actual cost", "confounders and missingness", "policy versions"],
+      "observable_actions": ["record expectation before the outcome window closes", "define outcome and attribution boundary", "capture observed outcome, cost, corrections, and confounders", "compare expected and observed without rewriting the receipt", "propose one bounded update", "request authorized disposition before applying a policy or memory change"],
+      "outputs": ["outcome review", "mismatch or calibration note", "bounded update proposal", "disposition record"],
+      "dependencies": ["decision-brief", "versioned-memory", "owner-disposition"],
+      "failure_modes": ["hindsight narrative", "correlation called causation", "satisfaction used as sole outcome", "policy changed without review", "history overwritten"],
+      "boundaries": ["outcomes preserve the original record", "learning proposes a bounded update; it does not silently apply one", "a later outcome does not prove earlier reasoning was right or wrong"],
+      "implementation_levels": {
+        "lightweight": "Expectation/outcome table with one proposed change.",
+        "moderate": "Append-only outcome reviews linked to receipts and versions.",
+        "advanced": "Approved matched-budget policy comparisons preserving null, harmful, shortcut, fragility, and non-transfer results."
+      },
+      "when_not_to_use": ["there is no defined outcome or measurement window", "the proposed update would affect external people or systems without an authorized review"]
+    }
+  ],
+  "invariants": [
+    "Peripheral is a candidate status, not a truth status.",
+    "Recurrence is not independent corroboration.",
+    "Provenance is not correctness.",
+    "Technical access is not operational permission.",
+    "Motion and absence are baseline-dependent.",
+    "Unknown relations stay unknown.",
+    "Human disposition is a decision record, not a fact.",
+    "Outcome learning proposes bounded updates and preserves history."
+  ],
+  "implementation_note": "A conforming implementation may use any stack or no software beyond documents. The six families are responsibilities and checks, not mandatory components or a claim of effectiveness."
+}

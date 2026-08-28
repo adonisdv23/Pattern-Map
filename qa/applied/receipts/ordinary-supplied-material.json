@@ -1,0 +1,30 @@
+{
+  "receipt_id": "DR-ORDINARY-001",
+  "operating_level": "ORDINARY",
+  "evidence_selection": "NONE",
+  "consequence": "LOW",
+  "supplied_material_only": true,
+  "external_action": false,
+  "permission": {
+    "technical_access": true,
+    "authorized": true,
+    "disclosure_allowed": true
+  },
+  "budget": {
+    "remaining_minutes": 3,
+    "limit_minutes": 5
+  },
+  "assumptions": [
+    "The requested transformation is limited to the supplied material."
+  ],
+  "unchecked_boundaries": [
+    "No new evidence was acquired, compared, or recalled from memory."
+  ],
+  "route": "ANSWER",
+  "stop_status": "COMPLETE",
+  "stop_reason": "Reversible supplied-material transformation completed without evidence selection.",
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}
