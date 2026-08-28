@@ -7,7 +7,7 @@
   "evidence_note": "The manifest covers canonical content checkpoint 874a0a8 plus the post-Ultracode reusable-contract source checkpoint c86e537: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; a genuine ordinary supplied-material receipt; F2 role/track-record/claim-authority separation; fail-closed reviewed learning and selected influence; exact ordered F1-F6 schema identity; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes; print-safe evidence routes and tables; fresh-clone-safe Signal Foundry handoffs; all-payload portable marker scanning; deterministic exact-commit bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. Claude and Luna reviews were advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 199,
-  "total_bytes": 11462477,
+  "total_bytes": 11462624,
   "files": [
     {
       "path": ".gitignore",
@@ -966,8 +966,8 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 435961,
-      "sha256": "fbe07fd7bf50bae76948e33114c2b96780ab7bcd68325ba196cd15a688256c89"
+      "bytes": 436108,
+      "sha256": "00eaf9d579c09b9728f82c9635b27853af55fb01485764b39bf662a4cde3abfe"
     },
     {
       "path": "site/package-lock.json",
