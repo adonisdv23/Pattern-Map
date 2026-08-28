@@ -4,10 +4,10 @@
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
   "generated_date": "2026-08-28",
   "content_site_source_and_pdf_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",
-  "evidence_note": "The manifest covers canonical content checkpoint 874a0a8 plus the post-Ultracode reusable-contract source checkpoint c86e537: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; a genuine ordinary supplied-material receipt; F2 role/track-record/claim-authority separation; fail-closed reviewed learning and selected influence; exact ordered F1-F6 schema identity; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes; print-safe evidence routes and tables; fresh-clone-safe Signal Foundry handoffs; all-payload portable marker scanning; deterministic exact-commit bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. Claude and Luna reviews were advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
+  "evidence_note": "The manifest covers canonical content checkpoint 874a0a8 plus the post-Ultracode reusable-contract source checkpoint c86e537: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; a genuine ordinary supplied-material receipt; F2 role/track-record/claim-authority separation; fail-closed reviewed learning and selected influence; exact ordered F1-F6 schema identity; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes with contrast-safe demoted callout headings; a non-overlapping normal-flow Home Apply preview; print-safe evidence routes and tables; fresh-clone-safe Signal Foundry handoffs; all-payload portable marker scanning; deterministic exact-commit bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. Claude and Luna reviews were advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 199,
-  "total_bytes": 11462624,
+  "total_bytes": 11467971,
   "files": [
     {
       "path": ".gitignore",
@@ -96,8 +96,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 78794,
-      "sha256": "f05d98683524c04e9af20ac74b9f129547f4afdffab86a698dbf81cfe69d4779"
+      "bytes": 79564,
+      "sha256": "53c47ab93866fdeec6623baf879029a551c81e5b36ea368044d36e3494204cf3"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -126,8 +126,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 52893,
-      "sha256": "999cefa7ae7382f5c45b34689f5650446a751ae6fcefc44a8912f54386acaccd"
+      "bytes": 54465,
+      "sha256": "c55e0385aaeb9ca8954aaf4e095c8beab702f807459e002549afef872f949579"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -296,8 +296,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 15530,
-      "sha256": "96e1d9333988467e386038c9d6d682a9083366064895e29c899957cbe778e92a"
+      "bytes": 15624,
+      "sha256": "bc8a0ac8874b4f843bf92a52a4758d3753ab00107a96211a19563afdac7e2d0b"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -421,8 +421,8 @@
     },
     {
       "path": "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
-      "bytes": 10118,
-      "sha256": "a0471c01fb5eba5b5d63c1ec384d1ec27564f6e9dfede14e37408eaaae0d934f"
+      "bytes": 11901,
+      "sha256": "9a26fc2c72ed4639cfe0f83300f531b6b2b45a204177cdb075fd4c844d0c7bed"
     },
     {
       "path": "qa/handoff/test_portable_bundle.py",
@@ -956,8 +956,8 @@
     },
     {
       "path": "site/check.mjs",
-      "bytes": 23301,
-      "sha256": "81acb37969b97d0bca05a339ba9b2cc884137c46476a472377f9689a0a4c0453"
+      "bytes": 23913,
+      "sha256": "61b904628b6c26c0cbedf00958199efaf2dafc445dabaefc09a9c4c329aacdd3"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
@@ -966,8 +966,8 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 436108,
-      "sha256": "00eaf9d579c09b9728f82c9635b27853af55fb01485764b39bf662a4cde3abfe"
+      "bytes": 436366,
+      "sha256": "0bf60f68f06ff1e7bc652f92696cb29e72d9ac0a4fb2964915f3e3f6352eef4a"
     },
     {
       "path": "site/package-lock.json",
@@ -991,8 +991,8 @@
     },
     {
       "path": "site/src/site.css",
-      "bytes": 79749,
-      "sha256": "e8d1630e04c2307dec48e5f352a5995935742abf8472cef9575de243d095fe7e"
+      "bytes": 80007,
+      "sha256": "e2af005cdbdd6a8f187068c0dc10af84d89bf2ad83b91084de40d208829250a3"
     },
     {
       "path": "site/src/site.js",

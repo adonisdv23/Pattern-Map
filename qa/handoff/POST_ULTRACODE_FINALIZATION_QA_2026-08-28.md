@@ -101,6 +101,37 @@ The complete twelve-stage provider-free owner-review runner must still pass on
 the final evidence commit before a new packet is sealed. The final handoff may
 report that exact later execution; this record does not preclaim a future run.
 
+## Final live browser pass
+
+A final in-app Browser pass used the generated local site and standalone HTML,
+not only screenshots or static source inspection. It scrolled the Home, Map,
+Apply, Sources, and History routes; exercised F2 family emphasis and the common-
+origin term panel; and checked desktop and 390-pixel layouts. The routed site
+remained contained and readable, the six families remained visible, the Apply
+surface stacked below its controls at narrow width, and the repaired Sources
+and History routes used the full content column.
+
+Two reproduced presentation defects were corrected before package sealing:
+
+- **VIS-LIVE-01 — standalone inverse-heading contrast.** Route headings are
+  demoted from `h2` to `h3` when all ten routes are composed into the standalone
+  export. Four dark callouts styled only their `h2`, leaving the standalone
+  `h3` nearly black on navy/purple. The inverse-heading selector now covers both
+  levels, and the generated check fails if the demoted-heading contract is
+  absent. Browser-computed foreground/background values are now
+  `rgb(246, 243, 233)` over `rgb(22, 45, 54)` or `rgb(59, 48, 76)` for all four
+  callouts.
+- **VIS-LIVE-02 — Home Apply-preview overlap.** The absolutely positioned
+  caption overlaid the second planning row at desktop width. The caption now
+  occupies its own normal-flow grid row. A live geometry recheck found no leaf-
+  text overlap at 1280 or 390 pixels and no page-level horizontal overflow.
+
+The standalone export was also checked as one `main` containing one
+`.page-content` and ten direct route sections. Sources, Research, and History
+each measured the same full content width. These browser observations are
+presentation evidence only; they do not replace the physical/manual gates
+below.
+
 ## Remaining honest gates
 
 - owner and mentor comprehension, voice, and visual taste;

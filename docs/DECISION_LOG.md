@@ -1042,3 +1042,33 @@ site build/check contracts; accepted source checkpoint `c86e537`.
 A01–A17; source-role/authority/permission separation; ordinary-work escape
 hatch; exact cross-computer reproducibility; no-results and prohibited-action
 boundaries.
+
+## D-032 — Correct only reproduced late visual defects before sealing
+
+**Date:** 2026-08-28
+
+**Status:** Accepted; owner/manual gates remain open
+
+The final in-app Browser pass preserved the ten-route design and found two
+specific composition defects rather than evidence for a broad redesign. First,
+standalone route composition demotes each route heading by one level; four dark
+callouts styled `h2` but not the resulting `h3`, producing low-contrast dark
+headings on navy or purple only in the all-routes export. The inverse-heading
+contract now covers both levels. Second, the Home Apply preview placed its
+caption absolutely over the second planning row. The caption now occupies a
+third normal-flow grid row.
+
+Both changes preserve the human-first opening, three principal doors, all six
+families, progressive disclosure, the planning-only Apply boundary, and the
+separate unrun Echo track. Live checks found equal full-width containment for
+standalone Sources/Research/History, intended light-on-dark computed colors for
+all four callouts, no preview text overlap at 1280 or 390 pixels, and no page-
+level horizontal overflow. These observations do not certify physical keyboard,
+screen-reader, real zoom, forced-colors, native print, hardware-touch, or owner
+taste.
+
+**Evidence:** `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`;
+`site/check.mjs`; current generated routes and standalone export.
+
+**Governing requirement:** owner visual expectation; A01–A06/A12/A13/A17;
+flow-native, comprehensible teaching surfaces; no-deploy/no-publish boundary.

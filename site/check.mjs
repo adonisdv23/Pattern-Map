@@ -171,6 +171,7 @@ const main = () => {
   const applyPreview = root.match(/<span class="door-preview door-preview-apply"[\s\S]*?<\/span><\/span>/)?.[0] ?? "";
   assert(applyPreview.includes("TASK CONDITIONS") && applyPreview.includes("recommendation") && applyPreview.includes("planned boundary"), "Home Apply preview does not use planning semantics");
   assert(!applyPreview.includes("DECISION BRIEF") && !applyPreview.includes("human disposition"), "Home Apply preview still implies completed records or decisions");
+  assert(/\.door-preview-apply \.preview-caption\s*\{[^}]*position:\s*static;[^}]*grid-column:\s*1 \/ -1/i.test(css), "Home Apply preview caption can overlap its planning rows");
   for (const guidedSection of ["guided-opening", "guided-families", "guided-relations", "guided-apply", "guided-examples", "guided-boundary"]) assert(guided.includes(`id="${guidedSection}"`), `Guided route section missing: ${guidedSection}`);
   assert(guided.includes("Approximately 8–12 minutes; editorial estimate only."), "Guided route reading-time caveat missing");
   for (const example of ["specialist signal", "explicit baseline", "independence: UNKNOWN"]) assert(examples.includes(example), `teaching pattern missing: ${example}`);
@@ -229,6 +230,10 @@ const main = () => {
     assert(sectionIndex >= 0, `standalone route section missing: ${section}`);
     assert(sectionIndex > standaloneContentStart && sectionIndex < standaloneContentEnd, `standalone route escaped page-content: ${section}`);
     assert(standaloneStructure.standaloneParents.get(section) === "page-content", `standalone route is not a direct page-content child: ${section}`);
+  }
+  for (const inverseCallout of ["boundary-banner", "source-notice", "research-status", "echo-callout"]) {
+    assert(new RegExp(`\\.${inverseCallout} h3\\b`).test(css), `standalone-demoted ${inverseCallout} heading lacks inverse-color styling`);
+    assert(new RegExp(`class="[^"]*${inverseCallout}[^"]*"[\\s\\S]*?<h3\\b`).test(standalone), `standalone ${inverseCallout} heading is not covered by the demoted-heading contract`);
   }
   for (const html of [sources, standalone]) {
     assert(!/<a\b[^>]*<(?:\/?em|\/?strong|\/?code)\b/i.test(html), "inline markup corrupted an anchor start tag");
