@@ -420,6 +420,19 @@ class PortableBundleTests(unittest.TestCase):
             "BUNDLE_METADATA.json.source_commit",
         )
 
+        branch_state = (
+            self.bundle_root / "handoff/BRANCH_AND_PR_STATE.md"
+        ).read_text(encoding="utf-8")
+        normalized_state = " ".join(branch_state.split()).lower()
+        self.assertIn("resolve its current head at use", normalized_state)
+        self.assertIn("generated `bundle_metadata.json`", normalized_state)
+        for stale_future_claim in (
+            "evidence/checksum commit follows",
+            "final metadata readback occurs after the evidence push",
+            "after that final push, remote state is read back",
+        ):
+            self.assertNotIn(stale_future_claim, normalized_state)
+
     def test_zip_sidecar_safety_and_forbidden_payloads(self) -> None:
         sidecar = self.sidecar_path.read_text(encoding="utf-8")
         match = re.fullmatch(r"([0-9a-f]{64})  ([^\n]+)\n", sidecar)

@@ -7,7 +7,7 @@
   "evidence_note": "The manifest covers canonical content checkpoint 874a0a8 plus the post-Ultracode reusable-contract source checkpoint c86e537: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; a genuine ordinary supplied-material receipt; F2 role/track-record/claim-authority separation; fail-closed reviewed learning and selected influence; exact ordered F1-F6 schema identity; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes with contrast-safe demoted callout headings; a non-overlapping normal-flow Home Apply preview; print-safe evidence routes and tables; fresh-clone-safe Signal Foundry handoffs; all-payload portable marker scanning; deterministic exact-commit bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. Claude and Luna reviews were advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 199,
-  "total_bytes": 11468303,
+  "total_bytes": 11469273,
   "files": [
     {
       "path": ".gitignore",
@@ -261,8 +261,8 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 3524,
-      "sha256": "302714679cc9f9c26b3968287a83a51b7d3aee8f5af903eda1ccd93d9ef435ef"
+      "bytes": 3713,
+      "sha256": "f586de93729abf64f2912e5dba9ffc53118aae9733e875ec59964b0c61c56222"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
@@ -421,13 +421,13 @@
     },
     {
       "path": "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
-      "bytes": 12233,
-      "sha256": "ce4cf07093a771fb5d710ab9f8c06803dcde38218ce6738cd5f3ac330feef3fe"
+      "bytes": 12373,
+      "sha256": "61004cd19c3aa970714a0a26cf6f209ab92a93ac5f1bcfef104645501196eb34"
     },
     {
       "path": "qa/handoff/test_portable_bundle.py",
-      "bytes": 22552,
-      "sha256": "cc1fe66c08d11bf4551ac4e2dcc4bc5cae5bba29deebb98a395b85bc50daf115"
+      "bytes": 23193,
+      "sha256": "4133d408f9d041e62b99e2df22ebd95a6c3db23b7289132b770a4b1c8d828853"
     },
     {
       "path": "qa/interaction/apply-state-contract.spec.mjs",
