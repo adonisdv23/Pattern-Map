@@ -1,10 +1,10 @@
 # Branch and draft pull-request state
 
-Status date: 2026-08-27
+Status date: 2026-08-28
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `874a0a8` canonical converged source; evidence/checksum commit follows | Authorized push target; draft PR #1 remains open and unmerged; final metadata readback occurs after the evidence push |
+| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `874a0a8` canonical content checkpoint; `c86e537` post-Ultracode contract source; evidence/checksum commit follows | Authorized push target; draft PR #1 remains open and unmerged; final metadata readback occurs after the evidence push |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | EP v1.1 design checkpoint | `codex/pattern-map-v16-echo-v1-1` | `c141eac` | Integrated into foundation as `9fa2355`; local source branch not required by the downstream handoff |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
@@ -19,6 +19,8 @@ Draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate
 - Head branch: `codex/pattern-map-v16-foundation`.
 - Canonical converged source checkpoint:
   `874a0a8e09f0bde11532cf873087865addb7d973`.
+- Post-Ultracode reusable-contract checkpoint:
+  `c86e53764f6e33b62097f0424125b5922441ce58`.
 - Immediate predecessor before terminal geometry, vocabulary, portability, and
   package corrections:
   `bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91` (review history).
@@ -35,10 +37,13 @@ the bounded ChatGPT Pro corrections, site hygiene, Signal handoff, EP v1.1,
 the owner visual/export repair that restores standalone route containment,
 the desktop term-panel clearance regression, canonical operator tokens,
 path-neutral downstream guidance, and the exact-commit portable builder. The
+post-Ultracode checkpoint adds scoped F2 track record, reviewed-learning and
+permission guards, a genuine ordinary receipt, exact schema identity,
+all-payload package hygiene, and fresh-clone-safe Signal Foundry inputs. The
 following handoff and verification commit records current evidence and
-refreshes the bounded package manifest. After that final push, the PR body is
-read back from GitHub so no self-referential file is mistaken for proof of its
-later metadata state. The routed-site screenshots from
+refreshes the bounded package manifest. After that final push, remote state is
+read back so no self-referential file is mistaken for proof of its later
+metadata state. The routed-site screenshots from
 `a319794` remain historical QA, not current Map/Apply evidence.
 
 The draft PR is an owner-review surface only. It does not authorize merge,

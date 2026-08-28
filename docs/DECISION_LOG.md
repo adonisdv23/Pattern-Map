@@ -985,3 +985,60 @@ checkpoint.
 **Governing requirement:** locked owner intent; progressive disclosure;
 cross-computer reproducibility; A01–A17; no-merge/no-deploy/no-publish/no-
 study/no-spend boundary.
+
+## D-031 — Finalize the reusable contracts without expanding the framework
+
+**Date:** 2026-08-28
+
+**Status:** Accepted with revision; owner/manual gates remain open
+
+Claude Ultracode and two independent Luna Max lanes reviewed exact baseline
+`d5b3431a02d5ffc4d084baa278d7a18fd98a71ad`. Their reports are advisory under
+the repository authority order. Findings were reproduced before acceptance;
+the broad essay, six-family thesis, three-door site, and permanent Echo split
+were not reopened merely because an outside review was detailed.
+
+The accepted post-Ultracode source checkpoint is
+`c86e53764f6e33b62097f0424125b5922441ce58`. It makes five bounded classes of
+correction:
+
+1. F2 now records source role, relevant track-record evidence, claim-scoped
+   authority, support, origin/recurrence, relevance, and permission separately.
+   Track record is scoped and may remain `UNKNOWN`; it is not a reputation
+   score.
+2. F6 cannot claim `LEARNING_REVIEWED` without a review, an observed outcome or
+   explicit missing-outcome reason, and human disposition. No observed result
+   fixture was invented.
+3. Stage 0 has a genuinely ordinary supplied-material receipt with no layered
+   evidence records; the former “ordinary” fixture is correctly labeled
+   lightweight. `OUTCOME_REVIEW` remains an artifact rather than a route, and
+   selected influence requires authorized material plus an actual selected
+   item.
+4. The Draft 2020-12 schema locks the exact ordered F1–F6 ID/slug/name tuple,
+   while site presentation adapters retain editorial freedom behind an exact
+   coverage contract.
+5. The cross-computer packet distinguishes required tracked inputs from
+   optional source-machine evidence. Local audit `4a6ed78` and untracked
+   Signal Foundry guidance may be absent in a fresh clone; their absence is
+   recorded and nonblocking, while required current contracts still fail
+   closed. Package verification scans all payload types for high-signal
+   private-key/source-path markers and documents selected-subset links.
+
+A generic project-adoption brief and conformance dictionary are deferred until
+a second real downstream project demonstrates repeated transfer friction.
+Adding them now would duplicate existing artifacts and weaken the owner's
+anti-bureaucracy boundary. A universal source reputation score, new route,
+second ledger, and populated outcome “result” fixture are rejected.
+
+The 2026-08-27 `d5b3431` portable packet remains preserved. The builder is
+configured to name it as the prior packet only when a new exact-commit packet
+is actually sealed; this decision does not preclaim that later file.
+
+**Evidence:** `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`;
+`qa/applied/validate_framework.py`; `qa/handoff/test_portable_bundle.py`;
+site build/check contracts; accepted source checkpoint `c86e537`.
+
+**Governing requirement:** D-001/D-007/D-008/D-028/D-030; locked owner intent;
+A01–A17; source-role/authority/permission separation; ordinary-work escape
+hatch; exact cross-computer reproducibility; no-results and prohibited-action
+boundaries.

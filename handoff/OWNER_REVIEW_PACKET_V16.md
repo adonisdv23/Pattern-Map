@@ -12,6 +12,14 @@ package corrections after immediate predecessor `bc7e7c5`. The following
 evidence/checksum commit refreshes this packet and deterministic manifest
 without replacing that source checkpoint.
 
+Post-Ultracode source checkpoint `c86e537` then hardens the reusable contracts
+without changing that content checkpoint: F2 restores scoped track record and
+separates role/authority; F6 reviewed learning fails closed; Stage 0 has a
+genuine ordinary receipt; the schema locks ordered F1–F6 identity; and the
+cross-computer handoff treats source-machine-only inputs as optional while
+required tracked contracts remain blocking. The full disposition is in
+`qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
+
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
 and Apply semantics. Current evidence is the exact-checkpoint Pro correction
@@ -70,6 +78,7 @@ GitHub owner-review surface: draft pull request
 7. Inspect the [current Pro correction QA](../qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md)
    and the [current/historical visual evidence index](../qa/visual/README.md).
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
+   [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
 

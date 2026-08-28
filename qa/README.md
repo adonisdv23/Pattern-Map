@@ -28,6 +28,11 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` records the
+  independent `d5b3431` source/packet review, claim-by-claim dispositions,
+  accepted `c86e537` framework and portability corrections, focused checks,
+  deferred expansion, and remaining manual gates. It is structural/procedural
+  evidence, not an effectiveness or research result.
 - `qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md` consolidates the exact
   `e565502` intent, operator, package, live visual/interaction, and bounded
   Claude audits; the accepted `874a0a8` geometry/vocabulary/portability/package
@@ -36,8 +41,8 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   pass.
 - `qa/handoff/test_portable_bundle.py` verifies exact-commit bundle
   determinism, the complete START_HERE contract, manifest path/byte/hash
-  records, embedded verification, whole-ZIP sidecar, path safety, and overwrite
-  refusal.
+  records, embedded verification, whole-ZIP sidecar, all-payload marker safety,
+  optional local-input behavior in a fresh clone, and overwrite refusal.
 - `qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md` is the active
   claim-by-claim Claude-package adjudication and EP v1.1 implementation record.
   It preserves the no-results boundary, reports the real-tokenizer parity

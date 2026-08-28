@@ -19,6 +19,15 @@ guidance, and a deterministic self-verifying Signal Foundry portable-bundle
 builder. It does not change v16's thesis, six-family structure, Echo split, or
 manual owner/accessibility gates.
 
+Post-Ultracode source checkpoint `c86e537` hardens that same artifact without
+creating a new conceptual version. It restores F2's scoped track-record field,
+makes F6 reviewed learning fail closed, separates permission uncertainty,
+proves a genuinely ordinary Stage-0 receipt, locks ordered F1–F6 schema
+identity, and makes local-only Signal Foundry evidence optional on another
+computer. It also strengthens all-payload packet hygiene. These are contract
+and portability corrections; v16's thesis, reader doors, map, and Echo split
+remain unchanged.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

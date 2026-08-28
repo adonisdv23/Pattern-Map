@@ -44,6 +44,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Canonical Pattern Map handoff | `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` | Exact source-of-truth hierarchy, six-family translation, smallest schema seam, unsupported-request refusals, and orphan recovery |
 | Copyable integration brief | `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md` | Tired-owner fast path, design-only offline fixture plan, exact checkpoints, and safe Claude Code prompt |
 | Portable bundle builder | `handoff/signal-foundry/build_portable_bundle.py` | Deterministic exact-commit ZIP, START_HERE, manifest, verifier, sidecar, and path/cache/dependency safety contract |
+| Post-Ultracode finalization QA | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` | Independent dispositions, reusable-framework contracts, fresh-clone portability, and explicit deferred/manual work |
 
 ## Agent-facing v16
 
@@ -119,6 +120,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | External-action audit | `qa/FINAL_ACTION_AUDIT_V16.md` |
 | Complete local verification runner | `qa/run_owner_review_checks.sh` |
 | Portable-bundle regression | `qa/handoff/test_portable_bundle.py` |
+| Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |
 | Advisory ledger | `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Owner packet | `handoff/OWNER_REVIEW_PACKET_V16.md` |
 | Branch/PR state | `handoff/BRANCH_AND_PR_STATE.md` |

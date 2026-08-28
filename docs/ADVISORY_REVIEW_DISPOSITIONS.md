@@ -237,3 +237,31 @@ older checkpoint.
 The full consolidated evidence and browser-tool limitation are recorded in
 `qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md`. No audit record is treated as
 a participant result, model experiment, study result, or framework validation.
+
+## Post-Ultracode finalization dispositions — 2026-08-28
+
+Claude Ultracode reviewed the `d5b3431` source/packet as a capable but
+non-authoritative peer. Two independent Luna Max lanes and the primary
+integrator reproduced the actionable findings before disposition. Full
+evidence is in `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected files | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| UC-PKG-01 | Separate fixed content checkpoint from moving branch/package head | **Accepted with revision** | A static source `head` is self-invalidating; resolve it from Git or sealed metadata | Two Signal handoffs, builder, bundle tests | Cross-computer provenance; machine JSON and summary regressions pass |
+| UC-PKG-02 | Recursively include every linked repository/archive file | **Rejected as closure strategy; warning accepted** | Historical links are a selected-subset boundary; recursive inclusion adds bloat and new links | Builder START_HERE/COPYABLE_PROMPT | Exact-file request/no-inference tests pass |
+| UC-PKG-03 | Scan only recognized text files for paths/secrets | **Accepted with revision** | Binary metadata can contain raw high-signal markers | Builder, embedded verifier, bundle tests | Resealed PNG/PDF attacks fail; benign controls pass |
+| UC-PKG-04 | Require local `4a6ed78` and untracked Signal guidance on another computer | **Accepted as defect; revised to optional local evidence** | A fresh clone cannot satisfy local-only inputs | Two Signal handoffs, builder prompt, bundle tests | Absent/commit-only/branch-present disposable Git cases pass |
+| UC-F2-01 | Restore owner-locked track record and separate source role from authority | **Accepted with revision** | The owner intent requires track record; collapsing role/authority weakens F2 | Six-family spec/JSON, glossary, playbooks, evidence register, site Map | Applied/site contracts pass; no universal score added |
+| UC-F6-01 | Require review, outcome-or-missingness, and disposition for `LEARNING_REVIEWED` | **Accepted** | A status token cannot manufacture learning evidence | Decision receipt and applied validator | Fail-closed status mutation and synthetic contract control pass |
+| UC-PERM-01 | Keep absent/revoked authorization distinct from not-yet-established permission | **Accepted** | `NOT_AUTHORIZED` and `UNKNOWN` have different evidence meaning even when both hold/escalate | Agent guides, preflight, site checks | Stale compound state is rejected |
+| UC-ROUTE-01 | Treat `OUTCOME_REVIEW` as a route | **Rejected; artifact retained** | Outcome review is later learning, not a current route | Operator playbook and applied validator | Canonical route set unchanged |
+| UC-INF-01 | Permit unknown-permission material in selected influence | **Rejected; withheld path clarified** | Only authorized material may influence a bounded output; unresolved permission remains inspectable but withheld | Influence template and validator | Empty/unauthorized selected-item mutations fail |
+| UC-SCHEMA-01 | Schema can accept six copies of F1 | **Accepted as defect** | Length and enum did not preserve ordered identity | Six-family schema and applied validator | Draft 2020-12 engine rejects duplicate/reordered/mismatched/incomplete/extra/seventh families |
+| UC-STAGE0-01 | “Ordinary” fixture performs layered evidence work | **Accepted as defect** | It contradicted the anti-bureaucracy Stage 0 boundary | Applied receipt fixtures and validator | Genuine ordinary receipt has no layered keys; two mutation guards fail closed |
+| UC-READ-01 | Duplicate complete-essay title and stale future-tense manuscript index | **Accepted** | Small reader seams, not a thesis problem | Site builder/check/export and manuscript index | Ten-route build/check passes; canonical essay unchanged |
+| UC-ADOPT-01 | Add a generic project-adoption brief now | **Deferred** | Signal Foundry already has a complete handoff; wait for repeated second-project friction | No canonical file changed | Anti-bureaucracy boundary; D-031 |
+| UC-CONFORM-01 | Add a conformance dictionary or global reputation system | **Deferred / rejected as current scope** | No reproduced defect requires it; global reputation conflicts with F2 | No canonical file changed | A07/A08/A11/A16 |
+| UC-MANUAL-01 | Infer comprehension, physical keyboard, screen reader, zoom, forced colors, print, touch, or owner taste | **Rejected as inference; Deferred as owner/manual work** | Automated artifact checks cannot certify those experiences | Site/standalone/PDF | Manual gates remain explicit |
+
+The accepted source checkpoint is `c86e53764f6e33b62097f0424125b5922441ce58`.
+No item above is an empirical result or a claim that Pattern Map is effective.
