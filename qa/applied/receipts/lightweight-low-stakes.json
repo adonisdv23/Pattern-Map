@@ -1,5 +1,7 @@
 {
-  "receipt_id": "DR-ORD-001",
+  "receipt_id": "DR-LIGHT-001",
+  "operating_level": "LIGHTWEIGHT",
+  "evidence_selection": "NEEDED",
   "consequence": "LOW",
   "permission": {
     "technical_access": true,

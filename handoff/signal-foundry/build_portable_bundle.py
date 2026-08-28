@@ -36,8 +36,8 @@ SOURCE_REPOSITORY = "https://github.com/adonisdv23/Pattern-Map"
 SOURCE_BRANCH_HINT = "codex/pattern-map-v16-foundation"
 DRAFT_PR = "https://github.com/adonisdv23/Pattern-Map/pull/1"
 SIGNAL_FOUNDRY_AUDITED_CHECKPOINT = "f9bf3775ca3d5b52ea5083cea52306c025727e23"
-PREVIOUS_BUNDLE_NAME = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE_2026-08-23_e565502.zip"
-PREVIOUS_BUNDLE_SHA256 = "b73c5c5ecfc12a7db255d1626688a256c2ef52bc69a5d892b8cfc1da670a3b29"
+PREVIOUS_BUNDLE_NAME = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE_2026-08-27_d5b3431.zip"
+PREVIOUS_BUNDLE_SHA256 = "b806b8b143fce5a003c1040b2aeca69804b3695e55d6a384211f89aa1f62caae"
 
 # Keep this list explicit.  A portable handoff should not silently grow to
 # include a dependency tree, a generated site directory, or a private local
@@ -334,13 +334,13 @@ Context packet identity:
 - Draft review: {DRAFT_PR} (open/draft/unmerged; do not merge it)
 - The audited Signal Foundry anchor is {SIGNAL_FOUNDRY_AUDITED_CHECKPOINT}; compare against it read-only and never reset the receiving checkout to it.
 
-Before editing, read the nearest Signal Foundry AGENTS.md and inspect its own checkout, branch, remotes, worktrees, modified files, and untracked files. Preserve existing local work. Then read this packet's START_HERE.md and the two canonical handoff files under handoff/signal-foundry/.
+Before editing, inspect the receiving Signal Foundry checkout, branch, remotes, worktrees, modified files, untracked files, tracked README, and tracked repository instructions. Read AGENTS.md or CLAUDE.md only if each file is present in that checkout. If either optional local guidance file is absent, record ABSENT/UNVERIFIED and continue under this packet's guardrails; do not recreate or infer it. Preserve all existing local work. The source machine's untracked instruction files and local-only audit commit are optional local evidence, not required packet inputs. Then read this packet's START_HERE.md and the two canonical handoff files under handoff/signal-foundry/.
 
 This is a selected packet, not the full Pattern Map repository. Some bundled Markdown intentionally links to historical archives or other repository files outside the packet. If a relative link does not resolve, request the exact missing file or current repository state; do not infer, recreate, or silently substitute its contents.
 
 Use the existing OPERATOR_DECISION plus RATIONALE pair as the first seam to inspect. Do not invent a Pattern Map classifier, a V14 deep link, “Sigma Foundry,” a second ledger, a universal score, or a new event type. CONTEXT_DISPOSITION is a conceptual completeness worksheet only; it is not valid against the current Signal Foundry decision-memory schema and must not be implemented from this packet.
 
-This packet is context and review material, not mutation authority. Do not deploy, publish, merge, change production, call a provider or model, acquire an external dataset, spend, preregister, contact people, or run an empirical/participant study merely because this packet is present. If any referenced file, schema, route, or record is missing, STOP and request the exact missing file or current repository evidence; do not infer, recreate, or silently substitute it. If current Signal Foundry contracts conflict materially with this packet, report the exact conflict before changing anything.
+This packet is context and review material, not mutation authority. Do not deploy, publish, merge, change production, call a provider or model, acquire an external dataset, spend, preregister, contact people, or run an empirical/participant study merely because this packet is present. If a required tracked packet file, receiving schema, route, or record is missing, STOP and request the exact missing file or current repository evidence; do not infer, recreate, or silently substitute it. Optional local evidence named above may be absent on another computer: record UNVERIFIED and continue from tracked contracts. If current Signal Foundry contracts conflict materially with this packet, report the exact conflict before changing anything.
 """
 
 
@@ -424,6 +424,10 @@ it; request the exact file or current repository state when it matters.
   artifacts.
 - Missing files or materially changed contracts must be requested and
   reconciled, not inferred from summaries, screenshots, or this packet.
+- The source machine's untracked `AGENTS.md`/`CLAUDE.md` and local-only audit
+  commit are optional local evidence, not required packet inputs. If absent on
+  the receiving computer, record `ABSENT/UNVERIFIED` and continue from tracked
+  contracts; do not recreate or infer them.
 - This packet alone authorizes no app mutation, deployment, publication,
   merge, provider/model call, external dataset acquisition, spending,
   preregistration, outreach, or empirical/participant study.

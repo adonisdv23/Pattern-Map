@@ -300,6 +300,92 @@ class PortableBundleTests(unittest.TestCase):
         self.assertIn("some bundled markdown intentionally links", normalized_copyable)
         self.assertIn("request the exact missing file", normalized_copyable)
         self.assertIn("do not infer, recreate, or silently substitute", normalized_copyable)
+        self.assertIn("optional local evidence, not required packet inputs", normalized_copyable)
+        self.assertIn("only if each file is present", normalized_copyable)
+        self.assertIn("record absent/unverified and continue", normalized_copyable)
+        self.assertIn("required tracked packet file", normalized_copyable)
+        self.assertIn("record unverified and continue", normalized_copyable)
+
+        self.assertIn("optional local evidence, not required packet inputs", normalized_start)
+        self.assertIn("record `absent/unverified` and continue", normalized_start)
+
+    def test_optional_local_inputs_are_guarded_and_nonblocking(self) -> None:
+        canonical = (
+            self.bundle_root
+            / "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md"
+        ).read_text(encoding="utf-8")
+        brief = (
+            self.bundle_root
+            / "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md"
+        ).read_text(encoding="utf-8")
+        normalized = " ".join((canonical + "\n" + brief).split()).lower()
+        self.assertIn("optional local evidence", normalized)
+        self.assertIn("not a required packet input", normalized)
+        self.assertIn("optional local audit unavailable; continue without it", normalized)
+        self.assertIn("do not fetch", normalized)
+
+        guarded_blocks = []
+        for document in (canonical, brief):
+            for block in re.findall(r"```sh\n(.*?)\n```", document, flags=re.DOTALL):
+                if "git show --stat 4a6ed78" in block:
+                    guarded_blocks.append(block)
+                    self.assertIn(
+                        "git rev-parse --verify --quiet '4a6ed78^{commit}'",
+                        block,
+                    )
+                    active_lines = [
+                        line.strip()
+                        for line in block.splitlines()
+                        if line.strip() and not line.lstrip().startswith("#")
+                    ]
+                    self.assertFalse(
+                        any(
+                            re.match(r"git\s+(fetch|reset|push|merge)\b", line)
+                            for line in active_lines
+                        )
+                    )
+        self.assertEqual(len(guarded_blocks), 2)
+
+        guard = guarded_blocks[0]
+        receiving = self.workspace / "fresh-signal-foundry"
+        receiving.mkdir()
+        subprocess.run(["git", "init", "-b", "main"], cwd=receiving, check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["git", "config", "user.name", "Portable QA"], cwd=receiving,
+                       check=True)
+        subprocess.run(["git", "config", "user.email", "qa@example.invalid"],
+                       cwd=receiving, check=True)
+        (receiving / "README.md").write_text("fixture\n", encoding="utf-8")
+        subprocess.run(["git", "add", "README.md"], cwd=receiving, check=True)
+        subprocess.run(["git", "commit", "-m", "fixture"], cwd=receiving, check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        absent = subprocess.run(
+            ["/bin/sh", "-c", guard], cwd=receiving, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+        )
+        self.assertEqual(absent.returncode, 0, absent.stdout + absent.stderr)
+        self.assertIn("UNVERIFIED", absent.stdout)
+        self.assertIn("continue without it", absent.stdout)
+
+        commit_only_guard = guard.replace("4a6ed78", "HEAD")
+        commit_only = subprocess.run(
+            ["/bin/sh", "-c", commit_only_guard], cwd=receiving, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+        )
+        self.assertEqual(commit_only.returncode, 0, commit_only.stdout + commit_only.stderr)
+        self.assertIn("optional local audit branch unavailable", commit_only.stdout)
+
+        subprocess.run(
+            ["git", "branch", "codex/pattern-map-signal-foundry-transfer-audit", "HEAD"],
+            cwd=receiving, check=True,
+        )
+        with_branch = subprocess.run(
+            ["/bin/sh", "-c", commit_only_guard], cwd=receiving, text=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+        )
+        self.assertEqual(with_branch.returncode, 0, with_branch.stdout + with_branch.stderr)
+        self.assertNotIn("optional local audit branch unavailable", with_branch.stdout)
 
     def test_handoff_distinguishes_content_checkpoint_from_resolved_head(self) -> None:
         canonical = (

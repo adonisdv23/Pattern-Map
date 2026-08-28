@@ -14,6 +14,8 @@ that every task needs every field.
 | INFLUENCE_RECEIPT.md | Record what shaped the answer and what was withheld |
 | OUTCOME_REVIEW.md | Compare expectation with later outcome and propose a bounded update |
 
-For a low-stakes task, DECISION_BRIEF, EVIDENCE_REGISTER,
-DISCONFIRMATION_LOG, and INFLUENCE_RECEIPT are usually enough. For repeated or
-consequential work, retain all templates with stable IDs and version links.
+For a low-stakes task that passes Stage 0 into a layered route, DECISION_BRIEF,
+EVIDENCE_REGISTER, DISCONFIRMATION_LOG, and INFLUENCE_RECEIPT are usually
+enough. A genuinely ordinary supplied-material task may need only a minimal
+decision receipt naming its assumptions and unchecked boundaries. For repeated
+or consequential work, retain all templates with stable IDs and version links.

@@ -117,6 +117,9 @@ const main = () => {
   assert(root.includes(conceptualBridge), "root conceptual-framing bridge missing");
   for (const door of ["Read the idea", "Explore the map", "Apply it"]) assert(root.indexOf(door) >= 0, `principal door missing: ${door}`);
   assert(root.includes("Take the guided read"), "optional continuous reading path missing from home");
+  const essaySection = readRoute.match(/<section class="essay-section[\s\S]*?<\/section>/)?.[0] ?? "";
+  const essayTitleCount = (essaySection.match(/>Pattern Recognition: The Discrimination Layer<\//g) ?? []).length;
+  assert(essayTitleCount === 1, `complete essay renders its title ${essayTitleCount} times`);
   assert(root.includes("A QUICK EXAMPLE") && root.indexOf("A QUICK EXAMPLE") < root.indexOf("Three principal doors"), "concrete example does not arrive before the route doors");
   assert(root.includes("data-term-trigger") && root.includes("term-inline"), "first-use term help is missing visible meaning or an optional explainer");
   const termTriggerTags = [...[root, map, apply, guided].join("\n").matchAll(/<button\b[^>]*data-term-trigger[^>]*>/g)].map((match) => match[0]);
@@ -234,10 +237,12 @@ const main = () => {
       assert(match[1].includes('rel="noreferrer"'), "external link is missing rel=noreferrer");
     }
   }
-  for (const token of ["STOPPED_BUDGET", "LEARNING_NOT_APPLICABLE", "NOT_AUTHORIZED_OR_AMBIGUOUS"]) {
+  for (const token of ["STOPPED_BUDGET", "LEARNING_NOT_APPLICABLE", "NOT_AUTHORIZED"]) {
     assert(apply.includes(token), `Apply route mutated state token: ${token}`);
     assert(standalone.includes(token), `standalone export mutated state token: ${token}`);
   }
+  assert(apply.includes("preserve UNKNOWN and escalate") && standalone.includes("preserve UNKNOWN and escalate"), "permission UNKNOWN is not preserved separately in the rendered playbook");
+  assert(!apply.includes("NOT_AUTHORIZED_OR_AMBIGUOUS") && !standalone.includes("NOT_AUTHORIZED_OR_AMBIGUOUS"), "rendered playbook collapses absent and unknown permission");
   const signalFoundryStatus = "ILLUSTRATION_ONLY / READ_ONLY / NOT_VALIDATION";
   assert(examples.includes(signalFoundryStatus), "Examples route mutated Signal Foundry status");
   assert(standalone.includes(signalFoundryStatus), "standalone export mutated Signal Foundry status");

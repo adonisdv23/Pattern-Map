@@ -38,8 +38,9 @@ or consequential boundary.
    alternative vocabulary, dissenting view, adjacent peer, or low-prominence
    field. A candidate is not truth.
 6. **Register evidence.** Give each source and artifact an ID. Link exact
-   spans to narrow claims. Keep source role, support, relevance, origin, and
-   permission as separate fields.
+   spans to narrow claims. Keep source role, relevant track-record evidence,
+   claim-scoped authority, support, relevance, origin, and permission as
+   separate fields. Use `UNKNOWN` rather than inventing a reputation.
 7. **Compare.** Choose the peer, period, attribute, structure, or origin
    comparison that could change the answer. Mark incomparable and unknown
    fields instead of filling them.
@@ -71,8 +72,8 @@ warrants:
 
 If a later outcome is defined, preserve the original expectation. After the
 outcome window, compare the observed outcome, actual cost, corrections, and
-context with it; propose one bounded update; request human disposition; and
-record `LEARNING_REVIEWED`. Use
+context with it; propose one bounded update; request and record human
+disposition; only then record `LEARNING_REVIEWED`. Use
 [`../templates/OUTCOME_REVIEW.md`](../templates/OUTCOME_REVIEW.md). Until then,
 keep the locked expectation at `LEARNING_PENDING_OUTCOME`. Do not make learning
 mandatory for an ordinary-path task.
@@ -85,7 +86,8 @@ plausible assumption.
 
 | Trigger | Agent action |
 | --- | --- |
-| Permission is absent, revoked, or unclear | Do not acquire, disclose, or act; record NOT_AUTHORIZED and escalate |
+| Permission is absent or revoked | Do not acquire, disclose, or act; record NOT_AUTHORIZED and escalate |
+| Permission has not been established | Do not acquire, disclose, or act; preserve UNKNOWN and escalate |
 | High-consequence claim lacks support or baseline | HOLD or ESCALATE; offer only an explicitly provisional bounded statement |
 | Identity, provenance, or transformation check fails | Keep the item out of influence; record the failure |
 | Observation failure is the only basis for an alleged absence | State FAILED_CAPTURE or UNKNOWN, not absence |

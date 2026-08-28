@@ -89,9 +89,10 @@ assessment establishes what, if anything, it supports.
 ### What it does
 
 Source weighing asks what a source or artifact can establish for a particular
-claim and use. It keeps separate fields for source role, domain or
-claim-scoped authority, directness, support, contradiction, relevance,
-independence, recurrence, provenance, and operational permission.
+claim and use. It keeps separate fields for source role, evidence of track
+record in the relevant domain and time window, domain or claim-scoped
+authority, directness, support, contradiction, relevance, independence,
+recurrence, provenance, and operational permission.
 
 A filing may be authoritative for what it filed, weak support for why an event
 occurred, highly relevant to one decision, and unavailable for another use.
@@ -101,7 +102,8 @@ The framework does not produce a universal trust score.
 
 1. Split the answer into claims small enough to be checked.
 2. Identify the exact artifact and passage associated with each claim.
-3. Record source role and claim-scoped authority.
+3. Record source role, relevant track-record evidence (or `UNKNOWN`), and
+   claim-scoped authority as separate judgments.
 4. Assess support, contradiction, qualification, or insufficiency separately.
 5. Record origin and recurrence state; do not count copies as independent
    support.
@@ -111,7 +113,8 @@ The framework does not produce a universal trust score.
 ### Inputs and outputs
 
 - Inputs: source and artifact identity, exact spans, claim, domain standard,
-  origin relations, task relevance, and permission policy.
+  relevant track-record evidence, origin relations, task relevance, and
+  permission policy.
 - Outputs: source-role record, claim/evidence relationship, uncertainty,
   contradiction or qualification links, and an influence recommendation.
 
@@ -125,8 +128,8 @@ The framework does not produce a universal trust score.
 
 ### Implementation levels
 
-- Lightweight: use a three-column note: source role, what it supports, and what
-  remains unknown.
+- Lightweight: use a four-column note: source role, relevant track-record
+  evidence, what it supports, and what remains unknown.
 - Moderate: use a claim-level evidence register with typed relationship states.
 - Advanced: preserve source, artifact, version, derivation, and claim graphs
   with domain-specific review.

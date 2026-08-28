@@ -33,10 +33,11 @@ required.
 - Check: external action is outside the agent’s authority unless explicitly
   delegated and still has a human boundary.
 
-FAIL or UNKNOWN on a consequential permission item means:
-hard stop with record `NOT_AUTHORIZED_OR_AMBIGUOUS`, then route `HOLD` or
-`ESCALATE`. Do not acquire, disclose, or act. Record the escalation destination
-and the condition needed to resume.
+FAIL or UNKNOWN on a consequential permission item means a hard stop, then
+route `HOLD` or `ESCALATE`. Record `NOT_AUTHORIZED` when permission is absent
+or revoked; record `UNKNOWN` when it has not been established. Do not collapse
+those states, acquire, disclose, or act. Record the escalation destination and
+the condition needed to resume.
 
 ## P2. Cost and stop
 
@@ -73,7 +74,8 @@ and the condition needed to resume.
 - Check: the answer is decomposed into narrow claims.
 - Check: each influential claim has an exact evidence pointer or is marked
   unsupported/provisional.
-- Check: source role and claim-scoped authority are separate from support.
+- Check: source role, relevant track-record evidence, and claim-scoped
+  authority are separate from support and from one another.
 - Check: recurrence and origin are separate from independence.
 - Check: a comparison unit and baseline are stated where needed.
 - Check: motion has repeated comparable observations.
@@ -121,7 +123,8 @@ and the condition needed to resume.
 
 | Failed or unknown check | Required record | Canonical route |
 | --- | --- | --- |
-| Permission or disclosure | NOT_AUTHORIZED_OR_AMBIGUOUS | HOLD or ESCALATE |
+| Permission or disclosure absent or revoked | NOT_AUTHORIZED | HOLD or ESCALATE |
+| Permission or disclosure not established | UNKNOWN | HOLD or ESCALATE |
 | High consequence plus missing support or baseline | INSUFFICIENT_SUPPORT or MISSING_BASELINE | HOLD or ESCALATE |
 | Identity or provenance broken | EXCLUDE_FROM_INFLUENCE | HOLD or ESCALATE |
 | One observation only for motion | NO_MOTION_CLAIM | ACQUIRE, ANSWER_PROVISIONALLY, or HOLD |

@@ -431,8 +431,8 @@ const familyPublicCopy = {
     mechanism: "Try a small number of alternative search routes, then weigh, compare, and challenge what they return.",
   },
   F2: {
-    purpose: "Ask what each source can and cannot tell us about this exact claim; keep support, relevance, origin, and permission separate.",
-    mechanism: "Record the claim, each source's role, and whether the material supports, challenges, qualifies, repeats, or merely resembles it.",
+    purpose: "Ask what each source can and cannot tell us about this exact claim; keep role, relevant track record, authority, support, origin, and permission separate.",
+    mechanism: "Record the claim, each source's role, relevant track-record evidence or unknown state, and whether the material supports, challenges, qualifies, repeats, or merely resembles it.",
   },
   F3: {
     purpose: "Notice a change against a stated baseline before calling it meaningful.",
@@ -656,7 +656,7 @@ const renderFamilyCard = (family, ctx) => {
 
 const familyMapDetails = {
   F1: { inputs: "default path + peripheral candidate", comparison: "prominence, specialist relevance, and what the default path omitted", records: "candidate source role + disconfirmation note", connections: "widens the field before F2 weighs it", boundary: "underweighted is a reason to inspect, not a reason to believe" },
-  F2: { inputs: "claim + source identity + source role", comparison: "support, challenge, relevance, origin, and permission", records: "evidence register + typed source relationship", connections: "weighs F1 candidates and feeds F5 comparisons", boundary: "recurrence is not independent corroboration" },
+  F2: { inputs: "claim + source identity + role + relevant track-record evidence", comparison: "authority, support, challenge, relevance, origin, and permission", records: "evidence register + typed source relationship", connections: "weighs F1 candidates and feeds F5 comparisons", boundary: "track record is scoped, and recurrence is not independent corroboration" },
   F3: { inputs: "comparable observations + time window", comparison: "current movement against a relevant baseline", records: "velocity note + measurement caveat", connections: "adds motion context before a route is chosen", boundary: "one observation is not velocity" },
   F4: { inputs: "explicit expectation + prior context", comparison: "what should be present against what is present", records: "gap record + versioned memory", connections: "absence depends on a baseline and memory", boundary: "a gap is not proof of nonexistence" },
   F5: { inputs: "named peers, periods, structures, or origins", comparison: "recurrence, difference, missing perspective, and common pathways", records: "comparison matrix + origin note", connections: "makes F2 relationships and F6 updates inspectable", boundary: "common-origin recurrence keeps independence UNKNOWN" },
@@ -708,7 +708,7 @@ const renderCurrentTopology = (ctx) => {
         <div class="map-node map-start"><span class="node-kicker">SHARED ANCHOR</span><strong>Frame the real decision and permission boundary.</strong><small>audience · consequence · useful outcome · cost · allowed operations</small></div>
         <p class="map-order-note"><strong>No required order:</strong> F1–F6 are questions you may enter through in different combinations. Their identifiers preserve the historical family map; they are not steps.</p>
         <div class="map-family-grid" aria-label="Six current v16 families in order">${mapFamilies}</div>
-        <section class="map-record-tray" aria-labelledby="map-records-heading"><div><span class="node-kicker">OPTIONAL SHARED RECORDS</span><h3 id="map-records-heading">Create only the records the decision warrants.</h3><p>No family owns exactly one record, and an ordinary supplied-material task may need none of these.</p></div><div class="map-record-row"><div class="map-record"><strong>Notice</strong><small>what entered, failed, or remains unknown</small></div><div class="map-record"><strong>Weigh</strong><small>source role, claim support, relevance, origin, permission</small></div><div class="map-record"><strong>Compare</strong><small>baseline, peer, period, structure, common pathway</small></div><div class="map-record"><strong>Remember</strong><small>dated context and corrections without overwritten history</small></div></div></section>
+        <section class="map-record-tray" aria-labelledby="map-records-heading"><div><span class="node-kicker">OPTIONAL SHARED RECORDS</span><h3 id="map-records-heading">Create only the records the decision warrants.</h3><p>No family owns exactly one record, and an ordinary supplied-material task may need none of these.</p></div><div class="map-record-row"><div class="map-record"><strong>Notice</strong><small>what entered, failed, or remains unknown</small></div><div class="map-record"><strong>Weigh</strong><small>source role, scoped track record, claim authority, support, origin, permission</small></div><div class="map-record"><strong>Compare</strong><small>baseline, peer, period, structure, common pathway</small></div><div class="map-record"><strong>Remember</strong><small>dated context and corrections without overwritten history</small></div></div></section>
         <section class="map-relationship-bands" aria-labelledby="key-relationships-heading"><h3 id="key-relationships-heading" class="sr-only">Four key relationships</h3>
           <article class="relationship-band relationship-baseline"><span class="relationship-type">REQUIRES A BASELINE</span><h4>${renderTerm("baseline", "map-baseline", ctx)}</h4><p>An expected or earlier state must be named before F3 can call something motion or F4 can call something missing.</p><div class="relationship-equation" aria-label="Baseline informs velocity and expected absence"><span>earlier / expected state</span><b aria-hidden="true">→</b><strong>F3 motion · F4 absence</strong></div></article>
           <article class="relationship-band relationship-origin"><span class="relationship-type">CAN REVEAL A SHARED PATH</span><h4>${renderTerm("common-origin", "map-origin", ctx)}</h4><p>F2 weighs source roles while F5 compares relationships. Repeated reports may converge on one source without becoming independent support.</p><div class="relationship-equation" aria-label="Source weighing and structured comparison reveal a possible common origin"><span>F2 source roles + F5 comparison</span><b aria-hidden="true">→</b><strong>known, separate, or unknown origin</strong></div></article>
@@ -780,7 +780,8 @@ const renderRoot = (ctx) => {
 
 const renderRead = (ctx) => {
   const short = renderMarkdown(readText("manuscript/NINETY_SECOND_VERSION.md"), { ctx, headingOffset: 2, idPrefix: "short-" });
-  const essay = renderMarkdown(essaySource, { ctx, headingOffset: 1, idPrefix: "essay-" });
+  const essayBody = essaySource.replace(/^#\s+[^\n]+\n+/, "");
+  const essay = renderMarkdown(essayBody, { ctx, headingOffset: 1, idPrefix: "essay-" });
   const cover = renderMarkdown(readText("manuscript/MENTOR_COVER_NOTE.md"), { ctx, headingOffset: 2, idPrefix: "cover-" });
   const abstract = renderMarkdown(readText("manuscript/PUBLIC_ABSTRACT.md"), { ctx, headingOffset: 2, idPrefix: "abstract-" });
   return `

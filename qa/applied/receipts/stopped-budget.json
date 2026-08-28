@@ -1,5 +1,7 @@
 {
   "receipt_id": "DR-BUDGET-001",
+  "operating_level": "MODERATE",
+  "evidence_selection": "NEEDED",
   "consequence": "MEDIUM",
   "permission": {
     "technical_access": true,

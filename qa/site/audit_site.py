@@ -219,9 +219,15 @@ def main() -> None:
             require('rel="noreferrer"' in attributes, f"{label}: external link missing rel=noreferrer")
     output.append("PASS external Markdown links preserve URLs and safe anchor attributes")
 
-    for token in ("STOPPED_BUDGET", "LEARNING_NOT_APPLICABLE", "NOT_AUTHORIZED_OR_AMBIGUOUS"):
+    for token in ("STOPPED_BUDGET", "LEARNING_NOT_APPLICABLE", "NOT_AUTHORIZED"):
         require(token in apply_text, f"Apply route mutated state token: {token}")
         require(token in standalone_text, f"standalone export mutated state token: {token}")
+    require("preserve UNKNOWN and escalate" in apply_text
+            and "preserve UNKNOWN and escalate" in standalone_text,
+            "permission UNKNOWN is not preserved separately in rendered playbook")
+    require("NOT_AUTHORIZED_OR_AMBIGUOUS" not in apply_text
+            and "NOT_AUTHORIZED_OR_AMBIGUOUS" not in standalone_text,
+            "rendered playbook collapses absent and unknown permission")
     signal_foundry_status = "ILLUSTRATION_ONLY / READ_ONLY / NOT_VALIDATION"
     require(signal_foundry_status in examples_text, "Examples route mutated Signal Foundry status")
     require(signal_foundry_status in standalone_text, "standalone export mutated Signal Foundry status")

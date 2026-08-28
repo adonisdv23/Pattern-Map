@@ -1,6 +1,7 @@
 # Manuscript workspace
 
-Canonical v16 human-facing prose will live here after the intent checkpoint.
-The manuscript must read as a continuation of a thoughtful coffee conversation,
-stand alone for a public reader, preserve all six families, and subordinate
-origin accounting to one worked example.
+Canonical v16 human-facing prose lives here. The manuscript reads as a
+continuation of a thoughtful coffee conversation, stands alone for a public
+reader, preserves all six families, and subordinates origin accounting to one
+worked example. Historical and research artifacts retain their separate
+boundaries; this directory is the human-facing editorial source.

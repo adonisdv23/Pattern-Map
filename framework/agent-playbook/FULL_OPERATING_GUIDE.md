@@ -134,7 +134,8 @@ evidence that the source, event, or perspective does not exist.
 Split the intended answer into narrow claims. For each claim and evidence item,
 record:
 
-- source role and claim-scoped authority;
+- source role, relevant track-record evidence (or `UNKNOWN`), and claim-scoped
+  authority as separate fields;
 - exact support, contradiction, qualification, or insufficiency;
 - relevance to this decision;
 - origin, recurrence, and independence state;

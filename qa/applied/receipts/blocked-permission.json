@@ -1,5 +1,7 @@
 {
   "receipt_id": "DR-BLOCK-001",
+  "operating_level": "MODERATE",
+  "evidence_selection": "NEEDED",
   "consequence": "HIGH",
   "permission": {
     "technical_access": true,

@@ -68,7 +68,7 @@ permitted action, gap/hold state, or correction path, do not add it.
 | Visual Evidence | `workers/visual_evidence_cloud/**`, `docs/visual_evidence_app_workflow.md`, video-detail Visual Evidence route | Keep uploaded video/frame/OCR pointers in the Visual Evidence class. They do not become transcript text or transcript-backed exports. |
 | Decision memory | `decision_memory.py`, `docs/decision_memory_retrospective_v1.md`, `docs/schemas/decision_memory_v1/decision_memory.schema.json` | Reuse append-only episode events, sequence/head protection, receipts, correction/supersession, and cutoff binding. |
 | Research/context packets | `research_context.py`, `question_scoped_evidence_brief.py`, `evidence_evaluation.py` | Bind question, evidence boundary, cutoff, limitations, and evaluation scope. A replay or fixture is not a live result. |
-| Safety boundary | `AGENTS.md`, `docs/pattern_recognition_evidence_boundary.md`, `docs/post_mvp_contract_index.md` | Keep all new work read-only/offline until separately authorized. |
+| Safety boundary | Tracked `README.md`, `docs/pattern_recognition_evidence_boundary.md`, `docs/post_mvp_contract_index.md`, and current local guidance actually present in the receiving checkout | Keep all new work read-only/offline until separately authorized. Do not reconstruct an absent local instruction file from this handoff. |
 
 ### Important existing statuses
 
@@ -83,18 +83,22 @@ permitted action, gap/hold state, or correction path, do not add it.
 - The Evidence Discrimination and Workbench surfaces are bounded local/offline
   contracts and explicitly do not establish truth, usefulness, value, or
   product readiness.
-- The current GitHub `main` checkout is clean relative to `origin/main`, but the
-  owner’s local checkout has a pre-existing `.gitignore` modification and
-  untracked `AGENTS.md`/`CLAUDE.md`. Do not clean, overwrite, stage, or delete
-  those files.
+- At the audited source machine, GitHub `main` was clean relative to
+  `origin/main`, while the owner's local checkout also had a pre-existing
+  `.gitignore` modification and untracked `AGENTS.md`/`CLAUDE.md`. Those local
+  files are not tracked, not bundled, and not required packet inputs on another
+  computer. Preserve whatever local work actually exists in the receiving
+  checkout; never infer or copy the source machine's untracked policy files.
 
 ## The smallest useful integration seam
 
-The prior Pattern Map → Signal Foundry transfer audit at local commit `4a6ed78`
-identified a possible missing explanation seam: Signal Foundry has evidence,
-provenance, graph, Visual, transcript, and decision receipts, but may need a
-clearer account of why particular context influenced one named operator
-question. That is a hypothesis to test, not an established schema gap.
+An optional prior Pattern Map → Signal Foundry transfer audit at local-only
+commit `4a6ed78` identified a possible missing explanation seam: Signal Foundry
+has evidence, provenance, graph, Visual, transcript, and decision receipts, but
+may need a clearer account of why particular context influenced one named
+operator question. That audit is not on the remote, is not in this packet, and
+is not a required packet input on another computer. Its proposition is
+restated here as a hypothesis to test, not an established schema gap.
 
 The **default seam to test** is an append-only event batch using Signal
 Foundry's existing, valid `OPERATOR_DECISION` plus `RATIONALE` event types. The
@@ -196,8 +200,12 @@ or validation study.
   checksum, and resolve the current branch head to include later evidence, QA,
   handoff, or packaging corrections.
 - Inspect Signal Foundry at `main`/`f9bf377`, preserving local dirty files.
-- Read the transfer audit from local branch `codex/pattern-map-signal-foundry-transfer-audit`
-  at `4a6ed78`; treat it as a read-only report.
+- If the optional local branch
+  `codex/pattern-map-signal-foundry-transfer-audit` at `4a6ed78` exists in the
+  receiving repository, it may be read as advisory history. If it is absent,
+  record `UNVERIFIED — optional local audit unavailable; continue without it`
+  and use the tracked Signal Foundry contracts. Do not fetch, infer, recreate,
+  reset, push, or merge it as a prerequisite.
 - Record which findings are already implemented, design-only, missing, or
   deferred. Do not combine branches in place.
 
@@ -246,14 +254,15 @@ Deployment, provider calls, source acquisition, model analysis, dataset
 acquisition, participant work, production-data mutation, and publication each
 need their own exact owner authorization. None is implied by this brief.
 
-## Orphaned work recovery
+## Optional source-machine orphan recovery
 
 “Orphaned” means **recoverable but disconnected**, not deleted. A thread can
 end while its branch remains. A branch can exist locally without an upstream.
 A commit can contain useful work without being part of `main`, a current PR, or
 the current task.
 
-Current verified example:
+The audit branch/commit below is optional local evidence, not a required packet
+input; a fresh clone may not contain it. Current verified example:
 
 ```text
 Signal Foundry main: f9bf377 == origin/main
@@ -263,15 +272,24 @@ Upstream:            none
 Change:             one read-only 533-line transfer audit
 ```
 
-Recovery checklist, read-only first:
+Only if that exact commit or branch already exists locally, use this guarded
+recovery checklist read-only first:
 
 ```sh
 # Run from the receiving Signal Foundry repository root.
 git status --short --branch
-git show --stat 4a6ed78
-git branch --contains 4a6ed78
-git diff main..codex/pattern-map-signal-foundry-transfer-audit --stat
-git log --oneline main..codex/pattern-map-signal-foundry-transfer-audit
+if git rev-parse --verify --quiet '4a6ed78^{commit}' >/dev/null; then
+  git show --stat 4a6ed78
+  if git show-ref --verify --quiet refs/heads/codex/pattern-map-signal-foundry-transfer-audit; then
+    git diff main..codex/pattern-map-signal-foundry-transfer-audit --stat
+    git log --oneline main..codex/pattern-map-signal-foundry-transfer-audit
+  else
+    echo 'UNVERIFIED — optional local audit branch unavailable; continue without it.'
+  fi
+else
+  echo 'UNVERIFIED — optional local audit unavailable; continue without it.'
+fi
+# Do not fetch, recreate, reset, push, or merge this optional audit.
 ```
 
 If a later owner instruction authorizes integration:
@@ -307,7 +325,8 @@ Read these first, in order:
 3. Pattern Map docs/OWNER_INTENT_V16.md
 4. Pattern Map docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md
 5. Pattern Map docs/ARTIFACT_BOUNDARIES.md
-6. Signal Foundry AGENTS.md, CLAUDE.md, and README.md
+6. Signal Foundry README.md and tracked guidance; also read AGENTS.md or
+   CLAUDE.md only if each file is present in the receiving checkout
 7. Signal Foundry docs/evidence_discrimination_v1_contract.md
 8. Signal Foundry docs/evidence_graph_v1.md
 9. Signal Foundry docs/evidence_workbench_v1.md
@@ -330,16 +349,19 @@ Use the exact audited source identities below, then re-resolve Git:
   before editing; later commits do not replace the fixed content checkpoint.
 - Signal Foundry is the product name, not Sigma Foundry. Its current main and
   origin/main are f9bf3775ca3d5b52ea5083cea52306c025727e23.
-- The local Pattern Map → Signal Foundry transfer audit is branch
-  codex/pattern-map-signal-foundry-transfer-audit at 4a6ed78. It is read-only,
-  one commit ahead of main, has no upstream, and is not an integrated app
-  change. Do not push or merge it in this task.
+- An optional local-only Pattern Map → Signal Foundry transfer audit was seen on
+  the source machine at branch codex/pattern-map-signal-foundry-transfer-audit,
+  commit 4a6ed78. It is not on the remote or included in this packet. If it is
+  absent, record `UNVERIFIED — optional local audit unavailable; continue
+  without it`; do not infer, request, push, or merge it in this task.
 
 Your job in this turn is to produce a source-grounded integration assessment
 and, if useful, a separately scoped implementation plan. Do not mutate Signal
 Foundry unless a new exact owner instruction authorizes a feature branch and
-specific implementation paths. Preserve the existing local .gitignore change
-and untracked AGENTS.md/CLAUDE.md; never clean them.
+specific implementation paths. Preserve all local work actually present in the
+receiving checkout. If AGENTS.md or CLAUDE.md is absent, record it as optional
+local guidance not present and continue under tracked contracts plus this
+packet; do not recreate or infer its contents.
 
 Map v16 onto existing Signal Foundry structures:
 
@@ -430,7 +452,8 @@ checklist, not an authorization receipt or a product result.
     "branch": "codex/pattern-map-signal-foundry-transfer-audit",
     "commit": "4a6ed78",
     "upstream": null,
-    "status": "recoverable_local_read_only_not_integrated"
+    "status": "recoverable_local_read_only_not_integrated",
+    "availability": "optional_local_evidence_not_a_required_packet_input"
   },
   "default_seam_to_test": {
     "name": "OPERATOR_DECISION_PLUS_RATIONALE",

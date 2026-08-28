@@ -45,6 +45,7 @@ records and decisions; none is a universal truth score.
 | Relevance | Usefulness to the present question, decision, or constraint | Not general importance, truth, or owner endorsement |
 | Route | One bounded next action: ACQUIRE, COMPARE, CLARIFY, ANSWER, ANSWER_PROVISIONALLY, HOLD, DEFER, ESCALATE, or REFUSE | A route is separate from stop and learning status and is not permission to execute externally consequential action |
 | Source | An agent, organization, system, or origin that issues or makes an artifact available | Source identity is distinct from artifact identity |
+| Source track record | Evidence about a source's relevant prior performance, scoped to a claim type, domain, time window, and evidence basis | Not a universal reputation, truth score, claim support state, or permanent authority |
 | Stop rule | An inspectable policy for ending acquisition or computation given expected benefit, uncertainty, consequence, and cost | Stopping does not imply certainty |
 | Stop status | CONTINUE, COMPLETE, STOPPED_BUDGET, STOPPED_DEADLINE, or STOPPED_OTHER, recorded separately from the route | A stop state does not imply evidence sufficiency and needs a reason plus any resume condition |
 | Typed relationship | An explicit label for how two records relate, such as supports, contradicts, qualifies, copies, compares with, or resembles | The label is a scoped assertion with evidence and uncertainty, not a fact created by naming it |

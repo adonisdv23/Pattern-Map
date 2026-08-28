@@ -36,6 +36,55 @@
       "type": "array",
       "minItems": 6,
       "maxItems": 6,
+      "allOf": [
+        {
+          "prefixItems": [
+            {
+              "properties": {
+                "id": {"const": "F1"},
+                "slug": {"const": "peripheral-signal"},
+                "name": {"const": "Peripheral signal"}
+              }
+            },
+            {
+              "properties": {
+                "id": {"const": "F2"},
+                "slug": {"const": "source-weighing"},
+                "name": {"const": "Source weighing"}
+              }
+            },
+            {
+              "properties": {
+                "id": {"const": "F3"},
+                "slug": {"const": "velocity-motion"},
+                "name": {"const": "Velocity / motion"}
+              }
+            },
+            {
+              "properties": {
+                "id": {"const": "F4"},
+                "slug": {"const": "absence-memory"},
+                "name": {"const": "Absence + memory"}
+              }
+            },
+            {
+              "properties": {
+                "id": {"const": "F5"},
+                "slug": {"const": "structured-patterns"},
+                "name": {"const": "Structured patterns"}
+              }
+            },
+            {
+              "properties": {
+                "id": {"const": "F6"},
+                "slug": {"const": "learning-loop"},
+                "name": {"const": "Learning loop"}
+              }
+            }
+          ],
+          "items": false
+        }
+      ],
       "items": {
         "type": "object",
         "required": [

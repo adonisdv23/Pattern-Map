@@ -38,7 +38,9 @@ and actions separate.
    - reviewer attention:
    - no-action boundary:
    If permission is absent or unclear for a consequential operation, do not
-   acquire or disclose. Record NOT_AUTHORIZED and escalate.
+   acquire or disclose. Record NOT_AUTHORIZED when permission is absent or
+   revoked; preserve UNKNOWN when permission has not been established; then
+   escalate. Do not collapse those states.
 
 3. DEFAULT AND PERIPHERAL ROUTE
    Record the default query, source set, vocabulary, time window, or product
@@ -53,7 +55,8 @@ and actions separate.
 
 5. WEIGH AND COMPARE
    Split the intended answer into narrow claims. For each source and claim
-   record source role, claim-scoped authority, support/contradiction/
+   record source role, relevant track-record evidence (or UNKNOWN),
+   claim-scoped authority, support/contradiction/
    qualification/insufficiency, relevance, provenance, recurrence, origin,
    independence, permission, and uncertainty.
    Compare the relevant peers, periods, attributes, structures, or origins.

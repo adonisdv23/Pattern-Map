@@ -8,6 +8,7 @@ external action.
 
 from __future__ import annotations
 
+import copy
 import json
 import sys
 from pathlib import Path
@@ -63,13 +64,30 @@ def validate_spec() -> None:
     require(schema["title"].startswith("Pattern Map v16"), "local schema is not the v16 schema")
 
     expected = [
-        ("F1", "Peripheral signal"),
-        ("F2", "Source weighing"),
-        ("F3", "Velocity / motion"),
-        ("F4", "Absence + memory"),
-        ("F5", "Structured patterns"),
-        ("F6", "Learning loop"),
+        ("F1", "peripheral-signal", "Peripheral signal"),
+        ("F2", "source-weighing", "Source weighing"),
+        ("F3", "velocity-motion", "Velocity / motion"),
+        ("F4", "absence-memory", "Absence + memory"),
+        ("F5", "structured-patterns", "Structured patterns"),
+        ("F6", "learning-loop", "Learning loop"),
     ]
+    family_schema = schema["properties"]["families"]
+    identity_contract = family_schema["allOf"][0]
+    require(identity_contract.get("items") is False,
+            "schema must reject family entries beyond the ordered six")
+    prefix_items = identity_contract.get("prefixItems")
+    require(isinstance(prefix_items, list) and len(prefix_items) == 6,
+            "schema must express six ordered family identities")
+    schema_identity = [
+        (
+            entry["properties"]["id"]["const"],
+            entry["properties"]["slug"]["const"],
+            entry["properties"]["name"]["const"],
+        )
+        for entry in prefix_items
+    ]
+    require(schema_identity == expected,
+            "schema does not lock the exact ordered F1-F6 ID/slug/name tuple")
     seen = []
     family_keys = {
         "id",
@@ -90,8 +108,9 @@ def validate_spec() -> None:
     for family, expected_pair in zip(spec["families"], expected):
         require(isinstance(family, dict), "each family must be an object")
         require(family_keys <= set(family), f"{expected_pair[0]} is missing family keys")
-        require((family["id"], family["name"]) == expected_pair,
-                f"family mismatch: expected {expected_pair}, got {(family.get('id'), family.get('name'))}")
+        observed_identity = (family["id"], family["slug"], family["name"])
+        require(observed_identity == expected_pair,
+                f"family mismatch: expected {expected_pair}, got {observed_identity}")
         require(family["implementation_levels"].keys()
                 == {"lightweight", "moderate", "advanced"},
                 f"{family['id']} must expose all implementation levels")
@@ -100,7 +119,7 @@ def validate_spec() -> None:
             require(isinstance(family[key], list) and family[key],
                     f"{family['id']} field {key} must be a non-empty list")
         seen.append(family["name"])
-    require(seen == [name for _, name in expected], "family order is not stable")
+    require(seen == [name for _, _, name in expected], "family order is not stable")
     require(len(spec["invariants"]) >= 8, "six-family invariants are incomplete")
 
     markdown = read_text("framework/SIX_FAMILIES.md")
@@ -150,8 +169,10 @@ def validate_artifact_inventory() -> None:
     evidence_register = read_text("framework/templates/EVIDENCE_REGISTER.md")
     require("Source role / authority" not in evidence_register,
             "evidence register collapses source role and claim-scoped authority")
-    require("| Source role | Claim-scoped authority |" in evidence_register,
-            "evidence register must keep source role and claim-scoped authority separate")
+    require("| Source role | Relevant track-record evidence | Claim-scoped authority |" in evidence_register,
+            "evidence register must keep source role, track record, and claim-scoped authority separate")
+    require("never a universal score" in evidence_register,
+            "evidence register does not scope track record or reject a universal score")
 
     decision_receipt = read_text("framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md")
     disposition_section = decision_receipt.split("## Disposition", 1)[1].split(
@@ -161,6 +182,26 @@ def validate_artifact_inventory() -> None:
             "decision receipt treats the ESCALATE route as a human disposition")
     require("`ESCALATE` belongs in the route field" in disposition_section,
             "decision receipt does not explain route-versus-disposition separation")
+
+    operator_playbook = read_text("framework/OPERATOR_PLAYBOOK.md")
+    require("| Later outcome conflicts with expectation | OUTCOME_REVIEW |" not in operator_playbook,
+            "operator playbook treats OUTCOME_REVIEW as a route")
+    require("outcome-learning review, not a route" in operator_playbook,
+            "operator playbook does not distinguish learning review from route state")
+
+    influence_receipt = read_text("framework/templates/INFLUENCE_RECEIPT.md")
+    selected_material = influence_receipt.split("## Selected material", 1)[1].split(
+        "## Withheld material", 1
+    )[0]
+    require("AUTHORIZED / UNKNOWN" not in selected_material,
+            "influence receipt permits unknown-authority material to influence output")
+    require("preserve `UNKNOWN`" in influence_receipt
+            and "belongs in Withheld material" in influence_receipt,
+            "influence receipt does not route unresolved permission to withheld material")
+
+    glossary = read_text("framework/GLOSSARY.md")
+    require("| Source track record |" in glossary,
+            "glossary omits the owner-locked source track-record dimension")
 
     all_text = "\n".join(read_text(relative) for relative in required if relative.endswith(".md"))
     for phrase in (
@@ -262,6 +303,8 @@ def validate_artifact_inventory() -> None:
             "Quickstart does not close the learning loop")
     require("OUTCOME_REVIEW.md" in quickstart,
             "Quickstart does not point to the outcome-review artifact")
+    require("relevant track-record evidence" in quickstart,
+            "Quickstart omits the owner-locked F2 track-record dimension")
 
     preflight = read_text("framework/agent-playbook/PREFLIGHT_CHECKLIST.md")
     require(preflight.count("Group status: PASS / FAIL / UNKNOWN / NOT_APPLICABLE") == 8,
@@ -269,6 +312,17 @@ def validate_artifact_inventory() -> None:
     require("PASS groups / evidence" in preflight
             and "NOT_APPLICABLE groups / reason" in preflight,
             "preflight receipt does not preserve status evidence and N/A reasons")
+    require("NOT_AUTHORIZED_OR_AMBIGUOUS" not in preflight,
+            "preflight collapses absent permission and unknown permission")
+    require("record `not_authorized`" in preflight.lower()
+            and "record `unknown`" in preflight.lower(),
+            "preflight does not preserve distinct permission stop states")
+
+    require("preserve UNKNOWN and escalate" in quickstart,
+            "Quickstart collapses unknown permission into NOT_AUTHORIZED")
+    copyable_brief = read_text("framework/agent-playbook/COPYABLE_AGENT_BRIEF.md")
+    require("preserve UNKNOWN when permission has not been established" in copyable_brief,
+            "copyable brief collapses unknown permission into NOT_AUTHORIZED")
 
     for relative in ("cases/general-research/README.md", "cases/product-and-process/README.md"):
         case = read_text(relative).lower()
@@ -277,27 +331,59 @@ def validate_artifact_inventory() -> None:
         require("human" in case and "permission" in case, f"{relative} lacks human/permission boundary")
 
 
+def validate_outcome(receipt: dict, filename: str) -> None:
+    outcome = receipt.get("outcome", {})
+    learning_statuses = {
+        "LEARNING_PLANNED",
+        "LEARNING_PENDING_OUTCOME",
+        "LEARNING_REVIEWED",
+        "LEARNING_NOT_APPLICABLE",
+    }
+    require(outcome.get("learning_status") in learning_statuses,
+            f"{filename}: outcome needs a canonical learning status")
+    if outcome.get("applicable") is True:
+        require(outcome.get("learning_status") in {
+                    "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED"},
+                f"{filename}: applicable outcome needs pending or reviewed state")
+        require(outcome.get("expectation_recorded") is True,
+                f"{filename}: learning needs a pre-outcome expectation")
+        require(outcome.get("update_applied") is False,
+                f"{filename}: fixture must not silently apply a learning update")
+        if outcome.get("learning_status") == "LEARNING_REVIEWED":
+            require(outcome.get("review_recorded") is True,
+                    f"{filename}: LEARNING_REVIEWED needs a recorded outcome review")
+            observed = outcome.get("observed_outcome")
+            missing = outcome.get("missing_outcome_reason")
+            require(
+                (isinstance(observed, str) and bool(observed.strip()))
+                or (isinstance(missing, str) and bool(missing.strip())),
+                f"{filename}: LEARNING_REVIEWED needs an observed or explicitly missing outcome",
+            )
+            require(outcome.get("human_disposition") in {
+                        "ACCEPTED", "REJECTED", "DEFERRED", "OVERRIDDEN",
+                        "REQUEST_ENRICHMENT"},
+                    f"{filename}: LEARNING_REVIEWED needs a canonical human disposition")
+    else:
+        require(outcome.get("learning_status") == "LEARNING_NOT_APPLICABLE",
+                f"{filename}: non-applicable outcome must say LEARNING_NOT_APPLICABLE")
+
+
 def validate_receipt(receipt: dict, filename: str) -> None:
-    required = {
+    common_required = {
         "receipt_id",
+        "operating_level",
+        "evidence_selection",
         "consequence",
         "permission",
         "budget",
-        "baseline",
-        "comparison",
-        "disconfirmation",
-        "influence",
         "route",
         "stop_status",
         "stop_reason",
+        "outcome",
     }
-    require(required <= set(receipt), f"{filename} is missing receipt keys")
+    require(common_required <= set(receipt), f"{filename} is missing common receipt keys")
     permission = receipt["permission"]
     budget = receipt["budget"]
-    baseline = receipt["baseline"]
-    comparison = receipt["comparison"]
-    disconfirmation = receipt["disconfirmation"]
-    influence = receipt["influence"]
     route = receipt["route"]
     stop_status = receipt["stop_status"]
     stop_reason = receipt["stop_reason"].lower()
@@ -330,8 +416,57 @@ def validate_receipt(receipt: dict, filename: str) -> None:
             f"{filename}: authorization must be boolean")
     require(isinstance(budget.get("remaining_minutes"), (int, float)),
             f"{filename}: remaining budget must be numeric")
+    require(receipt["consequence"] in {"LOW", "MEDIUM", "HIGH"},
+            f"{filename}: consequence is not canonical")
+    validate_outcome(receipt, filename)
+
+    operating_level = receipt["operating_level"]
+    evidence_selection = receipt["evidence_selection"]
+    if operating_level == "ORDINARY":
+        layered_keys = {"baseline", "comparison", "disconfirmation", "influence"}
+        require(evidence_selection == "NONE",
+                f"{filename}: ordinary path cannot select or acquire evidence")
+        require(receipt["consequence"] == "LOW",
+                f"{filename}: ordinary fixture must be low consequence")
+        require(permission.get("authorized") is True
+                and permission.get("disclosure_allowed") is True,
+                f"{filename}: ordinary supplied-material use must be authorized")
+        require(receipt.get("supplied_material_only") is True,
+                f"{filename}: ordinary path must be supplied-material only")
+        require(receipt.get("external_action") is False,
+                f"{filename}: ordinary path cannot authorize external action")
+        require(route == "ANSWER" and stop_status == "COMPLETE",
+                f"{filename}: ordinary path must end in ANSWER / COMPLETE")
+        require(not (layered_keys & set(receipt)),
+                f"{filename}: ordinary path must not fabricate layered evidence records")
+        require(isinstance(receipt.get("assumptions"), list) and receipt["assumptions"],
+                f"{filename}: ordinary path must name its assumptions")
+        require(isinstance(receipt.get("unchecked_boundaries"), list)
+                and receipt["unchecked_boundaries"],
+                f"{filename}: ordinary path must name what was not checked")
+        return
+
+    require(operating_level in {"LIGHTWEIGHT", "MODERATE", "ADVANCED"},
+            f"{filename}: operating level is not canonical")
+    require(evidence_selection == "NEEDED",
+            f"{filename}: layered route must record evidence selection as needed")
+    layered_required = {"baseline", "comparison", "disconfirmation", "influence"}
+    require(layered_required <= set(receipt), f"{filename} is missing layered receipt keys")
+    baseline = receipt["baseline"]
+    comparison = receipt["comparison"]
+    disconfirmation = receipt["disconfirmation"]
+    influence = receipt["influence"]
     require(isinstance(influence.get("recorded"), bool),
             f"{filename}: influence recorded must be boolean")
+    selected_items = influence.get("selected_items")
+    require(isinstance(selected_items, list),
+            f"{filename}: selected influence items must be a list")
+    if influence["recorded"]:
+        require(bool(selected_items),
+                f"{filename}: recorded influence needs at least one selected item")
+    else:
+        require(not selected_items,
+                f"{filename}: unrecorded influence cannot contain selected items")
 
     if not permission["authorized"]:
         require(route in {"HOLD", "ESCALATE", "REFUSE"},
@@ -377,32 +512,79 @@ def validate_receipt(receipt: dict, filename: str) -> None:
         require(comparison.get("origin_state") == "INDEPENDENT",
                 f"{filename}: independence claim needs an independent relation")
 
-    outcome = receipt.get("outcome", {})
-    learning_statuses = {
-        "LEARNING_PLANNED",
-        "LEARNING_PENDING_OUTCOME",
-        "LEARNING_REVIEWED",
-        "LEARNING_NOT_APPLICABLE",
-    }
-    require(outcome.get("learning_status") in learning_statuses,
-            f"{filename}: outcome needs a canonical learning status")
-    if outcome.get("applicable") is True:
-        require(outcome.get("learning_status") in {
-                    "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED"},
-                f"{filename}: applicable outcome needs pending or reviewed state")
-        require(outcome.get("expectation_recorded") is True,
-                f"{filename}: learning needs a pre-outcome expectation")
-        require(outcome.get("update_applied") is False,
-                f"{filename}: fixture must not silently apply a learning update")
+def validate_receipt_guard_mutations() -> None:
+    """Prove reviewed-learning cannot be asserted by changing one status token."""
+
+    base = json.loads(read_text("qa/applied/receipts/layered-ready.json"))
+    invalid = copy.deepcopy(base)
+    invalid["outcome"]["learning_status"] = "LEARNING_REVIEWED"
+    try:
+        validate_receipt(invalid, "synthetic-reviewed-without-review.json")
+    except CheckFailure:
+        pass
     else:
-        require(outcome.get("learning_status") == "LEARNING_NOT_APPLICABLE",
-                f"{filename}: non-applicable outcome must say LEARNING_NOT_APPLICABLE")
+        raise CheckFailure(
+            "validator accepted LEARNING_REVIEWED without an outcome review and disposition"
+        )
+
+    valid = copy.deepcopy(invalid)
+    valid["outcome"].update(
+        {
+            "review_recorded": True,
+            "observed_outcome": "SYNTHETIC_CONTRACT_OBSERVATION_ONLY",
+            "human_disposition": "DEFERRED",
+        }
+    )
+    validate_receipt(valid, "synthetic-reviewed-contract-control.json")
+
+    invalid_influence = copy.deepcopy(base)
+    invalid_influence["influence"]["selected_items"] = []
+    try:
+        validate_receipt(invalid_influence, "synthetic-empty-recorded-influence.json")
+    except CheckFailure:
+        pass
+    else:
+        raise CheckFailure(
+            "validator accepted recorded influence without a selected item"
+        )
+
+    blocked = json.loads(read_text("qa/applied/receipts/blocked-permission.json"))
+    invalid_blocked = copy.deepcopy(blocked)
+    invalid_blocked["influence"]["selected_items"] = ["UNAUTHORIZED-ITEM"]
+    try:
+        validate_receipt(invalid_blocked, "synthetic-unrecorded-selected-item.json")
+    except CheckFailure:
+        pass
+    else:
+        raise CheckFailure(
+            "validator accepted selected material while influence was unrecorded"
+        )
+
+    ordinary = json.loads(read_text("qa/applied/receipts/ordinary-supplied-material.json"))
+    for key, value in (
+        ("comparison", {"done": True}),
+        ("evidence_selection", "NEEDED"),
+    ):
+        invalid_ordinary = copy.deepcopy(ordinary)
+        invalid_ordinary[key] = value
+        try:
+            validate_receipt(invalid_ordinary, f"synthetic-ordinary-{key}.json")
+        except CheckFailure:
+            pass
+        else:
+            raise CheckFailure(
+                f"validator accepted ordinary path with disallowed {key}"
+            )
 
 
 def validate_receipts() -> None:
     receipt_dir = ROOT / "qa/applied/receipts"
     files = sorted(receipt_dir.glob("*.json"))
-    require(len(files) >= 4, "receipt fixture set is too small")
+    require(len(files) >= 5, "receipt fixture set is too small")
+    require((receipt_dir / "ordinary-supplied-material.json").is_file(),
+            "genuine Stage-0 ordinary receipt fixture is missing")
+    require(not (receipt_dir / "ordinary-low-stakes.json").exists(),
+            "layered low-stakes receipt is still mislabeled as ordinary")
     for path in files:
         try:
             receipt = json.loads(path.read_text(encoding="utf-8"))
@@ -417,6 +599,7 @@ def main() -> int:
         ("six-family JSON and schema contract", validate_spec),
         ("artifact inventory and boundary language", validate_artifact_inventory),
         ("receipt fixtures through preflight/stop logic", validate_receipts),
+        ("reviewed-learning fail-closed guard mutations", validate_receipt_guard_mutations),
     ]
     try:
         for label, check in checks:

@@ -57,7 +57,8 @@ Output: acquisition proposal and capture/failure receipt.
 ### 5. Build the evidence register
 
 For each candidate, record source, artifact, version or time, exact span,
-observed metadata, claim, source role, support state, origin/recurrence state,
+observed metadata, claim, source role, relevant track-record evidence,
+claim-scoped authority, support state, origin/recurrence state,
 relevance, permission, uncertainty, and disposition. Keep the raw item
 separate from interpretation.
 
@@ -149,7 +150,7 @@ Output: outcome review and update proposal.
 | Technical access exists but permission is absent | REFUSE acquisition or ESCALATE | Access is not authorization; no retrieval or disclosure |
 | More search would mostly duplicate current material | ANSWER_PROVISIONALLY, HOLD, or DEFER; stop status `STOPPED_BUDGET` or `STOPPED_OTHER` | What remains uncertain and why more work is not worth the current cost |
 | Evidence supports a narrow statement but not its explanation | ANSWER_PROVISIONALLY | State the supported observation and withhold the causal claim |
-| Later outcome conflicts with expectation | OUTCOME_REVIEW | Preserve original receipt; propose, do not silently apply, an update |
+| Later outcome conflicts with expectation | — (outcome-learning review, not a route) | Preserve the original receipt; use the outcome-review record, request human disposition, and propose—never silently apply—an update |
 
 ## Receipt minimum
 

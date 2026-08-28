@@ -381,26 +381,38 @@ content:     one 533-line read-only Pattern Map v15.2 transfer audit
 state:       recoverable locally, not integrated into main, not on GitHub
 ```
 
-That audit is useful evidence and should be read, but it is not a current
-Signal Foundry implementation. Do not push or merge it as part of this
-handoff. If an owner later wants to preserve it remotely, the recovery sequence
-is:
+That audit is optional local evidence, not a current Signal Foundry
+implementation or a required packet input. A fresh clone may not contain it.
+If it is absent, record `UNVERIFIED — optional local audit unavailable;
+continue without it`; do not fetch, infer, or recreate it. Do not push or merge
+it as part of this handoff. If an owner later wants to preserve it remotely,
+and the exact object already exists on that machine, the guarded recovery
+sequence is:
 
 ```sh
 # Run from the receiving Signal Foundry repository root.
 git status --short --branch                 # preserve existing user changes
-git show --stat 4a6ed78                     # confirm the exact object
-git branch --contains 4a6ed78
-git diff main..codex/pattern-map-signal-foundry-transfer-audit --stat
-git log --oneline main..codex/pattern-map-signal-foundry-transfer-audit
+if git rev-parse --verify --quiet '4a6ed78^{commit}' >/dev/null; then
+  git show --stat 4a6ed78
+  if git show-ref --verify --quiet refs/heads/codex/pattern-map-signal-foundry-transfer-audit; then
+    git diff main..codex/pattern-map-signal-foundry-transfer-audit --stat
+    git log --oneline main..codex/pattern-map-signal-foundry-transfer-audit
+  else
+    echo 'UNVERIFIED — optional local audit branch unavailable; continue without it.'
+  fi
+else
+  echo 'UNVERIFIED — optional local audit unavailable; continue without it.'
+fi
+# Do not fetch, recreate, reset, push, or merge this optional audit.
 ```
 
 Then, only under a new exact owner instruction, create a named remote feature
 branch or cherry-pick the single audit commit into an isolated worktree. Do not
 use `git reset --hard`, overwrite the dirty main checkout, or describe the audit
-as an app change. The local `.gitignore` modification and untracked
-`AGENTS.md`/`CLAUDE.md` in Signal Foundry predate this handoff and must remain
-untouched.
+as an app change. On the audited source machine, a local `.gitignore`
+modification and untracked `AGENTS.md`/`CLAUDE.md` predated this handoff.
+Preserve any local work actually present in the receiving checkout, but do not
+assume, infer, or copy those untracked files onto another computer.
 
 ## Current Signal Foundry blockers and non-blockers
 

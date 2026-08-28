@@ -118,14 +118,23 @@ do not treat the act of routing as the human decision.
 
 ## Outcome learning
 
+- Outcome review ID:
 - Expectation recorded:
 - Outcome definition and window:
 - Attribution boundary:
 - Observed outcome:
+- Missing outcome or incomplete observation:
 - Actual cost:
 - Confounders or missingness:
 - Bounded update proposed:
+- Human disposition of proposed update: ACCEPTED / REJECTED / DEFERRED /
+  OVERRIDDEN / REQUEST_ENRICHMENT
+- Learning status after disposition: LEARNING_REVIEWED / LEARNING_NOT_APPLICABLE
 - Update applied? YES / NO / DEFERRED
+
+Do not record `LEARNING_REVIEWED` unless an outcome review is linked, an
+observed outcome or explicit missing-outcome state is recorded, and an
+accountable person has dispositioned the proposed update.
 
 ## Fast stop examples
 
