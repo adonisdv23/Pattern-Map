@@ -90,14 +90,16 @@ review-preparation, presentation, and claim-boundary improvements—not a v17
 thesis, mandatory adoption layer, transfer/effectiveness result, publication,
 outreach action, or study.
 
-Ultra-finalization producer `385af09` also remains v16. It binds an actual
+Ultra-finalization producer `385af09` remains v16. It binds an actual
 synthetic pending receipt to its reviewed missing-outcome successor, resolves
 the embedded expectation/window records, preserves typed uncertainty and
-chronology, makes the static Stage 0 explanation locally complete, restores
-bounded compressed-copy qualifiers, refreshes exact PDF/visual evidence, and
-keeps enhancement-only Map controls inert until JavaScript initializes.
-It adds no family, public route, external registry, bitmap, study, result, Echo
-scope, Signal Foundry input, deployment, or publication action.
+chronology, restores bounded compressed-copy qualifiers, and refreshes exact
+PDF/visual evidence. The later fallback corrections also remain v16: they make
+the static Stage 0 explanation locally complete, keep enhancement-only Map
+controls inert until JavaScript initializes, and preserve that static guide
+during enhanced printing. Together these changes add no family, public route,
+external registry, bitmap, study, result, Echo scope, Signal Foundry input,
+deployment, or publication action.
 
 ## The Echo Problem sequence
 

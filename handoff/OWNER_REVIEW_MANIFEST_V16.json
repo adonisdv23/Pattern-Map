@@ -31,10 +31,10 @@
     "command": "git rev-parse --verify HEAD",
     "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit"
   },
-  "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; current principal-door evidence; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
+  "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site, deterministic teaching reveal, and JavaScript-enabled headless print retention; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; current principal-door evidence; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 291,
-  "total_bytes": 14822529,
+  "file_count": 292,
+  "total_bytes": 14839189,
   "files": [
     {
       "path": ".gitignore",
@@ -123,8 +123,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 124643,
-      "sha256": "9ad400fb1d3085a45eb664eeebfe4e268add1e5c3c34302812e741955cd5da47"
+      "bytes": 125685,
+      "sha256": "d73b71c1653bb98f4c0520f1962fa922dbfda270d9c90efb6e4606d4dde2f1f8"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -153,8 +153,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 90242,
-      "sha256": "f85873ae996b34318b0c39b04d2b24b941e809ce53de5698ecc38169aa73222d"
+      "bytes": 92374,
+      "sha256": "fff648273e85da9338407eb1931f1ebe3d907965b4955d489dae0af90ae49e98"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -218,8 +218,8 @@
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 8346,
-      "sha256": "49676343d67598fbff63d49e2e6c56b78d20c681e367584d31d122d961c904f3"
+      "bytes": 8468,
+      "sha256": "9898acb8bd618dfb6951a62b3c7e31fb80c667897a2dc273772034118a18ddf7"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -358,13 +358,13 @@
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 22300,
-      "sha256": "b855d0c6ef8a8f8395666cc366d07e2e3f6aff6356a87c15ea6900ad699574b4"
+      "bytes": 22783,
+      "sha256": "c8b52267ffbc3cd2d2748644232d4acf6af1b81eb9c1d84d24c9c4b5f8ed4c5a"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 14982,
-      "sha256": "59e7cd0a267fdf091c8561dec29112170a84284a828c4cf7ae1fa6b2888afe38"
+      "bytes": 15130,
+      "sha256": "adf5d8c565ac3b0c7da97465cad9c625b257a4fe35434991e4c173172e85a7d5"
     },
     {
       "path": "handoff/README.md",
@@ -388,8 +388,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 25374,
-      "sha256": "cf67f7e3b530be63538c223232c267e86c46b02fabb9c3cae25d997ad1ef31ff"
+      "bytes": 25462,
+      "sha256": "e837d786890d4c6f536c4e2f8e5f36df820d05cc53223bb10942cc81e016e2ec"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -443,8 +443,8 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 18349,
-      "sha256": "9d5b41506316b1fdafacbdd769c7a787641157c184539051da617f9cbd592358"
+      "bytes": 18622,
+      "sha256": "0dddaff93700934da99f3a698be681117014ae674fde429f42125b01f559e5e0"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
@@ -628,8 +628,8 @@
     },
     {
       "path": "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
-      "bytes": 9475,
-      "sha256": "1e114799c1d6dc6363e24581fa894a24357204920d6bc81720c20e000bb5b88c"
+      "bytes": 10589,
+      "sha256": "e86c256f62eb6e37f12e06310c6cc4525fb647f86f3e9f799967f41b1ca4f1e7"
     },
     {
       "path": "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
@@ -758,8 +758,8 @@
     },
     {
       "path": "qa/run_owner_review_checks.sh",
-      "bytes": 5516,
-      "sha256": "c3351d3d203f323b46b00deedf3210c4b75c454cfa3990e60c4d1925a3657806"
+      "bytes": 5554,
+      "sha256": "3d4bae43f84333e6452501b6160a853680e2f142ff1577cb956943b94b81ef4b"
     },
     {
       "path": "qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md",
@@ -872,9 +872,14 @@
       "sha256": "41629d3ab989fde32a5252bf16bf38df2db41cacc0510a9adcbbc8203b2813aa"
     },
     {
+      "path": "qa/site/headless_print_contract.sh",
+      "bytes": 8141,
+      "sha256": "01e96b3eb99c42e781d09d5be246e8f2bdb64ce701b7df4781743de93ed3f28d"
+    },
+    {
       "path": "qa/site/public-mode-contract.spec.mjs",
-      "bytes": 19759,
-      "sha256": "170f81b6fd0282ea459320c9b8a9ff89e5ce486c26045886b247480ba2a7f400"
+      "bytes": 20021,
+      "sha256": "b1809aba00a90b4a986e7bc5f9a7bba2623493245a5c8ef26bc92e3926f8ca58"
     },
     {
       "path": "qa/site/public-nav-spacing-contract.spec.mjs",
@@ -1423,8 +1428,8 @@
     },
     {
       "path": "site/check.mjs",
-      "bytes": 38742,
-      "sha256": "0619682da115f3465c60e64c624cb2ad4dddb572c42037532dd21d2c7ae18b23"
+      "bytes": 39159,
+      "sha256": "ed177b7e07f0fb2db923198ad96741cda9181ecd9ab21ffb775928696f380784"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
@@ -1433,13 +1438,13 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16-public.html",
-      "bytes": 495179,
-      "sha256": "afc101152f017e26d7f6f8fa30c5c13eace4c1d37ea4e965407e6333448ca82d"
+      "bytes": 495979,
+      "sha256": "a87729a274292be50729d9319da842c9f521c3cf51896bca84bf1f8e749b2c09"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 508095,
-      "sha256": "458cd0ba14b583dc066c7186f4068b76d8a08f79f837f0e57df86a1a3bacc540"
+      "bytes": 508895,
+      "sha256": "e119580a3bedb87bc8dd74fa39e0395742e4d5cfdfa84789f67f4d907bb58665"
     },
     {
       "path": "site/package-lock.json",
@@ -1483,8 +1488,8 @@
     },
     {
       "path": "site/src/site.js",
-      "bytes": 17490,
-      "sha256": "88e623482e72d872fa2bf5c1e7eefedf9e4bfa3007a3c9fc49396fccbdaa387e"
+      "bytes": 18290,
+      "sha256": "bec73ec88ca6dfadfe94d436f9c913f277b044cef2b3d426b4c6bb3f3f5411d6"
     },
     {
       "path": "site/src/term-popover-geometry.js",

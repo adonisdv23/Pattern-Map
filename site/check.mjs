@@ -411,6 +411,8 @@ const main = () => {
   const ordinaryStaticRow = staticGuide.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "";
   assert(/permission resolution[\s\S]*consequential external influence/i.test(ordinaryStaticRow), "public Apply static ordinary row drifted from the canonical Stage 0 predicate");
   assert(siteScript.includes('document.querySelectorAll("[data-progressive-static-guide]")') && siteScript.includes("guide.open = false"), "public Apply does not collapse the static table after JavaScript initializes");
+  assert(siteScript.includes('window.addEventListener("beforeprint"') && siteScript.includes('window.addEventListener("afterprint"'), "public Apply does not preserve progressive-guide state across printing");
+  assert(siteScript.includes("guide.open = true") && siteScript.includes("guide.open = prePrintGuideStates.get(guide)"), "public Apply does not open its static guide for print and restore the screen state");
   assert(siteScript.includes("button.disabled = false"), "Map controls are not enabled after enhancement initializes");
   assert(css.includes(".no-js [data-family-focus], .no-js [data-family-clear] { display: none; }"), "no-script CSS does not hide redundant Map focus/reset controls");
   assert(publicApply.includes('class="public-builder-depth"') && publicApply.indexOf("For builders and agents") > publicApply.indexOf("FOUR PROPORTIONATE CHOICES"), "public Apply does not progressively disclose builder depth");

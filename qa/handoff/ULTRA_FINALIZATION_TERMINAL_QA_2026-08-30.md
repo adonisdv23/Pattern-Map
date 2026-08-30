@@ -66,6 +66,13 @@ this was not change for novelty or model preference.
    complete Stage 0 predicate as the interactive control, Guided route,
    playbook, and PDF. Focused regressions prevent correct wording elsewhere on
    the page from masking static-guide drift.
+10. The next clean-cycle attempt found that enhanced public printing still
+    closed that guide before print CSS hid the interactive replacement. The
+    runtime now opens progressive guides only for printing and restores their
+    prior screen state afterward. A real headless PDF-text regression covers
+    both the routed public Apply page and the public standalone. The same cycle
+    also corrected version-history grammar that had attributed these later
+    fallback repairs to exact producer `385af09`.
 
 ## Wave findings and controlled dispositions
 
@@ -105,6 +112,14 @@ The complete rows are in `docs/ADVISORY_REVIEW_DISPOSITIONS.md`.
   horizontal overflow or clipped interactive controls. This is an
   implementation proxy, not physical keyboard, screen-reader, or human
   comprehension evidence.
+- A focused JavaScript-enabled headless print regression now exercises actual
+  PDF output rather than computed display rules. With the bundled local
+  Poppler text extractor, the public Apply route retained 9,169 extracted
+  characters and the public standalone retained 120,563; both contained the
+  ordered complete Stage 0 predicate, `ORDINARY_RECORD`, `NOT_RUN`,
+  `NOT_TRIGGERED`, and `NOT_OBSERVED`, and both restored their closed screen
+  disclosure state after printing. Missing Chrome/Chromium or PDF text tooling
+  is reported as an explicit skip. Native print preview remains a manual gate.
 - A 140-observation headless audit at exact source checkpoint `9916076` covered
   ten public routes at ten widths, ten review routes at 1440/390, and both
   standalones at ten widths. It found one main and `h1`, no duplicate IDs,

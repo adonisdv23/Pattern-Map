@@ -1726,3 +1726,42 @@ and Echo research track remain untouched.
 **Governing requirement:** A06, A07, A13–A15; D-036, D-040, D-046;
 progressive enhancement, no-script/print equivalence, proportionality, and
 two consecutive clean exact-commit review cycles.
+
+## D-048 — Test the real enhanced print transition and separate producer attribution
+
+**Date:** 2026-08-30
+
+**Status:** Accepted and corrected
+
+The first clean-cycle attempt after D-047 reproduced two further P2 defects.
+The active version history grammatically attributed later fallback behavior to
+exact PDF/standalone producer `385af09`, where that behavior did not exist.
+Separately, normal public enhancement closed the static Apply guide; print CSS
+then hid the interactive surface without making the closed native `details`
+subtree printable. Headless PDF extraction confirmed that enhanced output lost
+the Stage 0 predicate, `ORDINARY_RECORD`, and the explicit unobserved state even
+though no-script output retained them.
+
+The version history now distinguishes `385af09` producer work from later
+fallback corrections without naming a self-referential successor commit. The
+runtime records each progressive guide's screen state, opens the guide during
+`beforeprint`, and restores the prior state during `afterprint`. A focused
+localhost/headless regression prints both the public Apply route and public
+standalone through the DevTools PDF path, extracts their text, requires the
+ordered complete predicate and planning-state tokens, and verifies that the
+closed screen disclosure state returns afterward. Missing Chrome or PDF-text
+tools produce an explicit skip rather than a false pass.
+
+This is a print-semantic and provenance correction only. It does not create a
+new route, duplicate static content, weaken progressive disclosure, revise the
+human thesis, add a claim, or reopen Echo or the sealed Signal Foundry packet.
+The clean-cycle count restarts again on the successor exact commit.
+
+**Evidence:** `site/src/site.js`, regenerated review/public standalones,
+`qa/site/headless_print_contract.sh`, `site/check.mjs`,
+`qa/site/public-mode-contract.spec.mjs`, `docs/VERSION_HISTORY.md`, and the
+ultra-finalization controlled-disposition table.
+
+**Governing requirement:** A06, A11, A13–A15; D-036, D-040, D-047; exact
+provenance, real print-fallback semantics, and two consecutive clean
+exact-commit review cycles.

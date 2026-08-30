@@ -173,7 +173,8 @@ the semantic accessibility route.
   code-native microvisuals; a provider-free local Apply studio that recommends
   a plan from an explicit Stage 0 gate without fabricating actual event states;
   enhancement-only Map controls that remain inert without JavaScript; an exact
-  no-script/print Stage 0 equivalent; a direct-open all-routes
+  no-script/print Stage 0 equivalent whose enhanced print state is restored
+  after use; a direct-open all-routes
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.
@@ -229,6 +230,12 @@ anchors without pretending the external ZIP lives in Git.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, planning-state, Map-layout,
   reader-language, and historical-asset checks pass.
+- When Chrome/Chromium and a PDF text extractor are available, the focused
+  localhost headless-print contract requires both the enhanced public Apply
+  route and the public standalone to retain the ordered Stage 0 predicate,
+  ordinary route, and unobserved-state boundary in actual PDF output, then
+  restore their prior screen disclosure state. Missing optional tools are an
+  explicit skip; native print preview remains manual.
 - The current review standalone has one main, one h1, ten named route sections,
   no duplicate IDs, one publication rail, one mobile guide, one page frame,
   balanced main markup, exactly two frame children, every route inside

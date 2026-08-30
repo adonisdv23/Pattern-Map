@@ -108,6 +108,7 @@ printf '\n[8/12] Site build and route checks\n'
 
 printf '\n[9/12] Site, visual, publication-rehearsal, and research-boundary audits\n'
 python3 qa/site/audit_site.py
+sh qa/site/headless_print_contract.sh
 python3 qa/visual/verify_image_formats.py
 if [ -f qa/publication/publication-kit-contract.spec.mjs ]; then
   node qa/publication/publication-kit-contract.spec.mjs

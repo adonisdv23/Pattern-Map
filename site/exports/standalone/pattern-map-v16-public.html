@@ -2376,8 +2376,29 @@ main { overflow: visible; }
 })();
 
 (() => {
-  document.querySelectorAll("[data-progressive-static-guide]").forEach((guide) => {
+  const progressiveStaticGuides = [...document.querySelectorAll("[data-progressive-static-guide]")];
+  progressiveStaticGuides.forEach((guide) => {
     guide.open = false;
+  });
+  const prePrintGuideStates = new Map();
+  let printGuideStateRecorded = false;
+  window.addEventListener("beforeprint", () => {
+    if (!printGuideStateRecorded) {
+      prePrintGuideStates.clear();
+      progressiveStaticGuides.forEach((guide) => prePrintGuideStates.set(guide, guide.open));
+      printGuideStateRecorded = true;
+    }
+    progressiveStaticGuides.forEach((guide) => {
+      guide.open = true;
+    });
+  });
+  window.addEventListener("afterprint", () => {
+    if (!printGuideStateRecorded) return;
+    progressiveStaticGuides.forEach((guide) => {
+      if (prePrintGuideStates.has(guide)) guide.open = prePrintGuideStates.get(guide);
+    });
+    prePrintGuideStates.clear();
+    printGuideStateRecorded = false;
   });
 
   const familyGrid = document.querySelector(".family-grid");
