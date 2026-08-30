@@ -23,7 +23,8 @@ Current hardening draft pull request: [#2 — Pattern Map v16 — public and tra
   `72a672c5172ff5212e29f01ba2277dd49cc6ea98`.
 - State observed at `2026-08-30T06:53:26Z`: open, draft, and unmerged, with
   remote head `fb7d808819e5e24c826605be3be6f2ab67de73fc`. An earlier readback also
-  reported merge-state clean. Resolve current state and head at use; the
+  reported merge-state clean. Resolve its current head at use and resolve its
+  current PR state at use; the
   generated Signal Foundry packet binds the later exact sealed commit in
   `BUNDLE_METADATA.json.source_commit`.
 
