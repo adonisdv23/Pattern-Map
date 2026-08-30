@@ -29,6 +29,8 @@ The check validates:
 - budget as capacity/constraint rather than an independent reason for advanced
   machinery;
 - distinct permission, route, stop, learning, and human-disposition states;
+- a required non-empty layered uncertainty field whose bounded notes retain a
+  canonical typed uncertainty state;
 - substantive, resolvable baseline, comparison, disconfirmation, selected-
   influence, and scoped-memory references;
 - all four permission states with state-specific reason/resume behavior and no
@@ -47,8 +49,12 @@ The check validates:
   current record, selects only current authorized memory, and preserves
   superseded history;
 - a sparse neutral case with two inactive families and no placeholder artifacts;
-- fail-closed reviewed-learning, permission, dangling-reference, influence,
-  ordinary-record, and memory mutations; and
+- fail-closed reviewed-learning that checks receipt-to-review consistency by
+  ID and canonical SHA-256 of the reconstructed pending projection rather than
+  trusting a status boolean, including one explicitly synthetic/no-result
+  `OUTCOME_MISSING` positive fixture;
+- permission, dangling-reference, influence, ordinary-record, and memory
+  mutations; and
 - receipt fixtures through the documented preflight and stop rules.
 
 These checks do not show that the framework improves decisions, that any case

@@ -753,6 +753,20 @@ TIME_BEARING_PATTERN = re.compile(
 )
 DIGEST_PATTERN = re.compile(r"^sha256:[0-9a-f]{64}$")
 LEGACY_AUTHORIZATION_KEYS = {"authorized", "permission_granted", "is_authorized"}
+UNCERTAINTY_STATES = {
+    "UNKNOWN", "AMBIGUOUS_IDENTITY", "INSUFFICIENT_SUPPORT", "CONTESTED",
+    "UNKNOWN_ORIGIN", "STALE", "MISSING_BASELINE", "FAILED_CAPTURE",
+    "NOT_AUTHORIZED", "REVOKED", "INCOMPARABLE", "OUTCOME_MISSING",
+}
+MISSING_OUTCOME_REASONS = {
+    "NOT_APPLICABLE", "OUTCOME_MISSING", "INCOMPLETE_OBSERVATION",
+}
+HUMAN_DISPOSITIONS = {
+    "ACCEPTED", "REJECTED", "DEFERRED", "OVERRIDDEN", "REQUEST_ENRICHMENT",
+}
+OUTCOME_REVIEW_RECORD_STATUSES = {
+    "RECORDED_REVIEW", "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+}
 
 
 def nonempty(value: object) -> bool:
@@ -788,6 +802,36 @@ def canonical_payload_digest(payload: object) -> str:
         separators=(",", ":"),
     ).encode("utf-8")
     return f"sha256:{hashlib.sha256(canonical).hexdigest()}"
+
+
+def canonical_pending_receipt_digest(receipt: dict) -> str:
+    """Hash the reconstructed pending projection for review consistency."""
+
+    pending = copy.deepcopy(receipt)
+    pending.pop("fixture_status", None)
+    pending["outcome"] = {
+        "applicable": True,
+        "learning_status": "LEARNING_PENDING_OUTCOME",
+        "expectation_recorded": True,
+        "outcome_window_recorded": True,
+        "update_applied": False,
+    }
+    return canonical_payload_digest(pending)
+
+
+def validate_uncertainty(value: object, filename: str) -> None:
+    """Require at least one bounded note containing a canonical typed state."""
+
+    require_string_list(value, f"{filename}: uncertainty must be a non-empty string list")
+    for note in value:
+        require("\n" not in note and len(note) <= 240,
+                f"{filename}: each uncertainty note must be one bounded line")
+        upper = note.upper()
+        require(any(re.search(
+                    rf"(?<![A-Z0-9_]){re.escape(state)}(?![A-Z0-9_])",
+                    upper,
+                ) for state in UNCERTAINTY_STATES),
+                f"{filename}: uncertainty note lacks a canonical typed state: {note}")
 
 
 def parse_utc_observed_at(value: object, filename: str, record_id: str) -> datetime:
@@ -885,10 +929,7 @@ def validate_outcome(receipt: dict, filename: str) -> None:
                 f"{filename}: LEARNING_PENDING_OUTCOME cannot apply an update")
         return
 
-    reviewed_keys = pre_review_keys | {
-        "review_recorded", "observed_outcome", "missing_outcome_reason",
-        "human_disposition",
-    }
+    reviewed_keys = pre_review_keys | {"outcome_review"}
     require(status == "LEARNING_REVIEWED",
             f"{filename}: applicable outcome has an incompatible learning status")
     require(set(outcome) == reviewed_keys,
@@ -896,18 +937,60 @@ def validate_outcome(receipt: dict, filename: str) -> None:
     require(outcome["expectation_recorded"] is True
             and outcome["outcome_window_recorded"] is True,
             f"{filename}: LEARNING_REVIEWED needs the locked pre-outcome record")
-    require(outcome["review_recorded"] is True,
-            f"{filename}: LEARNING_REVIEWED needs a recorded outcome review")
-    observed = outcome["observed_outcome"]
-    missing = outcome["missing_outcome_reason"]
+    review = outcome["outcome_review"]
+    review_keys = {
+        "id", "record_status", "original_receipt_id",
+        "original_receipt_digest", "expectation_ref", "outcome_window_ref",
+        "pre_review_learning_status", "observer", "observed_outcome",
+        "missing_outcome_reason", "actual_cost", "confounders",
+        "attribution_boundary", "bounded_update_proposal",
+        "human_disposition",
+    }
+    require(isinstance(review, dict) and set(review) == review_keys,
+            f"{filename}: LEARNING_REVIEWED needs one exact linked outcome-review record")
+    for key in (
+        "id", "record_status", "original_receipt_id",
+        "original_receipt_digest", "expectation_ref", "outcome_window_ref",
+        "pre_review_learning_status", "observer", "observed_outcome",
+        "missing_outcome_reason", "actual_cost", "attribution_boundary",
+        "bounded_update_proposal", "human_disposition",
+    ):
+        require_string(review[key], f"{filename}: outcome review {key} is empty")
+    require(review["record_status"] in OUTCOME_REVIEW_RECORD_STATUSES,
+            f"{filename}: outcome review record status is not canonical")
+    if review["record_status"] == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT":
+        require(receipt.get("fixture_status") == review["record_status"],
+                f"{filename}: synthetic review lacks the top-level no-result marker")
+    require(review["original_receipt_id"] == receipt.get("receipt_id"),
+            f"{filename}: outcome review does not link the original receipt ID")
+    require(DIGEST_PATTERN.fullmatch(review["original_receipt_digest"]) is not None,
+            f"{filename}: outcome review original receipt digest is malformed")
+    require(review["original_receipt_digest"] == canonical_pending_receipt_digest(receipt),
+            f"{filename}: outcome review does not match the reconstructed pre-review receipt")
+    for key in ("expectation_ref", "outcome_window_ref"):
+        require(EXACT_POINTER_PATTERN.fullmatch(review[key]) is not None,
+                f"{filename}: outcome review {key} is not an exact resolvable pointer")
+    require(review["pre_review_learning_status"] == "LEARNING_PENDING_OUTCOME",
+            f"{filename}: outcome review lacks the canonical pre-review state")
+    require_string_list(review["confounders"],
+                        f"{filename}: outcome review needs explicit confounders or missingness")
+    require(all("\n" not in value and len(value) <= 240
+                for value in review["confounders"]),
+            f"{filename}: outcome review confounders must be bounded lines")
+    observed = review["observed_outcome"]
+    missing = review["missing_outcome_reason"]
     require(isinstance(observed, str) and isinstance(missing, str),
             f"{filename}: reviewed outcome and missing-outcome reason must be strings")
-    require((nonempty(observed) and observed != "NOT_APPLICABLE")
-            or (nonempty(missing) and missing != "NOT_APPLICABLE"),
-            f"{filename}: LEARNING_REVIEWED needs an observed or explicitly missing outcome")
-    require(outcome["human_disposition"] in {
-                "ACCEPTED", "REJECTED", "DEFERRED", "OVERRIDDEN",
-                "REQUEST_ENRICHMENT"},
+    require(missing in MISSING_OUTCOME_REASONS,
+            f"{filename}: reviewed outcome missingness is not typed")
+    has_observed = nonempty(observed) and observed != "NOT_APPLICABLE"
+    has_missing = missing != "NOT_APPLICABLE"
+    require(has_observed ^ has_missing,
+            f"{filename}: LEARNING_REVIEWED needs exactly one observed outcome or typed missing outcome")
+    require((has_observed and missing == "NOT_APPLICABLE")
+            or (has_missing and observed == "NOT_APPLICABLE"),
+            f"{filename}: reviewed observed and missing outcome branches must be mutually exclusive")
+    require(review["human_disposition"] in HUMAN_DISPOSITIONS,
             f"{filename}: LEARNING_REVIEWED needs a canonical human disposition")
     require(outcome["update_applied"] is False,
             f"{filename}: an outcome review may propose but cannot silently apply an update")
@@ -1311,7 +1394,7 @@ def validate_layered_receipt(receipt: dict, filename: str) -> None:
         "comparison_records", "comparison_disposition",
         "disconfirmation_records", "disconfirmation_disposition", "memory_records",
         "memory_use", "influence", "route", "stop_status", "stop_reason",
-        "outcome",
+        "uncertainty", "outcome",
     }
     require(common_required <= set(receipt), f"{filename} is missing layered receipt keys")
     require(receipt["operating_level"] in {"LIGHTWEIGHT", "MODERATE", "ADVANCED"},
@@ -1345,6 +1428,7 @@ def validate_layered_receipt(receipt: dict, filename: str) -> None:
             f"{filename}: stop status is not canonical: {stop_status}")
     require_string(receipt["stop_reason"], f"{filename}: stop reason is empty")
     stop_reason = receipt["stop_reason"].lower()
+    validate_uncertainty(receipt["uncertainty"], filename)
     validate_outcome(receipt, filename)
 
     evidence = validate_evidence_records(receipt, filename)
@@ -1508,6 +1592,27 @@ def validate_receipt_guard_mutations() -> None:
 
     base = load_json("qa/applied/receipts/layered-ready.json")
 
+    missing_uncertainty = copy.deepcopy(base)
+    del missing_uncertainty["uncertainty"]
+    expect_failure(
+        missing_uncertainty,
+        "synthetic-missing-uncertainty.json",
+        "validator accepted a layered receipt without uncertainty",
+        error_contains="missing layered receipt keys",
+    )
+    for mutation_name, uncertainty in (
+        ("empty-uncertainty", []),
+        ("untyped-uncertainty", ["scope is limited to supplied material"]),
+    ):
+        invalid_uncertainty = copy.deepcopy(base)
+        invalid_uncertainty["uncertainty"] = uncertainty
+        expect_failure(
+            invalid_uncertainty,
+            f"synthetic-{mutation_name}.json",
+            f"validator accepted invalid uncertainty shape {mutation_name}",
+            error_contains="uncertainty",
+        )
+
     planned = copy.deepcopy(base)
     planned["outcome"] = {
         "applicable": True,
@@ -1525,16 +1630,81 @@ def validate_receipt_guard_mutations() -> None:
         "synthetic-reviewed-without-review.json",
         "validator accepted LEARNING_REVIEWED without an outcome review and disposition",
     )
-    valid = copy.deepcopy(invalid)
-    valid["outcome"].update(
-        {
-            "review_recorded": True,
+    valid = copy.deepcopy(base)
+    valid["fixture_status"] = "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT"
+    valid["outcome"] = {
+        "applicable": True,
+        "learning_status": "LEARNING_REVIEWED",
+        "expectation_recorded": True,
+        "outcome_window_recorded": True,
+        "update_applied": False,
+        "outcome_review": {
+            "id": "OR-SYNTHETIC-CONTROL",
+            "record_status": "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+            "original_receipt_id": valid["receipt_id"],
+            "original_receipt_digest": "sha256:" + "0" * 64,
+            "expectation_ref": "fixture://synthetic/layered-ready#expectation",
+            "outcome_window_ref": "fixture://synthetic/layered-ready#outcome-window",
+            "pre_review_learning_status": "LEARNING_PENDING_OUTCOME",
+            "observer": "Synthetic contract reviewer; no participant or real operator.",
             "observed_outcome": "SYNTHETIC_CONTRACT_OBSERVATION_ONLY",
             "missing_outcome_reason": "NOT_APPLICABLE",
+            "actual_cost": "SYNTHETIC_CONTRACT_COST_ONLY",
+            "confounders": ["Synthetic control only; no real outcome or causal attribution."],
+            "attribution_boundary": "This structural control cannot establish causality or effectiveness.",
+            "bounded_update_proposal": "Preserve the synthetic fixture without applying a policy update.",
             "human_disposition": "DEFERRED",
-        }
+        },
+    }
+    valid["outcome"]["outcome_review"]["original_receipt_digest"] = (
+        canonical_pending_receipt_digest(valid)
     )
     validate_layered_receipt(valid, "synthetic-reviewed-contract-control.json")
+
+    for mutation_name, key, value, error in (
+        (
+            "review-dangling-receipt",
+            "original_receipt_id",
+            "DR-MISSING",
+            "does not link the original receipt ID",
+        ),
+        (
+            "review-wrong-digest",
+            "original_receipt_digest",
+            "sha256:" + "f" * 64,
+            "does not match the reconstructed pre-review receipt",
+        ),
+        (
+            "review-missing-outcome",
+            "missing_outcome_reason",
+            "NOT_APPLICABLE",
+            "needs exactly one observed outcome or typed missing outcome",
+        ),
+    ):
+        invalid_review = copy.deepcopy(valid)
+        invalid_review["outcome"]["outcome_review"][key] = value
+        if mutation_name == "review-missing-outcome":
+            invalid_review["outcome"]["outcome_review"]["observed_outcome"] = "NOT_APPLICABLE"
+        expect_failure(
+            invalid_review,
+            f"synthetic-{mutation_name}.json",
+            f"validator accepted invalid linked outcome review {mutation_name}",
+            error_contains=error,
+        )
+
+    both_observed_and_missing = copy.deepcopy(valid)
+    both_observed_and_missing["outcome"]["outcome_review"].update(
+        {
+            "observed_outcome": "SYNTHETIC_CONTRACT_OBSERVATION_ONLY",
+            "missing_outcome_reason": "INCOMPLETE_OBSERVATION",
+        }
+    )
+    expect_failure(
+        both_observed_and_missing,
+        "synthetic-review-observed-and-missing.json",
+        "validator accepted both an observed outcome and missing-outcome state",
+        error_contains="exactly one observed outcome or typed missing outcome",
+    )
 
     for mutation_name, outcome in (
         (
@@ -1982,6 +2152,7 @@ def validate_receipts() -> None:
         "unknown-permission.json",
         "revoked-permission.json",
         "memory-append-only-correction.json",
+        "reviewed-missing-outcome.json",
     }
     files = sorted(receipt_dir.glob("*.json"))
     require(required_files <= {path.name for path in files},
@@ -2000,9 +2171,17 @@ def validate_receipts() -> None:
         else:
             validate_layered_receipt(value, path.name)
             observed_permission_states.add(value["permission"]["state"])
-        if path.name == "memory-append-only-correction.json":
+        if path.name in {
+            "memory-append-only-correction.json", "reviewed-missing-outcome.json",
+        }:
             require(value.get("fixture_status") == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
-                    "F4 memory fixture is not explicitly synthetic/no-result")
+                    f"{path.name} is not explicitly synthetic/no-result")
+        if path.name == "reviewed-missing-outcome.json":
+            review = value["outcome"]["outcome_review"]
+            require(value["outcome"]["learning_status"] == "LEARNING_REVIEWED"
+                    and review["observed_outcome"] == "NOT_APPLICABLE"
+                    and review["missing_outcome_reason"] == "OUTCOME_MISSING",
+                    "reviewed missing-outcome fixture does not exercise the unavailable-outcome class")
     require(observed_permission_states == PERMISSION_STATES,
             "fixtures do not exercise all four typed permission states")
 

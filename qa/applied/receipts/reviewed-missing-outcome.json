@@ -1,14 +1,15 @@
 {
-  "receipt_id": "DR-LIGHT-001",
+  "fixture_status": "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+  "receipt_id": "DR-REVIEW-MISSING-001",
   "operating_level": "LIGHTWEIGHT",
   "evidence_selection": "NEEDED",
   "consequence": "LOW",
   "permission": {
     "technical_access": "AVAILABLE",
     "state": "AUTHORIZED",
-    "scope": "Use the two supplied synthetic passages for this bounded contrast.",
+    "scope": "Use the two supplied synthetic passages for this bounded contract-only review.",
     "reason_code": "AUTHORIZED_FOR_PURPOSE",
-    "reason": "The supplied fixture permits bounded internal transformation and comparison.",
+    "reason": "The fixture permits bounded internal procedure testing only.",
     "resume_condition": "NOT_APPLICABLE"
   },
   "budget": {
@@ -92,10 +93,32 @@
   },
   "route": "ANSWER_PROVISIONALLY",
   "stop_status": "COMPLETE",
-  "stop_reason": "Remaining search is not worth the low-consequence task budget.",
-  "uncertainty": ["INSUFFICIENT_SUPPORT: scope limited to supplied material"],
+  "stop_reason": "The outcome window closed without an observable outcome; no update was applied.",
+  "uncertainty": ["OUTCOME_MISSING: no outcome observation is available"],
   "outcome": {
-    "applicable": false,
-    "learning_status": "LEARNING_NOT_APPLICABLE"
+    "applicable": true,
+    "learning_status": "LEARNING_REVIEWED",
+    "expectation_recorded": true,
+    "outcome_window_recorded": true,
+    "update_applied": false,
+    "outcome_review": {
+      "id": "OR-SYNTHETIC-MISSING-001",
+      "record_status": "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+      "original_receipt_id": "DR-REVIEW-MISSING-001",
+      "original_receipt_digest": "sha256:4e7422c5184fff9c046a3b4c3789292a41421f6a64f9c1320da1feb71942fd00",
+      "expectation_ref": "fixture://synthetic/reviewed-missing-outcome#expectation",
+      "outcome_window_ref": "fixture://synthetic/reviewed-missing-outcome#outcome-window",
+      "pre_review_learning_status": "LEARNING_PENDING_OUTCOME",
+      "observer": "Synthetic contract reviewer; no participant or real operator.",
+      "observed_outcome": "NOT_APPLICABLE",
+      "missing_outcome_reason": "OUTCOME_MISSING",
+      "actual_cost": "NOT_AVAILABLE",
+      "confounders": [
+        "No outcome observation exists; no causal or effectiveness inference is possible."
+      ],
+      "attribution_boundary": "This synthetic missingness control cannot establish an outcome, cause, or framework effect.",
+      "bounded_update_proposal": "Preserve the original receipt and record missingness; do not change policy.",
+      "human_disposition": "DEFERRED"
+    }
   }
 }

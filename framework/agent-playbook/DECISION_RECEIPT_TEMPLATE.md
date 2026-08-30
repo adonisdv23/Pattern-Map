@@ -161,6 +161,13 @@ do not treat the act of routing as the human decision.
 ## Outcome learning
 
 - Outcome review ID:
+- Outcome review record status: RECORDED_REVIEW /
+  SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT
+- Original decision / route / influence receipt ID:
+- Canonical SHA-256 of the reconstructed pre-review pending receipt:
+- Expectation record exact pointer:
+- Outcome-window record exact pointer:
+- Learning status before review: LEARNING_PENDING_OUTCOME
 - Expectation recorded:
 - Outcome definition and window:
 - Attribution boundary:
@@ -174,9 +181,13 @@ do not treat the act of routing as the human decision.
 - Learning status after disposition: LEARNING_REVIEWED / LEARNING_NOT_APPLICABLE
 - Update applied? YES / NO / DEFERRED
 
-Do not record `LEARNING_REVIEWED` unless an outcome review is linked, an
-observed outcome or explicit missing-outcome state is recorded, and an
-accountable person has dispositioned the proposed update.
+Do not record `LEARNING_REVIEWED` unless an outcome-review record links the
+complete pre-review decision / route / influence receipt, an observed outcome
+or explicit missing-outcome state is recorded with cost and confounders, and
+an accountable person has dispositioned the proposed update. A boolean saying
+that a review occurred is not a resolvable review record. The fixture digest
+is a reconstructed-snapshot consistency check, not proof that an independently
+immutable historical receipt exists.
 
 ## Fast stop examples
 
