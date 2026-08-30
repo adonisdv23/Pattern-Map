@@ -149,6 +149,7 @@ code {
 
 .primary-nav, .secondary-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
 .primary-nav { justify-content: flex-end; }
+.mode-public .primary-nav { gap: 0.6rem; }
 .primary-nav a, .secondary-nav a, .nav-more {
   border: 1px solid transparent;
   border-radius: 999px;
@@ -434,7 +435,7 @@ th { background: var(--paper-deep); font-size: 0.75rem; }
 @media (max-width: 480px) {
   body { font-size: 0.97rem; }.site-header, .hero, .home-section, .reading-route, .guided-route, .map-route, .apply-route, .examples-route, .boundaries-route, .sources-route, .research-route, .history-route, .route-intro, .site-footer { width: min(100% - 1.25rem, var(--measure)); }
   .operator-steps { grid-template-columns: 1fr; }.door-card { min-height: 11.5rem; }.implementation-grid { grid-template-columns: 1fr; }.lineage-grid { grid-template-columns: 1fr; }.glossary-grid { grid-template-columns: 1fr; }.report-chip { font-size: 0.58rem; }
-  .wordmark span { font-size: 1.08rem; }.wordmark small { font-size: 0.53rem; }.primary-nav { gap: 0; }.nav-more { padding-inline: 0.45rem; }
+  .wordmark span { font-size: 1.08rem; }.wordmark small { font-size: 0.53rem; }.primary-nav { gap: 0; }.mode-public .primary-nav { gap: 0.18rem; }.nav-more { padding-inline: 0.45rem; }
 }
 
 @media (min-width: 821px) {
