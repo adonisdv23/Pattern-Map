@@ -69,6 +69,15 @@ origin accounting. All six original families remain visible: peripheral
 signal; source weighing; velocity/motion; absence + memory; structured
 patterns; and the learning loop.
 
+The opportunity-expansion cycle then tested whether the sealed candidate could
+be more useful without becoming larger for its own sake. Three isolated lanes,
+three cross-lane challenges, and three exact-integrated red teams leave only a
+reduced optional project-use adapter, an unpublished mentor/X/release
+rehearsal kit, one public-navigation spacing correction, and a targeted
+non-exhaustive source scan. The cycle removed an accidental downstream packet
+dependency and repeated operating prose; it does not establish transfer,
+comprehension, publication readiness, answer quality, or effectiveness.
+
 The exact current branch and draft pull-request state is recorded in
 [`BRANCH_AND_PR_STATE.md`](BRANCH_AND_PR_STATE.md) and must be resolved at use.
 Earlier draft pull requests remain review history. None authorizes a merge,
@@ -109,6 +118,7 @@ deployment, or publication.
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
    [public/transfer convergence QA](../qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md),
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
+   [opportunity-expansion terminal QA](../qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
 9. If the owner is preparing a private mentor review or rehearsing a possible

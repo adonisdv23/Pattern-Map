@@ -141,6 +141,8 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Portable-bundle regression | `qa/handoff/test_portable_bundle.py` |
 | Public/transfer convergence QA | `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` |
 | Final exact-integrated red-team correction QA | `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` plus the three final reports under `qa/editorial/advisory/`, `qa/site/advisory/`, and `qa/research/advisory/` |
+| Opportunity-expansion plan and terminal QA | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`, `qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md` |
+| Opportunity-expansion review loops | Three Loop 1 reports and three exact-integrated Loop 2 reports under `qa/publication/advisory/`, `qa/research/advisory/`, and `qa/applied/advisory/`; static/model review evidence only |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
 | Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |

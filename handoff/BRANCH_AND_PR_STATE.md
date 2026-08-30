@@ -4,7 +4,8 @@ Status date: 2026-08-30
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
-| Current final owner-review convergence | `codex/pattern-map-v16-final-convergence` | Exact current source resolves from Git or sealed packet metadata; first pushed exact-review checkpoint `6a61f6d` | Authorized push target; draft PR #3 was observed open, draft, clean, and unmerged at `2026-08-30T11:05:25Z`; resolve current state at use |
+| Current opportunity-expansion owner-review delta | `codex/pattern-map-v16-next-level` | Exact current source resolves from Git; the first pushed Loop 2 correction checkpoint was `df9bfda` | Authorized push target; stacked draft PR #4 was observed open, draft, clean, and unmerged at `2026-08-30T13:44:36Z`; resolve current head and state at use |
+| Predecessor final owner-review convergence | `codex/pattern-map-v16-final-convergence` | Sealed source and selected Signal Foundry packet checkpoint `5298524` | Authorized predecessor push target; draft PR #3 was observed open, draft, clean, and unmerged at the 2026-08-30 readback; do not substitute a later additive branch for the sealed Signal Foundry packet |
 | Foundation owner-review history | `codex/pattern-map-v16-foundation` | `874a0a8` fixed human manuscript/content-interface checkpoint; `c86e537` post-Ultracode contract source; current foundation head resolves from Git | Authorized historical push target; draft PR #1 was open, draft, and unmerged at the 2026-08-28 readback; do not use `874a0a8` as the current operating checkout |
 | Predecessor public/transfer hardening | `codex/pattern-map-v16-public-transfer-hardening` | Phase 0 baseline `37c7c85`; minimum integrated operating contract `cbc89db`; corrections through at least `c0b006f`; exact predecessor source resolves from Git | Authorized historical push target; draft PR #2 was last observed open, draft, clean, and unmerged; do not substitute it for the final-convergence branch |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
@@ -15,7 +16,19 @@ Status date: 2026-08-30
 | Authored site and interaction polish | `codex/pattern-map-v16-site-polish` | `85dff94` | Pushed; integrated into foundation |
 | Protected destination | `main` | `5eea238` at orchestration start | Not merged or modified by this work |
 
-Current final-convergence draft pull request: [#3 — Pattern Map v16 — final owner-review convergence](https://github.com/adonisdv23/Pattern-Map/pull/3)
+Current opportunity-expansion draft pull request: [#4 — Pattern Map v16 — opportunity expansion and final red teams](https://github.com/adonisdv23/Pattern-Map/pull/4)
+
+- Base branch: `codex/pattern-map-v16-final-convergence`.
+- Head branch: `codex/pattern-map-v16-next-level`.
+- First pushed Loop 2 correction checkpoint:
+  `df9bfda57c9096b66c3f9f8072f61bb39b57e4ff`.
+- State observed at `2026-08-30T13:44:36Z`: open, draft, clean, and
+  unmerged, with remote head
+  `df9bfda57c9096b66c3f9f8072f61bb39b57e4ff`. Resolve its current head
+  and review state at use; this tracked file deliberately does not hash its own
+  later updates.
+
+Predecessor final-convergence draft pull request: [#3 — Pattern Map v16 — final owner-review convergence](https://github.com/adonisdv23/Pattern-Map/pull/3)
 
 - Base branch: `main`.
 - Head branch: `codex/pattern-map-v16-final-convergence`.
@@ -61,7 +74,7 @@ Foundation draft pull request: [#1 — Pattern Map v16 — canonical owner-revie
   current remote head and state at use rather than treating this tracked file
   as self-referential proof of a later push.
 
-All three draft PRs track their named head branches. The canonical foundation
+All four draft PRs track their named head branches. The canonical foundation
 source checkpoint above includes
 the bounded ChatGPT Pro corrections, site hygiene, Signal handoff, EP v1.1,
 the owner visual/export repair that restores standalone route containment,
@@ -73,6 +86,9 @@ all-payload package hygiene, and fresh-clone-safe Signal Foundry inputs. Exact
 sealed-package identity belongs in generated `BUNDLE_METADATA.json` and
 `START_HERE.md`; current remote state belongs to a fresh Git/GitHub readback.
 This tracked narrative deliberately does not hard-code its own later commit.
+The stacked opportunity-expansion branch adds optional review, project-use,
+and source-boundary aids plus two further red-team loops; it does not replace
+the exact `5298524` Signal Foundry packet or authorize downstream mutation.
 The routed-site screenshots from
 `a319794` remain historical QA, not current Map/Apply evidence.
 
