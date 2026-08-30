@@ -18,8 +18,16 @@ The check validates:
 - canonical route, stop, and learning vocabulary across entry-point artifacts;
 - Quickstart outcome close-out and preflight group-status observability;
 - bounded v13 process/workflow/model-path continuity without hierarchy;
-- Stage 0 inside the copied prompt and a terminal four-field ordinary record
-  with no layered route, stop, outcome, learning, evidence, or family fields;
+- Stage 0 inside the copied prompt, with ordinary limited to reversible
+  supplied-material transformation requiring no material claim judgment,
+  comparison, selection/withholding, permission resolution, memory reuse, new
+  acquisition, or externally consequential influence;
+- the terminal four-field ordinary record as neither an ANSWER nor a route,
+  stop, outcome, learning, influence, evidence, or family receipt;
+- a focused Stage 0 truth table that rejects each ordinary-path disqualifier,
+  including selection/withholding wholly inside supplied material;
+- budget as capacity/constraint rather than an independent reason for advanced
+  machinery;
 - distinct permission, route, stop, learning, and human-disposition states;
 - substantive, resolvable baseline, comparison, disconfirmation, selected-
   influence, and scoped-memory references;

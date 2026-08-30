@@ -6,7 +6,14 @@ with a notebook, Markdown files, a spreadsheet, or software.
 
 ## Start with the smallest useful route
 
-Ask four questions:
+First apply Stage 0. Ordinary is valid only for a reversible transformation of
+user-supplied material that requires no material claim judgment, comparison,
+selection or withholding, permission resolution, memory reuse, new
+acquisition, or externally consequential influence. That path returns only its
+four-field terminal record; it is not an `ANSWER` route or an influence
+receipt.
+
+For every other task, ask four questions to choose the smallest layered route:
 
 1. Is the task consequential, hard to reverse, sensitive, or likely to be
    reused as memory?
@@ -14,9 +21,10 @@ Ask four questions:
 3. Can a person correct a wrong answer quickly?
 4. Is there a later outcome worth comparing with an expectation?
 
-If the answers are mostly no, use the lightweight route or ordinary prompting
-with a short uncertainty note. If any answer is yes, create a decision brief
-and choose a cost boundary before searching.
+If the answers are mostly no, use the lightweight route. If any answer is yes,
+create a decision brief and choose a cost boundary before searching. These
+questions select a layered level; they do not override Stage 0 or grant human
+authority for externally consequential action.
 
 ## The operating sequence
 
@@ -143,7 +151,8 @@ Output: outcome review and update proposal.
 
 | Situation | Route | What the operator must say |
 | --- | --- | --- |
-| Low consequence, supplied evidence, easy correction | ANSWER or lightweight ordinary path | What was assumed and what was not checked |
+| Exact reversible transformation of all named supplied material; no Stage 0 disqualifier | — (terminal ordinary record, not a route) | Supplied scope, material assumptions, unchecked boundaries, and output |
+| Low consequence, supplied evidence, easy correction, but material judgment or selection is required | ANSWER on the lightweight route | What was judged, selected or withheld, assumed, and not checked |
 | One material gap, reversible decision, authorized low-cost search | ACQUIRE | Which gap, expected benefit, cost limit, and stop rule |
 | Repeated reports with unclear relation | COMPARE or HOLD | Recurrence observed; independence UNKNOWN until supported |
 | High-consequence claim with missing baseline | HOLD or ESCALATE | Baseline missing; no factual absence or motion conclusion |

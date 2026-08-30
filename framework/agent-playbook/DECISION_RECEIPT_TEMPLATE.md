@@ -4,7 +4,7 @@ Use this after the preflight and again when the answer or route is complete.
 It is a compact audit trail, not a claim that the answer is correct.
 A Stage-0 ordinary transformation does not use this receipt. Use repository
 template `framework/templates/ORDINARY_RECORD.md` and stop before route, stop,
-outcome, learning, or family records.
+outcome, learning, influence, or family records.
 
 ## Header
 

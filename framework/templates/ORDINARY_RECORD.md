@@ -1,10 +1,15 @@
 # Ordinary supplied-material record
 
-Use only when Stage 0 confirms that no new evidence selection, acquisition,
-comparison, memory reuse, permission decision, or external influence is
-required. Complete the requested reversible transformation, record the four
-fields below, and stop. Do not add layered evidence, route, stop, outcome,
-learning, or six-family fields.
+Ordinary is valid only for a reversible transformation of user-supplied
+material that requires no material claim judgment, comparison, selection or
+withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence. Complete that transformation, record the
+four fields below, and stop.
+
+The four-field ordinary record is terminal; it is not an ANSWER, route, stop,
+learning, or influence receipt. Do not add layered evidence, outcome, or
+six-family fields. Stage 0 grants no external-action authority; externally
+consequential action remains with an explicitly authorized human.
 
 - Supplied scope:
 - Material assumptions:

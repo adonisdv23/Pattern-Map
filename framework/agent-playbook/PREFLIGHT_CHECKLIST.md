@@ -3,10 +3,16 @@
 Run this checklist before acquisition, enrichment, or a consequential answer.
 For every P-group, record `PASS`, `FAIL`, `UNKNOWN`, or `NOT_APPLICABLE`, plus
 the evidence/receipt IDs that justify the status. `NOT_APPLICABLE` requires a
-reason. An `UNKNOWN` required field is not a silent pass. A minimal ordinary
-record bypasses this layered preflight only when no new evidence, comparison,
-memory reuse, permission decision, or external influence is required. It is
-terminal and is not an `ANSWER` route receipt.
+reason. An `UNKNOWN` required field is not a silent pass.
+
+Ordinary is valid only for a reversible transformation of user-supplied
+material that requires no material claim judgment, comparison, selection or
+withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence. Only that task bypasses this layered
+preflight. The four-field ordinary record is terminal; it is not an ANSWER,
+route, stop, learning, or influence receipt. Stage 0 grants no external-action
+authority; externally consequential action remains with an explicitly
+authorized human.
 
 ## P0. Scope and decision
 

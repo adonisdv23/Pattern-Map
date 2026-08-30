@@ -19,6 +19,39 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
+ORDINARY_ELIGIBILITY_CONTRACT = (
+    "Ordinary is valid only for a reversible transformation of user-supplied "
+    "material that requires no material claim judgment, comparison, selection "
+    "or withholding, permission resolution, memory reuse, new acquisition, or "
+    "externally consequential influence."
+)
+ORDINARY_TERMINAL_CONTRACT = (
+    "The four-field ordinary record is terminal; it is not an ANSWER, route, "
+    "stop, learning, or influence receipt."
+)
+ORDINARY_AUTHORITY_CONTRACT = (
+    "Stage 0 grants no external-action authority; externally consequential "
+    "action remains with an explicitly authorized human."
+)
+BUDGET_COMPLEXITY_CONTRACT = (
+    "A budget records capacity and constraint; it cannot independently justify "
+    "advanced machinery."
+)
+ORDINARY_CONTRACT_FILES = (
+    "framework/agent-playbook/QUICKSTART.md",
+    "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
+    "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
+    "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
+    "framework/templates/ORDINARY_RECORD.md",
+    "framework/IMPLEMENTATION_CHOICES.md",
+)
+BUDGET_CONTRACT_FILES = (
+    "framework/agent-playbook/QUICKSTART.md",
+    "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
+    "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
+    "framework/IMPLEMENTATION_CHOICES.md",
+)
+
 
 class CheckFailure(Exception):
     """Raised for a focused QA failure."""
@@ -42,6 +75,162 @@ def load_json(relative: str) -> dict:
         raise CheckFailure(f"invalid JSON in {relative}: {exc}") from exc
     require(isinstance(value, dict), f"{relative} must contain a JSON object")
     return value
+
+
+def normalized_text(value: str) -> str:
+    """Collapse formatting whitespace for cross-artifact prose contracts."""
+
+    return " ".join(value.split())
+
+
+def qa_ordinary_eligibility(case: dict[str, bool]) -> bool:
+    """Evaluate the Stage 0 truth table for QA only, never as a runtime router."""
+
+    expected = {
+        "reversible",
+        "supplied_material_only",
+        "material_claim_judgment",
+        "comparison",
+        "selection_or_withholding",
+        "permission_resolution",
+        "memory_reuse",
+        "new_acquisition",
+        "externally_consequential_influence",
+    }
+    require(set(case) == expected and all(isinstance(value, bool) for value in case.values()),
+            "Stage 0 QA case does not use the exact boolean contract")
+    disqualifiers = (
+        "material_claim_judgment",
+        "comparison",
+        "selection_or_withholding",
+        "permission_resolution",
+        "memory_reuse",
+        "new_acquisition",
+        "externally_consequential_influence",
+    )
+    return (
+        case["reversible"]
+        and case["supplied_material_only"]
+        and not any(case[key] for key in disqualifiers)
+    )
+
+
+def validate_stage_zero_contract() -> None:
+    """Lock the corrected ordinary-path boundary across every copied entry point."""
+
+    eligibility = normalized_text(ORDINARY_ELIGIBILITY_CONTRACT)
+    terminal = normalized_text(ORDINARY_TERMINAL_CONTRACT)
+    authority = normalized_text(ORDINARY_AUTHORITY_CONTRACT)
+    for relative in ORDINARY_CONTRACT_FILES:
+        content = normalized_text(read_text(relative))
+        require(eligibility in content,
+                f"{relative} does not carry the complete ordinary eligibility contract")
+        require(terminal in content,
+                f"{relative} does not keep the four-field ordinary record terminal")
+        require(authority in content,
+                f"{relative} does not keep external action under explicit human authority")
+
+    budget_contract = normalized_text(BUDGET_COMPLEXITY_CONTRACT)
+    for relative in BUDGET_CONTRACT_FILES:
+        require(budget_contract in normalized_text(read_text(relative)),
+                f"{relative} lets budget independently imply advanced machinery")
+
+    for relative in (
+        "framework/agent-playbook/QUICKSTART.md",
+        "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
+        "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
+    ):
+        content = normalized_text(read_text(relative)).lower()
+        require("information beyond the user-supplied material" not in content
+                and "information beyond what the user supplied" not in content,
+                f"{relative} retains the ambiguous beyond-supplied Stage 0 gate")
+
+    full_guide = normalized_text(
+        read_text("framework/agent-playbook/FULL_OPERATING_GUIDE.md")
+    ).lower()
+    require("summarization, or creative transformation of supplied material normally stays ordinary"
+            not in full_guide,
+            "full guide still defaults supplied-material summarization to ordinary")
+    require("they do not qualify automatically" in full_guide,
+            "full guide does not correct the supplied-material transformation ambiguity")
+
+    ordinary_template = read_text("framework/templates/ORDINARY_RECORD.md")
+    field_labels = re.findall(r"^- ([A-Za-z ]+):\s*$", ordinary_template, re.MULTILINE)
+    require(field_labels == [
+                "Supplied scope",
+                "Material assumptions",
+                "Unchecked boundaries",
+                "Output",
+            ],
+            "ordinary template must expose exactly four ordered fields")
+
+    copyable_brief = read_text("framework/agent-playbook/COPYABLE_AGENT_BRIEF.md")
+    copied_prompt = copyable_brief.split("~~~text", 1)[1].split("~~~", 1)[0]
+    copied_ordinary = copied_prompt.split("ORDINARY_RECORD:", 1)[1].split(
+        "Then stop.", 1
+    )[0]
+    copied_fields = re.findall(
+        r"^\s+- ([a-z_]+):\s*$", copied_ordinary, re.MULTILINE
+    )
+    require(copied_fields == [
+                "supplied_scope",
+                "assumptions",
+                "unchecked_boundaries",
+                "output",
+            ],
+            "copied ordinary record must expose exactly four ordered fields")
+
+    ordinary_fixture = load_json("qa/applied/receipts/ordinary-supplied-material.json")
+    fixture_text = normalized_text(json.dumps(ordinary_fixture, sort_keys=True)).lower()
+    for phrase in (
+        "without changing, reordering, selecting, or omitting any supplied content",
+        "no claim was judged",
+        "no comparison, selection or withholding, permission resolution, memory reuse, "
+        "new acquisition, or external influence was performed",
+    ):
+        require(phrase in fixture_text,
+                f"ordinary fixture does not demonstrate the corrected boundary: {phrase}")
+
+    ordinary_control = {
+        "reversible": True,
+        "supplied_material_only": True,
+        "material_claim_judgment": False,
+        "comparison": False,
+        "selection_or_withholding": False,
+        "permission_resolution": False,
+        "memory_reuse": False,
+        "new_acquisition": False,
+        "externally_consequential_influence": False,
+    }
+    require(qa_ordinary_eligibility(ordinary_control),
+            "Stage 0 QA rejected the exact reversible supplied-material control")
+
+    disqualifying_mutations = {
+        "irreversible transformation": {"reversible": False},
+        "material beyond supplied input": {"supplied_material_only": False},
+        "material claim judgment": {"material_claim_judgment": True},
+        "comparison within supplied input": {"comparison": True},
+        "selection or withholding within supplied input": {
+            "selection_or_withholding": True,
+        },
+        "permission resolution": {"permission_resolution": True},
+        "prior-memory reuse": {"memory_reuse": True},
+        "new acquisition": {"new_acquisition": True},
+        "externally consequential influence": {
+            "externally_consequential_influence": True,
+        },
+    }
+    for label, mutation in disqualifying_mutations.items():
+        case = ordinary_control | mutation
+        require(not qa_ordinary_eligibility(case),
+                f"Stage 0 QA admitted {label} to the ordinary path")
+
+    supplied_summary = ordinary_control | {
+        "material_claim_judgment": True,
+        "selection_or_withholding": True,
+    }
+    require(not qa_ordinary_eligibility(supplied_summary),
+            "Stage 0 QA admitted a selective supplied-material summary as ordinary")
 
 
 def validate_spec() -> None:
@@ -1440,6 +1629,7 @@ def validate_receipt_guard_mutations() -> None:
         ("route", "ANSWER"),
         ("stop_status", "COMPLETE"),
         ("outcome", {"learning_status": "LEARNING_NOT_APPLICABLE"}),
+        ("influence", {"recorded": False, "selected_items": [], "withheld_items": []}),
         ("families", []),
     ):
         invalid_ordinary = copy.deepcopy(ordinary)
@@ -1555,6 +1745,7 @@ def main() -> int:
     checks = [
         ("six-family JSON and schema contract", validate_spec),
         ("artifact inventory and boundary language", validate_artifact_inventory),
+        ("Stage 0 ordinary eligibility and terminal contract", validate_stage_zero_contract),
         ("ordinary and layered receipt contracts", validate_receipts),
         ("permission/reference/memory fail-closed mutations", validate_receipt_guard_mutations),
     ]

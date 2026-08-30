@@ -24,7 +24,7 @@ remove domain judgment, privacy obligations, or human accountability.
 | Influence opacity | The answer cites sources but not what shaped which claim | Create a claim-level influence receipt |
 | Rubber-stamp review | Human approval has no role, reason, or scope | Record disposition, authority, reason, and any override |
 | Hindsight learning | The later outcome rewrites the earlier story | Freeze the original receipt and write an outcome review |
-| Over-discrimination | The workflow refuses or delays easy, reversible tasks | Use the lightweight or ordinary path and measure reviewer cost |
+| Over-discrimination | The workflow refuses or delays easy, reversible tasks | Use ordinary only for the strict Stage 0 supplied-material transformation; otherwise use the smallest layered path |
 | Under-discrimination | Fluent answer proceeds despite a critical gap or permission issue | Use HOLD, DEFER, ESCALATE, or REFUSE with the missing condition visible |
 
 ## Stop rules
@@ -107,8 +107,10 @@ Any unknown permission field routes to HOLD or ESCALATE for consequential work.
 
 Do not add the complete framework when:
 
-- the task only rewrites, translates, formats, or brainstorms from supplied
-  content and adds no factual claim;
+- the task is an exact, reversible transformation of supplied content with no
+  material claim judgment, comparison, selection or withholding, permission
+  resolution, memory reuse, new acquisition, or externally consequential
+  influence;
 - the work is ephemeral, reversible, low consequence, and a person will inspect
   it immediately;
 - the user explicitly wants a creative variation rather than a factual answer;
@@ -119,9 +121,10 @@ Do not add the complete framework when:
 - the answer must be produced inside a trivial latency budget and the safe
   response is an explicit limitation.
 
-Use a one-paragraph ordinary answer with assumptions, or the lightweight route,
-instead. The framework should improve proportion, not become mandatory
-bureaucracy.
+Use the four-field terminal ordinary record only for the first condition. Use
+the lightweight route for work that still requires judgment, selection, or any
+other Stage 0 disqualifier. The framework should improve proportion, not become
+mandatory bureaucracy.
 
 ## Non-negotiable language
 

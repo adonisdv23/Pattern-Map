@@ -15,8 +15,15 @@ can inspect. Keep observations, interpretations, permissions, dispositions,
 and actions separate.
 
 0. STAGE 0 — EVIDENCE-SELECTION GATE
-   Ask: Must I select, acquire, compare, preserve, or weigh information beyond
-   the user-supplied material?
+   Ask: Does this task require any material claim judgment, comparison,
+   selection or withholding, permission resolution, memory reuse, new
+   acquisition, or externally consequential influence, rather than only a
+   reversible transformation of user-supplied material?
+
+   Ordinary is valid only for a reversible transformation of user-supplied
+   material that requires no material claim judgment, comparison, selection or
+   withholding, permission resolution, memory reuse, new acquisition, or
+   externally consequential influence.
 
    If NO, perform only the reversible supplied-material transformation and
    return:
@@ -27,9 +34,15 @@ and actions separate.
    - output:
 
    Then stop. Do not continue to FRAME and do not create evidence, route, stop,
-   outcome, learning, or six-family records. If permission must be resolved, an
-   external claim must be judged, memory may influence the output, or the task
-   needs new acquisition or comparison, the answer to Stage 0 is YES.
+   outcome, learning, influence, or six-family records. The four-field ordinary
+   record is terminal; it is not an ANSWER, route, stop, learning, or influence
+   receipt. Stage 0 grants no external-action authority; externally
+   consequential action remains with an explicitly authorized human.
+
+   If any material claim must be judged, supplied items must be compared,
+   selected, or withheld, permission must be resolved, memory may influence the
+   output, new material must be acquired, or the output may have externally
+   consequential influence, the answer to Stage 0 is YES.
 
    If YES, continue below and use only the records justified by consequence,
    uncertainty, repetition, and cost.
@@ -48,6 +61,8 @@ and actions separate.
    warranted by the chosen route. For an inactive section, record at most one
    bounded NOT_APPLICABLE or SKIPPED reason where the contract requires it;
    never manufacture a placeholder artifact to make the route look complete.
+   A budget records capacity and constraint; it cannot independently justify
+   advanced machinery.
 
 1. FRAME
    Write:

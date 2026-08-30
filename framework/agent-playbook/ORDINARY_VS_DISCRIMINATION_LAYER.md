@@ -1,41 +1,47 @@
 # Ordinary work versus the Discrimination Layer
 
 The Discrimination Layer is not a mandate to turn every request into a
-protocol. Ordinary prompting is often the right path for reversible,
-low-consequence work. The distinction is whether upstream selection,
-comparison, permission, uncertainty, or influence needs to be inspectable.
+protocol. Ordinary is valid only for a reversible transformation of
+user-supplied material that requires no material claim judgment, comparison,
+selection or withholding, permission resolution, memory reuse, new
+acquisition, or externally consequential influence. Low consequence by itself
+does not make a task ordinary.
 
 ## Side-by-side behavior
 
 | Question | Ordinary path | Discrimination-Layer path |
 | --- | --- | --- |
-| What is the task? | Starts from the visible prompt | Writes the decision, intended use, owner, consequence, and deadline |
-| What is searched? | Uses a default query or supplied context | Records the default path and adds one bounded alternate route when warranted |
-| What is a source? | Treats documents or links as context | Separates source, artifact, exact span, source role, support, origin, and permission |
-| What is repeated? | Counts repeated reports informally | Records recurrence and keeps independence or common origin explicit |
-| What is missing? | Fills gaps or ignores them | States the expected baseline and classifies missing, failed, unavailable, or unauthorized |
-| What is changing? | Calls a salient difference a trend | Requires at least two distinct authorized time-bearing evidence refs, one alignment key, and a baseline before calling motion |
-| How is uncertainty handled? | Uses broad confidence language | Uses typed unknown, contested, stale, insufficient, or incomparable states |
-| When does work stop? | A supplied-material transformation ends after its minimal ordinary record | Uses cost, permission, consequence, and stop rules; records remaining uncertainty |
-| What influences the answer? | Sources appear near the prompt without a selection record | Selected and withheld material, reasons, and disclosure boundary are recorded |
-| What happens later? | A later outcome may rewrite the story | Original receipt stays intact; a bounded update is proposed and dispositioned |
+| What is the task? | Applies one exact, reversible transformation to the named supplied material | Writes the decision, intended use, owner, consequence, and deadline |
+| What is searched? | Nothing; new acquisition disqualifies ordinary | Records the default path and adds one bounded alternate route when warranted |
+| What is a source? | Makes no claim-support, source-role, or permission judgment | Separates source, artifact, exact span, source role, support, origin, and permission |
+| What is repeated? | Does not assess recurrence | Records recurrence and keeps independence or common origin explicit |
+| What is missing? | Does not make a missingness or absence judgment | States the expected baseline and classifies missing, failed, unavailable, or unauthorized |
+| What is changing? | Does not make a motion judgment | Requires at least two distinct authorized time-bearing evidence refs, one alignment key, and a baseline before calling motion |
+| How is uncertainty handled? | Records only transformation assumptions and unchecked boundaries | Uses typed unknown, contested, stale, insufficient, or incomparable states |
+| When does work stop? | Returns the four-field terminal record, with no ANSWER route or stop receipt | Uses cost, permission, consequence, and stop rules; records remaining uncertainty |
+| What influences the output? | Transforms the entire named input without selecting or withholding material | Selected and withheld material, reasons, and disclosure boundary are recorded |
+| What happens later? | Creates no outcome or learning receipt | Original receipt stays intact; a bounded update is proposed and dispositioned |
 
 ## Example 1 — formatting supplied text
 
-Question: “Turn this supplied meeting note into a three-paragraph summary.”
+Question: “Wrap this supplied meeting note in a Markdown blockquote. Preserve
+every word and its order.”
 
-Ordinary path is appropriate. No new evidence is acquired, no external claim is
-added, no source comparison is required, and correction is easy. The receipt
-contains only:
+Ordinary path is appropriate. The wrapper is reversible; all supplied content
+passes through without material claim judgment, comparison, selection or
+withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence. The receipt contains only:
 
-- supplied scope: summarize the attached meeting note into three paragraphs;
-- assumptions: preserve the note's stated meaning without fact-checking it;
-- unchecked boundaries: no external claims, sources, or prior memory checked;
-- output: the requested three-paragraph summary.
+- supplied scope: wrap the attached meeting note in a Markdown blockquote;
+- assumptions: removing the markers recovers the complete supplied note;
+- unchecked boundaries: no claim, comparison, selection, withholding,
+  permission, memory, acquisition, or external influence was evaluated;
+- output: the exact supplied note with blockquote markers.
 
 It has no evidence, route, stop, outcome, learning, or six-family fields. If a
-permission decision, outside factual judgment, new source, comparison, or
-memory reuse becomes material, the task no longer qualifies as ordinary.
+material claim judgment, comparison, selection or withholding, permission
+resolution, memory reuse, new acquisition, or externally consequential
+influence becomes material, the task no longer qualifies as ordinary.
 
 Adding a full graph or research packet here would be over-discrimination.
 
@@ -44,7 +50,7 @@ Adding a full graph or research packet here would be over-discrimination.
 Question: “Should the team treat five articles as five independent reasons to
 believe a reported change?”
 
-### Ordinary path illustration
+### Uncontrolled shortcut — not a valid ordinary path
 
 An agent searches the phrase, sees five articles, and summarizes that the
 change is widely reported. It may mention a link to the first article but does
@@ -73,7 +79,7 @@ reported change and not validation of the framework.
 Question: “Did requests accelerate, and is the missing weekly report evidence
 that no requests occurred?”
 
-### Ordinary path illustration
+### Uncontrolled shortcut — not a valid ordinary path
 
 The agent observes a recent cluster and the missing report, then writes that
 requests are increasing and the report shows none occurred.
@@ -104,7 +110,7 @@ motion or absence interpretation is correct.
 Question: “Pull the private customer list and send the recommendation to the
 vendor.”
 
-### Ordinary path illustration
+### Uncontrolled shortcut — not a valid ordinary path
 
 The agent uses available credentials and sends the result.
 

@@ -7,8 +7,15 @@ publish, deploy, or act externally.
 
 ## 0. Decide whether evidence-selection work exists
 
-Before choosing a level, ask: **Must the agent select, acquire, compare,
-preserve, or weigh information beyond the user-supplied material?**
+Before choosing a level, ask: **Does the task require any material claim
+judgment, comparison, selection or withholding, permission resolution, memory
+reuse, new acquisition, or externally consequential influence, rather than
+only a reversible transformation of user-supplied material?**
+
+Ordinary is valid only for a reversible transformation of user-supplied
+material that requires no material claim judgment, comparison, selection or
+withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence.
 
 - If no, use the ordinary path: perform the reversible supplied-material
   transformation, save only the supplied scope, material assumptions,
@@ -19,11 +26,16 @@ preserve, or weigh information beyond the user-supplied material?**
 - If yes, continue to the operating levels below. Choose only the records and
   checks justified by consequence, uncertainty, repetition, and cost.
 
-Formatting, translation, extraction, summarization, or creative transformation
-of supplied material normally stays ordinary unless the task introduces a
-material evidence-selection decision. This gate prevents the playbook from
-turning routine work into ceremony; it does not excuse hidden acquisition or a
-consequential judgment.
+The four-field ordinary record is terminal; it is not an ANSWER, route, stop,
+learning, or influence receipt. Stage 0 grants no external-action authority;
+externally consequential action remains with an explicitly authorized human.
+
+Exact, reversible formatting that preserves every supplied item may stay
+ordinary. Translation, extraction, summarization, classification, and creative
+transformation can require material claim judgment or selection and
+withholding even when every input was supplied; they do not qualify
+automatically. This gate prevents the playbook from turning routine work into
+ceremony without excusing a consequential judgment inside supplied material.
 
 ## 1. Choose the operating level
 
@@ -41,7 +53,8 @@ evidence volume, sensitivity, reuse, and expected outcome. Record the choice.
 Record why the selected level is proportionate. Do not escalate an ordinary
 task merely because more infrastructure is available. A layered task also needs
 not activate all six families: record one concise reason for an inactive family
-and create no placeholder artifact for it.
+and create no placeholder artifact for it. A budget records capacity and
+constraint; it cannot independently justify advanced machinery.
 
 ## 2. Define the real decision
 

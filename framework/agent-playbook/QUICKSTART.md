@@ -7,9 +7,16 @@ reviewer see what it did.
 
 ## Stage 0 — decide whether evidence selection exists
 
-Ask one question before opening the playbook: **Does this task require the
-agent to select, acquire, compare, preserve, or weigh information beyond what
-the user supplied?**
+Ask one question before opening the playbook: **Does this task require any
+material claim judgment, comparison, selection or withholding, permission
+resolution, memory reuse, new acquisition, or externally consequential
+influence, rather than only a reversible transformation of user-supplied
+material?**
+
+Ordinary is valid only for a reversible transformation of user-supplied
+material that requires no material claim judgment, comparison, selection or
+withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence.
 
 - **No:** use the ordinary path. Perform the reversible transformation, keep
   only the supplied scope, material assumptions, unchecked boundaries, and
@@ -18,9 +25,12 @@ the user supplied?**
   repository template `framework/templates/ORDINARY_RECORD.md`, not the
   layered decision receipt.
 - **Yes:** use the smallest path below that matches consequence, uncertainty,
-  repetition, and cost. New acquisition, competing sources, missing expected
-  material, scoped memory, or a consequential recommendation usually creates
-  an evidence-selection decision.
+  repetition, and cost. Any one of the named disqualifiers is enough; it still
+  matters when every candidate came from the supplied material.
+
+The four-field ordinary record is terminal; it is not an ANSWER, route, stop,
+learning, or influence receipt. Stage 0 grants no external-action authority;
+externally consequential action remains with an explicitly authorized human.
 
 Stage 0 is a proportionality gate, not permission to skip a real uncertainty
 or consequential boundary.
@@ -37,7 +47,9 @@ or consequential boundary.
    typed permission keys; reject contradictory legacy authorization booleans
    inside the permission object or at receipt top level.
 3. **Set a budget.** State the time, money, tokens, compute, privacy,
-   disclosure, and human-attention boundary. State the no-action boundary.
+   disclosure, and human-attention boundary. State the no-action boundary. A
+   budget records capacity and constraint; it cannot independently justify
+   advanced machinery.
 4. **Write the default path.** Record the familiar query, source set,
    vocabulary, time window, or product route.
 5. **Widen once.** Use one bounded peripheral route: a specialist source,

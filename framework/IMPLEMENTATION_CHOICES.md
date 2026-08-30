@@ -4,11 +4,23 @@ The framework is useful only if its amount of structure matches the decision.
 Choose the smallest route that leaves the important distinctions inspectable.
 No stack, provider, model, graph, database, or service is mandatory.
 
+Ordinary is valid only for a reversible transformation of user-supplied
+material that requires no material claim judgment, comparison, selection or
+withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence. The four-field ordinary record is
+terminal; it is not an ANSWER, route, stop, learning, or influence receipt.
+Stage 0 grants no external-action authority; externally consequential action
+remains with an explicitly authorized human.
+
+A budget records capacity and constraint; it cannot independently justify
+advanced machinery. Choose a level from the task's actual failure modes,
+consequence, reuse, and governance needs, then use the budget to bound it.
+
 ## Three implementation levels
 
 | Level | Best fit | Inputs | Outputs | Typical cost | Stop condition | Main risk |
 | --- | --- | --- | --- | --- | --- | --- |
-| Lightweight | Low-stakes, short-lived, supplied-material tasks where a wrong answer is easy to correct | A question, a small evidence set, one permission note, and a time limit | One decision brief, one evidence/uncertainty table, one disconfirmation note, one influence receipt | Minutes and ordinary human attention; no new software required | One alternate route or one comparison is complete, or the stated time limit is reached | Too little traceability when consequences rise |
+| Lightweight | Low-stakes, short-lived layered tasks where bounded material still requires claim judgment, comparison, selection/withholding, or another Stage 0 disqualifier | A question, a small evidence set, one permission note, and a time limit | One decision brief, one evidence/uncertainty table, one disconfirmation note, one influence receipt | Minutes and ordinary human attention; no new software required | One alternate route or one comparison is complete, or the stated time limit is reached | Too little traceability when consequences rise |
 | Moderate | Repeated work or decisions where identity, comparison, and correction matter | Stable IDs, source/artifact records, typed relationships, budget, human checkpoint | Versioned evidence register, comparison/gap record, context packet, disposition, outcome review | Setup and review overhead; documents, spreadsheets, or a small store | Route-specific marginal value is low, budget is reached, or human gate is required | Ceremony and stale records |
 | Advanced | Consequential, high-volume, or long-lived workflows with approved engineering capacity | Structured data, access policy, provenance, relationship and time-series views, routing policy, review roles | Queryable lineage, typed graphs, policy receipts, replayable packets, versioned learning proposals | Engineering, privacy, security, operations, and evaluation cost | Hard safety/permission stop, policy threshold, or approved matched-budget evaluation boundary | False precision, automation bias, and expensive bureaucracy |
 
@@ -92,12 +104,12 @@ Choose a higher level only when at least one condition is true:
 
 Stay lightweight or do not use the framework when:
 
-- the task is a creative transformation of supplied text and no factual claim
-  is added;
+- an exact, reversible supplied-material transformation satisfies the complete
+  ordinary eligibility contract above;
+- a bounded supplied-material task requires judgment or selection but its low
+  consequence and easy correction make the lightweight route sufficient;
 - the output is disposable and easily corrected;
-- the user has supplied the complete bounded context and asks only for
-  formatting or translation;
-- no new acquisition, comparison, or external influence decision is needed;
+- no advanced failure mode is present;
 - the cost of recording the route exceeds the consequence of being wrong.
 
 ## Stack-neutral interface

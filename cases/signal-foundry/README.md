@@ -169,9 +169,9 @@ could create the packet reliably.
 12. **Learn later.** If a future authorized review produces an outcome, compare
     it with the recorded expectation and propose one bounded change.
 
-## Ordinary versus layered behavior
+## Uncontrolled shortcuts versus layered behavior
 
-| Ordinary shortcut | Applied-layer record |
+| Uncontrolled shortcut — not a valid Stage 0 ordinary path | Applied-layer record |
 | --- | --- |
 | Treat transcript, comments, and related links as one context blob | Preserve evidence classes and IDs |
 | Treat provider success as content success | Keep operational receipt separate from support |

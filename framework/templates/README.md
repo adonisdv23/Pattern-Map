@@ -18,11 +18,14 @@ that every task needs every field.
 
 For a low-stakes task that passes Stage 0 into a layered route, DECISION_BRIEF,
 EVIDENCE_REGISTER, DISCONFIRMATION_LOG, and INFLUENCE_RECEIPT are usually
-enough. A genuinely ordinary supplied-material task uses only ORDINARY_RECORD
-and stops before the layered route. Add MEMORY_RECORD only when scoped prior
-material is actually used. For repeated or consequential work, retain the
-needed templates with stable IDs and version links; do not copy every template
-merely because it exists.
+enough. A genuinely ordinary task is only a reversible transformation of
+user-supplied material with no material claim judgment, comparison, selection
+or withholding, permission resolution, memory reuse, new acquisition, or
+externally consequential influence. It uses only ORDINARY_RECORD and stops
+before the layered route; it is not an ANSWER or influence receipt. Add
+MEMORY_RECORD only when scoped prior material is actually used. For repeated or
+consequential work, retain the needed templates with stable IDs and version
+links; do not copy every template merely because it exists.
 
 An `ANSWER` or `ANSWER_PROVISIONALLY` records substantive comparison and
 disconfirmation artifacts, or one bounded inactive reason for each:
