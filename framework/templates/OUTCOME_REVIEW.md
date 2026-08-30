@@ -2,6 +2,24 @@
 
 Complete after the defined outcome window, not by hindsight.
 
+## Executable state boundary
+
+- `LEARNING_PLANNED`: `applicable` is true, but both
+  `expectation_recorded` and `outcome_window_recorded` are false. No observed
+  outcome, review, disposition, or applied update field is permitted.
+- `LEARNING_PENDING_OUTCOME`: the expectation and outcome window are both
+  recorded before the event. No observed outcome, review, disposition, or
+  applied update field is permitted.
+- `LEARNING_REVIEWED`: the locked expectation/window, recorded review,
+  observed-or-explicitly-missing outcome, and human disposition are present.
+  `update_applied` remains false; the record proposes an update but does not
+  apply it.
+- `LEARNING_NOT_APPLICABLE`: `applicable` is false and the object contains no
+  expectation, result, review, disposition, or update fields.
+
+Missing or mistyped applicability is invalid. A result or human disposition
+cannot be carried backward into a planned, pending, or non-applicable state.
+
 ## Link to original record
 
 - Outcome review ID:

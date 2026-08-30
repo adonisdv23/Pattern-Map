@@ -12,6 +12,7 @@ import {
   publicationMetadataEnabled,
   publicationReleaseReady,
   resolveCanonicalRouteUrl,
+  isPublicReleaseHost,
 } from "../../site/src/publication-config.mjs";
 
 const QA_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -37,8 +38,8 @@ const validReleaseConfig = {
   status: PUBLICATION_RELEASE_STATUS,
   author_name: "Publication Gate Test",
   author_handle: null,
-  canonical_url: "https://example.test/pattern-map",
-  social_image_url: "https://example.test/pattern-map/social-card.png",
+  canonical_url: "https://pattern-map.release-candidate.dev/pattern-map",
+  social_image_url: "https://assets.release-candidate.dev/pattern-map/social-card.png",
   social_image_alt: "Diagram showing Pattern Map's six connected discrimination families.",
   release_boundary: "Test-only configuration in a disposable site copy.",
 };
@@ -55,6 +56,15 @@ const adversarialReleaseConfigs = [
   ["malformed social-image URL", { ...validReleaseConfig, social_image_url: "https://example .test/social-card.png" }],
   ["missing social-image alternative", { ...validReleaseConfig, social_image_alt: null }],
   ["blank social-image alternative", { ...validReleaseConfig, social_image_alt: "   " }],
+  ["localhost canonical", { ...validReleaseConfig, canonical_url: "https://localhost/pattern-map" }],
+  ["dotless internal canonical", { ...validReleaseConfig, canonical_url: "https://internal/pattern-map" }],
+  ["loopback canonical", { ...validReleaseConfig, canonical_url: "https://127.0.0.1/pattern-map" }],
+  ["unspecified canonical", { ...validReleaseConfig, canonical_url: "https://0.0.0.0/pattern-map" }],
+  ["private canonical", { ...validReleaseConfig, canonical_url: "https://192.168.1.10/pattern-map" }],
+  ["IPv6 loopback canonical", { ...validReleaseConfig, canonical_url: "https://[::1]/pattern-map" }],
+  ["reserved test canonical", { ...validReleaseConfig, canonical_url: "https://pattern-map.example.test/pattern-map" }],
+  ["reserved example canonical", { ...validReleaseConfig, canonical_url: "https://example.org/pattern-map" }],
+  ["localhost social image", { ...validReleaseConfig, social_image_url: "https://localhost/card.png" }],
 ];
 
 for (const [label, candidate] of adversarialReleaseConfigs) {
@@ -66,8 +76,12 @@ assert.equal(publicationReleaseReady(validReleaseConfig), true, "valid absolute 
 assert.doesNotThrow(() => assertPublicationReleaseConfig(validReleaseConfig));
 assert.equal(publicationMetadataEnabled(validReleaseConfig, false), false, "release metadata was enabled without --release");
 assert.equal(publicationMetadataEnabled(validReleaseConfig, true), true, "valid release configuration did not enable metadata with --release");
-assert.equal(normalizedCanonicalBaseUrl("https://example.test/projects/pattern-map///"), "https://example.test/projects/pattern-map/");
-assert.equal(resolveCanonicalRouteUrl("https://example.test/projects/pattern-map///", "read/"), "https://example.test/projects/pattern-map/read/");
+assert.equal(isPublicReleaseHost("pattern-map.release-candidate.dev"), true);
+for (const host of ["localhost", "internal", "127.0.0.1", "0.0.0.0", "192.168.1.10", "::1", "pattern-map.example.test", "example.org"]) {
+  assert.equal(isPublicReleaseHost(host), false, `non-public host passed: ${host}`);
+}
+assert.equal(normalizedCanonicalBaseUrl("https://pattern-map.release-candidate.dev/projects/pattern-map///"), "https://pattern-map.release-candidate.dev/projects/pattern-map/");
+assert.equal(resolveCanonicalRouteUrl("https://pattern-map.release-candidate.dev/projects/pattern-map///", "read/"), "https://pattern-map.release-candidate.dev/projects/pattern-map/read/");
 
 const disposableRoot = fs.mkdtempSync(path.join(os.tmpdir(), "pattern-map-publication-gate-"));
 try {
@@ -103,8 +117,8 @@ try {
   const releaseHtml = fs.readFileSync(path.join(disposableSite, "public-dist", "index.html"), "utf8");
   const releaseManifest = JSON.parse(fs.readFileSync(path.join(disposableSite, "public-dist", "build-manifest.json"), "utf8"));
   assert.match(releaseHtml, /<meta name="robots" content="index,follow">/);
-  assert.match(releaseHtml, /<link rel="canonical" href="https:\/\/example\.test\/pattern-map\/">/);
-  assert.match(releaseHtml, /<meta property="og:image" content="https:\/\/example\.test\/pattern-map\/social-card\.png">/);
+  assert.match(releaseHtml, /<link rel="canonical" href="https:\/\/pattern-map\.release-candidate\.dev\/pattern-map\/">/);
+  assert.match(releaseHtml, /<meta property="og:image" content="https:\/\/assets\.release-candidate\.dev\/pattern-map\/social-card\.png">/);
   assert.match(releaseHtml, /<meta property="og:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="twitter:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="author" content="Publication Gate Test">/);
@@ -112,8 +126,8 @@ try {
 
   const normalizedPathConfig = {
     ...validReleaseConfig,
-    canonical_url: "https://example.test/projects/pattern-map///",
-    social_image_url: "https://images.example.test/cards/pattern-map.png?variant=wide",
+    canonical_url: "https://pattern-map.release-candidate.dev/projects/pattern-map///",
+    social_image_url: "https://assets.release-candidate.dev/cards/pattern-map.png?variant=wide",
   };
   fs.writeFileSync(disposableConfigPath, `${JSON.stringify(normalizedPathConfig, null, 2)}\n`);
   const normalizedRelease = runDisposableBuild("--mode=public", "--release");
@@ -121,7 +135,7 @@ try {
   const releaseRoutes = ["", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"];
   for (const route of releaseRoutes) {
     const routeHtml = fs.readFileSync(path.join(disposableSite, "public-dist", route, "index.html"), "utf8");
-    const expectedCanonical = `https://example.test/projects/pattern-map/${route ? `${route}/` : ""}`;
+    const expectedCanonical = `https://pattern-map.release-candidate.dev/projects/pattern-map/${route ? `${route}/` : ""}`;
     assert.ok(
       routeHtml.includes(`<link rel="canonical" href="${expectedCanonical}">`),
       `release route ${route || "home"} did not preserve the normalized project subpath`,
@@ -129,7 +143,7 @@ try {
     assert.doesNotMatch(routeHtml, /pattern-map\/{2,}|\?preview=1\/|#preview\//);
   }
   const normalizedRoot = fs.readFileSync(path.join(disposableSite, "public-dist", "index.html"), "utf8");
-  assert.match(normalizedRoot, /<meta property="og:image" content="https:\/\/images\.example\.test\/cards\/pattern-map\.png\?variant=wide">/);
+  assert.match(normalizedRoot, /<meta property="og:image" content="https:\/\/assets\.release-candidate\.dev\/cards\/pattern-map\.png\?variant=wide">/);
 } finally {
   fs.rmSync(disposableRoot, { recursive: true, force: true });
 }
@@ -170,6 +184,7 @@ assert.match(publicRead, /<h2 id="short-pattern-recognition-the-discrimination-l
 const publicApply = read("site/public-dist/apply/index.html");
 const publicMap = read("site/public-dist/map/index.html");
 const publicExamples = read("site/public-dist/examples/index.html");
+const publicGuided = read("site/public-dist/guided/index.html");
 for (const dependent of ["consequence", "uncertainty", "budget", "permission", "humanActionGate"]) {
   assert.match(publicApply, new RegExp(`data-stage0-dependent="${dependent}"[^>]*disabled`));
 }
@@ -183,10 +198,15 @@ assert.match(publicApply, /name="humanActionGate" value="REQUIRED"/);
 assert.match(publicApply, /data-recommendation-action>ORDINARY_RECORD</);
 assert.doesNotMatch(publicApply.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "", /<code>ANSWER<\/code>/);
 assert.match(publicApply, /capacity[^.]*never (?:makes Advanced appropriate|justifies it) by itself/i);
-assert.match(publicMap, /What role does each source and information path play for this exact claim\?/);
-assert.match(publicMap, /What can this source actually tell us about this claim, and what can it not tell us\?/);
-assert.match(publicMap, /Recurrence, authority, support, relevance, origin, and permission stay distinct\./);
+assert.match(publicApply, /When conditions overlap, resolve them in this order:/);
+assert.match(publicApply, /unresolved or blocked permission[\s\S]*required human action gate[\s\S]*insufficient capacity[\s\S]*base level action/);
+assert.match(publicApply, /capacity mismatch[\s\S]*<code>CLARIFY<\/code>[\s\S]*<code>NARROW_OR_ESCALATE<\/code>/);
+assert.match(publicMap, /For this claim, what can each source actually tell us—and how did the information reach us\?/);
+assert.match(publicMap, /Weigh what the source can support without turning its pathway, reputation, or repetition into proof\./);
+assert.match(publicMap, /Keep source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission separate\./);
 assert.doesNotMatch(publicExamples, /<details class="case-card signal-foundry"\s+open>/);
+assert.match(publicExamples, /BROAD VALIDATION CLAIM[\s\S]*NOT ESTABLISHED[\s\S]*independent corroborating paths/);
+assert.doesNotMatch(publicExamples, /<b>00<\/b> counted support paths/);
 
 const siteScript = read("site/src/site.js");
 assert.match(siteScript, /document\.querySelectorAll\("\[data-progressive-static-guide\]"\)/);
@@ -200,6 +220,13 @@ assert.match(publicHome, /<meta property="og:title" content="AI slop often begin
 assert.match(publicHome, /<meta property="og:description" content="AI answers inherit what was found, missed, compared, and remembered before generation\. Pattern Map makes those upstream choices visible, challengeable, and proportionate\.">/);
 const reveal = publicHome.match(/<figure class="decision-reveal"[\s\S]*?<\/figure>/)?.[0] ?? "";
 assert.ok(publicHome.indexOf('class="door-grid"') < publicHome.indexOf('class="decision-reveal"'), "public principal doors must precede the teaching reveal");
+assert.match(publicHome, /PATTERN RECOGNITION \/ BEFORE GENERATION/);
+assert.match(publicHome, /Read why choices made before generation shape what an answer can become\./);
+assert.doesNotMatch(publicHome, /An AI answer can sound polished yet be generic because weakness can begin before writing\./);
+assert.match(publicHome, /Read the cumulative 60–90-second version/);
+assert.doesNotMatch(publicGuided, /<aside class="opening-case"/);
+assert.doesNotMatch(publicGuided, /What it preserves/);
+assert.match(publicGuided, /An AI answer can sound polished yet be generic because weakness can begin before writing\./);
 assert.ok(reveal, "public teaching reveal is missing");
 for (const stage of ["DEFAULT PATH", "WIDEN ONCE", "COMPARE", "EXPECTED ABSENCE", "BECAME VISIBLE", "REMAINS UNKNOWN", "HUMAN DECISION"]) {
   assert.ok(reveal.includes(stage), `teaching reveal stage missing: ${stage}`);
@@ -208,6 +235,8 @@ assert.doesNotMatch(reveal, /https?:\/\/|<script\b|<form\b|source score|observed
 assert.match(reveal, /Text equivalent:/);
 assert.doesNotMatch(reveal, /normal release packet|usually contains/i);
 assert.match(reveal, /this illustrative team expected from a release packet after four previous releases/i);
+assert.doesNotMatch(publicHome, /cannot recover a perspective that was never sought/);
+assert.match(publicHome, /cannot make an omitted perspective or unmade comparison inspectable after the fact/);
 
 const css = read("site/src/site.css");
 assert.match(css, /@media print[\s\S]*?\.decision-reveal-boundary:not\(\[open\]\) > \.decision-reveal-ledger \{ display: grid !important;/);

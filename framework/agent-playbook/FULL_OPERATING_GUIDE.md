@@ -47,14 +47,20 @@ evidence volume, sensitivity, reuse, and expected outcome. Record the choice.
   influence receipt.
 - MODERATE: stable IDs, acquisition/failure receipts, typed relationships,
   packet, human disposition, outcome review.
-- ADVANCED: queryable lineage, access and retention policy, relationship/time
-  views, route policy, replay, and approved evaluation.
+- ADVANCED: only when consequence is high, uncertainty is high, and
+  substantial capacity is separately approved; add queryable lineage, access
+  and retention policy, relationship/time views, route policy, replay, and
+  approved evaluation.
 
 Record why the selected level is proportionate. Do not escalate an ordinary
 task merely because more infrastructure is available. A layered task also needs
 not activate all six families: record one concise reason for an inactive family
 and create no placeholder artifact for it. A budget records capacity and
 constraint; it cannot independently justify advanced machinery.
+Advanced is justified only when consequence is high, uncertainty is high, and
+substantial capacity has been separately approved; volume, reuse, or longevity
+may shape capabilities inside the chosen level but do not independently select
+it.
 
 ## 2. Define the real decision
 

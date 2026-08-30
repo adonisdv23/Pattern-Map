@@ -369,3 +369,36 @@ reader study, effectiveness result, or replacement for owner intent.
 
 Exact integrated red teams run after these changes are committed. Any later
 finding receives its own disposition; detail alone is not acceptance.
+
+## Exact-integrated red-team dispositions — 2026-08-30
+
+Three independent read-only lanes reviewed exact clean checkpoint
+`d40ca61c7b64ce89aabac2e36170e701b69c94d6`. Their full reports are preserved
+under `qa/editorial/advisory/`, `qa/site/advisory/`, and
+`qa/research/advisory/`. The primary integrator reproduced every accepted
+material defect. These are advisory model findings, not owner approval,
+reader/participant evidence, accessibility results, literature completeness,
+or proof of effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| IR-01 | Make the public first composition self-contained without erasing the project name or mentor origin | **Accepted with revision** | Cold public readers should meet ordinary meaning before technical identity; review mode may retain the coffee-conversation invitation | Public Home adapter | Public first screen and review/public separation contracts |
+| IR-02 | Remove adjacent repetitions of the fictional release example | **Accepted** | Repetition exposed assembly seams and contradicted the earlier replacement decision | Public Home and Guided | Home has one reveal; Guided has one cumulative short version |
+| IR-03 | Simplify F2's reader question and stop repeating it as purpose | **Accepted with revision** | The question can be plain while the purpose and closed detail preserve the full boundary | Six-family spec, content interface, Map, Signal handoff | Exact interface and cross-artifact validators |
+| IR-04 | Replace `00 counted support paths` with a scoped unknown state | **Accepted** | Common origin does not establish zero support or disprove the broad claim | Common-origin worked-example visual | `NOT ESTABLISHED` is scoped to independent corroboration for the broad claim |
+| IR-05 | Replace the absolute “cannot recover” capability claim | **Accepted** | The inspectability limitation is defensible without universal model-capability language | Optional term help | Claims ceiling and public-mode contract |
+| IR-06 | Remove Guided's within-route reading index to make old QA literally true | **Rejected; successor clarification accepted** | Guided's authored path is useful; the old phrase meant the global owner-review orientation index | Historical QA plus successor convergence QA | Historical record preserved; precise distinction documented |
+| AS-01 | Admit outcome/review/disposition fields before a reviewed learning state | **Rejected; exact state machine accepted** | A status token or malformed applicability field cannot manufacture an event | Outcome template, receipts, applied validator | Positive and negative planned/pending/reviewed/not-applicable controls |
+| AS-02 | Treat the reusable recommendation API as strict while allowing arbitrary extra fields | **Rejected; exact input allowlists accepted** | Ordinary and layered entry points must fail closed at the actual exported boundary | Recommender and interaction tests | One exact ordinary shape; one exact six-field layered shape |
+| AS-03 | Let high volume or longevity independently select Advanced | **Rejected; one conjunction accepted** | Those factors may shape capabilities, not justify a more burdensome route | Implementation choices and playbook | Consequential + high uncertainty + substantial separately approved capacity |
+| AS-04 | Leave overlapping no-script gate rows without precedence | **Accepted as defect** | A JavaScript-disabled reader needs the same deterministic control order | Apply static guide and contracts | Permission → human gate → capacity mismatch → base action |
+| AS-05 | Treat syntactically valid local/private/reserved HTTPS hosts as public release destinations | **Rejected; deterministic public-host gate accepted** | Obvious non-public targets must not emit indexable metadata | Publication configuration and tests | Publication-time reachability/link check remains manual |
+| AS-06 | Keep rich F2 Markdown while shipping a machine receipt that rejects those dimensions | **Rejected; executable F2 fields accepted** | Downstream users need one compatible contract | Evidence register, receipts, validator | Required dimensions and removal/collapse mutations pass |
+| AS-07 | Concatenate multiple “when not to use” clauses as plain text | **Accepted** | Semantic lists improve scanning and assistive phrasing without adding content | Map implementation details | Build/check and selector reachability pass |
+| RP-01 | Weaken exact-tip or manifest gates to make the changing tree packageable | **Rejected; terminal sequence accepted** | The expected stale seal is evidence that fail-closed provenance works | Owner manifest, branch, portable builder | Regenerate last; clean clone; exact remote readback; externally verified ZIP |
+| RP-02 | Write post-seal Git/PR/ZIP facts back into a manifest-covered narrative | **Rejected; external attestation accepted** | Self-reference would invalidate the seal | D-036 and terminal report | Exact commit and ZIP/sidecar hashes identify the external attestation |
+| RP-03 | Omit the final research-convergence unit suite from the canonical runner | **Accepted as a test gap** | The final research claims should be exercised by the command advertised as complete | Stage 9 runner | Seven tests run after structural validator |
+| RP-04 | Leave newest research-convergence evidence outside the bounded manifest while describing `qa/research/**` | **Accepted with revision** | Add final research evidence to the bounded seal rather than implying full-tree coverage | Owner manifest and package map | Final required-path equality and manifest verification |
+
+No finding authorizes a merge, deployment, publication, study, provider/model
+call, spend, outreach, or claim that an unrun design produced a result.

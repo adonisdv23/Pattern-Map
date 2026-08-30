@@ -87,10 +87,13 @@ through the in-app Browser rather than inferred from static screenshots.
 
 Tracked visual evidence:
 
-- `qa/visual/final-convergence/home-public-1440x900.png`
-- `qa/visual/final-convergence/map-public-1440x900.png`
-- `qa/visual/final-convergence/common-origin-public-1440x900.png`
-- `qa/visual/final-convergence/apply-public-390x844.png`
+- `qa/visual/final-convergence/home-public-1440x900.jpg`
+- `qa/visual/final-convergence/map-public-1440x900.jpg`
+- `qa/visual/final-convergence/common-origin-public-1440x900.jpg`
+- `qa/visual/final-convergence/apply-public-390x844.jpg`
+
+The capture bytes are unchanged. Their filename extensions were corrected from
+`.png` to truthful `.jpg` during the final package-wide image-signature audit.
 
 ## What remains genuinely manual
 

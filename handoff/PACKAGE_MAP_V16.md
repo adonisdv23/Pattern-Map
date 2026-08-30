@@ -108,7 +108,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Matched-budget protocol candidate | `research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md` |
 | Narrow-wedge decision memo | `research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md` |
 | Current adjacent-source and boundary QA | `qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md`, `qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md` |
-| Research QA | `qa/research/**` |
+| Research QA | `qa/research/**` in Git; the bounded owner manifest explicitly includes the current convergence QA, its unit test, the final provenance red team, and the named integrity entry points rather than claiming a full repository manifest |
 
 ## Historical archive
 
@@ -128,6 +128,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Complete local verification runner | `qa/run_owner_review_checks.sh` |
 | Portable-bundle regression | `qa/handoff/test_portable_bundle.py` |
 | Public/transfer convergence QA | `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` |
+| Final exact-integrated red-team correction QA | `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` plus the three final reports under `qa/editorial/advisory/`, `qa/site/advisory/`, and `qa/research/advisory/` |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
 | Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |

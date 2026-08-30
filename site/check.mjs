@@ -35,6 +35,17 @@ const idsIn = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match
 
 const idListIn = (html) => [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
 
+const assertUniqueIds = (filePath, label) => {
+  const ids = idListIn(read(filePath));
+  const seen = new Set();
+  const duplicates = [...new Set(ids.filter((id) => {
+    if (seen.has(id)) return true;
+    seen.add(id);
+    return false;
+  }))];
+  assert(duplicates.length === 0, `${label} contains duplicate IDs: ${duplicates.join(", ")}`);
+};
+
 const assertBalancedMainMarkup = (html) => {
   const main = html.match(/<main id="main"[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? "";
   const voidElements = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
@@ -102,6 +113,9 @@ const checkLink = (fromFile, href, distRoot = DIST_DIR) => {
 const main = () => {
   for (const route of requiredRoutes) assert(fs.existsSync(path.join(DIST_DIR, route)), `missing built route: ${route}`);
   for (const route of requiredRoutes) assert(fs.existsSync(path.join(PUBLIC_DIST_DIR, route)), `missing public built route: ${route}`);
+  for (const [root, label] of [[DIST_DIR, "review route"], [PUBLIC_DIST_DIR, "public route"]]) {
+    for (const route of requiredRoutes) assertUniqueIds(path.join(root, route), `${label} ${route}`);
+  }
   assert(fs.existsSync(EXPORT_PATH), "missing committed standalone export; run build first");
   assert(fs.existsSync(PUBLIC_EXPORT_PATH), "missing committed public standalone export; run build first");
   const root = read(path.join(DIST_DIR, "index.html"));
@@ -155,15 +169,16 @@ const main = () => {
   for (const relationship of ["REQUIRES A BASELINE", "CAN REVEAL A SHARED PATH", "CONSTRAINS INFLUENCE", "MAY UPDATE AFTER AN OUTCOME"]) assert(map.includes(relationship), `map relationship band missing: ${relationship}`);
   for (const plainPurpose of [
     "Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.",
-    "What can this source actually tell us about this claim, and what can it not tell us?",
+    "Weigh what the source can support without turning its pathway, reputation, or repetition into proof.",
     "Notice a change against a stated baseline before calling it meaningful.",
     "Notice what should be present but is not",
     "preserve important differences",
     "Compare what you expected with what happened",
   ]) assert(map.includes(plainPurpose), `plain-language family bridge missing: ${plainPurpose}`);
   const f2Card = map.match(/<article id="family-F2"[\s\S]*?<\/article>/)?.[0] ?? "";
-  assert(f2Card.includes("What role does each source and information path play for this exact claim?"), "F2 reader question drifted from the stable public contract");
-  assert(f2Card.includes("Recurrence, authority, support, relevance, origin, and permission stay distinct."), "F2 public boundary is incomplete");
+  assert(f2Card.includes("For this claim, what can each source actually tell us—and how did the information reach us?"), "F2 reader question drifted from the stable public contract");
+  assert(/class="family-when-not muted"[\s\S]*?<ul>[\s\S]*?<li>/.test(map), "family when-not-to-use guidance is not a semantic list");
+  assert(f2Card.includes("Keep source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission separate."), "F2 public boundary is incomplete");
   for (const dimension of ["source role", "track-record evidence", "claim-scoped authority", "support", "relevance", "recurrence", "origin", "provenance", "permission"]) {
     assert(f2Card.toLowerCase().includes(dimension), `F2 closed technical detail lost ${dimension}`);
   }
@@ -188,6 +203,8 @@ const main = () => {
   assert(guided.includes("Approximately 8–12 minutes; editorial estimate only."), "Guided route reading-time caveat missing");
   for (const example of ["specialist signal", "explicit baseline", "independence: UNKNOWN"]) assert(examples.includes(example), `teaching pattern missing: ${example}`);
   assert(examples.includes('class="recurrence-traces"'), "common-origin teaching bridge is missing");
+  assert(examples.includes("BROAD VALIDATION CLAIM") && examples.includes("NOT ESTABLISHED"), "common-origin visual does not scope the unestablished corroboration state");
+  assert(!examples.includes("<b>00</b> counted support paths"), "common-origin visual turns an unknown relationship into numerical zero");
   const recurrenceFlowStart = css.indexOf(".recurrence-traces {\n  position: static;");
   const recurrenceFlowRule = recurrenceFlowStart >= 0 ? css.slice(recurrenceFlowStart, css.indexOf("}", recurrenceFlowStart)) : "";
   assert(recurrenceFlowRule.includes("display: grid;"), "common-origin bridge is not flow-native");
@@ -314,6 +331,7 @@ const main = () => {
   const publicRead = read(path.join(PUBLIC_DIST_DIR, "read/index.html"));
   const publicApply = read(path.join(PUBLIC_DIST_DIR, "apply/index.html"));
   const publicMap = read(path.join(PUBLIC_DIST_DIR, "map/index.html"));
+  const publicGuided = read(path.join(PUBLIC_DIST_DIR, "guided/index.html"));
   const publicExamples = read(path.join(PUBLIC_DIST_DIR, "examples/index.html"));
   const publicResearch = read(path.join(PUBLIC_DIST_DIR, "research/index.html"));
   const publicStandalone = read(PUBLIC_EXPORT_PATH);
@@ -335,12 +353,17 @@ const main = () => {
   }
   assert(publicRoot.includes(headline) && publicRoot.includes(standfirst), "public mode changed the human-first opening");
   for (const door of ["Read the idea", "Explore the map", "Apply it"]) assert(publicRoot.includes(door), `public mode lost principal door: ${door}`);
+  assert(publicRoot.includes("PATTERN RECOGNITION / BEFORE GENERATION"), "public Home exposes the technical layer name before ordinary-language meaning");
+  assert(publicRoot.includes("Read why choices made before generation shape what an answer can become."), "public Read door is not self-contained");
+  assert(!publicRoot.includes("An AI answer can sound polished yet be generic because weakness can begin before writing."), "public Home repeats the canonical release example after the teaching reveal");
+  assert(!publicGuided.includes('class="opening-case"'), "public Guided repeats the release opening case before the canonical short version");
+  assert(!publicGuided.includes("What it preserves"), "public Guided opens with publication-architecture metadata");
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) {
     assert(publicMap.includes(familyName), `public mode lost family: ${familyName}`);
   }
-  assert(publicMap.includes("What role does each source and information path play for this exact claim?"), "public F2 question drifted");
-  assert(publicMap.includes("What can this source actually tell us about this claim, and what can it not tell us?"), "public F2 bridge drifted");
-  assert(publicMap.includes("Recurrence, authority, support, relevance, origin, and permission stay distinct."), "public F2 boundary drifted");
+  assert(publicMap.includes("For this claim, what can each source actually tell us—and how did the information reach us?"), "public F2 question drifted");
+  assert(publicMap.includes("Weigh what the source can support without turning its pathway, reputation, or repetition into proof."), "public F2 bridge drifted");
+  assert(publicMap.includes("Keep source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission separate."), "public F2 boundary drifted");
   assert(!/<details class="case-card signal-foundry"\s+open>/.test(publicExamples), "public Signal Foundry case is open by default");
   assert(/<details class="case-card signal-foundry"\s+open>/.test(examples), "review Signal Foundry case is not open for owner inspection");
   assert(publicApply.includes("Planning only.") && publicApply.includes("Human authority stays explicit."), "public Apply lost planning or human-authority boundary");

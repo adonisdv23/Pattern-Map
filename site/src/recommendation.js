@@ -61,15 +61,30 @@
     }
   };
 
-  const assertOrdinaryIsTerminal = (input) => {
-    const suppliedLayeredFields = Object.keys(layeredChoices)
-      .filter((field) => input[field] !== undefined && input[field] !== "");
-    if (suppliedLayeredFields.length > 0) {
-      throw new TypeError(`Stage 0 ordinary input cannot contain layered fields: ${suppliedLayeredFields.join(", ")}.`);
+  const assertExactInputKeys = (input, expectedKeys, label) => {
+    const suppliedKeys = Object.keys(input).sort();
+    const expected = [...expectedKeys].sort();
+    const unexpected = suppliedKeys.filter((key) => !expectedKeys.has(key));
+    const missing = expected.filter((key) => !Object.prototype.hasOwnProperty.call(input, key));
+    if (unexpected.length || missing.length) {
+      const details = [
+        unexpected.length ? `unexpected: ${unexpected.join(", ")}` : "",
+        missing.length ? `missing: ${missing.join(", ")}` : "",
+      ].filter(Boolean).join("; ");
+      throw new TypeError(`${label} input must use the exact declared fields (${details}).`);
     }
   };
 
+  const assertOrdinaryIsTerminal = (input) => {
+    assertExactInputKeys(input, new Set(["evidenceSelection"]), "Stage 0 ordinary");
+  };
+
   const assertLayeredInput = (input) => {
+    assertExactInputKeys(
+      input,
+      new Set(["evidenceSelection", ...Object.keys(layeredChoices)]),
+      "Layered planning",
+    );
     for (const [field, values] of Object.entries(layeredChoices)) {
       if (!values.has(input[field])) throw new TypeError(`Invalid ${field} choice.`);
     }

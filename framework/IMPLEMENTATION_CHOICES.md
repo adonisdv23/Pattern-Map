@@ -13,8 +13,11 @@ Stage 0 grants no external-action authority; externally consequential action
 remains with an explicitly authorized human.
 
 A budget records capacity and constraint; it cannot independently justify
-advanced machinery. Choose a level from the task's actual failure modes,
-consequence, reuse, and governance needs, then use the budget to bound it.
+advanced machinery. Advanced is justified only when consequence is high,
+uncertainty is high, and substantial capacity has been separately approved;
+volume, reuse, or longevity may shape capabilities inside the chosen level but
+do not independently select it. Choose the smallest level from those rules,
+then use the approved capacity to bound it.
 
 ## Three implementation levels
 
@@ -22,7 +25,7 @@ consequence, reuse, and governance needs, then use the budget to bound it.
 | --- | --- | --- | --- | --- | --- | --- |
 | Lightweight | Low-stakes, short-lived layered tasks where bounded material still requires claim judgment, comparison, selection/withholding, or another Stage 0 disqualifier | A question, a small evidence set, one permission note, and a time limit | One decision brief, one evidence/uncertainty table, one disconfirmation note, one influence receipt | Minutes and ordinary human attention; no new software required | One alternate route or one comparison is complete, or the stated time limit is reached | Too little traceability when consequences rise |
 | Moderate | Repeated work or decisions where identity, comparison, and correction matter | Stable IDs, source/artifact records, typed relationships, budget, human checkpoint | Versioned evidence register, comparison/gap record, context packet, disposition, outcome review | Setup and review overhead; documents, spreadsheets, or a small store | Route-specific marginal value is low, budget is reached, or human gate is required | Ceremony and stale records |
-| Advanced | Consequential, high-volume, or long-lived workflows with approved engineering capacity | Structured data, access policy, provenance, relationship and time-series views, routing policy, review roles | Queryable lineage, typed graphs, policy receipts, replayable packets, versioned learning proposals | Engineering, privacy, security, operations, and evaluation cost | Hard safety/permission stop, policy threshold, or approved matched-budget evaluation boundary | False precision, automation bias, and expensive bureaucracy |
+| Advanced | Consequential, high-uncertainty layered work with substantial separately approved capacity; all three conditions are required | Structured data, access policy, provenance, relationship and time-series views, routing policy, review roles | Queryable lineage, typed graphs, policy receipts, replayable packets, versioned learning proposals | Engineering, privacy, security, operations, and evaluation cost | Hard safety/permission stop, policy threshold, or approved matched-budget evaluation boundary | False precision, automation bias, and expensive bureaucracy |
 
 These levels preserve v13's practical range without preserving a hierarchy.
 They may be realized as a team process, an intermediary reasoning/context or
@@ -72,8 +75,11 @@ inspectable.
 
 ## Advanced route
 
-Use this route only when the cost of hidden upstream mistakes justifies the
-engineering and governance burden. Add capabilities selectively:
+Use this route only when the work is consequential, uncertainty is high, and
+substantial capacity has been separately approved. All three conditions are
+required. High volume, long life, repeated use, or available infrastructure
+may shape which capabilities are useful after the level is chosen; none of
+them independently upgrades a task to Advanced. Add capabilities selectively:
 
 - source/artifact/version/derivation lineage;
 - claim and relationship storage with explicit UNKNOWN states;
@@ -91,7 +97,8 @@ still authorizes acquisition, disclosure, or externally consequential action.
 
 ## Selection rubric
 
-Choose a higher level only when at least one condition is true:
+After Stage 0 requires a layered path, use these conditions to identify what
+must remain inspectable:
 
 - the decision is difficult to reverse;
 - the cost of a wrong or unsupported claim is material;
@@ -101,6 +108,14 @@ Choose a higher level only when at least one condition is true:
 - the output will be reused as memory;
 - a human must review or authorize the route;
 - later outcomes are important enough to compare with expectations.
+
+Use Lightweight when the layered task remains reversible and neither high
+consequence nor high uncertainty is present. Use Moderate when consequence is
+high or uncertainty is high but the complete Advanced conjunction is not met.
+Use Advanced only when consequence is high, uncertainty is high, and
+substantial capacity is separately approved. The other conditions above shape
+the records and capabilities within that level; they do not independently
+select Advanced.
 
 Stay lightweight or do not use the framework when:
 

@@ -1274,8 +1274,11 @@ named historical floor. Neither change reopens v16's thesis or adds operating
 bureaucracy.
 
 **Evidence:** exact Claude recheck report; zero-skip portable suite at
-`4a1acab`; manifest writer/verifier; final clean-clone and packet evidence to be
-recorded in the convergence QA after completion.
+`4a1acab`; manifest writer/verifier. Final clean-clone, remote/PR, copied-
+location, and ZIP observations are delivered in an external terminal
+attestation keyed to the exact Git commit and ZIP/sidecar hashes. They are not
+written back into a manifest-covered narrative, because doing so would
+invalidate the seal and create a self-referential resealing loop.
 
 **Governing requirement:** A14/A15; source authority and immutable provenance;
 cross-computer recoverability; model reviews advisory only; no merge,
@@ -1324,3 +1327,81 @@ focused validators and in-app Browser evidence.
 six-family continuity; progressive disclosure; proportionality and
 anti-bureaucracy; human authority; research may constrain but not redefine;
 no merge/deploy/publication/study/provider selection or call/spend/outreach.
+
+## D-038 — Accept exact-integrated corrections without reopening the thesis
+
+**Date:** 2026-08-30
+
+**Status:** Accepted; terminal resealing follows post-fix review
+
+Three independent read-only lanes reviewed exact clean checkpoint `d40ca61`:
+intent/cold reader, applied/site contracts, and research/provenance. No lane
+found a P0 or a reason to rewrite the human thesis, remove a family, collapse
+Echo into v16, add a live model demo, or run a study. The primary integrator
+reproduced and accepted a bounded correction set at the seams between public
+copy, executable receipts, no-script behavior, and terminal verification.
+
+The final operating contract now has exact ordinary and layered input shapes;
+an exact planned/pending/reviewed/not-applicable outcome state machine; one
+Advanced sizing rule; machine-readable F2 distinctions; deterministic
+no-script precedence; and a release-host gate that rejects obviously
+non-public destinations. The public adapter introduces the idea in ordinary
+language, removes adjacent duplicate examples, asks F2 plainly, and labels
+independent support for the fictional broad claim `NOT ESTABLISHED` rather
+than counting an unknown as zero. Review mode retains the mentor-continuation
+context and the broad six-family manuscript remains unchanged.
+
+Historical exact-checkpoint evidence is not silently rewritten. In
+particular, public mode removes the global owner-review route/orientation
+index, while Guided intentionally retains an authored within-route reading
+index. A successor QA records that distinction. Post-seal clean-clone,
+remote/PR, and ZIP observations remain external exact-hash attestations so the
+bounded manifest cannot invalidate itself.
+
+**Evidence:** three final red-team reports at `d40ca61`;
+`qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md`; focused applied,
+interaction, public-mode, site, content-interface, and research checks.
+
+**Governing requirement:** locked owner intent; A01–A17; model feedback is
+advisory; smallest coherent correction; anti-bureaucracy; human authority;
+unknown stays unknown; research constrains but does not redefine; no merge,
+deployment, publication, study, provider/model call, spend, outreach, or
+result claim.
+
+## D-039 — Make every routed anchor collision-safe and recheck the all-routes composition live
+
+**Date:** 2026-08-30
+
+**Status:** Accepted; reproduced browser defect corrected at the generator
+
+The post-red-team live browser pass found one defect that the prior static
+suite missed: three repeated headings inside the ordinary-versus-layered
+Examples source created duplicate IDs on routed review and public pages. The
+standalone export happened to repair those IDs later, so a standalone-only
+uniqueness assertion was an incomplete contract.
+
+The Markdown renderer now preserves the first stable anchor and assigns
+deterministic occurrence suffixes to later headings inside the same source
+fragment, including nested blockquotes. Both generated modes reject duplicate
+IDs on every route, and the independent semantic audit enforces the same rule.
+After rebuilding, all ten routes at 1440×720 and 390×844 had one `h1`, unique
+IDs, and no document-level overflow.
+
+The same live pass rechecked the earlier standalone export failure. Sources,
+Research, and History are direct `.page-content` children with equal full
+content width at wide and narrow viewports. This closes a generated-structure
+regression; it does not claim a physical accessibility pass, reader
+comprehension, publication readiness, or framework effectiveness.
+
+The repository-wide image-signature audit then found four current QA captures
+with JPEG bytes but `.png` names. Their bytes were preserved under truthful
+`.jpg` names and active references were corrected. Historical image content
+was not regenerated or silently altered.
+
+**Evidence:** `site/build.mjs`; route-wide checks in `site/check.mjs` and
+`qa/site/audit_site.py`; `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md`;
+current captures in `qa/visual/final-redteam/`.
+
+**Governing requirement:** A02/A06/A13; semantic HTML; stable direct links;
+standalone structural integrity; smallest coherent correction; automated
+evidence may not impersonate physical/manual approval.

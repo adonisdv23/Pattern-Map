@@ -54,11 +54,27 @@ for (const field of ["supplied scope", "material assumptions", "unchecked bounda
 assert.match(ordinary.learningOption, /LEARNING_NOT_APPLICABLE/);
 assert.doesNotMatch(JSON.stringify(ordinary), /ANSWER|COMPARE|ACQUIRE|CLARIFY/);
 
-for (const field of ["consequence", "uncertainty", "budget", "permission", "humanActionGate"]) {
+for (const field of [
+  "consequence",
+  "uncertainty",
+  "budget",
+  "permission",
+  "humanActionGate",
+  "evidence_records",
+  "route",
+  "stop_status",
+  "learning_status",
+  "influence",
+  "executionState",
+  "observedOutcome",
+  "outcome",
+  "humanDisposition",
+  "authorized",
+]) {
   assert.throws(
     () => api.recommend({ evidenceSelection: "none", [field]: "not-applicable-placeholder" }),
-    /ordinary input cannot contain layered fields/,
-    `ordinary input incorrectly accepted layered field ${field}`,
+    /ordinary input must use the exact declared fields/,
+    `ordinary input incorrectly accepted undeclared field ${field}`,
   );
 }
 
@@ -126,6 +142,32 @@ for (const consequence of choices.consequence) {
 }
 
 assert.equal(layeredCombinations, 144, "expected the complete 2×3×3×4×2 layered matrix");
+for (const field of [
+  "evidence_records",
+  "route",
+  "stop_status",
+  "learning_status",
+  "influence",
+  "executionState",
+  "observedOutcome",
+  "outcome",
+  "humanDisposition",
+  "authorized",
+]) {
+  assert.throws(
+    () => api.recommend({
+      evidenceSelection: "needed",
+      consequence: "reversible",
+      uncertainty: "low",
+      budget: "quick",
+      permission: "AUTHORIZED",
+      humanActionGate: "NOT_REQUIRED",
+      [field]: "fabricated-execution-value",
+    }),
+    /Layered planning input must use the exact declared fields/,
+    `layered input incorrectly accepted undeclared field ${field}`,
+  );
+}
 for (const uncertainty of ["low", "mixed"]) {
   const capacityOnly = api.recommend({
     evidenceSelection: "needed",
@@ -146,6 +188,6 @@ assert.throws(() => api.recommend({
   uncertainty: "low",
   budget: "quick",
   permission: "AUTHORIZED",
-}), /Invalid humanActionGate/);
+}), /exact declared fields \(missing: humanActionGate\)/);
 
 console.log("PASS Apply terminal Stage 0 and planning-state contract across 1 ordinary + 144 layered combinations");

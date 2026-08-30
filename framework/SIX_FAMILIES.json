@@ -30,7 +30,7 @@
       "id": "F2",
       "slug": "source-weighing",
       "name": "Source weighing",
-      "reader_question": "What role does each source and information path play for this exact claim?",
+      "reader_question": "For this claim, what can each source actually tell us—and how did the information reach us?",
       "purpose": "Keep source role, relevant track-record evidence, claim-scoped authority, support, relevance, recurrence, origin, provenance, and permission distinct.",
       "mechanism": "Claim-level evidence records with typed relationships and explicit source roles.",
       "inputs": ["source and artifact identity", "exact evidence spans", "candidate claims", "domain evidence standard", "relevant track-record evidence or UNKNOWN", "origin relations", "permission policy"],

@@ -6,6 +6,11 @@ Status: **owner-review evidence; not reader, accessibility, or research results*
 
 Use these paths for the current v16 review:
 
+- `final-redteam/` — current public Home/reveal, F2, common-origin, and actual
+  Advanced/HOLD Apply captures at wide and narrow widths, plus wide standalone
+  Sources and History captures after the all-route geometry and route-anchor
+  recheck; paired evidence lives in
+  `../handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md`; and
 - `final-convergence/` — exact `5bcd08d` public Home, current relationship Map,
   common-origin teaching figure, and mobile Apply captures made through the
   in-app Browser; paired geometry, interaction, and boundary evidence lives in
@@ -41,7 +46,8 @@ fabricating actual event states, and the site now has a Guided route and term
 helpers.
 
 The `final-convergence/` captures replace that earlier screenshot gap for the
-named `5bcd08d` surfaces. They do not rewrite or erase the historical routed
+named `5bcd08d` surfaces. The later `final-redteam/` lane supersedes them for
+the named current surfaces without rewriting or erasing the historical routed
 matrix.
 
 ## Stale pre-polish evidence warning

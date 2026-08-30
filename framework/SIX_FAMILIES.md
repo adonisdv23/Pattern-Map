@@ -20,7 +20,7 @@ families; they do not replace them.
 | ID | Family | Reader question | Primary output | Non-negotiable boundary |
 | --- | --- | --- | --- | --- |
 | F1 | Peripheral signal | What might the default path have overlooked? | Candidate signal and acquisition receipt | Less-visible or unusual material is a reason to inspect, not a reason to believe |
-| F2 | Source weighing | What role does each source and information path play for this exact claim? | Source-role and claim-support record | Recurrence, authority, support, relevance, origin, and permission stay distinct |
+| F2 | Source weighing | For this claim, what can each source actually tell us—and how did the information reach us? | Source-role and claim-support record | Source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission stay distinct |
 | F3 | Velocity / motion | What is changing unusually relative to a relevant baseline? | Time-stamped motion observation | Change is an attention prompt, not a conclusion or forecast |
 | F4 | Absence + memory | What should be present but is not, and what prior context changes the meaning of now? | Baseline-linked gap and versioned memory link | A gap needs an expected baseline; memory does not silently rewrite history |
 | F5 | Structured patterns | What becomes visible through explicit comparison? | Comparison matrix and typed relationships | Similarity is not equivalence, causation, or independent corroboration |

@@ -196,7 +196,7 @@ implementation components must not replace this public map.
 | Family | Reader question | Boundary |
 | --- | --- | --- |
 | **F1 — Peripheral signal** | What might the default path have overlooked? | Underweighted or less visible is a reason to inspect, not a reason to believe. |
-| **F2 — Source weighing** | What role does each source and information path play for this exact claim? | Recurrence, authority, support, relevance, origin, and permission stay distinct. |
+| **F2 — Source weighing** | For this claim, what can each source actually tell us—and how did the information reach us? | Source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission stay distinct. |
 | **F3 — Velocity / motion** | What is changing unusually relative to a relevant baseline? | Change deserves examination, not automatic belief or action. |
 | **F4 — Absence + memory** | What should be present but is not, and what prior context changes the meaning of now? | Absence needs an expected baseline; memory remains versioned and source-bound. |
 | **F5 — Structured patterns** | What becomes visible through explicit comparison of peers, periods, attributes, and relationships? | Comparison must not force unlike cases into false equivalence. |

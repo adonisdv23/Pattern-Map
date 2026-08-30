@@ -49,7 +49,10 @@ or consequential boundary.
 3. **Set a budget.** State the time, money, tokens, compute, privacy,
    disclosure, and human-attention boundary. State the no-action boundary. A
    budget records capacity and constraint; it cannot independently justify
-   advanced machinery.
+   advanced machinery. Advanced is justified only when consequence is high,
+   uncertainty is high, and substantial capacity has been separately approved;
+   volume, reuse, or longevity may shape capabilities inside the chosen level
+   but do not independently select it.
 4. **Write the default path.** Record the familiar query, source set,
    vocabulary, time window, or product route.
 5. **Widen once.** Use one bounded peripheral route: a specialist source,

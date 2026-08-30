@@ -47,6 +47,14 @@ F2 source-weighing contract, Apply planning surface, and publication metadata
 gate. These are contract, presentation, and claim-boundary corrections—not a
 study, effectiveness result, deployment, or publication.
 
+The exact-`d40ca61` red-team correction set remains v16. It closes fail-open
+API and learning-state seams, makes F2's distinctions executable in the
+machine receipt, aligns Advanced and no-script precedence across artifacts,
+rejects obviously non-public release hosts, and removes cold-reader duplicate
+or ambiguous presentation seams. It does not change the six families, the
+human thesis, the Echo split, or the evidence ceiling, and it does not create
+a study, result, deployment, or publication.
+
 Terminal sealing corrections preserve `874a0a8` as the human
 manuscript/content-interface checkpoint while requiring `cbc89db` or later for
 the integrated operating contract and the exact current Git/sealed source for

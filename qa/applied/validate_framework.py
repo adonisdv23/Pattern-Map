@@ -37,6 +37,12 @@ BUDGET_COMPLEXITY_CONTRACT = (
     "A budget records capacity and constraint; it cannot independently justify "
     "advanced machinery."
 )
+ADVANCED_ROUTE_CONTRACT = (
+    "Advanced is justified only when consequence is high, uncertainty is high, "
+    "and substantial capacity has been separately approved; volume, reuse, or "
+    "longevity may shape capabilities inside the chosen level but do not "
+    "independently select it."
+)
 ORDINARY_CONTRACT_FILES = (
     "framework/agent-playbook/QUICKSTART.md",
     "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
@@ -51,6 +57,7 @@ BUDGET_CONTRACT_FILES = (
     "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
     "framework/IMPLEMENTATION_CHOICES.md",
 )
+ADVANCED_CONTRACT_FILES = BUDGET_CONTRACT_FILES
 
 
 class CheckFailure(Exception):
@@ -134,6 +141,11 @@ def validate_stage_zero_contract() -> None:
     for relative in BUDGET_CONTRACT_FILES:
         require(budget_contract in normalized_text(read_text(relative)),
                 f"{relative} lets budget independently imply advanced machinery")
+
+    advanced_contract = normalized_text(ADVANCED_ROUTE_CONTRACT)
+    for relative in ADVANCED_CONTRACT_FILES:
+        require(advanced_contract in normalized_text(read_text(relative)),
+                f"{relative} diverges from the three-condition Advanced rule")
 
     for relative in (
         "framework/agent-playbook/QUICKSTART.md",
@@ -734,7 +746,11 @@ def validate_requirement_disposition(
 
 
 def validate_outcome(receipt: dict, filename: str) -> None:
-    outcome = receipt.get("outcome", {})
+    outcome = receipt.get("outcome")
+    require(isinstance(outcome, dict),
+            f"{filename}: outcome must be an exact status-discriminated object")
+    require(isinstance(outcome.get("applicable"), bool),
+            f"{filename}: outcome applicable must be a real boolean")
     learning_statuses = {
         "LEARNING_PLANNED",
         "LEARNING_PENDING_OUTCOME",
@@ -743,28 +759,64 @@ def validate_outcome(receipt: dict, filename: str) -> None:
     }
     require(outcome.get("learning_status") in learning_statuses,
             f"{filename}: outcome needs a canonical learning status")
-    if outcome.get("applicable") is True:
-        require(outcome.get("learning_status") in {
-                    "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED"},
-                f"{filename}: applicable outcome needs pending or reviewed state")
-        require(outcome.get("expectation_recorded") is True,
-                f"{filename}: learning needs a pre-outcome expectation")
-        require(outcome.get("update_applied") is False,
-                f"{filename}: fixture must not silently apply a learning update")
-        if outcome.get("learning_status") == "LEARNING_REVIEWED":
-            require(outcome.get("review_recorded") is True,
-                    f"{filename}: LEARNING_REVIEWED needs a recorded outcome review")
-            observed = outcome.get("observed_outcome")
-            missing = outcome.get("missing_outcome_reason")
-            require(nonempty(observed) or nonempty(missing),
-                    f"{filename}: LEARNING_REVIEWED needs an observed or explicitly missing outcome")
-            require(outcome.get("human_disposition") in {
-                        "ACCEPTED", "REJECTED", "DEFERRED", "OVERRIDDEN",
-                        "REQUEST_ENRICHMENT"},
-                    f"{filename}: LEARNING_REVIEWED needs a canonical human disposition")
-    else:
-        require(outcome.get("learning_status") == "LEARNING_NOT_APPLICABLE",
+    status = outcome["learning_status"]
+    if outcome["applicable"] is False:
+        require(set(outcome) == {"applicable", "learning_status"},
+                f"{filename}: non-applicable outcome cannot carry expectation, result, review, disposition, or update fields")
+        require(status == "LEARNING_NOT_APPLICABLE",
                 f"{filename}: non-applicable outcome must say LEARNING_NOT_APPLICABLE")
+        return
+
+    pre_review_keys = {
+        "applicable", "learning_status", "expectation_recorded",
+        "outcome_window_recorded", "update_applied",
+    }
+    if status == "LEARNING_PLANNED":
+        require(set(outcome) == pre_review_keys,
+                f"{filename}: LEARNING_PLANNED must use only the planning-state keys")
+        require(outcome["expectation_recorded"] is False
+                and outcome["outcome_window_recorded"] is False,
+                f"{filename}: LEARNING_PLANNED precedes expectation and window lock")
+        require(outcome["update_applied"] is False,
+                f"{filename}: LEARNING_PLANNED cannot apply an update")
+        return
+
+    if status == "LEARNING_PENDING_OUTCOME":
+        require(set(outcome) == pre_review_keys,
+                f"{filename}: LEARNING_PENDING_OUTCOME cannot carry result, review, disposition, or extra fields")
+        require(outcome["expectation_recorded"] is True
+                and outcome["outcome_window_recorded"] is True,
+                f"{filename}: LEARNING_PENDING_OUTCOME needs locked expectation and outcome window")
+        require(outcome["update_applied"] is False,
+                f"{filename}: LEARNING_PENDING_OUTCOME cannot apply an update")
+        return
+
+    reviewed_keys = pre_review_keys | {
+        "review_recorded", "observed_outcome", "missing_outcome_reason",
+        "human_disposition",
+    }
+    require(status == "LEARNING_REVIEWED",
+            f"{filename}: applicable outcome has an incompatible learning status")
+    require(set(outcome) == reviewed_keys,
+            f"{filename}: LEARNING_REVIEWED must use the exact reviewed-state keys")
+    require(outcome["expectation_recorded"] is True
+            and outcome["outcome_window_recorded"] is True,
+            f"{filename}: LEARNING_REVIEWED needs the locked pre-outcome record")
+    require(outcome["review_recorded"] is True,
+            f"{filename}: LEARNING_REVIEWED needs a recorded outcome review")
+    observed = outcome["observed_outcome"]
+    missing = outcome["missing_outcome_reason"]
+    require(isinstance(observed, str) and isinstance(missing, str),
+            f"{filename}: reviewed outcome and missing-outcome reason must be strings")
+    require((nonempty(observed) and observed != "NOT_APPLICABLE")
+            or (nonempty(missing) and missing != "NOT_APPLICABLE"),
+            f"{filename}: LEARNING_REVIEWED needs an observed or explicitly missing outcome")
+    require(outcome["human_disposition"] in {
+                "ACCEPTED", "REJECTED", "DEFERRED", "OVERRIDDEN",
+                "REQUEST_ENRICHMENT"},
+            f"{filename}: LEARNING_REVIEWED needs a canonical human disposition")
+    require(outcome["update_applied"] is False,
+            f"{filename}: an outcome review may propose but cannot silently apply an update")
 
 
 def validate_ordinary_record(record: dict, filename: str) -> None:
@@ -818,6 +870,9 @@ def validate_evidence_records(receipt: dict, filename: str) -> dict[str, dict]:
     required = {
         "id", "exact_pointer", "claim_ids", "permission_state",
         "time_bearing", "observed_at", "alignment_key",
+        "source_role", "track_record_evidence", "claim_scoped_authority",
+        "support_state", "origin_state", "recurrence_state", "relevance",
+        "provenance_ref",
     }
     for record in records:
         require(isinstance(record, dict) and set(record) == required,
@@ -831,6 +886,34 @@ def validate_evidence_records(receipt: dict, filename: str) -> dict[str, dict]:
                 f"{filename}: {record_id} exact pointer is not resolvable to a named span")
         require_string_list(record["claim_ids"],
                             f"{filename}: {record_id} lacks claim references")
+        require(record["source_role"] in {
+                    "PRIMARY", "SECONDARY", "SPECIALIST", "AGGREGATOR",
+                    "OTHER", "UNKNOWN"},
+                f"{filename}: {record_id} has an untyped source role")
+        track_record = record["track_record_evidence"]
+        require(track_record == "UNKNOWN"
+                or (isinstance(track_record, str)
+                    and EXACT_POINTER_PATTERN.fullmatch(track_record) is not None),
+                f"{filename}: {record_id} track record must be UNKNOWN or a resolvable evidence pointer")
+        require_substantive_string(
+            record["claim_scoped_authority"],
+            f"{filename}: {record_id} lacks a claim-scoped authority boundary",
+        )
+        require(record["support_state"] in {
+                    "SUPPORTED", "CONTRADICTED", "QUALIFIED",
+                    "INSUFFICIENT", "UNKNOWN"},
+                f"{filename}: {record_id} has an untyped support state")
+        require(record["origin_state"] in {
+                    "INDEPENDENT", "RELATED", "COMMON_ORIGIN", "UNKNOWN"},
+                f"{filename}: {record_id} has an untyped origin state")
+        require(record["recurrence_state"] in {
+                    "RECURRENT", "NOT_RECURRENT", "UNKNOWN"},
+                f"{filename}: {record_id} has an untyped recurrence state")
+        require(record["relevance"] in {"HIGH", "MEDIUM", "LOW", "UNKNOWN"},
+                f"{filename}: {record_id} has an untyped relevance state")
+        require(isinstance(record["provenance_ref"], str)
+                and EXACT_POINTER_PATTERN.fullmatch(record["provenance_ref"]) is not None,
+                f"{filename}: {record_id} lacks a resolvable provenance reference")
         require(record["permission_state"] in PERMISSION_STATES,
                 f"{filename}: {record_id} has an untyped permission state")
         require(isinstance(record["time_bearing"], bool),
@@ -1331,6 +1414,16 @@ def validate_receipt_guard_mutations() -> None:
 
     base = load_json("qa/applied/receipts/layered-ready.json")
 
+    planned = copy.deepcopy(base)
+    planned["outcome"] = {
+        "applicable": True,
+        "learning_status": "LEARNING_PLANNED",
+        "expectation_recorded": False,
+        "outcome_window_recorded": False,
+        "update_applied": False,
+    }
+    validate_layered_receipt(planned, "synthetic-planned-contract-control.json")
+
     invalid = copy.deepcopy(base)
     invalid["outcome"]["learning_status"] = "LEARNING_REVIEWED"
     expect_failure(
@@ -1343,10 +1436,60 @@ def validate_receipt_guard_mutations() -> None:
         {
             "review_recorded": True,
             "observed_outcome": "SYNTHETIC_CONTRACT_OBSERVATION_ONLY",
+            "missing_outcome_reason": "NOT_APPLICABLE",
             "human_disposition": "DEFERRED",
         }
     )
     validate_layered_receipt(valid, "synthetic-reviewed-contract-control.json")
+
+    for mutation_name, outcome in (
+        (
+            "pending-with-result",
+            base["outcome"] | {
+                "review_recorded": True,
+                "observed_outcome": "CLAIMED_SUCCESS",
+                "missing_outcome_reason": "NOT_APPLICABLE",
+                "human_disposition": "ACCEPTED",
+            },
+        ),
+        (
+            "not-applicable-with-result",
+            {
+                "applicable": False,
+                "learning_status": "LEARNING_NOT_APPLICABLE",
+                "review_recorded": True,
+                "observed_outcome": "CLAIMED_SUCCESS",
+                "missing_outcome_reason": "NOT_APPLICABLE",
+                "human_disposition": "ACCEPTED",
+                "update_applied": True,
+            },
+        ),
+        (
+            "missing-applicable",
+            {"learning_status": "LEARNING_NOT_APPLICABLE"},
+        ),
+        (
+            "mistyped-applicable",
+            {"applicable": "false", "learning_status": "LEARNING_NOT_APPLICABLE"},
+        ),
+        (
+            "planned-after-lock",
+            {
+                "applicable": True,
+                "learning_status": "LEARNING_PLANNED",
+                "expectation_recorded": True,
+                "outcome_window_recorded": True,
+                "update_applied": False,
+            },
+        ),
+    ):
+        invalid_outcome = copy.deepcopy(base)
+        invalid_outcome["outcome"] = outcome
+        expect_failure(
+            invalid_outcome,
+            f"synthetic-{mutation_name}.json",
+            f"validator accepted invalid learning transition {mutation_name}",
+        )
 
     for mutation_name, mutate in (
         (
@@ -1389,12 +1532,33 @@ def validate_receipt_guard_mutations() -> None:
             f"validator accepted malformed or unresolved {mutation_name} record",
         )
 
+    for field in (
+        "source_role", "track_record_evidence", "claim_scoped_authority",
+        "support_state", "origin_state", "recurrence_state", "relevance",
+        "provenance_ref", "permission_state",
+    ):
+        missing_dimension = copy.deepcopy(base)
+        del missing_dimension["evidence_records"][0][field]
+        expect_failure(
+            missing_dimension,
+            f"synthetic-evidence-missing-{field}.json",
+            f"validator accepted evidence with collapsed or missing F2 field {field}",
+        )
+
     invalid_influence_permission = copy.deepcopy(base)
     invalid_influence_permission["evidence_records"].append(
         {
             "id": "E-UNKNOWN",
             "exact_pointer": "fixture://synthetic/unresolved/item#claim",
             "claim_ids": ["C-UNKNOWN"],
+            "source_role": "UNKNOWN",
+            "track_record_evidence": "UNKNOWN",
+            "claim_scoped_authority": "May establish only the supplied unresolved fixture wording for C-UNKNOWN.",
+            "support_state": "UNKNOWN",
+            "origin_state": "UNKNOWN",
+            "recurrence_state": "UNKNOWN",
+            "relevance": "UNKNOWN",
+            "provenance_ref": "fixture://synthetic/unresolved/item#provenance",
             "permission_state": "UNKNOWN",
             "time_bearing": False,
             "observed_at": "NOT_APPLICABLE",
@@ -1578,6 +1742,14 @@ def validate_receipt_guard_mutations() -> None:
             "id": "E-BLOCKED",
             "exact_pointer": "fixture://synthetic/blocked/item#claim",
             "claim_ids": ["C-BLOCKED"],
+            "source_role": "UNKNOWN",
+            "track_record_evidence": "UNKNOWN",
+            "claim_scoped_authority": "May establish only the wording of the blocked synthetic item.",
+            "support_state": "UNKNOWN",
+            "origin_state": "UNKNOWN",
+            "recurrence_state": "UNKNOWN",
+            "relevance": "UNKNOWN",
+            "provenance_ref": "fixture://synthetic/blocked/item#provenance",
             "permission_state": "NOT_AUTHORIZED",
             "time_bearing": False,
             "observed_at": "NOT_APPLICABLE",

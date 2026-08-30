@@ -12,6 +12,7 @@ const api = globalThis.PatternMapRecommendation;
 
 const ordinaryTemplate = read("framework/templates/ORDINARY_RECORD.md");
 const quickstart = read("framework/agent-playbook/QUICKSTART.md");
+const implementationChoices = read("framework/IMPLEMENTATION_CHOICES.md");
 const applyHtml = read("site/public-dist/apply/index.html");
 const siteScript = read("site/src/site.js");
 
@@ -29,6 +30,13 @@ assert.match(ordinary.learningOption, /LEARNING_NOT_APPLICABLE/);
 assert.match(applyHtml, /data-recommendation-action>ORDINARY_RECORD</);
 assert.match(applyHtml, /four-field ordinary record/i);
 assert.doesNotMatch(applyHtml.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "", /<code>ANSWER<\/code>/);
+for (const field of ["route", "stop_status", "learning_status", "evidence_records", "outcome", "humanDisposition"]) {
+  assert.throws(
+    () => api.recommend({ evidenceSelection: "none", [field]: "fabricated-value" }),
+    /exact declared fields/,
+    `ordinary API accepted undeclared ${field}`,
+  );
+}
 
 for (const state of ["AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"]) {
   assert.match(quickstart, new RegExp(`\\b${state}\\b`));
@@ -72,6 +80,19 @@ assert.equal(insufficientCapacity.recommendedLevel, "moderate");
 assert.equal(insufficientCapacity.capacityFit, "NARROW_OR_ESCALATE");
 assert.equal(insufficientCapacity.recommendedAction, "CLARIFY");
 assert.match(`${insufficientCapacity.requiredGate} ${insufficientCapacity.plannedStopCondition}`, /narrow|capacity|resource boundary/i);
+assert.throws(
+  () => api.recommend({
+    evidenceSelection: "needed",
+    consequence: "reversible",
+    uncertainty: "low",
+    budget: "quick",
+    permission: "AUTHORIZED",
+    humanActionGate: "NOT_REQUIRED",
+    executionState: "COMPLETE",
+  }),
+  /exact declared fields/,
+  "layered API accepted a fabricated execution state",
+);
 const advanced = api.recommend({
   evidenceSelection: "needed",
   consequence: "consequential",
@@ -84,6 +105,11 @@ assert.equal(advanced.recommendedLevel, "advanced");
 assert.equal(advanced.capacityFit, "WITHIN_SELECTED_BOUNDARY");
 assert.match(applyHtml, /consequential \+ high uncertainty \+ substantial approved capacity/);
 assert.match(applyHtml, /capacity[^.]*never (?:makes Advanced appropriate|justifies it) by itself/i);
+assert.match(implementationChoices, /Advanced is justified only when consequence is high,\s*uncertainty is high, and substantial capacity has been separately approved/i);
+assert.doesNotMatch(implementationChoices, /Advanced \| Consequential, high-volume, or long-lived/i);
 assert.match(applyHtml, /Capacity mismatch:[\s\S]*Do not silently under-scope/);
+assert.match(applyHtml, /When conditions overlap, resolve them in this order:/);
+assert.match(applyHtml, /unresolved or blocked permission[\s\S]*required human action gate[\s\S]*insufficient capacity[\s\S]*base level action/);
+assert.match(applyHtml, /capacity mismatch[\s\S]*<code>CLARIFY<\/code>[\s\S]*<code>NARROW_OR_ESCALATE<\/code>/);
 
 console.log("PASS Apply cross-artifact parity: ordinary exit, typed permission, human gate, and proportional Advanced trigger");

@@ -49,7 +49,7 @@ EXPECTED_FAMILIES = [
         "id": "F2",
         "slug": "source-weighing",
         "name": "Source weighing",
-        "reader_question": "What role does each source and information path play for this exact claim?",
+        "reader_question": "For this claim, what can each source actually tell us—and how did the information reach us?",
     },
     {
         "id": "F3",

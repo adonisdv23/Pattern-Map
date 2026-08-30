@@ -102,6 +102,8 @@ printf '\n[9/12] Site, visual, and research-boundary audits\n'
 python3 qa/site/audit_site.py
 python3 qa/visual/verify_image_formats.py
 python3 qa/research/validate_research_boundaries.py
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s qa/research -p 'test_*.py' -v
 
 printf '\n[10/12] Cross-computer portable-bundle contract\n'
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v qa/handoff/test_portable_bundle.py

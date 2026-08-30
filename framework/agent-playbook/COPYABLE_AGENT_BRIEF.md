@@ -55,14 +55,18 @@ and actions separate.
      concise influence receipt.
    - MODERATE: repeated or reviewed work where stable identities, typed
      relationships, versioning, correction, and a reproducible packet matter.
-   - ADVANCED: consequential, high-volume, or long-lived work only when hidden
-     upstream mistakes justify approved engineering and governance cost.
+   - ADVANCED: only when consequence is high, uncertainty is high, and
+     substantial capacity has been separately approved; then use queryable
+     records and repeated review only where their cost is justified.
    A higher level is not better. Run only the numbered sections and records
    warranted by the chosen route. For an inactive section, record at most one
    bounded NOT_APPLICABLE or SKIPPED reason where the contract requires it;
    never manufacture a placeholder artifact to make the route look complete.
    A budget records capacity and constraint; it cannot independently justify
-   advanced machinery.
+   advanced machinery. Advanced is justified only when consequence is high,
+   uncertainty is high, and substantial capacity has been separately approved;
+   volume, reuse, or longevity may shape capabilities inside the chosen level
+   but do not independently select it.
 
 1. FRAME
    Write:

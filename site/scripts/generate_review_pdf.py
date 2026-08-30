@@ -341,6 +341,7 @@ def build_pdf() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc = BaseDocTemplate(
         str(OUTPUT),
+        invariant=1,
         pagesize=letter,
         leftMargin=0.67 * inch,
         rightMargin=0.67 * inch,
@@ -526,15 +527,15 @@ def build_pdf() -> None:
         [
             kicker("04  /  Apply it"),
             p("First decide whether a workflow is needed at all.", "Headline"),
-            p("Stage 0 asks whether the task requires selecting, acquiring, comparing, preserving, or weighing information beyond supplied material. If not, use the ordinary path and stop. If yes, the local studio can recommend an ordinary, lightweight, moderate, or advanced plan. It does not run work or record an observed stop, outcome, learning review, or human decision.", "Body"),
+            p("Stage 0 asks whether the task requires selecting, acquiring, comparing, preserving, or weighing information beyond supplied material. If not, use the ordinary path and stop. If yes, the local studio can recommend the smallest justified lightweight, moderate, or advanced plan. It does not run work or record an observed stop, outcome, learning review, or human decision.", "Body"),
         ]
     )
     level_rows = [[p("LEVEL", "TableHead"), p("WHEN IT FITS", "TableHead"), p("OBSERVABLE OUTPUT", "TableHead")]]
     levels = [
-        ("Ordinary", "A reversible transformation uses only supplied material.", "Instruction, input, output, and any material assumption - no evidence bureaucracy."),
+        ("Ordinary", "An already-permitted reversible transformation uses only supplied material and needs no layered decision.", "Supplied scope, material assumptions, unchecked boundaries, and output - then stop."),
         ("Lightweight", "One ambiguity or alternate comparison is worth a bounded pass.", "One alternate route, one challenge, a stated limit, and provisional wording if needed."),
-        ("Moderate", "Repeated, uncertain, or consequential work needs explicit comparison.", "Evidence register, comparison, uncertainty, permission, and named human review."),
-        ("Advanced", "The cost of a hidden miss justifies a repeatable procedure.", "Queryable records and review controls, only after explicit permission and cost approval."),
+        ("Moderate", "Consequential or high-uncertainty work that does not meet every Advanced condition needs explicit comparison.", "Evidence register, comparison, uncertainty, permission, and named human review."),
+        ("Advanced", "Consequential work, high uncertainty, and substantial separately approved capacity are all present.", "Queryable records and repeatable review controls, only when their added cost is justified."),
     ]
     for row in levels:
         level_rows.append([p(row[0], "TableCellBold"), p(row[1], "TableCell"), p(row[2], "TableCell")])

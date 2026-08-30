@@ -97,6 +97,9 @@ def audit_route(relative: str, expected_title: str) -> list[str]:
     messages: list[str] = []
     require(re.search(r'<html\b[^>]*\blang="en"', text) is not None, f"{relative}: missing lang=en")
     require(text.count('<main id="main"') == 1, f"{relative}: expected one main landmark")
+    ids = re.findall(r'\sid="([^"]+)"', text)
+    duplicates = sorted({item for item in ids if ids.count(item) > 1})
+    require(not duplicates, f"{relative}: duplicate IDs: {', '.join(duplicates)}")
     require('<a class="skip-link" href="#main">' in text, f"{relative}: skip link missing")
     require(any(label == "Principal routes" for tag, label in parser.landmarks if tag == "nav"), f"{relative}: principal nav label missing")
     require(len(parser.headings) >= 1, f"{relative}: no headings")
@@ -179,15 +182,15 @@ def main() -> None:
     output.append("PASS Apply exposes terminal ordinary work, typed permission, a separate human gate, proportional capacity, and layered routes")
 
     require(
-        "What role does each source and information path play for this exact claim?" in map_text,
+        "For this claim, what can each source actually tell us—and how did the information reach us?" in map_text,
         "F2 stable reader question drifted",
     )
     require(
-        "What can this source actually tell us about this claim, and what can it not tell us?" in map_text,
-        "F2 plain-language bridge drifted",
+        "Weigh what the source can support without turning its pathway, reputation, or repetition into proof." in map_text,
+        "F2 declarative bridge drifted",
     )
     require(
-        "Recurrence, authority, support, relevance, origin, and permission stay distinct." in map_text,
+        "Keep source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission separate." in map_text,
         "F2 public boundary drifted",
     )
     require(

@@ -28,6 +28,13 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` records the
+  dispositions and reproduced corrections from three exact-`d40ca61`
+  intent/reader, applied/site, and research/provenance red teams. It covers the
+  strict input surfaces, learning state machine, executable F2 receipt,
+  no-script precedence, public-host gate, cold-reader entrance, recurrence
+  semantics, and terminal-process corrections. The model reviews are advisory;
+  owner/mentor, physical accessibility, and publication-time gates remain open.
 - `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` is the
   convergence record for the applied, public-presentation, current-research,
   portable-transfer, and regenerated-PDF lanes. It distinguishes the passing
@@ -57,6 +64,8 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   teaching reveal, the full F2 source-role boundary, one terminal ordinary
   input plus 144 valid layered Apply states, live in-app Browser geometry and
   interaction checks, and the fail-closed social-image alternative-text gate.
+  It is a preserved implementation checkpoint; the final red-team successor
+  QA governs later wording, no-script, host, and receipt corrections.
 - `qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md` and
   `qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md` constrain current
   claims and the unrun narrow-wedge designs without selecting a study.
