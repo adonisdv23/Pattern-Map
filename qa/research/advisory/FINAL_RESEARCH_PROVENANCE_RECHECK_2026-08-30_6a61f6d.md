@@ -24,6 +24,10 @@ changes the PDF bytes after `6a61f6d`. The terminal seal must use two commits:
 the first owns the regenerated PDF bytes; a successor then records that exact
 producer commit in the manifest writer before final manifest generation.
 
+Implementation: exact commit
+`06c61680f709861ccd3ffd2df5029e04c63cb450` owns the regenerated PDF bytes;
+its successor binds that producer value without self-reference.
+
 ## Confirmed strengths
 
 The first-wave research-suite inclusion, bounded manifest scope, Echo

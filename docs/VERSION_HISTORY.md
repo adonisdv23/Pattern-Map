@@ -77,7 +77,7 @@ ordinary/layered boundary identical across Guided, implementation cards,
 Apply, and the PDF; positively classify public IPv6 release hosts; harden the
 plain-record API against hidden or inherited fields; preserve one Advanced
 rule; and correct the PDF producer checkpoint through a non-self-referential
-two-commit sequence. They do not change the human
+two-commit sequence whose byte-producing checkpoint is `06c6168`. They do not change the human
 thesis, six families, Echo split, research ceiling, or manual gates.
 
 ## The Echo Problem sequence

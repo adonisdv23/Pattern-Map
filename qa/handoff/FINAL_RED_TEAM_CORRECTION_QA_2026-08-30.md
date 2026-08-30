@@ -125,6 +125,38 @@ The package-wide image-signature verifier also found four earlier
 in `.png`. They were renamed byte-for-byte to `.jpg`, their active QA references
 were updated, and no image content was regenerated or reinterpreted.
 
+## Exact-`6a61f6d` recheck and final corrections
+
+Three independent read-only lanes then rechecked exact clean checkpoint
+`6a61f6da9b2c1f0255dd5d8a15e596c88b031f36`. Their reports are preserved at:
+
+- `qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_6a61f6d.md`;
+- `qa/site/advisory/FINAL_APPLIED_SITE_RECHECK_2026-08-30_6a61f6d.md`; and
+- `qa/research/advisory/FINAL_RESEARCH_PROVENANCE_RECHECK_2026-08-30_6a61f6d.md`.
+
+The intent lane passed without a P0/P1/P2 and supplied two wording corrections.
+The applied/site lane reproduced one P1, two P2s, and one P3: Stage 0 copy had
+to use the complete disqualifier set on every surface; public-host screening
+needed positive IPv6 classification; the essay's capability sentence could not
+silently redefine Advanced; and strict JS input records could not accept
+hidden, symbol, accessor-shaped, or inherited fields. The research/provenance
+lane found one P1: the PDF producer checkpoint was stale.
+
+All were accepted with the revisions recorded in D-040. Exact commit
+`06c61680f709861ccd3ffd2df5029e04c63cb450` owns the regenerated six-page PDF
+(SHA-256 `0452239c80da4a34ad1a0fdbf8a9d50480684d078a92b8931ca0cf08a6595efc`,
+18,371 bytes); its successor binds that producer without self-reference.
+Page 5 was rendered with Poppler and inspected after the copy correction. The
+table, boundary card, operator path, footer, and complete Stage 0 predicate fit
+without clipping or overlap. Repeated generation produced the same hash.
+
+The focused site suite passes 10 review routes, 10 public routes, both
+standalones, one ordinary plus 144 layered plans, the hostile input cases, the
+expanded release-host matrix, Map/term behavior, selector reachability, and
+reader-language contracts. Applied, editorial, research, semantic-site, and
+current image-signature validators also pass. These remain structural and
+proxy findings; they do not close the manual gates below.
+
 ## Still open by design
 
 The owner/mentor voice and comprehension judgment, physical keyboard and

@@ -1410,7 +1410,7 @@ evidence may not impersonate physical/manual approval.
 
 **Date:** 2026-08-30
 
-**Status:** Accepted; final seal follows exact-commit recheck
+**Status:** Accepted; PDF producer `06c6168`; final seal follows exact-commit recheck
 
 Three read-only lanes independently rechecked exact checkpoint `6a61f6d`.
 The intent/reader lane found no P0/P1/P2. The applied/site and
@@ -1436,10 +1436,11 @@ capacity.
 
 Finally, the current PDF's producer checkpoint is corrected from the
 historical `72a672c` value. Because the accepted Stage 0 wording changes page
-5 after `6a61f6d`, final provenance uses a two-commit sequence: commit the
-regenerated PDF first, then bind that exact producer in a successor before the
-owner manifest is generated. The manifest remains last, after sources,
-generated exports, reports, and dispositions stop moving.
+5 after `6a61f6d`, final provenance uses a two-commit sequence: exact
+`06c61680f709861ccd3ffd2df5029e04c63cb450` owns the regenerated PDF, and its
+successor binds that producer before the owner manifest is generated. The
+manifest remains last, after sources, generated exports, reports, and
+dispositions stop moving.
 
 **Evidence:** three exact-`6a61f6d` reports; cross-artifact and hostile-input
 tests; public release-config tests; deterministic PDF comparison; owner

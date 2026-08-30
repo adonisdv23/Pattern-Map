@@ -425,4 +425,6 @@ or manual owner/accessibility/publication gates.
 
 The older PM-04 row remains immutable review history for the PDF bytes current
 at that checkpoint. RP-R2-01 supersedes its producer value for the newly
-regenerated companion; it does not rewrite the historical audit.
+regenerated companion. Exact `06c61680f709861ccd3ffd2df5029e04c63cb450`
+owns those bytes; the successor binds that value. This does not rewrite the
+historical audit.
