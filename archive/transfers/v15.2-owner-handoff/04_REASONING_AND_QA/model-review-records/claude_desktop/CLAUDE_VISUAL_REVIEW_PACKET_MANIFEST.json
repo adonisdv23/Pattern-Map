@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "prepared_at": "2026-08-18T00:27:57Z",
+  "archive": {
+    "path": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_PACKET.zip",
+    "sha256": "c4ccce735bacadfdf20dcf429e49ee14b3b016f63e3eff418deb462953409eb2",
+    "byte_size": 845983,
+    "file_count": 14,
+    "mode": "READ_ONLY_CURATED_PACKET"
+  },
+  "inputs": [
+    {
+      "archive_name": "THOUGHT_PIECE_V14.md",
+      "source_path": "source/THOUGHT_PIECE_V14.md",
+      "role": "final v14 thought piece",
+      "sha256": "34fc91638126261024f92f5745620341489755888c0b1faf2a4dcdd33d517003"
+    },
+    {
+      "archive_name": "VISUAL_SYSTEM_RATIONALE.md",
+      "source_path": "reviews/claude_desktop/packet/VISUAL_SYSTEM_RATIONALE.md",
+      "role": "visual-system rationale",
+      "sha256": "17a096c10d16f0018f6f305a777fd59e71b3a1b973b4d4e130e4846563481a6d"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-start.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-start.png",
+      "role": "desktop first impression",
+      "sha256": "c51162cf61fca85541b6f0b0f0886eee9762f6f22820ab27718b9a138740010e"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-five-minute.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-five-minute.png",
+      "role": "five-minute reading path",
+      "sha256": "5e00919a03aa9eb70a39bbb122d5312c6ea90dce22346ccc496fb6cf75f3f2ed"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-map.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-map.png",
+      "role": "six-family system map",
+      "sha256": "e92dd3ba21261f48589b5af7e061356721d59a10792aa3c4e804dcd28cb620e6"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-component-c06.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-component-c06.png",
+      "role": "representative component detail",
+      "sha256": "aead765b81370487236eb51cdac8ce9f46ce5d03c084e2a5a68e58905f33df2f"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-example.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-example.png",
+      "role": "worked example",
+      "sha256": "37c9e3b20f24123083b8ebb9541c0e6964a7cb1f058dbc9cec80abe6c36fc44b"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-cases.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-cases.png",
+      "role": "bounded case-study view",
+      "sha256": "e0e530b56e5e2f64b3f960bfcae91cc0aa1569078db3d99de476757e15683c8d"
+    },
+    {
+      "archive_name": "site-desktop-1440x900-limitations.png",
+      "source_path": "reviews/claude_desktop/packet/site-desktop-1440x900-limitations.png",
+      "role": "counterarguments and limitations",
+      "sha256": "5031895fe96e5854439e7d855f77a15b51bf90734ad9d06e0e619e8b61268300"
+    },
+    {
+      "archive_name": "site-mobile-390x844-start.png",
+      "source_path": "reviews/claude_desktop/packet/site-mobile-390x844-start.png",
+      "role": "mobile first impression",
+      "sha256": "70c83eae6270d0730e20a90d5bd05b09a62964a185319193edcc5cd372d90978"
+    },
+    {
+      "archive_name": "site-mobile-390x844-map.png",
+      "source_path": "reviews/claude_desktop/packet/site-mobile-390x844-map.png",
+      "role": "mobile system map",
+      "sha256": "cd97a3a038e43e0d51c87d02b42bc0caa5f77e2d9293ce530d75b2506ec0a52b"
+    },
+    {
+      "archive_name": "site-mobile-390x844-component-c06.png",
+      "source_path": "reviews/claude_desktop/packet/site-mobile-390x844-component-c06.png",
+      "role": "mobile representative component",
+      "sha256": "3f3363f3ec7b97ca1b3e3ebc15ea465e03e08460e5fc95d171487a65589ccf4d"
+    },
+    {
+      "archive_name": "site-reflow-720x450-start.png",
+      "source_path": "reviews/claude_desktop/packet/site-reflow-720x450-start.png",
+      "role": "narrow landscape and zoom-reflow proxy",
+      "sha256": "46899c5768e3f79330abcf2a01ae9f61104e7ecb94cd7ff6bc92bd27e0d16729"
+    },
+    {
+      "archive_name": "site-keyboard-focus-skip-link.png",
+      "source_path": "reviews/claude_desktop/packet/site-keyboard-focus-skip-link.png",
+      "role": "visible keyboard focus treatment",
+      "sha256": "68de02b9e4626e3cd49643a70328ce166448e39c06da6f0c7239d86d5c2266f0"
+    }
+  ],
+  "exclusions": {
+    "repository_credentials": true,
+    "private_application_data": true,
+    "mutable_repository_access": true,
+    "product_working_trees": true,
+    "environment_or_secret_files": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/bundle-gold.schema.json",
+  "title": "Restricted origin-accounting bundle truth",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundle_id", "split", "origin_structure", "gold_claim_state", "gold_support_origin_count", "gold_support_origin_certainty", "support_origin_ids", "refute_origin_ids", "origin_family_id", "supporting_report_ids", "refuting_report_ids", "relation_by_report_id", "required_unknown_preservation", "provenance_graph_id", "stress_variant", "noise_rate", "noise_seed", "stress_cell_id"],
+  "properties": {
+    "bundle_id": {"type": "string", "pattern": "^BD-[A-Z2-7]{10}$"},
+    "split": {"enum": ["dev", "pilot", "primary", "stress"]},
+    "origin_structure": {"enum": ["one_origin_repetition", "multiple_origin_convergence", "unknown_origin", "conflict"]},
+    "gold_claim_state": {"enum": ["supported", "refuted", "insufficient", "contested"]},
+    "gold_support_origin_count": {"type": ["integer", "null"], "minimum": 0, "maximum": 6},
+    "gold_support_origin_certainty": {"enum": ["none", "single", "multiple", "unknown"]},
+    "support_origin_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^OR-[A-Z2-7]{10}$"}},
+    "refute_origin_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^OR-[A-Z2-7]{10}$"}},
+    "origin_family_id": {"type": "string", "pattern": "^OF-[A-Z2-7]{10}$"},
+    "supporting_report_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"}},
+    "refuting_report_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"}},
+    "relation_by_report_id": {"type": "object", "additionalProperties": {"enum": ["dependent", "independent_as_stipulated", "unknown"]}},
+    "required_unknown_preservation": {"type": "boolean"},
+    "provenance_graph_id": {"type": "string", "pattern": "^PG-[A-Z2-7]{10}$"},
+    "stress_variant": {"type": ["string", "null"], "enum": ["order", "overlap", "relation_code_permutation", "relation_noise", null]},
+    "noise_rate": {"type": "number", "enum": [0, 0.05, 0.1, 0.2]},
+    "noise_seed": {"type": ["string", "null"]},
+    "stress_cell_id": {"type": ["string", "null"]}
+  }
+}

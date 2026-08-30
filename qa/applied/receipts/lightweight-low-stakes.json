@@ -1,0 +1,101 @@
+{
+  "receipt_id": "DR-LIGHT-001",
+  "operating_level": "LIGHTWEIGHT",
+  "evidence_selection": "NEEDED",
+  "consequence": "LOW",
+  "permission": {
+    "technical_access": "AVAILABLE",
+    "state": "AUTHORIZED",
+    "scope": "Use the two supplied synthetic passages for this bounded contrast.",
+    "reason_code": "AUTHORIZED_FOR_PURPOSE",
+    "reason": "The supplied fixture permits bounded internal transformation and comparison.",
+    "resume_condition": "NOT_APPLICABLE"
+  },
+  "budget": {
+    "remaining_minutes": 2,
+    "limit_minutes": 5
+  },
+  "evidence_records": [
+    {
+      "id": "SUPPLIED-001",
+      "exact_pointer": "fixture://synthetic/lightweight/input-a#paragraph-1",
+      "claim_ids": ["C-LIGHT-001"],
+      "source_role": "OTHER",
+      "track_record_evidence": "UNKNOWN",
+      "claim_scoped_authority": "May establish the wording of supplied passage A; it may not establish outside facts.",
+      "support_state": "SUPPORTED",
+      "origin_state": "UNKNOWN",
+      "recurrence_state": "NOT_RECURRENT",
+      "relevance": "HIGH",
+      "provenance_ref": "fixture://synthetic/lightweight/input-a#provenance",
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
+    },
+    {
+      "id": "SUPPLIED-002",
+      "exact_pointer": "fixture://synthetic/lightweight/input-b#paragraph-1",
+      "claim_ids": ["C-LIGHT-001"],
+      "source_role": "OTHER",
+      "track_record_evidence": "UNKNOWN",
+      "claim_scoped_authority": "May establish the limiting wording in supplied passage B; it may not establish outside facts.",
+      "support_state": "QUALIFIED",
+      "origin_state": "UNKNOWN",
+      "recurrence_state": "NOT_RECURRENT",
+      "relevance": "HIGH",
+      "provenance_ref": "fixture://synthetic/lightweight/input-b#provenance",
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
+    }
+  ],
+  "baseline_records": [],
+  "comparison_records": [
+    {
+      "id": "CMP-LIGHT-001",
+      "unit": "supplied-material contrast",
+      "item_ids": ["SUPPLIED-001", "SUPPLIED-002"],
+      "alignment_boundary": "Only the two supplied synthetic passages are aligned.",
+      "result": "The passages use different scope assumptions.",
+      "origin_state": "NOT_APPLICABLE"
+    }
+  ],
+  "comparison_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
+  "disconfirmation_records": [
+    {
+      "id": "D-LIGHT-001",
+      "route_or_query": "Inspect both supplied passages for a limiting assumption.",
+      "target": "A scope condition that prevents a categorical answer.",
+      "result": "SUPPLIED-002 contains the limiting scope condition.",
+      "residual_uncertainty": "No outside evidence was checked.",
+      "evidence_ids": ["SUPPLIED-002"]
+    }
+  ],
+  "disconfirmation_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
+  },
+  "influence": {
+    "recorded": true,
+    "selected_items": ["SUPPLIED-001", "SUPPLIED-002"],
+    "withheld_items": []
+  },
+  "route": "ANSWER_PROVISIONALLY",
+  "stop_status": "COMPLETE",
+  "stop_reason": "Remaining search is not worth the low-consequence task budget.",
+  "uncertainty": ["scope limited to supplied material"],
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}

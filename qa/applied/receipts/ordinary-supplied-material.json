@@ -1,0 +1,16 @@
+{
+  "supplied_scope": {
+    "instruction": "Wrap the supplied text in a Markdown blockquote without changing, reordering, selecting, or omitting any supplied content.",
+    "input_refs": ["SUPPLIED-001"]
+  },
+  "assumptions": [
+    "SUPPLIED-001 identifies the complete input, and removing the blockquote markers recovers it exactly."
+  ],
+  "unchecked_boundaries": [
+    "No claim was judged; no comparison, selection or withholding, permission resolution, memory reuse, new acquisition, or external influence was performed; no separate human action gate was required."
+  ],
+  "output": {
+    "output_ref": "OUTPUT-001",
+    "description": "Exact SUPPLIED-001 text wrapped in Markdown blockquote markers."
+  }
+}
