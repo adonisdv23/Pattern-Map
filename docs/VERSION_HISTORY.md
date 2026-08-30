@@ -101,6 +101,15 @@ during enhanced printing. Together these changes add no family, public route,
 external registry, bitmap, study, result, Echo scope, Signal Foundry input,
 deployment, or publication action.
 
+The extended ultra opportunity correction remains v16. It gives Map focus
+controls family-specific accessible names, repairs one narrow mobile
+microvisual collision, updates active publication metadata, adds a bounded
+omission/memory-safety claims constraint, separates two operator-template
+states, and hardens exact fixture parsing and cross-record consistency. It
+does not change the human essay, six families, public topology, Echo, or the
+sealed Signal Foundry packet, and it is not accessibility, effectiveness, or
+security-defense evidence.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

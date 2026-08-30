@@ -194,6 +194,7 @@ REQUIRED_PATHS = [
     "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
     "qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md",
     "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
+    "qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md",
     "qa/research/validate_research_boundaries.py",

@@ -893,6 +893,10 @@ main { overflow: visible; }
     transform: rotate(90deg);
   }
 
+  .term-mini-stop > i {
+    transform: none;
+  }
+
   .term-mini-origin > span { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 

@@ -713,7 +713,7 @@ const renderFamilyCard = (family, ctx) => {
     F6: ["cases-heading", "outcome-review cases"],
   }[family.id];
   return `<article id="family-${family.id}" class="family-card ${colorClass}" data-family-card="${escapeAttribute(family.id)}">
-    <div class="family-meta"><span class="family-id">${escapeHtml(family.id)}</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="${escapeAttribute(family.id)}" aria-pressed="false" disabled>Focus this family</button></div>
+    <div class="family-meta"><span class="family-id">${escapeHtml(family.id)}</span><span class="family-dot" aria-hidden="true"></span><button type="button" class="family-focus" data-family-focus="${escapeAttribute(family.id)}" aria-label="Focus this family: ${escapeAttribute(family.id)} · ${escapeAttribute(family.name)}" aria-pressed="false" disabled>Focus this family</button></div>
     <h3>${escapeHtml(family.name)}</h3>
     <p class="family-question">${escapeHtml(family.reader_question)}</p>
     <p>${inlineMarkdown(publicCopy.purpose, ctx)}</p>

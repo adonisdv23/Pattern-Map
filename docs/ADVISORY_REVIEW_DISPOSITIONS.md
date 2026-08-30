@@ -537,3 +537,31 @@ framework effectiveness.
 No finding authorizes merge to `main`, deployment, publication, provider/model
 or participant execution, dataset acquisition, preregistration, outreach,
 incremental spend, or any statement that an unrun design produced a result.
+
+## Extended ultra opportunity dispositions — 2026-08-30
+
+Three read-only ultra lanes and direct browser reproduction challenged exact
+baseline `18128005d79b19e3a9d36ac68096acf264ff08d0`. The complete bounded
+integration record is
+`qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md`. This is static,
+structural, browser, source-status, and advisory-model evidence—not a human
+reader result, physical assistive-technology review, study, or effectiveness
+result.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| XU-DES-01 | Give six identical Map focus buttons the same accessible name | **Accepted with revision** | Same-role controls need a name that identifies their family while retaining the visible label | Map renderer, standalones, static and AX checks | A06/A13; six family-specific names in the Chrome accessibility tree |
+| XU-DES-02 | Rotate the full `if triggered →` phrase at the narrow breakpoint | **Accepted** | The phrase overlapped both adjacent nodes; the arrow-only transform was applied too broadly | Site CSS, standalones, site check | A06/A13; zero live sibling intersections and zero page overflow at 320 pixels |
+| XU-RSCH-01 | Keep GroupQA, Memory-R1, and PROV-AGENT at stale pre-publication statuses | **Accepted** | Current active records should use official venue metadata while preserving older arXiv links as version history | Source route, current verification, source scan, research memo | A11/A16; official ACL/ORNL/IEEE routes and focused research tests |
+| XU-RSCH-02 | Treat an explicit baseline as sufficient for omission detection or present Candidate B as new omission detection | **Accepted with revision** | AbsenceBench is direct bounded prior art and leaves only the five-axis/downstream-effect question unresolved | Source route, C16-007/C16-017, narrow-wedge memo | A11/A16; no new claim ID, no study selection, no result |
+| XU-RSCH-03 | Treat current, authorized, source-bound memory as safe instructions or a defense guarantee | **Accepted with revision** | MINJA and FragFuse expose a missing data/control boundary; provenance and reuse permission remain structural conditions only | F4, memory template, failure table, three agent entry points, claims/source route | A07/A08/A11/A16; untrusted-data language and explicit no-defense boundary |
+| XU-APP-01 | Permit duplicate/non-finite JSON or unknown layered top-level fields in an exact receipt contract | **Accepted** | Ambiguous bytes and ignored contradictory fields defeat exact-shape claims | Applied validator and permanent mutations | A08/A11; strict loader and exact layered allowlist |
+| XU-APP-02 | Accept invalid numeric budgets, mislabeled deadline stops, cross-kind ID collisions, contradictory independence, or unsupported high-consequence final answers | **Accepted with revision** | Each mutation collapses a locked distinction or hard-stop boundary | Applied validator and permanent mutations | A07/A08/A11; positive and negative controls pass |
+| XU-APP-03 | Keep operator templates inconsistent with executable origin/recurrence and reviewed-learning states | **Accepted** | Human-readable entry points must not instruct shapes the validator rejects | Evidence Register and decision receipt template | A07/A08; dimensions split and update remains proposal-only |
+| XU-APP-04 | Infer the complete Advanced conjunction from current fields or an arbitrary minute threshold | **Deferred** | High uncertainty and separately approved substantial capacity are not machine-readable in the current receipt | No receipt-shape expansion in this pass | Reopen with explicit schema/fixture/template migration and cross-artifact parity |
+| XU-APP-05 | Add chronology/authority, URI/Unicode, or full JSON-Schema machinery in the same bounded patch | **Deferred** | Each is a real hardening path but changes topology or dependency policy beyond the reproduced minimal correction | No source change | Reopen through the exact conditions in the extended QA record |
+| XU-SCOPE-01 | Add a security subsystem, score, route, dashboard, family, study, or Signal/Echo change | **Rejected** | No accepted finding requires topology expansion or authorizes an effectiveness/security claim | No new architecture or cross-project mutation | Owner intent, A01–A03/A09–A12/A15–A17; removal and claim ceilings |
+
+No item authorizes merge, deployment, publication, Release creation,
+research/provider/participant execution, dataset acquisition, preregistration,
+outreach, spend, or a statement that an unrun design produced a result.

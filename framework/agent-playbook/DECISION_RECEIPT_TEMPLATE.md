@@ -179,8 +179,9 @@ do not treat the act of routing as the human decision.
 - Bounded update proposed:
 - Human disposition of proposed update: ACCEPTED / REJECTED / DEFERRED /
   OVERRIDDEN / REQUEST_ENRICHMENT
-- Learning status after disposition: LEARNING_REVIEWED / LEARNING_NOT_APPLICABLE
-- Update applied? YES / NO / DEFERRED
+- Learning status after disposition: LEARNING_REVIEWED
+- Update applied: NO — this record proposes only; any application requires a
+  separate authorized change record.
 
 Do not record `LEARNING_REVIEWED` unless an outcome-review record links the
 complete separately preserved pending decision / route / influence receipt,

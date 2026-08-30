@@ -17,6 +17,7 @@ remove domain judgment, privacy obligations, or human accountability.
 | Motion from one point | One timestamp is called a trend or velocity | Require repeated observations and a baseline |
 | Manufactured absence | A missing field is treated as nonexistence | Write the expected baseline and classify the gap |
 | Memory overwrite | A correction replaces the original record | Append a correction and link supersession |
+| Memory poisoning or temporal policy bypass | Stored text, benign-looking fragments, or earlier user content becomes instructions or reconstructs a later prohibited action | Treat memory as untrusted data; preserve write origin; separate data from control; re-check scoped permission and human action gates at use time |
 | Comparison by appearance | Unlike items are compared because they look similar | Declare comparison unit and mark incomparable fields |
 | Confidence collapse | Model confidence becomes the evidence assessment | Use typed uncertainty and exact support links |
 | Search without a stop | More acquisition continues without a decision rule | Compare expected benefit with cost and stop or escalate |

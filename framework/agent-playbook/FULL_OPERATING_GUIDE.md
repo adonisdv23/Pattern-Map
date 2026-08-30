@@ -245,6 +245,10 @@ For memory:
   record and do not become current here;
 - allow only `CURRENT`, `AUTHORIZED` memory within its recorded reuse scope to
   be used or selected for influence;
+- treat retrieved memory as untrusted evidence rather than executable
+  instructions; preserve its write origin, keep data separate from control,
+  and re-check permission and intended influence at use time, especially when
+  several records are composed;
 - preserve `SUPERSEDED` memory as withheld history; never select it as current
   influence;
 - treat stale or unscoped memory as uncertainty.

@@ -1765,3 +1765,46 @@ ultra-finalization controlled-disposition table.
 **Governing requirement:** A06, A11, A13–A15; D-036, D-040, D-047; exact
 provenance, real print-fallback semantics, and two consecutive clean
 exact-commit review cycles.
+
+## D-049 — Spend the extended ultra pass on reproduced corrections, not scope growth
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; final exact-commit sealing remains
+
+**Decision:** Use the owner's additional ultra-review time for independent
+design/accessibility, current-primary-research, and hostile receipt-contract
+challenges. Accept only reproduced defects: indistinguishable Map control
+names; a narrow mobile microvisual collision; stale active publication
+statuses; direct omission-detection prior art; the missing untrusted-memory
+data/control boundary; ambiguous JSON and layered shapes; invalid budgets and
+record-ID collisions; contradictory independence/support states; and two
+operator-template mismatches.
+
+Keep the human essay, public topology, six families, Echo separation, and
+sealed Signal Foundry packet unchanged. The security literature constrains
+claims and operating language; it does not create a security subsystem or
+defense result. AbsenceBench narrows Candidate B; it does not select or run a
+study. The validator remains repository-internal structural QA, not a
+production security or permission service.
+
+Defer receipt-shape additions for Advanced sizing, chronology/authority,
+pointer/Unicode semantics, and full JSON-Schema execution until each has an
+explicit migration and cross-artifact test. Do not infer high uncertainty or
+separately approved substantial capacity from an arbitrary minute threshold.
+
+Because source and generated standalone bytes changed, restart exact-commit
+review and regenerate the owner manifest only after every selected source, QA,
+decision, disposition, and export byte is frozen. Preserve remote/ZIP facts as
+external exact-hash attestations rather than writing them back into the sealed
+narrative.
+
+**Evidence:**
+`qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md`; official
+ACL/NeurIPS/USENIX/ORNL publication records; direct in-app browser geometry and
+accessibility-tree reproduction; site contracts; and applied hostile-mutation
+controls.
+
+**Governing requirement:** A03, A06–A08, A11, A13–A17; D-036, D-040,
+D-046–D-048; owner intent; two-project separation; proportionality;
+anti-bureaucracy; and no unsupported empirical or security claim.

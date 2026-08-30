@@ -28,6 +28,13 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md` records the
+  additional design/accessibility, current-primary-research, and hostile
+  receipt-contract challenge of exact baseline `1812800`; accepted bounded
+  corrections; direct post-fix browser geometry/AX evidence; and controlled
+  deferrals. It is structural, rendered, source-status, and advisory evidence,
+  not a human-reader, physical assistive-technology, security, or effectiveness
+  result.
 - `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` records the exact
   owner-specified baseline, two review waves, accepted source/visual/package
   corrections, removal decisions, PDF producer, sealed Signal boundary, and

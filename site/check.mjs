@@ -167,6 +167,9 @@ const main = () => {
   }
   const familyFocusControls = [...map.matchAll(/<button\b[^>]*\bdata-family-focus="([^"]+)"[^>]*>/g)];
   assert(familyFocusControls.length === 6 && familyFocusControls.every((match) => /\bdisabled\b/.test(match[0])), "family focus controls are enabled before enhancement initializes");
+  const familyFocusNames = familyFocusControls.map((match) => match[0].match(/\baria-label="([^"]+)"/)?.[1] ?? "");
+  assert(familyFocusNames.every((name) => name.startsWith("Focus this family: F")), "a family focus control does not retain its visible label in a family-specific accessible name");
+  assert(new Set(familyFocusNames).size === 6, "family focus controls do not expose six distinct accessible names");
   assert(/<button\b[^>]*\bdata-family-clear\b[^>]*\bdisabled\b[^>]*>/.test(map), "Map reset control is enabled before enhancement initializes");
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) assert(map.includes(familyName), `family name missing: ${familyName}`);
   assert(!map.includes('class="relationship-connectors"'), "current map still renders detachable connector lines");
@@ -301,6 +304,7 @@ const main = () => {
   assert(css.includes("--term-popover-shift") && css.includes("max-width: calc(100vw - 2rem)"), "desktop term popovers lack viewport containment");
   assert(css.includes("--term-popover-block-shift"), "desktop term popovers lack trigger clearance");
   assert(/@media \(max-width: 480px\)[\s\S]*?\.term-mini-chain,[\s\S]*?grid-template-columns:\s*1fr/i.test(css), "complex term microvisuals do not stack at narrow widths");
+  assert(/@media \(max-width: 480px\)[\s\S]*?\.term-mini-stop\s*>\s*i\s*\{[^}]*transform:\s*none/i.test(css), "mobile planned-stop connector can rotate its phrase through adjacent boxes");
   assert(!/@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3/i.test(css), "narrow route brief regressed to three compressed columns");
   assert(/@media print[\s\S]*?\.standalone-section\s*\{\s*break-before:\s*page/i.test(css), "standalone print routes do not start on deliberate pages");
   assert(/@media print[\s\S]*?\.page-content,[\s\S]*?\.sources-route,[\s\S]*?\.research-route,[\s\S]*?\.history-route[\s\S]*?min-width:\s*0\s*!important/i.test(css), "evidence routes lack explicit print-width containment");

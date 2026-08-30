@@ -11,6 +11,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 import re
 import sys
 from datetime import datetime, timedelta
@@ -76,13 +77,41 @@ def read_text(relative: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def load_json(relative: str) -> dict:
+def parse_json_object(text: str, source: str) -> dict:
+    """Parse one strict JSON object, rejecting ambiguous or non-finite input."""
+
+    def reject_duplicate_keys(pairs: list[tuple[str, object]]) -> dict:
+        value: dict = {}
+        for key, item in pairs:
+            if key in value:
+                raise ValueError(f"duplicate object key {key!r}")
+            value[key] = item
+        return value
+
+    def parse_finite_float(token: str) -> float:
+        value = float(token)
+        if not math.isfinite(value):
+            raise ValueError(f"non-finite numeric value {token!r}")
+        return value
+
+    def reject_nonfinite_constant(token: str) -> object:
+        raise ValueError(f"non-finite numeric value {token!r}")
+
     try:
-        value = json.loads(read_text(relative))
-    except json.JSONDecodeError as exc:
-        raise CheckFailure(f"invalid JSON in {relative}: {exc}") from exc
-    require(isinstance(value, dict), f"{relative} must contain a JSON object")
+        value = json.loads(
+            text,
+            object_pairs_hook=reject_duplicate_keys,
+            parse_float=parse_finite_float,
+            parse_constant=reject_nonfinite_constant,
+        )
+    except (json.JSONDecodeError, ValueError) as exc:
+        raise CheckFailure(f"invalid JSON in {source}: {exc}") from exc
+    require(isinstance(value, dict), f"{source} must contain a JSON object")
     return value
+
+
+def load_json(relative: str) -> dict:
+    return parse_json_object(read_text(relative), relative)
 
 
 def normalized_text(value: str) -> str:
@@ -1312,6 +1341,11 @@ def validate_comparison_records(receipt: dict, filename: str,
                     f"{filename}: {record_id} compares blocked item {item_id}")
         require(record["origin_state"] in origin_states,
                 f"{filename}: {record_id} has a noncanonical origin state")
+        if record["origin_state"] == "INDEPENDENT":
+            require(all(evidence[item_id]["origin_state"] == "INDEPENDENT"
+                        for item_id in record["item_ids"]),
+                    f"{filename}: {record_id} cannot claim INDEPENDENT because linked "
+                    "evidence origin states are not all INDEPENDENT")
     return records
 
 
@@ -1480,6 +1514,42 @@ def validate_memory_records(receipt: dict, filename: str,
     return index
 
 
+def validate_cross_kind_record_ids(
+    receipt: dict,
+    filename: str,
+    evidence: dict[str, dict],
+    baselines: list[dict],
+    comparisons: list[dict],
+    disconfirmations: list[dict],
+    memories: dict[str, dict],
+) -> None:
+    """Keep record namespaces distinct before evidence and memory can be merged."""
+
+    typed_ids: list[tuple[str, str]] = []
+    typed_ids.extend((record_id, "evidence") for record_id in evidence)
+    typed_ids.extend((record["id"], "baseline") for record in baselines)
+    typed_ids.extend((record["id"], "comparison") for record in comparisons)
+    typed_ids.extend((record["id"], "disconfirmation") for record in disconfirmations)
+    typed_ids.extend((record_id, "memory") for record_id in memories)
+    outcome = receipt["outcome"]
+    for key, kind in (
+        ("expectation_record", "outcome expectation"),
+        ("outcome_window_record", "outcome window"),
+        ("outcome_review", "outcome review"),
+    ):
+        record = outcome.get(key)
+        if isinstance(record, dict) and isinstance(record.get("id"), str):
+            typed_ids.append((record["id"], kind))
+
+    kinds_by_id: dict[str, str] = {}
+    for record_id, kind in typed_ids:
+        prior_kind = kinds_by_id.get(record_id)
+        require(prior_kind is None,
+                f"{filename}: cross-kind record ID collision {record_id} "
+                f"between {prior_kind} and {kind}")
+        kinds_by_id[record_id] = kind
+
+
 def validate_layered_receipt(
     receipt: dict,
     filename: str,
@@ -1495,7 +1565,13 @@ def validate_layered_receipt(
         "memory_use", "influence", "route", "stop_status", "stop_reason",
         "uncertainty", "outcome",
     }
+    allowed = common_required | {
+        "fixture_status", "motion_claim", "absence_claim", "independence_claim",
+    }
     require(common_required <= set(receipt), f"{filename} is missing layered receipt keys")
+    require(set(receipt) <= allowed,
+            f"{filename}: layered receipt contains unsupported top-level keys: "
+            f"{sorted(set(receipt) - allowed)}")
     require(receipt["operating_level"] in {"LIGHTWEIGHT", "MODERATE", "ADVANCED"},
             f"{filename}: operating level is not canonical")
     require(receipt["evidence_selection"] == "NEEDED",
@@ -1516,10 +1592,15 @@ def validate_layered_receipt(
                     "recorded": False, "selected_items": [], "withheld_items": []},
                 f"{filename}: global {permission_state} permission requires empty influence")
     budget = receipt["budget"]
-    require(isinstance(budget, dict)
-            and isinstance(budget.get("remaining_minutes"), (int, float))
-            and isinstance(budget.get("limit_minutes"), (int, float)),
-            f"{filename}: budget needs numeric remaining and limit minutes")
+    remaining = budget.get("remaining_minutes") if isinstance(budget, dict) else None
+    limit = budget.get("limit_minutes") if isinstance(budget, dict) else None
+    require(isinstance(remaining, (int, float)) and not isinstance(remaining, bool)
+            and isinstance(limit, (int, float)) and not isinstance(limit, bool)
+            and (not isinstance(remaining, float) or math.isfinite(remaining))
+            and (not isinstance(limit, float) or math.isfinite(limit)),
+            f"{filename}: budget needs finite real numeric remaining and limit minutes")
+    require(limit > 0 and 0 <= remaining <= limit,
+            f"{filename}: budget requires 0 <= remaining <= limit and a positive limit")
     route = receipt["route"]
     stop_status = receipt["stop_status"]
     require(route in ROUTES, f"{filename}: route is not canonical: {route}")
@@ -1535,6 +1616,9 @@ def validate_layered_receipt(
     comparisons = validate_comparison_records(receipt, filename, evidence)
     disconfirmations = validate_disconfirmation_records(receipt, filename, evidence)
     memories = validate_memory_records(receipt, filename, evidence)
+    validate_cross_kind_record_ids(
+        receipt, filename, evidence, baselines, comparisons, disconfirmations, memories,
+    )
     comparison_status = validate_requirement_disposition(
         receipt["comparison_disposition"],
         comparisons,
@@ -1629,6 +1713,11 @@ def validate_layered_receipt(
     if receipt["consequence"] == "HIGH" and route in {"ANSWER", "ANSWER_PROVISIONALLY"}:
         require(bool(baselines),
                 f"{filename}: high-consequence answer needs a substantive baseline record")
+    if receipt["consequence"] == "HIGH" and route == "ANSWER":
+        require(any(item_id in evidence
+                    and evidence[item_id]["support_state"] == "SUPPORTED"
+                    for item_id in selected_items),
+                f"{filename}: high-consequence final answer needs selected SUPPORTED evidence")
 
     if route in {"ANSWER", "ANSWER_PROVISIONALLY"}:
         require(influence["recorded"] is True,
@@ -1647,6 +1736,9 @@ def validate_layered_receipt(
     if stop_status == "STOPPED_BUDGET":
         require("budget" in stop_reason,
                 f"{filename}: STOPPED_BUDGET reason must name budget")
+    if stop_status == "STOPPED_DEADLINE":
+        require("deadline" in stop_reason,
+                f"{filename}: STOPPED_DEADLINE reason must name deadline")
 
     for claim_field in ("motion_claim", "absence_claim", "independence_claim"):
         if claim_field in receipt:
@@ -1690,7 +1782,148 @@ def expect_failure(value: dict, filename: str, message: str,
 def validate_receipt_guard_mutations() -> None:
     """Fail closed on status-only, dangling-reference, and overwrite mutations."""
 
+    for mutation_name, raw_json, error in (
+        (
+            "duplicate-json-key",
+            '{"permission":{"state":"NOT_AUTHORIZED","state":"AUTHORIZED"}}',
+            "duplicate object key",
+        ),
+        ("json-nan", '{"value":NaN}', "non-finite numeric value"),
+        ("json-infinity", '{"value":Infinity}', "non-finite numeric value"),
+        ("json-negative-infinity", '{"value":-Infinity}', "non-finite numeric value"),
+        ("json-overflow", '{"value":1e9999}', "non-finite numeric value"),
+    ):
+        try:
+            parse_json_object(raw_json, f"synthetic-{mutation_name}.json")
+        except CheckFailure as exc:
+            require(error in str(exc),
+                    f"strict JSON loader rejected {mutation_name} for an unexpected reason: {exc}")
+        else:
+            raise CheckFailure(f"strict JSON loader accepted {mutation_name}")
+
     base = load_json("qa/applied/receipts/layered-ready.json")
+
+    stage_zero_key = copy.deepcopy(base)
+    stage_zero_key["supplied_scope"] = {
+        "instruction": "Synthetic boundary mutation only.",
+        "input_refs": ["fixture://synthetic/stage-zero#input"],
+    }
+    expect_failure(
+        stage_zero_key,
+        "synthetic-layered-with-stage-zero-key.json",
+        "validator accepted a Stage 0 field on a layered receipt",
+        error_contains="unsupported top-level keys",
+    )
+
+    for mutation_name, budget, error in (
+        (
+            "budget-boolean",
+            {"remaining_minutes": True, "limit_minutes": True},
+            "finite real numeric",
+        ),
+        (
+            "budget-nan",
+            {"remaining_minutes": float("nan"), "limit_minutes": 20},
+            "finite real numeric",
+        ),
+        (
+            "budget-negative-remaining",
+            {"remaining_minutes": -1, "limit_minutes": 20},
+            "0 <= remaining <= limit",
+        ),
+        (
+            "budget-remaining-over-limit",
+            {"remaining_minutes": 21, "limit_minutes": 20},
+            "0 <= remaining <= limit",
+        ),
+        (
+            "budget-nonpositive-limit",
+            {"remaining_minutes": 0, "limit_minutes": 0},
+            "positive limit",
+        ),
+    ):
+        invalid_budget = copy.deepcopy(base)
+        invalid_budget["budget"] = budget
+        expect_failure(
+            invalid_budget,
+            f"synthetic-{mutation_name}.json",
+            f"validator accepted invalid budget mutation {mutation_name}",
+            error_contains=error,
+        )
+
+    mislabeled_deadline_stop = load_json("qa/applied/receipts/stopped-budget.json")
+    mislabeled_deadline_stop["stop_status"] = "STOPPED_DEADLINE"
+    mislabeled_deadline_stop["stop_reason"] = "Budget exhausted."
+    expect_failure(
+        mislabeled_deadline_stop,
+        "synthetic-deadline-stop-with-budget-only-reason.json",
+        "validator accepted STOPPED_DEADLINE without naming the deadline",
+        error_contains="STOPPED_DEADLINE reason must name deadline",
+    )
+
+    cross_kind_memory = load_json(
+        "qa/applied/receipts/memory-append-only-correction.json"
+    )
+    cross_kind_memory["memory_records"][1]["id"] = "E-020"
+    cross_kind_memory["memory_use"]["record_ids"] = ["E-020"]
+    cross_kind_memory["influence"]["selected_items"] = ["E-020"]
+    expect_failure(
+        cross_kind_memory,
+        "synthetic-cross-kind-evidence-memory-id.json",
+        "validator accepted an evidence/memory ID collision",
+        error_contains="cross-kind record ID collision E-020",
+    )
+
+    cross_kind_outcome = copy.deepcopy(base)
+    cross_kind_outcome["outcome"]["expectation_record"]["id"] = "E-001"
+    expect_failure(
+        cross_kind_outcome,
+        "synthetic-cross-kind-evidence-outcome-id.json",
+        "validator accepted an evidence/outcome ID collision",
+        error_contains="cross-kind record ID collision E-001",
+    )
+
+    independent_control = copy.deepcopy(base)
+    independent_control["evidence_records"][0]["origin_state"] = "INDEPENDENT"
+    independent_control["evidence_records"][1]["origin_state"] = "INDEPENDENT"
+    independent_control["comparison_records"][0]["origin_state"] = "INDEPENDENT"
+    independent_control["independence_claim"] = True
+    validate_layered_receipt(
+        independent_control,
+        "synthetic-consistent-independence-control.json",
+    )
+    contradictory_independence = copy.deepcopy(independent_control)
+    contradictory_independence["evidence_records"][1]["origin_state"] = "COMMON_ORIGIN"
+    expect_failure(
+        contradictory_independence,
+        "synthetic-contradictory-independence.json",
+        "validator accepted independent comparison/claim over non-independent evidence",
+        error_contains="evidence origin states are not all INDEPENDENT",
+    )
+
+    supported_high_final = copy.deepcopy(base)
+    supported_high_final["route"] = "ANSWER"
+    validate_layered_receipt(
+        supported_high_final,
+        "synthetic-supported-high-final-control.json",
+    )
+    unsupported_high_provisional = copy.deepcopy(base)
+    selected = set(unsupported_high_provisional["influence"]["selected_items"])
+    for record in unsupported_high_provisional["evidence_records"]:
+        if record["id"] in selected:
+            record["support_state"] = "UNKNOWN"
+    validate_layered_receipt(
+        unsupported_high_provisional,
+        "synthetic-unsupported-high-provisional-control.json",
+    )
+    unsupported_high_final = copy.deepcopy(unsupported_high_provisional)
+    unsupported_high_final["route"] = "ANSWER"
+    expect_failure(
+        unsupported_high_final,
+        "synthetic-unsupported-high-final.json",
+        "validator accepted a high-consequence final answer without selected support",
+        error_contains="selected SUPPORTED evidence",
+    )
 
     missing_uncertainty = copy.deepcopy(base)
     del missing_uncertainty["uncertainty"]
@@ -2398,11 +2631,7 @@ def validate_receipts() -> None:
     loaded: dict[str, dict] = {}
     receipt_registry: dict[str, dict] = {}
     for path in files:
-        try:
-            value = json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError as exc:
-            raise CheckFailure(f"invalid receipt JSON in {path.name}: {exc}") from exc
-        require(isinstance(value, dict), f"{path.name} must contain an object")
+        value = parse_json_object(path.read_text(encoding="utf-8"), path.name)
         loaded[path.name] = value
         if path.name != "ordinary-supplied-material.json":
             receipt_id = value.get("receipt_id")

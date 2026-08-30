@@ -144,6 +144,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Final exact-integrated red-team correction QA | `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` plus the three final reports under `qa/editorial/advisory/`, `qa/site/advisory/`, and `qa/research/advisory/` |
 | Opportunity-expansion plan and terminal QA | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`, `qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md` |
 | Ultra-finalization terminal QA | `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` — exact baseline, accepted corrections, removal decisions, deterministic/rendered evidence, Signal boundary, and manual residuals |
+| Extended ultra opportunity QA | `qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md` — bounded design/accessibility, current-source, memory-safety, and hostile receipt-contract corrections plus controlled deferrals |
 | Opportunity-expansion review loops | Three Loop 1 reports and three exact-integrated Loop 2 reports under `qa/publication/advisory/`, `qa/research/advisory/`, and `qa/applied/advisory/`; static/model review evidence only |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
