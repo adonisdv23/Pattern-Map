@@ -81,10 +81,10 @@ compliance. The current unrun decision memo compares:
   observation from process/capture while holding access, permission, and
   currency fixed.
 
-See
-[`future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md`](future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md).
-It recommends specification and prior-art review sequencing only. It selects no
-study, provider, model, corpus, participant, sample size, or run.
+The owner-review source is
+`research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md`. It recommends
+specification and prior-art review sequencing only. It selects no study,
+provider, model, corpus, participant, sample size, or run.
 
 Before DL-PLAYBOOK-01 can be interpreted, a later frozen design must include:
 

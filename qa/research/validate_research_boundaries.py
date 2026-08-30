@@ -65,6 +65,7 @@ def main() -> int:
     memo = read(
         "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md"
     )
+    research_readme = read("research/README.md")
     source_route = read("manuscript/SOURCES_AND_RESEARCH_ROUTE.md")
     claims_ledger = read("docs/CLAIMS_AND_SOURCE_LEDGER_V16.md")
     source_qa = read(
@@ -134,6 +135,16 @@ def main() -> int:
     require("Only after the required baseline and mechanism-isolation gates"
             in protocol,
             "protocol does not sequence mechanism isolation before omnibus D1")
+    normalized_protocol = " ".join(protocol.lower().split())
+    for phrase in (
+        "separate observation, process/capture, access, permission, and currency axes",
+        "holds access at `available`, permission at `authorized`, and currency at `current`",
+        "varies observation by process/capture",
+    ):
+        require(phrase in normalized_protocol,
+                f"protocol Candidate B summary omits orthogonal-wedge boundary: {phrase}")
+    require("check/access state" not in normalized_protocol,
+            "protocol Candidate B summary still collapses process/capture and access")
 
     for phrase in (
         "Candidate A",
@@ -152,6 +163,15 @@ def main() -> int:
     ):
         require(phrase.lower() in memo.lower(),
                 f"narrow-wedge memo omits required section/boundary: {phrase}")
+    memo_path = "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md"
+    require(f"`{memo_path}`" in agenda,
+            "research agenda omits the exact owner-review memo path")
+    require("](future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md)" not in agenda,
+            "research agenda retains a memo link that the public adapter rewrites to itself")
+    require("future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md" in research_readme,
+            "research README omits the narrow-wedge memo discovery route")
+    require("](future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md)" not in research_readme,
+            "research README links to a memo the public adapter does not render")
     for result_class in (
         "null",
         "harmful",

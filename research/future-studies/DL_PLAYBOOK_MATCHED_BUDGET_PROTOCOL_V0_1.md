@@ -68,8 +68,11 @@ playbook arm is justified. Current unselected candidates are:
 
 - **M-A — claim-scoped influence receipt:** the smallest resolvable mapping
   from material claims to authorized influential evidence; and
-- **M-B — typed observation-boundary missingness:** expected item, observation
-  scope, check/access state, and decision consequence without the complete
+- **M-B — orthogonal observation-boundary record:** an expected item,
+  observation scope, and decision consequence with separate observation,
+  process/capture, access, permission, and currency axes. The initial wedge
+  holds access at `AVAILABLE`, permission at `AUTHORIZED`, and currency at
+  `CURRENT`, then varies observation by process/capture without the complete
   playbook.
 
 The unrun decision memo compares their risks and sequencing. Neither condition

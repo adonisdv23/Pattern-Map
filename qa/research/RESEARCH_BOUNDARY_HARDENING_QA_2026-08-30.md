@@ -24,6 +24,8 @@ archive, preserved Echo source, or handoff file was edited in this lane.
 | R-01 — A0 equivalence, study modes, and A2 mechanism claim | **Accepted with revision** | A0 now shares the same task, evidence-access boundary, and required output specification. Generation and fixed-answer interface/correction studies are separated; accuracy is ineligible when the answer is fixed. A2 is explicitly composite unless a component ablation is predeclared. |
 | R-02 — Candidate B flat status | **Accepted with revision** | Observation, process/capture, access, permission, and currency are orthogonal axes. The initial specification wedge varies only observation and process/capture while holding the other axes fixed, and scoring separates frozen task/world keys from trace-derived run states. |
 | R-03 — overbroad established-practices wording | **Accepted with revision** | The stronger sentence could imply universal settlement. The active route, agenda, and this QA now say the component areas have substantial established and active prior work, preserving the targeted/non-exhaustive boundary. |
+| CONV-R-04 — matched-budget protocol retained a collapsed Candidate B shorthand | **Accepted with revision** | The protocol now mirrors the memo's orthogonal axes and explicitly holds access, permission, and currency fixed while the initial wedge varies observation by process/capture. |
+| CONV-R-05 — the public adapter rewrote the memo's Markdown link to a self-link without rendering the memo | **Accepted with revision** | The agenda now names the exact owner-review path as code rather than a misleading public link; the repository Research README lists the memo for direct discovery. No route or public protocol surface was added. |
 
 ## Boundary assertions added
 
