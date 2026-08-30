@@ -106,7 +106,8 @@ following previously accepted fixture mutations:
 2. extra layered top-level fields, including ordinary Stage 0 fields or
    contradictory action booleans;
 3. Boolean, non-finite, negative, over-limit, or nonpositive-limit time
-   budgets;
+   budgets, including raw negative-underflow and large-decimal literals that
+   would otherwise collapse to an accepted binary floating-point value;
 4. cross-kind record-ID collisions before evidence and memory indexes can be
    merged;
 5. an `INDEPENDENT` comparison whose linked evidence does not consistently
@@ -120,6 +121,13 @@ unsupported high-consequence provisional answer, and a consistent independent
 relation. The change remains fixture-scoped procedural QA, not a production
 parser, permission service, security boundary, or proof that an agent follows
 the contract.
+
+The first exact-commit fuzz cycle caught the remaining decimal-conversion seam:
+`-1e-9999` became `-0.0`, and `9007199254740993.0` collapsed to the same float
+as `9007199254740992.0`. The strict loader now rejects a decimal token when its
+exact value cannot survive the parser's binary-float representation. Both raw
+byte cases are permanent negative mutations; the clean-cycle count restarted
+on the successor rather than treating the superseded checkpoint as clean.
 
 Two operator-template contradictions were also corrected. Origin and
 recurrence now have distinct Evidence Register columns. A reviewed outcome

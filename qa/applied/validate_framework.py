@@ -15,6 +15,7 @@ import math
 import re
 import sys
 from datetime import datetime, timedelta
+from decimal import Decimal
 from pathlib import Path
 
 
@@ -92,6 +93,8 @@ def parse_json_object(text: str, source: str) -> dict:
         value = float(token)
         if not math.isfinite(value):
             raise ValueError(f"non-finite numeric value {token!r}")
+        if Decimal(token) != Decimal(str(value)):
+            raise ValueError(f"numeric value loses decimal precision {token!r}")
         return value
 
     def reject_nonfinite_constant(token: str) -> object:
@@ -1792,6 +1795,17 @@ def validate_receipt_guard_mutations() -> None:
         ("json-infinity", '{"value":Infinity}', "non-finite numeric value"),
         ("json-negative-infinity", '{"value":-Infinity}', "non-finite numeric value"),
         ("json-overflow", '{"value":1e9999}', "non-finite numeric value"),
+        (
+            "json-budget-negative-underflow",
+            '{"budget":{"remaining_minutes":-1e-9999,"limit_minutes":10}}',
+            "numeric value loses decimal precision",
+        ),
+        (
+            "json-budget-over-limit-precision-collapse",
+            '{"budget":{"remaining_minutes":9007199254740993.0,'
+            '"limit_minutes":9007199254740992.0}}',
+            "numeric value loses decimal precision",
+        ),
     ):
         try:
             parse_json_object(raw_json, f"synthetic-{mutation_name}.json")

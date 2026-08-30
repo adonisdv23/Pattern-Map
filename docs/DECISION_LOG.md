@@ -1777,9 +1777,9 @@ design/accessibility, current-primary-research, and hostile receipt-contract
 challenges. Accept only reproduced defects: indistinguishable Map control
 names; a narrow mobile microvisual collision; stale active publication
 statuses; direct omission-detection prior art; the missing untrusted-memory
-data/control boundary; ambiguous JSON and layered shapes; invalid budgets and
-record-ID collisions; contradictory independence/support states; and two
-operator-template mismatches.
+data/control boundary; ambiguous JSON and layered shapes; invalid or
+precision-collapsed budgets and record-ID collisions; contradictory
+independence/support states; and two operator-template mismatches.
 
 Keep the human essay, public topology, six families, Echo separation, and
 sealed Signal Foundry packet unchanged. The security literature constrains
