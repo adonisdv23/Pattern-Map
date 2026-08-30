@@ -39,11 +39,10 @@ independent proxy/operator checks pass within their stated artifact
 boundaries. Owner/mentor judgment plus manual
 physical-keyboard, supported screen-reader, real-zoom, forced-colors, browser
 print-preview, and hardware-touch confirmation remain open.
-The current public/transfer owner-review surface is draft pull request
-[#2](https://github.com/adonisdv23/Pattern-Map/pull/2), layered on the preserved
-foundation review in draft pull request
-[#1](https://github.com/adonisdv23/Pattern-Map/pull/1). Neither is authorization
-to merge or publish.
+The exact active branch and draft pull-request state is recorded in
+[`handoff/BRANCH_AND_PR_STATE.md`](handoff/BRANCH_AND_PR_STATE.md) and must be
+resolved from Git/GitHub at use. Earlier draft pull requests remain review
+history; none is authorization to merge or publish.
 
 Start with:
 
@@ -60,6 +59,7 @@ Start with:
 11. [`docs/CONTENT_INTERFACE_FREEZE_V16.md`](docs/CONTENT_INTERFACE_FREEZE_V16.md)
 12. [`docs/CLAIMS_AND_SOURCE_LEDGER_V16.md`](docs/CLAIMS_AND_SOURCE_LEDGER_V16.md)
 13. [`docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md`](docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md)
+14. [`docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`](docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md)
 
 For the local review surface:
 
@@ -80,6 +80,18 @@ These are local artifacts, not a deployment or publication. To inspect the
 public adapter as routed pages, stop the review server and run
 `npm run dev:public`; it remains `noindex,nofollow` with publication identity
 unset.
+
+For optional owner-facing review preparation, start at
+[`publication/README.md`](publication/README.md). It contains an unsent mentor
+conversation sequence, X-copy rehearsal, and a fail-closed later release
+checklist. It is convenience packaging, not publication authorization or a
+second source of canonical content.
+
+For a materially different project, the optional internal
+[`framework/agent-playbook/PROJECT_USE_STARTER.md`](framework/agent-playbook/PROJECT_USE_STARTER.md)
+provides repository-local agent/operator wayfinding into the existing
+Quickstart, permission, decision, and template contracts. It is not a portable
+packet, transfer result, or mandatory adoption layer.
 
 For the downstream Signal Foundry handoff, give the next operator these two
 files together:
@@ -113,6 +125,8 @@ available and its container hash should also be checked.
 - `site/` — local, accessible, printable interactive reader and exports.
 - `research/` — the broader research agenda and the separate Echo Problem
   project.
+- `publication/` — unpublished mentor/X rehearsal notes and a fail-closed
+  release-decision checklist; no posting or deployment action.
 - `assets/` — historical assets, code-native diagram sources, and generated
   candidates with a complete use ledger.
 - `archive/` — immutable historical transfers and version checkpoints.

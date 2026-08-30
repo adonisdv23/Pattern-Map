@@ -69,12 +69,10 @@ origin accounting. All six original families remain visible: peripheral
 signal; source weighing; velocity/motion; absence + memory; structured
 patterns; and the learning loop.
 
-GitHub public/transfer owner-review surface: draft pull request
-[#2](https://github.com/adonisdv23/Pattern-Map/pull/2), targeting the preserved
-`codex/pattern-map-v16-foundation` review branch from
-`codex/pattern-map-v16-public-transfer-hardening`. The underlying foundation
-candidate remains separately visible in draft pull request
-[#1](https://github.com/adonisdv23/Pattern-Map/pull/1). Both remain unmerged.
+The exact current branch and draft pull-request state is recorded in
+[`BRANCH_AND_PR_STATE.md`](BRANCH_AND_PR_STATE.md) and must be resolved at use.
+Earlier draft pull requests remain review history. None authorizes a merge,
+deployment, or publication.
 
 ## Recommended review path
 
@@ -94,7 +92,10 @@ candidate remains separately visible in draft pull request
    Both are local review artifacts; neither command publishes anything.
 4. Inspect the [six-family specification](../framework/SIX_FAMILIES.md),
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
-   [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
+   [agent Quickstart](../framework/agent-playbook/QUICKSTART.md). For a new
+   project, the optional internal [project-use starter](../framework/agent-playbook/PROJECT_USE_STARTER.md)
+   is repository-local wayfinding over those contracts, not a portable packet
+   or transfer result.
 5. Inspect the bounded [Signal Foundry illustration](../cases/signal-foundry/README.md)
    and the two domain-neutral cases. For the actual downstream transfer, give
    Claude both the [canonical handoff](signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md)
@@ -110,6 +111,10 @@ candidate remains separately visible in draft pull request
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
+9. If the owner is preparing a private mentor review or rehearsing a possible
+   later public explanation, open the optional
+   [publication-rehearsal kit](../publication/README.md). It remains unsent,
+   unpublished, identity-unset, and subordinate to the manuscript and site.
 
 The [PDF](../site/exports/pattern-map-v16-owner-review.pdf) is a compact visual
 review companion. It is intentionally labeled untagged; the standalone HTML is

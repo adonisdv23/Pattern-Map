@@ -20,13 +20,13 @@ not a transfer to a real project. Signal Foundry and the two existing neutral
 cases remain bounded illustrations and are not evidence that the starter
 transfers or improves decisions.
 
-## Baseline composition and reproduced friction
+## Baseline composition and likely translation seam
 
 The first pass attempted composition from the existing Quickstart, copyable
 brief, preflight, implementation choices, and template index. At the exact
 baseline, the relevant entry points were already internally bounded and the
-focused applied validator passed. The composition still left a reproduced
-cold-start seam:
+focused applied validator passed. A static composition probe still indicated a
+likely cold-start seam:
 
 | Existing composition element | Baseline observation | Friction for a new receiver |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ cold-start seam:
 | `framework/IMPLEMENTATION_CHOICES.md` | 146 lines / 1,292 words; levels and stopping rules are complete | It explains proportionality but does not tell a new project which minimum fields and records to carry forward |
 | `framework/templates/README.md` | Nine templates listed with separate uses | The index says to copy only what is needed, but does not map a project fact to a template or say what to do before that choice |
 
-The friction was reproduced with a QA-only cold-start question: “A future
+The likely seam was probed with a QA-only cold-start question: “A future
 project has supplied records and may need to decide whether to change a local
 practice; what must it hand to the v16 route before it can select records?”
 The existing composition can answer the framework questions, but it requires
@@ -52,9 +52,9 @@ repeating their procedures.
 
 | ID | Candidate | Disposition | Reason and governing boundary |
 | --- | --- | --- | --- |
-| PU-01 | Document composition only; leave the existing entry points unchanged | Rejected after reproduction | The composition remains semantically usable, but the receiver must invent the same project-context handoff and template mapping each time. This fails the opportunity test for less ambiguous observable transfer; the existing contracts remain the source of truth. |
+| PU-01 | Document composition only; leave the existing entry points unchanged | Rejected after static composition probe | The composition remains semantically usable, but a receiver would need to construct a project-context handoff and template mapping. This indicates a plausible wayfinding seam; it does not establish measured transfer friction. The existing contracts remain the source of truth. |
 | PU-02 | Generic adoption brief or conformance dictionary | Deferred | D-031 and D-042 defer a generic adoption layer until repeated friction appears across Signal Foundry and a materially different real project. This QA fixture does not establish that condition. A future candidate would still need an owner-reviewed abstraction, not a generality claim. |
-| PU-03 | New deterministic intake/route helper or machine-readable receipt profile | Rejected | A second runtime router or receipt schema would create a new contract, risk implied authority, and duplicate the existing Stage 0 and receipt fixtures. No new mandatory route, score, ledger, or autonomous authority is justified by the reproduced translation seam. |
+| PU-03 | New deterministic intake/route helper or machine-readable receipt profile | Rejected | A second runtime router or receipt schema would create a new contract, risk implied authority, and duplicate the existing Stage 0 and receipt fixtures. No new mandatory route, score, ledger, or autonomous authority is justified by the likely translation seam. |
 | PU-04 | Second domain-neutral worked case | Rejected | The existing general-research and product-and-process fixtures already demonstrate sparse family use, permission, comparison, motion/absence, stopping, and bounded learning. A new invented case would add narrative weight without real-project evidence. |
 | PU-05 | Seventh family, universal conformance or source-reputation score, or second ledger | Rejected | These conflict with the six-family lock, source-role/support separation, and anti-bureaucracy boundary. They do not resolve cold-start translation. |
 | PU-06 | One project-use starter as a context adapter and wayfinding sheet | Accepted with revision | `framework/agent-playbook/PROJECT_USE_STARTER.md` gives one ordered handoff after Stage 0, maps project facts to existing templates, names only material family questions, and preserves typed permission, human action, cost/stop, uncertainty, and non-applicability boundaries. The final trimmed form is 135 lines / 897 words versus the 140-line / 1,130-word Quickstart. It explicitly disclaims conformance and transfer proof. |
@@ -109,9 +109,10 @@ point carry project-transfer fields even for operators who already know their
 context, while still providing no distinct first-contact wayfinding target.
 An alternative of placing the block only in the template index was rejected
 because Stage 0 must terminate before any layered template selection. The
-standalone starter therefore wins the removal test narrowly: remove it and
-the existing procedure still works, but the reproduced project-context
-translation seam returns.
+standalone starter therefore passes the static removal test narrowly: remove
+it and the existing procedure still works, while the project-context
+translation step again has no single wayfinding page. This is evidence of
+composition and compactness, not measured ease or successful transfer.
 
 ## Signal Foundry packet recommendation
 
@@ -130,7 +131,7 @@ such packet change or transfer claim.
 ## Focused validator and cold-start controls
 
 `qa/applied/validate_framework.py` now checks the accepted adapter without
-turning it into a runtime router. The focused controls require:
+turning it into a runtime router. These static repository controls require:
 
 1. the exact Stage 0 eligibility, terminal ordinary-record, human-authority,
    budget/complexity, and three-condition Advanced contracts;
@@ -154,12 +155,12 @@ page.
 
 | Test | Result | Evidence boundary |
 | --- | --- | --- |
-| Remove the starter and compose only the existing entry points | Friction returns: no single project-context handoff or fact-to-template map; the receiver must reconstruct it | This justifies a wayfinding adapter, not a new framework layer |
+| Remove the starter and compose only the existing entry points | No single project-context handoff or fact-to-template map remains; a receiver would have to compose that step | This indicates a plausible wayfinding seam, not measured friction or a new framework layer |
 | Remove the adapter's family-orientation sentence | Existing Quickstart still runs, but the receiver loses the compact “use only what can change the decision” bridge; no family is required by the validator | The six-family map remains canonical and optional by materiality |
-| Stage 0 exact reversible supplied-material transformation | Accepted by the QA matrix; returns four fields and stops | No evidence, route, stop, outcome, learning, influence, or family record is created |
+| Stage 0 exact reversible supplied-material transformation | Classified as ordinary by the static QA matrix; the starter instructs a four-field terminal return | The check does not execute a receiver or create a record |
 | Stage 0 supplied-material judgment/selection | Rejected from ordinary by the QA matrix | Selection and judgment inside supplied input still require the layered path |
-| Missing/unclear/revoked permission | Starter preserves typed state and state-specific stop semantics; existing blocked fixtures keep records empty under the global-permission contract | No access-to-permission inference or external action authority |
-| Missing baseline, unresolved item, or non-applicable check | Starter directs `MISSING_BASELINE`, unresolved exclusion, or one bounded `NOT_APPLICABLE`/`SKIPPED` reason with no placeholder | Unknown remains unknown; absence and motion are not manufactured |
+| Missing/unclear/revoked permission | Starter points to typed operation-level state and canonical stop semantics; existing blocked fixtures keep evidence, baseline, comparison, disconfirmation, memory, and influence empty and memory `NOT_USED` under the global-permission contract | The static matrix exercises unresolved permission eligibility only; no access-to-permission inference or external-action authority |
+| Missing baseline, unresolved item, or non-applicable check | Starter says no unsupported motion or absence claim, keeps unresolved material out of influence, and permits one bounded `NOT_APPLICABLE`/`SKIPPED` reason only when genuinely inactive | Unknown remains unknown; the page does not execute or fabricate a `MISSING_BASELINE` state |
 | Larger budget or repeated project use | Starter preserves the three-condition Advanced rule and says a higher level is not better | Budget is capacity/constraint, not an independent complexity selector |
 | Remove the starter after an operator has chosen a route | Existing canonical templates and receipts remain sufficient; the adapter is not a dependency or replacement | The addition is removable and does not change the six-family framework |
 

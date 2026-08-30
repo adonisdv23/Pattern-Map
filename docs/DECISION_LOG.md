@@ -1534,3 +1534,43 @@ result claim is authorized by this cycle.
 **Governing requirement:** locked owner intent; A01–A17; proportionality and
 anti-bureaucracy; artifact firebreaks; reviews are advisory; no-results and
 external-action boundaries.
+
+## D-043 — Retain only the narrow opportunity adapters after cross-lane challenge
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; exact-integrated Loop 2 still required
+
+Loop 1 produced a material disagreement about the project-use starter. The
+research/claims lane treated the file's presence in repository validation as a
+generic-adoption dependency; the public lane judged it a credible but internal
+convenience adapter. The integrator rejects the dependency inference: an
+accepted optional artifact can be integrity-checked without becoming mandatory
+for every task. D-042 is also a later explicit owner instruction to improve
+future-project entry, while D-031's warning against a generic adoption layer
+still governs scope.
+
+The retained starter is therefore explicitly optional, internal,
+repository-local, and non-portable. It points to operation-level permission,
+useful-answer, abstention, and complete level-fit contracts rather than
+replacing them; its QA now describes a static composition hypothesis rather
+than observed transfer or reduced effort. It remains absent from the public
+site, publication kit, and existing Signal Foundry packet.
+
+The mentor/X/release kit is retained as optional owner convenience packaging.
+One discovery pointer is integrated, while the site, manuscript, and owner
+packet remain the substantive source. A later exact release decision must name
+the artifact/channel before marking a gate not applicable. No identity, URL,
+handle, image, posting, contact, deployment, or publication decision is made.
+
+The targeted research scan is retained in QA with only a compact optional
+source-route pointer. It narrows contribution claims and identifies testable
+questions; it does not select a paper, provider, corpus, sample, or study and
+does not redefine the broad v16 thesis.
+
+**Evidence:** three Loop 0 lane reports; three Loop 1 cross-lane reports;
+focused framework, publication, site, and research checks.
+
+**Governing requirement:** D-042; A01–A17; human-first progressive disclosure;
+proportionality; model reviews advisory; no-results and external-action
+boundaries.

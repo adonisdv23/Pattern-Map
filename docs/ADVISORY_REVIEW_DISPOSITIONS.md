@@ -444,3 +444,30 @@ at that checkpoint. RP-R2-01 supersedes its producer value for the newly
 regenerated companion. Exact `06c61680f709861ccd3ffd2df5029e04c63cb450`
 owns those bytes; the successor binds that value. This does not rewrite the
 historical audit.
+
+## Opportunity expansion Loop 1 dispositions — 2026-08-30
+
+Three read-only cross-lane reviews challenged the exact project-use and
+public/mentor lane commits. Their reports are preserved under
+`qa/publication/advisory/`, `qa/research/advisory/`, and
+`qa/applied/advisory/`. They are static/model review evidence, not observed
+transfer, reader comprehension, publication readiness, or framework
+effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| PUS-01 | Defer the project-use starter because a validator makes an optional adapter a required generic adoption layer | **Rejected as P1; optional boundary accepted with revision** | D-042 is the later explicit owner instruction to build a friction-reducing future-project entry point. Requiring an accepted repository artifact to pass integrity QA does not require every project or operator to use it. The page is now explicitly optional, internal, repository-local, non-portable, and subordinate to canonical records | Project-use starter, framework index, applied validator | Starter remains out of the Signal Foundry packet and public site; focused validator checks artifact integrity, not adoption or transfer |
+| PUS-02 / PL-04 | Treat static document composition, word counts, or a Boolean truth table as reproduced receiver friction or reduced burden | **Accepted with revision** | Static evidence can support compactness and a plausible seam only | Project-use QA wording | “Likely seam,” “static composition probe,” and “static removal test”; no ease/transfer claim |
+| PUS-03 | One permission summary may replace operation-level permission and omit blocked-record semantics | **Accepted** | A routing summary cannot become an executable permission envelope | Project-use starter | Explicit read/acquire/transform/retain/disclose/act pointer; blocked evidence/baseline/comparison/disconfirmation/memory/influence empty; memory `NOT_USED`; blocked operations cannot act |
+| PUS-04 / PUS-05 | Present the starter or its phrase validator as a self-contained portable route or transfer test | **Accepted with revision** | Complete useful-answer, abstention, permission, and level-fit contracts remain canonical | Starter and applied QA | Repository-local/non-portable labeling, complete source pointers, static-QA ceiling; Moderate fit aligned |
+| PL-01 / PL-03 | Clarify the starter's audience and optional relation to Quickstart | **Accepted** | Internal operator wayfinding must not masquerade as a general-reader entrance | Starter and framework index | Explicit optional internal agent/operator labeling |
+| PL-07 / PL-08 / PL-09 | Add the starter to the public site, publication kit, Signal packet, or a new schema/score/ledger/family | **Rejected** | That would invert progressive disclosure, blur artifact boundaries, or create mandatory bureaucracy | Public, publication, downstream packet, framework | Human problem remains first; starter remains repo-only |
+| CL-PUB-01a | Make the optional publication rehearsal kit discoverable | **Accepted with revision** | One pointer is enough; duplicating the kit would create a second narrative | Root README, owner packet, package map | Kit remains optional, unsent, unpublished, and subordinate to the manuscript/site |
+| CL-PUB-04a | Apply every site/manual gate to every future channel regardless of artifact scope | **Accepted with revision** | A later exact release decision may record a gate as not applicable only after naming the artifact and reason; unknown applicability still holds | Release-decision checklist | No current release or identity field is authorized |
+| CL-QA-01 | Replace exact rehearsal-copy sizes and global no-image sentinels now | **Deferred** | They are safe local drift sentinels for the current candidate; revise only when an authorized copy/image change creates real coupling | Publication contract | Current contract passes; no social image generated |
+| CL-TRANSFER-01 | Merge publication rehearsal with project-use or Signal Foundry transfer | **Rejected** | Human review preparation and agent/operator transfer are different artifacts | Publication kit and Signal packet | Existing selected Signal packet remains canonical; no packet rebuild |
+
+Loop 1 therefore closes with no reproduced P0/P1/P2 after the accepted
+revisions. Loop 2 must review an exact integrated checkpoint and may still
+remove any addition that fails cold-start, public-surface, claims, or
+proportionality tests.

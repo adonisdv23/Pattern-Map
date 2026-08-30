@@ -1,11 +1,12 @@
 # Project-use starter
 
-Status: **cold-start wayfinding aid; not an adoption or conformance standard,
-or proof of transfer**
+Status: **optional internal agent/operator cold-start wayfinding aid; not an
+adoption or conformance standard, or proof of transfer**
 
-Use this page when a materially different project needs to enter v16 without
-reading the whole repository. It is a thin adapter over the existing
-Quickstart, preflight, implementation choices, and templates. It adds no
+Use this repository-local page when a materially different project needs to
+enter v16 without first reading the whole repository. It is a thin wayfinding
+adapter over the existing Quickstart, preflight, implementation choices, and
+templates—not a portable packet or self-contained procedure. It adds no
 family, route, score, ledger, permission, or authority.
 
 ## 1. Run Stage 0 first
@@ -52,8 +53,17 @@ Use only `AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED` for
 permission. The executable permission object uses only `technical_access`,
 `state`, `scope`, `reason_code`, `reason`, and `resume_condition`; do not add
 legacy authorization booleans. In the current single-global-permission
-receipt, a blocked state leaves evidence, comparison, disconfirmation, memory,
-and influence empty and routes to `HOLD`, `ESCALATE`, or the permitted refusal.
+receipt, a blocked state leaves evidence, baseline, comparison,
+disconfirmation, memory, and influence empty; records memory as `NOT_USED`;
+and cannot acquire, disclose, reuse, or act through the blocked operation. It
+routes to `HOLD`, `ESCALATE`, or the permitted refusal.
+
+The context block's `permission_scope_and_state` is only a routing summary.
+Before execution, complete the operation-level rows for read, acquire,
+transform, retain/reuse, disclose, and act in the existing decision brief or
+decision receipt. The complete useful-answer, abstention/escalation, and
+level-fit fields also remain in `framework/templates/DECISION_BRIEF.md` and
+`framework/IMPLEMENTATION_CHOICES.md`; this page does not replace them.
 
 ## 3. Choose the smallest layered route
 
@@ -63,8 +73,10 @@ advanced machinery.
 
 - `LIGHTWEIGHT`: bounded reversible work with only the minimum brief, alternate
   route, comparison/challenge, and influence record needed.
-- `MODERATE`: repeated or reviewed work needing stable IDs, versioning,
-  correction, typed relationships, or a reproducible packet.
+- `MODERATE`: work with high consequence or high uncertainty that does not
+  meet the complete Advanced conjunction, including repeated or reviewed work
+  needing stable IDs, versioning, correction, typed relationships, or a
+  reproducible packet.
 - `ADVANCED`: only the three-condition case below, with capabilities whose
   cost is justified.
 

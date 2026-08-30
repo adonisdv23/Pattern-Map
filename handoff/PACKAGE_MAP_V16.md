@@ -12,6 +12,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Source authority and lineage | `docs/SOURCE_AUTHORITY_AND_LINEAGE.md`, `docs/MIGRATION_INVENTORY.md` |
 | Acceptance and roadmap | `docs/V16_ACCEPTANCE_CRITERIA.md`, `docs/V16_ROADMAP.md` |
 | Public/transfer hardening contract | `docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md` |
+| Opportunity expansion and removal tests | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md` |
 | Decisions and advisory dispositions | `docs/DECISION_LOG.md`, `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Claim control | `docs/CLAIMS_AND_SOURCE_LEDGER_V16.md` |
 | Version status | `docs/VERSION_HISTORY.md` |
@@ -58,6 +59,16 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Preflight | `framework/agent-playbook/PREFLIGHT_CHECKLIST.md` |
 | Decision receipt | `framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md` |
 | Ordinary-versus-layered examples | `framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md` |
+| Optional project-use starter | `framework/agent-playbook/PROJECT_USE_STARTER.md` — internal repository-local wayfinding over the canonical bundle; not a portable or mandatory adoption layer |
+
+## Unpublished mentor and public-review rehearsal
+
+| Artifact | Path | Boundary |
+| --- | --- | --- |
+| Rehearsal-kit index | `publication/README.md` | Optional owner convenience; not a second essay, content authority, or release action |
+| Private mentor sequence | `publication/MENTOR_REVIEW_SEQUENCE_V16.md` | Unsent challenge/response path; no mentor contact or comprehension claim |
+| X copy variants | `publication/X_COPY_VARIANTS_V16.md` | Unsent copy rehearsal with no URL, handle, byline, image, or posting authority |
+| Release decision checklist | `publication/RELEASE_DECISION_CHECKLIST_V16.md` | Fail-closed human gate; current state remains HOLD / NOT AUTHORIZED |
 
 ## Local reader surface
 
@@ -108,6 +119,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Matched-budget protocol candidate | `research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md` |
 | Narrow-wedge decision memo | `research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md` |
 | Current adjacent-source and boundary QA | `qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md`, `qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md` |
+| Supplemental opportunity source scan | `qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md` — targeted, non-exhaustive primary-source boundary review; not a study or literature-completeness claim |
 | Research QA | `qa/research/**` in Git; the bounded owner manifest explicitly includes the current convergence QA, its unit test, the final provenance red team, and the named integrity entry points rather than claiming a full repository manifest |
 
 ## Historical archive

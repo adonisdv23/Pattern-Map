@@ -27,6 +27,12 @@ Record the scope of the proposed action, or leave it unresolved:
 If any field is unknown, stop at `HOLD`. Do not substitute a test host,
 repository URL, temporary handle, guessed name, or remembered metadata.
 
+The exact proposed artifact and channel control which later gates apply. A
+gate may be marked `NOT APPLICABLE` only after the artifact is named and the
+owner records why that surface is outside the authorized action; for example,
+an X-only copy decision does not silently authorize or require a site release.
+Unknown applicability remains `HOLD`.
+
 ## 1. Owner and content gates
 
 - [ ] The owner explicitly authorized this exact release action and destination.

@@ -98,9 +98,10 @@ printf '\n[8/12] Site build and route checks\n'
   npm run check
 )
 
-printf '\n[9/12] Site, visual, and research-boundary audits\n'
+printf '\n[9/12] Site, visual, publication-rehearsal, and research-boundary audits\n'
 python3 qa/site/audit_site.py
 python3 qa/visual/verify_image_formats.py
+node qa/publication/publication-kit-contract.spec.mjs
 python3 qa/research/validate_research_boundaries.py
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
   -s qa/research -p 'test_*.py' -v

@@ -28,6 +28,19 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md` and its two
+  cross-lane advisory challenges record the optional repository-local
+  agent/operator starter, its static composition boundary, and the accepted
+  permission/completeness clarifications. They do not establish transfer,
+  comprehension, reduced effort, or live-agent behavior.
+- `qa/publication/OPPORTUNITY_EXPANSION_PUBLIC_MENTOR_REHEARSAL_QA_2026-08-30_d05aca5.md`
+  and `qa/publication/publication-kit-contract.spec.mjs` cover the unpublished
+  mentor/X rehearsal kit, unresolved identity fields, local draft sizes,
+  source links, and fail-closed release state. They do not establish that any
+  message was sent or that a reader understood the work.
+- `qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md` is a targeted,
+  non-exhaustive primary-source boundary scan. It narrows contribution claims
+  without selecting a paper, provider, corpus, sample, or study.
 - `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` records the
   dispositions and reproduced corrections from three exact-`d40ca61`
   intent/reader, applied/site, and research/provenance red teams. It covers the
