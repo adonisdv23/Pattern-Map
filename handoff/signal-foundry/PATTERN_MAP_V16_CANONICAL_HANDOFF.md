@@ -37,7 +37,7 @@ before use:
 branch:  codex/pattern-map-v16-public-transfer-hardening
 content: 874a0a8e09f0bde11532cf873087865addb7d973
 head:    resolve with Git; sealed packet head is BUNDLE_METADATA.json.source_commit
-PR:      https://github.com/adonisdv23/Pattern-Map/pull/1
+PR:      https://github.com/adonisdv23/Pattern-Map/pull/2
 state:   draft/open/unmerged; owner review and manual gates remain open
 ```
 

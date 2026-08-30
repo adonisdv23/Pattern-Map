@@ -63,9 +63,12 @@ origin accounting. All six original families remain visible: peripheral
 signal; source weighing; velocity/motion; absence + memory; structured
 patterns; and the learning loop.
 
-GitHub owner-review surface: draft pull request
-[#1](https://github.com/adonisdv23/Pattern-Map/pull/1), targeting `main` from
-`codex/pattern-map-v16-foundation`. It remains unmerged.
+GitHub public/transfer owner-review surface: draft pull request
+[#2](https://github.com/adonisdv23/Pattern-Map/pull/2), targeting the preserved
+`codex/pattern-map-v16-foundation` review branch from
+`codex/pattern-map-v16-public-transfer-hardening`. The underlying foundation
+candidate remains separately visible in draft pull request
+[#1](https://github.com/adonisdv23/Pattern-Map/pull/1). Both remain unmerged.
 
 ## Recommended review path
 

@@ -21,7 +21,7 @@ the project.
 | Run bounded high-reasoning implementation and red-team lanes | Applied, public-presentation, and current research/claims branches plus exact-commit convergence audits | **USED WITHIN SCOPE; ADVISORY/IMPLEMENTATION QA ONLY** |
 | Obtain an outside ChatGPT Pro advisory review loop | The owner gave a later exact instruction to use the already logged-in ChatGPT Pro account; two exact-commit reports, dispositions, and correction QA records are preserved | **USED WITHIN THE LATER EXACT AUTHORIZATION; NO INCREMENTAL PURCHASE OR STUDY** |
 | Obtain one bounded Claude Pro exact-checkpoint advisory review | The terminal instruction authorized the already authenticated local Claude CLI for a read-only audit of exact `e565502`; the report and integrator dispositions are preserved in `qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md` | **USED WITHIN THE LATER EXACT AUTHORIZATION; NO EDIT, INCREMENTAL PURCHASE, OR STUDY** |
-| Open a draft pull request for owner review | [PR #1](https://github.com/adonisdv23/Pattern-Map/pull/1) and `handoff/BRANCH_AND_PR_STATE.md` | **USED WITHIN SCOPE; OPEN AND DRAFT** |
+| Open draft pull requests for owner review | Foundation [PR #1](https://github.com/adonisdv23/Pattern-Map/pull/1), public/transfer [PR #2](https://github.com/adonisdv23/Pattern-Map/pull/2), and `handoff/BRANCH_AND_PR_STATE.md` | **USED WITHIN SCOPE; BOTH OPEN, DRAFT, AND UNMERGED AT 2026-08-30 READBACK** |
 
 ## Prohibited or separately authorized actions
 

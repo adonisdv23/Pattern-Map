@@ -38,8 +38,10 @@ independent proxy/operator checks pass within their stated artifact
 boundaries. Owner/mentor judgment plus manual
 physical-keyboard, supported screen-reader, real-zoom, forced-colors, browser
 print-preview, and hardware-touch confirmation remain open.
-The canonical owner-review surface is draft pull request
-[#1](https://github.com/adonisdv23/Pattern-Map/pull/1); it is not authorization
+The current public/transfer owner-review surface is draft pull request
+[#2](https://github.com/adonisdv23/Pattern-Map/pull/2), layered on the preserved
+foundation review in draft pull request
+[#1](https://github.com/adonisdv23/Pattern-Map/pull/1). Neither is authorization
 to merge or publish.
 
 Start with:
