@@ -18,10 +18,18 @@ The check validates:
 - canonical route, stop, and learning vocabulary across entry-point artifacts;
 - Quickstart outcome close-out and preflight group-status observability;
 - bounded v13 process/workflow/model-path continuity without hierarchy;
-- a genuine Stage-0 ordinary receipt versus lightweight/moderate/advanced
-  layered receipts;
+- Stage 0 inside the copied prompt and a terminal four-field ordinary record
+  with no layered route, stop, outcome, learning, evidence, or family fields;
 - distinct permission, route, stop, learning, and human-disposition states;
-- fail-closed reviewed-learning and selected-influence mutations; and
+- substantive, resolvable baseline, comparison, disconfirmation, selected-
+  influence, and scoped-memory references;
+- all four permission states with state-specific reason/resume behavior and no
+  unresolved or blocked influence;
+- an append-only F4 correction/supersession fixture that preserves the prior
+  digest and rejects silent overwrite;
+- a sparse neutral case with two inactive families and no placeholder artifacts;
+- fail-closed reviewed-learning, permission, dangling-reference, influence,
+  ordinary-record, and memory mutations; and
 - receipt fixtures through the documented preflight and stop rules.
 
 These checks do not show that the framework improves decisions, that any case

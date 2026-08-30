@@ -3,10 +3,10 @@
 Run this checklist before acquisition, enrichment, or a consequential answer.
 For every P-group, record `PASS`, `FAIL`, `UNKNOWN`, or `NOT_APPLICABLE`, plus
 the evidence/receipt IDs that justify the status. `NOT_APPLICABLE` requires a
-reason. An `UNKNOWN` required field is not a silent pass. A recorded
-`ORDINARY_PATH` may bypass this preflight only when no new evidence,
-comparison, memory reuse, permission decision, or external influence is
-required.
+reason. An `UNKNOWN` required field is not a silent pass. A minimal ordinary
+record bypasses this layered preflight only when no new evidence, comparison,
+memory reuse, permission decision, or external influence is required. It is
+terminal and is not an `ANSWER` route receipt.
 
 ## P0. Scope and decision
 
@@ -35,9 +35,10 @@ required.
 
 FAIL or UNKNOWN on a consequential permission item means a hard stop, then
 route `HOLD` or `ESCALATE`. Record `NOT_AUTHORIZED` when permission is absent
-or revoked; record `UNKNOWN` when it has not been established. Do not collapse
-those states, acquire, disclose, or act. Record the escalation destination and
-the condition needed to resume.
+or denied, `UNKNOWN` when it has not been established, and `REVOKED` when a
+previous authorization no longer applies. Do not collapse those states,
+acquire, disclose, reuse, or act. Record the state-specific reason, escalation
+destination, and condition needed to resume.
 
 ## P2. Cost and stop
 
@@ -123,17 +124,20 @@ the condition needed to resume.
 
 | Failed or unknown check | Required record | Canonical route |
 | --- | --- | --- |
-| Permission or disclosure absent or revoked | NOT_AUTHORIZED | HOLD or ESCALATE |
+| Permission or disclosure absent or denied | NOT_AUTHORIZED | HOLD or ESCALATE |
 | Permission or disclosure not established | UNKNOWN | HOLD or ESCALATE |
+| Previous permission revoked | REVOKED | HOLD or ESCALATE |
 | High consequence plus missing support or baseline | INSUFFICIENT_SUPPORT or MISSING_BASELINE | HOLD or ESCALATE |
 | Identity or provenance broken | EXCLUDE_FROM_INFLUENCE | HOLD or ESCALATE |
 | One observation only for motion | NO_MOTION_CLAIM | ACQUIRE, ANSWER_PROVISIONALLY, or HOLD |
 | No expected baseline for absence | NO_ABSENCE_CLAIM and observation boundary | CLARIFY, ANSWER_PROVISIONALLY, or HOLD |
 | Budget or deadline reached | STOPPED_BUDGET or STOPPED_DEADLINE | ANSWER_PROVISIONALLY, HOLD, or DEFER |
 | No later outcome defined | LEARNING_NOT_APPLICABLE | Any otherwise permitted route |
-| Low consequence, reversible, supplied material only | ORDINARY_PATH | ANSWER |
 
-## Preflight receipt
+The ordinary supplied-material path does not enter this table: it returns the
+four-field ordinary record and stops before the layered route vocabulary.
+
+## Layered preflight receipt
 
 - Preflight ID:
 - Decision ID / brief version:

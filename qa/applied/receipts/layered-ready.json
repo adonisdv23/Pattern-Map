@@ -4,27 +4,71 @@
   "evidence_selection": "NEEDED",
   "consequence": "HIGH",
   "permission": {
-    "technical_access": true,
-    "authorized": true,
-    "disclosure_allowed": true
+    "technical_access": "AVAILABLE",
+    "state": "AUTHORIZED",
+    "scope": "Use and disclose the named synthetic fixture records for this bounded answer.",
+    "reason_code": "AUTHORIZED_FOR_PURPOSE",
+    "reason": "The fixture grants bounded internal use for procedure testing.",
+    "resume_condition": "NOT_APPLICABLE"
   },
   "budget": {
     "remaining_minutes": 8,
     "limit_minutes": 20
   },
-  "baseline": {
-    "present": true,
-    "motion_repeated": true,
-    "absence_expected": true
-  },
-  "comparison": {
-    "done": true,
-    "unit": "peer and period",
-    "origin_state": "COMMON_ORIGIN"
-  },
-  "disconfirmation": {
-    "attempted": true,
-    "result": "contrary route and missing perspective checked"
+  "evidence_records": [
+    {
+      "id": "E-001",
+      "exact_pointer": "synthetic://layered-ready/source-a#claim-1",
+      "claim_ids": ["C-001"],
+      "permission_state": "AUTHORIZED"
+    },
+    {
+      "id": "E-002",
+      "exact_pointer": "synthetic://layered-ready/source-b#repeated-claim",
+      "claim_ids": ["C-001"],
+      "permission_state": "AUTHORIZED"
+    },
+    {
+      "id": "E-004",
+      "exact_pointer": "synthetic://layered-ready/specialist#qualification",
+      "claim_ids": ["C-001", "C-002"],
+      "permission_state": "AUTHORIZED"
+    }
+  ],
+  "baseline_records": [
+    {
+      "id": "B-001",
+      "basis": "Two comparable synthetic periods plus the expected-field definition.",
+      "observation_boundary": "Synthetic peer records dated weeks 1 and 2; no outside retrieval.",
+      "evidence_ids": ["E-001", "E-004"],
+      "motion_timepoints": 2,
+      "absence_expected": true
+    }
+  ],
+  "comparison_records": [
+    {
+      "id": "CMP-001",
+      "unit": "peer and period",
+      "item_ids": ["E-001", "E-002", "E-004"],
+      "alignment_boundary": "The same synthetic claim and two declared periods.",
+      "result": "E-001 and E-002 recur through a common origin; E-004 qualifies scope.",
+      "origin_state": "COMMON_ORIGIN"
+    }
+  ],
+  "disconfirmation_records": [
+    {
+      "id": "D-001",
+      "route_or_query": "Inspect the specialist fixture for the strongest limiting condition.",
+      "target": "A qualification that would narrow C-001.",
+      "result": "E-004 supplies a scope qualification.",
+      "residual_uncertainty": "One related source remains UNKNOWN_ORIGIN.",
+      "evidence_ids": ["E-004"]
+    }
+  ],
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
   },
   "influence": {
     "recorded": true,
@@ -35,6 +79,9 @@
   "stop_status": "COMPLETE",
   "stop_reason": "The packet is bounded; remaining unknown origin is named.",
   "uncertainty": ["one related source remains UNKNOWN_ORIGIN"],
+  "motion_claim": true,
+  "absence_claim": true,
+  "independence_claim": false,
   "outcome": {
     "applicable": true,
     "learning_status": "LEARNING_PENDING_OUTCOME",

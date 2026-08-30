@@ -1,15 +1,15 @@
 {
-  "receipt_id": "DR-BLOCK-001",
+  "receipt_id": "DR-UNKNOWN-001",
   "operating_level": "MODERATE",
   "evidence_selection": "NEEDED",
   "consequence": "HIGH",
   "permission": {
     "technical_access": "AVAILABLE",
-    "state": "NOT_AUTHORIZED",
-    "scope": "No acquisition, transformation, retention, or disclosure is authorized.",
-    "reason_code": "PERMISSION_ABSENT",
-    "reason": "The named authority did not authorize this operation.",
-    "resume_condition": "Resume only after the named authority records purpose-limited authorization."
+    "state": "UNKNOWN",
+    "scope": "Requested acquisition and disclosure scope has not been established.",
+    "reason_code": "PERMISSION_NOT_ESTABLISHED",
+    "reason": "No applicable authorization record was found for this purpose.",
+    "resume_condition": "Resume only after the named authority confirms or denies the exact purpose and disclosure scope."
   },
   "budget": {
     "remaining_minutes": 15,
@@ -29,10 +29,10 @@
     "selected_items": [],
     "withheld_items": []
   },
-  "route": "ESCALATE",
+  "route": "HOLD",
   "stop_status": "STOPPED_OTHER",
-  "stop_reason": "Permission is absent; technical access is not authorization.",
-  "uncertainty": ["NOT_AUTHORIZED"],
+  "stop_reason": "Permission has not been established; no acquisition or influence occurred.",
+  "uncertainty": ["UNKNOWN"],
   "outcome": {
     "applicable": false,
     "learning_status": "LEARNING_NOT_APPLICABLE"

@@ -11,9 +11,11 @@ Before choosing a level, ask: **Must the agent select, acquire, compare,
 preserve, or weigh information beyond the user-supplied material?**
 
 - If no, use the ordinary path: perform the reversible supplied-material
-  transformation, state any material assumption, and stop. Keep the
-  instruction, input, and output; do not manufacture evidence, route, outcome,
-  or learning records.
+  transformation, save only the supplied scope, material assumptions,
+  unchecked boundaries, and output, and stop. Do not manufacture evidence,
+  route, stop, outcome, learning, or six-family records. Use
+  [`../templates/ORDINARY_RECORD.md`](../templates/ORDINARY_RECORD.md), not the
+  layered decision receipt.
 - If yes, continue to the operating levels below. Choose only the records and
   checks justified by consequence, uncertainty, repetition, and cost.
 
@@ -36,7 +38,9 @@ evidence volume, sensitivity, reuse, and expected outcome. Record the choice.
   views, route policy, replay, and approved evaluation.
 
 Record why the selected level is proportionate. Do not escalate an ordinary
-task merely because more infrastructure is available.
+task merely because more infrastructure is available. A layered task also needs
+not activate all six families: record one concise reason for an inactive family
+and create no placeholder artifact for it.
 
 ## 2. Define the real decision
 
@@ -71,6 +75,12 @@ An accessible source may still be private, paid, sensitive, out of scope,
 restricted by purpose, or forbidden to retain. If permission is UNKNOWN for a
 consequential operation, route to HOLD or ESCALATE. Do not infer authorization
 from credentials, a successful request, or a visible link.
+
+Preserve the exact operation state as `AUTHORIZED`, `UNKNOWN`,
+`NOT_AUTHORIZED`, or `REVOKED`. `UNKNOWN` means permission has not been
+established; `NOT_AUTHORIZED` means it is absent or denied; `REVOKED` means a
+previous authorization no longer applies. Each unresolved or blocked state
+needs its own reason and condition for resuming. None may influence the output.
 
 ## 4. Set the cost and stop envelope
 
@@ -186,9 +196,17 @@ For absence:
 For memory:
 
 - retrieve by task, time, source, and permission scope;
+- give each retained version a stable ID and content digest;
 - preserve earlier observations, decisions, and corrections;
-- link supersession instead of overwriting;
+- append a corrected version with `supersedes`, `corrects`, prior-digest,
+  reason, and scoped-reuse links instead of overwriting;
+- allow only `AUTHORIZED` memory within its recorded reuse scope to influence
+  the output;
 - treat stale or unscoped memory as uncertainty.
+
+Use [`../templates/MEMORY_RECORD.md`](../templates/MEMORY_RECORD.md) only when
+scoped memory is material. A link proves which record was corrected; it does
+not prove that the correction is true.
 
 ## 10. Disconfirm the leading interpretation
 
@@ -216,6 +234,7 @@ Use typed uncertainty:
 - MISSING_BASELINE;
 - FAILED_CAPTURE;
 - NOT_AUTHORIZED;
+- REVOKED;
 - STALE;
 - INCOMPARABLE;
 - OUTCOME_MISSING.
@@ -277,6 +296,9 @@ selected item, state:
 
 List withheld material and its reason: duplicate, insufficient, not authorized,
 sensitive, stale, out of scope, or unknown. Withholding is not deletion.
+Every selected ID must resolve to a preserved evidence or memory record, and
+that record must be `AUTHORIZED` for the named use. A plausible but dangling
+ID is not an influence receipt.
 
 The generated answer must separate:
 
@@ -338,7 +360,8 @@ The agent may call the work complete only when:
 - source, artifact, and claim distinctions are recorded where needed;
 - peripheral candidates were not promoted by status;
 - recurrence and origin were not conflated;
-- motion and absence have baselines;
+- any motion or absence claim has its required baseline;
+- any memory influence resolves to an authorized, scoped, versioned record;
 - disconfirmation and uncertainty are visible;
 - stop or escalation is reasoned;
 - influence and withholding are recorded;

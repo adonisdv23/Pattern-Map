@@ -24,8 +24,6 @@ the decision.
 - Cost boundary: 25 minutes of review; no paid retrieval; one owner review.
 - Stop: stop if the records cannot distinguish interest from capacity or if a
   staffing permission is missing.
-- Outcome: if authorized, compare planned attendance and staff load with the
-  four-week pilot record.
 
 ## Fixture evidence register
 
@@ -39,16 +37,20 @@ the decision.
 
 These rows are fixtures, not observations from an actual program.
 
-## Six-family route
+## Sparse family route
 
-| Family | Action | Artifact |
-| --- | --- | --- |
-| F1 Peripheral signal | Add the accessibility note and a specialist schedule view to the default attendance/comments path | Route note and candidate IDs |
-| F2 Source weighing | Separate recorded attendance, participant context, specialist qualification, and staffing context | Claim/evidence register |
-| F3 Velocity / motion | Do not call demand growth from two comments; request comparable attendance or survey periods if the decision requires motion | No-supported-motion note |
-| F4 Absence + memory | Expected baseline is a complete four-week attendance view; an absent denominator is a data gap, not zero demand | Gap record |
-| F5 Structured patterns | Compare session, day, time, accessibility condition, staffing capacity, and stated request; mark fields not comparable | Comparison matrix |
-| F6 Learning loop | Predeclare pilot attendance, staff-load, and cancellation outcomes before any authorized pilot | Outcome review template |
+This bounded question uses four families. F3 and F6 are inactive: the fixture
+does not make a motion claim, run a pilot, or define a later-outcome review.
+Inactive families create no receipt or placeholder artifact.
+
+| Family | Status | Action or skip reason | Artifact |
+| --- | --- | --- | --- |
+| F1 Peripheral signal | USED | Add the accessibility note and a specialist schedule view to the default attendance/comments path | Route note and candidate IDs |
+| F2 Source weighing | USED | Separate recorded attendance, participant context, specialist qualification, and staffing context | Claim/evidence register |
+| F3 Velocity / motion | NOT_USED | No motion claim is required for this supplied-record recommendation | NONE |
+| F4 Absence + memory | USED | Expected baseline is a complete four-week attendance view; an absent denominator is a data gap, not zero demand | Gap record |
+| F5 Structured patterns | USED | Compare session, day, time, accessibility condition, staffing capacity, and stated request; mark fields not comparable | Comparison matrix |
+| F6 Learning loop | NOT_USED | No pilot or later outcome is authorized within this fixture | NONE |
 
 ## Comparison fixture
 
@@ -74,25 +76,12 @@ These rows are fixtures, not observations from an actual program.
 - Escalation: program owner decides whether to authorize a pilot and any new
   collection.
 
-## Outcome plan if separately authorized
-
-Before a pilot, record:
-
-- expected attendance range and how it is measured;
-- staff hours and cancellation threshold;
-- accessibility issue review;
-- decision window and comparison to the existing session;
-- what would lead to stop, continue, or revise.
-
-Afterward, preserve the original expectation and compare the observed outcome.
-An outcome could motivate a bounded update to scheduling criteria; it would not
-prove the general framework or rewrite the original evidence.
-
 ## Why this case is useful
 
 It demonstrates that a repeated request can be salient without becoming
 independent corroboration, that a specialist note can qualify rather than
 decide, that a staffing possibility is not permission, and that the missing
 baseline matters. It also shows a case where the lightweight route may be
-enough; a full system would be disproportionate until a pilot is actually
-authorized.
+enough: F3 and F6 remain inactive and produce no artifacts. A full system would
+be disproportionate until a materially different, separately authorized task
+actually needs those families.

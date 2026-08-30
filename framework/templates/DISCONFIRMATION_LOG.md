@@ -10,11 +10,11 @@
 
 ## Challenge attempts
 
-| Attempt | Route / query | Target | Result | Relation to leading interpretation | Cost | Remaining uncertainty |
-| --- | --- | --- | --- | --- | --- | --- |
-| D-001 |  | strongest contrary source |  | SUPPORTS / CONTRADICTS / QUALIFIES / UNKNOWN |  |  |
-| D-002 |  | missing perspective or expected field |  | SUPPORTS / CONTRADICTS / QUALIFIES / UNKNOWN |  |  |
-| D-003 |  | alternative explanation, measurement change, or common origin |  | SUPPORTS / CONTRADICTS / QUALIFIES / UNKNOWN |  |  |
+| Attempt | Route / query | Target | Evidence or attempt-receipt IDs | Result | Relation to leading interpretation | Cost | Remaining uncertainty |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| D-001 |  | strongest contrary source |  |  | SUPPORTS / CONTRADICTS / QUALIFIES / UNKNOWN |  |  |
+| D-002 |  | missing perspective or expected field |  |  | SUPPORTS / CONTRADICTS / QUALIFIES / UNKNOWN |  |  |
+| D-003 |  | alternative explanation, measurement change, or common origin |  |  | SUPPORTS / CONTRADICTS / QUALIFIES / UNKNOWN |  |  |
 
 ## Decision after challenge
 

@@ -14,6 +14,26 @@ not to add generic research ceremony. Leave a concise receipt that a reviewer
 can inspect. Keep observations, interpretations, permissions, dispositions,
 and actions separate.
 
+0. STAGE 0 — EVIDENCE-SELECTION GATE
+   Ask: Must I select, acquire, compare, preserve, or weigh information beyond
+   the user-supplied material?
+
+   If NO, perform only the reversible supplied-material transformation and
+   return:
+   ORDINARY_RECORD:
+   - supplied_scope:
+   - assumptions:
+   - unchecked_boundaries:
+   - output:
+
+   Then stop. Do not continue to FRAME and do not create evidence, route, stop,
+   outcome, learning, or six-family records. If permission must be resolved, an
+   external claim must be judged, memory may influence the output, or the task
+   needs new acquisition or comparison, the answer to Stage 0 is YES.
+
+   If YES, continue below and use only the records justified by consequence,
+   uncertainty, repetition, and cost.
+
 1. FRAME
    Write:
    - decision/question:
@@ -37,10 +57,11 @@ and actions separate.
    - privacy and retention:
    - reviewer attention:
    - no-action boundary:
-   If permission is absent or unclear for a consequential operation, do not
-   acquire or disclose. Record NOT_AUTHORIZED when permission is absent or
-   revoked; preserve UNKNOWN when permission has not been established; then
-   escalate. Do not collapse those states.
+   If permission is absent, unclear, or revoked for a consequential operation,
+   do not acquire or disclose. Preserve the exact permission state:
+   AUTHORIZED, UNKNOWN, NOT_AUTHORIZED, or REVOKED. Give UNKNOWN,
+   NOT_AUTHORIZED, and REVOKED distinct reasons and conditions for resuming;
+   do not collapse them.
 
 3. DEFAULT AND PERIPHERAL ROUTE
    Record the default query, source set, vocabulary, time window, or product
@@ -108,7 +129,8 @@ and actions separate.
     Record LEARNING_PLANNED, LEARNING_PENDING_OUTCOME, LEARNING_REVIEWED, or
     LEARNING_NOT_APPLICABLE separately from route and stop status.
 
-Return:
+Return only the warranted entries below. For an inactive family, give at most
+one concise skip reason and create no placeholder family artifact:
 DECISION_BRIEF:
 ACQUISITION_RECEIPTS:
 EVIDENCE_REGISTER:
@@ -122,7 +144,3 @@ LEARNING_STATUS_AND_OUTCOME_PLAN:
 HUMAN_AUTHORITY_REQUIRED:
 RESIDUAL_RISKS:
 ~~~
-
-If the task is a simple transformation of supplied content, say:
-ORDINARY_PATH — no new evidence acquisition, comparison, memory reuse, or
-influence decision was required.

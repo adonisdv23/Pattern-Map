@@ -1,15 +1,15 @@
 {
-  "receipt_id": "DR-BLOCK-001",
+  "receipt_id": "DR-REVOKED-001",
   "operating_level": "MODERATE",
   "evidence_selection": "NEEDED",
   "consequence": "HIGH",
   "permission": {
     "technical_access": "AVAILABLE",
-    "state": "NOT_AUTHORIZED",
-    "scope": "No acquisition, transformation, retention, or disclosure is authorized.",
-    "reason_code": "PERMISSION_ABSENT",
-    "reason": "The named authority did not authorize this operation.",
-    "resume_condition": "Resume only after the named authority records purpose-limited authorization."
+    "state": "REVOKED",
+    "scope": "The prior acquisition and reuse scope no longer applies.",
+    "reason_code": "PERMISSION_REVOKED",
+    "reason": "The named authority revoked the previous authorization before this receipt.",
+    "resume_condition": "Do not reuse the prior material; resume only under a new purpose-limited authorization."
   },
   "budget": {
     "remaining_minutes": 15,
@@ -29,10 +29,10 @@
     "selected_items": [],
     "withheld_items": []
   },
-  "route": "ESCALATE",
+  "route": "REFUSE",
   "stop_status": "STOPPED_OTHER",
-  "stop_reason": "Permission is absent; technical access is not authorization.",
-  "uncertainty": ["NOT_AUTHORIZED"],
+  "stop_reason": "Permission was revoked; prior material was not reused or disclosed.",
+  "uncertainty": ["REVOKED"],
   "outcome": {
     "applicable": false,
     "learning_status": "LEARNING_NOT_APPLICABLE"

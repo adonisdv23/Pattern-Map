@@ -6,6 +6,7 @@ that every task needs every field.
 
 | Template | Use |
 | --- | --- |
+| ORDINARY_RECORD.md | End a genuine Stage-0 supplied-material transformation without layered ceremony |
 | DECISION_BRIEF.md | Define the real decision, authority, baseline, budget, and outcome |
 | ACQUISITION_RECEIPT.md | Record an authorized search, capture, failure, or stop |
 | EVIDENCE_REGISTER.md | Link claims to exact evidence while keeping source roles distinct |
@@ -13,9 +14,12 @@ that every task needs every field.
 | DISCONFIRMATION_LOG.md | Challenge a leading interpretation and preserve unresolved states |
 | INFLUENCE_RECEIPT.md | Record what shaped the answer and what was withheld |
 | OUTCOME_REVIEW.md | Compare expectation with later outcome and propose a bounded update |
+| MEMORY_RECORD.md | Preserve a scoped prior version and append a correction or supersession without overwrite |
 
 For a low-stakes task that passes Stage 0 into a layered route, DECISION_BRIEF,
 EVIDENCE_REGISTER, DISCONFIRMATION_LOG, and INFLUENCE_RECEIPT are usually
-enough. A genuinely ordinary supplied-material task may need only a minimal
-decision receipt naming its assumptions and unchecked boundaries. For repeated
-or consequential work, retain all templates with stable IDs and version links.
+enough. A genuinely ordinary supplied-material task uses only ORDINARY_RECORD
+and stops before the layered route. Add MEMORY_RECORD only when scoped prior
+material is actually used. For repeated or consequential work, retain the
+needed templates with stable IDs and version links; do not copy every template
+merely because it exists.

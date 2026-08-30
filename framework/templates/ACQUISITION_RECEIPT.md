@@ -24,7 +24,9 @@ One receipt records one route, query, capture attempt, or bounded stop.
 ## Permission
 
 - Technical access:
-- Operational authorization:
+- Permission state: AUTHORIZED / UNKNOWN / NOT_AUTHORIZED / REVOKED
+- Permission reason:
+- Resume condition if unresolved, absent, or revoked:
 - Sensitive or paid material involved:
 - Retention and disclosure allowed:
 - Human approval required:
@@ -32,7 +34,8 @@ One receipt records one route, query, capture attempt, or bounded stop.
 
 ## Result
 
-- Capture status: CAPTURED / PARTIAL / NOT_FOUND / FAILED / NOT_AUTHORIZED
+- Capture status: CAPTURED / PARTIAL / NOT_FOUND / FAILED / NOT_AUTHORIZED /
+  PERMISSION_UNKNOWN / PERMISSION_REVOKED
 - Stop status: CONTINUE / COMPLETE / STOPPED_BUDGET / STOPPED_DEADLINE /
   STOPPED_OTHER
 - Source ID:

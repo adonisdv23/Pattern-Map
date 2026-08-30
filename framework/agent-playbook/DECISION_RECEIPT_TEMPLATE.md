@@ -1,7 +1,10 @@
-# Decision receipt template
+# Layered decision receipt template
 
 Use this after the preflight and again when the answer or route is complete.
 It is a compact audit trail, not a claim that the answer is correct.
+A Stage-0 ordinary transformation does not use this receipt. Use
+[`../templates/ORDINARY_RECORD.md`](../templates/ORDINARY_RECORD.md) and stop
+before route, stop, outcome, learning, or family records.
 
 ## Header
 
@@ -10,7 +13,7 @@ It is a compact audit trail, not a claim that the answer is correct.
 - Receipt version:
 - Started / ended:
 - Operator / agent:
-- Operating level: ORDINARY / LIGHTWEIGHT / MODERATE / ADVANCED
+- Operating level: LIGHTWEIGHT / MODERATE / ADVANCED
 - Reviewer / authority:
 
 ## Decision and consequence
@@ -25,13 +28,17 @@ It is a compact audit trail, not a claim that the answer is correct.
 
 ## Permission
 
-| Operation | Technical access | Operational authorization | Retention / disclosure | Result |
+| Operation | Technical access | Permission state | Scope | Reason / resume condition |
 | --- | --- | --- | --- | --- |
 | Acquire |  |  |  |  |
 | Transform |  |  |  |  |
 | Retain / memory |  |  |  |  |
 | Disclose |  |  |  |  |
 | Act |  |  |  |  |
+
+Use exactly `AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED` for
+permission state. Unknown, absent/denied, and revoked permission have different
+reasons and resume conditions; none may appear in selected influence.
 
 ## Cost and stop envelope
 
@@ -56,6 +63,9 @@ It is a compact audit trail, not a claim that the answer is correct.
 | F5 Structured patterns |  |  |  | Comparison and unknown relations |
 | F6 Learning loop |  |  |  | Outcome update proposed, history preserved |
 
+An inactive family receives one concise skip reason and no artifact. The table
+is a proportionality record, not a requirement to activate all six families.
+
 ## Evidence and comparison
 
 - Default path:
@@ -71,6 +81,11 @@ It is a compact audit trail, not a claim that the answer is correct.
 - Memory links:
 - Disconfirmation log:
 - Typed uncertainty:
+
+Every baseline, comparison, disconfirmation, influence, and memory ID named in
+this receipt must resolve to a substantive preserved record. Empty status
+booleans and dangling IDs do not establish that a check occurred. When memory
+is material, use the append-only [memory record](../templates/MEMORY_RECORD.md).
 
 ## Route
 

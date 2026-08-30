@@ -16,7 +16,7 @@ comparison, permission, uncertainty, or influence needs to be inspectable.
 | What is missing? | Fills gaps or ignores them | States the expected baseline and classifies missing, failed, unavailable, or unauthorized |
 | What is changing? | Calls a salient difference a trend | Requires comparable time points and a baseline before calling motion |
 | How is uncertainty handled? | Uses broad confidence language | Uses typed unknown, contested, stale, insufficient, or incomparable states |
-| When does work stop? | Stops when the answer sounds plausible or the prompt is complete | Uses cost, permission, consequence, and stop rules; records remaining uncertainty |
+| When does work stop? | A supplied-material transformation ends after its minimal ordinary record | Uses cost, permission, consequence, and stop rules; records remaining uncertainty |
 | What influences the answer? | Sources appear near the prompt without a selection record | Selected and withheld material, reasons, and disclosure boundary are recorded |
 | What happens later? | A later outcome may rewrite the story | Original receipt stays intact; a bounded update is proposed and dispositioned |
 
@@ -26,10 +26,16 @@ Question: “Turn this supplied meeting note into a three-paragraph summary.”
 
 Ordinary path is appropriate. No new evidence is acquired, no external claim is
 added, no source comparison is required, and correction is easy. The receipt
-can say:
+contains only:
 
-ORDINARY_PATH — supplied text only; no new acquisition, comparison, memory
-reuse, permission decision, or external action.
+- supplied scope: summarize the attached meeting note into three paragraphs;
+- assumptions: preserve the note's stated meaning without fact-checking it;
+- unchecked boundaries: no external claims, sources, or prior memory checked;
+- output: the requested three-paragraph summary.
+
+It has no evidence, route, stop, outcome, learning, or six-family fields. If a
+permission decision, outside factual judgment, new source, comparison, or
+memory reuse becomes material, the task no longer qualifies as ordinary.
 
 Adding a full graph or research packet here would be over-discrimination.
 
@@ -102,9 +108,11 @@ The agent uses available credentials and sends the result.
 
 The agent distinguishes technical access from authorization to retrieve,
 retain, disclose, and contact an external party. If the permission envelope
-does not explicitly authorize the operations, it records NOT_AUTHORIZED,
-REFUSES acquisition and disclosure, and escalates to the named human authority.
-No polished recommendation creates permission.
+does not explicitly authorize the operations, it preserves the exact state:
+UNKNOWN if permission has not been established, NOT_AUTHORIZED if it is absent
+or denied, and REVOKED if a prior authorization no longer applies. It refuses
+acquisition and disclosure and escalates with the state-specific resume
+condition. No polished recommendation creates permission.
 
 ## Reading the difference
 

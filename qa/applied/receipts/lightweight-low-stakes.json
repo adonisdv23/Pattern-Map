@@ -4,31 +4,60 @@
   "evidence_selection": "NEEDED",
   "consequence": "LOW",
   "permission": {
-    "technical_access": true,
-    "authorized": true,
-    "disclosure_allowed": true
+    "technical_access": "AVAILABLE",
+    "state": "AUTHORIZED",
+    "scope": "Use the two supplied synthetic passages for this bounded contrast.",
+    "reason_code": "AUTHORIZED_FOR_PURPOSE",
+    "reason": "The supplied fixture permits bounded internal transformation and comparison.",
+    "resume_condition": "NOT_APPLICABLE"
   },
   "budget": {
     "remaining_minutes": 2,
     "limit_minutes": 5
   },
-  "baseline": {
-    "present": true,
-    "motion_repeated": false,
-    "absence_expected": false
-  },
-  "comparison": {
-    "done": true,
-    "unit": "supplied-material contrast",
-    "origin_state": "NOT_APPLICABLE"
-  },
-  "disconfirmation": {
-    "attempted": true,
-    "result": "one limiting assumption recorded"
+  "evidence_records": [
+    {
+      "id": "SUPPLIED-001",
+      "exact_pointer": "synthetic://lightweight/input-a#paragraph-1",
+      "claim_ids": ["C-LIGHT-001"],
+      "permission_state": "AUTHORIZED"
+    },
+    {
+      "id": "SUPPLIED-002",
+      "exact_pointer": "synthetic://lightweight/input-b#paragraph-1",
+      "claim_ids": ["C-LIGHT-001"],
+      "permission_state": "AUTHORIZED"
+    }
+  ],
+  "baseline_records": [],
+  "comparison_records": [
+    {
+      "id": "CMP-LIGHT-001",
+      "unit": "supplied-material contrast",
+      "item_ids": ["SUPPLIED-001", "SUPPLIED-002"],
+      "alignment_boundary": "Only the two supplied synthetic passages are aligned.",
+      "result": "The passages use different scope assumptions.",
+      "origin_state": "NOT_APPLICABLE"
+    }
+  ],
+  "disconfirmation_records": [
+    {
+      "id": "D-LIGHT-001",
+      "route_or_query": "Inspect both supplied passages for a limiting assumption.",
+      "target": "A scope condition that prevents a categorical answer.",
+      "result": "SUPPLIED-002 contains the limiting scope condition.",
+      "residual_uncertainty": "No outside evidence was checked.",
+      "evidence_ids": ["SUPPLIED-002"]
+    }
+  ],
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
   },
   "influence": {
     "recorded": true,
-    "selected_items": ["SUPPLIED-001"],
+    "selected_items": ["SUPPLIED-001", "SUPPLIED-002"],
     "withheld_items": []
   },
   "route": "ANSWER_PROVISIONALLY",

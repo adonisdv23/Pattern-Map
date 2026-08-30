@@ -1,0 +1,102 @@
+{
+  "receipt_id": "DR-MEMORY-001",
+  "fixture_status": "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+  "operating_level": "MODERATE",
+  "evidence_selection": "NEEDED",
+  "consequence": "MEDIUM",
+  "permission": {
+    "technical_access": "AVAILABLE",
+    "state": "AUTHORIZED",
+    "scope": "Reuse the named synthetic memory correction for this internal fixture answer.",
+    "reason_code": "AUTHORIZED_FOR_PURPOSE",
+    "reason": "The fixture grants purpose-limited reuse of both preserved versions.",
+    "resume_condition": "NOT_APPLICABLE"
+  },
+  "budget": {
+    "remaining_minutes": 5,
+    "limit_minutes": 10
+  },
+  "evidence_records": [
+    {
+      "id": "E-020",
+      "exact_pointer": "synthetic://memory/original#statement",
+      "claim_ids": ["C-MEM-001"],
+      "permission_state": "AUTHORIZED"
+    },
+    {
+      "id": "E-021",
+      "exact_pointer": "synthetic://memory/correction#statement",
+      "claim_ids": ["C-MEM-001"],
+      "permission_state": "AUTHORIZED"
+    }
+  ],
+  "baseline_records": [],
+  "comparison_records": [
+    {
+      "id": "CMP-MEM-001",
+      "unit": "version",
+      "item_ids": ["E-020", "E-021"],
+      "alignment_boundary": "The same synthetic claim across original and corrected records.",
+      "result": "The correction narrows the original statement and preserves both versions.",
+      "origin_state": "RELATED"
+    }
+  ],
+  "disconfirmation_records": [
+    {
+      "id": "D-MEM-001",
+      "route_or_query": "Compare the correction source against the original memory statement.",
+      "target": "A conflict that prevents reuse of the original wording.",
+      "result": "E-021 contradicts the broad wording preserved in E-020.",
+      "residual_uncertainty": "The synthetic correction has not been externally validated.",
+      "evidence_ids": ["E-020", "E-021"]
+    }
+  ],
+  "memory_records": [
+    {
+      "id": "M-001",
+      "version": 1,
+      "source_scope": "Synthetic internal claim C-MEM-001 at original capture.",
+      "content_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "source_evidence_ids": ["E-020"],
+      "permission_state": "AUTHORIZED",
+      "reuse_scope": "Internal fixture reasoning for C-MEM-001 only.",
+      "status": "SUPERSEDED",
+      "supersedes": null,
+      "corrects": null,
+      "prior_content_digest": null,
+      "correction_reason": null
+    },
+    {
+      "id": "M-002",
+      "version": 2,
+      "source_scope": "Synthetic internal claim C-MEM-001 after correction.",
+      "content_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "source_evidence_ids": ["E-021"],
+      "permission_state": "AUTHORIZED",
+      "reuse_scope": "Internal fixture reasoning for C-MEM-001 only.",
+      "status": "CURRENT",
+      "supersedes": "M-001",
+      "corrects": "M-001",
+      "prior_content_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "correction_reason": "The correction source narrows the original statement.",
+      "human_disposition": "ACCEPTED"
+    }
+  ],
+  "memory_use": {
+    "status": "USED",
+    "record_ids": ["M-002"]
+  },
+  "influence": {
+    "recorded": true,
+    "selected_items": ["M-002"],
+    "withheld_items": ["M-001"]
+  },
+  "route": "ANSWER_PROVISIONALLY",
+  "stop_status": "COMPLETE",
+  "stop_reason": "The corrected synthetic memory is used within scope; external truth remains untested.",
+  "uncertainty": ["synthetic correction not externally validated"],
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}

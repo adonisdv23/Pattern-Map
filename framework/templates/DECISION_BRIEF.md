@@ -24,7 +24,7 @@ Status: fill before nontrivial acquisition or enrichment.
 
 ## Permission envelope
 
-| Operation | Technically possible? | Authorized? | Scope / condition | Retention / disclosure limit |
+| Operation | Technical access | Permission state | Scope / condition | Reason / resume condition |
 | --- | --- | --- | --- | --- |
 | Read supplied material |  |  |  |  |
 | Acquire public material |  |  |  |  |
@@ -34,8 +34,11 @@ Status: fill before nontrivial acquisition or enrichment.
 | Disclose in answer or packet |  |  |  |  |
 | Act on an external system or person |  |  |  |  |
 
-Technical access is not permission. Unknown permission routes to HOLD or
-ESCALATE for consequential work.
+Technical access is not permission. Use `AUTHORIZED`, `UNKNOWN`,
+`NOT_AUTHORIZED`, or `REVOKED`; do not collapse an unestablished permission, an
+absent/denied permission, and a revoked prior permission. Every blocked state
+needs its own reason and resume condition. Unknown, absent, or revoked
+permission routes to HOLD or ESCALATE for consequential work.
 
 ## Baseline and expected coverage
 

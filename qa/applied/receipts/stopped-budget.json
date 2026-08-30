@@ -4,27 +4,65 @@
   "evidence_selection": "NEEDED",
   "consequence": "MEDIUM",
   "permission": {
-    "technical_access": true,
-    "authorized": true,
-    "disclosure_allowed": true
+    "technical_access": "AVAILABLE",
+    "state": "AUTHORIZED",
+    "scope": "Use the named synthetic records within the ten-minute fixture budget.",
+    "reason_code": "AUTHORIZED_FOR_PURPOSE",
+    "reason": "The fixture grants bounded internal use only.",
+    "resume_condition": "NOT_APPLICABLE"
   },
   "budget": {
     "remaining_minutes": 0,
     "limit_minutes": 10
   },
-  "baseline": {
-    "present": true,
-    "motion_repeated": false,
-    "absence_expected": true
-  },
-  "comparison": {
-    "done": true,
-    "unit": "period",
-    "origin_state": "UNKNOWN"
-  },
-  "disconfirmation": {
-    "attempted": true,
-    "result": "one limiting route checked"
+  "evidence_records": [
+    {
+      "id": "E-010",
+      "exact_pointer": "synthetic://budget/period-1#claim",
+      "claim_ids": ["C-BUDGET-001"],
+      "permission_state": "AUTHORIZED"
+    },
+    {
+      "id": "E-011",
+      "exact_pointer": "synthetic://budget/limitation#missing-field",
+      "claim_ids": ["C-BUDGET-001"],
+      "permission_state": "AUTHORIZED"
+    }
+  ],
+  "baseline_records": [
+    {
+      "id": "B-010",
+      "basis": "The fixture expects the same field in both declared periods.",
+      "observation_boundary": "Two supplied synthetic period records; capture stopped at the budget.",
+      "evidence_ids": ["E-010", "E-011"],
+      "motion_timepoints": 1,
+      "absence_expected": true
+    }
+  ],
+  "comparison_records": [
+    {
+      "id": "CMP-010",
+      "unit": "period",
+      "item_ids": ["E-010", "E-011"],
+      "alignment_boundary": "The same declared field across two supplied periods.",
+      "result": "The second-period field remains unresolved after capture failure.",
+      "origin_state": "UNKNOWN"
+    }
+  ],
+  "disconfirmation_records": [
+    {
+      "id": "D-010",
+      "route_or_query": "Inspect the supplied limitation record for an alternate explanation.",
+      "target": "Capture failure rather than true absence.",
+      "result": "E-011 records a failed capture, so no absence conclusion is available.",
+      "residual_uncertainty": "The expected field remains unobserved within the budget.",
+      "evidence_ids": ["E-011"]
+    }
+  ],
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
   },
   "influence": {
     "recorded": true,

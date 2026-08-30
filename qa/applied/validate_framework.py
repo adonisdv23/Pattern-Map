@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import copy
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -147,12 +148,14 @@ def validate_artifact_inventory() -> None:
         "framework/OPERATOR_PLAYBOOK.md",
         "framework/BOUNDARIES_AND_FAILURES.md",
         "framework/templates/DECISION_BRIEF.md",
+        "framework/templates/ORDINARY_RECORD.md",
         "framework/templates/ACQUISITION_RECEIPT.md",
         "framework/templates/EVIDENCE_REGISTER.md",
         "framework/templates/COMPARISON_MATRIX.md",
         "framework/templates/DISCONFIRMATION_LOG.md",
         "framework/templates/INFLUENCE_RECEIPT.md",
         "framework/templates/OUTCOME_REVIEW.md",
+        "framework/templates/MEMORY_RECORD.md",
         "framework/agent-playbook/QUICKSTART.md",
         "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
         "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
@@ -314,21 +317,107 @@ def validate_artifact_inventory() -> None:
             "preflight receipt does not preserve status evidence and N/A reasons")
     require("NOT_AUTHORIZED_OR_AMBIGUOUS" not in preflight,
             "preflight collapses absent permission and unknown permission")
-    require("record `not_authorized`" in preflight.lower()
-            and "record `unknown`" in preflight.lower(),
-            "preflight does not preserve distinct permission stop states")
+    for state in ("`NOT_AUTHORIZED`", "`UNKNOWN`", "`REVOKED`"):
+        require(state in preflight,
+                f"preflight does not preserve typed permission stop state {state}")
 
     require("preserve UNKNOWN and escalate" in quickstart,
             "Quickstart collapses unknown permission into NOT_AUTHORIZED")
     copyable_brief = read_text("framework/agent-playbook/COPYABLE_AGENT_BRIEF.md")
-    require("preserve UNKNOWN when permission has not been established" in copyable_brief,
-            "copyable brief collapses unknown permission into NOT_AUTHORIZED")
+    for state in ("AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"):
+        require(state in copyable_brief,
+                f"copyable brief omits typed permission state {state}")
+
+    fence_parts = copyable_brief.split("~~~text", 1)
+    require(len(fence_parts) == 2 and "~~~" in fence_parts[1],
+            "copyable brief is missing its advertised fenced prompt")
+    copied_prompt = fence_parts[1].split("~~~", 1)[0]
+    require("0. STAGE 0" in copied_prompt,
+            "Stage 0 is outside the copied prompt")
+    require(copied_prompt.index("0. STAGE 0") < copied_prompt.index("1. FRAME"),
+            "Stage 0 must occur before FRAME in the copied prompt")
+    for field in ("supplied_scope:", "assumptions:",
+                  "unchecked_boundaries:", "output:"):
+        require(field in copied_prompt,
+                f"copied ordinary record is missing {field}")
+    for phrase in ("Then stop", "Do not continue to FRAME",
+                   "do not create evidence, route, stop"):
+        require(phrase.lower() in copied_prompt.lower(),
+                f"copied Stage 0 lacks terminal boundary: {phrase}")
+
+    require("| Low consequence, reversible, supplied material only | ORDINARY_PATH | ANSWER |"
+            not in preflight,
+            "preflight still converts the ordinary terminal record into ANSWER")
+
+    ordinary_template = read_text("framework/templates/ORDINARY_RECORD.md")
+    for field in ("Supplied scope", "Material assumptions",
+                  "Unchecked boundaries", "Output"):
+        require(field in ordinary_template,
+                f"ordinary template is missing {field}")
+    for forbidden in ("Route:", "Stop status:", "Learning status:",
+                      "Family record", "Evidence register"):
+        require(forbidden not in ordinary_template,
+                f"ordinary template contains layered field {forbidden}")
+
+    for relative in (
+        "framework/templates/DECISION_BRIEF.md",
+        "framework/templates/ACQUISITION_RECEIPT.md",
+        "framework/templates/EVIDENCE_REGISTER.md",
+        "framework/templates/INFLUENCE_RECEIPT.md",
+        "framework/templates/MEMORY_RECORD.md",
+        "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
+    ):
+        content = read_text(relative)
+        for state in PERMISSION_STATES:
+            require(state in content,
+                    f"{relative} omits typed permission state {state}")
+
+    general_case = read_text("cases/general-research/README.md")
+    for family in ("F3 Velocity / motion", "F6 Learning loop"):
+        row = next((line for line in general_case.splitlines()
+                    if line.startswith(f"| {family} |")), "")
+        require("| NOT_USED |" in row and row.rstrip().endswith("| NONE |"),
+                f"general-research fixture does not keep {family} inactive without an artifact")
+    require(general_case.count("| NOT_USED |") >= 2,
+            "general-research fixture must leave at least two families inactive")
 
     for relative in ("cases/general-research/README.md", "cases/product-and-process/README.md"):
         case = read_text(relative).lower()
         require("illustrative fixture" in case, f"{relative} is not marked as a fixture")
         require("not empirical" in case, f"{relative} lacks non-empirical boundary")
         require("human" in case and "permission" in case, f"{relative} lacks human/permission boundary")
+
+
+PERMISSION_STATES = {"AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"}
+PERMISSION_REASON_CODES = {
+    "AUTHORIZED": "AUTHORIZED_FOR_PURPOSE",
+    "UNKNOWN": "PERMISSION_NOT_ESTABLISHED",
+    "NOT_AUTHORIZED": "PERMISSION_ABSENT",
+    "REVOKED": "PERMISSION_REVOKED",
+}
+ROUTES = {
+    "ACQUIRE", "COMPARE", "CLARIFY", "ANSWER", "ANSWER_PROVISIONALLY",
+    "HOLD", "DEFER", "ESCALATE", "REFUSE",
+}
+STOP_STATUSES = {
+    "CONTINUE", "COMPLETE", "STOPPED_BUDGET", "STOPPED_DEADLINE",
+    "STOPPED_OTHER",
+}
+
+
+def nonempty(value: object) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def require_string(value: object, message: str) -> None:
+    require(nonempty(value), message)
+
+
+def require_string_list(value: object, message: str, *, allow_empty: bool = False) -> None:
+    require(isinstance(value, list), message)
+    if not allow_empty:
+        require(bool(value), message)
+    require(all(nonempty(item) for item in value), message)
 
 
 def validate_outcome(receipt: dict, filename: str) -> None:
@@ -354,11 +443,8 @@ def validate_outcome(receipt: dict, filename: str) -> None:
                     f"{filename}: LEARNING_REVIEWED needs a recorded outcome review")
             observed = outcome.get("observed_outcome")
             missing = outcome.get("missing_outcome_reason")
-            require(
-                (isinstance(observed, str) and bool(observed.strip()))
-                or (isinstance(missing, str) and bool(missing.strip())),
-                f"{filename}: LEARNING_REVIEWED needs an observed or explicitly missing outcome",
-            )
+            require(nonempty(observed) or nonempty(missing),
+                    f"{filename}: LEARNING_REVIEWED needs an observed or explicitly missing outcome")
             require(outcome.get("human_disposition") in {
                         "ACCEPTED", "REJECTED", "DEFERRED", "OVERRIDDEN",
                         "REQUEST_ENRICHMENT"},
@@ -368,99 +454,310 @@ def validate_outcome(receipt: dict, filename: str) -> None:
                 f"{filename}: non-applicable outcome must say LEARNING_NOT_APPLICABLE")
 
 
-def validate_receipt(receipt: dict, filename: str) -> None:
+def validate_ordinary_record(record: dict, filename: str) -> None:
+    allowed = {"supplied_scope", "assumptions", "unchecked_boundaries", "output"}
+    require(set(record) == allowed,
+            f"{filename}: ordinary record must contain only supplied scope, assumptions, unchecked boundaries, and output")
+    scope = record["supplied_scope"]
+    require(isinstance(scope, dict) and set(scope) == {"instruction", "input_refs"},
+            f"{filename}: supplied scope must contain instruction and input_refs only")
+    require_string(scope["instruction"], f"{filename}: supplied instruction is empty")
+    require_string_list(scope["input_refs"], f"{filename}: supplied input refs are empty")
+    require_string_list(record["assumptions"], f"{filename}: assumptions must be explicit")
+    require_string_list(record["unchecked_boundaries"],
+                        f"{filename}: unchecked boundaries must be explicit")
+    output = record["output"]
+    require(isinstance(output, dict) and set(output) == {"output_ref", "description"},
+            f"{filename}: ordinary output must contain output_ref and description only")
+    require_string(output["output_ref"], f"{filename}: output ref is empty")
+    require_string(output["description"], f"{filename}: output description is empty")
+
+
+def validate_permission(permission: object, filename: str) -> str:
+    required = {
+        "technical_access", "state", "scope", "reason_code", "reason",
+        "resume_condition",
+    }
+    require(isinstance(permission, dict) and required <= set(permission),
+            f"{filename}: permission record is incomplete")
+    require(permission["technical_access"] in {"AVAILABLE", "UNAVAILABLE", "UNKNOWN"},
+            f"{filename}: technical access must be typed")
+    state = permission["state"]
+    require(state in PERMISSION_STATES,
+            f"{filename}: permission state must preserve AUTHORIZED/UNKNOWN/NOT_AUTHORIZED/REVOKED")
+    require(permission["reason_code"] == PERMISSION_REASON_CODES[state],
+            f"{filename}: permission reason code does not match {state}")
+    for key in ("scope", "reason", "resume_condition"):
+        require_string(permission[key], f"{filename}: permission {key} is empty")
+    if state == "AUTHORIZED":
+        require(permission["resume_condition"] == "NOT_APPLICABLE",
+                f"{filename}: authorized permission must not invent a resume gate")
+    else:
+        require(permission["resume_condition"] != "NOT_APPLICABLE",
+                f"{filename}: blocked permission needs a state-specific resume condition")
+    return state
+
+
+def validate_evidence_records(receipt: dict, filename: str) -> dict[str, dict]:
+    records = receipt.get("evidence_records")
+    require(isinstance(records, list), f"{filename}: evidence_records must be a list")
+    index: dict[str, dict] = {}
+    required = {"id", "exact_pointer", "claim_ids", "permission_state"}
+    for record in records:
+        require(isinstance(record, dict) and required <= set(record),
+                f"{filename}: evidence record is incomplete")
+        record_id = record["id"]
+        require_string(record_id, f"{filename}: evidence ID is empty")
+        require(record_id not in index, f"{filename}: duplicate evidence ID {record_id}")
+        require_string(record["exact_pointer"],
+                       f"{filename}: {record_id} lacks an exact pointer")
+        require_string_list(record["claim_ids"],
+                            f"{filename}: {record_id} lacks claim references")
+        require(record["permission_state"] in PERMISSION_STATES,
+                f"{filename}: {record_id} has an untyped permission state")
+        index[record_id] = record
+    return index
+
+
+def validate_baseline_records(receipt: dict, filename: str,
+                              evidence: dict[str, dict]) -> list[dict]:
+    records = receipt.get("baseline_records")
+    require(isinstance(records, list), f"{filename}: baseline_records must be a list")
+    seen: set[str] = set()
+    required = {
+        "id", "basis", "observation_boundary", "evidence_ids",
+        "motion_timepoints", "absence_expected",
+    }
+    for record in records:
+        require(isinstance(record, dict) and required <= set(record),
+                f"{filename}: baseline record is incomplete")
+        record_id = record["id"]
+        require_string(record_id, f"{filename}: baseline ID is empty")
+        require(record_id not in seen, f"{filename}: duplicate baseline ID {record_id}")
+        seen.add(record_id)
+        require_string(record["basis"], f"{filename}: {record_id} lacks a basis")
+        require_string(record["observation_boundary"],
+                       f"{filename}: {record_id} lacks an observation boundary")
+        require_string_list(record["evidence_ids"],
+                            f"{filename}: {record_id} lacks evidence references")
+        for evidence_id in record["evidence_ids"]:
+            require(evidence_id in evidence,
+                    f"{filename}: {record_id} references missing evidence {evidence_id}")
+            require(evidence[evidence_id]["permission_state"] == "AUTHORIZED",
+                    f"{filename}: {record_id} uses blocked evidence {evidence_id}")
+        require(isinstance(record["motion_timepoints"], int)
+                and record["motion_timepoints"] >= 0,
+                f"{filename}: {record_id} has invalid motion_timepoints")
+        require(isinstance(record["absence_expected"], bool),
+                f"{filename}: {record_id} absence_expected must be boolean")
+    return records
+
+
+def validate_comparison_records(receipt: dict, filename: str,
+                                evidence: dict[str, dict]) -> list[dict]:
+    records = receipt.get("comparison_records")
+    require(isinstance(records, list), f"{filename}: comparison_records must be a list")
+    seen: set[str] = set()
+    required = {
+        "id", "unit", "item_ids", "alignment_boundary", "result",
+        "origin_state",
+    }
+    origin_states = {"INDEPENDENT", "RELATED", "COMMON_ORIGIN", "UNKNOWN", "NOT_APPLICABLE"}
+    for record in records:
+        require(isinstance(record, dict) and required <= set(record),
+                f"{filename}: comparison record is incomplete")
+        record_id = record["id"]
+        require_string(record_id, f"{filename}: comparison ID is empty")
+        require(record_id not in seen, f"{filename}: duplicate comparison ID {record_id}")
+        seen.add(record_id)
+        for key in ("unit", "alignment_boundary", "result"):
+            require_string(record[key], f"{filename}: {record_id} has empty {key}")
+        require_string_list(record["item_ids"],
+                            f"{filename}: {record_id} needs comparison items")
+        require(len(set(record["item_ids"])) >= 2,
+                f"{filename}: {record_id} needs at least two distinct items")
+        for item_id in record["item_ids"]:
+            require(item_id in evidence,
+                    f"{filename}: {record_id} references missing item {item_id}")
+            require(evidence[item_id]["permission_state"] == "AUTHORIZED",
+                    f"{filename}: {record_id} compares blocked item {item_id}")
+        require(record["origin_state"] in origin_states,
+                f"{filename}: {record_id} has a noncanonical origin state")
+    return records
+
+
+def validate_disconfirmation_records(receipt: dict, filename: str,
+                                     evidence: dict[str, dict]) -> list[dict]:
+    records = receipt.get("disconfirmation_records")
+    require(isinstance(records, list),
+            f"{filename}: disconfirmation_records must be a list")
+    seen: set[str] = set()
+    required = {
+        "id", "route_or_query", "target", "result", "residual_uncertainty",
+        "evidence_ids",
+    }
+    for record in records:
+        require(isinstance(record, dict) and required <= set(record),
+                f"{filename}: disconfirmation record is incomplete")
+        record_id = record["id"]
+        require_string(record_id, f"{filename}: disconfirmation ID is empty")
+        require(record_id not in seen,
+                f"{filename}: duplicate disconfirmation ID {record_id}")
+        seen.add(record_id)
+        for key in ("route_or_query", "target", "result", "residual_uncertainty"):
+            require_string(record[key], f"{filename}: {record_id} has empty {key}")
+        require_string_list(record["evidence_ids"],
+                            f"{filename}: {record_id} lacks resolvable evidence references")
+        for evidence_id in record["evidence_ids"]:
+            require(evidence_id in evidence,
+                    f"{filename}: {record_id} references missing evidence {evidence_id}")
+            require(evidence[evidence_id]["permission_state"] == "AUTHORIZED",
+                    f"{filename}: {record_id} uses blocked evidence {evidence_id}")
+    return records
+
+
+def validate_memory_records(receipt: dict, filename: str,
+                            evidence: dict[str, dict]) -> dict[str, dict]:
+    records = receipt.get("memory_records")
+    require(isinstance(records, list), f"{filename}: memory_records must be a list")
+    index: dict[str, dict] = {}
+    required = {
+        "id", "version", "source_scope", "content_digest",
+        "source_evidence_ids", "permission_state", "reuse_scope", "status",
+        "supersedes", "corrects", "prior_content_digest", "correction_reason",
+    }
+    digest_pattern = re.compile(r"^sha256:[0-9a-f]{64}$")
+    for record in records:
+        require(isinstance(record, dict) and required <= set(record),
+                f"{filename}: memory record is incomplete")
+        record_id = record["id"]
+        require_string(record_id, f"{filename}: memory ID is empty")
+        require(record_id not in index, f"{filename}: duplicate memory ID {record_id}")
+        require(isinstance(record["version"], int) and record["version"] >= 1,
+                f"{filename}: {record_id} has invalid version")
+        require_string(record["source_scope"],
+                       f"{filename}: {record_id} lacks source scope")
+        require(isinstance(record["content_digest"], str)
+                and digest_pattern.fullmatch(record["content_digest"]) is not None,
+                f"{filename}: {record_id} lacks a canonical content digest")
+        require_string_list(record["source_evidence_ids"],
+                            f"{filename}: {record_id} lacks source evidence")
+        for evidence_id in record["source_evidence_ids"]:
+            require(evidence_id in evidence,
+                    f"{filename}: {record_id} references missing source evidence {evidence_id}")
+            require(evidence[evidence_id]["permission_state"] == "AUTHORIZED",
+                    f"{filename}: {record_id} derives memory from blocked evidence {evidence_id}")
+        require(record["permission_state"] in PERMISSION_STATES,
+                f"{filename}: {record_id} has untyped permission")
+        require_string(record["reuse_scope"],
+                       f"{filename}: {record_id} lacks a reuse scope")
+        require(record["status"] in {"CURRENT", "SUPERSEDED"},
+                f"{filename}: {record_id} has invalid status")
+        index[record_id] = record
+
+    for record_id, record in index.items():
+        link_values = (record["supersedes"], record["corrects"])
+        if link_values == (None, None):
+            require(record["prior_content_digest"] is None
+                    and record["correction_reason"] is None,
+                    f"{filename}: original {record_id} invents correction metadata")
+            continue
+        require(all(nonempty(value) for value in link_values)
+                and record["supersedes"] == record["corrects"],
+                f"{filename}: {record_id} must link the same preserved correction target")
+        target_id = record["supersedes"]
+        require(target_id in index,
+                f"{filename}: {record_id} references missing prior memory {target_id}")
+        target = index[target_id]
+        require(record["version"] > target["version"],
+                f"{filename}: {record_id} does not advance the prior version")
+        require(record["prior_content_digest"] == target["content_digest"],
+                f"{filename}: {record_id} prior digest does not match preserved {target_id}")
+        require_string(record["correction_reason"],
+                       f"{filename}: {record_id} lacks a correction reason")
+        require(record["status"] == "CURRENT" and target["status"] == "SUPERSEDED",
+                f"{filename}: correction must append CURRENT and preserve SUPERSEDED records")
+    return index
+
+
+def validate_layered_receipt(receipt: dict, filename: str) -> None:
     common_required = {
-        "receipt_id",
-        "operating_level",
-        "evidence_selection",
-        "consequence",
-        "permission",
-        "budget",
-        "route",
-        "stop_status",
-        "stop_reason",
+        "receipt_id", "operating_level", "evidence_selection", "consequence",
+        "permission", "budget", "evidence_records", "baseline_records",
+        "comparison_records", "disconfirmation_records", "memory_records",
+        "memory_use", "influence", "route", "stop_status", "stop_reason",
         "outcome",
     }
-    require(common_required <= set(receipt), f"{filename} is missing common receipt keys")
-    permission = receipt["permission"]
-    budget = receipt["budget"]
-    route = receipt["route"]
-    stop_status = receipt["stop_status"]
-    stop_reason = receipt["stop_reason"].lower()
-
-    routes = {
-        "ACQUIRE",
-        "COMPARE",
-        "CLARIFY",
-        "ANSWER",
-        "ANSWER_PROVISIONALLY",
-        "HOLD",
-        "DEFER",
-        "ESCALATE",
-        "REFUSE",
-    }
-    stop_statuses = {
-        "CONTINUE",
-        "COMPLETE",
-        "STOPPED_BUDGET",
-        "STOPPED_DEADLINE",
-        "STOPPED_OTHER",
-    }
-    require(route in routes, f"{filename}: route is not canonical: {route}")
-    require(stop_status in stop_statuses,
-            f"{filename}: stop status is not canonical: {stop_status}")
-
-    require(isinstance(permission.get("technical_access"), bool),
-            f"{filename}: technical access must be boolean")
-    require(isinstance(permission.get("authorized"), bool),
-            f"{filename}: authorization must be boolean")
-    require(isinstance(budget.get("remaining_minutes"), (int, float)),
-            f"{filename}: remaining budget must be numeric")
+    require(common_required <= set(receipt), f"{filename} is missing layered receipt keys")
+    require(receipt["operating_level"] in {"LIGHTWEIGHT", "MODERATE", "ADVANCED"},
+            f"{filename}: operating level is not canonical")
+    require(receipt["evidence_selection"] == "NEEDED",
+            f"{filename}: layered route must record evidence selection as needed")
     require(receipt["consequence"] in {"LOW", "MEDIUM", "HIGH"},
             f"{filename}: consequence is not canonical")
+    permission_state = validate_permission(receipt["permission"], filename)
+    budget = receipt["budget"]
+    require(isinstance(budget, dict)
+            and isinstance(budget.get("remaining_minutes"), (int, float))
+            and isinstance(budget.get("limit_minutes"), (int, float)),
+            f"{filename}: budget needs numeric remaining and limit minutes")
+    route = receipt["route"]
+    stop_status = receipt["stop_status"]
+    require(route in ROUTES, f"{filename}: route is not canonical: {route}")
+    require(stop_status in STOP_STATUSES,
+            f"{filename}: stop status is not canonical: {stop_status}")
+    require_string(receipt["stop_reason"], f"{filename}: stop reason is empty")
+    stop_reason = receipt["stop_reason"].lower()
     validate_outcome(receipt, filename)
 
-    operating_level = receipt["operating_level"]
-    evidence_selection = receipt["evidence_selection"]
-    if operating_level == "ORDINARY":
-        layered_keys = {"baseline", "comparison", "disconfirmation", "influence"}
-        require(evidence_selection == "NONE",
-                f"{filename}: ordinary path cannot select or acquire evidence")
-        require(receipt["consequence"] == "LOW",
-                f"{filename}: ordinary fixture must be low consequence")
-        require(permission.get("authorized") is True
-                and permission.get("disclosure_allowed") is True,
-                f"{filename}: ordinary supplied-material use must be authorized")
-        require(receipt.get("supplied_material_only") is True,
-                f"{filename}: ordinary path must be supplied-material only")
-        require(receipt.get("external_action") is False,
-                f"{filename}: ordinary path cannot authorize external action")
-        require(route == "ANSWER" and stop_status == "COMPLETE",
-                f"{filename}: ordinary path must end in ANSWER / COMPLETE")
-        require(not (layered_keys & set(receipt)),
-                f"{filename}: ordinary path must not fabricate layered evidence records")
-        require(isinstance(receipt.get("assumptions"), list) and receipt["assumptions"],
-                f"{filename}: ordinary path must name its assumptions")
-        require(isinstance(receipt.get("unchecked_boundaries"), list)
-                and receipt["unchecked_boundaries"],
-                f"{filename}: ordinary path must name what was not checked")
-        return
+    evidence = validate_evidence_records(receipt, filename)
+    baselines = validate_baseline_records(receipt, filename, evidence)
+    comparisons = validate_comparison_records(receipt, filename, evidence)
+    disconfirmations = validate_disconfirmation_records(receipt, filename, evidence)
+    memories = validate_memory_records(receipt, filename, evidence)
 
-    require(operating_level in {"LIGHTWEIGHT", "MODERATE", "ADVANCED"},
-            f"{filename}: operating level is not canonical")
-    require(evidence_selection == "NEEDED",
-            f"{filename}: layered route must record evidence selection as needed")
-    layered_required = {"baseline", "comparison", "disconfirmation", "influence"}
-    require(layered_required <= set(receipt), f"{filename} is missing layered receipt keys")
-    baseline = receipt["baseline"]
-    comparison = receipt["comparison"]
-    disconfirmation = receipt["disconfirmation"]
+    memory_use = receipt["memory_use"]
+    require(isinstance(memory_use, dict)
+            and set(memory_use) == {"status", "record_ids"},
+            f"{filename}: memory_use must contain status and record_ids only")
+    require(memory_use["status"] in {"USED", "NOT_USED"},
+            f"{filename}: memory_use status is not canonical")
+    require_string_list(memory_use["record_ids"],
+                        f"{filename}: memory_use record IDs are malformed",
+                        allow_empty=True)
+    if memory_use["status"] == "USED":
+        require(bool(memory_use["record_ids"]),
+                f"{filename}: used memory needs a record reference")
+    else:
+        require(not memory_use["record_ids"],
+                f"{filename}: unused memory cannot name record references")
+    for memory_id in memory_use["record_ids"]:
+        require(memory_id in memories,
+                f"{filename}: memory use references missing record {memory_id}")
+        require(memories[memory_id]["permission_state"] == "AUTHORIZED",
+                f"{filename}: unresolved or blocked memory {memory_id} cannot be used")
+
     influence = receipt["influence"]
+    require(isinstance(influence, dict), f"{filename}: influence must be an object")
     require(isinstance(influence.get("recorded"), bool),
             f"{filename}: influence recorded must be boolean")
-    selected_items = influence.get("selected_items")
-    require(isinstance(selected_items, list),
-            f"{filename}: selected influence items must be a list")
+    require_string_list(influence.get("selected_items"),
+                        f"{filename}: selected influence items must be a string list",
+                        allow_empty=True)
+    require_string_list(influence.get("withheld_items"),
+                        f"{filename}: withheld influence items must be a string list",
+                        allow_empty=True)
+    selected_items = influence["selected_items"]
+    withheld_items = influence["withheld_items"]
+    require(not (set(selected_items) & set(withheld_items)),
+            f"{filename}: an item cannot be selected and withheld")
+    selectable = {**evidence, **memories}
+    for item_id in selected_items + withheld_items:
+        require(item_id in selectable,
+                f"{filename}: influence references missing item {item_id}")
+    for item_id in selected_items:
+        require(selectable[item_id]["permission_state"] == "AUTHORIZED",
+                f"{filename}: unresolved or blocked item {item_id} cannot influence output")
     if influence["recorded"]:
         require(bool(selected_items),
                 f"{filename}: recorded influence needs at least one selected item")
@@ -468,27 +765,39 @@ def validate_receipt(receipt: dict, filename: str) -> None:
         require(not selected_items,
                 f"{filename}: unrecorded influence cannot contain selected items")
 
-    if not permission["authorized"]:
-        require(route in {"HOLD", "ESCALATE", "REFUSE"},
-                f"{filename}: unauthorized work must hold, escalate, or refuse")
+    if permission_state != "AUTHORIZED":
+        allowed_routes = {
+            "UNKNOWN": {"HOLD", "ESCALATE"},
+            "NOT_AUTHORIZED": {"HOLD", "ESCALATE", "REFUSE"},
+            "REVOKED": {"HOLD", "ESCALATE", "REFUSE"},
+        }
+        require(route in allowed_routes[permission_state],
+                f"{filename}: {permission_state} work uses an impermissible route")
         require(stop_status != "CONTINUE",
-                f"{filename}: unauthorized work cannot remain in CONTINUE state")
-        require("permission" in stop_reason or "access" in stop_reason,
-                f"{filename}: unauthorized stop reason must name permission/access")
-        require(not influence["recorded"],
-                f"{filename}: unauthorized item cannot be marked influential")
+                f"{filename}: blocked permission cannot remain in CONTINUE state")
+        require(not influence["recorded"] and not selected_items,
+                f"{filename}: {permission_state} material cannot influence output")
+        require(permission_state in receipt.get("uncertainty", []),
+                f"{filename}: blocked permission state must remain visible")
+        state_words = {
+            "UNKNOWN": ("not been established", "unknown"),
+            "NOT_AUTHORIZED": ("permission", "not authoriz"),
+            "REVOKED": ("revoked",),
+        }
+        require(any(word in stop_reason for word in state_words[permission_state]),
+                f"{filename}: stop reason does not preserve {permission_state} semantics")
 
     if receipt["consequence"] == "HIGH" and route in {"ANSWER", "ANSWER_PROVISIONALLY"}:
-        require(baseline.get("present") is True,
-                f"{filename}: high-consequence answer needs a baseline")
-        require(comparison.get("done") is True,
-                f"{filename}: high-consequence answer needs comparison")
-        require(disconfirmation.get("attempted") is True,
-                f"{filename}: high-consequence answer needs disconfirmation")
+        require(bool(baselines),
+                f"{filename}: high-consequence answer needs a substantive baseline record")
+        require(bool(comparisons),
+                f"{filename}: high-consequence answer needs a substantive comparison record")
+        require(bool(disconfirmations),
+                f"{filename}: high-consequence answer needs a substantive disconfirmation record")
 
     if route in {"ANSWER", "ANSWER_PROVISIONALLY"}:
         require(influence["recorded"] is True,
-                f"{filename}: answer route needs an influence receipt")
+                f"{filename}: answer route needs a resolvable influence receipt")
 
     if budget["remaining_minutes"] <= 0:
         require(stop_status in {"STOPPED_BUDGET", "STOPPED_DEADLINE", "STOPPED_OTHER"},
@@ -497,36 +806,45 @@ def validate_receipt(receipt: dict, filename: str) -> None:
                 f"{filename}: exhausted budget cannot route to more work")
         require("budget" in stop_reason or "deadline" in stop_reason,
                 f"{filename}: exhausted budget reason must be explicit")
-
     if stop_status == "STOPPED_BUDGET":
         require("budget" in stop_reason,
                 f"{filename}: STOPPED_BUDGET reason must name budget")
 
     if receipt.get("motion_claim") is True:
-        require(baseline.get("motion_repeated") is True,
-                f"{filename}: motion claim needs repeated observations")
+        require(any(record["motion_timepoints"] >= 2 for record in baselines),
+                f"{filename}: motion claim needs a baseline with repeated observations")
     if receipt.get("absence_claim") is True:
-        require(baseline.get("absence_expected") is True,
+        require(any(record["absence_expected"] is True for record in baselines),
                 f"{filename}: absence claim needs an expected baseline")
     if receipt.get("independence_claim") is True:
-        require(comparison.get("origin_state") == "INDEPENDENT",
-                f"{filename}: independence claim needs an independent relation")
+        require(any(record["origin_state"] == "INDEPENDENT" for record in comparisons),
+                f"{filename}: independence claim needs an independent comparison relation")
+
+
+def expect_failure(value: dict, filename: str, message: str,
+                   *, ordinary: bool = False) -> None:
+    try:
+        if ordinary:
+            validate_ordinary_record(value, filename)
+        else:
+            validate_layered_receipt(value, filename)
+    except CheckFailure:
+        return
+    raise CheckFailure(message)
+
 
 def validate_receipt_guard_mutations() -> None:
-    """Prove reviewed-learning cannot be asserted by changing one status token."""
+    """Fail closed on status-only, dangling-reference, and overwrite mutations."""
 
-    base = json.loads(read_text("qa/applied/receipts/layered-ready.json"))
+    base = load_json("qa/applied/receipts/layered-ready.json")
+
     invalid = copy.deepcopy(base)
     invalid["outcome"]["learning_status"] = "LEARNING_REVIEWED"
-    try:
-        validate_receipt(invalid, "synthetic-reviewed-without-review.json")
-    except CheckFailure:
-        pass
-    else:
-        raise CheckFailure(
-            "validator accepted LEARNING_REVIEWED without an outcome review and disposition"
-        )
-
+    expect_failure(
+        invalid,
+        "synthetic-reviewed-without-review.json",
+        "validator accepted LEARNING_REVIEWED without an outcome review and disposition",
+    )
     valid = copy.deepcopy(invalid)
     valid["outcome"].update(
         {
@@ -535,71 +853,172 @@ def validate_receipt_guard_mutations() -> None:
             "human_disposition": "DEFERRED",
         }
     )
-    validate_receipt(valid, "synthetic-reviewed-contract-control.json")
+    validate_layered_receipt(valid, "synthetic-reviewed-contract-control.json")
 
-    invalid_influence = copy.deepcopy(base)
-    invalid_influence["influence"]["selected_items"] = []
-    try:
-        validate_receipt(invalid_influence, "synthetic-empty-recorded-influence.json")
-    except CheckFailure:
-        pass
-    else:
-        raise CheckFailure(
-            "validator accepted recorded influence without a selected item"
+    for mutation_name, mutate in (
+        ("baseline-dangling", lambda value: value["baseline_records"][0]["evidence_ids"].append("E-MISSING")),
+        ("comparison-empty-unit", lambda value: value["comparison_records"][0].update({"unit": ""})),
+        ("comparison-dangling", lambda value: value["comparison_records"][0]["item_ids"].append("E-MISSING")),
+        ("comparison-revoked", lambda value: value["evidence_records"][1].update({"permission_state": "REVOKED"})),
+        ("disconfirmation-empty-query", lambda value: value["disconfirmation_records"][0].update({"route_or_query": ""})),
+        ("disconfirmation-dangling", lambda value: value["disconfirmation_records"][0]["evidence_ids"].append("E-MISSING")),
+        ("influence-dangling", lambda value: value["influence"]["selected_items"].append("E-MISSING")),
+    ):
+        invalid_reference = copy.deepcopy(base)
+        mutate(invalid_reference)
+        expect_failure(
+            invalid_reference,
+            f"synthetic-{mutation_name}.json",
+            f"validator accepted malformed or unresolved {mutation_name} record",
         )
 
-    blocked = json.loads(read_text("qa/applied/receipts/blocked-permission.json"))
+    invalid_influence_permission = copy.deepcopy(base)
+    invalid_influence_permission["evidence_records"].append(
+        {
+            "id": "E-UNKNOWN",
+            "exact_pointer": "synthetic://unresolved/item",
+            "claim_ids": ["C-UNKNOWN"],
+            "permission_state": "UNKNOWN",
+        }
+    )
+    invalid_influence_permission["influence"]["selected_items"].append("E-UNKNOWN")
+    expect_failure(
+        invalid_influence_permission,
+        "synthetic-influence-unknown.json",
+        "validator accepted unresolved permission as selected influence",
+    )
+
+    invalid_high = copy.deepcopy(base)
+    invalid_high["baseline_records"] = []
+    expect_failure(
+        invalid_high,
+        "synthetic-high-without-baseline.json",
+        "validator accepted a high-consequence answer without a substantive baseline",
+    )
+
+    invalid_permission = copy.deepcopy(base)
+    invalid_permission["permission"]["state"] = True
+    expect_failure(
+        invalid_permission,
+        "synthetic-boolean-permission.json",
+        "validator accepted a boolean authorization state",
+    )
+    unknown = load_json("qa/applied/receipts/unknown-permission.json")
+    invalid_unknown = copy.deepcopy(unknown)
+    invalid_unknown["permission"]["resume_condition"] = "NOT_APPLICABLE"
+    expect_failure(
+        invalid_unknown,
+        "synthetic-unknown-without-resume.json",
+        "validator accepted UNKNOWN permission without a resume condition",
+    )
+    invalid_reason = copy.deepcopy(unknown)
+    invalid_reason["permission"]["reason_code"] = "PERMISSION_ABSENT"
+    expect_failure(
+        invalid_reason,
+        "synthetic-unknown-as-absent.json",
+        "validator collapsed UNKNOWN permission into NOT_AUTHORIZED semantics",
+    )
+
+    blocked = load_json("qa/applied/receipts/blocked-permission.json")
     invalid_blocked = copy.deepcopy(blocked)
-    invalid_blocked["influence"]["selected_items"] = ["UNAUTHORIZED-ITEM"]
-    try:
-        validate_receipt(invalid_blocked, "synthetic-unrecorded-selected-item.json")
-    except CheckFailure:
-        pass
-    else:
-        raise CheckFailure(
-            "validator accepted selected material while influence was unrecorded"
-        )
+    invalid_blocked["evidence_records"] = [
+        {
+            "id": "E-BLOCKED",
+            "exact_pointer": "synthetic://blocked/item",
+            "claim_ids": ["C-BLOCKED"],
+            "permission_state": "NOT_AUTHORIZED",
+        }
+    ]
+    invalid_blocked["influence"] = {
+        "recorded": True,
+        "selected_items": ["E-BLOCKED"],
+        "withheld_items": [],
+    }
+    expect_failure(
+        invalid_blocked,
+        "synthetic-blocked-influence.json",
+        "validator accepted blocked material as selected influence",
+    )
 
-    ordinary = json.loads(read_text("qa/applied/receipts/ordinary-supplied-material.json"))
+    ordinary = load_json("qa/applied/receipts/ordinary-supplied-material.json")
     for key, value in (
-        ("comparison", {"done": True}),
-        ("evidence_selection", "NEEDED"),
+        ("evidence_records", []),
+        ("route", "ANSWER"),
+        ("stop_status", "COMPLETE"),
+        ("outcome", {"learning_status": "LEARNING_NOT_APPLICABLE"}),
+        ("families", []),
     ):
         invalid_ordinary = copy.deepcopy(ordinary)
         invalid_ordinary[key] = value
-        try:
-            validate_receipt(invalid_ordinary, f"synthetic-ordinary-{key}.json")
-        except CheckFailure:
-            pass
-        else:
-            raise CheckFailure(
-                f"validator accepted ordinary path with disallowed {key}"
-            )
+        expect_failure(
+            invalid_ordinary,
+            f"synthetic-ordinary-{key}.json",
+            f"validator accepted ordinary record with disallowed {key}",
+            ordinary=True,
+        )
+
+    memory = load_json("qa/applied/receipts/memory-append-only-correction.json")
+    memory_mutations = (
+        ("missing-prior", lambda value: value["memory_records"].pop(0)),
+        ("silent-overwrite", lambda value: value["memory_records"][0].update({
+            "content_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+        })),
+        ("missing-source", lambda value: value["memory_records"][1]["source_evidence_ids"].append("E-MISSING")),
+        ("dangling-use", lambda value: value["memory_use"]["record_ids"].append("M-MISSING")),
+        ("revoked-use", lambda value: value["memory_records"][1].update({"permission_state": "REVOKED"})),
+    )
+    for mutation_name, mutate in memory_mutations:
+        invalid_memory = copy.deepcopy(memory)
+        mutate(invalid_memory)
+        expect_failure(
+            invalid_memory,
+            f"synthetic-memory-{mutation_name}.json",
+            f"validator accepted invalid append-only memory mutation {mutation_name}",
+        )
 
 
 def validate_receipts() -> None:
     receipt_dir = ROOT / "qa/applied/receipts"
+    required_files = {
+        "ordinary-supplied-material.json",
+        "lightweight-low-stakes.json",
+        "layered-ready.json",
+        "stopped-budget.json",
+        "blocked-permission.json",
+        "unknown-permission.json",
+        "revoked-permission.json",
+        "memory-append-only-correction.json",
+    }
     files = sorted(receipt_dir.glob("*.json"))
-    require(len(files) >= 5, "receipt fixture set is too small")
-    require((receipt_dir / "ordinary-supplied-material.json").is_file(),
-            "genuine Stage-0 ordinary receipt fixture is missing")
+    require(required_files <= {path.name for path in files},
+            "receipt fixture set is missing a required contract case")
     require(not (receipt_dir / "ordinary-low-stakes.json").exists(),
             "layered low-stakes receipt is still mislabeled as ordinary")
+    observed_permission_states: set[str] = set()
     for path in files:
         try:
-            receipt = json.loads(path.read_text(encoding="utf-8"))
+            value = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             raise CheckFailure(f"invalid receipt JSON in {path.name}: {exc}") from exc
-        require(isinstance(receipt, dict), f"{path.name} must contain an object")
-        validate_receipt(receipt, path.name)
+        require(isinstance(value, dict), f"{path.name} must contain an object")
+        if path.name == "ordinary-supplied-material.json":
+            validate_ordinary_record(value, path.name)
+        else:
+            validate_layered_receipt(value, path.name)
+            observed_permission_states.add(value["permission"]["state"])
+        if path.name == "memory-append-only-correction.json":
+            require(value.get("fixture_status") == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+                    "F4 memory fixture is not explicitly synthetic/no-result")
+    require(observed_permission_states == PERMISSION_STATES,
+            "fixtures do not exercise all four typed permission states")
 
 
 def main() -> int:
     checks = [
         ("six-family JSON and schema contract", validate_spec),
         ("artifact inventory and boundary language", validate_artifact_inventory),
-        ("receipt fixtures through preflight/stop logic", validate_receipts),
-        ("reviewed-learning fail-closed guard mutations", validate_receipt_guard_mutations),
+        ("ordinary and layered receipt contracts", validate_receipts),
+        ("permission/reference/memory fail-closed mutations", validate_receipt_guard_mutations),
     ]
     try:
         for label, check in checks:
