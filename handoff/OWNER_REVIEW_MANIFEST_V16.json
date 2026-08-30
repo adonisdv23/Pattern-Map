@@ -26,8 +26,8 @@
   },
   "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 257,
-  "total_bytes": 13749267,
+  "file_count": 258,
+  "total_bytes": 13764103,
   "files": [
     {
       "path": ".gitignore",
@@ -116,8 +116,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 107160,
-      "sha256": "56317fb6aea291236a3a5fda45244e6bfd6907ee3f394529b1bb2735565ed121"
+      "bytes": 108641,
+      "sha256": "d7df87cc87beeb77e737e1d7ea16c1957c7ce5c3d2b1791e0fe524d90d5358d7"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -146,8 +146,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 76170,
-      "sha256": "281df90abae92bf05fe637b6d42d7538c15b5dce750c8a52c1211c503128c8cf"
+      "bytes": 78225,
+      "sha256": "519ace9ea167652f9462afb09631a097193b6f9274c28d4e5dc4efac17ac499d"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -356,8 +356,8 @@
     },
     {
       "path": "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
-      "bytes": 25304,
-      "sha256": "c666623e6acc91ba533668ce3bb9fa7871db939769a9b6053871c489d34f1b31"
+      "bytes": 25481,
+      "sha256": "5a3d998a92237365d9b71c182e2105e8ad7f4a0a45794abcfd50688ba4e93775"
     },
     {
       "path": "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
@@ -366,13 +366,13 @@
     },
     {
       "path": "handoff/signal-foundry/build_portable_bundle.py",
-      "bytes": 62965,
-      "sha256": "77ef0bf5c651e222531db77a14ef11d12127ddd951bada04fa5066a1bed2fe12"
+      "bytes": 66299,
+      "sha256": "abeb7a687cacfdf988fbbce68d3e3eb7de83c2cb08f18be79f19cf790ff87b5d"
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 21644,
-      "sha256": "61c924d923f0d6071367c7c51d82168b4674bcd71a00f7c2cf867adfbdc4f73a"
+      "bytes": 21724,
+      "sha256": "8b6e75e92bbc58cf663229834b80bc67ebe5d29034058c2396ba8eaf1b845999"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -540,6 +540,11 @@
       "sha256": "9df435ff705fd22dd9d09c46a12a3696702b21c1f0f5460670bebb9d3f5f205d"
     },
     {
+      "path": "qa/handoff/CLAUDE_FINAL_PORTABLE_AUDIT_DISPOSITION_2026-08-30_c23c665.md",
+      "bytes": 2908,
+      "sha256": "92d013eaa0d66b90d8c30afa01cc54634272a8254109b1ed4546a8335dde1629"
+    },
+    {
       "path": "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
       "bytes": 10455,
       "sha256": "282c154262467c2ff5f57c0e6319b89eb0c0de05e28be8df0725328557667d52"
@@ -566,8 +571,8 @@
     },
     {
       "path": "qa/handoff/test_portable_bundle.py",
-      "bytes": 35727,
-      "sha256": "a991d97f0a57386f7dc3e3d44f0bda5033939ec18584949f3a8fa96b5653d963"
+      "bytes": 40528,
+      "sha256": "7ede924b70129bca679e82baa71b25c469d409289d9a1f61d82231411424377f"
     },
     {
       "path": "qa/interaction/apply-cross-artifact-contract.spec.mjs",
