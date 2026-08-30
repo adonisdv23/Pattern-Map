@@ -124,6 +124,14 @@ styles.add(
 )
 styles.add(
     ParagraphStyle(
+        name="CoverProblemHeadline",
+        parent=styles["Headline"],
+        fontSize=23,
+        leading=25,
+    )
+)
+styles.add(
+    ParagraphStyle(
         name="SectionTitle",
         parent=styles["Heading2"],
         fontName="Times-Bold",
@@ -357,7 +365,7 @@ def build_pdf() -> None:
             rule(TEAL, 2),
             Spacer(1, 0.12 * inch),
             kicker("The human problem"),
-            p(first["headline"], "Headline"),
+            p(first["headline"], "CoverProblemHeadline"),
             p(first["standfirst"], "CoverDeck"),
             Spacer(1, 0.08 * inch),
         ]

@@ -1131,3 +1131,72 @@ audits and their adversarial convergence.
 A01–A17; proportionality and ordinary-work escape; observable rather than
 inspirational agent behavior; research may constrain claims but may not
 redefine the thesis; no-merge/no-deploy/no-publish/no-study/no-spend boundary.
+
+## D-034 — Integrate public presentation and downstream contract hardening without creating v17
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revision; local owner/public candidate only
+
+Three isolated high-reasoning lanes began from exact owner-review baseline
+`4d2e11ceb26b36fd7428dc7de963c135802a8dea`. They owned applied contracts,
+public presentation, and current research/claims boundaries respectively, then
+red-teamed one another before integration. Their recommendations remained
+advisory under the repository authority order. The locked owner-intent
+checksum, human essay, six-family identity, permanent Echo split, and ordinary
+work escape were not reopened.
+
+The applied lane makes Stage 0 terminal inside the copyable prompt and gives
+ordinary supplied-material work exactly four fields: supplied scope,
+assumptions, unchecked boundaries, and output. Layered work now uses typed
+`AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, and `REVOKED` permission; blocked
+global permission leaves no downstream evidence or influence; comparison and
+disconfirmation either resolve to substantive records or carry bounded typed
+exceptions; motion requires two distinct authorized observations at two real
+UTC instants under one alignment key; and memory use is limited to one
+accepted, `CURRENT`, `AUTHORIZED` linear lineage whose preserved root is bound
+to a frozen fixture anchor. These are structural/procedural contracts, not
+proof of source truth, legal authorization, runtime immutability, answer
+quality, or effectiveness.
+
+The site remains one content system with a `review | public` presentation
+adapter. Public mode keeps all ten routes and canonical source hashes while
+removing owner-package chrome from the ordinary reading flow. The actual
+90-second prose appears in the first Read viewport. One fixed four-stage
+teaching reveal replaces rather than accumulates on an opening example; it has
+a static equivalent and no network, model, score, automated action, or
+observed-result claim. Release output requires both an explicit release flag
+and parsed absolute-HTTPS metadata with a usable host; ordinary public previews
+remain `noindex,nofollow`. Author, canonical URL, social image, publication
+links, and final release action remain unset and separately gated.
+
+The optional source route now includes targeted, non-exhaustive current work
+through 2026 and constrains component-level novelty. The project remains a
+human-governed design/governance synthesis and testable agenda, not a validated
+new technical mechanism. The narrow-wedge memo separates generation studies,
+where answer accuracy may be eligible, from fixed-answer interface studies,
+where correction, acceptance, and burden are eligible but answer accuracy is
+not. It also separates observation, capture/process, access, permission, and
+currency. No first paper, provider, model, corpus, sample, study, or spend was
+selected.
+
+The cross-computer Signal Foundry packet includes the ordinary and memory
+templates, frozen memory anchor, and distinct permission fixtures, but excludes
+the publication adapter, public standalone, visual captures, lane QA, and
+narrow-study memo because those are owner-repository review artifacts rather
+than Signal Foundry implementation inputs. Every retained relative Markdown
+link outside the selected packet is machine-classified as archive,
+owner-review-only, or outside-selected-packet; a new unclassified target fails
+the build. Signal Foundry's own tracked contracts remain authoritative, and
+the packet grants no mutation authority.
+
+**Evidence:** implementation checkpoint `cbc89db`; focused applied, research,
+site, 108-state Apply, portable-bundle, and owner-intent checks; public and
+transfer hardening plan; lane QA and advisory dispositions. Final
+exact-commit/clean-clone/Claude/remote/package evidence is recorded only after
+those later gates actually complete.
+
+**Governing requirement:** D-001/D-007/D-008/D-031/D-033; locked owner intent;
+A01–A17; progressive disclosure; anti-bureaucracy; shared-source publication;
+exact cross-computer provenance; no-results/no-merge/no-deploy/no-publish/no-
+study/no-spend boundary.

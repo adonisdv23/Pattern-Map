@@ -24,6 +24,10 @@ LANE_HEADS = {
     "public_presentation": "361243c95050723f1693907f7446be5d690b9e58",
     "research_boundary_2026": "54bd0a7a11f4c072c8ceaab1a2abf7bc81a380cb",
 }
+CONVERGENCE_CORRECTION_HEADS = {
+    "public_release_url_semantics": "c4a0f4c62e71cb2475f286f67ae0254a13f130a3",
+    "research_protocol_axis_alignment": "ecf37ee64adfeb1847a5b6342d7550f7f5da6695",
+}
 
 
 REQUIRED_PATHS = [
@@ -159,6 +163,7 @@ REQUIRED_PATHS = [
     "qa/applied/receipts/stopped-budget.json",
     "qa/applied/receipts/unknown-permission.json",
     "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
+    "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
     "qa/research/validate_research_boundaries.py",
     "qa/research/README.md",
     "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
@@ -296,6 +301,7 @@ def write_manifest() -> None:
         "owner_review_pdf_checkpoint": CONTENT_CHECKPOINT,
         "phase_0_hardening_baseline": PHASE_0_BASELINE,
         "integrated_lane_heads": LANE_HEADS,
+        "convergence_correction_heads": CONVERGENCE_CORRECTION_HEADS,
         "source_head": None,
         "source_head_resolution": {
             "status": "resolve_at_use",
@@ -327,10 +333,17 @@ def verify_manifest() -> None:
         raise AssertionError("Phase 0 hardening checkpoint mismatch")
     if payload.get("integrated_lane_heads") != LANE_HEADS:
         raise AssertionError("integrated lane-head provenance mismatch")
+    if payload.get("convergence_correction_heads") != CONVERGENCE_CORRECTION_HEADS:
+        raise AssertionError("convergence-correction provenance mismatch")
     if payload.get("source_head") is not None:
         raise AssertionError("owner-review manifest must not hard-code its self-referential source head")
     resolution = payload.get("source_head_resolution")
-    if not isinstance(resolution, dict) or resolution.get("status") != "resolve_at_use":
+    expected_resolution = {
+        "status": "resolve_at_use",
+        "command": "git rev-parse --verify HEAD",
+        "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
+    }
+    if resolution != expected_resolution:
         raise AssertionError("source-head resolution contract mismatch")
     if payload.get("files") != expected:
         raise AssertionError("owner-review manifest does not match current artifact bytes")

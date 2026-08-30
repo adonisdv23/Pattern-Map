@@ -3,7 +3,7 @@
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` as the fixed **content checkpoint**, then resolve the current `codex/pattern-map-v16-foundation` head with Git (or `BUNDLE_METADATA.json.source_commit` in a sealed packet); preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessors.
+2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` as the fixed **content checkpoint**, then resolve the current `codex/pattern-map-v16-public-transfer-hardening` head with Git (or `BUNDLE_METADATA.json.source_commit` in a sealed packet); preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessors.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
@@ -21,7 +21,7 @@ Then inspect the two repositories at their exact stated checkpoints:
 ```text
 Pattern Map:
   https://github.com/adonisdv23/Pattern-Map
-  codex/pattern-map-v16-foundation content checkpoint @ 874a0a8e09f0bde11532cf873087865addb7d973
+  codex/pattern-map-v16-public-transfer-hardening content checkpoint @ 874a0a8e09f0bde11532cf873087865addb7d973
   current head: resolve with Git; sealed packet head: BUNDLE_METADATA.json.source_commit
   audited predecessors @ d4b7b9e481165b3f692986cdda1b8a0da8b4388b / c88926034cd75773dcc42d3842983c879dda5b58 / ad964dd91eff521b0442f613c55bc4e9e97c2f2a
 
@@ -338,7 +338,7 @@ Read these first, in order:
 Use the exact audited source identities below, then re-resolve Git:
 
 - Pattern Map v16 is the broad human-first Pattern Recognition / Discrimination
-  Layer project at branch codex/pattern-map-v16-foundation. Its canonical
+  Layer project at branch codex/pattern-map-v16-public-transfer-hardening. Its canonical
   converged source checkpoint is
   874a0a8e09f0bde11532cf873087865addb7d973. Resolve the current branch head
   with Git; in a sealed packet use `BUNDLE_METADATA.json.source_commit`. The immediate terminal
@@ -427,11 +427,11 @@ checklist, not an authorization receipt or a product result.
   "product_name": "Signal Foundry",
   "pattern_map": {
     "repository": "https://github.com/adonisdv23/Pattern-Map",
-    "branch": "codex/pattern-map-v16-foundation",
+    "branch": "codex/pattern-map-v16-public-transfer-hardening",
     "head": null,
     "head_resolution": {
       "status": "resolve_at_use",
-      "git_command": "git rev-parse --verify refs/heads/codex/pattern-map-v16-foundation",
+      "git_command": "git rev-parse --verify refs/heads/codex/pattern-map-v16-public-transfer-hardening",
       "sealed_packet_field": "BUNDLE_METADATA.json.source_commit"
     },
     "content_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",

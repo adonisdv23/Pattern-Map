@@ -13,11 +13,14 @@ separate bodies of work:
    independent corroboration.
 
 The project is in owner-review development. A materially authored local v16
-site now provides persistent publication orientation, an interactive six-family
+site now provides shared-source owner-review and public-preview modes,
+persistent review orientation, an interactive six-family
 relationship map, inline term explainers, an optional continuous Guided read,
 and a provider-free Apply studio that begins with the Stage 0 evidence-selection
 gate and separates planning recommendations from unrun and unobserved states. A
-direct-open semantic all-routes HTML export and secondary
+deterministic teaching reveal shows how upstream choices change what becomes
+visible without calling a model or claiming a result. Direct-open semantic
+review/public HTML exports and a secondary
 PDF companion also exist, but no public site has been deployed or substituted
 for the historical reference. The framework is not empirically validated and
 no study run is authorized.
@@ -53,6 +56,7 @@ Start with:
 10. [`docs/ADVISORY_REVIEW_DISPOSITIONS.md`](docs/ADVISORY_REVIEW_DISPOSITIONS.md)
 11. [`docs/CONTENT_INTERFACE_FREEZE_V16.md`](docs/CONTENT_INTERFACE_FREEZE_V16.md)
 12. [`docs/CLAIMS_AND_SOURCE_LEDGER_V16.md`](docs/CLAIMS_AND_SOURCE_LEDGER_V16.md)
+13. [`docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md`](docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md)
 
 For the local review surface:
 
@@ -65,9 +69,14 @@ npm run dev
 
 Then open <http://127.0.0.1:4173/>. The direct-open HTML export is
 [`site/exports/standalone/pattern-map-v16.html`](site/exports/standalone/pattern-map-v16.html),
+the public-preview export is
+[`site/exports/standalone/pattern-map-v16-public.html`](site/exports/standalone/pattern-map-v16-public.html),
 and the review companion is
 [`site/exports/pattern-map-v16-owner-review.pdf`](site/exports/pattern-map-v16-owner-review.pdf).
-These are local artifacts, not a deployment or publication.
+These are local artifacts, not a deployment or publication. To inspect the
+public adapter as routed pages, stop the review server and run
+`npm run dev:public`; it remains `noindex,nofollow` with publication identity
+unset.
 
 For the downstream Signal Foundry handoff, give the next operator these two
 files together:

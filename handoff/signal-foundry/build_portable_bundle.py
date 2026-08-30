@@ -173,11 +173,6 @@ OUT_OF_PACKET_LINK_POLICY: tuple[tuple[str, str, str], ...] = (
     ),
     ("handoff/OWNER_REVIEW_PACKET_V16.md", "qa/visual/README.md", "owner_review_only"),
     (
-        "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
-        "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
-        "owner_review_only",
-    ),
-    (
         "research/the-echo-problem/README.md",
         "research/the-echo-problem/qa/EP_V0_1_QA.md",
         "outside_selected_packet",
@@ -225,6 +220,20 @@ OUT_OF_PACKET_LINK_POLICY: tuple[tuple[str, str, str], ...] = (
 )
 LINK_CLASSIFICATIONS = frozenset({"archive", "owner_review_only", "outside_selected_packet"})
 MARKDOWN_LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\(([^)\n]+)\)")
+MARKDOWN_REFERENCE_DEFINITION_PATTERN = re.compile(
+    r"^[ \t]{0,3}\[[^\]\n]+\]:[ \t]*(<[^>\n]+>|\S+)", re.MULTILINE
+)
+INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS: tuple[str, ...] = (
+    "site/exports/standalone/pattern-map-v16-public.html",
+    "site/publication.config.json",
+    "site/src/publication-config.mjs",
+    "qa/visual/public-mode/",
+    "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
+    "qa/site/public-mode-contract.spec.mjs",
+    "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+    "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
+    "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md",
+)
 
 GENERATED_PAYLOAD_NAMES: tuple[str, ...] = (
     "START_HERE.md",
@@ -419,7 +428,10 @@ def _classify_out_of_packet_links(
             markdown = payload.decode("utf-8")
         except UnicodeDecodeError as error:
             raise RuntimeError(f"selected Markdown is not UTF-8: {source}") from error
-        for match in MARKDOWN_LINK_PATTERN.finditer(markdown):
+        link_matches = list(MARKDOWN_LINK_PATTERN.finditer(markdown)) + list(
+            MARKDOWN_REFERENCE_DEFINITION_PATTERN.finditer(markdown)
+        )
+        for match in link_matches:
             raw_target = match.group(1).strip()
             resolved_target = _relative_markdown_target(source, raw_target)
             if resolved_target is None:
@@ -451,6 +463,22 @@ def _classify_out_of_packet_links(
         rendered = ", ".join(f"{source} -> {target}" for source, target in missing_expected)
         raise RuntimeError(f"stale out-of-packet link policy entries: {rendered}")
     return [discovered[key] for key in sorted(discovered)]
+
+
+def _validate_intentionally_excluded_artifacts(
+    repository_files: set[str], selected_paths: set[str]
+) -> None:
+    for target in INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS:
+        if target.endswith("/"):
+            exists = any(path.startswith(target) for path in repository_files)
+            selected = any(path.startswith(target) for path in selected_paths)
+        else:
+            exists = target in repository_files
+            selected = target in selected_paths
+        if not exists:
+            raise RuntimeError(f"declared owner-review exclusion is absent: {target}")
+        if selected:
+            raise RuntimeError(f"declared owner-review exclusion is selected: {target}")
 
 
 def _path_is_safe(relative: str) -> bool:
@@ -923,17 +951,9 @@ def _metadata_payload(
             "classified_link_count": len(out_of_packet_links),
             "classified_links": list(out_of_packet_links),
         },
-        "intentionally_excluded_owner_review_artifacts": [
-            "site/exports/standalone/pattern-map-v16-public.html",
-            "site/publication.config.json",
-            "site/src/publication-config.mjs",
-            "qa/visual/public-mode/",
-            "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
-            "qa/site/public-mode-contract.spec.mjs",
-            "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
-            "qa/research/CURRENT_SOURCE_VERIFICATION_2026-08-30.md",
-            "qa/research/PUBLIC_TRANSFER_RESEARCH_BOUNDARY_QA_2026-08-30.md",
-        ],
+        "intentionally_excluded_owner_review_artifacts": list(
+            INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS
+        ),
         "scope": (
             "Selected human thesis, framework, operator and agent playbook, bounded cases, "
             "handoff records, research-separation boundaries, standalone HTML, PDF companion, "
@@ -1035,9 +1055,9 @@ def build_bundle(
                 }
             )
 
-        out_of_packet_links = _classify_out_of_packet_links(
-            source_payloads, _git_file_set(repo_root, commit)
-        )
+        repository_files = _git_file_set(repo_root, commit)
+        _validate_intentionally_excluded_artifacts(repository_files, set(source_payloads))
+        out_of_packet_links = _classify_out_of_packet_links(source_payloads, repository_files)
 
         prompt = _copyable_prompt(commit, branch)
         _write_bytes(stage, "START_HERE.md", _start_here(

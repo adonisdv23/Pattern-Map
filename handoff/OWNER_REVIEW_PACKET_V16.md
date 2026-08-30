@@ -20,6 +20,21 @@ cross-computer handoff treats source-machine-only inputs as optional while
 required tracked contracts remain blocking. The full disposition is in
 `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
 
+Public-and-transfer hardening implementation checkpoint `cbc89db` preserves
+the same human thesis and adds three bounded improvements. Genuine supplied-
+material work now terminates through a four-field ordinary record, while
+layered work has typed permission, resolvable comparison/disconfirmation, real
+UTC motion instants, selected-influence, and accepted current-memory contracts.
+One shared source now builds both the owner-review site and a prose-first
+public preview; the latter has a deterministic teaching reveal and fail-closed
+publication gate, but no byline, canonical URL, social image, or release
+authorization. The optional source/research route is current through a
+targeted 2025–2026 review and its future narrow-wedge designs remain explicitly
+unrun. Convergence corrections through `c0b006f` separate all five missingness
+axes, remove a false public self-link, and resolve route canonical URLs with URL
+semantics rather than string concatenation. These changes do not create v17,
+validate the framework, or make Echo the definition of v16.
+
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
 and Apply semantics. Current evidence is the exact-checkpoint Pro correction
@@ -57,13 +72,17 @@ GitHub owner-review surface: draft pull request
 1. Read the [60–90-second version](../manuscript/NINETY_SECOND_VERSION.md).
 2. Read the [mentor cover note](../manuscript/MENTOR_COVER_NOTE.md) and the
    [canonical essay](../manuscript/PATTERN_RECOGNITION_V16.md).
-3. Run the local site from `site/` (`npm run build && npm run dev`), open
+3. Run the local site from `site/` (`npm run build && npm run check && npm run dev`), open
    <http://127.0.0.1:4173/>, and use the three principal doors: **Read the idea
    / Explore the map / Apply it**. The optional **Guided** route provides one
    continuous authored path through the publication. This routed site is the
    primary review experience. The
    [standalone HTML](../site/exports/standalone/pattern-map-v16.html) is the
-   direct-open all-routes companion within the repository package.
+   direct-open all-routes companion within the repository package. Then stop
+   the server, run `npm run dev:public`, and inspect the prose-first public
+   preview at the same local address. Its direct-open companion is
+   [pattern-map-v16-public.html](../site/exports/standalone/pattern-map-v16-public.html).
+   Both are local review artifacts; neither command publishes anything.
 4. Inspect the [six-family specification](../framework/SIX_FAMILIES.md),
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
    [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
@@ -78,6 +97,7 @@ GitHub owner-review surface: draft pull request
 7. Inspect the [current Pro correction QA](../qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md)
    and the [current/historical visual evidence index](../qa/visual/README.md).
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
+   [public/transfer convergence QA](../qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md),
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
@@ -99,6 +119,10 @@ the semantic accessibility route.
 - Agent Quickstart, full operating guide, copyable brief, preflight checklist,
   decision receipt, and ordinary-versus-layered examples. Stage 0 makes the
   ordinary supplied-material path explicit before any evidence bureaucracy.
+  Ordinary work has exactly supplied scope, assumptions, unchecked boundaries,
+  and output. Layered fixtures keep all four permission states distinct,
+  require real linked records for claimed work, and preserve accepted current
+  memory without silently rewriting its superseded predecessor.
 - Bounded Signal Foundry and two domain-neutral fixtures; none is represented
   as validation or observed product behavior. Two explicit Signal Foundry
   transfer artifacts identify the exact current repositories, reuse the
@@ -114,11 +138,22 @@ the semantic accessibility route.
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.
+- A public-preview presentation over the same canonical hashes and ten route
+  IDs. It removes owner/package chrome, begins Read with the actual short-
+  version prose, and teaches one upstream-decision sequence with native
+  progressive disclosure plus a static equivalent. Release output fails closed
+  until a later authorized step supplies valid publication identity and
+  absolute-HTTPS metadata; ordinary previews remain `noindex,nofollow`.
 - A deterministic exact-commit Signal Foundry portable builder with one plain
   `START_HERE.md`, copyable downstream prompt, sorted per-file path/byte/hash
   manifest, standard-library verifier, whole-ZIP checksum sidecar, source-path
   and cache/dependency exclusions, overwrite refusal, and regression coverage.
-  The packet is read-only context and grants no Signal Foundry mutation.
+  The packet is read-only context and grants no Signal Foundry mutation. It
+  includes the ordinary/memory templates, frozen memory anchor, and distinct
+  permission fixtures; it intentionally excludes the public adapter, public
+  capture evidence, and future-study decision memo. Every retained relative
+  link outside the selected packet is machine-classified and a new
+  unclassified target fails the build.
 - EP v0.1 with a complete 239-file v15.2 accession, an 82-file curated set,
   preserved protocol/harness/fixtures/prior art, exact unfavorable-result
   taxonomy, and no-results status; plus EP v1.1's narrowed NEWS-COPY boundary,

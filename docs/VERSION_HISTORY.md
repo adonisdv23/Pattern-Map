@@ -11,7 +11,7 @@ exact contents.
 | v15 | Historical convergence checkpoint | Curated index into preserved v15.2 history; sealed predecessor; unrun and not published |
 | v15.1 | Historical reader/research checkpoint | Curated index into preserved v15.2 history; sealed predecessor; unrun and not published |
 | v15.2 | Exact owner-review checkpoint centered on origin accounting; no study run | Verified 239-file extracted accession plus curated version index; source checkpoint for The Echo Problem; preserved without renaming |
-| v16 | Broad human-first Pattern Recognition / Discrimination Layer reset | Owner-review candidate: intent, manuscript, six-family framework, agent companion, cases, unrun research agenda, an authored ten-route local site with persistent orientation, line-free current relationship map, descriptive inline term explainers, continuous Guided mode, and a Stage 0 planning-only Apply studio; the direct-open all-routes HTML begins with the human problem, keeps every route structurally inside the publication column, uses a flow-native common-origin visual, and has explicit evidence-route print containment; secondary visual PDF companion, exact 108-case planning QA, Signal Foundry handoff, proxy/artifact reviews, checksummed handoff, pushed feature branch, and draft PR #1 are integrated; owner/mentor and physical-keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open; not merged, deployed, or published |
+| v16 | Broad human-first Pattern Recognition / Discrimination Layer reset | Owner-review candidate: intent, manuscript, six-family framework, proportionate agent companion, cases, unrun research agenda, and one shared-source ten-route renderer with distinct review and public presentation modes. The public mode removes package chrome, begins Read with the real 90-second prose, and adds one deterministic teaching reveal without a model, score, network call, or observed-result claim. Applied contracts retain a terminal four-field ordinary path, typed permission, resolvable evidence relations, real UTC motion instants, and append-only current-memory use. The review and public standalone HTML exports, secondary visual PDF, exact 108-case planning QA, selected Signal Foundry handoff, and targeted current-source route are integrated; owner/mentor and physical-keyboard/screen-reader/real-zoom/forced-colors/native-print/touch plus publication identity gates remain open; not merged, deployed, published, or empirically validated |
 
 Terminal source checkpoint `874a0a8` adds measured desktop term-panel
 clearance, canonical operator-state vocabulary, path-neutral cross-computer
@@ -27,6 +27,16 @@ identity, and makes local-only Signal Foundry evidence optional on another
 computer. It also strengthens all-payload packet hygiene. These are contract
 and portability corrections; v16's thesis, reader doors, map, and Echo split
 remain unchanged.
+
+The public-and-transfer hardening implementation checkpoint `cbc89db`, with
+convergence corrections through `c0b006f`, advances
+the same v16 artifact without creating a v17 thesis or second content system.
+It integrates three red-teamed lanes: applied contract integrity, a
+shared-source public presentation, and a targeted 2025–2026 claims/research
+boundary. The public release adapter remains fail-closed until a later exact
+publication instruction supplies a byline, valid canonical URL, and valid
+social image. The future narrow-wedge memo remains unrun and does not select a
+provider, model, corpus, sample, or first paper.
 
 ## The Echo Problem sequence
 

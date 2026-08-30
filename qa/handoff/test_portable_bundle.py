@@ -346,6 +346,19 @@ class PortableBundleTests(unittest.TestCase):
         for relative in expected_excluded:
             self.assertFalse((self.bundle_root / relative).exists(), relative)
 
+        builder = load_builder_module()
+        repository_files = builder._git_file_set(ROOT, git_head())
+        builder._validate_intentionally_excluded_artifacts(repository_files, selected)
+        original_exclusions = builder.INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS
+        try:
+            builder.INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS = original_exclusions + (
+                "qa/research/DOES_NOT_EXIST.md",
+            )
+            with self.assertRaisesRegex(RuntimeError, "exclusion is absent"):
+                builder._validate_intentionally_excluded_artifacts(repository_files, selected)
+        finally:
+            builder.INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS = original_exclusions
+
     def test_out_of_packet_markdown_links_are_exhaustively_classified(self) -> None:
         metadata = json.loads(
             (self.bundle_root / "BUNDLE_METADATA.json").read_text(encoding="utf-8")
@@ -374,6 +387,17 @@ class PortableBundleTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "unclassified out-of-packet"):
             builder._classify_out_of_packet_links(
                 source_payloads, {"README.md", "docs/UNCLASSIFIED_TRANSFER.md"}
+            )
+        reference_payloads = {
+            "README.md": (
+                b"[unclassified transfer][fresh-ref]\n\n"
+                b"[fresh-ref]: docs/UNCLASSIFIED_REFERENCE.md\n"
+            )
+        }
+        with self.assertRaisesRegex(RuntimeError, "unclassified out-of-packet"):
+            builder._classify_out_of_packet_links(
+                reference_payloads,
+                {"README.md", "docs/UNCLASSIFIED_REFERENCE.md"},
             )
 
     def test_optional_local_inputs_are_guarded_and_nonblocking(self) -> None:

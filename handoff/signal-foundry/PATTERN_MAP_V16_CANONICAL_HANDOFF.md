@@ -8,7 +8,7 @@ deployment**
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` as the fixed **content checkpoint**, then resolve the current `codex/pattern-map-v16-foundation` head with Git (or `BUNDLE_METADATA.json.source_commit` in a sealed packet); preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessor anchors.
+2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` as the fixed **content checkpoint**, then resolve the current `codex/pattern-map-v16-public-transfer-hardening` head with Git (or `BUNDLE_METADATA.json.source_commit` in a sealed packet); preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessor anchors.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
@@ -34,7 +34,7 @@ evidence, QA, handoff, or packaging corrections, so resolve its current head
 before use:
 
 ```text
-branch:  codex/pattern-map-v16-foundation
+branch:  codex/pattern-map-v16-public-transfer-hardening
 content: 874a0a8e09f0bde11532cf873087865addb7d973
 head:    resolve with Git; sealed packet head is BUNDLE_METADATA.json.source_commit
 PR:      https://github.com/adonisdv23/Pattern-Map/pull/1
@@ -359,7 +359,7 @@ summary below is the current resolution.
 
 | Claude item | What it meant | Current resolution |
 | --- | --- | --- |
-| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: the fixed content checkpoint is `874a0a8` on `codex/pattern-map-v16-foundation`; resolve the current branch head from Git. Authorized pushes and remote PR readbacks are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
+| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: the fixed content checkpoint is `874a0a8`; current public/transfer hardening is on `codex/pattern-map-v16-public-transfer-hardening`. Resolve the current branch head from Git. Authorized pushes and remote PR readbacks are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
 | **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; its converged content checkpoint is `874a0a8`, with terminal predecessor `bc7e7c5`, Pro correction history at `c889260`, and earlier converged source `ad964dd`. Resolve the current branch head before attributing source state. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
 | **Decide if the evidence rule bites too hard** | Claude tightened guards around unreachable CSS, false file extensions, exact checkpoints, and planning-versus-event language. | The strictness is now the canonical safety posture recorded in the locked intent, D-025, the acceptance matrix, and the current QA. No new owner decision is needed to consume v16. If an owner later wants a guard relaxed, record an explicit decision and revise the affected contract; do not silently weaken it. |
 

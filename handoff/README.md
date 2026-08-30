@@ -12,6 +12,10 @@ This directory contains the local owner-review handoff:
   and Claude Code handoff; give it together with the canonical handoff;
 - `signal-foundry/build_portable_bundle.py` — deterministic exact-commit
   cross-computer ZIP/manifest/verifier/sidecar builder;
+- `../site/exports/standalone/pattern-map-v16.html` — direct-open owner-review
+  composition;
+- `../site/exports/standalone/pattern-map-v16-public.html` — direct-open
+  prose-first public preview generated from the same canonical sources;
 - `OWNER_REVIEW_MANIFEST_V16.json` — checksums for the bounded review package;
 - `verify_owner_review_package.py` — deterministic manifest writer/verifier.
 
