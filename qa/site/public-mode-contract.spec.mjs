@@ -39,6 +39,7 @@ const validReleaseConfig = {
   author_handle: null,
   canonical_url: "https://example.test/pattern-map",
   social_image_url: "https://example.test/pattern-map/social-card.png",
+  social_image_alt: "Diagram showing Pattern Map's six connected discrimination families.",
   release_boundary: "Test-only configuration in a disposable site copy.",
 };
 
@@ -52,6 +53,8 @@ const adversarialReleaseConfigs = [
   ["canonical URL with a fragment", { ...validReleaseConfig, canonical_url: "https://example.test/pattern-map#preview" }],
   ["empty social-image host", { ...validReleaseConfig, social_image_url: "https://" }],
   ["malformed social-image URL", { ...validReleaseConfig, social_image_url: "https://example .test/social-card.png" }],
+  ["missing social-image alternative", { ...validReleaseConfig, social_image_alt: null }],
+  ["blank social-image alternative", { ...validReleaseConfig, social_image_alt: "   " }],
 ];
 
 for (const [label, candidate] of adversarialReleaseConfigs) {
@@ -102,6 +105,8 @@ try {
   assert.match(releaseHtml, /<meta name="robots" content="index,follow">/);
   assert.match(releaseHtml, /<link rel="canonical" href="https:\/\/example\.test\/pattern-map\/">/);
   assert.match(releaseHtml, /<meta property="og:image" content="https:\/\/example\.test\/pattern-map\/social-card\.png">/);
+  assert.match(releaseHtml, /<meta property="og:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
+  assert.match(releaseHtml, /<meta name="twitter:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="author" content="Publication Gate Test">/);
   assert.equal(releaseManifest.release_build, true, "--release did not record the valid release build");
 
@@ -138,7 +143,7 @@ assert.equal(publicManifest.release_build, false, "ordinary public preview must 
 
 const config = JSON.parse(read("site/publication.config.json"));
 assert.equal(config.status, "LOCAL_PREVIEW_UNSET");
-for (const field of ["author_name", "author_handle", "canonical_url", "social_image_url"]) {
+for (const field of ["author_name", "author_handle", "canonical_url", "social_image_url", "social_image_alt"]) {
   assert.equal(config[field], null, `public identity field should remain unset: ${field}`);
 }
 
@@ -163,11 +168,25 @@ assertNoSkippedHeadingLevels(read("site/exports/standalone/pattern-map-v16-publi
 assert.match(publicRead, /<h2 id="short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer<\/h2>/);
 
 const publicApply = read("site/public-dist/apply/index.html");
-for (const dependent of ["consequence", "uncertainty", "budget"]) {
+const publicMap = read("site/public-dist/map/index.html");
+const publicExamples = read("site/public-dist/examples/index.html");
+for (const dependent of ["consequence", "uncertainty", "budget", "permission", "humanActionGate"]) {
   assert.match(publicApply, new RegExp(`data-stage0-dependent="${dependent}"[^>]*disabled`));
 }
-assert.match(publicApply, /are not applicable while Stage 0 remains supplied-material only/);
+assert.match(publicApply, /are not applicable while Stage 0 remains an already-permitted supplied-material transformation/);
 assert.match(publicApply, /<details class="static-route-equivalent" open data-progressive-static-guide><summary>/);
+for (const state of ["AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"]) {
+  assert.match(publicApply, new RegExp(`name="permission" value="${state}"`));
+}
+assert.match(publicApply, /name="humanActionGate" value="NOT_REQUIRED"/);
+assert.match(publicApply, /name="humanActionGate" value="REQUIRED"/);
+assert.match(publicApply, /data-recommendation-action>ORDINARY_RECORD</);
+assert.doesNotMatch(publicApply.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "", /<code>ANSWER<\/code>/);
+assert.match(publicApply, /capacity[^.]*never (?:makes Advanced appropriate|justifies it) by itself/i);
+assert.match(publicMap, /What role does each source and information path play for this exact claim\?/);
+assert.match(publicMap, /What can this source actually tell us about this claim, and what can it not tell us\?/);
+assert.match(publicMap, /Recurrence, authority, support, relevance, origin, and permission stay distinct\./);
+assert.doesNotMatch(publicExamples, /<details class="case-card signal-foundry"\s+open>/);
 
 const siteScript = read("site/src/site.js");
 assert.match(siteScript, /document\.querySelectorAll\("\[data-progressive-static-guide\]"\)/);
@@ -177,7 +196,10 @@ assert.match(siteScript, /fieldset\.disabled = ordinary/);
 assert.match(siteScript, /fieldset\.dataset\.applicability = ordinary \? "not-applicable" : "active"/);
 
 const publicHome = read("site/public-dist/index.html");
+assert.match(publicHome, /<meta property="og:title" content="AI slop often begins before the model writes a word\.">/);
+assert.match(publicHome, /<meta property="og:description" content="AI answers inherit what was found, missed, compared, and remembered before generation\. Pattern Map makes those upstream choices visible, challengeable, and proportionate\.">/);
 const reveal = publicHome.match(/<figure class="decision-reveal"[\s\S]*?<\/figure>/)?.[0] ?? "";
+assert.ok(publicHome.indexOf('class="door-grid"') < publicHome.indexOf('class="decision-reveal"'), "public principal doors must precede the teaching reveal");
 assert.ok(reveal, "public teaching reveal is missing");
 for (const stage of ["DEFAULT PATH", "WIDEN ONCE", "COMPARE", "EXPECTED ABSENCE", "BECAME VISIBLE", "REMAINS UNKNOWN", "HUMAN DECISION"]) {
   assert.ok(reveal.includes(stage), `teaching reveal stage missing: ${stage}`);

@@ -146,12 +146,55 @@ def main() -> None:
     ]
     for value in essential:
         require(value in root_text + map_text + apply_text + read_text, f"essential site meaning missing: {value}")
+    require(
+        root_text.index('class="door-grid"') < root_text.index('class="decision-reveal"'),
+        "principal doors do not precede the teaching reveal",
+    )
     output.append("PASS no-script essential meaning is present in static HTML")
 
     for value in ["ordinary", "lightweight", "moderate", "advanced", "ACQUIRE", "STOPPED_BUDGET", "LEARNING_PENDING_OUTCOME"]:
         require(value.lower() in apply_text.lower(), f"Apply vocabulary missing: {value}")
     require('name="evidenceSelection"' in apply_text and "Stage 0 comes first" in apply_text, "Apply Stage 0 evidence-selection gate missing")
-    output.append("PASS Apply route exposes ordinary/lightweight/moderate/advanced and route/stop/learning vocabularies")
+    for dependent in ("consequence", "uncertainty", "budget", "permission", "humanActionGate"):
+        require(
+            re.search(fr'data-stage0-dependent="{dependent}"[^>]*disabled', apply_text) is not None,
+            f"Apply {dependent} field is not initially inapplicable at Stage 0",
+        )
+    for permission_state in ("AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"):
+        require(
+            f'name="permission" value="{permission_state}"' in apply_text,
+            f"Apply permission state missing: {permission_state}",
+        )
+    require('name="humanActionGate" value="NOT_REQUIRED"' in apply_text, "Apply human action gate lacks NOT_REQUIRED")
+    require('name="humanActionGate" value="REQUIRED"' in apply_text, "Apply human action gate lacks REQUIRED")
+    ordinary_row = re.search(r'<tr><th scope="row">ordinary</th>[\s\S]*?</tr>', apply_text)
+    require(ordinary_row is not None and "ORDINARY_RECORD" in ordinary_row.group(0), "ordinary Stage 0 row lacks ORDINARY_RECORD")
+    require("<code>ANSWER</code>" not in ordinary_row.group(0), "ordinary Stage 0 row fabricates an ANSWER route")
+    for fact in ("data-recommendation-permission", "data-recommendation-human-gate", "data-recommendation-capacity"):
+        require(fact in apply_text, f"Apply recommendation omits explicit planning fact: {fact}")
+    require(
+        re.search(r'capacity[^.]*never (?:makes Advanced appropriate|justifies it) by itself', apply_text, flags=re.IGNORECASE) is not None,
+        "Apply does not state that capacity cannot justify Advanced by itself",
+    )
+    output.append("PASS Apply exposes terminal ordinary work, typed permission, a separate human gate, proportional capacity, and layered routes")
+
+    require(
+        "What role does each source and information path play for this exact claim?" in map_text,
+        "F2 stable reader question drifted",
+    )
+    require(
+        "What can this source actually tell us about this claim, and what can it not tell us?" in map_text,
+        "F2 plain-language bridge drifted",
+    )
+    require(
+        "Recurrence, authority, support, relevance, origin, and permission stay distinct." in map_text,
+        "F2 public boundary drifted",
+    )
+    require(
+        re.search(r'<details class="case-card signal-foundry"\s+open>', examples_text) is not None,
+        "review-mode Signal Foundry case should be open for owner inspection",
+    )
+    output.append("PASS F2 role/authority contract and review-mode Signal Foundry inspection state")
 
     term_names = re.findall(r'<button\b[^>]*data-term-trigger[^>]*aria-label="(Explain [^"]+)"', root_text + map_text + apply_text + guided_text)
     require(term_names and len(set(term_names)) >= 6, "contextual term triggers lack distinct descriptive names")

@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_PATH = ROOT / "docs/CONTENT_INTERFACE_V16.json"
 FAMILIES_PATH = ROOT / "framework/SIX_FAMILIES.json"
+THESIS_AUDIENCE_PATH = ROOT / "docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md"
 OWNER_INTENT_PATH = ROOT / "docs/OWNER_INTENT_V16.md"
 OWNER_INTENT_CHECKPOINT_PATH = ROOT / "docs/OWNER_INTENT_V16.sha256"
 LOCKED_OWNER_INTENT_SHA256 = (
@@ -48,7 +49,7 @@ EXPECTED_FAMILIES = [
         "id": "F2",
         "slug": "source-weighing",
         "name": "Source weighing",
-        "reader_question": "What role does each source play for this exact claim?",
+        "reader_question": "What role does each source and information path play for this exact claim?",
     },
     {
         "id": "F3",
@@ -293,6 +294,12 @@ def main() -> None:
             "canonical six-family source differs from the locked tuple")
     require(contract["families"] == EXPECTED_FAMILIES,
             "content-interface families differ from the locked tuple")
+    thesis_audience = THESIS_AUDIENCE_PATH.read_text(encoding="utf-8")
+    f2_question = EXPECTED_FAMILIES[1]["reader_question"]
+    require(
+        f"| Source weighing | {f2_question} |" in thesis_audience,
+        "machine-facing F2 question differs from the stable thesis/audience contract",
+    )
     for family in family_source["families"]:
         required_boundary = EXPECTED_FAMILY_BOUNDARIES[family["id"]]
         require(required_boundary in family["boundaries"],

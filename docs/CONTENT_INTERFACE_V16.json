@@ -127,7 +127,7 @@
       "id": "F2",
       "slug": "source-weighing",
       "name": "Source weighing",
-      "reader_question": "What role does each source play for this exact claim?"
+      "reader_question": "What role does each source and information path play for this exact claim?"
     },
     {
       "id": "F3",

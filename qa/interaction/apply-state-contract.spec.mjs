@@ -5,91 +5,147 @@ await import("../../site/src/recommendation.js");
 const api = globalThis.PatternMapRecommendation;
 assert.ok(api?.recommend, "recommendation API is unavailable");
 
-assert.deepEqual(api.INITIAL_OBSERVED_STATE, {
+const expectedObserved = {
   executionState: "NOT_RUN",
   stopOutcome: "NOT_TRIGGERED",
   outcomeState: "NOT_OBSERVED",
   learningReview: "NOT_AVAILABLE",
   humanDisposition: "NOT_RECORDED",
-});
-
-const choices = {
-  evidenceSelection: ["none", "needed"],
-  consequence: ["reversible", "consequential"],
-  uncertainty: ["low", "mixed", "high"],
-  budget: ["quick", "bounded", "substantial"],
-  permission: ["supplied", "restricted", "human-gate"],
 };
+assert.deepEqual(api.INITIAL_OBSERVED_STATE, expectedObserved);
+
+const resultKeys = [
+  "capacityFit",
+  "humanActionGate",
+  "learningOption",
+  "permissionState",
+  "plannedStopCondition",
+  "recommendedAction",
+  "recommendedLevel",
+  "requiredGate",
+  "summary",
+  "title",
+];
 const fabricatedEventTokens = [
-  "COMPLETE",
   "STOPPED_",
   "HUMAN_DISPOSITION_RECORDED",
   "LEARNING_PENDING_OUTCOME",
   "LEARNING_REVIEWED",
 ];
+const checkPlanningOnly = (result) => {
+  assert.deepEqual(Object.keys(result).sort(), resultKeys);
+  const serialized = JSON.stringify(result);
+  for (const token of fabricatedEventTokens) {
+    assert.equal(serialized.includes(token), false, `planning output fabricated event token ${token}`);
+  }
+  assert.deepEqual(api.INITIAL_OBSERVED_STATE, expectedObserved, "planning must not mutate observed state");
+};
 
-let combinations = 0;
-for (const evidenceSelection of choices.evidenceSelection) {
-  for (const consequence of choices.consequence) {
-    for (const uncertainty of choices.uncertainty) {
-      for (const budget of choices.budget) {
-        for (const permission of choices.permission) {
-          combinations += 1;
-          const input = { evidenceSelection, consequence, uncertainty, budget, permission };
-          const result = api.recommend(input);
-          assert.deepEqual(Object.keys(result).sort(), [
-            "learningOption",
-            "plannedStopCondition",
-            "recommendedAction",
-            "recommendedLevel",
-            "requiredGate",
-            "summary",
-            "title",
-          ]);
-          const serialized = JSON.stringify(result);
-          for (const token of fabricatedEventTokens) {
-            assert.equal(serialized.includes(token), false, `planning output fabricated event token ${token}`);
-          }
+const ordinary = api.recommend({ evidenceSelection: "none" });
+checkPlanningOnly(ordinary);
+assert.equal(ordinary.recommendedLevel, "ordinary");
+assert.equal(ordinary.recommendedAction, "ORDINARY_RECORD");
+assert.equal(ordinary.permissionState, "NOT_APPLICABLE");
+assert.equal(ordinary.humanActionGate, "NOT_APPLICABLE");
+assert.equal(ordinary.capacityFit, "NOT_APPLICABLE");
+for (const field of ["supplied scope", "material assumptions", "unchecked boundaries", "output"]) {
+  assert.match(ordinary.plannedStopCondition, new RegExp(field, "i"), `ordinary record is missing ${field}`);
+}
+assert.match(ordinary.learningOption, /LEARNING_NOT_APPLICABLE/);
+assert.doesNotMatch(JSON.stringify(ordinary), /ANSWER|COMPARE|ACQUIRE|CLARIFY/);
 
-          if (evidenceSelection === "needed") {
-            assert.notEqual(result.recommendedLevel, "ordinary", "Stage 0 yes must not resolve to the ordinary path");
-          }
-          if (evidenceSelection === "none") {
-            assert.equal(result.recommendedLevel, "ordinary", "Stage 0 no must remain on the ordinary path");
-            if (permission === "supplied") {
-              assert.equal(result.recommendedAction, "ANSWER", "Stage 0 no must not introduce acquisition or comparison work");
-              assert.match(result.plannedStopCondition, /supplied-material transformation/i);
-            }
-          }
-          if (permission === "restricted") {
-            assert.equal(result.recommendedAction, "CLARIFY", "restricted permission must dominate route size");
-            assert.match(result.requiredGate, /permission/i);
-          }
-          if (permission === "human-gate") {
-            assert.equal(result.recommendedAction, "HOLD", "human gate must dominate route size");
+for (const field of ["consequence", "uncertainty", "budget", "permission", "humanActionGate"]) {
+  assert.throws(
+    () => api.recommend({ evidenceSelection: "none", [field]: "not-applicable-placeholder" }),
+    /ordinary input cannot contain layered fields/,
+    `ordinary input incorrectly accepted layered field ${field}`,
+  );
+}
+
+const choices = {
+  consequence: ["reversible", "consequential"],
+  uncertainty: ["low", "mixed", "high"],
+  budget: ["quick", "bounded", "substantial"],
+  permission: ["AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"],
+  humanActionGate: ["NOT_REQUIRED", "REQUIRED"],
+};
+
+let layeredCombinations = 0;
+for (const consequence of choices.consequence) {
+  for (const uncertainty of choices.uncertainty) {
+    for (const budget of choices.budget) {
+      for (const permission of choices.permission) {
+        for (const humanActionGate of choices.humanActionGate) {
+          layeredCombinations += 1;
+          const result = api.recommend({
+            evidenceSelection: "needed",
+            consequence,
+            uncertainty,
+            budget,
+            permission,
+            humanActionGate,
+          });
+          checkPlanningOnly(result);
+
+          const expectedLevel = consequence === "consequential" && uncertainty === "high" && budget === "substantial"
+            ? "advanced"
+            : (consequence === "consequential" || uncertainty === "high" ? "moderate" : "lightweight");
+          assert.equal(result.recommendedLevel, expectedLevel, "route size diverged from the proportionality contract");
+          assert.notEqual(result.recommendedLevel, "ordinary", "Stage 0 yes must not resolve to ordinary");
+          assert.equal(result.permissionState, permission, "permission state was collapsed or rewritten");
+          assert.equal(result.humanActionGate, humanActionGate, "human action gate was not kept separate");
+          const expectedCapacityFit = consequence === "consequential" && uncertainty === "high" && budget !== "substantial"
+            ? "NARROW_OR_ESCALATE"
+            : (expectedLevel === "lightweight" && budget === "substantial" ? "EXCEEDS_WARRANTED_SCOPE" : "WITHIN_SELECTED_BOUNDARY");
+          assert.equal(result.capacityFit, expectedCapacityFit, "capacity fit did not preserve the planning boundary");
+
+          if (permission === "UNKNOWN") {
+            assert.equal(result.recommendedAction, "ESCALATE");
+            assert.match(`${result.requiredGate} ${result.summary}`, /establish|unestablished|unknown/i);
+          } else if (permission === "NOT_AUTHORIZED") {
+            assert.equal(result.recommendedAction, "HOLD");
+            assert.match(`${result.requiredGate} ${result.summary}`, /not authorized|absent|denied|new.*authorization/i);
+          } else if (permission === "REVOKED") {
+            assert.equal(result.recommendedAction, "HOLD");
+            assert.match(`${result.requiredGate} ${result.summary}`, /revok|prior authorization|new scoped authorization/i);
+          } else if (humanActionGate === "REQUIRED") {
+            assert.equal(result.recommendedAction, "HOLD");
             assert.match(result.requiredGate, /named human/i);
+          } else if (expectedCapacityFit === "NARROW_OR_ESCALATE") {
+            assert.equal(result.recommendedAction, "CLARIFY");
+            assert.match(`${result.requiredGate} ${result.summary}`, /narrow|capacity|resource boundary/i);
+          } else if (expectedLevel === "lightweight") {
+            assert.equal(result.recommendedAction, "ANSWER_PROVISIONALLY");
+          } else {
+            assert.equal(result.recommendedAction, "COMPARE");
           }
-          assert.deepEqual(api.INITIAL_OBSERVED_STATE, {
-            executionState: "NOT_RUN",
-            stopOutcome: "NOT_TRIGGERED",
-            outcomeState: "NOT_OBSERVED",
-            learningReview: "NOT_AVAILABLE",
-            humanDisposition: "NOT_RECORDED",
-          }, "planning must not mutate observed state");
         }
       }
     }
   }
 }
 
-assert.equal(combinations, 108, "expected the complete 2×2×3×3×3 planning matrix");
+assert.equal(layeredCombinations, 144, "expected the complete 2×3×3×4×2 layered matrix");
+for (const uncertainty of ["low", "mixed"]) {
+  const capacityOnly = api.recommend({
+    evidenceSelection: "needed",
+    consequence: "reversible",
+    uncertainty,
+    budget: "substantial",
+    permission: "AUTHORIZED",
+    humanActionGate: "NOT_REQUIRED",
+  });
+  assert.equal(capacityOnly.recommendedLevel, "lightweight", "substantial capacity alone must not trigger Advanced");
+  assert.equal(capacityOnly.capacityFit, "EXCEEDS_WARRANTED_SCOPE", "excess capacity should not enlarge the warranted route");
+}
+
 assert.throws(() => api.recommend({ evidenceSelection: "unknown" }), /Invalid evidenceSelection/);
 assert.throws(() => api.recommend({
-  evidenceSelection: "none",
-  consequence: "unknown",
+  evidenceSelection: "needed",
+  consequence: "reversible",
   uncertainty: "low",
   budget: "quick",
-  permission: "supplied",
-}), /Invalid consequence/);
+  permission: "AUTHORIZED",
+}), /Invalid humanActionGate/);
 
-console.log("PASS Apply Stage 0 and planning-state contract across 108 combinations");
+console.log("PASS Apply terminal Stage 0 and planning-state contract across 1 ordinary + 144 layered combinations");

@@ -126,7 +126,7 @@ const main = () => {
   const essaySection = readRoute.match(/<section class="essay-section[\s\S]*?<\/section>/)?.[0] ?? "";
   const essayTitleCount = (essaySection.match(/>Pattern Recognition: The Discrimination Layer<\//g) ?? []).length;
   assert(essayTitleCount === 1, `complete essay renders its title ${essayTitleCount} times`);
-  assert(root.includes("A QUICK EXAMPLE") && root.indexOf("A QUICK EXAMPLE") < root.indexOf("Three principal doors"), "concrete example does not arrive before the route doors");
+  assert(root.includes("A QUICK EXAMPLE") && root.indexOf("Three principal doors") < root.indexOf("A QUICK EXAMPLE"), "principal doors do not arrive before the teaching example");
   assert(root.includes("data-term-trigger") && root.includes("term-inline"), "first-use term help is missing visible meaning or an optional explainer");
   const termTriggerTags = [...[root, map, apply, guided].join("\n").matchAll(/<button\b[^>]*data-term-trigger[^>]*>/g)].map((match) => match[0]);
   assert(termTriggerTags.length > 0, "no contextual term triggers were rendered");
@@ -155,12 +155,18 @@ const main = () => {
   for (const relationship of ["REQUIRES A BASELINE", "CAN REVEAL A SHARED PATH", "CONSTRAINS INFLUENCE", "MAY UPDATE AFTER AN OUTCOME"]) assert(map.includes(relationship), `map relationship band missing: ${relationship}`);
   for (const plainPurpose of [
     "Look beyond the obvious path, but treat what you find as something to inspect—not a shortcut to truth.",
-    "Ask what each source can and cannot tell us about this exact claim",
+    "What can this source actually tell us about this claim, and what can it not tell us?",
     "Notice a change against a stated baseline before calling it meaningful.",
     "Notice what should be present but is not",
     "preserve important differences",
     "Compare what you expected with what happened",
   ]) assert(map.includes(plainPurpose), `plain-language family bridge missing: ${plainPurpose}`);
+  const f2Card = map.match(/<article id="family-F2"[\s\S]*?<\/article>/)?.[0] ?? "";
+  assert(f2Card.includes("What role does each source and information path play for this exact claim?"), "F2 reader question drifted from the stable public contract");
+  assert(f2Card.includes("Recurrence, authority, support, relevance, origin, and permission stay distinct."), "F2 public boundary is incomplete");
+  for (const dimension of ["source role", "track-record evidence", "claim-scoped authority", "support", "relevance", "recurrence", "origin", "provenance", "permission"]) {
+    assert(f2Card.toLowerCase().includes(dimension), `F2 closed technical detail lost ${dimension}`);
+  }
   assert(!/<p class="boundary"><strong>Boundary:<\/strong>\s*<\/p>/.test(map), "Map glossary contains an empty boundary");
   assert(!/<details class="glossary-item">[\s\S]*?<p><\/p>/.test(map), "Map glossary contains an empty technical meaning");
   for (const level of ["ordinary", "lightweight", "moderate", "advanced"]) assert(apply.toLowerCase().includes(level), `implementation level missing: ${level}`);
@@ -298,7 +304,7 @@ const main = () => {
 
   const publicationConfig = JSON.parse(read(PUBLICATION_CONFIG_PATH));
   assert(publicationConfig.status === "LOCAL_PREVIEW_UNSET", "public preview must remain in the explicit unset state before release authorization");
-  for (const field of ["author_name", "author_handle", "canonical_url", "social_image_url"]) {
+  for (const field of ["author_name", "author_handle", "canonical_url", "social_image_url", "social_image_alt"]) {
     assert(publicationConfig[field] === null, `public preview invented publication identity: ${field}`);
   }
 
@@ -308,6 +314,7 @@ const main = () => {
   const publicRead = read(path.join(PUBLIC_DIST_DIR, "read/index.html"));
   const publicApply = read(path.join(PUBLIC_DIST_DIR, "apply/index.html"));
   const publicMap = read(path.join(PUBLIC_DIST_DIR, "map/index.html"));
+  const publicExamples = read(path.join(PUBLIC_DIST_DIR, "examples/index.html"));
   const publicResearch = read(path.join(PUBLIC_DIST_DIR, "research/index.html"));
   const publicStandalone = read(PUBLIC_EXPORT_PATH);
   for (const html of [...publicRouteHtml, publicStandalone]) {
@@ -322,7 +329,7 @@ const main = () => {
       '<aside class="orientation-rail"',
       '<details class="orientation-mobile"',
     ]) assert(!html.toLowerCase().includes(reviewChrome), `public surface leaked review chrome: ${reviewChrome}`);
-    for (const releaseOnlyMetadata of ['rel="canonical"', 'property="og:url"', 'name="author"', 'property="og:image"', 'name="twitter:image"']) {
+    for (const releaseOnlyMetadata of ['rel="canonical"', 'property="og:url"', 'name="author"', 'property="og:image"', 'property="og:image:alt"', 'name="twitter:image"', 'name="twitter:image:alt"']) {
       assert(!html.includes(releaseOnlyMetadata), `public preview invented release metadata: ${releaseOnlyMetadata}`);
     }
   }
@@ -331,6 +338,11 @@ const main = () => {
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) {
     assert(publicMap.includes(familyName), `public mode lost family: ${familyName}`);
   }
+  assert(publicMap.includes("What role does each source and information path play for this exact claim?"), "public F2 question drifted");
+  assert(publicMap.includes("What can this source actually tell us about this claim, and what can it not tell us?"), "public F2 bridge drifted");
+  assert(publicMap.includes("Recurrence, authority, support, relevance, origin, and permission stay distinct."), "public F2 boundary drifted");
+  assert(!/<details class="case-card signal-foundry"\s+open>/.test(publicExamples), "public Signal Foundry case is open by default");
+  assert(/<details class="case-card signal-foundry"\s+open>/.test(examples), "review Signal Foundry case is not open for owner inspection");
   assert(publicApply.includes("Planning only.") && publicApply.includes("Human authority stays explicit."), "public Apply lost planning or human-authority boundary");
   assert(publicResearch.includes("UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED"), "public Research lost the no-results boundary");
   assert(publicResearch.includes("The Echo Problem — separate project — unrun — no results"), "public mode collapsed the Echo separation");
@@ -345,9 +357,10 @@ const main = () => {
   assert(!publicRead.includes("manuscript/PATTERN_RECOGNITION_V16.md"), "public Read exposed a repository path in the ordinary reading flow");
   assert(publicRead.includes('class="public-reading-next"'), "public Read lost compact onward navigation");
 
+  const doorStart = publicRoot.indexOf("Three principal doors");
   const teachingStart = publicRoot.indexOf('<figure class="decision-reveal"');
   const teachingEnd = publicRoot.indexOf("</figure>", teachingStart);
-  assert(teachingStart > 0 && teachingEnd > teachingStart && teachingEnd < publicRoot.indexOf("Three principal doors"), "teaching reveal is missing or arrives after the doors");
+  assert(doorStart > 0 && teachingStart > doorStart && teachingEnd > teachingStart, "principal doors must precede the teaching reveal");
   const teaching = publicRoot.slice(teachingStart, teachingEnd);
   for (const label of ["01 · DEFAULT PATH", "02 · WIDEN ONCE", "03 · COMPARE", "04 · EXPECTED ABSENCE", "BECAME VISIBLE", "REMAINS UNKNOWN", "HUMAN DECISION", "Text equivalent:"]) {
     assert(teaching.includes(label), `teaching reveal is missing stage or boundary: ${label}`);
@@ -358,10 +371,10 @@ const main = () => {
   assert((publicRoot.match(/data-teaching-reveal/g) ?? []).length === 1, "public Home must contain exactly one teaching reveal");
   assert(css.includes(".decision-reveal-equivalent") && /@media print[\s\S]*?\.decision-reveal-boundary:not\(\[open\]\)/.test(css), "teaching reveal lacks static text or print expansion");
 
-  assert(publicApply.includes('data-stage0-dependent="consequence" aria-describedby="stage0-dependent-status" disabled'), "Apply consequence controls are not initially inapplicable at Stage 0");
-  assert(publicApply.includes('data-stage0-dependent="uncertainty" aria-describedby="stage0-dependent-status" disabled'), "Apply uncertainty controls are not initially inapplicable at Stage 0");
-  assert(publicApply.includes('data-stage0-dependent="budget" aria-describedby="stage0-dependent-status" disabled'), "Apply budget controls are not initially inapplicable at Stage 0");
-  assert(publicApply.includes("are not applicable while Stage 0 remains supplied-material only"), "Apply does not explain dependent-field inapplicability");
+  for (const dependent of ["consequence", "uncertainty", "budget", "permission", "humanActionGate"]) {
+    assert(publicApply.includes(`data-stage0-dependent="${dependent}" aria-describedby="stage0-dependent-status" disabled`), `Apply ${dependent} controls are not initially inapplicable at Stage 0`);
+  }
+  assert(publicApply.includes("are not applicable while Stage 0 remains an already-permitted supplied-material transformation"), "Apply does not explain dependent-field inapplicability");
   const publicPlanIndex = publicApply.indexOf("Recommended plan");
   const publicInternalIndex = publicApply.indexOf("Inspect internal planning state and a local simulation");
   assert(publicPlanIndex > 0 && publicInternalIndex > publicPlanIndex, "public Apply does not put the plain plan before internal state");

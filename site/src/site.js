@@ -217,23 +217,16 @@
     };
     const stageZeroStatus = routeStudio.querySelector("[data-stage0-status]");
     const stageZeroDependent = [...routeStudio.querySelectorAll("[data-stage0-dependent]")];
-    const ordinaryDefaults = Object.freeze({ consequence: "reversible", uncertainty: "low", budget: "quick" });
     const syncStageZeroApplicability = () => {
       const ordinary = fieldValue("evidenceSelection") === "none";
-      if (ordinary) {
-        for (const [name, value] of Object.entries(ordinaryDefaults)) {
-          const input = routeStudio.querySelector(`input[name="${name}"][value="${value}"]`);
-          if (input) input.checked = true;
-        }
-      }
       stageZeroDependent.forEach((fieldset) => {
         fieldset.disabled = ordinary;
         fieldset.dataset.applicability = ordinary ? "not-applicable" : "active";
       });
       if (stageZeroStatus) {
         stageZeroStatus.textContent = ordinary
-          ? "Consequence, uncertainty, and evidence-route budget are not applicable while Stage 0 remains supplied-material only."
-          : "Evidence selection is in scope. Choose consequence, uncertainty, and an evidence-route budget before building the recommendation.";
+          ? "Consequence, uncertainty, capacity, permission, and the human action gate are not applicable while Stage 0 remains an already-permitted supplied-material transformation."
+          : "Evidence selection is in scope. Choose consequence, uncertainty, approved capacity, permission, and the separate human action gate before building the recommendation.";
       }
     };
     const renderObservedState = () => {
@@ -253,25 +246,35 @@
     const renderRecommendation = () => {
       let plan;
       try {
-        plan = recommendationApi.recommend({
-          evidenceSelection: fieldValue("evidenceSelection"),
-          consequence: fieldValue("consequence"),
-          uncertainty: fieldValue("uncertainty"),
-          budget: fieldValue("budget"),
-          permission: fieldValue("permission"),
-        });
+        const evidenceSelection = fieldValue("evidenceSelection");
+        const planningInput = evidenceSelection === "none"
+          ? { evidenceSelection }
+          : {
+              evidenceSelection,
+              consequence: fieldValue("consequence"),
+              uncertainty: fieldValue("uncertainty"),
+              budget: fieldValue("budget"),
+              permission: fieldValue("permission"),
+              humanActionGate: fieldValue("humanActionGate"),
+            };
+        plan = recommendationApi.recommend(planningInput);
       } catch {
-        setCardText("[data-recommendation-status]", "Choose one valid option in all five groups before building a recommendation.");
+        setCardText("[data-recommendation-status]", "Choose one valid option in every applicable group before building a recommendation.");
         return;
       }
       setCardText("[data-recommendation-level]", plan.recommendedLevel);
       setCardText("[data-recommendation-title]", plan.title);
       setCardText("[data-recommendation-summary]", plan.summary);
       setCardText("[data-recommendation-action]", plan.recommendedAction);
+      setCardText("[data-recommendation-permission]", plan.permissionState);
+      setCardText("[data-recommendation-human-gate]", plan.humanActionGate);
+      setCardText("[data-recommendation-capacity]", plan.capacityFit);
       setCardText("[data-recommendation-gate]", plan.requiredGate);
       setCardText("[data-recommendation-stop]", plan.plannedStopCondition);
       setCardText("[data-recommendation-learning]", plan.learningOption);
-      setCardText("[data-recommendation-status]", `${plan.recommendedLevel} route recommendation built; no execution or human decision has been recorded.`);
+      setCardText("[data-recommendation-status]", plan.recommendedLevel === "ordinary"
+        ? "Four-field ordinary record recommended; no layered route, execution, or human decision has been recorded."
+        : `${plan.recommendedLevel} route recommendation built; no execution or human decision has been recorded.`);
       recommendationCard.dataset.level = plan.recommendedLevel;
       renderObservedState();
       resetSimulation();

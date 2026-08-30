@@ -1,6 +1,6 @@
 export const PUBLICATION_CONFIG_SCHEMA = "pattern-map.publication-config.v1";
 export const PUBLICATION_RELEASE_STATUS = "READY_FOR_AUTHORIZED_RELEASE";
-export const REQUIRED_RELEASE_FIELDS = ["author_name", "canonical_url", "social_image_url"];
+export const REQUIRED_RELEASE_FIELDS = ["author_name", "canonical_url", "social_image_url", "social_image_alt"];
 
 export const isAbsoluteHttpsUrl = (value) => {
   if (typeof value !== "string" || !value || value !== value.trim() || /[\u0000-\u0020\u007f]/.test(value)) return false;
