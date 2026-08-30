@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
 CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
-OWNER_REVIEW_PDF_CHECKPOINT = "06c61680f709861ccd3ffd2df5029e04c63cb450"
+OWNER_REVIEW_PDF_CHECKPOINT = "385af09679bac12d8ce807bda6c3d4ee3f143723"
 PHASE_0_BASELINE = "37c7c852ff406431454346eacc694ac04c5f57a5"
 LANE_HEADS = {
     "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
@@ -193,6 +193,7 @@ REQUIRED_PATHS = [
     "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
     "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
     "qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md",
+    "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md",
     "qa/research/validate_research_boundaries.py",
@@ -241,6 +242,11 @@ REQUIRED_PATHS = [
     "qa/visual/POLISH_PLAN.md",
     "qa/visual/VISUAL_NEEDS.md",
     "qa/visual/VISUAL_QA_REPORT.md",
+    "qa/visual/ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md",
+    "qa/visual/W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md",
+    "qa/visual/ultra-finalization/public-home-doors-1440x720.jpg",
+    "qa/visual/ultra-finalization/public-home-map-door-390x844.jpg",
+    "qa/visual/ultra-finalization/public-home-apply-door-390x844.jpg",
     "qa/visual/opportunity-final/README.md",
     "qa/visual/opportunity-final/public-home-1280x720.jpg",
     "qa/visual/opportunity-final/public-home-390x844.jpg",
@@ -385,7 +391,7 @@ def write_manifest() -> None:
             "command": "git rev-parse --verify HEAD",
             "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
         },
-        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; two post-build opportunity/red-team loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
+        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; current principal-door evidence; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),

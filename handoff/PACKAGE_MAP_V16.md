@@ -36,7 +36,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Relationship and terms | `framework/RELATIONSHIP_MAP.md`, `framework/GLOSSARY.md` |
 | Operating choices | `framework/OPERATOR_PLAYBOOK.md`, `framework/IMPLEMENTATION_CHOICES.md`, `framework/BOUNDARIES_AND_FAILURES.md` |
 | Mechanisms and templates | `framework/mechanisms/**`, `framework/templates/**` |
-| Proportionate applied controls | `framework/templates/ORDINARY_RECORD.md`, `framework/templates/MEMORY_RECORD.md`, `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` |
+| Proportionate applied controls | `framework/templates/ORDINARY_RECORD.md`, `framework/templates/MEMORY_RECORD.md`, `framework/templates/OUTCOME_REVIEW.md`, `qa/applied/receipts/pending-outcome-review.json`, `qa/applied/receipts/reviewed-missing-outcome.json`, `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` |
 | Signal Foundry | `cases/signal-foundry/README.md` |
 | Neutral cases | `cases/general-research/README.md`, `cases/product-and-process/README.md` |
 
@@ -91,7 +91,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Final site hygiene | `qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md`, `qa/visual/verify_image_formats.py` | Stale-selector removal, truthful current image signatures, immutable archive exceptions, and human-first standalone regression |
 | Prior Pro correction QA | `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md` | Round 1 exact review history; superseded for the current Apply matrix and term/mobile behavior |
 | Historical site-polish QA | `qa/site/SITE_POLISH_QA.md`, `qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md` | Earlier `a319794` design checkpoint; superseded for current Map/Apply semantics |
-| Visual QA | `qa/visual/POLISH_PLAN.md`, `qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, historical routed-site screenshots, current PDF renders | Design history and bounded rendered evidence; `qa/visual/README.md` distinguishes current from superseded captures |
+| Visual QA | `qa/visual/POLISH_PLAN.md`, `qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, `qa/visual/ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md`, `qa/visual/W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md`, historical routed-site screenshots, current principal-door captures, current PDF renders | Design history and bounded rendered evidence; `qa/visual/README.md` distinguishes current from superseded captures |
 | Image decision/use records | `qa/visual/VISUAL_NEEDS.md`, `assets/IMAGE_USE_LEDGER.md` | No generated bitmap candidates |
 
 ## The Echo Problem / ECHO-01
@@ -143,6 +143,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Public/transfer convergence QA | `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` |
 | Final exact-integrated red-team correction QA | `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` plus the three final reports under `qa/editorial/advisory/`, `qa/site/advisory/`, and `qa/research/advisory/` |
 | Opportunity-expansion plan and terminal QA | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`, `qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md` |
+| Ultra-finalization terminal QA | `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` — exact baseline, accepted corrections, removal decisions, deterministic/rendered evidence, Signal boundary, and manual residuals |
 | Opportunity-expansion review loops | Three Loop 1 reports and three exact-integrated Loop 2 reports under `qa/publication/advisory/`, `qa/research/advisory/`, and `qa/applied/advisory/`; static/model review evidence only |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |

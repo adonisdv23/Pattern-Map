@@ -78,6 +78,14 @@ non-exhaustive source scan. The cycle removed an accidental downstream packet
 dependency and repeated operating prose; it does not establish transfer,
 comprehension, publication readiness, answer quality, or effectiveness.
 
+The successor ultra-finalization cycle retains that scope and repairs only
+reproduced defects: current visual/PDF provenance, compressed-copy qualifiers,
+locally complete no-script/print Stage 0 labels, typed uncertainty, and an
+actual preserved pending-to-reviewed learning link. It adds no route, family,
+bitmap, study, provider, external registry, or Signal Foundry mutation. Its
+bounded record is
+[`ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md`](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md).
+
 The exact current branch and draft pull-request state is recorded in
 [`BRANCH_AND_PR_STATE.md`](BRANCH_AND_PR_STATE.md) and must be resolved at use.
 Earlier draft pull requests remain review history. None authorizes a merge,
@@ -119,6 +127,7 @@ deployment, or publication.
    [public/transfer convergence QA](../qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md),
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [opportunity-expansion terminal QA](../qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md),
+   [ultra-finalization terminal QA](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
 9. If the owner is preparing a private mentor review or rehearsing a possible
@@ -146,7 +155,10 @@ the semantic accessibility route.
   Ordinary work has exactly supplied scope, assumptions, unchecked boundaries,
   and output. Layered fixtures keep all four permission states distinct,
   require real linked records for claimed work, and preserve accepted current
-  memory without silently rewriting its superseded predecessor.
+  memory without silently rewriting its superseded predecessor. Reviewed-
+  learning fixtures preserve an actual pending receipt, resolve its
+  expectation/window records, and carry an explicitly synthetic unavailable-
+  outcome review without presenting a result or immutable-store claim.
 - Bounded Signal Foundry and two domain-neutral fixtures; none is represented
   as validation or observed product behavior. Two explicit Signal Foundry
   transfer artifacts identify the exact current repositories, reuse the
@@ -205,8 +217,8 @@ anchors without pretending the external ZIP lives in Git.
   pass at the verified local source path.
 - EP curated set: 82 files / 11,323,689 bytes pass; 15 deterministic harness
   tests pass as implementation checks only.
-- EP v1.1: 12 deterministic tests pass with the standard interpreter (one
-  optional tokenizer test explicitly skipped); all 12 pass in an ephemeral
+- EP v1.1: 11 deterministic tests pass with the standard interpreter and one
+  optional tokenizer test is explicitly skipped; all 12 pass in an ephemeral
   `tiktoken 0.14.0` environment. The frozen 300-pair F1/F2 render fixture
   reaches exact `cl100k_base` token parity under the replacement solver. The
   original Claude solver remains refuted by its own three failing tests. No

@@ -14,6 +14,9 @@ This directory contains the local owner-review handoff:
   cross-computer ZIP/manifest/verifier/sidecar builder;
 - `../qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`
   — exact-checkpoint independent sealing audit and limitations;
+- `../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` — bounded
+  finalization corrections, removal decisions, exact producer identity, and
+  open manual gates;
 - `../site/exports/standalone/pattern-map-v16.html` — direct-open owner-review
   composition;
 - `../site/exports/standalone/pattern-map-v16-public.html` — direct-open

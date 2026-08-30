@@ -4,7 +4,7 @@
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
   "generated_date": "2026-08-30",
   "historical_converged_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",
-  "owner_review_pdf_checkpoint": "06c61680f709861ccd3ffd2df5029e04c63cb450",
+  "owner_review_pdf_checkpoint": "385af09679bac12d8ce807bda6c3d4ee3f143723",
   "phase_0_hardening_baseline": "37c7c852ff406431454346eacc694ac04c5f57a5",
   "integrated_lane_heads": {
     "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
@@ -31,10 +31,10 @@
     "command": "git rev-parse --verify HEAD",
     "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit"
   },
-  "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; two post-build opportunity/red-team loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
+  "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; current principal-door evidence; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 283,
-  "total_bytes": 14442832,
+  "file_count": 291,
+  "total_bytes": 14812770,
   "files": [
     {
       "path": ".gitignore",
@@ -123,8 +123,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 117736,
-      "sha256": "345a3e3d89bcb12396ff43903cdc99eeb7b4f10e90ce0ec4eb67d634650e6ed4"
+      "bytes": 123542,
+      "sha256": "7db7ae4934f72b9d100ffe8b7e510c50254f0df4434db917b83fe4a9a0a91df1"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -153,8 +153,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 85968,
-      "sha256": "81ace5ca52b1825f8c892577343be2e9cbc9fd312dd68fe05a2482c8f706e2a3"
+      "bytes": 88367,
+      "sha256": "4409e80058e961b14744748066eb2ff9a6a15731225fbebc4b51c2c0f6a34bb0"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -218,8 +218,8 @@
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 7750,
-      "sha256": "a5386a150124ddb7001ce5551259c62401464bc5752902c66b06ada5297a0e4e"
+      "bytes": 8274,
+      "sha256": "b27c4de9fb0a34bed3140f6346752fd46eafa3e7c32928263656849cd3843957"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -273,8 +273,8 @@
     },
     {
       "path": "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
-      "bytes": 7263,
-      "sha256": "585cb36d8faf19cca13975b2cf6948bb881cf8f76956366dfd70ab7837e11f2e"
+      "bytes": 8077,
+      "sha256": "4a233274227a65c3bb98d0cbf0622a6fcff7f8ca1913629763283dd2d8a44bf1"
     },
     {
       "path": "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
@@ -343,8 +343,8 @@
     },
     {
       "path": "framework/templates/OUTCOME_REVIEW.md",
-      "bytes": 2236,
-      "sha256": "72e522f13b340e48cc353cc571ecdabda789135ef4fb5e3ee6c4dfc9bece1ac4"
+      "bytes": 3412,
+      "sha256": "d1d17afdcd1858d29f6f254da3197f584b158a9b9c0d352c4d4c8378a70ec5bb"
     },
     {
       "path": "framework/templates/README.md",
@@ -353,23 +353,23 @@
     },
     {
       "path": "handoff/BRANCH_AND_PR_STATE.md",
-      "bytes": 7201,
-      "sha256": "8446c78bb6ee4a0a799c71c75f42b3acc619154b5b189a21beb747997bf51a3b"
+      "bytes": 8444,
+      "sha256": "c958175d4d274e5c445a3ad98bbc8d4d130ac8f8517db363af58d7771d91725d"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 21207,
-      "sha256": "77583bb0f1c35d473cf66c1f64f73b7d49ef0d4758b5b97e6872eb16466b25d5"
+      "bytes": 22047,
+      "sha256": "ca5d884aeede5b989ba19c5be5ee462b9ea1beabf2efa70d76b80352bcf9b545"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 14358,
-      "sha256": "9df3dc83656efba031a1de2cad86618b9fecca17d99c2e64efd7e29e2ea67ac2"
+      "bytes": 14894,
+      "sha256": "4acb80eb21fca95b3be75d8e800f869d02f7e802a8742c9595128998dac5c4e8"
     },
     {
       "path": "handoff/README.md",
-      "bytes": 1409,
-      "sha256": "4e86d0e5bfb777bcb47b49488bb774b56f637b13c0bdafa192519a0aebc69124"
+      "bytes": 1581,
+      "sha256": "dbad9f42f139faa7fa317c1b0fc16655b1dee450533a2a9d6bc075c98db46189"
     },
     {
       "path": "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
@@ -388,8 +388,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 24674,
-      "sha256": "03c929c218bbbdcf1d44f6d97f116f676cdb4b91528f108fb55ddd2aea4e964f"
+      "bytes": 25374,
+      "sha256": "cf67f7e3b530be63538c223232c267e86c46b02fabb9c3cae25d997ad1ef31ff"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -438,23 +438,23 @@
     },
     {
       "path": "publication/X_COPY_VARIANTS_V16.md",
-      "bytes": 3984,
-      "sha256": "4135001bee79cc2f0f532a1754a07e00ae2101cb07b9a0eeaee38e430f700f1b"
+      "bytes": 3979,
+      "sha256": "35e8c3aebd8caa43aba357128ea0b2f64a1cc44975234e2187332daff17ae712"
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 17683,
-      "sha256": "ad23ceae752e40e28c7b9d662dbccb7b19dd3edaf7704cb037fd0d357fd360b1"
+      "bytes": 18221,
+      "sha256": "eebbe58e769a7e8165c71f7e4eda085260910f2befa7bf3ec0a4dc9ea0087a75"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
-      "bytes": 8454,
-      "sha256": "2e350a0fc83cb546b463416b27d7b3353f9083b3f295113998f5d83792c487e3"
+      "bytes": 8973,
+      "sha256": "cf3c29a7391885cff6e7b46ca8836858204b57a9f369eaefafccef7e1ece0322"
     },
     {
       "path": "qa/README.md",
-      "bytes": 9163,
-      "sha256": "afeb8d56078512b24fbb46d31b3c050b749299106c2e195b1b71faca33a55678"
+      "bytes": 9560,
+      "sha256": "b605bbcc283b8f8a39d033d322f0927a2c3594d9373c58143ef7055f655c4f53"
     },
     {
       "path": "qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md",
@@ -468,8 +468,8 @@
     },
     {
       "path": "qa/applied/README.md",
-      "bytes": 3290,
-      "sha256": "d59c1f18812d6bdab2949c5e92b5a5ee46e339d7af3716edf2436308fdea596b"
+      "bytes": 3990,
+      "sha256": "62612f5d2cd79b3a3917c3f2c9479698fc1182015a8be537ef6b624fbbdf00ea"
     },
     {
       "path": "qa/applied/STAGE_ZERO_ORDINARY_CONTRACT_CONVERGENCE_QA_2026-08-30_0beee9a.md",
@@ -513,23 +513,33 @@
     },
     {
       "path": "qa/applied/receipts/layered-ready.json",
-      "bytes": 5914,
-      "sha256": "79459445515456b032bb9a902d8e6c74f172afa01c887d655fc4053cc18897ba"
+      "bytes": 7085,
+      "sha256": "37e26347a4bf5e161457c08e1edf4ba74c0b31bae379b688418b145d1ae91404"
     },
     {
       "path": "qa/applied/receipts/lightweight-low-stakes.json",
-      "bytes": 3534,
-      "sha256": "7ecd70b517968132b3f94ffc0b486ed13dd48d4bc54c3acc9182fe700ad3abdf"
+      "bytes": 3556,
+      "sha256": "58ad4ae53647fdc9db29a90105ea92cf99c2e9fdbc2b27b9fb083e34f7a67c00"
     },
     {
       "path": "qa/applied/receipts/memory-append-only-correction.json",
-      "bytes": 5636,
-      "sha256": "de0fd06e90e50d348c50e5933feb3ab5e5187521fb78022fe6fb6e5b27532ba3"
+      "bytes": 5645,
+      "sha256": "ea82d211eaff0372ad96c84acadf5765682e17e22a16a59a9fadf5c64c1dc124"
     },
     {
       "path": "qa/applied/receipts/ordinary-supplied-material.json",
       "bytes": 713,
       "sha256": "bd4acd869424d1556f647a47f60566523cf2e38b1758d9cde76cbe4784ed2fcb"
+    },
+    {
+      "path": "qa/applied/receipts/pending-outcome-review.json",
+      "bytes": 5072,
+      "sha256": "333cd84053d6b522ea384e3e2c4e3542c123782be28377fd42746388be632da2"
+    },
+    {
+      "path": "qa/applied/receipts/reviewed-missing-outcome.json",
+      "bytes": 4909,
+      "sha256": "a3f696800b569b85d87199d510ba65ca8e9e02ea22db42175de6aa79a1843a7a"
     },
     {
       "path": "qa/applied/receipts/revoked-permission.json",
@@ -548,8 +558,8 @@
     },
     {
       "path": "qa/applied/validate_framework.py",
-      "bytes": 98028,
-      "sha256": "08f8fcd12d24c2081dcd5aa4fcc6d5beeb0c2682774997d0a6cb7f128c54b856"
+      "bytes": 118414,
+      "sha256": "223a93161920ae62c7fd91932bde6aa3832134a15a9d24ec4dd02d21149f668c"
     },
     {
       "path": "qa/content/reader-language-contract.spec.mjs",
@@ -617,6 +627,11 @@
       "sha256": "d6b94a0f3cef4f6a82680f233feab4447c74230e73889fe2f4e8944675fc6b09"
     },
     {
+      "path": "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
+      "bytes": 8346,
+      "sha256": "63bf082c8870d2eda1c8578bc9bb796dc2aa665748aed11b34ea2d2a1cdee16a"
+    },
+    {
       "path": "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
       "bytes": 9412,
       "sha256": "91c4ec9c98eb6ed6c5d42112999ed6b5392d5730dbefd15d4871932f8433938b"
@@ -669,7 +684,7 @@
     {
       "path": "qa/publication/publication-kit-contract.spec.mjs",
       "bytes": 5305,
-      "sha256": "876fbdda4c8da90475047ffe4dc1ae50550fc24fd394ac9717f6270e0119e906"
+      "sha256": "78ae5202519156196f4598a173fd2714aeb4df94250ce459b1f81f3983e209b7"
     },
     {
       "path": "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
@@ -858,8 +873,8 @@
     },
     {
       "path": "qa/site/public-mode-contract.spec.mjs",
-      "bytes": 18696,
-      "sha256": "661772d2e7ef1930356cb6302cba0d3cd1668b28a072d5b73e43fb793d722710"
+      "bytes": 19305,
+      "sha256": "2fd8e8774d9ab70976ee100663eb9ae0e1923e7fcd687d00cd01bbe638805374"
     },
     {
       "path": "qa/site/public-nav-spacing-contract.spec.mjs",
@@ -873,8 +888,13 @@
     },
     {
       "path": "qa/visual/README.md",
-      "bytes": 3603,
-      "sha256": "a01ce3fcc19d0d4039275ac51ed384ff4d03688ed2efc1805fd135c0d3b6ffc2"
+      "bytes": 4216,
+      "sha256": "5b151e1f33adb09ed265b07153769984111b9d40178423c2a4b12ce925cdbe2f"
+    },
+    {
+      "path": "qa/visual/ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md",
+      "bytes": 6002,
+      "sha256": "ba98086a587b1fc5183b9f411083a0ffea4bb3b9857824f8697f6c1caf49b9a4"
     },
     {
       "path": "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
@@ -890,6 +910,11 @@
       "path": "qa/visual/VISUAL_QA_REPORT.md",
       "bytes": 6173,
       "sha256": "5f1dd0d4e17c8574910c12dedb83bf8f79308f3c9dcbb55e9aa1bdfcd983d8fb"
+    },
+    {
+      "path": "qa/visual/W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md",
+      "bytes": 3871,
+      "sha256": "a6e255fe2f4ecfe7731f86c60fa0dfb20d91310e50ab8ab0b95d0f8af95f2b1c"
     },
     {
       "path": "qa/visual/final-redteam/public-apply-advanced-hold-1440x720.jpg",
@@ -973,8 +998,8 @@
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-2.png",
-      "bytes": 245176,
-      "sha256": "7aeecb15a0184eeeafa347ea063a07a02899a34272be25f84e436f76d4b88057"
+      "bytes": 245077,
+      "sha256": "1280271dbd6275d03aa6f751d5e9753a6e18debdc1dacce25ee38adf0bb28dde"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-3.png",
@@ -988,8 +1013,8 @@
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-5.png",
-      "bytes": 244383,
-      "sha256": "58e3161527e8f66328d51b797e0535515fa484d2ce113d1acee99e88ac22f76b"
+      "bytes": 250242,
+      "sha256": "fe1f56661b8b99303c2355cb111b4f1469b4f67c89492944fb54beb91ef44814"
     },
     {
       "path": "qa/visual/pdf-renders-final-v16-polish/page-6.png",
@@ -1232,6 +1257,21 @@
       "sha256": "cefa9111c99f03574f140d1f92080ee7c8d76f5c4411da540070470f3cbdf1ea"
     },
     {
+      "path": "qa/visual/ultra-finalization/public-home-apply-door-390x844.jpg",
+      "bytes": 84038,
+      "sha256": "41a4889dbbc0a754768fc41938987cba72d659c0f81f90544744d33c40598743"
+    },
+    {
+      "path": "qa/visual/ultra-finalization/public-home-doors-1440x720.jpg",
+      "bytes": 135396,
+      "sha256": "2b761536091fe438155d6f70dc2c65150334e9df7bf0f804d452e6debe85c658"
+    },
+    {
+      "path": "qa/visual/ultra-finalization/public-home-map-door-390x844.jpg",
+      "bytes": 73005,
+      "sha256": "188131ce8abe37cef10a5850a0f9438d6a595bce9b4a7d6876a3985cc4c811bb"
+    },
+    {
       "path": "qa/visual/verify_image_formats.py",
       "bytes": 3274,
       "sha256": "1afd25471be76bcd1ddda06fc0b77d913e7d9ff25bf50a4bacec35643555ea42"
@@ -1378,8 +1418,8 @@
     },
     {
       "path": "site/build.mjs",
-      "bytes": 124588,
-      "sha256": "f3f5e8fc604f1f5eee13344565f1292d41569d885c07e1463441f03c47548255"
+      "bytes": 124667,
+      "sha256": "f03b902edad2a305498dc7cd3834af9a36ae5d4419417b6de7232d7aaef49689"
     },
     {
       "path": "site/check.mjs",
@@ -1388,18 +1428,18 @@
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
-      "bytes": 18371,
-      "sha256": "0452239c80da4a34ad1a0fdbf8a9d50480684d078a92b8931ca0cf08a6595efc"
+      "bytes": 18373,
+      "sha256": "372b7b5fd3ad9a8838eb832b5c44ea83593622138a44b6c16c15b1688a52f25d"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16-public.html",
-      "bytes": 492608,
-      "sha256": "70b52beb95d709ba7a06d3224ddeea87133ebcf94adb2583c4686f648f63f722"
+      "bytes": 494753,
+      "sha256": "fd80394cbbb493b3ce65ff0a03ebb8027fb72ccb0ae0180ceae60628f907c8eb"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 505524,
-      "sha256": "e04dff0a20bae926586d82a6fd2be71e19d365cbe9e5a8a74e7cfc2280b51ddf"
+      "bytes": 507669,
+      "sha256": "b79783d88a1c6d65c4e0adb913b83324b40adab0ce270aebbb98f4ee0cb6e56b"
     },
     {
       "path": "site/package-lock.json",
@@ -1418,8 +1458,8 @@
     },
     {
       "path": "site/scripts/generate_review_pdf.py",
-      "bytes": 26903,
-      "sha256": "9ee41fb069a8fb1dc04fcdc321ef503234d6934fbdc71cf575875c35583eaad0"
+      "bytes": 26902,
+      "sha256": "14f8e48b3eb88d307f8084615915b44662f15e1d866d09b810411df969aad076"
     },
     {
       "path": "site/serve.mjs",

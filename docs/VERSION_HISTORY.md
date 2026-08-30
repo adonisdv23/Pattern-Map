@@ -90,6 +90,14 @@ review-preparation, presentation, and claim-boundary improvements—not a v17
 thesis, mandatory adoption layer, transfer/effectiveness result, publication,
 outreach action, or study.
 
+Ultra-finalization producer `385af09` also remains v16. It binds an actual
+synthetic pending receipt to its reviewed missing-outcome successor, resolves
+the embedded expectation/window records, preserves typed uncertainty and
+chronology, makes the static Stage 0 explanation locally complete, restores
+bounded compressed-copy qualifiers, and refreshes exact PDF/visual evidence.
+It adds no family, public route, external registry, bitmap, study, result, Echo
+scope, Signal Foundry input, deployment, or publication action.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

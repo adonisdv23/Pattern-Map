@@ -7,8 +7,8 @@ accessibility, publication, or research results**
 
 - Starting Git checkpoint:
   `9916076c2fba4fb70fa125e70e8632f2b8046904`
-- Integration state: intentionally uncommitted for primary-orchestrator review;
-  final commit binding remains pending.
+- Exact PDF producer/integration checkpoint:
+  `385af09679bac12d8ce807bda6c3d4ee3f143723`
 - PDF generator: `site/scripts/generate_review_pdf.py`
 - Generator SHA-256:
   `14f8e48b3eb88d307f8084615915b44662f15e1d866d09b810411df969aad076`
@@ -21,11 +21,10 @@ accessibility, publication, or research results**
   `372b7b5fd3ad9a8838eb832b5c44ea83593622138a44b6c16c15b1688a52f25d`
 - Renderer: Poppler `pdftoppm 26.05.0`
 
-The final integration commit does not yet exist because this lane was
-explicitly instructed to leave its changes uncommitted. The hashes above bind
-the evidence to the exact source and artifact bytes without inventing a future
-commit identity. The integrator must add the eventual commit binding after
-review rather than replacing these hashes.
+The producer checkpoint above contains the exact generator, PDF, page-2 render,
+site/copy correction, successor evidence record, and regenerated standalone
+bytes. Later packaging/disposition commits may bind this checkpoint without
+changing its PDF identity.
 
 The predecessor exact-source record remains
 `ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md`. It records PDF

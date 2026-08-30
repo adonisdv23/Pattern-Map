@@ -28,6 +28,12 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` records the exact
+  owner-specified baseline, two review waves, accepted source/visual/package
+  corrections, removal decisions, PDF producer, sealed Signal boundary, and
+  manual residuals. The separately preserved pending/reviewed fixtures and
+  model reviews are structural/advisory evidence, not outcomes or effectiveness
+  results.
 - `qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md` and its two
   cross-lane advisory challenges record the optional repository-local
   agent/operator starter, its static composition boundary, and the accepted
