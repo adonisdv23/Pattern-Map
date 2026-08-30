@@ -8,7 +8,7 @@ deployment**
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` only as the fixed **human manuscript/content-interface checkpoint**. The minimum integrated operating-contract checkpoint is `cbc89db45493fd1dcfd121af0d1da1393046a196`; use the current branch head—or `BUNDLE_METADATA.json.source_commit` in a sealed packet—as the actual operating source. Do not use `874a0a8` as the operating checkout.
+2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` only as the fixed **human manuscript/content-interface checkpoint**. The minimum integrated operating-contract checkpoint is `cbc89db45493fd1dcfd121af0d1da1393046a196`; resolve the current branch head at use—or read `BUNDLE_METADATA.json.source_commit` in a sealed packet—and use that exact commit as the operating source. Do not use `874a0a8` as the operating checkout.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
