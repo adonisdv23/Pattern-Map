@@ -24,9 +24,9 @@ decision.
 
 **Use:** broad first contact; no link attached.
 
-> AI slop begins before the model writes a word. If the system follows the obvious search path, misses specialist perspective, skips a comparison, or forgets what happened before, the answer inherits those choices. Pattern Recognition asks us to improve the room before generation.
+> AI slop often begins before the model writes a word. If the system follows the search path, misses specialist perspective, skips a comparison, or forgets what happened before, the answer inherits those choices. Pattern Recognition asks us to improve the room before generation.
 
-**Local copy size:** 279 characters including spaces and punctuation; no URL or handle.
+**Local copy size:** 277 characters including spaces and punctuation; no URL or handle.
 
 ## Variant B — question-led
 
@@ -40,9 +40,9 @@ decision.
 
 **Use:** readers who work on products or delegated agent tasks.
 
-> Better AI work begins upstream: widen the candidate set, weigh each source for the claim, compare peers or periods, check expected absences, preserve memory, and review outcomes against expectations. Use only the structure the decision warrants. Human authority stays explicit.
+> AI work is shaped upstream: widen the candidate set, weigh each source for the claim, compare peers or periods, check expected absences, preserve memory, and review outcomes against expectations. Use only the structure the decision warrants. Human authority stays explicit.
 
-**Local copy size:** 277 characters including spaces and punctuation; no URL or handle.
+**Local copy size:** 273 characters including spaces and punctuation; no URL or handle.
 
 ## Variant D — four-post thread rehearsal
 

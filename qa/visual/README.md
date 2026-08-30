@@ -6,11 +6,17 @@ Status: **owner-review evidence; not reader, accessibility, or research results*
 
 Use these paths for the current v16 review:
 
-- `final-redteam/` — current public Home/reveal, F2, common-origin, and actual
-  Advanced/HOLD Apply captures at wide and narrow widths, plus wide standalone
+- `ultra-finalization/` — exact `2ba89e7` corrected principal-door captures at
+  1440×720 and 390×844; paired hashes, geometry, method, and evidence limits
+  live in
+  `ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md`; and
+- `final-redteam/` — current F2, common-origin, and actual Advanced/HOLD Apply
+  captures at wide and narrow widths, plus wide standalone
   Sources and History captures after the all-route geometry and route-anchor
   recheck; paired evidence lives in
-  `../handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md`; and
+  `../handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md`. Its Home/reveal
+  captures predate the later principal-door correction and are retained as
+  superseded design history; and
 - `final-convergence/` — exact `5bcd08d` public Home, current relationship Map,
   common-origin teaching figure, and mobile Apply captures made through the
   in-app Browser; paired geometry, interaction, and boundary evidence lives in
@@ -19,8 +25,10 @@ Use these paths for the current v16 review:
   deterministic Home reveal, and ordinary Stage 0 at 1280×720 and/or 390×844;
   paired source and browser-proxy evidence lives in
   `../site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md`; and
-- `pdf-renders-final-v16-polish/` — six rendered pages from the secondary PDF
-  companion; and
+- `pdf-renders-final-v16-polish/` — six exact-current rendered pages from PDF
+  SHA-256 `0452239c80da4a34ad1a0fdbf8a9d50480684d078a92b8931ca0cf08a6595efc`;
+  method, page hashes, inspection result, and evidence limits live in
+  `ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md`; and
 - `../site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` — exact-checkpoint
   source, contract, and live-browser evidence for the current ten-route site;
   and
@@ -31,9 +39,8 @@ Use these paths for the current v16 review:
 The earlier public-mode lane checkpoint is
 `361243c95050723f1693907f7446be5d690b9e58`; integrated implementation
 checkpoint `5bcd08d` rebuilds both standalones after the applied, research, and
-final public-site lanes converge. The current six-page PDF remains the
-secondary visual companion and is regenerated/inspected again only after the
-final exact-commit review loop closes.
+final public-site lanes converge. The six-page PDF remains the secondary visual
+companion; its exact-current `2ba89e7` render refresh is recorded above.
 
 ## Superseded routed-site captures
 
