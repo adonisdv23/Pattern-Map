@@ -58,6 +58,7 @@ BUDGET_CONTRACT_FILES = (
     "framework/IMPLEMENTATION_CHOICES.md",
 )
 ADVANCED_CONTRACT_FILES = BUDGET_CONTRACT_FILES
+PROJECT_USE_STARTER = "framework/agent-playbook/PROJECT_USE_STARTER.md"
 
 
 class CheckFailure(Exception):
@@ -249,6 +250,123 @@ def validate_stage_zero_contract() -> None:
             "Stage 0 QA admitted a selective supplied-material summary as ordinary")
 
 
+def validate_project_use_starter() -> None:
+    """Check the cold-start adapter without turning it into a runtime router."""
+
+    starter = read_text(PROJECT_USE_STARTER)
+    normalized = normalized_text(starter)
+    require("# Project-use starter" in starter
+            and "cold-start wayfinding aid" in normalized
+            and "conformance standard" in normalized
+            and "proof of transfer" in normalized,
+            "project-use starter is missing its bounded wayfinding identity")
+    for phrase in (
+        ORDINARY_ELIGIBILITY_CONTRACT,
+        ORDINARY_TERMINAL_CONTRACT,
+        ORDINARY_AUTHORITY_CONTRACT,
+        BUDGET_COMPLEXITY_CONTRACT,
+        ADVANCED_ROUTE_CONTRACT,
+        "The six-family map is orientation, not a completion checklist.",
+        "give one concise skip reason and create no placeholder artifact",
+        "The executable permission object uses only `technical_access`, `state`, `scope`, `reason_code`, `reason`, and `resume_condition`",
+    ):
+        require(normalized_text(phrase) in normalized,
+                f"project-use starter is missing bounded contract: {phrase}")
+
+    stage_zero = normalized.index("## 1. Run Stage 0 first")
+    context = normalized.index("## 2. Fill one context block (YES only)")
+    route = normalized.index("## 3. Choose the smallest layered route")
+    require(stage_zero < context < route,
+            "project-use starter must gate context intake before layered route selection")
+    require(normalized.index("**NO:**") < normalized.index("**YES:**"),
+            "project-use starter must make the ordinary branch precede layered work")
+    require("Do not fill the project context or create evidence/family records." in starter,
+            "ordinary Stage 0 branch must stop before project/family records")
+
+    required_templates = (
+        "framework/templates/ORDINARY_RECORD.md",
+        "framework/templates/DECISION_BRIEF.md",
+        "framework/templates/ACQUISITION_RECEIPT.md",
+        "framework/templates/EVIDENCE_REGISTER.md",
+        "framework/templates/COMPARISON_MATRIX.md",
+        "framework/templates/DISCONFIRMATION_LOG.md",
+        "framework/templates/INFLUENCE_RECEIPT.md",
+        "framework/templates/MEMORY_RECORD.md",
+        "framework/templates/OUTCOME_REVIEW.md",
+    )
+    for relative in required_templates + (
+        "framework/agent-playbook/QUICKSTART.md",
+        "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
+        "framework/IMPLEMENTATION_CHOICES.md",
+    ):
+        require(relative in starter and (ROOT / relative).is_file(),
+                f"project-use starter does not resolve existing entry point {relative}")
+
+    handoff = starter.split("```text", 1)
+    require(len(handoff) == 2 and "```" in handoff[1],
+            "project-use starter is missing its context handoff block")
+    handoff_block = handoff[1].split("```", 1)[0]
+    handoff_fields = re.findall(r"^([a-z_]+):\s*$", handoff_block, re.MULTILINE)
+    require(handoff_fields == [
+                "project", "decision_question", "intended_use_and_audience",
+                "consequence_and_reversibility", "decision_owner_and_reviewer",
+                "human_action_boundary", "deadline_and_outcome_window",
+                "supplied_material_refs", "default_path_and_expected_baseline",
+                "permission_scope_and_state", "cost_and_no_action_boundary",
+                "known_unknowns_and_non_applicable_checks",
+                "likely_families_and_one_line_reasons",
+                "resume_or_escalation_condition",
+            ],
+            "project-use starter context block changed its ordered minimal fields")
+
+    for family in (
+        "F1 Peripheral signal", "F2 Source weighing", "F3 Velocity / motion",
+        "F4 Absence + memory", "F5 Structured patterns", "F6 Learning loop",
+    ):
+        require(normalized_text(family) in normalized,
+                f"project-use starter omits family orientation row {family}")
+    for value in (
+        "ACQUIRE", "COMPARE", "CLARIFY", "ANSWER", "ANSWER_PROVISIONALLY",
+        "HOLD", "DEFER", "ESCALATE", "REFUSE", "CONTINUE", "COMPLETE",
+        "STOPPED_BUDGET", "STOPPED_DEADLINE", "STOPPED_OTHER",
+        "LEARNING_PLANNED", "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED",
+        "LEARNING_NOT_APPLICABLE", "AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED",
+        "REVOKED",
+    ):
+        require(value in starter,
+                f"project-use starter omits canonical value {value}")
+
+    starter_lower = starter.lower()
+    for phrase in (
+        "seventh family", "universal conformance score", "source reputation score",
+        "second ledger", "autonomous authority", "general validation",
+    ):
+        require(phrase not in starter_lower,
+                f"project-use starter introduces prohibited expansion: {phrase}")
+
+    # QA-only matrix: the adapter preserves the existing terminal gate; it is
+    # not a production router or project result.
+    ordinary_control = {
+        "reversible": True, "supplied_material_only": True,
+        "material_claim_judgment": False, "comparison": False,
+        "selection_or_withholding": False, "permission_resolution": False,
+        "memory_reuse": False, "new_acquisition": False,
+        "externally_consequential_influence": False, "human_action_gate": False,
+    }
+    cold_start_cases = (
+        ("exact supplied reformat", ordinary_control, True),
+        ("supplied selective summary", ordinary_control | {
+            "material_claim_judgment": True, "selection_or_withholding": True,
+        }, False),
+        ("new acquisition", ordinary_control | {"new_acquisition": True}, False),
+        ("unclear permission", ordinary_control | {"permission_resolution": True}, False),
+        ("separate human action gate", ordinary_control | {"human_action_gate": True}, False),
+    )
+    for label, case, expected_ordinary in cold_start_cases:
+        require(qa_ordinary_eligibility(case) is expected_ordinary,
+                f"project-use cold-start matrix misclassified {label}")
+
+
 def validate_spec() -> None:
     spec = load_json("framework/SIX_FAMILIES.json")
     schema = load_json("framework/SIX_FAMILIES.schema.json")
@@ -364,6 +482,7 @@ def validate_artifact_inventory() -> None:
         "framework/templates/OUTCOME_REVIEW.md",
         "framework/templates/MEMORY_RECORD.md",
         "framework/agent-playbook/QUICKSTART.md",
+        PROJECT_USE_STARTER,
         "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
         "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
         "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
@@ -1922,6 +2041,7 @@ def main() -> int:
         ("six-family JSON and schema contract", validate_spec),
         ("artifact inventory and boundary language", validate_artifact_inventory),
         ("Stage 0 ordinary eligibility and terminal contract", validate_stage_zero_contract),
+        ("project-use cold-start adapter contract", validate_project_use_starter),
         ("ordinary and layered receipt contracts", validate_receipts),
         ("permission/reference/memory fail-closed mutations", validate_receipt_guard_mutations),
     ]

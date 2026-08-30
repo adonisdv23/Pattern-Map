@@ -15,6 +15,8 @@ technical stack.
   moderate, and advanced options.
 - [agent-playbook/QUICKSTART.md](agent-playbook/QUICKSTART.md) — short agent
   procedure.
+- [agent-playbook/PROJECT_USE_STARTER.md](agent-playbook/PROJECT_USE_STARTER.md)
+  — cold-start wayfinding for a new project.
 
 The full companion is in [agent-playbook/](agent-playbook/). Reusable records
 are in [templates/](templates/). Procedures must be observable and
