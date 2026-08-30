@@ -851,10 +851,11 @@ and verifying this directory:
 The verifier checks every manifest-covered byte and still fails on arbitrary
 extra files, symlinks, missing files, or changed payloads. It may warn and
 continue only for narrowly recognized OS metadata (`.DS_Store`, `Thumbs.db`,
-or AppleDouble `._*` files inside `__MACOSX/`). Those environmental files are
-not verified packet content. If warned, keep the listed files out of anything
-you give the downstream task; do not treat the warning as permission to ignore
-any other extra path.
+or AppleDouble `._*` files inside `__MACOSX/`). That warning begins `ignored
+unverified OS metadata`; those environmental files are not verified packet
+content. If warned, keep the listed files out of anything you give the
+downstream task; do not treat the warning as permission to ignore any other
+extra path.
 
 ```sh
 python3 verify_bundle.py
