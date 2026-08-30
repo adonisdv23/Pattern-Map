@@ -18,7 +18,7 @@
   "evidence_records": [
     {
       "id": "E-010",
-      "exact_pointer": "synthetic://budget/period-1#claim",
+      "exact_pointer": "fixture://synthetic/budget/period-1#claim",
       "claim_ids": ["C-BUDGET-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": true,
@@ -27,7 +27,7 @@
     },
     {
       "id": "E-011",
-      "exact_pointer": "synthetic://budget/limitation#missing-field",
+      "exact_pointer": "fixture://synthetic/budget/limitation#missing-field",
       "claim_ids": ["C-BUDGET-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": false,

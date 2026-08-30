@@ -18,7 +18,7 @@
   "evidence_records": [
     {
       "id": "E-001",
-      "exact_pointer": "synthetic://layered-ready/source-a#weekly-count-12",
+      "exact_pointer": "fixture://synthetic/layered-ready/source-a#weekly-count-12",
       "claim_ids": ["C-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": true,
@@ -27,7 +27,7 @@
     },
     {
       "id": "E-002",
-      "exact_pointer": "synthetic://layered-ready/source-b#repeated-claim",
+      "exact_pointer": "fixture://synthetic/layered-ready/source-b#repeated-claim",
       "claim_ids": ["C-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": false,
@@ -36,7 +36,7 @@
     },
     {
       "id": "E-003",
-      "exact_pointer": "synthetic://layered-ready/source-c#weekly-count-18",
+      "exact_pointer": "fixture://synthetic/layered-ready/source-c#weekly-count-18",
       "claim_ids": ["C-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": true,
@@ -45,7 +45,7 @@
     },
     {
       "id": "E-004",
-      "exact_pointer": "synthetic://layered-ready/specialist#qualification",
+      "exact_pointer": "fixture://synthetic/layered-ready/specialist#qualification",
       "claim_ids": ["C-001", "C-002"],
       "permission_state": "AUTHORIZED",
       "time_bearing": false,

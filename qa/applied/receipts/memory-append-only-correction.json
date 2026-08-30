@@ -19,7 +19,7 @@
   "evidence_records": [
     {
       "id": "E-020",
-      "exact_pointer": "synthetic://memory/original#statement",
+      "exact_pointer": "fixture://synthetic/memory/original#statement",
       "claim_ids": ["C-MEM-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": false,
@@ -28,7 +28,7 @@
     },
     {
       "id": "E-021",
-      "exact_pointer": "synthetic://memory/correction#statement",
+      "exact_pointer": "fixture://synthetic/memory/correction#statement",
       "claim_ids": ["C-MEM-001"],
       "permission_state": "AUTHORIZED",
       "time_bearing": false,

@@ -28,7 +28,8 @@ An `ANSWER` or `ANSWER_PROVISIONALLY` records substantive comparison and
 disconfirmation artifacts, or one bounded inactive reason for each:
 comparison=`NOT_APPLICABLE`, disconfirmation=`SKIPPED`. Do not create empty
 artifacts to satisfy the table. A motion claim needs two distinct authorized,
-time-bearing evidence IDs with one alignment key, not a reported count.
+time-bearing evidence IDs that resolve to at least two distinct real UTC-Z
+instants under one alignment key, not a reported count.
 
 When memory is used, hash canonical payload bytes, bind the lineage root to a
 separately frozen anchor, keep one linear successor and one `CURRENT` version,

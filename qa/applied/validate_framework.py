@@ -13,6 +13,7 @@ import hashlib
 import json
 import re
 import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 
 
@@ -389,7 +390,7 @@ def validate_artifact_inventory() -> None:
 
     full_guide = read_text("framework/agent-playbook/FULL_OPERATING_GUIDE.md")
     for phrase in (
-        "one shared alignment key",
+        "at least two distinct instants",
         "separately frozen initial anchor",
         "only `CURRENT`, `AUTHORIZED` memory",
         "comparison uses `NOT_APPLICABLE`; disconfirmation uses `SKIPPED`",
@@ -445,6 +446,7 @@ TIME_BEARING_PATTERN = re.compile(
     r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$"
 )
 DIGEST_PATTERN = re.compile(r"^sha256:[0-9a-f]{64}$")
+LEGACY_AUTHORIZATION_KEYS = {"authorized", "permission_granted", "is_authorized"}
 
 
 def nonempty(value: object) -> bool:
@@ -480,6 +482,23 @@ def canonical_payload_digest(payload: object) -> str:
         separators=(",", ":"),
     ).encode("utf-8")
     return f"sha256:{hashlib.sha256(canonical).hexdigest()}"
+
+
+def parse_utc_observed_at(value: object, filename: str, record_id: str) -> datetime:
+    """Parse the contract's UTC-Z timestamp and reject impossible instants."""
+
+    require(isinstance(value, str)
+            and TIME_BEARING_PATTERN.fullmatch(value) is not None,
+            f"{filename}: {record_id} lacks a UTC-Z observation timestamp")
+    try:
+        instant = datetime.fromisoformat(f"{value[:-1]}+00:00")
+    except ValueError as exc:
+        raise CheckFailure(
+            f"{filename}: {record_id} has an impossible observation instant"
+        ) from exc
+    require(instant.tzinfo is not None and instant.utcoffset() == timedelta(0),
+            f"{filename}: {record_id} observation timestamp is not UTC")
+    return instant
 
 
 def validate_requirement_disposition(
@@ -621,8 +640,7 @@ def validate_evidence_records(receipt: dict, filename: str) -> dict[str, dict]:
         require(isinstance(record["alignment_key"], str),
                 f"{filename}: {record_id} alignment_key must be a string")
         if record["time_bearing"]:
-            require(TIME_BEARING_PATTERN.fullmatch(record["observed_at"]) is not None,
-                    f"{filename}: {record_id} lacks a UTC observation timestamp")
+            parse_utc_observed_at(record["observed_at"], filename, record_id)
             require(nonempty(record["alignment_key"])
                     and record["alignment_key"] != "NOT_APPLICABLE",
                     f"{filename}: {record_id} lacks a substantive alignment key")
@@ -680,6 +698,7 @@ def validate_baseline_records(receipt: dict, filename: str,
             require(nonempty(record["motion_alignment_key"])
                     and record["motion_alignment_key"] != "NOT_APPLICABLE",
                     f"{filename}: {record_id} motion needs a substantive alignment key")
+            motion_instants: list[datetime] = []
             for evidence_id in motion_ids:
                 require(evidence_id in evidence,
                         f"{filename}: {record_id} motion references missing evidence {evidence_id}")
@@ -690,6 +709,13 @@ def validate_baseline_records(receipt: dict, filename: str,
                         f"{filename}: {record_id} motion uses a non-time-bearing ref {evidence_id}")
                 require(motion_record["alignment_key"] == record["motion_alignment_key"],
                         f"{filename}: {record_id} motion refs do not share the alignment key")
+                motion_instants.append(
+                    parse_utc_observed_at(
+                        motion_record["observed_at"], filename, evidence_id,
+                    )
+                )
+            require(len(set(motion_instants)) >= 2,
+                    f"{filename}: {record_id} motion refs need at least two distinct UTC instants")
         else:
             require(not motion_ids and record["motion_alignment_key"] == "NOT_APPLICABLE",
                     f"{filename}: inactive motion must have no refs and NOT_APPLICABLE alignment")
@@ -900,6 +926,8 @@ def validate_memory_records(receipt: dict, filename: str,
 
 
 def validate_layered_receipt(receipt: dict, filename: str) -> None:
+    require(not (set(receipt) & LEGACY_AUTHORIZATION_KEYS),
+            f"{filename}: receipt top level contains a contradictory legacy authorization field")
     common_required = {
         "receipt_id", "operating_level", "evidence_selection", "consequence",
         "permission", "budget", "evidence_records", "baseline_records",
@@ -1124,7 +1152,7 @@ def validate_receipt_guard_mutations() -> None:
         (
             "evidence-unresolvable-pointer",
             lambda value: value["evidence_records"][0].update(
-                {"exact_pointer": "synthetic://layered-ready/source-a"}
+                {"exact_pointer": "fixture://synthetic/layered-ready/source-a"}
             ),
         ),
         ("baseline-placeholder", lambda value: value["baseline_records"][0].update({"basis": "done"})),
@@ -1165,7 +1193,7 @@ def validate_receipt_guard_mutations() -> None:
     invalid_influence_permission["evidence_records"].append(
         {
             "id": "E-UNKNOWN",
-            "exact_pointer": "synthetic://unresolved/item#claim",
+            "exact_pointer": "fixture://synthetic/unresolved/item#claim",
             "claim_ids": ["C-UNKNOWN"],
             "permission_state": "UNKNOWN",
             "time_bearing": False,
@@ -1216,6 +1244,18 @@ def validate_receipt_guard_mutations() -> None:
                     "observed_at": "NOT_APPLICABLE",
                     "alignment_key": "NOT_APPLICABLE",
                 }
+            ),
+        ),
+        (
+            "motion-impossible-instant",
+            lambda value: value["evidence_records"][2].update(
+                {"observed_at": "2026-99-99T99:99:99Z"}
+            ),
+        ),
+        (
+            "motion-duplicate-instant",
+            lambda value: value["evidence_records"][2].update(
+                {"observed_at": value["evidence_records"][0]["observed_at"]}
             ),
         ),
         ("motion-revoked", lambda value: value["evidence_records"][2].update({"permission_state": "REVOKED"})),
@@ -1307,6 +1347,14 @@ def validate_receipt_guard_mutations() -> None:
             f"synthetic-legacy-permission-{legacy_key}.json",
             f"validator accepted contradictory legacy permission key {legacy_key}",
         )
+        invalid_top_level_permission = copy.deepcopy(base)
+        invalid_top_level_permission[legacy_key] = legacy_value
+        expect_failure(
+            invalid_top_level_permission,
+            f"synthetic-top-level-legacy-permission-{legacy_key}.json",
+            f"validator accepted top-level contradictory permission key {legacy_key}",
+            error_contains="receipt top level contains a contradictory legacy authorization field",
+        )
     unknown = load_json("qa/applied/receipts/unknown-permission.json")
     invalid_unknown = copy.deepcopy(unknown)
     invalid_unknown["permission"]["resume_condition"] = "NOT_APPLICABLE"
@@ -1328,7 +1376,7 @@ def validate_receipt_guard_mutations() -> None:
     invalid_blocked["evidence_records"] = [
         {
             "id": "E-BLOCKED",
-            "exact_pointer": "synthetic://blocked/item#claim",
+            "exact_pointer": "fixture://synthetic/blocked/item#claim",
             "claim_ids": ["C-BLOCKED"],
             "permission_state": "NOT_AUTHORIZED",
             "time_bearing": False,

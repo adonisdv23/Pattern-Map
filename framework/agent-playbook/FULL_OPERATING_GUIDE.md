@@ -13,9 +13,9 @@ preserve, or weigh information beyond the user-supplied material?**
 - If no, use the ordinary path: perform the reversible supplied-material
   transformation, save only the supplied scope, material assumptions,
   unchecked boundaries, and output, and stop. Do not manufacture evidence,
-  route, stop, outcome, learning, or six-family records. Use
-  [`../templates/ORDINARY_RECORD.md`](../templates/ORDINARY_RECORD.md), not the
-  layered decision receipt.
+  route, stop, outcome, learning, or six-family records. Use the repository
+  template `framework/templates/ORDINARY_RECORD.md`, not the layered decision
+  receipt.
 - If yes, continue to the operating levels below. Choose only the records and
   checks justified by consequence, uncertainty, repetition, and cost.
 
@@ -86,7 +86,8 @@ needs its own reason and condition for resuming. None may influence the output.
 An executable permission record uses only these fields: `technical_access`,
 `state`, `scope`, `reason_code`, `reason`, and `resume_condition`. Do not carry
 an extra boolean such as `authorized`, `permission_granted`, or
-`is_authorized`; it can contradict the typed state. In the current
+`is_authorized` inside the permission object or at receipt top level; it can
+contradict the typed state. In the current
 single-global-permission receipt, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED`
 means evidence, baseline, comparison, disconfirmation, memory, and influence
 collections remain empty, and memory is `NOT_USED`. A more granular
@@ -190,9 +191,9 @@ the reports to independent corroboration.
 For motion:
 
 - define the measured attribute and event-time rule;
-- name at least two distinct, authorized evidence IDs with UTC observation
-  times and one shared alignment key; never substitute a self-reported count
-  of time points;
+- name at least two distinct, authorized evidence IDs whose timestamps parse as
+  real UTC-Z instants, include at least two distinct instants, and share one
+  alignment key; never substitute a self-reported count of time points;
 - state the baseline or peer comparison;
 - check seasonality, denominator, collection, policy, and measurement changes;
 - label the result OBSERVED_MOTION, UNCERTAIN_MOTION, or NO_SUPPORTED_MOTION.
@@ -228,7 +229,7 @@ For memory:
   influence;
 - treat stale or unscoped memory as uncertainty.
 
-Use [`../templates/MEMORY_RECORD.md`](../templates/MEMORY_RECORD.md) only when
+Use repository template `framework/templates/MEMORY_RECORD.md` only when
 scoped memory is material. A link proves which record was corrected; it does
 not prove that the correction is true.
 

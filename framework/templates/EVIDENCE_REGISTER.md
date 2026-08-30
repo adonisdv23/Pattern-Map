@@ -6,8 +6,9 @@ must be recorded separately.
 
 For any record used in a motion claim, make `time_bearing` an actual boolean,
 record a UTC `observed_at` value, and record a string `alignment_key`. A motion
-baseline names at least two distinct authorized evidence IDs sharing that key;
-a separate integer count is not a substitute for the references.
+baseline names at least two distinct authorized evidence IDs sharing that key,
+whose timestamps parse as real UTC-Z instants and include at least two distinct
+instants; a separate integer count is not a substitute for the references.
 
 | ID | Claim ID | Source ID | Artifact ID | Version / time | Exact span or pointer | Observed metadata | Source role | Relevant track-record evidence | Claim-scoped authority | Support state | Origin / recurrence state | Relevance | Permission | Uncertainty | Disposition | Influence role | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

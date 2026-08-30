@@ -35,9 +35,12 @@ and procedural evidence only
    keys. In the current global-permission fixtures, `UNKNOWN`,
    `NOT_AUTHORIZED`, and `REVOKED` require empty evidence, baseline,
    comparison, disconfirmation, memory, and influence, with memory `NOT_USED`.
+   The same legacy authorization keys are rejected at receipt top level, where
+   they could otherwise contradict the nested typed state.
 8. Motion is no longer established by a self-asserted time-point count. A
-   motion claim resolves to at least two distinct authorized, UTC-time-bearing
-   evidence IDs that share one alignment key. Boolean and string fields are
+   motion claim resolves to at least two distinct authorized evidence IDs whose
+   timestamps parse as real UTC-Z datetimes, include at least two distinct
+   instants, and share one alignment key. Boolean and string fields are
    type-checked.
 9. Every answer route carries substantive comparison and disconfirmation
    records or an explicit proportional exception: comparison
@@ -89,10 +92,12 @@ standard library, and patch whitespace checks pass.
   reasons;
 - self-asserted motion counts, one or duplicate observation ref, misaligned or
   non-time-bearing refs, refs outside the baseline, missing aligned comparison,
-  revoked refs, and bool/string type confusion;
+  impossible or duplicate instants, revoked refs, and bool/string type
+  confusion;
 - dangling or permission-unknown selected influence;
-- boolean authorization, contradictory legacy authorization extras,
-  mismatched permission reason code, and missing UNKNOWN resume condition;
+- boolean authorization, contradictory legacy authorization extras inside the
+  permission object or at receipt top level, mismatched permission reason code,
+  and missing UNKNOWN resume condition;
 - evidence, baseline, comparison, disconfirmation, memory, memory use, or
   influence under each blocked global permission state;
 - evidence, route, stop, outcome, learning, or family fields added to the

@@ -63,9 +63,10 @@ and actions separate.
    NOT_AUTHORIZED, and REVOKED distinct reasons and conditions for resuming;
    do not collapse them. An executable permission record contains only:
    technical_access, state, scope, reason_code, reason, resume_condition.
-   Reject legacy authorization booleans. In a single-global-permission receipt,
-   UNKNOWN, NOT_AUTHORIZED, or REVOKED leaves evidence, baseline, comparison,
-   disconfirmation, memory, and influence empty; memory is NOT_USED.
+   Reject legacy authorization booleans there and at receipt top level. In a
+   single-global-permission receipt, UNKNOWN, NOT_AUTHORIZED, or REVOKED leaves
+   evidence, baseline, comparison, disconfirmation, memory, and influence
+   empty; memory is NOT_USED.
 
 3. DEFAULT AND PERIPHERAL ROUTE
    Record the default query, source set, vocabulary, time window, or product
@@ -92,8 +93,9 @@ and actions separate.
 
 6. MOTION, ABSENCE, AND MEMORY
    Make a motion statement only from at least two distinct authorized evidence
-   IDs with UTC observation times, one shared alignment key, and a stated
-   baseline; a reported count of time points is not evidence. Make an absence
+   IDs whose timestamps parse to at least two distinct real UTC-Z instants,
+   one shared alignment key, and a stated baseline; a reported count of time
+   points is not evidence. Make an absence
    statement only against an explicit expected baseline and observation
    boundary. Classify missing, failed, unavailable, unauthorized, stale, and
    superseded states. Bind each memory digest to canonical payload bytes and a

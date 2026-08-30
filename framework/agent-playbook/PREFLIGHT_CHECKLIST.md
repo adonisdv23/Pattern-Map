@@ -34,7 +34,7 @@ terminal and is not an `ANSWER` route receipt.
   delegated and still has a human boundary.
 - Check: executable permission uses only `technical_access`, `state`, `scope`,
   `reason_code`, `reason`, and `resume_condition`; contradictory legacy
-  authorization booleans are absent.
+  authorization booleans are absent there and at receipt top level.
 
 FAIL or UNKNOWN on a consequential permission item means a hard stop, then
 route `HOLD` or `ESCALATE`. Record `NOT_AUTHORIZED` when permission is absent
@@ -84,8 +84,9 @@ disconfirmation, memory, and influence, with memory `NOT_USED`.
   authority are separate from support and from one another.
 - Check: recurrence and origin are separate from independence.
 - Check: a comparison unit and baseline are stated where needed.
-- Check: motion names at least two distinct authorized, UTC-time-bearing
-  observation IDs that share one alignment key; a count alone is insufficient.
+- Check: motion names at least two distinct authorized observation IDs whose
+  timestamps parse as at least two distinct real UTC-Z instants under one
+  alignment key; a count alone is insufficient.
 - Check: absence has an explicit expected baseline and observation boundary.
 - Check: incomparable and unknown relations remain visible.
 - Check: an answer route has substantive linked comparison records or

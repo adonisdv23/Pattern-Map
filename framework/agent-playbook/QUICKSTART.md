@@ -15,8 +15,8 @@ the user supplied?**
   only the supplied scope, material assumptions, unchecked boundaries, and
   output, and stop. Do not create an evidence register, route, stop, outcome,
   learning, or six-family record merely to demonstrate process. Use the
-  [ordinary record](../templates/ORDINARY_RECORD.md), not the layered decision
-  receipt.
+  repository template `framework/templates/ORDINARY_RECORD.md`, not the
+  layered decision receipt.
 - **Yes:** use the smallest path below that matches consequence, uncertainty,
   repetition, and cost. New acquisition, competing sources, missing expected
   material, scoped memory, or a consequential recommendation usually creates
@@ -34,7 +34,8 @@ or consequential boundary.
    `NOT_AUTHORIZED`, and `REVOKED` as different states. If permission is
    absent, unclear, or revoked for a consequential operation, stop and
    escalate with the state-specific reason and resume condition. Use the exact
-   typed permission keys; reject contradictory legacy authorization booleans.
+   typed permission keys; reject contradictory legacy authorization booleans
+   inside the permission object or at receipt top level.
 3. **Set a budget.** State the time, money, tokens, compute, privacy,
    disclosure, and human-attention boundary. State the no-action boundary.
 4. **Write the default path.** Record the familiar query, source set,
@@ -86,9 +87,9 @@ If a later outcome is defined, preserve the original expectation. After the
 outcome window, compare the observed outcome, actual cost, corrections, and
 context with it; propose one bounded update; request and record human
 disposition; only then record `LEARNING_REVIEWED`. Use
-[`../templates/OUTCOME_REVIEW.md`](../templates/OUTCOME_REVIEW.md). Until then,
-keep the locked expectation at `LEARNING_PENDING_OUTCOME`. Do not make learning
-mandatory for an ordinary-path task.
+`framework/templates/OUTCOME_REVIEW.md`. Until then, keep the locked
+expectation at `LEARNING_PENDING_OUTCOME`. Do not make learning mandatory for
+an ordinary-path task.
 
 If a field was not needed, write NOT_APPLICABLE and why. If it was needed but
 could not be established, write UNKNOWN. Do not fill a missing field with a
@@ -105,7 +106,7 @@ reason at most and no placeholder artifact.
 | High-consequence claim lacks support or baseline | HOLD or ESCALATE; offer only an explicitly provisional bounded statement |
 | Identity, provenance, or transformation check fails | Keep the item out of influence; record the failure |
 | Observation failure is the only basis for an alleged absence | State FAILED_CAPTURE or UNKNOWN, not absence |
-| Fewer than two distinct authorized, time-bearing observation IDs share the alignment key | Do not call it motion; acquire a comparable point or state insufficient |
+| Fewer than two distinct authorized observation IDs resolve to two real, distinct UTC-Z instants under one alignment key | Do not call it motion; acquire a comparable point or state insufficient |
 | Budget or deadline is reached | Choose the permitted route; separately record STOPPED_BUDGET or STOPPED_DEADLINE with remaining uncertainty |
 | External action is requested beyond the agent’s authority | Leave the action to the named human authority |
 

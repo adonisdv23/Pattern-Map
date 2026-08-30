@@ -27,9 +27,10 @@ The check validates:
   unresolved or blocked records, memory use, or influence under the current
   global-permission fixture;
 - exact executable permission keys, with contradictory legacy authorization
-  extras rejected;
-- motion claims backed by two distinct authorized UTC-time-bearing references
-  sharing one alignment key, with self-asserted counts and type confusion
+  extras rejected both inside the permission object and at receipt top level;
+- motion claims backed by two distinct authorized references resolving to at
+  least two distinct real UTC-Z instants and sharing one alignment key, with
+  self-asserted counts, impossible or duplicate instants, and type confusion
   rejected;
 - answer routes with substantive comparison and disconfirmation records or a
   typed, single-line proportional reason and no placeholder record;
