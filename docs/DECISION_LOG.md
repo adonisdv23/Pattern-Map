@@ -1457,3 +1457,41 @@ manifest writer/verifier.
 proportionality rule; fail-closed public release; model feedback advisory;
 no merge, deployment, publication, study, provider/model call, spend,
 outreach, or result claim.
+
+## D-041 — Remove downstream instruction ambiguity and harden copied-location verification
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with bounded portable-packet corrections
+
+The final Claude packet audit identified a real execution-context ambiguity:
+the selected packet placed the Pattern Map repository's root `AGENTS.md` at
+its own root even though the packet grants no mutation authority. Because
+agents may auto-load that pathname before reading `START_HERE.md`, the safe
+correction is exclusion, not another disclaimer. The underlying repository
+file remains unchanged and available in the full checkout; the packet retains
+the locked owner intent, thesis contract, artifact boundaries, and explicit
+generated guardrails.
+
+Selected historical and handoff documents also retain full-repository command
+blocks. A generated capability table now separates packet-runnable checks,
+receiving-Signal-Foundry inspection, and full-Pattern-Map-checkout commands.
+The canonical handoff states that a packet-only receiver uses the standalone
+HTML and PDF rather than attempting an incomplete site build.
+
+Copied-location verification now tolerates only narrowly named environmental
+metadata with an explicit warning. Every manifest-covered byte is still
+checked; arbitrary extras, hidden payloads, symlinks, missing files, and
+modified files still fail. Source, generated-control, checksum, manifest, and
+physical-file counts are explicitly reconciled and tested.
+
+Claude's recommendation to write the latest remote head into tracked prose is
+rejected. D-036 and RP-02 keep GitHub/PR/ZIP readback in the external terminal
+attestation so the seal cannot refer to a head that its own edit moves.
+
+**Evidence:** Claude packet disposition; independent applied/packet and
+research/provenance adjudications; expanded portable-bundle regression suite.
+
+**Governing requirement:** cross-computer usability; no accidental mutation
+authority; exact provenance; fail-closed integrity; D-036/RP-02; advisory
+findings require independent reproduction and disposition.

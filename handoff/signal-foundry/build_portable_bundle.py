@@ -53,7 +53,6 @@ PREVIOUS_BUNDLE_SHA256 = "b806b8b143fce5a003c1040b2aeca69804b3695e55d6a384211f89
 # artifact merely because one appears under a broad source directory.
 SOURCE_PATHS: tuple[str, ...] = (
     "README.md",
-    "AGENTS.md",
     "docs/OWNER_INTENT_V16.md",
     "docs/OWNER_INTENT_V16.sha256",
     "docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md",
@@ -672,6 +671,8 @@ Before editing, inspect the receiving Signal Foundry checkout, branch, remotes, 
 
 This is a selected packet, not the full Pattern Map repository. Some bundled Markdown intentionally links to historical archives or other repository files outside the packet. If a relative link does not resolve, request the exact missing file or current repository state; do not infer, recreate, or silently substitute its contents.
 
+The Pattern Map repository's root AGENTS.md is intentionally excluded because this packet is not that repository and must not auto-load source-repository branch, commit, push, or pull-request authority in the receiving context. Do not recreate it. Full-Pattern-Map shell commands and code-span paths retained inside source documents are reference evidence only and are not packet-local commands. Only the verification commands named in START_HERE.md are runnable from this packet.
+
 Use the packet's four-field `framework/templates/ORDINARY_RECORD.md` for a genuine supplied-material transformation. Use `framework/templates/MEMORY_RECORD.md` and the selected memory fixture only when prior material may actually influence a layered answer. The public-presentation adapter, publication configuration, public standalone, visual captures, lane QA, and the unrun narrow-wedge research decision memo are owner-repository review artifacts; they are intentionally not Signal Foundry inputs and their omission does not authorize reconstruction.
 
 From the verified packet root, run `python3 qa/applied/validate_framework.py` before relying on the selected receipt fixtures. This is a provider-free structural check of the included operating contract, not a claim that Signal Foundry implements it or that the framework improves answers.
@@ -694,6 +695,9 @@ def _start_here(
 ) -> str:
     source_count = len(source_records)
     source_bytes = sum(int(record["bytes"]) for record in source_records)
+    generated_control_count = len(GENERATED_PAYLOAD_NAMES)
+    manifest_covered_count = source_count + generated_control_count + 1
+    extracted_file_count = manifest_covered_count + 1
     return f"""# Pattern Map v16 → Signal Foundry portable handoff
 
 Status: **verified context bundle candidate; owner review only**
@@ -725,6 +729,20 @@ checkout of either repository and it does not grant mutation authority.
 5. Give the downstream task the copyable prompt below or the exact contents of
    `COPYABLE_PROMPT.md`.
 
+## Command capability in this selected packet
+
+| Command class | Status here |
+| --- | --- |
+| Outer sidecar, `python3 verify_bundle.py`, optional `shasum -a 256 -c SHA256SUMS.txt`, and `python3 qa/applied/validate_framework.py` | **Packet-runnable** |
+| Read-only inspection inside the receiving Signal Foundry checkout | **Receiving-checkout-only; preserve its local work and instructions** |
+| `npm` site builds, full Pattern Map QA runners, release/publication commands, the portable builder, and owner-package commands retained in bundled source documents | **Full-Pattern-Map-checkout-only; reference evidence here, not packet-local instructions** |
+
+Some bundled source documents preserve full-repository command blocks and
+code-span paths for provenance. Their presence does not make omitted files
+required packet inputs. Do not run those commands from this directory or
+request their dependency trees unless the current task genuinely needs the
+full Pattern Map checkout.
+
 ## Exact Pattern Map provenance
 
 ```text
@@ -750,6 +768,10 @@ bytes), the repaired standalone HTML, the secondary six-page PDF companion,
 and the historical v13 diagram required by the standalone's relative image
 path. It is a selected handoff, not the complete repository, Git history,
 dependency tree, v14 transfer, v15.2 archive, or Signal Foundry source.
+Count reconciliation: {source_count} selected committed source files +
+{generated_control_count} generated packet controls + one checksum control =
+{manifest_covered_count} manifest-covered files. The self-excluded manifest
+makes {extracted_file_count} physical files in a clean extracted packet.
 Some selected Markdown intentionally retains links to historical archives or
 other repository files outside this packet. An unresolved relative link is a
 subset boundary, not evidence that the target is absent or permission to infer
@@ -778,6 +800,10 @@ operating contract, not a second publication surface or research program.
 
 ## Downstream guardrails
 
+- The Pattern Map repository's root `AGENTS.md` is intentionally excluded.
+  This packet is not the Pattern Map repository, and source-repository branch,
+  commit, push, or pull-request authority must not auto-load here. Applicable
+  tracked instructions in the receiving Signal Foundry checkout govern there.
 - The product name is **Signal Foundry**. Signal Foundry's own repository is
   authoritative for current schemas, records, permissions, and implementation.
 - Test the existing append-only `OPERATOR_DECISION` + `RATIONALE` seam first;
@@ -821,6 +847,14 @@ and verifying this directory:
   output.
 
 ## Verification
+
+The verifier checks every manifest-covered byte and still fails on arbitrary
+extra files, symlinks, missing files, or changed payloads. It may warn and
+continue only for narrowly recognized OS metadata (`.DS_Store`, `Thumbs.db`,
+or AppleDouble `._*` files inside `__MACOSX/`). Those environmental files are
+not verified packet content. If warned, keep the listed files out of anything
+you give the downstream task; do not treat the warning as permission to ignore
+any other extra path.
 
 ```sh
 python3 verify_bundle.py
@@ -940,6 +974,14 @@ def all_files(root: Path) -> set[str]:
     return found
 
 
+def is_unverified_os_metadata(relative: str) -> bool:
+    parsed = PurePosixPath(relative)
+    leaf = parsed.name
+    if leaf == ".DS_Store" or leaf.lower() == "thumbs.db":
+        return True
+    return "__MACOSX" in parsed.parts[:-1] and leaf.startswith("._")
+
+
 def main() -> int:
     root = Path(__file__).resolve().parent
     manifest_path = root / MANIFEST_NAME
@@ -985,10 +1027,17 @@ def main() -> int:
         fail("SHA256SUMS.txt is not covered by the manifest")
     expected_files = set(paths) | {MANIFEST_NAME}
     actual_files = all_files(root)
-    if actual_files != expected_files:
-        missing = sorted(expected_files - actual_files)
-        extra = sorted(actual_files - expected_files)
-        fail("file set mismatch; missing=" + repr(missing) + " extra=" + repr(extra))
+    missing = sorted(expected_files - actual_files)
+    extra = actual_files - expected_files
+    metadata_extra = sorted(path for path in extra if is_unverified_os_metadata(path))
+    unexpected_extra = sorted(extra - set(metadata_extra))
+    if missing or unexpected_extra:
+        fail("file set mismatch; missing=" + repr(missing) + " extra=" + repr(unexpected_extra))
+    if metadata_extra:
+        print(
+            "WARN portable bundle: ignored unverified OS metadata: "
+            + repr(metadata_extra)
+        )
 
     for record in normalized:
         path = root / Path(*PurePosixPath(str(record["path"])).parts)

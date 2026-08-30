@@ -133,10 +133,12 @@ with its repository-relative historical image, or use the verified portable
 bundle. For PDF review, use the deliberately composed six-page companion above.
 Do not substitute a browser extension's full-page capture or a custom jsPDF
 export: those paths can combine routes, expand technical appendices, or impose
-a non-print viewport. A receiving agent should rebuild locally and inspect the
-routed site before attributing a visual defect to current source. The current
-standalone build also verifies balanced main markup and requires every route to
-remain inside the publication content column.
+a non-print viewport. A receiving agent with a full Pattern Map checkout may
+rebuild and inspect the routed site before attributing a visual defect to
+current source. A receiving agent with only the selected portable packet must
+use its standalone HTML and PDF; the packet intentionally omits the site build
+dependencies. The current standalone build also verifies balanced main markup
+and requires every route to remain inside the publication content column.
 
 ## What v16 is
 

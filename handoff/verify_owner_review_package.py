@@ -206,6 +206,7 @@ REQUIRED_PATHS = [
     "qa/interaction/map-layout-contract.spec.mjs",
     "qa/interaction/term-popover-geometry-contract.spec.mjs",
     "qa/handoff/test_portable_bundle.py",
+    "qa/handoff/CLAUDE_FINAL_PORTABLE_AUDIT_DISPOSITION_2026-08-30_c23c665.md",
     "qa/content/reader-language-contract.spec.mjs",
     "qa/visual/README.md",
     "qa/visual/POLISH_PLAN.md",

@@ -373,6 +373,39 @@ class PortableBundleTests(unittest.TestCase):
         self.assertIn(self.zip_path.name + ".sha256", start)
         self.assertIn("Stop if the outer checksum fails", start)
 
+        metadata = json.loads(
+            (self.bundle_root / "BUNDLE_METADATA.json").read_text(encoding="utf-8")
+        )
+        manifest = json.loads(
+            (self.bundle_root / "BUNDLE_MANIFEST.json").read_text(encoding="utf-8")
+        )
+        builder = load_builder_module()
+        selected = list(metadata["selected_source_paths"])
+        manifest_paths = {str(record["path"]) for record in manifest["files"]}
+        self.assertEqual(selected, list(builder.SOURCE_PATHS))
+        self.assertNotIn("AGENTS.md", selected)
+        self.assertNotIn("CLAUDE.md", selected)
+        self.assertFalse((self.bundle_root / "AGENTS.md").exists())
+        self.assertFalse((self.bundle_root / "CLAUDE.md").exists())
+        expected_generated = set(builder.GENERATED_PAYLOAD_NAMES) | {
+            builder.CHECKSUMS_NAME
+        }
+        self.assertEqual(manifest_paths - set(selected), expected_generated)
+        self.assertEqual(
+            self.summary["archive_file_count"], manifest["file_count"] + 1
+        )
+        count_sentence = (
+            f"{len(selected)} selected committed source files + "
+            f"{len(builder.GENERATED_PAYLOAD_NAMES)} generated packet controls + "
+            f"one checksum control = {manifest['file_count']} manifest-covered files"
+        )
+        self.assertIn(" ".join(count_sentence.split()).lower(), normalized_start)
+        self.assertIn("root `agents.md` is intentionally excluded", normalized_start)
+        self.assertIn("packet-runnable", normalized_start)
+        self.assertIn("full-pattern-map-checkout-only", normalized_start)
+        self.assertIn("reference evidence here, not packet-local instructions", normalized_start)
+        self.assertIn("ignored unverified os metadata", normalized_start)
+
         copyable = (self.bundle_root / "COPYABLE_PROMPT.md").read_text(encoding="utf-8")
         normalized_copyable = " ".join(copyable.split()).lower()
         self.assertIn("some bundled markdown intentionally links", normalized_copyable)
@@ -385,9 +418,73 @@ class PortableBundleTests(unittest.TestCase):
         self.assertIn("record unverified and continue", normalized_copyable)
         self.assertIn("do not use this older checkpoint as the operating checkout", normalized_copyable)
         self.assertIn("python3 qa/applied/validate_framework.py", normalized_copyable)
+        self.assertIn("root agents.md is intentionally excluded", normalized_copyable)
+        self.assertIn("only the verification commands named in start_here.md", normalized_copyable)
+
+        canonical = (
+            self.bundle_root
+            / "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md"
+        ).read_text(encoding="utf-8")
+        normalized_canonical = " ".join(canonical.split()).lower()
+        self.assertIn("with a full pattern map checkout may rebuild", normalized_canonical)
+        self.assertIn("with only the selected portable packet must use its standalone html and pdf", normalized_canonical)
 
         self.assertIn("optional local evidence, not required packet inputs", normalized_start)
         self.assertIn("record `absent/unverified` and continue", normalized_start)
+
+    def test_known_os_metadata_warns_without_weakening_payload_checks(self) -> None:
+        accepted = (
+            ".DS_Store",
+            "nested/.DS_Store",
+            "Thumbs.db",
+            "nested/Thumbs.db",
+            "__MACOSX/._START_HERE.md",
+        )
+        for relative in accepted:
+            path = self.bundle_root / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(b"environmental metadata fixture")
+        verifier = self.run_embedded_verifier()
+        self.assertEqual(verifier.returncode, 0, verifier.stdout + verifier.stderr)
+        self.assertIn("ignored unverified OS metadata", verifier.stdout)
+        for relative in accepted:
+            self.assertIn(relative, verifier.stdout)
+
+        for relative in (
+            "extra.txt",
+            ".hidden-payload",
+            "__MACOSX/payload.txt",
+            "._START_HERE.md",
+        ):
+            with self.subTest(unexpected=relative):
+                self.restore_extracted_bundle()
+                path = self.bundle_root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(b"unexpected payload")
+                rejected = self.run_embedded_verifier()
+                self.assertNotEqual(rejected.returncode, 0)
+                self.assertIn("file set mismatch", rejected.stdout + rejected.stderr)
+
+        self.restore_extracted_bundle()
+        (self.bundle_root / ".DS_Store").write_bytes(b"metadata")
+        (self.bundle_root / "README.md").unlink()
+        missing = self.run_embedded_verifier()
+        self.assertNotEqual(missing.returncode, 0)
+        self.assertIn("missing=", missing.stdout + missing.stderr)
+
+        self.restore_extracted_bundle()
+        (self.bundle_root / ".DS_Store").write_bytes(b"metadata")
+        readme = self.bundle_root / "README.md"
+        readme.write_bytes(readme.read_bytes() + b"\nchanged\n")
+        changed = self.run_embedded_verifier()
+        self.assertNotEqual(changed.returncode, 0)
+        self.assertIn("byte count mismatch", changed.stdout + changed.stderr)
+
+        self.restore_extracted_bundle()
+        (self.bundle_root / ".DS_Store").symlink_to("README.md")
+        symlink = self.run_embedded_verifier()
+        self.assertNotEqual(symlink.returncode, 0)
+        self.assertIn("symlink found", symlink.stdout + symlink.stderr)
 
     def test_selected_operating_contract_and_owner_only_exclusions(self) -> None:
         metadata = json.loads(

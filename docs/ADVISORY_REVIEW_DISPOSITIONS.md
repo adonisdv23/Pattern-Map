@@ -424,6 +424,21 @@ results, literature completeness, or proof of effectiveness.
 No item changes the locked thesis, six families, Echo split, research ceiling,
 or manual owner/accessibility/publication gates.
 
+## Final portable-packet audit dispositions — 2026-08-30
+
+Claude Code reviewed the exact `c23c665` packet in an isolated read-only
+extraction. Two project red-team lanes independently adjudicated its findings.
+The full disposition is preserved in
+`qa/handoff/CLAUDE_FINAL_PORTABLE_AUDIT_DISPOSITION_2026-08-30_c23c665.md`.
+
+| Finding ID | Recommendation or finding | Disposition | Governing reason |
+| --- | --- | --- | --- |
+| CFP-01 | Ship root `AGENTS.md` in the downstream packet and rely on a disclaimer | **Rejected; exclusion accepted** | Instruction files are executable-by-convention control surfaces; the packet is context, not source-repository mutation authority |
+| CFP-02 | Treat retained full-checkout commands as packet-runnable | **Rejected; capability classification accepted** | Only exact verification commands are runnable in the selected packet |
+| CFP-03 | Fail the covered payload when routine OS metadata appears | **Rejected; narrow warned exception accepted** | Environmental metadata remains unverified while arbitrary extras and all byte changes fail closed |
+| CFP-04 | Treat correct source/manifest/archive counts as a corruption finding | **Rejected as P2; P3 explanation accepted** | Distinct populations are reconciled and their relationship is machine-locked |
+| CFP-05 | Write the latest remote head into tracked sealed prose | **Rejected** | D-036/RP-02 require an external exact-hash attestation and forbid a self-referential reseal loop |
+
 The older PM-04 row remains immutable review history for the PDF bytes current
 at that checkpoint. RP-R2-01 supersedes its producer value for the newly
 regenerated companion. Exact `06c61680f709861ccd3ffd2df5029e04c63cb450`
