@@ -1280,3 +1280,47 @@ recorded in the convergence QA after completion.
 **Governing requirement:** A14/A15; source authority and immutable provenance;
 cross-computer recoverability; model reviews advisory only; no merge,
 deployment, publication, study, provider selection/call, spend, or outreach.
+
+## D-037 — Converge the public entrance, strict ordinary exit, F2 contract, and research ceiling before final review
+
+**Date:** 2026-08-30
+
+**Status:** Accepted; exact implementation checkpoint `5bcd08d`
+
+The owner's renewed instruction to take the work as far as possible authorizes
+another rigorous review and correction loop, but it does not weaken the locked
+intent or the standing external-action boundaries. Convergence therefore
+improves the artifact at four seams instead of inventing a new thesis or
+turning the framework into a mandatory platform:
+
+1. The public Home presents the human problem and then the three substantial
+   doors before the teaching reveal. The reveal remains a bounded illustration,
+   not the price of entry.
+2. Stage 0 ordinary is a terminal, already-permitted, reversible transformation
+   of supplied material with exactly four fields and no evidence, route, stop,
+   learning, influence, permission, or human-disposition record. Supplying any
+   layered field to the ordinary API fails closed.
+3. Layered Apply keeps permission, the human-action gate, and approved capacity
+   separate. Advanced requires consequence, high uncertainty, and substantial
+   approved capacity together. A larger budget cannot justify it, and
+   insufficient capacity must narrow or escalate the decision.
+4. F2 asks what role each source and information path plays for the exact
+   claim. Its public bridge stays plain while closed technical detail preserves
+   role, track record, claim-scoped authority, support, relevance, recurrence,
+   origin, provenance, and permission as distinct dimensions.
+
+The research lane independently constrains the defensible contribution to an
+authored, proportional, human-governed design/governance synthesis and
+testable agenda. Candidate studies remain provisional and unrun; no provider,
+model, corpus, sample, or paper order is selected. The release adapter also
+requires social-image alternative text in addition to identity, canonical URL,
+and image URL, while the current preview remains unset and `noindex,nofollow`.
+
+**Evidence:** applied checkpoint `1ceceb6`; research checkpoint `280eb4b`;
+site checkpoint `5bcd08d`; `qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md`;
+focused validators and in-app Browser evidence.
+
+**Governing requirement:** locked owner intent; A01–A17; three principal doors;
+six-family continuity; progressive disclosure; proportionality and
+anti-bureaucracy; human authority; research may constrain but not redefine;
+no merge/deploy/publication/study/provider selection or call/spend/outreach.

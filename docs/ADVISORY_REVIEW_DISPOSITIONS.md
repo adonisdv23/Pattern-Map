@@ -346,3 +346,26 @@ owner manifest.
 The recheck does not certify physical accessibility, human comprehension,
 publication metadata, or effectiveness. Those residuals remain explicitly
 manual and do not justify inventing another automated pass.
+
+## Final convergence pre-freeze dispositions — 2026-08-30
+
+Three bounded lanes examined the operating artifact from different angles:
+strict Stage 0 and agent usefulness, public reader/site coherence, and current
+research/claim boundaries. Their work is advisory and structural; it is not a
+reader study, effectiveness result, or replacement for owner intent.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| FC-APPLIED-01 | Ordinary may retain route, answer, stop, learning, or influence semantics | **Rejected; strict four-field exit accepted** | That would recreate evidence bureaucracy for a reversible supplied-material transformation | Framework, fixtures, validators, Apply | `1ceceb6`; ordinary mutation tests fail closed |
+| FC-APPLIED-02 | Capacity can be used as a proxy for route sophistication | **Rejected; capacity boundary accepted** | Capacity is a constraint, not evidence that deeper machinery is warranted | Apply recommender, static guide, interaction tests | Advanced requires consequence + high uncertainty + substantial approved capacity; mismatch clarifies or holds |
+| FC-PUBLIC-01 | Put the explanatory reveal before the three principal doors | **Rejected; doors-first accepted** | The user asked for a substantial site, and the locked interface makes the doors the principal public choice | Home renderer, static/public contracts | DOM order and live 1440×900/390×844 Browser checks pass |
+| FC-PUBLIC-02 | Keep the prior Apply permission shorthand and combined human gate | **Rejected; typed separation accepted** | Access/permission and a person's consequential decision are different boundaries | Apply UI/API/cross-artifact tests | Four permission states plus independent human gate; observed state remains unrun |
+| FC-PUBLIC-03 | Preserve a generic F2 question that names only source role | **Accepted with revision** | The stable reader question must include both source and information path without overloading the first card with the full schema | Content interface, six-family spec, Map | Exact question/bridge/boundary and closed detail pass |
+| FC-PUBLIC-04 | Normalize all 288 raw form combinations, including disabled layered fields, into 145 semantic states | **Rejected as unsafe normalization** | Disabled ordinary fields are invalid inputs and should not be accepted silently | Apply API and matrix QA | One valid ordinary + 144 valid layered states; invalid ordinary fields throw |
+| FC-PUBLIC-05 | Leave the social image without an alternative-text release gate | **Rejected; release gate accepted** | A future public card should not require a visual to carry unexplained meaning | Publication config, renderer, public contract | Release build fails without `social_image_alt`; current field remains unset |
+| FC-RESEARCH-01 | Present v16 as a novel technical mechanism or validated answer-quality intervention | **Rejected** | The reviewed neighboring work occupies component mechanisms and no effectiveness study exists | Claims ledger, source route, agenda | `280eb4b`; research validator and seven claim-convergence tests pass |
+| FC-RESEARCH-02 | Make the fixed-answer appropriate-reliance interface candidate the definitive first study | **Deferred** | It is a useful narrow question, not a selected paper, provider, corpus, sample, or execution plan | Research agenda and narrow-wedge memo | Candidate A remains provisional and unrun |
+| FC-RESEARCH-03 | Let a measurement-first paper replace the broad human thesis | **Rejected as exclusive reframe** | Measurement can constrain future work but cannot silently redefine v16 | Research agenda, Echo boundary, first screen | Broad six-family thesis and two-project separation remain intact |
+
+Exact integrated red teams run after these changes are committed. Any later
+finding receives its own disposition; detail alone is not acceptance.

@@ -25,7 +25,8 @@ layered work has typed permission, resolvable comparison/disconfirmation, real
 UTC motion instants, selected-influence, and accepted current-memory contracts.
 One shared source now builds both the owner-review site and a prose-first
 public preview; the latter has a deterministic teaching reveal and fail-closed
-publication gate, but no byline, canonical URL, social image, or release
+publication gate, but no byline, canonical URL, social image, social-image
+alternative text, or release
 authorization. The optional source/research route is current through a
 targeted 2025–2026 review and its future narrow-wedge designs remain explicitly
 unrun. Convergence corrections through `c0b006f` separate all five missingness
@@ -213,7 +214,8 @@ anchors without pretending the external ZIP lives in Git.
   unchanged observed state pass in Apply.
 - The terminal live audit covers all ten routes plus standalone at 1440, 1101,
   1100, 1024, 821, 768, 601, 600, 480, 390, and 320 pixels where meaningful,
-  all 108 Apply combinations, Map/More/no-script state, print proxies, and all
+  the historical 108-state Apply contract, Map/More/no-script state, print
+  proxies, and all
   six PDF pages. Its sole actionable visual finding was a 6.4–7.8px desktop
   term-panel/trigger overlap. Source `874a0a8` retains horizontal viewport
   clamping and adds a deterministic minimum 8px vertical clearance contract.

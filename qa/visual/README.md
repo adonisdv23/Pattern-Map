@@ -6,6 +6,10 @@ Status: **owner-review evidence; not reader, accessibility, or research results*
 
 Use these paths for the current v16 review:
 
+- `final-convergence/` — exact `5bcd08d` public Home, current relationship Map,
+  common-origin teaching figure, and mobile Apply captures made through the
+  in-app Browser; paired geometry, interaction, and boundary evidence lives in
+  `../site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md`; and
 - `public-mode/` — five exact public-preview captures covering Read, the
   deterministic Home reveal, and ordinary Stage 0 at 1280×720 and/or 390×844;
   paired source and browser-proxy evidence lives in
@@ -19,12 +23,12 @@ Use these paths for the current v16 review:
   owner's alternate 11-page jsPDF export, the repaired common-origin visual,
   term-helper containment, and browser-print safeguards.
 
-The current public-mode lane checkpoint is
+The earlier public-mode lane checkpoint is
 `361243c95050723f1693907f7446be5d690b9e58`; integrated implementation
-checkpoint `cbc89db` rebuilds both standalones after the applied and research
-lanes converge. The current six-page PDF is regenerated from the same canonical
-content with a cover-only typography correction that keeps the final headline
-punctuation attached; its page-one render is current evidence for this phase.
+checkpoint `5bcd08d` rebuilds both standalones after the applied, research, and
+final public-site lanes converge. The current six-page PDF remains the
+secondary visual companion and is regenerated/inspected again only after the
+final exact-commit review loop closes.
 
 ## Superseded routed-site captures
 
@@ -36,10 +40,9 @@ line-free relationship bands, Apply produces planning recommendations without
 fabricating actual event states, and the site now has a Guided route and term
 helpers.
 
-No replacement routed-site screenshot binaries are claimed for `c889260`.
-Current visual evidence consists of the regenerated PDF renders plus the live
-viewport observations and executable layout/interaction contracts in the
-current correction report.
+The `final-convergence/` captures replace that earlier screenshot gap for the
+named `5bcd08d` surfaces. They do not rewrite or erase the historical routed
+matrix.
 
 ## Stale pre-polish evidence warning
 

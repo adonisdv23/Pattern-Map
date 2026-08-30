@@ -33,7 +33,8 @@ framework, an operational agent companion, bounded cases, a separate EP v0.1
 Echo project with an EP v1.1 design-only successor checkpoint, an explicitly
 unrun broader research agenda, and a ten-route local owner-review site
 including an optional Guided read. Structural, responsive, no-script, export,
-108-case planning-state, interaction, visual, Echo implementation, and final
+one terminal ordinary state plus 144 layered planning states, interaction,
+visual, Echo implementation, and final
 independent proxy/operator checks pass within their stated artifact
 boundaries. Owner/mentor judgment plus manual
 physical-keyboard, supported screen-reader, real-zoom, forced-colors, browser

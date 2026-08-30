@@ -52,6 +52,11 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   `qa/site/public-mode-contract.spec.mjs` record shared-source review/public
   parity, prose-first viewports, the deterministic teaching reveal, Stage 0
   applicability, fail-closed release metadata, and honest manual residuals.
+- `qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md` records the exact
+  current site implementation checkpoint: three substantial doors before the
+  teaching reveal, the full F2 source-role boundary, one terminal ordinary
+  input plus 144 valid layered Apply states, live in-app Browser geometry and
+  interaction checks, and the fail-closed social-image alternative-text gate.
 - `qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md` and
   `qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md` constrain current
   claims and the unrun narrow-wedge designs without selecting a study.
@@ -83,12 +88,13 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   immutable archive exceptions, stale-selector removal, and the human-first
   standalone-export correction. They supplement rather than rewrite the exact
   ChatGPT Pro reports.
-- `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` is the current
-  exact-checkpoint report. It records the ten-route Guided experience,
+- `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` is a preserved
+  historical exact-checkpoint report. It records the ten-route Guided experience,
   Stage 0 planning-only Apply semantics, line-free relationship Map,
   descriptive/no-script/medium-safe terminology helpers,
   320/390/480/600 and 601/768/821/1024/1100/default live-browser observations,
-  and executable 108-case regression contracts.
+  and the then-current executable 108-case regression contract. It is
+  superseded for current Apply semantics by the final-convergence QA.
 - `qa/site/SITE_POLISH_QA.md`,
   `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, and the routed-site PNG
   matrix are preserved evidence for the earlier `a319794` design checkpoint.
