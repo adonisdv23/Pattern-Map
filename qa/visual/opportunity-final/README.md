@@ -10,10 +10,10 @@ concurrent working-tree changes were governance and QA records.
 
 | Capture | Purpose |
 | --- | --- |
-| `public-home-1280x720.png` | Desktop first composition: human problem, principal navigation, and all three doors |
-| `public-home-390x844.png` | Narrow first composition: readable headline, 44-pixel navigation targets, and one-column doors |
-| `public-map-1280x720.png` | Desktop Map entrance and current relationship-view framing |
-| `public-map-detail-1280x720.png` | Six-family cards, optional shared records, and line-free relationship explanations |
+| `public-home-1280x720.jpg` | Desktop first composition: human problem, principal navigation, and all three doors |
+| `public-home-390x844.jpg` | Narrow first composition: readable headline, 44-pixel navigation targets, and one-column doors |
+| `public-map-1280x720.jpg` | Desktop Map entrance and current relationship-view framing |
+| `public-map-detail-1280x720.jpg` | Six-family cards, optional shared records, and line-free relationship explanations |
 
 The accompanying live audit covered all ten routes at 1280 and 390 pixels.
 Every route had one `main`, one `h1`, zero duplicate IDs, and document/body

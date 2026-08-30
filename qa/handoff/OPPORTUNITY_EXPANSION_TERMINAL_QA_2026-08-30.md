@@ -128,6 +128,14 @@ connector traces. At 1280 pixels its family cards form a balanced two-column
 detail grid, and the page has no horizontal overflow. Current captures and
 their evidence boundary are in `qa/visual/opportunity-final/`.
 
+The first complete verification pass correctly detected that the Browser API
+had returned JPEG bytes even though the provisional capture names used a PNG
+suffix. The tracked captures were renamed to `.jpg`, all active references and
+the manifest selection were updated, and the image-signature audit was rerun.
+The same pass refreshed the active owner-facing essay count from the older
+3,289-word checkpoint record to the current 3,285 raw words; historical
+checkpoint reports were not rewritten.
+
 This Browser pass is visual/semantic local evidence. It is not a physical
 keyboard, supported screen-reader, real zoom/reflow, forced-colors, native
 print, hardware-touch, or human-comprehension result.

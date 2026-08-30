@@ -132,7 +132,7 @@ the semantic accessibility route.
 
 ## What is complete as an artifact
 
-- A 3,289-word canonical human essay with an estimated 13.7–14.3-minute read.
+- A 3,285-word canonical human essay with an estimated 13.7–14.3-minute read.
 - A 250-word cumulative short version with an early concrete example, the
   broad thesis, six family questions, human judgment, and the boundary beyond
   origin accounting.
