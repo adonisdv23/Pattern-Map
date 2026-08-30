@@ -155,6 +155,22 @@
     "learning_status": "LEARNING_PENDING_OUTCOME",
     "expectation_recorded": true,
     "outcome_window_recorded": true,
-    "update_applied": false
+    "update_applied": false,
+    "expectation_record": {
+      "id": "EXP-LAYER-001",
+      "exact_pointer": "fixture://synthetic/layered-ready#expectation",
+      "record_status": "RECORDED_PLAN",
+      "expected_outcome": "A later authorized review can compare the provisional synthetic answer with one defined outcome.",
+      "success_condition": "The defined review can distinguish an observed outcome from an explicitly unavailable outcome without rewriting this receipt.",
+      "abstention_or_escalation_condition": "If the defined outcome cannot be observed, record typed missingness and do not infer effectiveness.",
+      "attribution_boundary": "This fixture can exercise a record contract only; it cannot establish causality or framework effectiveness."
+    },
+    "outcome_window_record": {
+      "id": "OW-LAYER-001",
+      "exact_pointer": "fixture://synthetic/layered-ready#outcome-window",
+      "record_status": "RECORDED_PLAN",
+      "window_definition": "One later authorized fixture review after the provisional answer is preserved.",
+      "missing_outcome_condition": "If no defined outcome observation is available at review, use OUTCOME_MISSING and apply no update."
+    }
   }
 }

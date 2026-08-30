@@ -49,10 +49,15 @@ The check validates:
   current record, selects only current authorized memory, and preserves
   superseded history;
 - a sparse neutral case with two inactive families and no placeholder artifacts;
-- fail-closed reviewed-learning that checks receipt-to-review consistency by
-  ID and canonical SHA-256 of the reconstructed pending projection rather than
-  trusting a status boolean, including one explicitly synthetic/no-result
+- fail-closed reviewed-learning that preserves an actual pending fixture,
+  embeds separately identified expectation and outcome-window records there,
+  resolves the reviewed receipt back to those records, and checks the actual
+  pending operational payload by ID and canonical SHA-256 rather than trusting
+  a status boolean, including one explicitly synthetic/no-result
   `OUTCOME_MISSING` positive fixture;
+- negative controls for dangling or wrong expectation/window links, mutation of
+  the preserved pending payload, post-review leakage into decision fields, and
+  observed-versus-missing outcome exclusivity;
 - permission, dangling-reference, influence, ordinary-record, and memory
   mutations; and
 - receipt fixtures through the documented preflight and stop rules.

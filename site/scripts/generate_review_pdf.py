@@ -438,7 +438,7 @@ def build_pdf() -> None:
         [
             route_table,
             Spacer(1, 0.14 * inch),
-            rich("<b>Optional continuous mode:</b> Take the guided read for one generated 8-12-minute path through the problem, six questions, key relationships, smallest useful application, examples, and boundaries. It reuses canonical components rather than forking the manuscript.", "BodyMuted"),
+            rich("<b>Optional continuous mode:</b> Take the guided read for one authored 8-12-minute path through the problem, six questions, key relationships, smallest useful application, examples, and boundaries. It reuses canonical components rather than forking the manuscript.", "BodyMuted"),
             Spacer(1, 0.08 * inch),
             p("What the framing does not claim", "SectionTitle"),
             bullet("The six families are not presented as newly invented categories."),

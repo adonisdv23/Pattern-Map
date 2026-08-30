@@ -164,7 +164,8 @@ do not treat the act of routing as the human decision.
 - Outcome review record status: RECORDED_REVIEW /
   SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT
 - Original decision / route / influence receipt ID:
-- Canonical SHA-256 of the reconstructed pre-review pending receipt:
+- Canonical SHA-256 of the separately preserved pending receipt's operational
+  payload:
 - Expectation record exact pointer:
 - Outcome-window record exact pointer:
 - Learning status before review: LEARNING_PENDING_OUTCOME
@@ -182,12 +183,14 @@ do not treat the act of routing as the human decision.
 - Update applied? YES / NO / DEFERRED
 
 Do not record `LEARNING_REVIEWED` unless an outcome-review record links the
-complete pre-review decision / route / influence receipt, an observed outcome
-or explicit missing-outcome state is recorded with cost and confounders, and
-an accountable person has dispositioned the proposed update. A boolean saying
-that a review occurred is not a resolvable review record. The fixture digest
-is a reconstructed-snapshot consistency check, not proof that an independently
-immutable historical receipt exists.
+complete separately preserved pending decision / route / influence receipt,
+resolves the expectation and outcome-window pointers embedded in that receipt,
+records an observed outcome or explicit missing-outcome state with cost and
+confounders, and records an accountable person's disposition of the proposed
+update. A boolean saying that a review occurred is not a resolvable review
+record. The fixture digest is a consistency check over the actual preserved
+pending operational payload, not proof that an independently immutable or
+tamper-resistant historical receipt exists.
 
 ## Fast stop examples
 

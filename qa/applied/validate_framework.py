@@ -767,6 +767,9 @@ HUMAN_DISPOSITIONS = {
 OUTCOME_REVIEW_RECORD_STATUSES = {
     "RECORDED_REVIEW", "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
 }
+OUTCOME_PLAN_RECORD_STATUSES = {
+    "RECORDED_PLAN", "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
+}
 
 
 def nonempty(value: object) -> bool:
@@ -804,19 +807,22 @@ def canonical_payload_digest(payload: object) -> str:
     return f"sha256:{hashlib.sha256(canonical).hexdigest()}"
 
 
-def canonical_pending_receipt_digest(receipt: dict) -> str:
-    """Hash the reconstructed pending projection for review consistency."""
+def canonical_operational_receipt_digest(receipt: dict) -> str:
+    """Hash one preserved receipt while excluding fixture-only status metadata."""
 
-    pending = copy.deepcopy(receipt)
-    pending.pop("fixture_status", None)
-    pending["outcome"] = {
-        "applicable": True,
-        "learning_status": "LEARNING_PENDING_OUTCOME",
-        "expectation_recorded": True,
-        "outcome_window_recorded": True,
-        "update_applied": False,
-    }
-    return canonical_payload_digest(pending)
+    operational = copy.deepcopy(receipt)
+    operational.pop("fixture_status", None)
+    return canonical_payload_digest(operational)
+
+
+def decision_snapshot(receipt: dict) -> dict:
+    """Return the operational decision fields that must survive outcome review."""
+
+    snapshot = copy.deepcopy(receipt)
+    snapshot.pop("fixture_status", None)
+    snapshot.pop("receipt_id", None)
+    snapshot.pop("outcome", None)
+    return snapshot
 
 
 def validate_uncertainty(value: object, filename: str) -> None:
@@ -883,7 +889,59 @@ def validate_requirement_disposition(
     return status
 
 
-def validate_outcome(receipt: dict, filename: str) -> None:
+def validate_outcome_plan_records(receipt: dict, filename: str) -> None:
+    """Validate the expectation/window records embedded in one pending receipt."""
+
+    outcome = receipt["outcome"]
+    expectation = outcome.get("expectation_record")
+    expectation_keys = {
+        "id", "exact_pointer", "record_status", "expected_outcome",
+        "success_condition", "abstention_or_escalation_condition",
+        "attribution_boundary",
+    }
+    require(isinstance(expectation, dict) and set(expectation) == expectation_keys,
+            f"{filename}: pending outcome needs one exact expectation record")
+    for key in expectation_keys:
+        require_string(expectation[key],
+                       f"{filename}: expectation record {key} is empty")
+    require(expectation["record_status"] in OUTCOME_PLAN_RECORD_STATUSES,
+            f"{filename}: expectation record status is not canonical")
+    require(EXACT_POINTER_PATTERN.fullmatch(expectation["exact_pointer"]) is not None,
+            f"{filename}: expectation record pointer is not exact")
+
+    window = outcome.get("outcome_window_record")
+    window_keys = {
+        "id", "exact_pointer", "record_status", "window_definition",
+        "missing_outcome_condition",
+    }
+    require(isinstance(window, dict) and set(window) == window_keys,
+            f"{filename}: pending outcome needs one exact outcome-window record")
+    for key in window_keys:
+        require_string(window[key],
+                       f"{filename}: outcome-window record {key} is empty")
+    require(window["record_status"] in OUTCOME_PLAN_RECORD_STATUSES,
+            f"{filename}: outcome-window record status is not canonical")
+    require(EXACT_POINTER_PATTERN.fullmatch(window["exact_pointer"]) is not None,
+            f"{filename}: outcome-window record pointer is not exact")
+    require(expectation["id"] != window["id"],
+            f"{filename}: expectation and outcome-window records need distinct IDs")
+    require(expectation["exact_pointer"] != window["exact_pointer"],
+            f"{filename}: expectation and outcome-window records need distinct pointers")
+
+    for record in (expectation, window):
+        if record["record_status"] == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT":
+            require(receipt.get("fixture_status") == record["record_status"],
+                    f"{filename}: synthetic outcome plan lacks the top-level no-result marker")
+        if receipt.get("fixture_status") == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT":
+            require(record["record_status"] == receipt["fixture_status"],
+                    f"{filename}: synthetic pending fixture must keep each plan record explicitly no-result")
+
+
+def validate_outcome(
+    receipt: dict,
+    filename: str,
+    receipt_registry: dict[str, dict] | None = None,
+) -> None:
     outcome = receipt.get("outcome")
     require(isinstance(outcome, dict),
             f"{filename}: outcome must be an exact status-discriminated object")
@@ -920,13 +978,27 @@ def validate_outcome(receipt: dict, filename: str) -> None:
         return
 
     if status == "LEARNING_PENDING_OUTCOME":
-        require(set(outcome) == pre_review_keys,
+        pending_keys = pre_review_keys | {
+            "expectation_record", "outcome_window_record",
+        }
+        require(set(outcome) == pending_keys,
                 f"{filename}: LEARNING_PENDING_OUTCOME cannot carry result, review, disposition, or extra fields")
         require(outcome["expectation_recorded"] is True
                 and outcome["outcome_window_recorded"] is True,
                 f"{filename}: LEARNING_PENDING_OUTCOME needs locked expectation and outcome window")
         require(outcome["update_applied"] is False,
                 f"{filename}: LEARNING_PENDING_OUTCOME cannot apply an update")
+        validate_outcome_plan_records(receipt, filename)
+        uncertainty_text = " ".join(receipt.get("uncertainty", [])).upper()
+        require("OUTCOME_MISSING" not in uncertainty_text,
+                f"{filename}: pending receipt cannot contain post-window OUTCOME_MISSING uncertainty")
+        stop_reason = str(receipt.get("stop_reason", "")).lower()
+        for post_window_phrase in (
+            "window closed", "outcome observed", "outcome reviewed",
+            "review disposition",
+        ):
+            require(post_window_phrase not in stop_reason,
+                    f"{filename}: pending receipt contains post-review stop reasoning")
         return
 
     reviewed_keys = pre_review_keys | {"outcome_review"}
@@ -961,15 +1033,38 @@ def validate_outcome(receipt: dict, filename: str) -> None:
     if review["record_status"] == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT":
         require(receipt.get("fixture_status") == review["record_status"],
                 f"{filename}: synthetic review lacks the top-level no-result marker")
-    require(review["original_receipt_id"] == receipt.get("receipt_id"),
-            f"{filename}: outcome review does not link the original receipt ID")
+    require(review["original_receipt_id"] != receipt.get("receipt_id"),
+            f"{filename}: outcome review must link a separately preserved pending receipt")
+    require(receipt_registry is not None,
+            f"{filename}: reviewed outcome needs a receipt registry for link resolution")
+    original = receipt_registry.get(review["original_receipt_id"])
+    require(original is not None,
+            f"{filename}: outcome review references a missing original receipt")
+    require(original is not receipt,
+            f"{filename}: outcome review cannot resolve its own reviewed receipt as original")
+    require(original.get("receipt_id") == review["original_receipt_id"],
+            f"{filename}: resolved original receipt ID does not match the review link")
+    require(original.get("outcome", {}).get("learning_status") == "LEARNING_PENDING_OUTCOME",
+            f"{filename}: resolved original receipt is not a pending outcome snapshot")
+    validate_outcome(original, f"{filename} linked original")
     require(DIGEST_PATTERN.fullmatch(review["original_receipt_digest"]) is not None,
             f"{filename}: outcome review original receipt digest is malformed")
-    require(review["original_receipt_digest"] == canonical_pending_receipt_digest(receipt),
-            f"{filename}: outcome review does not match the reconstructed pre-review receipt")
+    require(review["original_receipt_digest"] == canonical_operational_receipt_digest(original),
+            f"{filename}: outcome review does not match the preserved pending receipt")
     for key in ("expectation_ref", "outcome_window_ref"):
         require(EXACT_POINTER_PATTERN.fullmatch(review[key]) is not None,
                 f"{filename}: outcome review {key} is not an exact resolvable pointer")
+    original_outcome = original["outcome"]
+    require(review["expectation_ref"]
+            == original_outcome["expectation_record"]["exact_pointer"],
+            f"{filename}: outcome review expectation reference does not resolve to the preserved record")
+    require(review["outcome_window_ref"]
+            == original_outcome["outcome_window_record"]["exact_pointer"],
+            f"{filename}: outcome review window reference does not resolve to the preserved record")
+    require(decision_snapshot(receipt) == decision_snapshot(original),
+            f"{filename}: reviewed receipt changes the preserved pre-review decision snapshot")
+    require(receipt.get("fixture_status") == original.get("fixture_status"),
+            f"{filename}: reviewed and pending receipts disagree on fixture status")
     require(review["pre_review_learning_status"] == "LEARNING_PENDING_OUTCOME",
             f"{filename}: outcome review lacks the canonical pre-review state")
     require_string_list(review["confounders"],
@@ -1385,7 +1480,11 @@ def validate_memory_records(receipt: dict, filename: str,
     return index
 
 
-def validate_layered_receipt(receipt: dict, filename: str) -> None:
+def validate_layered_receipt(
+    receipt: dict,
+    filename: str,
+    receipt_registry: dict[str, dict] | None = None,
+) -> None:
     require(not (set(receipt) & LEGACY_AUTHORIZATION_KEYS),
             f"{filename}: receipt top level contains a contradictory legacy authorization field")
     common_required = {
@@ -1429,7 +1528,7 @@ def validate_layered_receipt(receipt: dict, filename: str) -> None:
     require_string(receipt["stop_reason"], f"{filename}: stop reason is empty")
     stop_reason = receipt["stop_reason"].lower()
     validate_uncertainty(receipt["uncertainty"], filename)
-    validate_outcome(receipt, filename)
+    validate_outcome(receipt, filename, receipt_registry)
 
     evidence = validate_evidence_records(receipt, filename)
     baselines = validate_baseline_records(receipt, filename, evidence)
@@ -1573,12 +1672,13 @@ def validate_layered_receipt(receipt: dict, filename: str) -> None:
 
 def expect_failure(value: dict, filename: str, message: str,
                    *, ordinary: bool = False,
-                   error_contains: str | None = None) -> None:
+                   error_contains: str | None = None,
+                   receipt_registry: dict[str, dict] | None = None) -> None:
     try:
         if ordinary:
             validate_ordinary_record(value, filename)
         else:
-            validate_layered_receipt(value, filename)
+            validate_layered_receipt(value, filename, receipt_registry)
     except CheckFailure as exc:
         if error_contains is not None:
             require(error_contains in str(exc),
@@ -1630,8 +1730,17 @@ def validate_receipt_guard_mutations() -> None:
         "synthetic-reviewed-without-review.json",
         "validator accepted LEARNING_REVIEWED without an outcome review and disposition",
     )
-    valid = copy.deepcopy(base)
-    valid["fixture_status"] = "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT"
+
+    original = copy.deepcopy(base)
+    original["fixture_status"] = "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT"
+    original["outcome"]["expectation_record"]["record_status"] = (
+        "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT"
+    )
+    original["outcome"]["outcome_window_record"]["record_status"] = (
+        "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT"
+    )
+    valid = copy.deepcopy(original)
+    valid["receipt_id"] = "DR-SYNTHETIC-REVIEWED-CONTROL"
     valid["outcome"] = {
         "applicable": True,
         "learning_status": "LEARNING_REVIEWED",
@@ -1641,10 +1750,10 @@ def validate_receipt_guard_mutations() -> None:
         "outcome_review": {
             "id": "OR-SYNTHETIC-CONTROL",
             "record_status": "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
-            "original_receipt_id": valid["receipt_id"],
+            "original_receipt_id": original["receipt_id"],
             "original_receipt_digest": "sha256:" + "0" * 64,
-            "expectation_ref": "fixture://synthetic/layered-ready#expectation",
-            "outcome_window_ref": "fixture://synthetic/layered-ready#outcome-window",
+            "expectation_ref": original["outcome"]["expectation_record"]["exact_pointer"],
+            "outcome_window_ref": original["outcome"]["outcome_window_record"]["exact_pointer"],
             "pre_review_learning_status": "LEARNING_PENDING_OUTCOME",
             "observer": "Synthetic contract reviewer; no participant or real operator.",
             "observed_outcome": "SYNTHETIC_CONTRACT_OBSERVATION_ONLY",
@@ -1657,22 +1766,42 @@ def validate_receipt_guard_mutations() -> None:
         },
     }
     valid["outcome"]["outcome_review"]["original_receipt_digest"] = (
-        canonical_pending_receipt_digest(valid)
+        canonical_operational_receipt_digest(original)
     )
-    validate_layered_receipt(valid, "synthetic-reviewed-contract-control.json")
+    review_registry = {
+        original["receipt_id"]: original,
+        valid["receipt_id"]: valid,
+    }
+    validate_layered_receipt(
+        valid,
+        "synthetic-reviewed-contract-control.json",
+        review_registry,
+    )
 
     for mutation_name, key, value, error in (
         (
             "review-dangling-receipt",
             "original_receipt_id",
             "DR-MISSING",
-            "does not link the original receipt ID",
+            "references a missing original receipt",
         ),
         (
             "review-wrong-digest",
             "original_receipt_digest",
             "sha256:" + "f" * 64,
-            "does not match the reconstructed pre-review receipt",
+            "does not match the preserved pending receipt",
+        ),
+        (
+            "review-dangling-expectation",
+            "expectation_ref",
+            "fixture://synthetic/does-not-exist#expectation",
+            "expectation reference does not resolve",
+        ),
+        (
+            "review-dangling-window",
+            "outcome_window_ref",
+            "fixture://synthetic/does-not-exist#outcome-window",
+            "window reference does not resolve",
         ),
         (
             "review-missing-outcome",
@@ -1690,7 +1819,36 @@ def validate_receipt_guard_mutations() -> None:
             f"synthetic-{mutation_name}.json",
             f"validator accepted invalid linked outcome review {mutation_name}",
             error_contains=error,
+            receipt_registry={
+                original["receipt_id"]: original,
+                invalid_review["receipt_id"]: invalid_review,
+            },
         )
+
+    other_original = copy.deepcopy(original)
+    other_original["receipt_id"] = "DR-SYNTHETIC-OTHER-PENDING"
+    other_original["outcome"]["expectation_record"]["exact_pointer"] = (
+        "fixture://synthetic/other-pending#expectation"
+    )
+    other_original["outcome"]["outcome_window_record"]["exact_pointer"] = (
+        "fixture://synthetic/other-pending#outcome-window"
+    )
+    wrong_receipt_links = copy.deepcopy(valid)
+    wrong_receipt_links["outcome"]["outcome_review"].update({
+        "expectation_ref": other_original["outcome"]["expectation_record"]["exact_pointer"],
+        "outcome_window_ref": other_original["outcome"]["outcome_window_record"]["exact_pointer"],
+    })
+    expect_failure(
+        wrong_receipt_links,
+        "synthetic-review-links-wrong-receipt.json",
+        "validator accepted expectation/window links belonging to another receipt",
+        error_contains="expectation reference does not resolve",
+        receipt_registry={
+            original["receipt_id"]: original,
+            other_original["receipt_id"]: other_original,
+            wrong_receipt_links["receipt_id"]: wrong_receipt_links,
+        },
+    )
 
     both_observed_and_missing = copy.deepcopy(valid)
     both_observed_and_missing["outcome"]["outcome_review"].update(
@@ -1704,7 +1862,84 @@ def validate_receipt_guard_mutations() -> None:
         "synthetic-review-observed-and-missing.json",
         "validator accepted both an observed outcome and missing-outcome state",
         error_contains="exactly one observed outcome or typed missing outcome",
+        receipt_registry={
+            original["receipt_id"]: original,
+            both_observed_and_missing["receipt_id"]: both_observed_and_missing,
+        },
     )
+
+    neither_observed_nor_missing = copy.deepcopy(valid)
+    neither_observed_nor_missing["outcome"]["outcome_review"].update(
+        {
+            "observed_outcome": "NOT_APPLICABLE",
+            "missing_outcome_reason": "NOT_APPLICABLE",
+        }
+    )
+    expect_failure(
+        neither_observed_nor_missing,
+        "synthetic-review-neither-observed-nor-missing.json",
+        "validator accepted neither an observed nor a missing outcome",
+        error_contains="exactly one observed outcome or typed missing outcome",
+        receipt_registry={
+            original["receipt_id"]: original,
+            neither_observed_nor_missing["receipt_id"]: neither_observed_nor_missing,
+        },
+    )
+
+    drifted_review = copy.deepcopy(valid)
+    drifted_review["uncertainty"] = [
+        "OUTCOME_MISSING: added only after the synthetic outcome window"
+    ]
+    expect_failure(
+        drifted_review,
+        "synthetic-review-post-window-top-level-drift.json",
+        "validator accepted post-review leakage into the preserved decision snapshot",
+        error_contains="changes the preserved pre-review decision snapshot",
+        receipt_registry={
+            original["receipt_id"]: original,
+            drifted_review["receipt_id"]: drifted_review,
+        },
+    )
+
+    mutated_original = copy.deepcopy(original)
+    mutated_original["stop_reason"] = (
+        "The preserved decision was mutated without refreshing its review digest."
+    )
+    expect_failure(
+        valid,
+        "synthetic-mutated-preserved-pending.json",
+        "validator accepted a changed preserved pending receipt under the old digest",
+        error_contains="does not match the preserved pending receipt",
+        receipt_registry={
+            mutated_original["receipt_id"]: mutated_original,
+            valid["receipt_id"]: valid,
+        },
+    )
+
+    for mutation_name, mutate, error in (
+        (
+            "pending-outcome-missing-uncertainty",
+            lambda value: value.update({
+                "uncertainty": ["OUTCOME_MISSING: the later outcome is unavailable"]
+            }),
+            "pending receipt cannot contain post-window OUTCOME_MISSING uncertainty",
+        ),
+        (
+            "pending-window-closed-reason",
+            lambda value: value.update({
+                "stop_reason": "The synthetic outcome window closed without an observation."
+            }),
+            "pending receipt contains post-review stop reasoning",
+        ),
+    ):
+        invalid_pending = copy.deepcopy(original)
+        mutate(invalid_pending)
+        expect_failure(
+            invalid_pending,
+            f"synthetic-{mutation_name}.json",
+            f"validator accepted chronological leakage in {mutation_name}",
+            error_contains=error,
+        )
 
     for mutation_name, outcome in (
         (
@@ -2152,6 +2387,7 @@ def validate_receipts() -> None:
         "unknown-permission.json",
         "revoked-permission.json",
         "memory-append-only-correction.json",
+        "pending-outcome-review.json",
         "reviewed-missing-outcome.json",
     }
     files = sorted(receipt_dir.glob("*.json"))
@@ -2159,23 +2395,39 @@ def validate_receipts() -> None:
             "receipt fixture set is missing a required contract case")
     require(not (receipt_dir / "ordinary-low-stakes.json").exists(),
             "layered low-stakes receipt is still mislabeled as ordinary")
-    observed_permission_states: set[str] = set()
+    loaded: dict[str, dict] = {}
+    receipt_registry: dict[str, dict] = {}
     for path in files:
         try:
             value = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             raise CheckFailure(f"invalid receipt JSON in {path.name}: {exc}") from exc
         require(isinstance(value, dict), f"{path.name} must contain an object")
+        loaded[path.name] = value
+        if path.name != "ordinary-supplied-material.json":
+            receipt_id = value.get("receipt_id")
+            require_string(receipt_id, f"{path.name}: layered receipt ID is empty")
+            require(receipt_id not in receipt_registry,
+                    f"{path.name}: duplicate layered receipt ID {receipt_id}")
+            receipt_registry[receipt_id] = value
+
+    observed_permission_states: set[str] = set()
+    for path in files:
+        value = loaded[path.name]
         if path.name == "ordinary-supplied-material.json":
             validate_ordinary_record(value, path.name)
         else:
-            validate_layered_receipt(value, path.name)
+            validate_layered_receipt(value, path.name, receipt_registry)
             observed_permission_states.add(value["permission"]["state"])
         if path.name in {
-            "memory-append-only-correction.json", "reviewed-missing-outcome.json",
+            "memory-append-only-correction.json", "pending-outcome-review.json",
+            "reviewed-missing-outcome.json",
         }:
             require(value.get("fixture_status") == "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
                     f"{path.name} is not explicitly synthetic/no-result")
+        if path.name == "pending-outcome-review.json":
+            require(value["outcome"]["learning_status"] == "LEARNING_PENDING_OUTCOME",
+                    "pending outcome-review fixture does not preserve the pre-review state")
         if path.name == "reviewed-missing-outcome.json":
             review = value["outcome"]["outcome_review"]
             require(value["outcome"]["learning_status"] == "LEARNING_REVIEWED"

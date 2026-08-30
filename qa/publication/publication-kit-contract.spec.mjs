@@ -41,7 +41,7 @@ for (const phrase of [
   assert.match(mentor, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `mentor sequence lost ${phrase}`);
 }
 
-const variantExpectedLengths = { A: 277, B: 269, C: 273 };
+const variantExpectedLengths = { A: 278, B: 269, C: 273 };
 const lines = xCopy.split("\n");
 for (const [variant, expectedLength] of Object.entries(variantExpectedLengths)) {
   const start = lines.findIndex((line) => line.startsWith(`## Variant ${variant}`));

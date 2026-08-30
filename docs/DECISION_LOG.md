@@ -1646,3 +1646,47 @@ packet.
 **Governing requirement:** A01–A03, A06, A13; human-first first screen;
 responsive and understandable code-native visuals; owner evidence outranks
 advisory reassurance.
+
+## D-046 — Close ultra-finalization defects through evidence-bounded corrections, not expansion
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; terminal exact-commit audits remain
+
+**Decision:** Preserve the broad human thesis, all six families, three-door
+public architecture, authored Guided route, Echo separation, and the already
+sealed Signal Foundry packet. Accept only reproduced ultra-finalization
+defects: current visual/PDF evidence binding, bounded publication-copy
+qualifiers, typed layered uncertainty, a genuinely linked reviewed-learning
+contract, locally intelligible no-script/print Stage 0 labels, and final owner
+manifest coverage.
+
+The reviewed-learning correction preserves an actual
+`LEARNING_PENDING_OUTCOME` synthetic receipt with embedded expectation and
+outcome-window records. Its reviewed successor resolves those exact records,
+hashes the actual preserved operational payload, retains the original decision
+snapshot, and carries typed outcome missingness only inside the review. This is
+a fixture-scoped structural contract. It is not an immutable store, an
+external registry, an empirical result, or evidence that learning improves an
+answer.
+
+The current 2025–2026 primary-source spot-check constrains claims but does not
+justify expanding the compact source route: no reviewed source exposed a named
+public-reader or claim gap not already covered by the claims ceiling. The
+removal test likewise rejects another route, bitmap, dashboard, score, generic
+adoption artifact, family, ledger, or provenance subsystem.
+
+The owner-review manifest must remain stale while source bytes move, then be
+regenerated after source, exports, PDF evidence, QA, and dispositions stop
+changing. The two outcome fixtures enter the owner-review manifest only. They
+do not enter or reseal the Signal Foundry subset, whose exact source remains
+`529852497109dc152928de642038d07b109a52e2`.
+
+**Evidence:** Wave 1 corrections `d878d27`, `c51c234`, and `9916076`; the
+successor ultra-finalization disposition table; applied mutation suite;
+current visual/PDF evidence records; exact-build standalones; owner-manifest
+writer/verifier; and the final terminal QA record.
+
+**Governing requirement:** A01–A04, A06–A11, A13–A17; C16-009; D-020;
+owner-intent authority; two-project separation; exact provenance;
+anti-bureaucracy and removal tests; no prohibited external action.

@@ -24,9 +24,9 @@ decision.
 
 **Use:** broad first contact; no link attached.
 
-> AI slop often begins before the model writes a word. If the system follows the search path, misses specialist perspective, skips a comparison, or forgets what happened before, the answer inherits those choices. Pattern Recognition asks us to improve the room before generation.
+> AI slop often begins before the model writes a word. If the system follows the obvious path, misses specialist perspective, skips a comparison, or forgets what happened before, the answer inherits those choices. Pattern Recognition asks us to improve the room before generation.
 
-**Local copy size:** 277 characters including spaces and punctuation; no URL or handle.
+**Local copy size:** 278 characters including spaces and punctuation; no URL or handle.
 
 ## Variant B — question-led
 

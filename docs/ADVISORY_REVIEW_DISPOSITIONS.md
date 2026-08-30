@@ -502,3 +502,34 @@ defect. That conclusion is limited to the deterministic and static evidence
 named above. Physical keyboard, supported screen reader, real zoom/reflow,
 forced-colors, native print, hardware touch, owner/mentor comprehension and
 taste, and publication-time checks remain open human gates.
+
+## V16 ultra-finalization dispositions — 2026-08-30
+
+Three Wave 1 lanes and three exact-integrated Wave 2 lanes challenged the
+human/public artifact, applied agent contract, research/claim boundary, and
+owner-review seal. Wave 1 began from owner-specified baseline
+`2ba89e7958cf01c5f0d44bad2bde8eadcb4df6a4`; Wave 2 reviewed exact checkpoint
+`9916076c2fba4fb70fa125e70e8632f2b8046904`. These are static, structural,
+rendered, and advisory-model checks. They are not owner approval, a cold-human
+reader result, physical accessibility evidence, a study, or evidence of
+framework effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| UF-W1-VIS-01 | Treat a pre-correction Home capture and one stale PDF page render as current evidence | **Accepted with revision** | Exact-source visual evidence must describe the bytes actually reviewed | Visual index, three new principal-door captures, six PDF renders, successor evidence records | A11/A13/A14; recorded byte/hash/dimension equality and direct visual inspection |
+| UF-W1-COPY-01 | Drop `often` from the compressed upstream-problem claim or let Variant C imply improved AI performance | **Accepted with revision** | Compression cannot turn a bounded thesis into a categorical or effectiveness claim | Unsent X-copy rehearsal and publication contract | A01/A04/A11; exact local character checks; still unsent/unpublished |
+| UF-W1-APP-01 | Require typed top-level uncertainty instead of permitting omission | **Accepted with revision** | Uncertainty must remain visible at the decision boundary rather than inferred from nested records | Layered fixtures and applied validator | A08/A11; missing, empty, and untyped mutations fail closed |
+| UF-W1-APP-02 | Require an exact linked review instead of treating `LEARNING_REVIEWED` as established by a status token | **Accepted with revision** | A result, missing outcome, cost, confounder, attribution boundary, update proposal, and human disposition must be inspectable together | Outcome template, decision receipt, synthetic fixtures, validator | A08/A11; exact reviewed-state shape and observed/missing XOR controls |
+| W2-HUM-01 | Keep detached `Stage 0 yes/no` shorthand in the no-script/print Apply table | **Accepted with revision** | Without the interactive question, the shorthand can invert the ordinary escape and layered disqualifier | Apply static equivalent and regression contract | A06/A07/A13; locally complete labels and bare-shorthand rejection |
+| W2-HUM-02 | Describe Guided as a generated rather than authored route in the PDF | **Accepted with revision** | Guided is deterministic authored composition over canonical material, not model-generated content | Review-PDF source, regenerated PDF, successor render evidence | A04/A06/A11/A13; exact text and six-page visual inspection |
+| W2-HUM-03 | Preserve `often` by weakening `obvious/default search path` to any search path | **Accepted with revision** | The upstream defect is the unexamined obvious/default route, not search itself | Unsent X-copy Variant A and contract | A01/A04/A11; exact 278-character local rehearsal |
+| HNR2-01 | Reconstruct a pending digest from a reviewed receipt while retaining post-window facts and accepting syntax-only expectation/window links | **Accepted with revision** | A reviewed record cannot claim chronological linkage to a snapshot that never existed or to pointers that are never resolved | Actual pending fixture, reviewed missing-outcome fixture, outcome records, applied validator and docs | A08/A11/C16-009/D-020; preserved-payload digest, in-fixture resolution, wrong/dangling-link, mutation, leakage, and XOR controls |
+| AUD-W2-PKG-01 | Treat the stale owner manifest as a terminal package | **Accepted** | The expected failure proves the seal is fail-closed while source bytes move | Owner manifest writer/verifier | A14/A15/D-036/D-040; regenerate only after final source freeze and verify from exact committed bytes |
+| AUD-W2-PKG-02 | Leave required pending/reviewed outcome fixtures outside the bounded owner manifest | **Accepted with revision** | A receiver must receive the positive no-result contract and its actual preserved predecessor | Owner-manifest required paths only | A08/A11/A14; both fixtures are selected; sealed Signal subset remains unchanged |
+| UF-RSCH-01 | Add every newly checked 2025–2026 adjacent paper to the compact public source route | **Deferred** | The targeted primary sources reinforce existing caveats but expose no named reader or claim gap that earns more citation weight | No canonical source-route edit | A04/A11/A16; retain targeted/non-exhaustive ceiling and cite the audit externally |
+| UF-SCOPE-01 | Add another route, bitmap, dashboard, score, general adoption artifact, seventh family, external receipt registry, blockchain, or new provenance subsystem | **Rejected** | None repairs a reproduced defect; each adds ceremony, topology, or unsupported capability | No new architecture | Owner intent, A01–A03/A06–A08/A12/A13, anti-bureaucracy boundary |
+| UF-SCOPE-02 | Reopen Echo, treat the synthetic outcome fixture as a result, or reseal/mutate Signal Foundry for later Pattern Map changes | **Rejected** | Echo remains separate and unrun; fixtures remain no-result; the Signal packet remains the exact sealed read-only illustration | Echo and Signal Foundry boundaries | A09–A11/A15/A16; exact Signal source checkpoint `5298524`; zero downstream mutation |
+
+No finding authorizes merge to `main`, deployment, publication, provider/model
+or participant execution, dataset acquisition, preregistration, outreach,
+incremental spend, or any statement that an unrun design produced a result.

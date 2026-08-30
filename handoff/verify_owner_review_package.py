@@ -184,6 +184,8 @@ REQUIRED_PATHS = [
     "qa/applied/receipts/lightweight-low-stakes.json",
     "qa/applied/receipts/memory-append-only-correction.json",
     "qa/applied/receipts/ordinary-supplied-material.json",
+    "qa/applied/receipts/pending-outcome-review.json",
+    "qa/applied/receipts/reviewed-missing-outcome.json",
     "qa/applied/receipts/revoked-permission.json",
     "qa/applied/receipts/stopped-budget.json",
     "qa/applied/receipts/unknown-permission.json",

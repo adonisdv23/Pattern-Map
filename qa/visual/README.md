@@ -26,8 +26,10 @@ Use these paths for the current v16 review:
   paired source and browser-proxy evidence lives in
   `../site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md`; and
 - `pdf-renders-final-v16-polish/` — six exact-current rendered pages from PDF
-  SHA-256 `0452239c80da4a34ad1a0fdbf8a9d50480684d078a92b8931ca0cf08a6595efc`;
+  SHA-256 `372b7b5fd3ad9a8838eb832b5c44ea83593622138a44b6c16c15b1688a52f25d`;
   method, page hashes, inspection result, and evidence limits live in
+  `W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md`. The predecessor PDF and
+  render hashes remain recorded in
   `ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md`; and
 - `../site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` — exact-checkpoint
   source, contract, and live-browser evidence for the current ten-route site;
@@ -40,7 +42,7 @@ The earlier public-mode lane checkpoint is
 `361243c95050723f1693907f7446be5d690b9e58`; integrated implementation
 checkpoint `5bcd08d` rebuilds both standalones after the applied, research, and
 final public-site lanes converge. The six-page PDF remains the secondary visual
-companion; its exact-current `2ba89e7` render refresh is recorded above.
+companion; its exact-current byte-bound render refresh is recorded above.
 
 ## Superseded routed-site captures
 

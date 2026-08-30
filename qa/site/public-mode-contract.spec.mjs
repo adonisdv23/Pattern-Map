@@ -123,6 +123,7 @@ try {
   const release = runDisposableBuild("--mode=public", "--release");
   assert.equal(release.status, 0, `valid release build failed:\n${release.stdout}\n${release.stderr}`);
   const releaseHtml = fs.readFileSync(path.join(disposableSite, "public-dist", "index.html"), "utf8");
+  const releaseApplyHtml = fs.readFileSync(path.join(disposableSite, "public-dist", "apply", "index.html"), "utf8");
   const releaseManifest = JSON.parse(fs.readFileSync(path.join(disposableSite, "public-dist", "build-manifest.json"), "utf8"));
   assert.match(releaseHtml, /<meta name="robots" content="index,follow">/);
   assert.match(releaseHtml, /<link rel="canonical" href="https:\/\/pattern-map\.release-candidate\.dev\/pattern-map\/">/);
@@ -130,6 +131,8 @@ try {
   assert.match(releaseHtml, /<meta property="og:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="twitter:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="author" content="Publication Gate Test">/);
+  assert.match(releaseApplyHtml, /<caption>Stage 0 and proportionate planning choices<\/caption>/);
+  assert.doesNotMatch(releaseApplyHtml, /Stage 0 (?:no|yes):/);
   assert.equal(releaseManifest.release_build, true, "--release did not record the valid release build");
 
   const normalizedPathConfig = {
@@ -175,7 +178,12 @@ const releaseAttempt = spawnSync(process.execPath, ["build.mjs", "--mode=public"
 });
 assert.notEqual(releaseAttempt.status, 0, "release build unexpectedly succeeded with unset identity and URL fields");
 assert.match(`${releaseAttempt.stdout}\n${releaseAttempt.stderr}`, /Public release is gated/);
-assert.match(read("site/build.mjs"), /releaseMetadataEnabled = publicationMetadataEnabled\(publicationConfig, releaseBuildRequested\)/);
+const siteBuild = read("site/build.mjs");
+assert.match(siteBuild, /releaseMetadataEnabled = publicationMetadataEnabled\(publicationConfig, releaseBuildRequested\)/);
+assert.match(siteBuild, /<caption>Stage 0 and proportionate planning choices<\/caption>/);
+assert.match(siteBuild, /No layered evidence decision is required: Stage 0 is terminal/);
+assert.match(siteBuild, /A Stage 0 disqualifier is present:/);
+assert.doesNotMatch(siteBuild, /Stage 0 (?:no|yes):/);
 
 const publicRead = read("site/public-dist/read/index.html");
 const shortOpening = "An AI answer can sound polished yet be generic because weakness can begin before writing.";
