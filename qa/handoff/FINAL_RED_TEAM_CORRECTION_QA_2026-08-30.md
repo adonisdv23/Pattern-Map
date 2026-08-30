@@ -164,6 +164,12 @@ it, and Guided now uses an exact reversible reformat as its ordinary example.
 No disqualifier, four-field terminal rule, or independent no-script meaning was
 removed.
 
+That correction received a second bounded read-only intent/reader recheck at
+exact commit `58f2756980ea4702c40f5a89fdfa3a18671255aa`. The durable report at
+`qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_58f2756.md`
+records a terminal PASS with no P0/P1/P2/P3 finding and preserves all manual
+gates.
+
 ## Still open by design
 
 The owner/mentor voice and comprehension judgment, physical keyboard and

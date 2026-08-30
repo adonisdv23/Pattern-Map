@@ -157,6 +157,7 @@ REQUIRED_PATHS = [
     "qa/editorial/validate_content_interface.py",
     "qa/editorial/advisory/FINAL_INTENT_READER_REDTEAM_2026-08-30_d40ca61.md",
     "qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_6a61f6d.md",
+    "qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_58f2756.md",
     "qa/applied/README.md",
     "qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md",
     "qa/applied/STAGE_ZERO_ORDINARY_CONTRACT_CONVERGENCE_QA_2026-08-30_0beee9a.md",
