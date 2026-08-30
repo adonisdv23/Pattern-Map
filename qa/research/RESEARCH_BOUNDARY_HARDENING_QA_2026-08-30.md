@@ -21,13 +21,20 @@ archive, preserved Echo source, or handoff file was edited in this lane.
 | Decision accuracy or accepted-error before subjective usefulness | **Accepted with revision** | A task-specific frozen key or unacceptable-error boundary is required; no universal answer or ready outcome scale is asserted. |
 | Fixed-total-resource and equal-operating-overhead comparisons | **Accepted with revision** | They answer different questions and must be separately labeled. Treatment instructions, records, latency, and review remain treatment costs. |
 | Current 2024–2026 source route | **Accepted as targeted wayfinding only** | Conference papers, preprints, and first-party engineering reports are labeled separately. This is not a systematic review or novelty clearance. |
+| R-01 — A0 equivalence, study modes, and A2 mechanism claim | **Accepted with revision** | A0 now shares the same task, evidence-access boundary, and required output specification. Generation and fixed-answer interface/correction studies are separated; accuracy is ineligible when the answer is fixed. A2 is explicitly composite unless a component ablation is predeclared. |
+| R-02 — Candidate B flat status | **Accepted with revision** | Observation, process/capture, access, permission, and currency are orthogonal axes. The initial specification wedge varies only observation and process/capture while holding the other axes fixed, and scoring separates frozen task/world keys from trace-derived run states. |
+| R-03 — overbroad established-practices wording | **Accepted with revision** | The stronger sentence could imply universal settlement. The active route, agenda, and this QA now say the component areas have substantial established and active prior work, preserving the targeted/non-exhaustive boundary. |
 
 ## Boundary assertions added
 
-- Component practices are established; v16 holds them together as one
-  proportional, human-governed pre-generation responsibility.
+- Component areas have substantial established and active prior work; v16
+  proposes to hold them together as one proportional, human-governed
+  pre-generation responsibility.
 - Pattern Map is not represented as a novel mechanism, exhaustive taxonomy,
   technical layer, or demonstrated improvement.
+- Candidate A's baseline equivalence, two study modes, and composite-treatment
+  status are explicit; Candidate B uses orthogonal axes and separates frozen
+  task/world keys from trace-derived run states.
 - A citation, retrieved-document attribution, influence estimate, metadata cue,
   benchmark label, or accepted human disposition is not truth by itself.
 - The narrow-wedge memo selects no first paper, provider, model, corpus,

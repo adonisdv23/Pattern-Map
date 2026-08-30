@@ -70,6 +70,9 @@ def main() -> int:
     source_qa = read(
         "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md"
     )
+    hardening_qa = read(
+        "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md"
+    )
     for label in (
         "Research Track 01",
         "Research Track 02",
@@ -162,6 +165,35 @@ def main() -> int:
         require(result_class in memo.lower(),
                 f"narrow-wedge memo omits unfavorable class: {result_class}")
 
+    normalized_memo = " ".join(memo.lower().split())
+    for phrase in (
+        "same task, evidence-access boundary, and required output specification",
+        "generation study",
+        "fixed-answer interface/correction study",
+        "generated-answer or decision accuracy is not an eligible outcome",
+        "a2 is a **composite treatment**",
+        "ablation is predeclared",
+    ):
+        require(phrase in normalized_memo,
+                f"Candidate A design boundary is missing: {phrase}")
+    for axis in (
+        "**observation:**",
+        "**process/capture:**",
+        "**access:**",
+        "**permission:**",
+        "**currency:**",
+    ):
+        require(axis in memo,
+                f"Candidate B omits orthogonal axis: {axis}")
+    for phrase in (
+        "hold access at `available`, permission at `authorized`, and currency at `current`",
+        "frozen task/world key",
+        "trace-derived run state",
+        "must not be backfilled",
+    ):
+        require(phrase in normalized_memo,
+                f"Candidate B construct boundary is missing: {phrase}")
+
     require("**2026-08-30**" in source_route,
             "source route omits the current verification date")
     require("checked again immediately before any later-authorized publication"
@@ -179,9 +211,18 @@ def main() -> int:
     require("targeted wayfinding route, not a systematic or exhaustive"
             in source_route,
             "source route inflates targeted wayfinding into an exhaustive review")
-    require("The component practices are established; the proposal is to hold"
-            in source_route,
-            "source route omits the contribution-ceiling sentence")
+    revised_component_boundary = (
+        "component areas have substantial established and active prior work"
+    )
+    for text, name in (
+        (source_route, "source route"),
+        (agenda, "research agenda"),
+        (hardening_qa, "research hardening QA"),
+    ):
+        require(revised_component_boundary in text.lower(),
+                f"{name} omits the revised adjacent-work boundary")
+        require("component practices are established" not in text.lower(),
+                f"{name} retains the overbroad established-practices sentence")
     normalized_source_route = " ".join(source_route.split())
     for phrase in (
         "not a novel mechanism",

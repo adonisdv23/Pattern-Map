@@ -104,8 +104,9 @@ and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233)
   resources, mechanism isolation, and reproducibility checks; they do not
   supply a result for Pattern Map.
 
-The component practices are established; the proposal is to hold them together
-as one proportional, human-governed responsibility before generation. That is
+The component areas have substantial established and active prior work; the
+proposal is to hold them together as one proportional, human-governed
+responsibility before generation. That is
 an authored design and governance synthesis with a testable agenda—not a novel
 mechanism, exhaustive taxonomy, technical layer, or demonstrated improvement.
 

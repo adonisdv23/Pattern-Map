@@ -13,11 +13,12 @@ and operational proposal. Local schemas, fixtures, validators, archives, and
 advisory reviews establish integrity or inspectability only. They are not
 evidence that the framework improves work.
 
-The component practices are established across context engineering,
-information retrieval and selection, source reliability and redundancy,
-adaptive acquisition and stopping, agent memory, attribution, provenance,
-human correction, and deep-research evaluation. The bounded v16 contribution
-is an authored human-governed design/governance synthesis and a testable agenda.
+The component areas have substantial established and active prior work across
+context engineering, information retrieval and selection, source reliability
+and redundancy, adaptive acquisition and stopping, agent memory, attribution,
+provenance, human correction, and deep-research evaluation. The bounded v16
+contribution is an authored human-governed design/governance synthesis and a
+testable agenda.
 It is not a novel mechanism, exhaustive taxonomy, newly discovered technical
 layer, or effectiveness result. The optional source route records the current
 targeted—not systematic or exhaustive—2024–2026 wayfinding review.
@@ -74,9 +75,11 @@ future research program must first determine whether a narrower mechanism can
 be distinguished from ordinary diligence, label following, or format
 compliance. The current unrun decision memo compares:
 
-- a claim-scoped influence receipt against an ordinary source list; and
-- typed observation-boundary missingness against ordinary or untyped
-  uncertainty.
+- a composite claim-scoped influence receipt against an ordinary source list
+  under the same task, evidence-access, and output requirements; and
+- an orthogonal observation-boundary record that initially separates
+  observation from process/capture while holding access, permission, and
+  currency fixed.
 
 See
 [`future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md`](future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md).
@@ -101,6 +104,21 @@ The equal-operating-overhead result cannot replace or be blended with the
 fixed-total-resource result. A weak ordinary prompt is not a sufficient
 baseline merely because it makes a structured treatment look better.
 
+For the influence-receipt wedge, a later design must choose between a
+generation study and a fixed-answer interface/correction study. In the former,
+outputs may differ and decision accuracy or accepted-error may be eligible. In
+the latter, answer content is fixed, so generated-answer or decision accuracy
+is not eligible; correction, acceptance, and burden outcomes answer a different
+question. The full receipt remains a composite unless a component ablation is
+predeclared.
+
+For the observation-boundary wedge, frozen task/world keys must remain separate
+from trace-derived run states. World presence, expectedness, allowed boundary,
+access, permission, currency, and correct decision belong in the pre-run key;
+attempted checks, capture success or failure, returned observations, and output
+belong in the run trace. A later design may not infer one axis from another or
+backfill the frozen key from an output.
+
 ## Flagship question: DL-PLAYBOOK-01
 
 The flagship candidate asks:
@@ -121,12 +139,15 @@ The full protocol candidate is
 
 ### Outcome hierarchy to operationalize before any run
 
-The first decision-facing outcome should be **decision accuracy or
-accepted-error rate** under a frozen task-specific decision key. Where a single
-correct decision is inappropriate, the design must define the materially
-unacceptable error states and the threshold for an acceptable artifact before
-any run. A receipt-completion score, stylistic preference, or subjective
-usefulness rating cannot be the primary outcome.
+For a generation or decision-production study, the first decision-facing
+outcome should be **decision accuracy or accepted-error rate** under a frozen
+task-specific decision key. Where a single correct decision is inappropriate,
+the design must define the materially unacceptable error states and the
+threshold for an acceptable artifact before any run. A fixed-answer
+interface/correction study cannot use generated-answer or decision accuracy as
+its outcome because the answer is held constant; it must instead predeclare a
+correction or acceptance outcome. A receipt-completion score, stylistic
+preference, or subjective usefulness rating cannot be the primary outcome.
 
 The broader outcomes below remain required secondary, explanatory, or
 guardrail measures. They may become primary only in a separately justified
@@ -180,7 +201,8 @@ These are later questions, not bundled evidence for the flagship result:
    romanticizing obscurity or amplifying manipulation?
 8. Does a claim-scoped influence receipt change accepted-error or correction
    behavior beyond an ordinary or generic-diligence source mapping?
-9. Does typed observation-boundary missingness reduce consequential false-
+9. With access available, permission authorized, and material current, does an
+   orthogonal observation/process-capture record reduce consequential false-
    absence errors beyond an equally explicit untyped boundary statement?
 
 ## Unfavorable-result contract

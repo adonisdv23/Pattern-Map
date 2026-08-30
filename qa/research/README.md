@@ -11,7 +11,9 @@ The validator checks current project separation, the exact EP unfavorable-
 result taxonomy, explicit unrun/no-results language, future-protocol
 authorization boundaries, generic-diligence and mechanism-isolation sequencing,
 the two resource estimands, decision-accuracy/accepted-error priority, the
-narrow-wedge memo's no-selection contract, the dated targeted source route,
+narrow-wedge memo's no-selection contract, Candidate A's equivalent baselines,
+study-mode split and composite-treatment boundary, Candidate B's orthogonal
+axes and key/trace separation, the dated targeted source route,
 publication-time recheck language, and high-signal novelty/effectiveness/result
 inflation phrases. It performs structural claim-boundary QA only. It does not
 open the web, call a model, provider, participant, dataset, registry,
