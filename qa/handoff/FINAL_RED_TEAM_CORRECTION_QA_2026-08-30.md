@@ -157,6 +157,13 @@ reader-language contracts. Applied, editorial, research, semantic-site, and
 current image-signature validators also pass. These remain structural and
 proxy findings; they do not close the manual gates below.
 
+The final intent recheck also identified one non-blocking P3 adjacency: the
+complete Stage 0 predicate repeated in consecutive Guided and Apply sections.
+The routes retain the complete local rule once, the nested levels point back to
+it, and Guided now uses an exact reversible reformat as its ordinary example.
+No disqualifier, four-field terminal rule, or independent no-script meaning was
+removed.
+
 ## Still open by design
 
 The owner/mentor voice and comprehension judgment, physical keyboard and

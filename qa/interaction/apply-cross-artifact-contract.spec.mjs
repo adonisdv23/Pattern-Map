@@ -31,6 +31,10 @@ for (const [label, artifact] of [["Apply", applyHtml], ["Guided", guidedHtml], [
 }
 assert.doesNotMatch(guidedHtml, /If the work only formats, translates, rewrites, summarizes, or transforms supplied material, use the ordinary path/);
 assert.doesNotMatch(pdfSource, /weighing information beyond supplied material/);
+assert.match(guidedHtml, /Ordinary remains available only when every Stage 0 condition immediately above holds/);
+assert.match(guidedHtml, /Reformat supplied prose exactly[\s\S]*reversible format without changing, selecting, or omitting its content/);
+assert.doesNotMatch(guidedHtml, /<h3>Rewrite supplied prose\.<\/h3>/);
+assert.match(applyHtml, /Test the exact Stage 0 choice below; if any disqualifier is present/);
 assert.match(manuscript, /For consequential, contested, or repeated work, software might help track/);
 assert.doesNotMatch(manuscript, /For consequential, contested, or repeated work, an advanced implementation/);
 

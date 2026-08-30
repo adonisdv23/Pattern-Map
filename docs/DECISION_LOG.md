@@ -1425,6 +1425,13 @@ consequential external influence each require a layered route. The exported
 recommendation API also rejects non-enumerable, symbol, accessor-shaped, and
 inherited deviations from its plain record contract.
 
+The final intent recheck found one P3 editorial seam: the complete predicate
+appeared in adjacent route and level paragraphs. Guided and Apply now retain
+one complete local statement, while the immediately nested level introduction
+points back to “every Stage 0 condition.” The Guided ordinary example is an
+exact reversible reformat rather than a generic rewrite. This removes ceremony
+without relaxing a single disqualifier.
+
 The publication gate accepts IPv6 only when it is positively classified as
 global unicast and rejects special-purpose/documentation space plus local
 domain suffixes. This remains a syntactic precondition, not proof that a host
