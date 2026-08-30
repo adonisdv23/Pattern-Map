@@ -3,6 +3,8 @@
 ## Leading interpretation
 
 - Log ID:
+- Disposition: PERFORMED / SKIPPED
+- If SKIPPED, one bounded reason (and create no challenge rows):
 - Decision ID / brief version:
 - Candidate claim or interpretation:
 - Why it currently appears plausible:
@@ -29,3 +31,6 @@
 - Reviewer / disposition:
 
 Failure to find a contrary item is not proof of the leading interpretation.
+An `ANSWER` or `ANSWER_PROVISIONALLY` either links a substantive `PERFORMED`
+log or records `SKIPPED` with exactly one bounded task-specific reason and no
+placeholder attempts.

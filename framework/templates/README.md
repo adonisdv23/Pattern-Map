@@ -23,3 +23,15 @@ and stops before the layered route. Add MEMORY_RECORD only when scoped prior
 material is actually used. For repeated or consequential work, retain the
 needed templates with stable IDs and version links; do not copy every template
 merely because it exists.
+
+An `ANSWER` or `ANSWER_PROVISIONALLY` records substantive comparison and
+disconfirmation artifacts, or one bounded inactive reason for each:
+comparison=`NOT_APPLICABLE`, disconfirmation=`SKIPPED`. Do not create empty
+artifacts to satisfy the table. A motion claim needs two distinct authorized,
+time-bearing evidence IDs with one alignment key, not a reported count.
+
+When memory is used, hash canonical payload bytes, bind the lineage root to a
+separately frozen anchor, keep one linear successor and one `CURRENT` version,
+and select only `CURRENT` + `AUTHORIZED` memory. Preserve superseded records as
+withheld history. These templates define reviewable records; they do not supply
+runtime immutability, legal permission, or evidence that the procedure works.

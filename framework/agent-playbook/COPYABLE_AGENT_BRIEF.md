@@ -61,7 +61,11 @@ and actions separate.
    do not acquire or disclose. Preserve the exact permission state:
    AUTHORIZED, UNKNOWN, NOT_AUTHORIZED, or REVOKED. Give UNKNOWN,
    NOT_AUTHORIZED, and REVOKED distinct reasons and conditions for resuming;
-   do not collapse them.
+   do not collapse them. An executable permission record contains only:
+   technical_access, state, scope, reason_code, reason, resume_condition.
+   Reject legacy authorization booleans. In a single-global-permission receipt,
+   UNKNOWN, NOT_AUTHORIZED, or REVOKED leaves evidence, baseline, comparison,
+   disconfirmation, memory, and influence empty; memory is NOT_USED.
 
 3. DEFAULT AND PERIPHERAL ROUTE
    Record the default query, source set, vocabulary, time window, or product
@@ -82,14 +86,24 @@ and actions separate.
    independence, permission, and uncertainty.
    Compare the relevant peers, periods, attributes, structures, or origins.
    Mark INCOMPARABLE and UNKNOWN rather than filling gaps. Recurrence is not
-   independent corroboration. Provenance is not correctness.
+   independent corroboration. Provenance is not correctness. For ANSWER or
+   ANSWER_PROVISIONALLY, link a substantive comparison or record
+   NOT_APPLICABLE with one bounded reason and no placeholder record.
 
 6. MOTION, ABSENCE, AND MEMORY
-   Make a motion statement only with repeated comparable observations and a
-   stated baseline. Make an absence statement only against an explicit
-   expected baseline and observation boundary. Classify missing, failed,
-   unavailable, unauthorized, stale, and superseded states. Retrieve memory
-   with source and version scope; never silently overwrite history.
+   Make a motion statement only from at least two distinct authorized evidence
+   IDs with UTC observation times, one shared alignment key, and a stated
+   baseline; a reported count of time points is not evidence. Make an absence
+   statement only against an explicit expected baseline and observation
+   boundary. Classify missing, failed, unavailable, unauthorized, stale, and
+   superseded states. Bind each memory digest to canonical payload bytes and a
+   separately frozen root anchor. Keep the lineage linear: one successor per
+   version and exactly one CURRENT record, unless a separate contract
+   explicitly represents and authorizes branching. Use or select only memory
+   that is both CURRENT and AUTHORIZED. Admit a correction to this current
+   lineage only after an ACCEPTED human disposition; preserve other proposals
+   separately. Preserve SUPERSEDED versions as withheld history and never
+   silently overwrite them.
 
 7. DISCONFIRM
    State the leading interpretation and what would weaken it. Search for:
@@ -98,7 +112,9 @@ and actions separate.
    - an alternative explanation or measurement change;
    - a shared origin or dependent pathway.
    Record what you searched, what you found, and what remains unknown. Failure
-   to find a contrary item is not proof.
+   to find a contrary item is not proof. For ANSWER or ANSWER_PROVISIONALLY,
+   link a substantive disconfirmation record or record SKIPPED with one bounded
+   reason and no placeholder record.
 
 8. ROUTE AND STOP
    Choose one:
@@ -116,6 +132,8 @@ and actions separate.
    List selected items, exact spans, claim/decision role, why admitted, what
    each supports, what it cannot establish, permission, and reviewer
    disposition. List withheld items and reasons. Withholding is not deletion.
+   A selected memory item must be CURRENT and AUTHORIZED; SUPERSEDED memory is
+   withheld history only.
    Separate observation, interpretation, recommendation, unknown, and human
    action.
 
@@ -135,7 +153,9 @@ DECISION_BRIEF:
 ACQUISITION_RECEIPTS:
 EVIDENCE_REGISTER:
 COMPARISON_OR_GAP_RECORD:
+COMPARISON_DISPOSITION_AND_BOUNDED_REASON:
 DISCONFIRMATION_LOG:
+DISCONFIRMATION_DISPOSITION_AND_BOUNDED_REASON:
 UNCERTAINTY:
 ROUTE:
 STOP_STATUS_AND_REASON:

@@ -7,9 +7,9 @@
   "permission": {
     "technical_access": "AVAILABLE",
     "state": "AUTHORIZED",
-    "scope": "Reuse the named synthetic memory correction for this internal fixture answer.",
+    "scope": "Inspect the preserved synthetic lineage and use only its current correction for this internal fixture answer.",
     "reason_code": "AUTHORIZED_FOR_PURPOSE",
-    "reason": "The fixture grants purpose-limited reuse of both preserved versions.",
+    "reason": "The fixture grants inspection of preserved history and purpose-limited use of the current version.",
     "resume_condition": "NOT_APPLICABLE"
   },
   "budget": {
@@ -21,13 +21,19 @@
       "id": "E-020",
       "exact_pointer": "synthetic://memory/original#statement",
       "claim_ids": ["C-MEM-001"],
-      "permission_state": "AUTHORIZED"
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
     },
     {
       "id": "E-021",
       "exact_pointer": "synthetic://memory/correction#statement",
       "claim_ids": ["C-MEM-001"],
-      "permission_state": "AUTHORIZED"
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
     }
   ],
   "baseline_records": [],
@@ -41,6 +47,10 @@
       "origin_state": "RELATED"
     }
   ],
+  "comparison_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
   "disconfirmation_records": [
     {
       "id": "D-MEM-001",
@@ -51,12 +61,22 @@
       "evidence_ids": ["E-020", "E-021"]
     }
   ],
+  "disconfirmation_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
   "memory_records": [
     {
       "id": "M-001",
+      "lineage_id": "MEM-LINEAGE-001",
       "version": 1,
       "source_scope": "Synthetic internal claim C-MEM-001 at original capture.",
-      "content_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "payload": {
+        "claim_id": "C-MEM-001",
+        "statement": "The synthetic fixture supports the broad original wording.",
+        "scope": "Internal fixture reasoning for C-MEM-001 only."
+      },
+      "content_digest": "sha256:b39ddf4443861c7a2b803e9ecfcff4205c0d6c4a1a0179eb8812ad356fdef235",
       "source_evidence_ids": ["E-020"],
       "permission_state": "AUTHORIZED",
       "reuse_scope": "Internal fixture reasoning for C-MEM-001 only.",
@@ -64,22 +84,33 @@
       "supersedes": null,
       "corrects": null,
       "prior_content_digest": null,
-      "correction_reason": null
+      "correction_reason": null,
+      "human_disposition": "NOT_APPLICABLE",
+      "lineage_mode": "LINEAR",
+      "branch_authorization_ref": "NOT_APPLICABLE"
     },
     {
       "id": "M-002",
+      "lineage_id": "MEM-LINEAGE-001",
       "version": 2,
       "source_scope": "Synthetic internal claim C-MEM-001 after correction.",
-      "content_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "payload": {
+        "claim_id": "C-MEM-001",
+        "statement": "The synthetic correction narrows the original wording to the named scope.",
+        "scope": "Internal fixture reasoning for C-MEM-001 only."
+      },
+      "content_digest": "sha256:cb9a40d1928c3625e84e6cd2e47b648528dfd91be3da48d952be2e2687963f92",
       "source_evidence_ids": ["E-021"],
       "permission_state": "AUTHORIZED",
       "reuse_scope": "Internal fixture reasoning for C-MEM-001 only.",
       "status": "CURRENT",
       "supersedes": "M-001",
       "corrects": "M-001",
-      "prior_content_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "prior_content_digest": "sha256:b39ddf4443861c7a2b803e9ecfcff4205c0d6c4a1a0179eb8812ad356fdef235",
       "correction_reason": "The correction source narrows the original statement.",
-      "human_disposition": "ACCEPTED"
+      "human_disposition": "ACCEPTED",
+      "lineage_mode": "LINEAR",
+      "branch_authorization_ref": "NOT_APPLICABLE"
     }
   ],
   "memory_use": {

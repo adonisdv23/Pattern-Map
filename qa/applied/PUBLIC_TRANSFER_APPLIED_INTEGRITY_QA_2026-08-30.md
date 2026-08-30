@@ -31,6 +31,25 @@ and procedural evidence only
 6. The existing general-research fixture uses F1, F2, F4, and F5 only. F3 and
    F6 are `NOT_USED` and produce `NONE` artifacts; no new case or generic
    adoption artifact was created.
+7. The typed permission object now rejects contradictory legacy authorization
+   keys. In the current global-permission fixtures, `UNKNOWN`,
+   `NOT_AUTHORIZED`, and `REVOKED` require empty evidence, baseline,
+   comparison, disconfirmation, memory, and influence, with memory `NOT_USED`.
+8. Motion is no longer established by a self-asserted time-point count. A
+   motion claim resolves to at least two distinct authorized, UTC-time-bearing
+   evidence IDs that share one alignment key. Boolean and string fields are
+   type-checked.
+9. Every answer route carries substantive comparison and disconfirmation
+   records or an explicit proportional exception: comparison
+   `NOT_APPLICABLE`, disconfirmation `SKIPPED`, one bounded reason each, and no
+   placeholder records.
+10. Only `CURRENT`, `AUTHORIZED` memory may be used or selected.
+    `SUPERSEDED` versions remain preserved as withheld history. The synthetic
+    linear F4 fixture binds each digest to canonical payload bytes, checks its
+    root against a separately frozen anchor, permits one successor per version,
+    and requires exactly one current record. This bounded schema does not
+    represent branch authorization, so every fork fails closed pending a
+    separate explicit, scoped, authorized branching contract.
 
 ## Verification
 
@@ -39,6 +58,7 @@ Run from the repository root:
 ```text
 python3 -m py_compile qa/applied/validate_framework.py
 for f in qa/applied/receipts/*.json; do python3 -m json.tool "$f" >/dev/null; done
+python3 -m json.tool qa/applied/memory_anchor_registry.json >/dev/null
 python3 qa/applied/validate_framework.py
 python3 qa/editorial/validate_content_interface.py
 git diff --check
@@ -64,19 +84,32 @@ standard library, and patch whitespace checks pass.
 - reviewed learning without an outcome review or human disposition;
 - missing, empty, revoked, or dangling baseline/comparison/disconfirmation
   references;
+- performed checks without records, inactive checks with records, multiline
+  skip reasons, and a passing proportional answer control with typed inactive
+  reasons;
+- self-asserted motion counts, one or duplicate observation ref, misaligned or
+  non-time-bearing refs, refs outside the baseline, missing aligned comparison,
+  revoked refs, and bool/string type confusion;
 - dangling or permission-unknown selected influence;
-- boolean authorization, mismatched permission reason code, and missing
-  UNKNOWN resume condition;
-- blocked top-level permission with selected material;
+- boolean authorization, contradictory legacy authorization extras,
+  mismatched permission reason code, and missing UNKNOWN resume condition;
+- evidence, baseline, comparison, disconfirmation, memory, memory use, or
+  influence under each blocked global permission state;
 - evidence, route, stop, outcome, learning, or family fields added to the
   ordinary record; and
-- missing prior memory, prior-digest drift, missing memory source, dangling
-  memory use, and revoked memory reuse.
+- missing prior memory, payload/digest drift, coordinated root rewrite against
+  a frozen anchor, unauthorized fork, multiple current records, missing memory
+  source, dangling memory use, revoked reuse, rejected correction, and
+  superseded use or selection.
 
 ## Evidence ceiling and integration boundary
 
-These checks prove selected document, fixture, vocabulary, reference, and
-mutation invariants. They do not show that an agent followed the playbook, that
+These checks prove selected document, fixture, vocabulary, reference, typing,
+payload-digest, frozen-anchor, linear-lineage, and mutation invariants. The
+anchor is a QA fixture boundary, not a claim of immutable storage or runtime
+enforcement. Exact JSON keys are the smallest fixture contract exercised here,
+not a universal downstream receipt architecture. The checks do not show that
+an agent followed the playbook, that
 the records are truthful, that a permission assertion is legally valid, that
 an answer is correct or useful, that memory improves a decision, that the
 general-research fixture transfers to a real project, or that the framework is

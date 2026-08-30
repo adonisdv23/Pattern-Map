@@ -20,13 +20,19 @@
       "id": "SUPPLIED-001",
       "exact_pointer": "synthetic://lightweight/input-a#paragraph-1",
       "claim_ids": ["C-LIGHT-001"],
-      "permission_state": "AUTHORIZED"
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
     },
     {
       "id": "SUPPLIED-002",
       "exact_pointer": "synthetic://lightweight/input-b#paragraph-1",
       "claim_ids": ["C-LIGHT-001"],
-      "permission_state": "AUTHORIZED"
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
     }
   ],
   "baseline_records": [],
@@ -40,6 +46,10 @@
       "origin_state": "NOT_APPLICABLE"
     }
   ],
+  "comparison_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
   "disconfirmation_records": [
     {
       "id": "D-LIGHT-001",
@@ -50,6 +60,10 @@
       "evidence_ids": ["SUPPLIED-002"]
     }
   ],
+  "disconfirmation_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
   "memory_records": [],
   "memory_use": {
     "status": "NOT_USED",

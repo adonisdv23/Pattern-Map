@@ -33,7 +33,8 @@ or consequential boundary.
    transform, retain, disclose, or act. Preserve `AUTHORIZED`, `UNKNOWN`,
    `NOT_AUTHORIZED`, and `REVOKED` as different states. If permission is
    absent, unclear, or revoked for a consequential operation, stop and
-   escalate with the state-specific reason and resume condition.
+   escalate with the state-specific reason and resume condition. Use the exact
+   typed permission keys; reject contradictory legacy authorization booleans.
 3. **Set a budget.** State the time, money, tokens, compute, privacy,
    disclosure, and human-attention boundary. State the no-action boundary.
 4. **Write the default path.** Record the familiar query, source set,
@@ -47,9 +48,13 @@ or consequential boundary.
    separate fields. Use `UNKNOWN` rather than inventing a reputation.
 7. **Compare.** Choose the peer, period, attribute, structure, or origin
    comparison that could change the answer. Mark incomparable and unknown
-   fields instead of filling them.
+   fields instead of filling them. If an answer route has no relevant
+   comparison unit, record `NOT_APPLICABLE` with one bounded reason and create
+   no comparison placeholder.
 8. **Challenge.** Search for one strongest contrary item, missing perspective,
-   alternative explanation, measurement change, or common origin.
+   alternative explanation, measurement change, or common origin. If a
+   bounded answer legitimately skips this check, record `SKIPPED` with one
+   bounded reason and create no disconfirmation placeholder.
 9. **Route and stop.** After Stage 0 has selected the layered path, choose
    `ACQUIRE`, `COMPARE`, `CLARIFY`, `ANSWER`,
    `ANSWER_PROVISIONALLY`, `HOLD`, `DEFER`, `ESCALATE`, or `REFUSE`. Separately
@@ -58,6 +63,8 @@ or consequential boundary.
    cost, and what will stop or resume it.
 10. **Record influence.** List what shaped the answer, what was withheld, why,
     which uncertainties remain, and who has authority for any external action.
+    Memory may be selected only when it is both `CURRENT` and `AUTHORIZED`;
+    keep superseded versions as withheld history.
 
 ## Minimum output
 
@@ -98,7 +105,7 @@ reason at most and no placeholder artifact.
 | High-consequence claim lacks support or baseline | HOLD or ESCALATE; offer only an explicitly provisional bounded statement |
 | Identity, provenance, or transformation check fails | Keep the item out of influence; record the failure |
 | Observation failure is the only basis for an alleged absence | State FAILED_CAPTURE or UNKNOWN, not absence |
-| One point is the only basis for velocity | Do not call it motion; request another time point or state insufficient |
+| Fewer than two distinct authorized, time-bearing observation IDs share the alignment key | Do not call it motion; acquire a comparable point or state insufficient |
 | Budget or deadline is reached | Choose the permitted route; separately record STOPPED_BUDGET or STOPPED_DEADLINE with remaining uncertainty |
 | External action is requested beyond the agent’s authority | Leave the action to the named human authority |
 

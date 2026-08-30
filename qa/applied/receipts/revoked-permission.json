@@ -18,7 +18,15 @@
   "evidence_records": [],
   "baseline_records": [],
   "comparison_records": [],
+  "comparison_disposition": {
+    "status": "NOT_APPLICABLE",
+    "reason": "Global permission was revoked, so no prior material may be compared."
+  },
   "disconfirmation_records": [],
+  "disconfirmation_disposition": {
+    "status": "SKIPPED",
+    "reason": "Global permission was revoked, so no prior material may be inspected."
+  },
   "memory_records": [],
   "memory_use": {
     "status": "NOT_USED",

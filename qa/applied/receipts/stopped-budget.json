@@ -20,13 +20,19 @@
       "id": "E-010",
       "exact_pointer": "synthetic://budget/period-1#claim",
       "claim_ids": ["C-BUDGET-001"],
-      "permission_state": "AUTHORIZED"
+      "permission_state": "AUTHORIZED",
+      "time_bearing": true,
+      "observed_at": "2026-08-01T12:00:00Z",
+      "alignment_key": "C-BUDGET-001-PERIOD-V1"
     },
     {
       "id": "E-011",
       "exact_pointer": "synthetic://budget/limitation#missing-field",
       "claim_ids": ["C-BUDGET-001"],
-      "permission_state": "AUTHORIZED"
+      "permission_state": "AUTHORIZED",
+      "time_bearing": false,
+      "observed_at": "NOT_APPLICABLE",
+      "alignment_key": "NOT_APPLICABLE"
     }
   ],
   "baseline_records": [
@@ -35,7 +41,9 @@
       "basis": "The fixture expects the same field in both declared periods.",
       "observation_boundary": "Two supplied synthetic period records; capture stopped at the budget.",
       "evidence_ids": ["E-010", "E-011"],
-      "motion_timepoints": 1,
+      "motion_assessed": false,
+      "motion_observation_ids": [],
+      "motion_alignment_key": "NOT_APPLICABLE",
       "absence_expected": true
     }
   ],
@@ -49,6 +57,10 @@
       "origin_state": "UNKNOWN"
     }
   ],
+  "comparison_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
   "disconfirmation_records": [
     {
       "id": "D-010",
@@ -59,6 +71,10 @@
       "evidence_ids": ["E-011"]
     }
   ],
+  "disconfirmation_disposition": {
+    "status": "PERFORMED",
+    "reason": "SUBSTANTIVE_RECORDS_LINKED"
+  },
   "memory_records": [],
   "memory_use": {
     "status": "NOT_USED",

@@ -24,15 +24,27 @@ The check validates:
 - substantive, resolvable baseline, comparison, disconfirmation, selected-
   influence, and scoped-memory references;
 - all four permission states with state-specific reason/resume behavior and no
-  unresolved or blocked influence;
-- an append-only F4 correction/supersession fixture that preserves the prior
-  digest and rejects silent overwrite;
+  unresolved or blocked records, memory use, or influence under the current
+  global-permission fixture;
+- exact executable permission keys, with contradictory legacy authorization
+  extras rejected;
+- motion claims backed by two distinct authorized UTC-time-bearing references
+  sharing one alignment key, with self-asserted counts and type confusion
+  rejected;
+- answer routes with substantive comparison and disconfirmation records or a
+  typed, single-line proportional reason and no placeholder record;
+- an append-only F4 correction/supersession fixture that binds canonical
+  payload digests to a frozen root anchor, keeps one linear successor and one
+  current record, selects only current authorized memory, and preserves
+  superseded history;
 - a sparse neutral case with two inactive families and no placeholder artifacts;
 - fail-closed reviewed-learning, permission, dangling-reference, influence,
   ordinary-record, and memory mutations; and
 - receipt fixtures through the documented preflight and stop rules.
 
 These checks do not show that the framework improves decisions, that any case
-works in production, or that any research result exists. They show only that
-the first-wave artifacts are structurally present and preserve selected
-guardrails.
+works in production, that a permission claim is legally valid, that the
+fixture anchor is an immutable runtime store, or that any research result
+exists. The exact JSON shapes are fixture-scoped, not a universal downstream
+receipt architecture. The checks show only that the first-wave artifacts are
+structurally present and preserve selected guardrails.

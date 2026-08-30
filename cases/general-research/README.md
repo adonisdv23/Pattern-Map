@@ -47,12 +47,15 @@ Inactive families create no receipt or placeholder artifact.
 | --- | --- | --- | --- |
 | F1 Peripheral signal | USED | Add the accessibility note and a specialist schedule view to the default attendance/comments path | Route note and candidate IDs |
 | F2 Source weighing | USED | Separate recorded attendance, participant context, specialist qualification, and staffing context | Claim/evidence register |
-| F3 Velocity / motion | NOT_USED | No motion claim is required for this supplied-record recommendation | NONE |
+| F3 Velocity / motion | NOT_USED | No motion claim is required; no aligned time-bearing observation pair is claimed | NONE |
 | F4 Absence + memory | USED | Expected baseline is a complete four-week attendance view; an absent denominator is a data gap, not zero demand | Gap record |
 | F5 Structured patterns | USED | Compare session, day, time, accessibility condition, staffing capacity, and stated request; mark fields not comparable | Comparison matrix |
 | F6 Learning loop | NOT_USED | No pilot or later outcome is authorized within this fixture | NONE |
 
 ## Comparison fixture
+
+Comparison disposition: `PERFORMED`. The rows below resolve to fixture IDs
+`GR-A-001` through `GR-A-005`; they are not empty status evidence.
 
 | Dimension | Existing session | Proposed second session | Interpretation boundary |
 | --- | --- | --- | --- |
@@ -64,6 +67,8 @@ Inactive families create no receipt or placeholder artifact.
 
 ## Disconfirmation and route
 
+- Disconfirmation disposition: `PERFORMED`; the challenge uses the named
+  comment, accessibility, staffing, and attendance fixture IDs above.
 - Leading interpretation: a second session may address an expressed need.
 - Challenge: the comments may reflect one origin, and accessibility or staffing
   constraints may outweigh the request.
@@ -84,4 +89,5 @@ decide, that a staffing possibility is not permission, and that the missing
 baseline matters. It also shows a case where the lightweight route may be
 enough: F3 and F6 remain inactive and produce no artifacts. A full system would
 be disproportionate until a materially different, separately authorized task
-actually needs those families.
+actually needs those families. No self-asserted motion count, motion alignment
+record, or learning receipt is created for the inactive families.

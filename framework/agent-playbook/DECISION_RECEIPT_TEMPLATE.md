@@ -28,17 +28,25 @@ before route, stop, outcome, learning, or family records.
 
 ## Permission
 
-| Operation | Technical access | Permission state | Scope | Reason / resume condition |
-| --- | --- | --- | --- | --- |
-| Acquire |  |  |  |  |
-| Transform |  |  |  |  |
-| Retain / memory |  |  |  |  |
-| Disclose |  |  |  |  |
-| Act |  |  |  |  |
+| Operation | Technical access | Permission state | Scope | Reason code | Reason | Resume condition |
+| --- | --- | --- | --- | --- | --- | --- |
+| Acquire |  |  |  |  |  |  |
+| Transform |  |  |  |  |  |  |
+| Retain / memory |  |  |  |  |  |  |
+| Disclose |  |  |  |  |  |  |
+| Act |  |  |  |  |  |  |
 
 Use exactly `AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED` for
 permission state. Unknown, absent/denied, and revoked permission have different
-reasons and resume conditions; none may appear in selected influence.
+reasons and resume conditions; none may appear in selected influence. An
+executable permission object contains only `technical_access`, `state`,
+`scope`, `reason_code`, `reason`, and `resume_condition`. Reject legacy
+booleans such as `authorized` or `permission_granted` rather than allowing two
+permission answers in one record.
+
+For the current single-global-permission receipt, an `UNKNOWN`,
+`NOT_AUTHORIZED`, or `REVOKED` state leaves evidence, baseline, comparison,
+disconfirmation, memory, and influence empty and records memory as `NOT_USED`.
 
 ## Cost and stop envelope
 
@@ -76,16 +84,29 @@ is a proportionality record, not a requirement to activate all six families.
 - Support / contradiction / qualification:
 - Origin / recurrence / independence:
 - Comparison frame:
-- Motion baseline:
+- Motion baseline, shared alignment key, and two or more authorized
+  time-bearing observation IDs:
 - Absence baseline and observation boundary:
 - Memory links:
 - Disconfirmation log:
 - Typed uncertainty:
 
+- Comparison disposition: PERFORMED / NOT_APPLICABLE
+- Comparison inactive reason (one bounded line; no placeholder record):
+- Disconfirmation disposition: PERFORMED / SKIPPED
+- Disconfirmation inactive reason (one bounded line; no placeholder record):
+
 Every baseline, comparison, disconfirmation, influence, and memory ID named in
 this receipt must resolve to a substantive preserved record. Empty status
 booleans and dangling IDs do not establish that a check occurred. When memory
 is material, use the append-only [memory record](../templates/MEMORY_RECORD.md).
+Only a `CURRENT`, `AUTHORIZED` memory record may be used or selected;
+`SUPERSEDED` records remain preserved as withheld history.
+
+Every `ANSWER` or `ANSWER_PROVISIONALLY` route needs a substantive comparison
+and disconfirmation record, or the matching typed inactive status with one
+bounded task-specific reason. `PERFORMED` requires resolvable records;
+`NOT_APPLICABLE` or `SKIPPED` requires none.
 
 ## Route
 
@@ -111,6 +132,10 @@ is material, use the append-only [memory record](../templates/MEMORY_RECORD.md).
 | Withheld item | Reason | Could change conclusion? | Re-entry condition |
 | --- | --- | --- | --- |
 |  |  |  |  |
+
+For memory, Selected material is limited to `CURRENT` + `AUTHORIZED` records.
+List a `SUPERSEDED` version only in Withheld material with its lineage link; do
+not treat preservation as current influence.
 
 ## Output boundary
 

@@ -24,21 +24,27 @@ Status: fill before nontrivial acquisition or enrichment.
 
 ## Permission envelope
 
-| Operation | Technical access | Permission state | Scope / condition | Reason / resume condition |
-| --- | --- | --- | --- | --- |
-| Read supplied material |  |  |  |  |
-| Acquire public material |  |  |  |  |
-| Acquire private, paid, or sensitive material |  |  |  |  |
-| Transform, summarize, or classify |  |  |  |  |
-| Retain or reuse as memory |  |  |  |  |
-| Disclose in answer or packet |  |  |  |  |
-| Act on an external system or person |  |  |  |  |
+| Operation | Technical access | Permission state | Scope | Reason code | Reason | Resume condition |
+| --- | --- | --- | --- | --- | --- | --- |
+| Read supplied material |  |  |  |  |  |  |
+| Acquire public material |  |  |  |  |  |  |
+| Acquire private, paid, or sensitive material |  |  |  |  |  |  |
+| Transform, summarize, or classify |  |  |  |  |  |  |
+| Retain or reuse as memory |  |  |  |  |  |  |
+| Disclose in answer or packet |  |  |  |  |  |  |
+| Act on an external system or person |  |  |  |  |  |  |
 
 Technical access is not permission. Use `AUTHORIZED`, `UNKNOWN`,
 `NOT_AUTHORIZED`, or `REVOKED`; do not collapse an unestablished permission, an
 absent/denied permission, and a revoked prior permission. Every blocked state
 needs its own reason and resume condition. Unknown, absent, or revoked
 permission routes to HOLD or ESCALATE for consequential work.
+
+An executable permission object has exactly `technical_access`, `state`,
+`scope`, `reason_code`, `reason`, and `resume_condition`. Reject extra legacy
+authorization booleans. In this template's single-global-permission form, a
+blocked state means no evidence, baseline, comparison, disconfirmation,
+memory, or influence record is populated and memory remains `NOT_USED`.
 
 ## Baseline and expected coverage
 
