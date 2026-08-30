@@ -1495,3 +1495,42 @@ research/provenance adjudications; expanded portable-bundle regression suite.
 **Governing requirement:** cross-computer usability; no accidental mutation
 authority; exact provenance; fail-closed integrity; D-036/RP-02; advisory
 findings require independent reproduction and disposition.
+
+## D-042 — Expand through friction-reducing opportunity loops, not a larger framework
+
+**Date:** 2026-08-30
+
+**Status:** Accepted for isolated feature-branch implementation; external and
+human gates remain closed
+
+After the exact `529852497109dc152928de642038d07b109a52e2` owner-review
+checkpoint passed deterministic, clean-clone, independent-agent, Claude, remote,
+and copied-packet review, the owner explicitly requested another execution
+cycle followed by two additional opportunity loops with subagents.
+
+This instruction authorizes a bounded expansion audit and local build. It does
+not make additional artifacts inherently desirable and does not reopen the
+locked thesis, six families, human-authority boundary, permanent Echo split, or
+ordinary-work escape. The governing test is reduced friction: an addition must
+make the human idea easier to enter, a private/public review package easier to
+assess, an agent behavior more observable, a future-project transfer safer, or
+a claim more precise. Existing composition is preferred over a duplicate
+adoption layer.
+
+Three isolated lanes cover unpublished public/mentor/X rehearsal, proportional
+agent/operator/project transfer, and current primary-source/claim verification.
+Two later loops cross-challenge the lanes and then apply hostile removal,
+cold-start transfer, public-surface, claims, and proportionality tests. Reviews
+remain advisory; the primary orchestrator reproduces and dispositions material
+findings before integration.
+
+No merge, deployment, publication, X post, mentor outreach, final identity or
+canonical-URL choice, empirical/model-comparison/participant/live-product
+study, research-provider selection or call, corpus acquisition, spend, or
+result claim is authorized by this cycle.
+
+**Plan:** `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`.
+
+**Governing requirement:** locked owner intent; A01–A17; proportionality and
+anti-bureaucracy; artifact firebreaks; reviews are advisory; no-results and
+external-action boundaries.
