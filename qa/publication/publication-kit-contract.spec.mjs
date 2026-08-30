@@ -70,6 +70,7 @@ for (const phrase of [
   "Owner and content gates",
   "Human and accessibility gates",
   "Action and claim audit",
+  "exact proposed artifact and channel",
   "HOLD / NOT AUTHORIZED",
 ]) {
   assert.match(checklist, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `release checklist lost ${phrase}`);

@@ -1574,3 +1574,48 @@ focused framework, publication, site, and research checks.
 **Governing requirement:** D-042; A01–A17; human-first progressive disclosure;
 proportionality; model reviews advisory; no-results and external-action
 boundaries.
+
+## D-044 — Close opportunity Loop 2 by removing accidental dependencies
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; terminal verification and owner packaging
+remain
+
+The exact-integrated Loop 2 reviews found that the project-use adapter's unique
+value was narrower than its first retained form and that an unconditional
+applied-validator check made this optional repository-local file a required
+input to the selected Signal Foundry packet. They also found uncontrolled
+hybrid review dispositions, one categorical sentence in a targeted source
+scan, and an unnecessary universal-runner dependency on the optional
+publication lane.
+
+The integrator accepts those findings. The project-use starter is reduced to a
+context-to-existing-record adapter; detailed operating procedure stays in the
+Quickstart, implementation choices, and canonical templates. Its validator now
+runs only when the optional file exists, so the selected downstream packet
+remains runnable without importing a generic adoption artifact. The
+publication lane is likewise conditional in the universal runner while its
+focused contract remains required when that lane is present. New review
+records use one controlled disposition, the source-scan claim is scoped to the
+records actually inspected, and removal/closure language is explicitly static
+document-composition evidence.
+
+The public/mentor kit, public navigation spacing correction, compact source
+route, and narrow project-use adapter survive the second removal test. No new
+public route, bitmap, generic conformance layer, receipt, score, ledger,
+family, autonomous authority, Signal Foundry packet input, paper, provider,
+corpus, or study is added.
+
+This decision does not establish reader comprehension, project transfer,
+answer improvement, publication readiness, framework effectiveness, or any
+empirical result. It authorizes only final deterministic, visual, packaging,
+Git, and draft-PR verification within the existing external-action boundary.
+
+**Evidence:** three Loop 2 advisory reports against exact
+`2b2d1bad8e9b7c954f209f0c9c6e0cfbc9d4815b`; focused applied, publication,
+research, site, and checksum checks.
+
+**Governing requirement:** D-042/D-043; A01–A17; controlled review protocol;
+artifact firebreaks; proportionality; no-results and external-action
+boundaries.

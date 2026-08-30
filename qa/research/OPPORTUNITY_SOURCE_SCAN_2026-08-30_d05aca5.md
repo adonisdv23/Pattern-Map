@@ -53,7 +53,8 @@ The scan does not require a thesis change, a sixth-family change, a new
 architecture, or a new public artifact. It does produce bounded claim and
 agenda constraints:
 
-1. **Any claim of component-level empty space is not defensible.** Perspective
+1. **For the component areas and records scanned here, an empty-space claim is
+   not warranted.** Perspective
    diversity, counterevidence search, context reduction, temporal memory,
    learned memory operations, provenance capture, and evidence-coverage
    stopping all have direct 2025–2026 primary work. The v16 contribution must

@@ -251,37 +251,38 @@ def validate_stage_zero_contract() -> None:
 
 
 def validate_project_use_starter() -> None:
-    """Check the cold-start adapter without turning it into a runtime router."""
+    """Check the optional repository-local adapter without making it universal."""
 
     starter = read_text(PROJECT_USE_STARTER)
     normalized = normalized_text(starter)
     require("# Project-use starter" in starter
-            and "cold-start wayfinding aid" in normalized
+            and "optional internal agent/operator repository-local wayfinding" in normalized
+            and "not a portable packet" in normalized
+            and "mandatory route" in normalized
             and "conformance standard" in normalized
             and "proof of transfer" in normalized,
             "project-use starter is missing its bounded wayfinding identity")
     for phrase in (
         ORDINARY_ELIGIBILITY_CONTRACT,
-        ORDINARY_TERMINAL_CONTRACT,
         ORDINARY_AUTHORITY_CONTRACT,
         BUDGET_COMPLEXITY_CONTRACT,
-        ADVANCED_ROUTE_CONTRACT,
         "The six-family map is orientation, not a completion checklist.",
-        "give one concise skip reason and create no placeholder artifact",
-        "The executable permission object uses only `technical_access`, `state`, `scope`, `reason_code`, `reason`, and `resume_condition`",
+        "create no placeholder artifact",
+        "The block is a routing summary, not a second receipt.",
+        "This page is not self-contained.",
     ):
         require(normalized_text(phrase) in normalized,
                 f"project-use starter is missing bounded contract: {phrase}")
 
-    stage_zero = normalized.index("## 1. Run Stage 0 first")
-    context = normalized.index("## 2. Fill one context block (YES only)")
-    route = normalized.index("## 3. Choose the smallest layered route")
+    stage_zero = normalized.index("## 1. Gate ordinary work first")
+    context = normalized.index("## 2. Map local context to existing records")
+    route = normalized.index("## 3. Choose the smallest existing route")
     require(stage_zero < context < route,
             "project-use starter must gate context intake before layered route selection")
     require(normalized.index("**NO:**") < normalized.index("**YES:**"),
             "project-use starter must make the ordinary branch precede layered work")
-    require("Do not fill the project context or create evidence/family records." in starter,
-            "ordinary Stage 0 branch must stop before project/family records")
+    require(normalized_text("Do not create project, evidence, family, route, stop, learning, outcome, or influence records.") in normalized,
+            "ordinary Stage 0 branch must stop before layered records")
 
     required_templates = (
         "framework/templates/ORDINARY_RECORD.md",
@@ -319,22 +320,16 @@ def validate_project_use_starter() -> None:
             ],
             "project-use starter context block changed its ordered minimal fields")
 
-    for family in (
-        "F1 Peripheral signal", "F2 Source weighing", "F3 Velocity / motion",
-        "F4 Absence + memory", "F5 Structured patterns", "F6 Learning loop",
+    for marker in (
+        "read, acquire, transform, retain/reuse, disclose, and act",
+        "evidence, baseline, comparison, disconfirmation, memory, and influence empty",
+        "records memory as `NOT_USED`",
+        "cannot acquire, disclose, reuse, or act",
+        "`LIGHTWEIGHT`", "`MODERATE`", "`ADVANCED`",
+        "`AUTHORIZED`", "`UNKNOWN`", "`NOT_AUTHORIZED`", "`REVOKED`",
     ):
-        require(normalized_text(family) in normalized,
-                f"project-use starter omits family orientation row {family}")
-    for value in (
-        "ACQUIRE", "COMPARE", "CLARIFY", "ANSWER", "ANSWER_PROVISIONALLY",
-        "HOLD", "DEFER", "ESCALATE", "REFUSE", "CONTINUE", "COMPLETE",
-        "STOPPED_BUDGET", "STOPPED_DEADLINE", "STOPPED_OTHER",
-        "LEARNING_PLANNED", "LEARNING_PENDING_OUTCOME", "LEARNING_REVIEWED",
-        "LEARNING_NOT_APPLICABLE", "AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED",
-        "REVOKED",
-    ):
-        require(value in starter,
-                f"project-use starter omits canonical value {value}")
+        require(normalized_text(marker) in normalized,
+                f"project-use starter omits stable boundary marker: {marker}")
 
     starter_lower = starter.lower()
     for phrase in (
@@ -343,29 +338,6 @@ def validate_project_use_starter() -> None:
     ):
         require(phrase not in starter_lower,
                 f"project-use starter introduces prohibited expansion: {phrase}")
-
-    # QA-only matrix: the adapter preserves the existing terminal gate; it is
-    # not a production router or project result.
-    ordinary_control = {
-        "reversible": True, "supplied_material_only": True,
-        "material_claim_judgment": False, "comparison": False,
-        "selection_or_withholding": False, "permission_resolution": False,
-        "memory_reuse": False, "new_acquisition": False,
-        "externally_consequential_influence": False, "human_action_gate": False,
-    }
-    cold_start_cases = (
-        ("exact supplied reformat", ordinary_control, True),
-        ("supplied selective summary", ordinary_control | {
-            "material_claim_judgment": True, "selection_or_withholding": True,
-        }, False),
-        ("new acquisition", ordinary_control | {"new_acquisition": True}, False),
-        ("unclear permission", ordinary_control | {"permission_resolution": True}, False),
-        ("separate human action gate", ordinary_control | {"human_action_gate": True}, False),
-    )
-    for label, case, expected_ordinary in cold_start_cases:
-        require(qa_ordinary_eligibility(case) is expected_ordinary,
-                f"project-use cold-start matrix misclassified {label}")
-
 
 def validate_spec() -> None:
     spec = load_json("framework/SIX_FAMILIES.json")
@@ -482,7 +454,6 @@ def validate_artifact_inventory() -> None:
         "framework/templates/OUTCOME_REVIEW.md",
         "framework/templates/MEMORY_RECORD.md",
         "framework/agent-playbook/QUICKSTART.md",
-        PROJECT_USE_STARTER,
         "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
         "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
         "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
@@ -2041,10 +2012,11 @@ def main() -> int:
         ("six-family JSON and schema contract", validate_spec),
         ("artifact inventory and boundary language", validate_artifact_inventory),
         ("Stage 0 ordinary eligibility and terminal contract", validate_stage_zero_contract),
-        ("project-use cold-start adapter contract", validate_project_use_starter),
         ("ordinary and layered receipt contracts", validate_receipts),
         ("permission/reference/memory fail-closed mutations", validate_receipt_guard_mutations),
     ]
+    if (ROOT / PROJECT_USE_STARTER).is_file():
+        checks.insert(3, ("optional project-use adapter contract", validate_project_use_starter))
     try:
         for label, check in checks:
             check()

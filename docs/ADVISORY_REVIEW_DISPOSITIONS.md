@@ -456,7 +456,7 @@ effectiveness.
 
 | Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
 | --- | --- | --- | --- | --- | --- |
-| PUS-01 | Defer the project-use starter because a validator makes an optional adapter a required generic adoption layer | **Rejected as P1; optional boundary accepted with revision** | D-042 is the later explicit owner instruction to build a friction-reducing future-project entry point. Requiring an accepted repository artifact to pass integrity QA does not require every project or operator to use it. The page is now explicitly optional, internal, repository-local, non-portable, and subordinate to canonical records | Project-use starter, framework index, applied validator | Starter remains out of the Signal Foundry packet and public site; focused validator checks artifact integrity, not adoption or transfer |
+| PUS-01 | A universal validator made an optional adapter a required downstream dependency; the generic-adoption inference itself was too broad | **Accepted with revision** | The packet contradiction was real, so validation is now conditional on the repository-local starter's presence. D-042 still supports a narrow friction-reducing entry point, while D-031 bars treating it as mandatory adoption or proof of transfer | Project-use starter, framework index, applied validator | Starter remains out of the Signal Foundry packet and public site; repository validation checks it only when present |
 | PUS-02 / PL-04 | Treat static document composition, word counts, or a Boolean truth table as reproduced receiver friction or reduced burden | **Accepted with revision** | Static evidence can support compactness and a plausible seam only | Project-use QA wording | “Likely seam,” “static composition probe,” and “static removal test”; no ease/transfer claim |
 | PUS-03 | One permission summary may replace operation-level permission and omit blocked-record semantics | **Accepted** | A routing summary cannot become an executable permission envelope | Project-use starter | Explicit read/acquire/transform/retain/disclose/act pointer; blocked evidence/baseline/comparison/disconfirmation/memory/influence empty; memory `NOT_USED`; blocked operations cannot act |
 | PUS-04 / PUS-05 | Present the starter or its phrase validator as a self-contained portable route or transfer test | **Accepted with revision** | Complete useful-answer, abstention, permission, and level-fit contracts remain canonical | Starter and applied QA | Repository-local/non-portable labeling, complete source pointers, static-QA ceiling; Moderate fit aligned |
@@ -467,7 +467,38 @@ effectiveness.
 | CL-QA-01 | Replace exact rehearsal-copy sizes and global no-image sentinels now | **Deferred** | They are safe local drift sentinels for the current candidate; revise only when an authorized copy/image change creates real coupling | Publication contract | Current contract passes; no social image generated |
 | CL-TRANSFER-01 | Merge publication rehearsal with project-use or Signal Foundry transfer | **Rejected** | Human review preparation and agent/operator transfer are different artifacts | Publication kit and Signal packet | Existing selected Signal packet remains canonical; no packet rebuild |
 
-Loop 1 therefore closes with no reproduced P0/P1/P2 after the accepted
-revisions. Loop 2 must review an exact integrated checkpoint and may still
+Loop 1 closes its document-composition review with no reproduced P0/P1/P2
+after the accepted revisions; this is not a reader, transfer, or effectiveness
+result. Loop 2 must review an exact integrated checkpoint and may still
 remove any addition that fails cold-start, public-surface, claims, or
 proportionality tests.
+
+## Opportunity expansion Loop 2 dispositions — 2026-08-30
+
+Three independent read-only lanes challenged exact integrated checkpoint
+`2b2d1bad8e9b7c954f209f0c9c6e0cfbc9d4815b` through removal/transfer,
+claims/Echo, and public/mentor tests. Their reports are preserved under
+`qa/applied/advisory/`, `qa/research/advisory/`, and
+`qa/publication/advisory/`. They are static/model review evidence, not observed
+transfer, reader comprehension, accessibility evidence, publication readiness,
+or proof of effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| L2-TR-01 | The selected Signal Foundry packet includes the applied validator but excludes the optional starter that validator required | **Accepted** | A packet-runnable check cannot require an intentionally excluded repository-local aid | Applied validator and portable-packet contract | Starter check is conditional on local presence; packet still excludes the starter |
+| L2-TR-02 | The owner-review manifest is stale after intentional source integration | **Accepted** | Fail-closed mismatch is expected while source moves; the bounded manifest must be regenerated only after the final source freeze | Owner manifest writer/verifier | Final sequencing: source freeze, commit, manifest write, commit, clean-checkout verification |
+| L2-TR-03 | The starter is too close in size and repetition to the Quickstart | **Accepted with revision** | Only the context-to-existing-record adapter earns a separate surface | Project-use starter and validator | Reduced from the Loop 1 147-line / 991-word form to 112 lines / 721 words; repeated procedure and validator coupling removed |
+| L2-TR-04 | Applied QA retained stale starter-size evidence | **Accepted** | Review evidence should distinguish each checkpoint rather than silently replace it | Project-use cold-start QA | Lane, Loop 1, and Loop 2 counts are recorded separately; size is not ease evidence |
+| L2-TR-05 | The optional publication lane was an unconditional universal-runner dependency | **Accepted with revision** | Core owner checks must remain usable when the optional lane is absent | Owner-review runner | Publication contract runs when its test is present; absence is reported as a non-fatal lane note |
+| L2-CL-01 | New review rows used hybrid/non-controlled disposition labels | **Accepted** | Scope belongs in the reason; the disposition field must use one controlled value | New Loop 1/2 QA and advisory rows | Normalized to Accepted, Accepted with revision, Deferred, or Rejected |
+| L2-CL-02 | The targeted source scan made a categorical component-level empty-space claim | **Accepted** | A targeted, non-exhaustive scan cannot perform exhaustive novelty clearance | Opportunity source scan | Claim narrowed to the component areas and records actually scanned |
+| L2-CL-03 | Expand the five-anchor optional source route now | **Deferred** | The current compact route materially constrains claims; more citations require a named reader or claim gap | Manuscript source route | Nineteen-line route and current five anchors remain frozen for this checkpoint |
+| L2-CL-04 | Treat removal/closure wording as evidence of transfer or effectiveness | **Accepted with revision** | The evidence is document composition only | Opportunity QA and Loop 1 conclusion | Uses “conceptual/static removal check” and explicitly denies reader/transfer results |
+| L2-PUB-01 | Remove or expand the public/mentor lane | **Rejected** | The exact public audit reproduced no P0/P1/P2; the four-file optional kit and narrow navigation correction remain proportionate | Publication kit and public site | No public route, bitmap, release machinery, or action added |
+| L2-P3-01 | Replace exact rehearsal-copy size sentinels and the current no-image assertion now | **Deferred** | They remain safe local drift sentinels; revise when an authorized copy/image change creates actual coupling | Publication contract | Current focused contract passes; no bitmap need or candidate exists |
+
+After the accepted corrections, Loop 2 leaves no reproduced P0/P1/P2 source
+defect. That conclusion is limited to the deterministic and static evidence
+named above. Physical keyboard, supported screen reader, real zoom/reflow,
+forced-colors, native print, hardware touch, owner/mentor comprehension and
+taste, and publication-time checks remain open human gates.

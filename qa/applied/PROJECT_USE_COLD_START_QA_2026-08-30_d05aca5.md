@@ -52,19 +52,20 @@ repeating their procedures.
 
 | ID | Candidate | Disposition | Reason and governing boundary |
 | --- | --- | --- | --- |
-| PU-01 | Document composition only; leave the existing entry points unchanged | Rejected after static composition probe | The composition remains semantically usable, but a receiver would need to construct a project-context handoff and template mapping. This indicates a plausible wayfinding seam; it does not establish measured transfer friction. The existing contracts remain the source of truth. |
+| PU-01 | Document composition only; leave the existing entry points unchanged | Rejected | A static composition probe found that the composition remains semantically usable, but a receiver would need to construct a project-context handoff and template mapping. This indicates a plausible wayfinding seam; it does not establish measured transfer friction. The existing contracts remain the source of truth. |
 | PU-02 | Generic adoption brief or conformance dictionary | Deferred | D-031 and D-042 defer a generic adoption layer until repeated friction appears across Signal Foundry and a materially different real project. This QA fixture does not establish that condition. A future candidate would still need an owner-reviewed abstraction, not a generality claim. |
 | PU-03 | New deterministic intake/route helper or machine-readable receipt profile | Rejected | A second runtime router or receipt schema would create a new contract, risk implied authority, and duplicate the existing Stage 0 and receipt fixtures. No new mandatory route, score, ledger, or autonomous authority is justified by the likely translation seam. |
 | PU-04 | Second domain-neutral worked case | Rejected | The existing general-research and product-and-process fixtures already demonstrate sparse family use, permission, comparison, motion/absence, stopping, and bounded learning. A new invented case would add narrative weight without real-project evidence. |
 | PU-05 | Seventh family, universal conformance or source-reputation score, or second ledger | Rejected | These conflict with the six-family lock, source-role/support separation, and anti-bureaucracy boundary. They do not resolve cold-start translation. |
-| PU-06 | One project-use starter as a context adapter and wayfinding sheet | Accepted with revision | `framework/agent-playbook/PROJECT_USE_STARTER.md` gives one ordered handoff after Stage 0, maps project facts to existing templates, names only material family questions, and preserves typed permission, human action, cost/stop, uncertainty, and non-applicability boundaries. The final trimmed form is 135 lines / 897 words versus the 140-line / 1,130-word Quickstart. It explicitly disclaims conformance and transfer proof. |
+| PU-06 | One project-use starter as a context adapter and wayfinding sheet | Accepted with revision | `framework/agent-playbook/PROJECT_USE_STARTER.md` gives one ordered handoff after Stage 0, maps project facts to existing templates, names only material family questions, and preserves typed permission, human action, cost/stop, uncertainty, and non-applicability boundaries. The lane's retained form was 135 lines / 897 words versus the 140-line / 1,130-word Quickstart. Loop 1 permission/completeness clarifications produced 147 lines / 991 words; Loop 2 removed repeated vocabulary/procedure while retaining the unique adapter, leaving 112 lines / 721 words. Size is descriptive only. It explicitly disclaims conformance and transfer proof. |
 
 ## Accepted addition
 
 The accepted shape is intentionally a thin adapter over existing sources:
 
-- `framework/agent-playbook/PROJECT_USE_STARTER.md` is the first cold-start
-  page. It asks the complete Stage 0 question before any project packet.
+- `framework/agent-playbook/PROJECT_USE_STARTER.md` is an optional internal
+  cold-start page. It asks the complete Stage 0 question before any project
+  packet.
 - A Stage 0 `NO` returns only the existing four-field ordinary record and
   stops before evidence, route, stop, outcome, learning, influence, or family
   records.
@@ -88,11 +89,17 @@ The accepted shape is intentionally a thin adapter over existing sources:
 The first draft of the starter was 151 lines / 1,216 words and repeated more
 of the Quickstart's operating prose than the cold-start seam required. The
 first validator addition also used a larger exact-text assertion block. That
-version was not retained. The final revision is 135 lines / 897 words: it keeps
-the complete Stage 0 gate, one project-context block, a compact family
-orientation, and pointers to existing records, while leaving detailed
-acquisition, evidence, comparison, disconfirmation, memory, influence, and
-learning procedures in their existing canonical files.
+version was not retained. The lane revision was 135 lines / 897 words. Loop 1
+then added repository-local/non-portable labeling, operation-level permission
+and blocked-state semantics, complete level-fit wording, and canonical
+useful-answer/abstention pointers, producing 147 lines / 991 words. Loop 2 then
+removed repeated family labels, route/stop/learning vocabulary, and duplicated
+validator logic while retaining the complete Stage 0 gate, one project-context
+block, fact-to-record mapping, permission/human-action boundary, proportional
+route rule, and canonical pointers. The current form is 112 lines / 721 words,
+but is not claimed to be easier on that basis. Detailed acquisition, evidence,
+comparison, disconfirmation, memory, influence, and learning procedures remain
+in their existing canonical files.
 
 The validator coupling was narrowed at the same time. It checks only the
 adapter's stable contract seams: Stage 0 ordering and terminal language,
