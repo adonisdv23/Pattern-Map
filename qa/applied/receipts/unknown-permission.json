@@ -1,0 +1,48 @@
+{
+  "receipt_id": "DR-UNKNOWN-001",
+  "operating_level": "MODERATE",
+  "evidence_selection": "NEEDED",
+  "consequence": "HIGH",
+  "permission": {
+    "technical_access": "AVAILABLE",
+    "state": "UNKNOWN",
+    "scope": "Requested acquisition and disclosure scope has not been established.",
+    "reason_code": "PERMISSION_NOT_ESTABLISHED",
+    "reason": "No applicable authorization record was found for this purpose.",
+    "resume_condition": "Resume only after the named authority confirms or denies the exact purpose and disclosure scope."
+  },
+  "budget": {
+    "remaining_minutes": 15,
+    "limit_minutes": 15
+  },
+  "evidence_records": [],
+  "baseline_records": [],
+  "comparison_records": [],
+  "comparison_disposition": {
+    "status": "NOT_APPLICABLE",
+    "reason": "Global permission is unresolved, so no material may be compared."
+  },
+  "disconfirmation_records": [],
+  "disconfirmation_disposition": {
+    "status": "SKIPPED",
+    "reason": "Global permission is unresolved, so no material may be inspected."
+  },
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
+  },
+  "influence": {
+    "recorded": false,
+    "selected_items": [],
+    "withheld_items": []
+  },
+  "route": "HOLD",
+  "stop_status": "STOPPED_OTHER",
+  "stop_reason": "Permission has not been established; no acquisition or influence occurred.",
+  "uncertainty": ["UNKNOWN"],
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}

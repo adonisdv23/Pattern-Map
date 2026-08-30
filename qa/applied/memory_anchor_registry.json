@@ -1,0 +1,9 @@
+{
+  "schema_version": "pattern-map.memory-anchors.v1",
+  "anchors": {
+    "MEM-LINEAGE-001": {
+      "root_record_id": "M-001",
+      "root_content_digest": "sha256:b39ddf4443861c7a2b803e9ecfcff4205c0d6c4a1a0179eb8812ad356fdef235"
+    }
+  }
+}

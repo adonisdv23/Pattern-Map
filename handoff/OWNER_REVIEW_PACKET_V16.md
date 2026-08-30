@@ -2,15 +2,13 @@
 
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
-Canonical converged source checkpoint:
-`874a0a8e09f0bde11532cf873087865addb7d973`. It incorporates the bounded
-second ChatGPT Pro correction checkpoint `c889260`, site/visual hygiene,
-Signal Foundry transfer, EP v1.1 design reconciliation, and the standalone
-layout/owner-export correction after predecessor `ad964dd`, plus the terminal
-term-panel geometry, operator-vocabulary, path-neutral handoff, and portable-
-package corrections after immediate predecessor `bc7e7c5`. The following
-evidence/checksum commit refreshes this packet and deterministic manifest
-without replacing that source checkpoint.
+Fixed human manuscript/content-interface checkpoint:
+`874a0a8e09f0bde11532cf873087865addb7d973`. It remains the continuity anchor
+for the broad human thesis and six-family reading surface, not the current
+operating checkout. It incorporates the bounded second ChatGPT Pro correction
+checkpoint `c889260`, site/visual hygiene, Signal Foundry transfer, EP v1.1
+design reconciliation, and the standalone layout/owner-export correction after
+predecessor `ad964dd`, plus terminal term-panel geometry after `bc7e7c5`.
 
 Post-Ultracode source checkpoint `c86e537` then hardens the reusable contracts
 without changing that content checkpoint: F2 restores scoped track record and
@@ -19,6 +17,28 @@ genuine ordinary receipt; the schema locks ordered F1–F6 identity; and the
 cross-computer handoff treats source-machine-only inputs as optional while
 required tracked contracts remain blocking. The full disposition is in
 `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
+
+Minimum integrated operating-contract checkpoint `cbc89db` preserves
+the same human thesis and adds three bounded improvements. Genuine supplied-
+material work now terminates through a four-field ordinary record, while
+layered work has typed permission, resolvable comparison/disconfirmation, real
+UTC motion instants, selected-influence, and accepted current-memory contracts.
+One shared source now builds both the owner-review site and a prose-first
+public preview; the latter has a deterministic teaching reveal and fail-closed
+publication gate, but no byline, canonical URL, social image, or release
+authorization. The optional source/research route is current through a
+targeted 2025–2026 review and its future narrow-wedge designs remain explicitly
+unrun. Convergence corrections through `c0b006f` separate all five missingness
+axes, remove a false public self-link, and resolve route canonical URLs with URL
+semantics rather than string concatenation. These changes do not create v17,
+validate the framework, or make Echo the definition of v16.
+
+Use the exact current branch source for owner review and the exact
+`BUNDLE_METADATA.json.source_commit` in a sealed Signal Foundry packet. Later
+reviewed source, evidence, and sealing commits may advance that head. They do
+not replace the fixed human checkpoint, but they can materially advance the
+operating contract; do not use `874a0a8` as the downstream implementation
+checkout.
 
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
@@ -48,22 +68,29 @@ origin accounting. All six original families remain visible: peripheral
 signal; source weighing; velocity/motion; absence + memory; structured
 patterns; and the learning loop.
 
-GitHub owner-review surface: draft pull request
-[#1](https://github.com/adonisdv23/Pattern-Map/pull/1), targeting `main` from
-`codex/pattern-map-v16-foundation`. It remains unmerged.
+GitHub public/transfer owner-review surface: draft pull request
+[#2](https://github.com/adonisdv23/Pattern-Map/pull/2), targeting the preserved
+`codex/pattern-map-v16-foundation` review branch from
+`codex/pattern-map-v16-public-transfer-hardening`. The underlying foundation
+candidate remains separately visible in draft pull request
+[#1](https://github.com/adonisdv23/Pattern-Map/pull/1). Both remain unmerged.
 
 ## Recommended review path
 
 1. Read the [60–90-second version](../manuscript/NINETY_SECOND_VERSION.md).
 2. Read the [mentor cover note](../manuscript/MENTOR_COVER_NOTE.md) and the
    [canonical essay](../manuscript/PATTERN_RECOGNITION_V16.md).
-3. Run the local site from `site/` (`npm run build && npm run dev`), open
+3. Run the local site from `site/` (`npm run build && npm run check && npm run dev`), open
    <http://127.0.0.1:4173/>, and use the three principal doors: **Read the idea
    / Explore the map / Apply it**. The optional **Guided** route provides one
    continuous authored path through the publication. This routed site is the
    primary review experience. The
    [standalone HTML](../site/exports/standalone/pattern-map-v16.html) is the
-   direct-open all-routes companion within the repository package.
+   direct-open all-routes companion within the repository package. Then stop
+   the server, run `npm run dev:public`, and inspect the prose-first public
+   preview at the same local address. Its direct-open companion is
+   [pattern-map-v16-public.html](../site/exports/standalone/pattern-map-v16-public.html).
+   Both are local review artifacts; neither command publishes anything.
 4. Inspect the [six-family specification](../framework/SIX_FAMILIES.md),
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
    [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
@@ -78,6 +105,7 @@ GitHub owner-review surface: draft pull request
 7. Inspect the [current Pro correction QA](../qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md)
    and the [current/historical visual evidence index](../qa/visual/README.md).
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
+   [public/transfer convergence QA](../qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md),
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
@@ -99,6 +127,10 @@ the semantic accessibility route.
 - Agent Quickstart, full operating guide, copyable brief, preflight checklist,
   decision receipt, and ordinary-versus-layered examples. Stage 0 makes the
   ordinary supplied-material path explicit before any evidence bureaucracy.
+  Ordinary work has exactly supplied scope, assumptions, unchecked boundaries,
+  and output. Layered fixtures keep all four permission states distinct,
+  require real linked records for claimed work, and preserve accepted current
+  memory without silently rewriting its superseded predecessor.
 - Bounded Signal Foundry and two domain-neutral fixtures; none is represented
   as validation or observed product behavior. Two explicit Signal Foundry
   transfer artifacts identify the exact current repositories, reuse the
@@ -114,11 +146,22 @@ the semantic accessibility route.
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.
+- A public-preview presentation over the same canonical hashes and ten route
+  IDs. It removes owner/package chrome, begins Read with the actual short-
+  version prose, and teaches one upstream-decision sequence with native
+  progressive disclosure plus a static equivalent. Release output fails closed
+  until a later authorized step supplies valid publication identity and
+  absolute-HTTPS metadata; ordinary previews remain `noindex,nofollow`.
 - A deterministic exact-commit Signal Foundry portable builder with one plain
   `START_HERE.md`, copyable downstream prompt, sorted per-file path/byte/hash
   manifest, standard-library verifier, whole-ZIP checksum sidecar, source-path
   and cache/dependency exclusions, overwrite refusal, and regression coverage.
-  The packet is read-only context and grants no Signal Foundry mutation.
+  The packet is read-only context and grants no Signal Foundry mutation. It
+  includes the ordinary/memory templates, frozen memory anchor, and distinct
+  permission fixtures; it intentionally excludes the public adapter, public
+  capture evidence, and future-study decision memo. Every retained relative
+  link outside the selected packet is machine-classified and a new
+  unclassified target fails the build.
 - EP v0.1 with a complete 239-file v15.2 accession, an 82-file curated set,
   preserved protocol/harness/fixtures/prior art, exact unfavorable-result
   taxonomy, and no-results status; plus EP v1.1's narrowed NEWS-COPY boundary,
@@ -155,10 +198,13 @@ anchors without pretending the external ZIP lives in Git.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, planning-state, Map-layout,
   reader-language, and historical-asset checks pass.
-- The current standalone has one main, one h1, 339 unique IDs, ten named route
-  sections, one publication rail, one mobile guide, one page frame, balanced
-  main markup, exactly two frame children, every route inside `.page-content`,
-  and no falsely current route.
+- The current review standalone has one main, one h1, ten named route sections,
+  no duplicate IDs, one publication rail, one mobile guide, one page frame,
+  balanced main markup, exactly two frame children, every route inside
+  `.page-content`, and no falsely current route. The public standalone preserves
+  the ten-section and unique-ID invariants while omitting owner-review chrome.
+  Exact aggregate ID counts are not a release contract because bounded
+  accessibility and interaction additions may legitimately change them.
 - Live browser inspection covers the new Home planning preview at 390 pixels;
   one-column Apply route briefs and 44-pixel discrete route targets at
   320/390/480/600; flow-native term panels at
@@ -192,7 +238,9 @@ anchors without pretending the external ZIP lives in Git.
   finding is dispositioned; Pro source corrections are implemented at
   `c889260`; the earlier converged source was `ad964dd`; and the full current
   converged predecessor including owner visual/export corrections is
-  `bc7e7c5`; the terminal accepted source is `874a0a8`.
+  `bc7e7c5`; the fixed human-content source is `874a0a8`. Applied/public/
+  research integration begins no later than `cbc89db`, and the exact current
+  owner-review source resolves from Git or sealed packet metadata.
   The protected headline
   remains under locked owner intent, and only physical, publication-time, or
   owner-taste gates remain after the final PR readback.

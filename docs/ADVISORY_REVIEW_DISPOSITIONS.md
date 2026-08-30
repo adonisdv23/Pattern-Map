@@ -267,3 +267,82 @@ evidence is in `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
 
 The accepted source checkpoint is `c86e53764f6e33b62097f0424125b5922441ce58`.
 No item above is an empirical result or a claim that Pattern Map is effective.
+
+## Public-and-transfer hardening dispositions — 2026-08-30
+
+Three independent high-reasoning lanes reviewed exact clean checkpoint
+`4d2e11ceb26b36fd7428dc7de963c135802a8dea` and then challenged one another.
+Their findings remain advisory. The primary integrator reproduced the material
+contract conflicts and accepted only changes consistent with locked owner
+intent. No audit is a participant, comprehension, effectiveness, or transfer
+result.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / future verification |
+| --- | --- | --- | --- | --- | --- |
+| PTH-AGENT-01 | Put Stage 0 inside the fenced copyable prompt | **Accepted** | The advertised copied block currently bypasses the ordinary-work escape | Agent brief and applied QA | Ordinary branch precedes `FRAME`, terminates, and creates no layered record |
+| PTH-AGENT-02 | Keep route/outcome/learning fields in every ordinary receipt | **Rejected; minimal record accepted instead** | Planning recommendations are not observed receipts; ordinary work should not manufacture event machinery | Full guide, templates, ordinary fixture/validator | Minimal supplied scope, assumptions, unchecked boundaries, and output only |
+| PTH-AGENT-03 | Treat booleans and arbitrary IDs as proof of substantive comparison, disconfirmation, influence, permission, or memory | **Rejected; reference integrity accepted** | Shape-only checks cannot establish the named record relation | Applied fixtures and validator | Typed states and resolvable-reference mutation tests fail closed |
+| PTH-AGENT-04 | Add a generic adoption brief or conformance dictionary now | **Deferred / rejected as current scope** | One detailed design transfer plus invented cases does not support abstraction; another artifact would duplicate current entry points | No canonical artifact yet | Repeated friction in a second materially different real project is required |
+| PTH-PUBLIC-01 | Rewrite the essay or add another route to appear more public | **Rejected** | The human thesis and voice are already strong; public defects are presentation-mode issues | Essay, Home, route set | Canonical prose and three-door interface remain intact |
+| PTH-PUBLIC-02 | Add a shared-source public mode and show prose before review scaffolding | **Accepted with revision** | A view adapter can remove review chrome without creating a second content system | Site builder and QA | Same canonical hashes/route IDs; first-viewport and no-public-only-claim tests |
+| PTH-PUBLIC-03 | Add a live model demo, score, dashboard, or network graph | **Rejected; one fixed reveal accepted** | Those additions create provider, topology, result, and accessibility risk | Existing opening teaching object only | Deterministic replacement, no network/model, no observed-result or action claim |
+| PTH-RESEARCH-01 | Claim the six mechanisms or context-engineering responsibility as technically novel | **Rejected** | Targeted current primary work occupies the component neighborhoods | Sources, claims ledger, research agenda | Design/governance synthesis ceiling; targeted-not-exhaustive language |
+| PTH-RESEARCH-02 | Run the omnibus playbook study first | **Deferred** | Bundling mechanisms prevents attribution and risks measuring ceremony | Future research planning only | Narrow-wedge decision memo, credible baselines, no run without exact authorization |
+| PTH-RESEARCH-03 | Let a narrow receipt or missingness study redefine v16 | **Rejected** | The easiest measurable fragment is not the owner-locked broad thesis | Research firebreak and publication framing | Position/design framing remains broad; Echo stays separate |
+| PTH-AGENT-05 | Let timestamp-shaped strings or two records at one instant establish motion | **Rejected; strict instant validation accepted** | Motion needs real temporal separation, not two IDs or regex-shaped text | Applied validator, evidence template, fixtures | Impossible UTC values and duplicate instants fail; valid distinct authorized observations pass |
+| PTH-AGENT-06 | Permit superseded/revoked memory, blocked-state residual evidence, or legacy authorization booleans to survive the typed receipt | **Rejected; fail-closed revision accepted** | A current answer cannot quietly reuse non-current or unauthorized state | Memory/permission receipts, frozen anchor, validator | Current-and-authorized use only; all blocked downstream collections empty; nested and top-level legacy keys fail |
+| PTH-PUBLIC-04 | Treat any nonempty `https://` prefix or query-bearing base as publication-ready metadata | **Rejected; parsed release gate accepted** | A malformed placeholder or string-concatenated route canonical must never produce an indexable build | Publication config module, builder, public contract | Absolute HTTPS, usable host, no credentials/whitespace/query/fragment required for canonical base; URL-semantic ten-route resolution; explicit release flag remains independently required |
+| PTH-PUBLIC-05 | Preserve the public Read visual size by skipping heading levels | **Rejected; semantic hierarchy and CSS parity accepted** | Presentation mode cannot weaken heading structure | Public Read and standalone, CSS, contracts | Routed public `h1→h2`; public standalone route `h2→h3`; review hierarchy unchanged |
+| PTH-PUBLIC-06 | Say a baseline shows what a normal packet usually contains | **Accepted with revision** | The example is hypothetical and team-specific, not prevalence evidence | Teaching reveal copy | Now names this illustrative team's expectation after four prior releases |
+| PTH-RESEARCH-04 | Use the same frozen answer in both study arms while treating answer accuracy as an outcome | **Rejected; study modes separated** | A fixed-answer interface test cannot identify answer-accuracy effects | Narrow-wedge memo and matched-budget protocol | Generation mode may test eligible answer outcomes; fixed-answer mode is limited to correction/acceptance/burden |
+| PTH-RESEARCH-05 | Collapse observation, capture/process, access, permission, and currency into one missingness status | **Rejected; orthogonal axes accepted** | Distinct causes require distinct decisions and cannot be inferred from an empty slot | Claims ledger, narrow-wedge memo, research QA | Initial unrun wedge holds access/permission/currency fixed and varies observation × capture only |
+| PTH-PKG-05 | Either recursively mirror all linked files or leave selected-packet links as an informal warning | **Rejected as a binary choice; machine classification accepted** | Signal Foundry needs a lean packet whose omissions are still explicit and testable | Portable builder, metadata, tests | Every retained external relative link is classified; new/unclassified or absent targets fail the build |
+| PTH-MANUAL-01 | Infer human comprehension or physical accessibility from model/browser proxies | **Rejected as inference; Deferred as human work** | Automated and model checks cannot certify those experiences | Public candidate and release checklist | Owner/mentor, physical keyboard, screen reader, real zoom/forced colors/print/touch stay open |
+
+## Claude terminal sealing audit dispositions — 2026-08-30
+
+Claude Code `2.1.220` with Opus/max reviewed exact clean checkpoint
+`fb7d808819e5e24c826605be3be6f2ab67de73fc` in a detached read-only
+worktree. The review is preserved at
+`qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`.
+It is advisory model feedback, not owner intent, a participant review, a study,
+or evidence of effectiveness. The integrator reproduced the material sealing
+findings before accepting them.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / final verification |
+| --- | --- | --- | --- | --- | --- |
+| PM-01 | Add the newly retained hardening-plan link to the selected-packet link policy | **Accepted** | A lean packet still needs fail-closed, exhaustive omission classification | Portable builder/link policy | Exact target is `owner_review_only`; current-worktree classification passes |
+| PM-02 | Treat pre-commit exact-packet tests as proof of the edited tree | **Rejected as evidence; accepted as a test-isolation defect** | The builder reads payload bytes from a Git commit, so working-tree changes cannot be claimed as tested package bytes | Portable regression and convergence QA | Exact-input dirty state skips visibly; only post-commit zero-skip runs count |
+| PM-03 | Seal against the stale schema-1 owner manifest | **Rejected; regeneration required** | Manifest bytes must be last, after source, generated exports, QA, and dispositions | Owner-review manifest | Schema-2 writer/verifier and final clean-clone check gate sealing |
+| PM-04 | Attribute the regenerated review PDF to the historical human-content checkpoint | **Rejected; current PDF checkpoint accepted** | `874a0a8` did not produce the regenerated PDF | Owner manifest/PDF evidence | PDF checkpoint is `72a672c5172ff5212e29f01ba2277dd49cc6ea98` |
+| PM-05 | Use `874a0a8` as the cross-computer operating checkout | **Rejected; three-level provenance accepted** | Human-content continuity, minimum integrated operating contract, and exact current source are different roles | Two Signal handoffs, machine JSON, builder, tests | `874a0a8` human only; `cbc89db` minimum operating; Git/sealed metadata exact source |
+| PM-06 | Emit timeless branch and PR assertions | **Rejected; fail-closed/time-qualified proof accepted** | A portable packet must not convert a stale sentence into current GitHub state | Builder, metadata, START_HERE, handoffs, embedded verifier | Required checkpoint ancestry; exact named-branch tip; local/remote scope; UTC PR observation; resolve-at-use |
+| PM-07 | Retain a matrix header that says later changes are only terminal corrections | **Rejected; header corrected** | The body already proves substantive applied/public/research hardening | Acceptance matrix | Human checkpoint and operating integration roles are explicit |
+| PM-08 | Freeze a total standalone ID count as an acceptance criterion | **Rejected; structural invariant accepted** | Bounded accessible controls may change the count without creating duplicate IDs | Owner packet/standalones | One main, one h1, ten sections, no duplicate IDs; exact count is build output |
+| PM-09 | Omit read-only public-source wayfinding from the action audit | **Accepted as an omission** | The action was permitted and should be recorded without inflating it into research | Final action audit | Targeted diagnostic browsing only; no dataset/provider/study/outreach/spend |
+| PM-10 | Ship operating fixtures without their existing structural validator | **Accepted with revision** | A fresh receiver should be able to check the selected contract provider-free | Portable selected paths, staged build, extraction test | Exact structural-only PASS required before ZIP and after extraction |
+| PM-11 | Add robots metadata to the local review standalone as a release blocker | **Deferred / rejected as a blocker** | Public preview carries `noindex,nofollow`; review mode is a local artifact | Review standalone | Publication remains separately gated |
+| PM-12 | Describe the active refresh as 2024–2026 | **Accepted as a precision defect** | Every active refreshed item is dated 2025 or 2026 | Current source route, ledger, agenda, QA | Active labels narrowed; preserved historical files untouched |
+| PM-13 | Present layered work as if only a full ten-section route exists | **Accepted with revision** | The copied prompt must carry the anti-bureaucracy middle path already present elsewhere | Copyable agent brief/applied validator | Smallest justified lightweight/moderate/advanced scoping precedes layered FRAME |
+
+## Claude exact-tip terminal recheck dispositions — 2026-08-30
+
+Claude Code `2.1.220` with Opus/max independently rechecked exact clean remote
+tip `4a1acabfd6aab596b507bd48dbbd89ad46882bd9` in a detached read-only
+worktree. The report is preserved at
+`qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md`.
+Claude reproduced the complete portable suite with 14 tests and zero skips and
+found no new thesis, six-family, Echo, operator, research, or transfer-design
+defect. Its NOT READY verdict was limited to the deliberately unsealed schema-1
+owner manifest.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / final verification |
+| --- | --- | --- | --- | --- | --- |
+| PM-R01 | Treat the stale schema-1 owner manifest as the sole terminal blocker | **Accepted** | The manifest must be generated only after source, exports, QA, and dispositions stop moving | Owner manifest and clean-clone gate | Schema-2 regeneration, manifest verification, then the complete twelve-stage clean-clone runner |
+| PM-R02 | Improve bare assertion tracebacks in the manifest verifier | **Accepted** | A fail-closed CLI should also tell a tired operator what failed without a traceback | `handoff/verify_owner_review_package.py` | Expected verification errors emit one `FAIL owner-review manifest` line and remain nonzero |
+| PM-R03 | Clarify that branch-state corrections extend beyond the named historical floor | **Accepted** | “Through at least” keeps the audit anchor while avoiding an implied terminal hash | `handoff/BRANCH_AND_PR_STATE.md` | Current head remains resolve-at-use; sealed packet binds its exact source commit |
+| PM-R04 | Reopen the conceptual or public artifact despite all scoped passes | **Rejected** | No reproduced defect supports redesign; the remaining gate is deterministic sealing | No conceptual file changed | Locked owner intent and anti-bureaucracy boundary; model reviews remain advisory |
+
+The recheck does not certify physical accessibility, human comprehension,
+publication metadata, or effectiveness. Those residuals remain explicitly
+manual and do not justify inventing another automated pass.

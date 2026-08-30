@@ -6,6 +6,10 @@ Status: **owner-review evidence; not reader, accessibility, or research results*
 
 Use these paths for the current v16 review:
 
+- `public-mode/` — five exact public-preview captures covering Read, the
+  deterministic Home reveal, and ordinary Stage 0 at 1280×720 and/or 390×844;
+  paired source and browser-proxy evidence lives in
+  `../site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md`; and
 - `pdf-renders-final-v16-polish/` — six rendered pages from the secondary PDF
   companion; and
 - `../site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md` — exact-checkpoint
@@ -15,8 +19,12 @@ Use these paths for the current v16 review:
   owner's alternate 11-page jsPDF export, the repaired common-origin visual,
   term-helper containment, and browser-print safeguards.
 
-The corrected implementation checkpoint is
-`c88926034cd75773dcc42d3842983c879dda5b58`.
+The current public-mode lane checkpoint is
+`361243c95050723f1693907f7446be5d690b9e58`; integrated implementation
+checkpoint `cbc89db` rebuilds both standalones after the applied and research
+lanes converge. The current six-page PDF is regenerated from the same canonical
+content with a cover-only typography correction that keeps the final headline
+punctuation attached; its page-one render is current evidence for this phase.
 
 ## Superseded routed-site captures
 

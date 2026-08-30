@@ -12,6 +12,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+from datetime import datetime
 from pathlib import Path, PurePosixPath
 import re
 import shutil
@@ -159,6 +160,20 @@ class PortableBundleTests(unittest.TestCase):
             raise unittest.SkipTest(
                 "portable builder is not committed at HEAD; rerun after the builder commit"
             )
+        builder = load_builder_module()
+        exact_commit_inputs = [
+            str(BUILDER.relative_to(ROOT)),
+            *builder.SOURCE_PATHS,
+        ]
+        clean_inputs = subprocess.run(
+            ["git", "diff", "--quiet", "HEAD", "--", *exact_commit_inputs],
+            cwd=ROOT,
+            check=False,
+        )
+        if clean_inputs.returncode != 0:
+            raise unittest.SkipTest(
+                "portable tests bind an exact committed tree; commit builder/payload changes and rerun"
+            )
 
     def setUp(self) -> None:
         self.temp_dir = tempfile.TemporaryDirectory(prefix="pattern-map-portable-test-")
@@ -252,8 +267,65 @@ class PortableBundleTests(unittest.TestCase):
         self.assertEqual(manifest["manifest_self_exclusion"], "BUNDLE_MANIFEST.json is excluded from its own files list because self-hashing is circular.")
         self.assertEqual(metadata["source_commit"], git_head())
         self.assertEqual(manifest["source_commit"], git_head())
-        self.assertEqual(metadata["source_branch"], "codex/pattern-map-v16-foundation")
-        self.assertEqual(manifest["source_branch"], "codex/pattern-map-v16-foundation")
+        self.assertEqual(
+            metadata["source_branch"], "codex/pattern-map-v16-public-transfer-hardening"
+        )
+        self.assertEqual(
+            manifest["source_branch"], "codex/pattern-map-v16-public-transfer-hardening"
+        )
+        containment = metadata["source_branch_containment"]
+        self.assertEqual(
+            set(containment),
+            {
+                "verified_ref",
+                "verified_ref_tip",
+                "verified_ref_scope",
+                "selected_commit",
+                "selected_commit_is_exact_tip",
+                "required_ancestor_checkpoints",
+            },
+        )
+        self.assertIn(
+            containment["verified_ref"],
+            {
+                "refs/heads/codex/pattern-map-v16-public-transfer-hardening",
+                "refs/remotes/origin/codex/pattern-map-v16-public-transfer-hardening",
+            },
+        )
+        self.assertRegex(containment["verified_ref_tip"], r"^[0-9a-f]{40}$")
+        self.assertIn(containment["verified_ref_scope"], {"remote_tracking", "local_only"})
+        self.assertEqual(containment["selected_commit"], git_head())
+        self.assertEqual(containment["verified_ref_tip"], git_head())
+        self.assertIs(containment["selected_commit_is_exact_tip"], True)
+        self.assertEqual(
+            containment["required_ancestor_checkpoints"],
+            {
+                "human_manuscript_content_interface":
+                    "874a0a8e09f0bde11532cf873087865addb7d973",
+                "minimum_integrated_operating_contract":
+                    "cbc89db45493fd1dcfd121af0d1da1393046a196",
+            },
+        )
+        self.assertEqual(
+            metadata["human_manuscript_content_interface_checkpoint"],
+            "874a0a8e09f0bde11532cf873087865addb7d973",
+        )
+        self.assertEqual(
+            metadata["minimum_integrated_operating_contract_checkpoint"],
+            "cbc89db45493fd1dcfd121af0d1da1393046a196",
+        )
+        self.assertEqual(metadata["draft_review_state_observed"], "open / draft / unmerged")
+        observed_at = metadata["draft_review_state_observed_at"]
+        self.assertRegex(observed_at, r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
+        parsed_observed_at = datetime.fromisoformat(observed_at.replace("Z", "+00:00"))
+        self.assertEqual(parsed_observed_at.utcoffset().total_seconds(), 0)
+        self.assertEqual(
+            metadata["draft_review_state_resolution"], "resolve current state at use"
+        )
+        self.assertEqual(
+            self.summary["applied_validator"],
+            "PASS  focused applied QA complete (structural/procedural only)",
+        )
         self.assertEqual(manifest["file_count"], len(records))
         self.assertEqual(manifest["total_bytes"], sum(record["bytes"] for record in records))
 
@@ -286,6 +358,15 @@ class PortableBundleTests(unittest.TestCase):
             "site/exports/standalone/pattern-map-v16.html",
             "site/exports/pattern-map-v16-owner-review.pdf",
             "research/the-echo-problem/",
+            "framework/templates/ORDINARY_RECORD.md",
+            "framework/templates/MEMORY_RECORD.md",
+            "distinct `UNKNOWN`, `NOT_AUTHORIZED`, and `REVOKED`",
+            "qa/applied/validate_framework.py",
+            "human manuscript/content-interface checkpoint",
+            "minimum integrated operating-contract checkpoint",
+            "resolve current state at use",
+            "public-presentation adapter",
+            "intentionally excluded",
         )
         for fact in required_facts:
             with self.subTest(fact=fact):
@@ -305,9 +386,105 @@ class PortableBundleTests(unittest.TestCase):
         self.assertIn("record absent/unverified and continue", normalized_copyable)
         self.assertIn("required tracked packet file", normalized_copyable)
         self.assertIn("record unverified and continue", normalized_copyable)
+        self.assertIn("do not use this older checkpoint as the operating checkout", normalized_copyable)
+        self.assertIn("python3 qa/applied/validate_framework.py", normalized_copyable)
 
         self.assertIn("optional local evidence, not required packet inputs", normalized_start)
         self.assertIn("record `absent/unverified` and continue", normalized_start)
+
+    def test_selected_operating_contract_and_owner_only_exclusions(self) -> None:
+        metadata = json.loads(
+            (self.bundle_root / "BUNDLE_METADATA.json").read_text(encoding="utf-8")
+        )
+        selected = set(metadata["selected_source_paths"])
+        required = {
+            "framework/templates/ORDINARY_RECORD.md",
+            "framework/templates/MEMORY_RECORD.md",
+            "qa/applied/memory_anchor_registry.json",
+            "qa/applied/receipts/memory-append-only-correction.json",
+            "qa/applied/receipts/unknown-permission.json",
+            "qa/applied/receipts/revoked-permission.json",
+            "qa/applied/validate_framework.py",
+        }
+        self.assertTrue(required <= selected, sorted(required - selected))
+        for relative in required:
+            self.assertTrue((self.bundle_root / relative).is_file(), relative)
+
+        validator = subprocess.run(
+            [sys.executable, "qa/applied/validate_framework.py"],
+            cwd=self.bundle_root,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        self.assertEqual(validator.returncode, 0, validator.stdout + validator.stderr)
+        self.assertIn("PASS", validator.stdout)
+
+        excluded = set(metadata["intentionally_excluded_owner_review_artifacts"])
+        expected_excluded = {
+            "site/exports/standalone/pattern-map-v16-public.html",
+            "site/publication.config.json",
+            "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+        }
+        self.assertTrue(expected_excluded <= excluded)
+        self.assertTrue(selected.isdisjoint(expected_excluded))
+        for relative in expected_excluded:
+            self.assertFalse((self.bundle_root / relative).exists(), relative)
+
+        builder = load_builder_module()
+        repository_files = builder._git_file_set(ROOT, git_head())
+        builder._validate_intentionally_excluded_artifacts(repository_files, selected)
+        original_exclusions = builder.INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS
+        try:
+            builder.INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS = original_exclusions + (
+                "qa/research/DOES_NOT_EXIST.md",
+            )
+            with self.assertRaisesRegex(RuntimeError, "exclusion is absent"):
+                builder._validate_intentionally_excluded_artifacts(repository_files, selected)
+        finally:
+            builder.INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS = original_exclusions
+
+    def test_out_of_packet_markdown_links_are_exhaustively_classified(self) -> None:
+        metadata = json.loads(
+            (self.bundle_root / "BUNDLE_METADATA.json").read_text(encoding="utf-8")
+        )
+        policy = metadata["selected_subset_link_policy"]
+        links = policy["classified_links"]
+        self.assertEqual(policy["classified_link_count"], len(links))
+        self.assertGreater(len(links), 0)
+        self.assertEqual(
+            links,
+            sorted(links, key=lambda item: (item["source"], item["resolved_repository_path"])),
+        )
+        self.assertEqual(
+            {item["classification"] for item in links},
+            {"archive", "owner_review_only", "outside_selected_packet"},
+        )
+        selected = set(metadata["selected_source_paths"])
+        for item in links:
+            self.assertIn(item["source"], selected)
+            self.assertNotIn(item["resolved_repository_path"], selected)
+
+        builder = load_builder_module()
+        source_payloads = {
+            "README.md": b"[new transfer claim](docs/UNCLASSIFIED_TRANSFER.md)\n"
+        }
+        with self.assertRaisesRegex(RuntimeError, "unclassified out-of-packet"):
+            builder._classify_out_of_packet_links(
+                source_payloads, {"README.md", "docs/UNCLASSIFIED_TRANSFER.md"}
+            )
+        reference_payloads = {
+            "README.md": (
+                b"[unclassified transfer][fresh-ref]\n\n"
+                b"[fresh-ref]: docs/UNCLASSIFIED_REFERENCE.md\n"
+            )
+        }
+        with self.assertRaisesRegex(RuntimeError, "unclassified out-of-packet"):
+            builder._classify_out_of_packet_links(
+                reference_payloads,
+                {"README.md", "docs/UNCLASSIFIED_REFERENCE.md"},
+            )
 
     def test_optional_local_inputs_are_guarded_and_nonblocking(self) -> None:
         canonical = (
@@ -393,7 +570,9 @@ class PortableBundleTests(unittest.TestCase):
             / "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md"
         ).read_text(encoding="utf-8")
         summary = " ".join(canonical.splitlines()[:20]).lower()
-        self.assertIn("content checkpoint", summary)
+        self.assertIn("human manuscript/content-interface checkpoint", summary)
+        self.assertIn("minimum integrated operating-contract checkpoint", summary)
+        self.assertIn("do not use `874a0a8` as the operating checkout", summary)
         self.assertIn("resolve the current", summary)
         self.assertIn("bundle_metadata.json.source_commit", summary)
 
@@ -410,14 +589,32 @@ class PortableBundleTests(unittest.TestCase):
         checklist = next(value for value in objects if "pattern_map" in value)
         pattern_map = checklist["pattern_map"]
         self.assertEqual(
-            pattern_map["content_checkpoint"],
+            pattern_map["human_manuscript_content_interface_checkpoint"],
             "874a0a8e09f0bde11532cf873087865addb7d973",
         )
+        self.assertEqual(
+            pattern_map["minimum_integrated_operating_contract_checkpoint"],
+            "cbc89db45493fd1dcfd121af0d1da1393046a196",
+        )
+        self.assertIn("do_not_use_human_checkpoint", pattern_map["checkpoint_rule"])
         self.assertIsNone(pattern_map["head"])
         self.assertEqual(pattern_map["head_resolution"]["status"], "resolve_at_use")
         self.assertEqual(
             pattern_map["head_resolution"]["sealed_packet_field"],
             "BUNDLE_METADATA.json.source_commit",
+        )
+        draft_review = checklist["draft_review"]
+        self.assertEqual(draft_review["last_observed_state"], "open_draft_unmerged")
+        self.assertEqual(draft_review["resolution"], "resolve_current_state_at_use")
+        self.assertRegex(
+            draft_review["observed_at"],
+            r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$",
+        )
+        self.assertEqual(
+            datetime.fromisoformat(
+                draft_review["observed_at"].replace("Z", "+00:00")
+            ).utcoffset().total_seconds(),
+            0,
         )
 
         branch_state = (
@@ -432,6 +629,73 @@ class PortableBundleTests(unittest.TestCase):
             "after that final push, remote state is read back",
         ):
             self.assertNotIn(stale_future_claim, normalized_state)
+
+    def test_branch_containment_helper_fails_closed(self) -> None:
+        builder = load_builder_module()
+        with self.assertRaisesRegex(
+            RuntimeError, "predates required minimum_integrated_operating_contract"
+        ):
+            builder._verify_source_branch_contains_commit(
+                ROOT, builder.HUMAN_CONTENT_CHECKPOINT
+            )
+
+        repository = self.workspace / "containment-repo"
+        repository.mkdir()
+        subprocess.run(["git", "init", "-b", "main"], cwd=repository, check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["git", "config", "user.name", "Portable QA"], cwd=repository,
+                       check=True)
+        subprocess.run(["git", "config", "user.email", "qa@example.invalid"],
+                       cwd=repository, check=True)
+        (repository / "README.md").write_text("one\n", encoding="utf-8")
+        subprocess.run(["git", "add", "README.md"], cwd=repository, check=True)
+        subprocess.run(["git", "commit", "-m", "one"], cwd=repository, check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        first = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repository,
+                                        text=True).strip()
+
+        with self.assertRaisesRegex(RuntimeError, "branch is unavailable"):
+            builder._verify_source_branch_contains_commit(
+                repository, first, required_ancestors=(("fixture", first),)
+            )
+
+        subprocess.run(
+            ["git", "branch", builder.SOURCE_BRANCH_HINT, first],
+            cwd=repository, check=True,
+        )
+        proof = builder._verify_source_branch_contains_commit(
+            repository, first, required_ancestors=(("fixture", first),)
+        )
+        self.assertEqual(proof["selected_commit"], first)
+        self.assertIs(proof["selected_commit_is_exact_tip"], True)
+
+        (repository / "README.md").write_text("two\n", encoding="utf-8")
+        subprocess.run(["git", "commit", "-am", "two"], cwd=repository, check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        second = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repository,
+                                         text=True).strip()
+        with self.assertRaisesRegex(RuntimeError, "not the exact"):
+            builder._verify_source_branch_contains_commit(
+                repository, second, required_ancestors=(("fixture", first),)
+            )
+
+        with self.assertRaisesRegex(RuntimeError, "predates required newer"):
+            builder._verify_source_branch_contains_commit(
+                repository, first, required_ancestors=(("newer", second),)
+            )
+
+    def test_embedded_verifier_rejects_resealed_false_containment(self) -> None:
+        metadata_path = self.bundle_root / "BUNDLE_METADATA.json"
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        metadata["source_branch_containment"]["selected_commit_is_exact_tip"] = False
+        metadata_path.write_text(
+            json.dumps(metadata, indent=2, ensure_ascii=False, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        self.reseal_payload("BUNDLE_METADATA.json", b"")
+        verifier = self.run_embedded_verifier()
+        self.assertNotEqual(verifier.returncode, 0, verifier.stdout + verifier.stderr)
+        self.assertIn("exact-branch-tip proof", (verifier.stdout + verifier.stderr).lower())
 
     def test_zip_sidecar_safety_and_forbidden_payloads(self) -> None:
         sidecar = self.sidecar_path.read_text(encoding="utf-8")

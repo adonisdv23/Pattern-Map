@@ -13,6 +13,9 @@ Start with:
 
 - [`THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md`](THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md)
   — the broader, explicitly unrun research agenda and evidence ladder;
+- `research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md` — an unrun
+  comparison of two mechanism-isolation candidates that selects no study,
+  provider, model, corpus, participant, sample size, or run;
 - [`future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md`](future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md)
   — a future flagship-study specification, not an authorization or
   preregistration; and

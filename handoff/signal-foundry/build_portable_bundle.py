@@ -33,8 +33,17 @@ import zipfile
 PACKAGE_NAME = "pattern-map-v16-signal-foundry-portable"
 PACKAGE_PREFIX = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE"
 SOURCE_REPOSITORY = "https://github.com/adonisdv23/Pattern-Map"
-SOURCE_BRANCH_HINT = "codex/pattern-map-v16-foundation"
-DRAFT_PR = "https://github.com/adonisdv23/Pattern-Map/pull/1"
+SOURCE_BRANCH_HINT = "codex/pattern-map-v16-public-transfer-hardening"
+DRAFT_PR = "https://github.com/adonisdv23/Pattern-Map/pull/2"
+DRAFT_PR_STATE_OBSERVED = "open / draft / unmerged"
+DRAFT_PR_STATE_OBSERVED_AT = "2026-08-30T06:53:26Z"
+DRAFT_PR_STATE_RESOLUTION = "resolve current state at use"
+DRAFT_PR_STATE_SUMMARY = (
+    f"{DRAFT_PR_STATE_OBSERVED}; observed at {DRAFT_PR_STATE_OBSERVED_AT}; "
+    f"{DRAFT_PR_STATE_RESOLUTION}"
+)
+HUMAN_CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
+OPERATING_CONTRACT_CHECKPOINT = "cbc89db45493fd1dcfd121af0d1da1393046a196"
 SIGNAL_FOUNDRY_AUDITED_CHECKPOINT = "f9bf3775ca3d5b52ea5083cea52306c025727e23"
 PREVIOUS_BUNDLE_NAME = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE_2026-08-27_d5b3431.zip"
 PREVIOUS_BUNDLE_SHA256 = "b806b8b143fce5a003c1040b2aeca69804b3695e55d6a384211f89aa1f62caae"
@@ -81,6 +90,8 @@ SOURCE_PATHS: tuple[str, ...] = (
     "framework/templates/DISCONFIRMATION_LOG.md",
     "framework/templates/EVIDENCE_REGISTER.md",
     "framework/templates/INFLUENCE_RECEIPT.md",
+    "framework/templates/MEMORY_RECORD.md",
+    "framework/templates/ORDINARY_RECORD.md",
     "framework/templates/OUTCOME_REVIEW.md",
     "framework/agent-playbook/QUICKSTART.md",
     "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
@@ -88,11 +99,16 @@ SOURCE_PATHS: tuple[str, ...] = (
     "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
     "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
     "framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md",
+    "qa/applied/validate_framework.py",
     "qa/applied/receipts/blocked-permission.json",
     "qa/applied/receipts/layered-ready.json",
     "qa/applied/receipts/lightweight-low-stakes.json",
+    "qa/applied/receipts/memory-append-only-correction.json",
     "qa/applied/receipts/ordinary-supplied-material.json",
+    "qa/applied/receipts/revoked-permission.json",
     "qa/applied/receipts/stopped-budget.json",
+    "qa/applied/receipts/unknown-permission.json",
+    "qa/applied/memory_anchor_registry.json",
     "cases/README.md",
     "cases/signal-foundry/README.md",
     "cases/general-research/README.md",
@@ -129,6 +145,124 @@ SOURCE_PATHS: tuple[str, ...] = (
     "qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md",
     "assets/IMAGE_USE_LEDGER.md",
     "assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png",
+)
+
+# This packet is deliberately a selected downstream context surface, not a
+# recursive mirror of Pattern Map. Every relative Markdown link that resolves
+# to a repository file outside SOURCE_PATHS must be classified here. The build
+# fails if a new unresolved link appears, an expected link disappears, or its
+# exact target is absent at the source commit.
+OUT_OF_PACKET_LINK_POLICY: tuple[tuple[str, str, str], ...] = (
+    ("README.md", "docs/V13_TO_V16_FIDELITY_MATRIX.md", "owner_review_only"),
+    ("README.md", "docs/V16_ROADMAP.md", "owner_review_only"),
+    ("README.md", "docs/CONTENT_INTERFACE_FREEZE_V16.md", "owner_review_only"),
+    (
+        "README.md",
+        "docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md",
+        "owner_review_only",
+    ),
+    (
+        "README.md",
+        "site/exports/standalone/pattern-map-v16-public.html",
+        "owner_review_only",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/10_FULL_REPOSITORY_SNAPSHOT/reports/V13_RECOVERY_AND_INTENT_MEMO.md",
+        "archive",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/10_FULL_REPOSITORY_SNAPSHOT/source/THOUGHT_PIECE_V14.md",
+        "archive",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/03_RESEARCH_PACKAGE/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md",
+        "archive",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/03_RESEARCH_PACKAGE/REFERENCES.md",
+        "archive",
+    ),
+    (
+        "handoff/OWNER_REVIEW_PACKET_V16.md",
+        "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
+        "owner_review_only",
+    ),
+    ("handoff/OWNER_REVIEW_PACKET_V16.md", "qa/visual/README.md", "owner_review_only"),
+    (
+        "handoff/OWNER_REVIEW_PACKET_V16.md",
+        "site/exports/standalone/pattern-map-v16-public.html",
+        "owner_review_only",
+    ),
+    (
+        "handoff/OWNER_REVIEW_PACKET_V16.md",
+        "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
+        "owner_review_only",
+    ),
+    (
+        "research/the-echo-problem/README.md",
+        "research/the-echo-problem/qa/EP_V0_1_QA.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/README.md",
+        "archive/transfers/v15.2-owner-handoff/ACCESSION_RECORD.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "research/the-echo-problem/preserved/v15.2/protocol/ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V0.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "archive/transfers/v15.2-owner-handoff/03_RESEARCH_PROGRAM_UNRUN/research/overnight/rounds/08_LOOP2_OPERATIONALIZATION_SPEC.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "archive/transfers/v15.2-owner-handoff/03_RESEARCH_PROGRAM_UNRUN/research/PAPER_PROSPECTUS_V0.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "research/the-echo-problem/preserved/v15.2/prior-art/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-version-surfaces/THOUGHT_PIECE_V14.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/v1_1/README.md",
+        "research/the-echo-problem/v1_1/harness/README.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/v1_1/README.md",
+        "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
+        "owner_review_only",
+    ),
+)
+LINK_CLASSIFICATIONS = frozenset({"archive", "owner_review_only", "outside_selected_packet"})
+MARKDOWN_LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\(([^)\n]+)\)")
+MARKDOWN_REFERENCE_DEFINITION_PATTERN = re.compile(
+    r"^[ \t]{0,3}\[[^\]\n]+\]:[ \t]*(<[^>\n]+>|\S+)", re.MULTILINE
+)
+INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS: tuple[str, ...] = (
+    "site/exports/standalone/pattern-map-v16-public.html",
+    "site/publication.config.json",
+    "site/src/publication-config.mjs",
+    "qa/visual/public-mode/",
+    "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
+    "qa/site/public-mode-contract.spec.mjs",
+    "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+    "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
+    "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md",
 )
 
 GENERATED_PAYLOAD_NAMES: tuple[str, ...] = (
@@ -244,6 +378,83 @@ def _resolve_commit(repo_root: Path, requested: str) -> str:
     return value
 
 
+def _verify_source_branch_contains_commit(
+    repo_root: Path,
+    commit: str,
+    *,
+    required_ancestors: Sequence[tuple[str, str]] | None = None,
+) -> dict[str, object]:
+    """Require fixed ancestors and bind the selection to an exact named branch tip."""
+
+    checkpoints = required_ancestors or (
+        ("human_manuscript_content_interface", HUMAN_CONTENT_CHECKPOINT),
+        ("minimum_integrated_operating_contract", OPERATING_CONTRACT_CHECKPOINT),
+    )
+    checkpoint_proof: dict[str, str] = {}
+    for role, checkpoint in checkpoints:
+        resolved_checkpoint = subprocess.run(
+            ["git", "rev-parse", "--verify", "--quiet", f"{checkpoint}^{{commit}}"],
+            cwd=repo_root,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            check=False,
+        )
+        if resolved_checkpoint.returncode != 0:
+            raise RuntimeError(f"required {role} checkpoint is unavailable: {checkpoint}")
+        canonical_checkpoint = resolved_checkpoint.stdout.strip()
+        ancestry = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", canonical_checkpoint, commit],
+            cwd=repo_root,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        if ancestry.returncode != 0:
+            raise RuntimeError(
+                f"selected source commit predates required {role} checkpoint {canonical_checkpoint}"
+            )
+        checkpoint_proof[role] = canonical_checkpoint
+
+    resolved: list[tuple[str, str]] = []
+    for ref in (
+        f"refs/remotes/origin/{SOURCE_BRANCH_HINT}",
+        f"refs/heads/{SOURCE_BRANCH_HINT}",
+    ):
+        probe = subprocess.run(
+            ["git", "rev-parse", "--verify", "--quiet", f"{ref}^{{commit}}"],
+            cwd=repo_root,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            check=False,
+        )
+        if probe.returncode != 0:
+            continue
+        tip = probe.stdout.strip()
+        resolved.append((ref, tip))
+        if tip == commit:
+            return {
+                "verified_ref": ref,
+                "verified_ref_tip": tip,
+                "verified_ref_scope": (
+                    "remote_tracking" if ref.startswith("refs/remotes/") else "local_only"
+                ),
+                "selected_commit": commit,
+                "selected_commit_is_exact_tip": True,
+                "required_ancestor_checkpoints": checkpoint_proof,
+            }
+
+    if resolved:
+        rendered = ", ".join(f"{ref}@{tip[:12]}" for ref, tip in resolved)
+        raise RuntimeError(
+            f"source commit is not the exact named source branch tip ({rendered})"
+        )
+    raise RuntimeError(
+        "named source branch is unavailable locally; fetch or create its exact ref before sealing"
+    )
+
+
 def _git_file_bytes(repo_root: Path, commit: str, relative: str) -> bytes:
     # Inspect the tree mode first so a committed symlink cannot be silently
     # copied as its link target or treated as a regular payload.
@@ -260,6 +471,121 @@ def _git_file_bytes(repo_root: Path, commit: str, relative: str) -> bytes:
     if object_type != "blob" or mode.startswith("12"):
         raise RuntimeError(f"selected Git payload is not a regular file: {relative}")
     return _run_git(repo_root, ["show", f"{commit}:{relative}"])
+
+
+def _git_file_set(repo_root: Path, commit: str) -> set[str]:
+    return {
+        line
+        for line in _run_git(
+            repo_root, ["ls-tree", "-r", "--name-only", "--full-tree", commit]
+        )
+        .decode("utf-8")
+        .splitlines()
+        if line
+    }
+
+
+def _relative_markdown_target(source: str, raw_target: str) -> str | None:
+    target = raw_target.strip()
+    if target.startswith("<"):
+        closing = target.find(">")
+        if closing < 0:
+            raise RuntimeError(f"malformed angle-bracket Markdown link in {source}")
+        target = target[1:closing]
+    else:
+        target = target.split(maxsplit=1)[0]
+    if not target or target.startswith("#") or re.match(r"^[A-Za-z][A-Za-z0-9+.-]*:", target):
+        return None
+    path_only = target.split("#", 1)[0].split("?", 1)[0]
+    if not path_only:
+        return None
+    if path_only.startswith("/") or "\\" in path_only:
+        raise RuntimeError(f"non-portable relative Markdown link in {source}: {target}")
+    parts: list[str] = []
+    for part in (PurePosixPath(source).parent / PurePosixPath(path_only)).parts:
+        if part in {"", "."}:
+            continue
+        if part == "..":
+            if not parts:
+                raise RuntimeError(f"Markdown link escapes repository root in {source}: {target}")
+            parts.pop()
+            continue
+        parts.append(part)
+    return PurePosixPath(*parts).as_posix()
+
+
+def _classify_out_of_packet_links(
+    source_payloads: Mapping[str, bytes], repository_files: set[str]
+) -> list[dict[str, str]]:
+    selected = set(source_payloads)
+    policy: dict[tuple[str, str], str] = {}
+    for source, resolved_target, classification in OUT_OF_PACKET_LINK_POLICY:
+        key = (source, resolved_target)
+        if key in policy:
+            raise RuntimeError(f"duplicate out-of-packet link policy: {source} -> {resolved_target}")
+        if classification not in LINK_CLASSIFICATIONS:
+            raise RuntimeError(f"unknown out-of-packet link classification: {classification}")
+        policy[key] = classification
+
+    discovered: dict[tuple[str, str], dict[str, str]] = {}
+    for source, payload in sorted(source_payloads.items()):
+        if not source.endswith(".md"):
+            continue
+        try:
+            markdown = payload.decode("utf-8")
+        except UnicodeDecodeError as error:
+            raise RuntimeError(f"selected Markdown is not UTF-8: {source}") from error
+        link_matches = list(MARKDOWN_LINK_PATTERN.finditer(markdown)) + list(
+            MARKDOWN_REFERENCE_DEFINITION_PATTERN.finditer(markdown)
+        )
+        for match in link_matches:
+            raw_target = match.group(1).strip()
+            resolved_target = _relative_markdown_target(source, raw_target)
+            if resolved_target is None:
+                continue
+            if resolved_target in selected or any(
+                path.startswith(resolved_target.rstrip("/") + "/") for path in selected
+            ):
+                continue
+            key = (source, resolved_target)
+            if key not in policy:
+                raise RuntimeError(
+                    f"unclassified out-of-packet Markdown link: {source} -> {resolved_target}"
+                )
+            if resolved_target not in repository_files and not any(
+                path.startswith(resolved_target.rstrip("/") + "/") for path in repository_files
+            ):
+                raise RuntimeError(
+                    f"classified Markdown target is absent at source commit: {source} -> {resolved_target}"
+                )
+            discovered[key] = {
+                "source": source,
+                "target": raw_target,
+                "resolved_repository_path": resolved_target,
+                "classification": policy[key],
+            }
+
+    missing_expected = sorted(set(policy) - set(discovered))
+    if missing_expected:
+        rendered = ", ".join(f"{source} -> {target}" for source, target in missing_expected)
+        raise RuntimeError(f"stale out-of-packet link policy entries: {rendered}")
+    return [discovered[key] for key in sorted(discovered)]
+
+
+def _validate_intentionally_excluded_artifacts(
+    repository_files: set[str], selected_paths: set[str]
+) -> None:
+    for target in INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS:
+        if target.endswith("/"):
+            exists = any(path.startswith(target) for path in repository_files)
+            selected = any(path.startswith(target) for path in selected_paths)
+        else:
+            exists = target in repository_files
+            selected = target in selected_paths
+        if not exists:
+            raise RuntimeError(f"declared owner-review exclusion is absent: {target}")
+        if selected:
+            raise RuntimeError(f"declared owner-review exclusion is selected: {target}")
 
 
 def _path_is_safe(relative: str) -> bool:
@@ -337,12 +663,18 @@ Context packet identity:
 - Pattern Map source repository: {SOURCE_REPOSITORY}
 - Pattern Map source branch: {branch}
 - Pattern Map source commit: {commit}
-- Draft review: {DRAFT_PR} (open/draft/unmerged; do not merge it)
+- Human manuscript/content-interface checkpoint: {HUMAN_CONTENT_CHECKPOINT}. Do not use this older checkpoint as the operating checkout.
+- Minimum integrated operating-contract checkpoint: {OPERATING_CONTRACT_CHECKPOINT}. Use the exact source commit above for the packet actually received.
+- Draft review: {DRAFT_PR}. State last observed {DRAFT_PR_STATE_SUMMARY}; re-resolve it rather than treating this packet as current GitHub proof, and do not merge it.
 - The audited Signal Foundry anchor is {SIGNAL_FOUNDRY_AUDITED_CHECKPOINT}; compare against it read-only and never reset the receiving checkout to it.
 
 Before editing, inspect the receiving Signal Foundry checkout, branch, remotes, worktrees, modified files, untracked files, tracked README, and tracked repository instructions. Read AGENTS.md or CLAUDE.md only if each file is present in that checkout. If either optional local guidance file is absent, record ABSENT/UNVERIFIED and continue under this packet's guardrails; do not recreate or infer it. Preserve all existing local work. The source machine's untracked instruction files and local-only audit commit are optional local evidence, not required packet inputs. Then read this packet's START_HERE.md and the two canonical handoff files under handoff/signal-foundry/.
 
 This is a selected packet, not the full Pattern Map repository. Some bundled Markdown intentionally links to historical archives or other repository files outside the packet. If a relative link does not resolve, request the exact missing file or current repository state; do not infer, recreate, or silently substitute its contents.
+
+Use the packet's four-field `framework/templates/ORDINARY_RECORD.md` for a genuine supplied-material transformation. Use `framework/templates/MEMORY_RECORD.md` and the selected memory fixture only when prior material may actually influence a layered answer. The public-presentation adapter, publication configuration, public standalone, visual captures, lane QA, and the unrun narrow-wedge research decision memo are owner-repository review artifacts; they are intentionally not Signal Foundry inputs and their omission does not authorize reconstruction.
+
+From the verified packet root, run `python3 qa/applied/validate_framework.py` before relying on the selected receipt fixtures. This is a provider-free structural check of the included operating contract, not a claim that Signal Foundry implements it or that the framework improves answers.
 
 Use the existing OPERATOR_DECISION plus RATIONALE pair as the first seam to inspect. Do not invent a Pattern Map classifier, a V14 deep link, “Sigma Foundry,” a second ledger, a universal score, or a new event type. CONTEXT_DISPOSITION is a conceptual completeness worksheet only; it is not valid against the current Signal Foundry decision-memory schema and must not be implemented from this packet.
 
@@ -354,6 +686,8 @@ def _start_here(
     *,
     commit: str,
     branch: str,
+    branch_ref: str,
+    branch_tip: str,
     zip_name: str,
     source_records: Sequence[Mapping[str, object]],
     prompt: str,
@@ -385,6 +719,7 @@ checkout of either repository and it does not grant mutation authority.
    `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`,
    `manuscript/NINETY_SECOND_VERSION.md`, `framework/SIX_FAMILIES.md`,
    `framework/OPERATOR_PLAYBOOK.md`, `framework/agent-playbook/QUICKSTART.md`,
+   `qa/applied/validate_framework.py`,
    `cases/signal-foundry/README.md`, and the Echo boundary records under
    `research/the-echo-problem/`.
 5. Give the downstream task the copyable prompt below or the exact contents of
@@ -397,7 +732,10 @@ repository: {SOURCE_REPOSITORY}
 branch:     {branch}
 commit:     {commit}
 review:     {DRAFT_PR}
-state:      open / draft / unmerged; owner review and manual gates remain open
+branch ref: {branch_ref} @ {branch_tip}
+PR state:   last observed {DRAFT_PR_STATE_SUMMARY}
+human manuscript/content-interface checkpoint: {HUMAN_CONTENT_CHECKPOINT}
+minimum integrated operating-contract checkpoint: {OPERATING_CONTRACT_CHECKPOINT}
 ```
 
 Payload files are read byte-for-byte from that Git commit. The generated
@@ -416,6 +754,27 @@ Some selected Markdown intentionally retains links to historical archives or
 other repository files outside this packet. An unresolved relative link is a
 subset boundary, not evidence that the target is absent or permission to infer
 it; request the exact file or current repository state when it matters.
+`BUNDLE_METADATA.json` classifies every such retained link and the build fails
+if a new out-of-packet target is not explicitly classified.
+
+The branch name above is emitted only after the builder verifies that the
+selected commit is the exact tip of the named remote-tracking or local branch
+ref and that both fixed checkpoints are its ancestors. Metadata labels a
+local-only proof distinctly; the final cross-computer packet should report the
+remote-tracking ref after push. This still does not establish GitHub or PR
+state on a later day, so resolve those at use. The older human checkpoint
+preserves manuscript/content-interface lineage, but it is not the operating
+checkout for the templates shipped here.
+
+The packet includes the four-field ordinary-work template, the bounded memory
+template and root-anchor fixture, and distinct `UNKNOWN`, `NOT_AUTHORIZED`, and
+`REVOKED` permission examples. It also includes the provider-free applied
+validator so the receiving task can check those selected fixtures locally.
+The public-presentation adapter, publication
+configuration, public standalone, public visual captures, lane QA, and the
+unrun narrow-wedge study decision memo remain owner-repository review
+artifacts. They are intentionally excluded because Signal Foundry needs the
+operating contract, not a second publication surface or research program.
 
 ## Downstream guardrails
 
@@ -466,10 +825,13 @@ and verifying this directory:
 ```sh
 python3 verify_bundle.py
 shasum -a 256 -c SHA256SUMS.txt
+python3 qa/applied/validate_framework.py
 ```
 
-The second command is an optional independent checksum check. Both commands
-are provider-free and make no network calls.
+The second command is an optional independent checksum check. All three
+commands are provider-free and make no network calls. The applied validator is
+a structural contract check, not proof of downstream implementation or answer
+quality.
 """
 
 
@@ -478,7 +840,7 @@ def _verifier_source() -> str:
 
     # Keep this program self-contained: a receiving computer needs no package,
     # repository, network access, or builder source to verify an extraction.
-    return r'''#!/usr/bin/env python3
+    source = r'''#!/usr/bin/env python3
 """Verify one extracted Pattern Map portable bundle using the stdlib only."""
 
 from __future__ import annotations
@@ -515,6 +877,18 @@ FORBIDDEN_PRIVATE_KEY_MARKERS = (
 )
 PRINTABLE_ASCII_RUN = re.compile(rb"[\x20-\x7e]{5,}")
 SHA_LINE = re.compile(r"^([0-9a-f]{64})  ([^\n]+)$")
+EXPECTED_SOURCE_REPOSITORY = "__EXPECTED_SOURCE_REPOSITORY__"
+EXPECTED_SOURCE_BRANCH = "__EXPECTED_SOURCE_BRANCH__"
+EXPECTED_DRAFT_REVIEW = "__EXPECTED_DRAFT_REVIEW__"
+EXPECTED_DRAFT_REVIEW_STATE = "__EXPECTED_DRAFT_REVIEW_STATE__"
+EXPECTED_DRAFT_REVIEW_OBSERVED_AT = "__EXPECTED_DRAFT_REVIEW_OBSERVED_AT__"
+EXPECTED_DRAFT_REVIEW_RESOLUTION = "__EXPECTED_DRAFT_REVIEW_RESOLUTION__"
+EXPECTED_HUMAN_CHECKPOINT = "__EXPECTED_HUMAN_CHECKPOINT__"
+EXPECTED_OPERATING_CHECKPOINT = "__EXPECTED_OPERATING_CHECKPOINT__"
+EXPECTED_CONTAINMENT_REFS = {
+    "refs/heads/" + EXPECTED_SOURCE_BRANCH,
+    "refs/remotes/origin/" + EXPECTED_SOURCE_BRANCH,
+}
 
 
 def fail(message: str) -> "NoReturn":
@@ -651,6 +1025,56 @@ def main() -> int:
         fail("metadata and manifest source commits differ")
     if not isinstance(metadata.get("source_commit"), str) or not re.fullmatch(r"[0-9a-f]{40}", metadata["source_commit"]):
         fail("metadata does not record a full source commit")
+    if metadata.get("source_repository") != EXPECTED_SOURCE_REPOSITORY:
+        fail("metadata source repository mismatch")
+    if metadata.get("source_branch") != EXPECTED_SOURCE_BRANCH:
+        fail("metadata source branch mismatch")
+    if manifest.get("source_branch") != EXPECTED_SOURCE_BRANCH:
+        fail("manifest source branch mismatch")
+    containment = metadata.get("source_branch_containment")
+    expected_containment_keys = {
+        "verified_ref", "verified_ref_tip", "selected_commit",
+        "verified_ref_scope", "selected_commit_is_exact_tip",
+        "required_ancestor_checkpoints",
+    }
+    if not isinstance(containment, dict) or set(containment) != expected_containment_keys:
+        fail("metadata branch-containment contract mismatch")
+    if containment.get("verified_ref") not in EXPECTED_CONTAINMENT_REFS:
+        fail("metadata branch-containment ref mismatch")
+    expected_scope = (
+        "remote_tracking"
+        if str(containment.get("verified_ref", "")).startswith("refs/remotes/")
+        else "local_only"
+    )
+    if containment.get("verified_ref_scope") != expected_scope:
+        fail("metadata branch-containment scope mismatch")
+    if not isinstance(containment.get("verified_ref_tip"), str) or not re.fullmatch(
+        r"[0-9a-f]{40}", containment["verified_ref_tip"]
+    ):
+        fail("metadata branch-containment tip is not a full commit")
+    if containment.get("selected_commit") != metadata.get("source_commit"):
+        fail("metadata branch-containment selected commit mismatch")
+    if containment.get("selected_commit_is_exact_tip") is not True:
+        fail("metadata exact-branch-tip proof is missing")
+    if containment.get("verified_ref_tip") != metadata.get("source_commit"):
+        fail("metadata verified branch tip differs from selected source commit")
+    if containment.get("required_ancestor_checkpoints") != {
+        "human_manuscript_content_interface": EXPECTED_HUMAN_CHECKPOINT,
+        "minimum_integrated_operating_contract": EXPECTED_OPERATING_CHECKPOINT,
+    }:
+        fail("metadata required-checkpoint ancestry proof mismatch")
+    if metadata.get("human_manuscript_content_interface_checkpoint") != EXPECTED_HUMAN_CHECKPOINT:
+        fail("metadata human-content checkpoint mismatch")
+    if metadata.get("minimum_integrated_operating_contract_checkpoint") != EXPECTED_OPERATING_CHECKPOINT:
+        fail("metadata operating-contract checkpoint mismatch")
+    if metadata.get("draft_review") != EXPECTED_DRAFT_REVIEW:
+        fail("metadata draft-review URL mismatch")
+    if metadata.get("draft_review_state_observed") != EXPECTED_DRAFT_REVIEW_STATE:
+        fail("metadata draft-review state mismatch")
+    if metadata.get("draft_review_state_observed_at") != EXPECTED_DRAFT_REVIEW_OBSERVED_AT:
+        fail("metadata draft-review observation timestamp mismatch")
+    if metadata.get("draft_review_state_resolution") != EXPECTED_DRAFT_REVIEW_RESOLUTION:
+        fail("metadata draft-review state-resolution contract mismatch")
     if manifest.get("file_count") != len(normalized):
         fail("manifest file_count mismatch")
     if manifest.get("total_bytes") != sum(int(record["bytes"]) for record in normalized):
@@ -662,6 +1086,16 @@ def main() -> int:
 if __name__ == "__main__":
     sys.exit(main())
 '''
+    return (
+        source.replace("__EXPECTED_SOURCE_REPOSITORY__", SOURCE_REPOSITORY)
+        .replace("__EXPECTED_SOURCE_BRANCH__", SOURCE_BRANCH_HINT)
+        .replace("__EXPECTED_DRAFT_REVIEW__", DRAFT_PR)
+        .replace("__EXPECTED_DRAFT_REVIEW_STATE__", DRAFT_PR_STATE_OBSERVED)
+        .replace("__EXPECTED_DRAFT_REVIEW_OBSERVED_AT__", DRAFT_PR_STATE_OBSERVED_AT)
+        .replace("__EXPECTED_DRAFT_REVIEW_RESOLUTION__", DRAFT_PR_STATE_RESOLUTION)
+        .replace("__EXPECTED_HUMAN_CHECKPOINT__", HUMAN_CONTENT_CHECKPOINT)
+        .replace("__EXPECTED_OPERATING_CHECKPOINT__", OPERATING_CONTRACT_CHECKPOINT)
+    )
 
 
 def _manifest_payload(records: Sequence[Mapping[str, object]], commit: str, branch: str) -> dict[str, object]:
@@ -685,7 +1119,13 @@ def _manifest_payload(records: Sequence[Mapping[str, object]], commit: str, bran
 
 
 def _metadata_payload(
-    *, commit: str, branch: str, date: str, source_records: Sequence[Mapping[str, object]]
+    *,
+    commit: str,
+    branch: str,
+    branch_verification: Mapping[str, object],
+    date: str,
+    source_records: Sequence[Mapping[str, object]],
+    out_of_packet_links: Sequence[Mapping[str, str]],
 ) -> dict[str, object]:
     return {
         "schema_version": 1,
@@ -696,7 +1136,13 @@ def _metadata_payload(
         "source_branch": branch,
         "source_commit": commit,
         "source_commit_short": commit[:7],
+        "source_branch_containment": dict(branch_verification),
+        "human_manuscript_content_interface_checkpoint": HUMAN_CONTENT_CHECKPOINT,
+        "minimum_integrated_operating_contract_checkpoint": OPERATING_CONTRACT_CHECKPOINT,
         "draft_review": DRAFT_PR,
+        "draft_review_state_observed": DRAFT_PR_STATE_OBSERVED,
+        "draft_review_state_observed_at": DRAFT_PR_STATE_OBSERVED_AT,
+        "draft_review_state_resolution": DRAFT_PR_STATE_RESOLUTION,
         "signal_foundry_audited_checkpoint": SIGNAL_FOUNDRY_AUDITED_CHECKPOINT,
         "previous_bundle": {
             "filename": PREVIOUS_BUNDLE_NAME,
@@ -711,7 +1157,13 @@ def _metadata_payload(
         "selected_subset_link_policy": {
             "scope": "Bundled Markdown may retain relative links to archives or repository files outside the selected packet.",
             "unresolved_link_action": "Request the exact missing file or current repository state; do not infer, recreate, or silently substitute it.",
+            "classification_contract": "Every retained relative link outside the selected packet is classified; any new unclassified target fails the build.",
+            "classified_link_count": len(out_of_packet_links),
+            "classified_links": list(out_of_packet_links),
         },
+        "intentionally_excluded_owner_review_artifacts": list(
+            INTENTIONALLY_EXCLUDED_OWNER_REVIEW_ARTIFACTS
+        ),
         "scope": (
             "Selected human thesis, framework, operator and agent playbook, bounded cases, "
             "handoff records, research-separation boundaries, standalone HTML, PDF companion, "
@@ -781,9 +1233,8 @@ def build_bundle(
     *, repo_root: Path, requested_commit: str, output_dir: Path, date: str
 ) -> tuple[Path, Path, dict[str, object]]:
     commit = _resolve_commit(repo_root, requested_commit)
-    # This packet is the portable handoff for the canonical pushed branch even
-    # when it is built from an isolated finalization worktree.
     branch = SOURCE_BRANCH_HINT
+    branch_verification = _verify_source_branch_contains_commit(repo_root, commit)
     output_dir = output_dir.expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     short = commit[:7]
@@ -796,6 +1247,7 @@ def build_bundle(
     with tempfile.TemporaryDirectory(prefix="pattern-map-portable-") as temporary:
         stage = Path(temporary)
         source_records: list[dict[str, object]] = []
+        source_payloads: dict[str, bytes] = {}
         seen: set[str] = set()
         for relative in SOURCE_PATHS:
             if relative in seen:
@@ -803,6 +1255,7 @@ def build_bundle(
             seen.add(relative)
             data = _git_file_bytes(repo_root, commit, relative)
             _write_bytes(stage, relative, data)
+            source_payloads[relative] = data
             source_records.append(
                 {
                     "path": relative,
@@ -811,10 +1264,16 @@ def build_bundle(
                 }
             )
 
+        repository_files = _git_file_set(repo_root, commit)
+        _validate_intentionally_excluded_artifacts(repository_files, set(source_payloads))
+        out_of_packet_links = _classify_out_of_packet_links(source_payloads, repository_files)
+
         prompt = _copyable_prompt(commit, branch)
         _write_bytes(stage, "START_HERE.md", _start_here(
             commit=commit,
             branch=branch,
+            branch_ref=str(branch_verification["verified_ref"]),
+            branch_tip=str(branch_verification["verified_ref_tip"]),
             zip_name=zip_name,
             source_records=source_records,
             prompt=prompt,
@@ -824,8 +1283,10 @@ def build_bundle(
         metadata = _metadata_payload(
             commit=commit,
             branch=branch,
+            branch_verification=branch_verification,
             date=date,
             source_records=source_records,
+            out_of_packet_links=out_of_packet_links,
         )
         _write_bytes(stage, "BUNDLE_METADATA.json", _json_bytes(metadata))
 
@@ -851,6 +1312,26 @@ def build_bundle(
         if verification.returncode != 0:
             raise RuntimeError("generated verifier failed before ZIP creation: " + verification.stdout.strip())
 
+        applied_validation = subprocess.run(
+            [sys.executable, str(stage / "qa/applied/validate_framework.py")],
+            cwd=stage,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            check=False,
+        )
+        expected_applied_pass = (
+            "PASS  focused applied QA complete (structural/procedural only)"
+        )
+        if (
+            applied_validation.returncode != 0
+            or expected_applied_pass not in applied_validation.stdout.splitlines()
+        ):
+            raise RuntimeError(
+                "selected applied-contract validator failed before ZIP creation: "
+                + applied_validation.stdout.strip()
+            )
+
         _write_zip(stage, zip_path, zip_path.stem)
         zip_digest = _sha256_file(zip_path)
         archive_records = _records(stage, include_manifest=True)
@@ -866,6 +1347,8 @@ def build_bundle(
             "sidecar_name": sidecar_path.name,
             "source_commit": commit,
             "source_branch": branch,
+            "source_branch_containment": branch_verification,
+            "applied_validator": expected_applied_pass,
             "file_count": len(manifest_records),
             "total_bytes": int(manifest["total_bytes"]),
             "archive_file_count": len(archive_records),

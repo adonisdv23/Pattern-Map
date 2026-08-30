@@ -3,6 +3,8 @@
 ## Frame
 
 - Comparison ID:
+- Disposition: PERFORMED / NOT_APPLICABLE
+- If NOT_APPLICABLE, one bounded reason (and create no matrix rows):
 - Decision ID / brief version:
 - Comparison question:
 - Unit of comparison:
@@ -31,4 +33,6 @@
 
 Comparison is not equivalence or causation. Recurrence is not independent
 corroboration. If a field cannot be aligned, mark it INCOMPARABLE rather than
-filling it with a proxy.
+filling it with a proxy. An `ANSWER` or `ANSWER_PROVISIONALLY` either links a
+substantive `PERFORMED` comparison or records `NOT_APPLICABLE` with exactly one
+bounded task-specific reason and no placeholder matrix.

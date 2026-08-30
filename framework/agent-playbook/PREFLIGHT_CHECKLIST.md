@@ -3,10 +3,10 @@
 Run this checklist before acquisition, enrichment, or a consequential answer.
 For every P-group, record `PASS`, `FAIL`, `UNKNOWN`, or `NOT_APPLICABLE`, plus
 the evidence/receipt IDs that justify the status. `NOT_APPLICABLE` requires a
-reason. An `UNKNOWN` required field is not a silent pass. A recorded
-`ORDINARY_PATH` may bypass this preflight only when no new evidence,
-comparison, memory reuse, permission decision, or external influence is
-required.
+reason. An `UNKNOWN` required field is not a silent pass. A minimal ordinary
+record bypasses this layered preflight only when no new evidence, comparison,
+memory reuse, permission decision, or external influence is required. It is
+terminal and is not an `ANSWER` route receipt.
 
 ## P0. Scope and decision
 
@@ -32,12 +32,18 @@ required.
 - Check: paid, private, sensitive, or external operations have named authority.
 - Check: external action is outside the agent’s authority unless explicitly
   delegated and still has a human boundary.
+- Check: executable permission uses only `technical_access`, `state`, `scope`,
+  `reason_code`, `reason`, and `resume_condition`; contradictory legacy
+  authorization booleans are absent there and at receipt top level.
 
 FAIL or UNKNOWN on a consequential permission item means a hard stop, then
 route `HOLD` or `ESCALATE`. Record `NOT_AUTHORIZED` when permission is absent
-or revoked; record `UNKNOWN` when it has not been established. Do not collapse
-those states, acquire, disclose, or act. Record the escalation destination and
-the condition needed to resume.
+or denied, `UNKNOWN` when it has not been established, and `REVOKED` when a
+previous authorization no longer applies. Do not collapse those states,
+acquire, disclose, reuse, or act. Record the state-specific reason, escalation
+destination, and condition needed to resume. In the current global-permission
+receipt, each blocked state also requires empty evidence, baseline, comparison,
+disconfirmation, memory, and influence, with memory `NOT_USED`.
 
 ## P2. Cost and stop
 
@@ -78,9 +84,13 @@ the condition needed to resume.
   authority are separate from support and from one another.
 - Check: recurrence and origin are separate from independence.
 - Check: a comparison unit and baseline are stated where needed.
-- Check: motion has repeated comparable observations.
+- Check: motion names at least two distinct authorized observation IDs whose
+  timestamps parse as at least two distinct real UTC-Z instants under one
+  alignment key; a count alone is insufficient.
 - Check: absence has an explicit expected baseline and observation boundary.
 - Check: incomparable and unknown relations remain visible.
+- Check: an answer route has substantive linked comparison records or
+  `NOT_APPLICABLE` plus one bounded reason and no placeholder record.
 
 ## P5. Disconfirmation and uncertainty
 
@@ -94,6 +104,8 @@ the condition needed to resume.
   checked where applicable.
 - Check: unknown, contested, stale, insufficient, failed, and unauthorized
   states are typed rather than collapsed into confidence.
+- Check: an answer route has substantive linked disconfirmation records or
+  `SKIPPED` plus one bounded reason and no placeholder record.
 
 ## P6. Influence and human control
 
@@ -106,6 +118,8 @@ the condition needed to resume.
 - Check: human disposition is recorded where required.
 - Check: the agent has not treated a disposition as a fact.
 - Check: external action remains with the authorized human or system.
+- Check: selected memory is `CURRENT` and `AUTHORIZED`; superseded versions are
+  preserved only as withheld history.
 
 ## P7. Learning
 
@@ -123,17 +137,20 @@ the condition needed to resume.
 
 | Failed or unknown check | Required record | Canonical route |
 | --- | --- | --- |
-| Permission or disclosure absent or revoked | NOT_AUTHORIZED | HOLD or ESCALATE |
+| Permission or disclosure absent or denied | NOT_AUTHORIZED | HOLD or ESCALATE |
 | Permission or disclosure not established | UNKNOWN | HOLD or ESCALATE |
+| Previous permission revoked | REVOKED | HOLD or ESCALATE |
 | High consequence plus missing support or baseline | INSUFFICIENT_SUPPORT or MISSING_BASELINE | HOLD or ESCALATE |
 | Identity or provenance broken | EXCLUDE_FROM_INFLUENCE | HOLD or ESCALATE |
-| One observation only for motion | NO_MOTION_CLAIM | ACQUIRE, ANSWER_PROVISIONALLY, or HOLD |
+| Fewer than two distinct authorized time-bearing refs share one motion alignment key | NO_MOTION_CLAIM | ACQUIRE, ANSWER_PROVISIONALLY, or HOLD |
 | No expected baseline for absence | NO_ABSENCE_CLAIM and observation boundary | CLARIFY, ANSWER_PROVISIONALLY, or HOLD |
 | Budget or deadline reached | STOPPED_BUDGET or STOPPED_DEADLINE | ANSWER_PROVISIONALLY, HOLD, or DEFER |
 | No later outcome defined | LEARNING_NOT_APPLICABLE | Any otherwise permitted route |
-| Low consequence, reversible, supplied material only | ORDINARY_PATH | ANSWER |
 
-## Preflight receipt
+The ordinary supplied-material path does not enter this table: it returns the
+four-field ordinary record and stops before the layered route vocabulary.
+
+## Layered preflight receipt
 
 - Preflight ID:
 - Decision ID / brief version:

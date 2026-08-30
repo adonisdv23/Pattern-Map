@@ -1072,3 +1072,211 @@ taste.
 
 **Governing requirement:** owner visual expectation; A01–A06/A12/A13/A17;
 flow-native, comprehensible teaching surfaces; no-deploy/no-publish boundary.
+
+## D-033 — Advance v16 through public and transfer hardening, not thesis expansion
+
+**Date:** 2026-08-30
+
+**Status:** Accepted for local feature-branch implementation; external gates
+remain closed
+
+The owner authorized a further high-reasoning audit, adversarial red-team, and
+implementation cycle intended to make Pattern Map more useful for future
+projects, mentor review, and a possible later public/X release. Three
+independent read-only lanes reviewed the exact clean checkpoint
+`4d2e11ceb26b36fd7428dc7de963c135802a8dea`: human/public experience,
+operator/agent executability and transfer, and current research/claims. A
+second convergence loop required the lanes to challenge one another. The
+primary integrator reproduced the material cross-artifact findings before
+acceptance.
+
+The owner-review baseline remains intact. The next phase is a bounded public
+and transfer hardening cycle, not v17 and not a new thesis. It accepts:
+
+1. Stage 0 must exist inside the actual copied agent prompt and must terminate
+   ordinary supplied-material work before layered records.
+2. Ordinary work receives only a minimal scope/assumption/boundary record; it
+   does not manufacture evidence, route, stop, outcome, learning, or six-family
+   ceremony.
+3. Applied validators must require typed permission states and resolvable
+   baseline, comparison, disconfirmation, influence, and memory references
+   before those records can claim the corresponding structural state.
+4. One existing neutral case must demonstrate sparse family use, and F4 memory
+   receives a fail-closed append-only correction/supersession fixture.
+5. A public presentation mode may remove review chrome and improve reading
+   order only as a view adapter over the same canonical sources and route IDs.
+6. One deterministic code-native teaching reveal may replace an existing
+   static example. It may not call a model, score sources, create an observed
+   event, or imply comprehension/effectiveness.
+7. The optional source/research route must be updated for directly relevant
+   2025–2026 work and preserve the contribution ceiling: authored
+   human-governed design/governance synthesis and testable agenda, not novel
+   mechanism, exhaustive taxonomy, or validated method.
+8. A generic adoption artifact remains deferred until Signal Foundry and a
+   materially different second real project expose the same transfer friction.
+   Even then it would be a candidate abstraction, not proof of generality.
+
+The canonical essay, 90-second version, mentor note, six families, permanent
+Echo split, human-authority boundary, and no-results boundary are not reopened
+by these technical findings. Publication identity, physical accessibility,
+owner/mentor judgment, publication-time metadata/link checks, deployment,
+publication, study execution, and merge remain separate gates.
+
+**Evidence:** `docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md`; exact baseline
+and locked-intent readback; full owner-review runner; live ten-route desktop and
+mobile inspection; read-only human/public, operator/agent, and research/claims
+audits and their adversarial convergence.
+
+**Governing requirement:** locked owner intent; D-001/D-007/D-008/D-031;
+A01–A17; proportionality and ordinary-work escape; observable rather than
+inspirational agent behavior; research may constrain claims but may not
+redefine the thesis; no-merge/no-deploy/no-publish/no-study/no-spend boundary.
+
+## D-034 — Integrate public presentation and downstream contract hardening without creating v17
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revision; local owner/public candidate only
+
+Three isolated high-reasoning lanes began from exact owner-review baseline
+`4d2e11ceb26b36fd7428dc7de963c135802a8dea`. They owned applied contracts,
+public presentation, and current research/claims boundaries respectively, then
+red-teamed one another before integration. Their recommendations remained
+advisory under the repository authority order. The locked owner-intent
+checksum, human essay, six-family identity, permanent Echo split, and ordinary
+work escape were not reopened.
+
+The applied lane makes Stage 0 terminal inside the copyable prompt and gives
+ordinary supplied-material work exactly four fields: supplied scope,
+assumptions, unchecked boundaries, and output. Layered work now uses typed
+`AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, and `REVOKED` permission; blocked
+global permission leaves no downstream evidence or influence; comparison and
+disconfirmation either resolve to substantive records or carry bounded typed
+exceptions; motion requires two distinct authorized observations at two real
+UTC instants under one alignment key; and memory use is limited to one
+accepted, `CURRENT`, `AUTHORIZED` linear lineage whose preserved root is bound
+to a frozen fixture anchor. These are structural/procedural contracts, not
+proof of source truth, legal authorization, runtime immutability, answer
+quality, or effectiveness.
+
+The site remains one content system with a `review | public` presentation
+adapter. Public mode keeps all ten routes and canonical source hashes while
+removing owner-package chrome from the ordinary reading flow. The actual
+90-second prose appears in the first Read viewport. One fixed four-stage
+teaching reveal replaces rather than accumulates on an opening example; it has
+a static equivalent and no network, model, score, automated action, or
+observed-result claim. Release output requires both an explicit release flag
+and parsed absolute-HTTPS metadata with a usable host; ordinary public previews
+remain `noindex,nofollow`. Author, canonical URL, social image, publication
+links, and final release action remain unset and separately gated.
+
+The optional source route now includes targeted, non-exhaustive current work
+through 2026 and constrains component-level novelty. The project remains a
+human-governed design/governance synthesis and testable agenda, not a validated
+new technical mechanism. The narrow-wedge memo separates generation studies,
+where answer accuracy may be eligible, from fixed-answer interface studies,
+where correction, acceptance, and burden are eligible but answer accuracy is
+not. It also separates observation, capture/process, access, permission, and
+currency. No first paper, provider, model, corpus, sample, study, or spend was
+selected.
+
+The cross-computer Signal Foundry packet includes the ordinary and memory
+templates, frozen memory anchor, and distinct permission fixtures, but excludes
+the publication adapter, public standalone, visual captures, lane QA, and
+narrow-study memo because those are owner-repository review artifacts rather
+than Signal Foundry implementation inputs. Every retained relative Markdown
+link outside the selected packet is machine-classified as archive,
+owner-review-only, or outside-selected-packet; a new unclassified target fails
+the build. Signal Foundry's own tracked contracts remain authoritative, and
+the packet grants no mutation authority.
+
+**Evidence:** implementation checkpoint `cbc89db`; focused applied, research,
+site, 108-state Apply, portable-bundle, and owner-intent checks; public and
+transfer hardening plan; lane QA and advisory dispositions. Final
+exact-commit/clean-clone/Claude/remote/package evidence is recorded only after
+those later gates actually complete.
+
+**Governing requirement:** D-001/D-007/D-008/D-031/D-033; locked owner intent;
+A01–A17; progressive disclosure; anti-bureaucracy; shared-source publication;
+exact cross-computer provenance; no-results/no-merge/no-deploy/no-publish/no-
+study/no-spend boundary.
+
+## D-035 — Separate human-content lineage from the exact operating source and fail closed at transfer
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revision; terminal sealing correction
+
+The exact-checkpoint Claude audit of `fb7d808` passed the human thesis, six
+families, public presentation, operator substance, Echo split, and research
+containment, but reproduced sealing ambiguities. The project now names three
+different provenance roles instead of asking one historical hash to carry all
+of them:
+
+1. `874a0a8e09f0bde11532cf873087865addb7d973` is the fixed human
+   manuscript/content-interface checkpoint.
+2. `cbc89db45493fd1dcfd121af0d1da1393046a196` is the minimum integrated
+   operating-contract checkpoint.
+3. The exact operating and packet source is resolved from the current named
+   branch or `BUNDLE_METADATA.json.source_commit`.
+
+The portable builder must reject a selection that predates either fixed
+checkpoint, reject a selection that is not the exact tip of the named local or
+remote-tracking branch ref, and label the verification scope. Generated
+metadata binds the selected commit, verified ref/tip, required ancestry,
+time-qualified draft-PR observation, classified subset links, and staged
+provider-free applied validator. The embedded verifier checks those records;
+the receiving task must still resolve later GitHub and Signal Foundry state at
+use. A branch or PR observation is not a timeless fact and a local-only proof
+is not represented as remote availability.
+
+This correction does not reopen or elevate the operating machinery above the
+coffee-conversation thesis. It prevents a tired owner or another computer from
+using a historically important but operationally stale checkout. It also
+retains the ordinary four-field exit and adds an explicit smallest-justified
+layered route so stronger provenance does not become stronger bureaucracy.
+
+**Evidence:** exact Claude advisory report; independent applied/public
+read-only audits; two Signal handoffs; portable builder/embedded verifier and
+adversarial tests; acceptance/action audit corrections.
+
+**Governing requirement:** locked owner intent; source authority order; A07,
+A08, A09, A11, A14, A15, and A16; cross-computer recoverability;
+anti-bureaucracy; model reviews advisory only; no merge/deploy/publication/
+study/provider selection/spend/outreach.
+
+## D-036 — Seal only after exact-tip independent recheck and final-byte convergence
+
+**Date:** 2026-08-30
+
+**Status:** Accepted; deterministic terminal gate
+
+Claude Opus/max independently rechecked exact remote tip `4a1acab` in a
+detached read-only worktree, reproduced all 14 portable tests with zero skips,
+and found no new conceptual, public, operator, Echo, research, or transfer
+defect. Its sole NOT READY finding was the expected stale schema-1 owner
+manifest. That finding is accepted because checksums generated before the
+final source, exports, QA, and dispositions would immediately become false.
+
+The terminal order is therefore fixed: finish all source and evidence edits;
+regenerate the schema-2 owner manifest; commit and push it; reproduce the full
+twelve-stage runner in a clean clone; read back the unmerged draft PR; then
+build the Signal Foundry transfer ZIP from that exact remote tip and verify it
+again after copying and extracting it elsewhere. The owner manifest resolves
+its own source head at use rather than hard-coding a self-referential commit;
+the generated Signal Foundry packet binds its exact source commit in
+`BUNDLE_METADATA.json`.
+
+The recheck's two optional clarity findings are accepted: expected manifest
+verification failures receive one concise fail-closed CLI message, and the
+branch-state record describes corrections as extending through *at least* the
+named historical floor. Neither change reopens v16's thesis or adds operating
+bureaucracy.
+
+**Evidence:** exact Claude recheck report; zero-skip portable suite at
+`4a1acab`; manifest writer/verifier; final clean-clone and packet evidence to be
+recorded in the convergence QA after completion.
+
+**Governing requirement:** A14/A15; source authority and immutable provenance;
+cross-computer recoverability; model reviews advisory only; no merge,
+deployment, publication, study, provider selection/call, spend, or outreach.

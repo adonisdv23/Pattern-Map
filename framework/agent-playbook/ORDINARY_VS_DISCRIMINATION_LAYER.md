@@ -14,9 +14,9 @@ comparison, permission, uncertainty, or influence needs to be inspectable.
 | What is a source? | Treats documents or links as context | Separates source, artifact, exact span, source role, support, origin, and permission |
 | What is repeated? | Counts repeated reports informally | Records recurrence and keeps independence or common origin explicit |
 | What is missing? | Fills gaps or ignores them | States the expected baseline and classifies missing, failed, unavailable, or unauthorized |
-| What is changing? | Calls a salient difference a trend | Requires comparable time points and a baseline before calling motion |
+| What is changing? | Calls a salient difference a trend | Requires at least two distinct authorized time-bearing evidence refs, one alignment key, and a baseline before calling motion |
 | How is uncertainty handled? | Uses broad confidence language | Uses typed unknown, contested, stale, insufficient, or incomparable states |
-| When does work stop? | Stops when the answer sounds plausible or the prompt is complete | Uses cost, permission, consequence, and stop rules; records remaining uncertainty |
+| When does work stop? | A supplied-material transformation ends after its minimal ordinary record | Uses cost, permission, consequence, and stop rules; records remaining uncertainty |
 | What influences the answer? | Sources appear near the prompt without a selection record | Selected and withheld material, reasons, and disclosure boundary are recorded |
 | What happens later? | A later outcome may rewrite the story | Original receipt stays intact; a bounded update is proposed and dispositioned |
 
@@ -26,10 +26,16 @@ Question: “Turn this supplied meeting note into a three-paragraph summary.”
 
 Ordinary path is appropriate. No new evidence is acquired, no external claim is
 added, no source comparison is required, and correction is easy. The receipt
-can say:
+contains only:
 
-ORDINARY_PATH — supplied text only; no new acquisition, comparison, memory
-reuse, permission decision, or external action.
+- supplied scope: summarize the attached meeting note into three paragraphs;
+- assumptions: preserve the note's stated meaning without fact-checking it;
+- unchecked boundaries: no external claims, sources, or prior memory checked;
+- output: the requested three-paragraph summary.
+
+It has no evidence, route, stop, outcome, learning, or six-family fields. If a
+permission decision, outside factual judgment, new source, comparison, or
+memory reuse becomes material, the task no longer qualifies as ordinary.
 
 Adding a full graph or research packet here would be over-discrimination.
 
@@ -75,14 +81,18 @@ requests are increasing and the report shows none occurred.
 ### Discrimination-Layer illustration
 
 1. F3 requires at least two comparable time-stamped counts and a stated
-   denominator or prior-period baseline.
+   denominator or prior-period baseline. Each point is a distinct authorized
+   evidence ID with an event time and the same alignment key; “two points” as a
+   self-asserted count is not enough.
 2. The operator checks whether the collection method or reporting schedule
    changed.
 3. F4 records the expected report, observation boundary, and capture result.
 4. A missing file is classified FAILED_CAPTURE or UNAVAILABLE if that is what
    happened; it is not treated as zero activity.
 5. The route is ANSWER_PROVISIONALLY or HOLD depending on consequence, with a
-   disconfirmation search for an alternate log.
+   disconfirmation search for an alternate log. If comparison or
+   disconfirmation is genuinely inactive on an answer route, it is recorded as
+   `NOT_APPLICABLE` or `SKIPPED` with one bounded reason and no placeholder.
 6. The influence receipt states that the cluster is an attention prompt and
    the report gap remains unresolved.
 
@@ -102,9 +112,11 @@ The agent uses available credentials and sends the result.
 
 The agent distinguishes technical access from authorization to retrieve,
 retain, disclose, and contact an external party. If the permission envelope
-does not explicitly authorize the operations, it records NOT_AUTHORIZED,
-REFUSES acquisition and disclosure, and escalates to the named human authority.
-No polished recommendation creates permission.
+does not explicitly authorize the operations, it preserves the exact state:
+UNKNOWN if permission has not been established, NOT_AUTHORIZED if it is absent
+or denied, and REVOKED if a prior authorization no longer applies. It refuses
+acquisition and disclosure and escalates with the state-specific resume
+condition. No polished recommendation creates permission.
 
 ## Reading the difference
 

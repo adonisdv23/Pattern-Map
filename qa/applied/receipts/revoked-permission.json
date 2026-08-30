@@ -1,0 +1,48 @@
+{
+  "receipt_id": "DR-REVOKED-001",
+  "operating_level": "MODERATE",
+  "evidence_selection": "NEEDED",
+  "consequence": "HIGH",
+  "permission": {
+    "technical_access": "AVAILABLE",
+    "state": "REVOKED",
+    "scope": "The prior acquisition and reuse scope no longer applies.",
+    "reason_code": "PERMISSION_REVOKED",
+    "reason": "The named authority revoked the previous authorization before this receipt.",
+    "resume_condition": "Do not reuse the prior material; resume only under a new purpose-limited authorization."
+  },
+  "budget": {
+    "remaining_minutes": 15,
+    "limit_minutes": 15
+  },
+  "evidence_records": [],
+  "baseline_records": [],
+  "comparison_records": [],
+  "comparison_disposition": {
+    "status": "NOT_APPLICABLE",
+    "reason": "Global permission was revoked, so no prior material may be compared."
+  },
+  "disconfirmation_records": [],
+  "disconfirmation_disposition": {
+    "status": "SKIPPED",
+    "reason": "Global permission was revoked, so no prior material may be inspected."
+  },
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
+  },
+  "influence": {
+    "recorded": false,
+    "selected_items": [],
+    "withheld_items": []
+  },
+  "route": "REFUSE",
+  "stop_status": "STOPPED_OTHER",
+  "stop_reason": "Permission was revoked; prior material was not reused or disclosed.",
+  "uncertainty": ["REVOKED"],
+  "outcome": {
+    "applicable": false,
+    "learning_status": "LEARNING_NOT_APPLICABLE"
+  }
+}

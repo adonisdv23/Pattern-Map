@@ -10,22 +10,22 @@ owner instruction.
 ## 1. Bounded research question
 
 Under matched resource and evidence-access budgets, does an operational
-Discrimination Layer playbook change the quality and correction burden of
-evidence-sensitive decision artifacts relative to ordinary prompting?
+Discrimination Layer playbook change a task-defined decision-accuracy or
+accepted-error outcome beyond ordinary and generic-diligence routes, without
+hiding support, permission, correction, or resource costs?
 
-The proposed primary estimand is the average condition difference, over a
-predeclared task population, in a blinded composite or prespecified family of
-outcomes covering:
+The first decision-facing outcome should be decision accuracy or accepted-error
+rate over a predeclared task population and frozen task-specific decision key.
+Where a single correct decision is inappropriate, the future design must define
+materially unacceptable error states and the threshold for an acceptable
+artifact before any run.
 
-1. decision usefulness;
-2. supported novelty;
-3. evidence diversity;
-4. missing-perspective detection; and
-5. human correction effort.
-
-The final design must choose whether there is one primary outcome, a hierarchical
-testing sequence, or multiplicity-controlled co-primary outcomes. V0.1 does
-not make that statistical choice and therefore is not analysis-ready.
+Decision usefulness, supported novelty, evidence diversity, missing-perspective
+detection, and human correction effort remain required secondary, explanatory,
+or guardrail outcomes. A future design must choose a hierarchical sequence or
+multiplicity-controlled family before any run. Receipt completeness, format
+compliance, or subjective usefulness alone cannot be the primary outcome. V0.1
+does not make the final statistical choice and therefore is not analysis-ready.
 
 ## 2. Study unit and task boundary
 
@@ -53,30 +53,53 @@ The model receives the task, allowed materials, ordinary tool permissions, and
 the same output requirement an informed user would normally provide. It does
 not receive the six-family playbook or required receipt schema.
 
+### O1 — Ordinary plus generic diligence
+
+The model receives a concise, credible instruction to check sources,
+comparisons, and material uncertainty without the six-family names or receipt
+schema. O1 is a required comparator, not an optional rescue condition. It
+separates any value of the playbook's structure from the ordinary benefit of
+asking for care. This is the **generic-diligence** comparator.
+
+### Mechanism-isolated conditions before D1
+
+At least one narrow condition must be specified and reviewed before an omnibus
+playbook arm is justified. Current unselected candidates are:
+
+- **M-A — claim-scoped influence receipt:** the smallest resolvable mapping
+  from material claims to authorized influential evidence; and
+- **M-B — orthogonal observation-boundary record:** an expected item,
+  observation scope, and decision consequence with separate observation,
+  process/capture, access, permission, and currency axes. The initial wedge
+  holds access at `AVAILABLE`, permission at `AUTHORIZED`, and currency at
+  `CURRENT`, then varies observation by process/capture without the complete
+  playbook.
+
+The unrun decision memo compares their risks and sequencing. Neither condition
+is selected here. If a narrow mechanism is null, harmful, format-driven,
+invalid, or prohibitively costly, the omnibus arm requires a new justification
+or should stop.
+
 ### D1 — Operational Discrimination Layer
 
-The same model receives the same task, materials, permissions, and maximum
-resource envelope plus the frozen operational playbook. It must leave the
-defined compact decision/evidence receipt.
+Only after the required baseline and mechanism-isolation gates, the same model
+could receive the same task, materials, permissions, and maximum resource
+envelope plus the frozen operational playbook. It would leave the defined
+compact decision/evidence receipt.
 
 ### Optional diagnostic conditions
 
-These may be useful later but are not automatically part of the primary study:
-
-- **O1 — Ordinary plus generic diligence:** a concise instruction to check
-  sources and uncertainty, separating playbook structure from simply asking
-  for care.
 - **D1-L — Lightweight playbook:** the minimum decision, comparison,
   disconfirmation, influence, and stop record.
 - **D1-Ablations:** remove one family or mechanism at a time only when the
   added multiplicity and sample requirements are justified.
 
-The primary comparison must be chosen before any run. Adding weak baselines
-after seeing results is not acceptable.
+All primary comparisons and the fate of the omnibus arm must be chosen before
+any run. Adding weak baselines after seeing results is not acceptable.
 
 ## 4. Matched-budget rule
 
-O0 and D1 must use the same:
+Every condition included in a comparison must use the same:
 
 - model/provider/version and decoding configuration;
 - task packet and allowed information boundary;
@@ -88,11 +111,18 @@ O0 and D1 must use the same:
 - human clarification and review budget; and
 - stopping and failure rules.
 
-Two costs must be reported, not hidden: the maximum assigned budget and the
-actual resources consumed. If the playbook's instructions consume more of the
-fixed context budget, that is part of the treatment cost. If an alternate
-estimand gives both conditions enough overhead to operate, it must be labeled
-separately and cannot replace the fixed-total-budget result.
+Two resource estimands must be reported separately, not hidden or blended:
+
+1. **Fixed-total-resource:** every condition shares the same total envelope;
+   treatment instructions, records, context, output, tool calls, elapsed time,
+   and review consume that envelope.
+2. **Equal-operating-overhead:** if a secondary comparison gives each condition
+   enough resources to operate its required interface, the additional tokens,
+   time, tools, and review burden remain explicit treatment costs.
+
+The equal-operating-overhead result cannot replace the fixed-total-resource
+result. For each estimand, report the maximum assigned budget and actual
+resources consumed.
 
 Budget exhaustion is a stop status, not evidence sufficiency. A stopped unit
 remains in the denominator according to a predeclared policy; it is not silently
@@ -118,6 +148,19 @@ be balanced or modeled. At least one family should be held out from development
 before any transfer claim.
 
 ## 6. Outcome definitions requiring freeze
+
+### 6.0 Decision accuracy or accepted-error rate
+
+For tasks with a defensible decision key, score whether the artifact supports
+the correct bounded action while retaining material uncertainty and permission
+limits. For plural or judgment-dependent tasks, freeze unacceptable error
+states and an accepted-artifact threshold instead of inventing one universal
+answer. Record false acceptance, false hold/refusal, unsupported influential
+claims, and permission errors separately.
+
+The key and threshold must be created without condition-specific vocabulary.
+Producing more fields, sources, citations, or framework labels is not decision
+accuracy.
 
 ### 6.1 Decision usefulness
 

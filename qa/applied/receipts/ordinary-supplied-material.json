@@ -1,30 +1,16 @@
 {
-  "receipt_id": "DR-ORDINARY-001",
-  "operating_level": "ORDINARY",
-  "evidence_selection": "NONE",
-  "consequence": "LOW",
-  "supplied_material_only": true,
-  "external_action": false,
-  "permission": {
-    "technical_access": true,
-    "authorized": true,
-    "disclosure_allowed": true
-  },
-  "budget": {
-    "remaining_minutes": 3,
-    "limit_minutes": 5
+  "supplied_scope": {
+    "instruction": "Transform the supplied note into a concise summary.",
+    "input_refs": ["SUPPLIED-001"]
   },
   "assumptions": [
-    "The requested transformation is limited to the supplied material."
+    "The transformation preserves the meaning stated in the supplied note."
   ],
   "unchecked_boundaries": [
-    "No new evidence was acquired, compared, or recalled from memory."
+    "No outside claim, source, prior memory, or permission question was checked."
   ],
-  "route": "ANSWER",
-  "stop_status": "COMPLETE",
-  "stop_reason": "Reversible supplied-material transformation completed without evidence selection.",
-  "outcome": {
-    "applicable": false,
-    "learning_status": "LEARNING_NOT_APPLICABLE"
+  "output": {
+    "output_ref": "OUTPUT-001",
+    "description": "Concise summary of SUPPLIED-001."
   }
 }

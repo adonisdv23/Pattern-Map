@@ -11,9 +11,11 @@ Before choosing a level, ask: **Must the agent select, acquire, compare,
 preserve, or weigh information beyond the user-supplied material?**
 
 - If no, use the ordinary path: perform the reversible supplied-material
-  transformation, state any material assumption, and stop. Keep the
-  instruction, input, and output; do not manufacture evidence, route, outcome,
-  or learning records.
+  transformation, save only the supplied scope, material assumptions,
+  unchecked boundaries, and output, and stop. Do not manufacture evidence,
+  route, stop, outcome, learning, or six-family records. Use the repository
+  template `framework/templates/ORDINARY_RECORD.md`, not the layered decision
+  receipt.
 - If yes, continue to the operating levels below. Choose only the records and
   checks justified by consequence, uncertainty, repetition, and cost.
 
@@ -28,15 +30,18 @@ consequential judgment.
 Select LIGHTWEIGHT, MODERATE, or ADVANCED using the consequence, reversibility,
 evidence volume, sensitivity, reuse, and expected outcome. Record the choice.
 
-- LIGHTWEIGHT: decision brief, evidence table, one comparison or gap note,
-  disconfirmation, influence receipt.
+- LIGHTWEIGHT: decision brief, evidence table, a substantive comparison and
+  disconfirmation or one bounded typed reason for each inactive check, and an
+  influence receipt.
 - MODERATE: stable IDs, acquisition/failure receipts, typed relationships,
   packet, human disposition, outcome review.
 - ADVANCED: queryable lineage, access and retention policy, relationship/time
   views, route policy, replay, and approved evaluation.
 
 Record why the selected level is proportionate. Do not escalate an ordinary
-task merely because more infrastructure is available.
+task merely because more infrastructure is available. A layered task also needs
+not activate all six families: record one concise reason for an inactive family
+and create no placeholder artifact for it.
 
 ## 2. Define the real decision
 
@@ -71,6 +76,23 @@ An accessible source may still be private, paid, sensitive, out of scope,
 restricted by purpose, or forbidden to retain. If permission is UNKNOWN for a
 consequential operation, route to HOLD or ESCALATE. Do not infer authorization
 from credentials, a successful request, or a visible link.
+
+Preserve the exact operation state as `AUTHORIZED`, `UNKNOWN`,
+`NOT_AUTHORIZED`, or `REVOKED`. `UNKNOWN` means permission has not been
+established; `NOT_AUTHORIZED` means it is absent or denied; `REVOKED` means a
+previous authorization no longer applies. Each unresolved or blocked state
+needs its own reason and condition for resuming. None may influence the output.
+
+An executable permission record uses only these fields: `technical_access`,
+`state`, `scope`, `reason_code`, `reason`, and `resume_condition`. Do not carry
+an extra boolean such as `authorized`, `permission_granted`, or
+`is_authorized` inside the permission object or at receipt top level; it can
+contradict the typed state. In the current
+single-global-permission receipt, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED`
+means evidence, baseline, comparison, disconfirmation, memory, and influence
+collections remain empty, and memory is `NOT_USED`. A more granular
+per-operation design would need a separate, explicit contract; do not infer it
+from this fixture.
 
 ## 4. Set the cost and stop envelope
 
@@ -169,7 +191,9 @@ the reports to independent corroboration.
 For motion:
 
 - define the measured attribute and event-time rule;
-- require at least two comparable time-stamped observations;
+- name at least two distinct, authorized evidence IDs whose timestamps parse as
+  real UTC-Z instants, include at least two distinct instants, and share one
+  alignment key; never substitute a self-reported count of time points;
 - state the baseline or peer comparison;
 - check seasonality, denominator, collection, policy, and measurement changes;
 - label the result OBSERVED_MOTION, UNCERTAIN_MOTION, or NO_SUPPORTED_MOTION.
@@ -186,9 +210,28 @@ For absence:
 For memory:
 
 - retrieve by task, time, source, and permission scope;
+- give each retained version a stable ID, canonical payload, and digest of the
+  canonical payload bytes;
 - preserve earlier observations, decisions, and corrections;
-- link supersession instead of overwriting;
+- append a corrected version with `supersedes`, `corrects`, prior-digest,
+  reason, and scoped-reuse links instead of overwriting;
+- bind the lineage root to a separately frozen initial anchor and reject a
+  coordinated rewrite that merely recomputes the in-record links;
+- keep the bounded contract linear: one successor per version and exactly one
+  `CURRENT` record. A fork requires a separately represented and authorized
+  branching contract; this template does not provide one;
+- admit a correction into this current lineage only with an `ACCEPTED` human
+  disposition; other disposition states require a separate proposal/status
+  record and do not become current here;
+- allow only `CURRENT`, `AUTHORIZED` memory within its recorded reuse scope to
+  be used or selected for influence;
+- preserve `SUPERSEDED` memory as withheld history; never select it as current
+  influence;
 - treat stale or unscoped memory as uncertainty.
+
+Use repository template `framework/templates/MEMORY_RECORD.md` only when
+scoped memory is material. A link proves which record was corrected; it does
+not prove that the correction is true.
 
 ## 10. Disconfirm the leading interpretation
 
@@ -204,6 +247,13 @@ Before answering a consequential question, create a disconfirmation log:
 
 “No contrary item found” is a search result, not proof of correctness.
 
+Every `ANSWER` or `ANSWER_PROVISIONALLY` receipt records both checks. Each
+check is either `PERFORMED` with linked substantive records, or explicitly
+inactive: comparison uses `NOT_APPLICABLE`; disconfirmation uses `SKIPPED`.
+An inactive check carries exactly one bounded task-specific reason and no
+placeholder records. Non-answer routes keep the same proportional form rather
+than manufacturing work.
+
 ## 11. Represent uncertainty
 
 Use typed uncertainty:
@@ -216,6 +266,7 @@ Use typed uncertainty:
 - MISSING_BASELINE;
 - FAILED_CAPTURE;
 - NOT_AUTHORIZED;
+- REVOKED;
 - STALE;
 - INCOMPARABLE;
 - OUTCOME_MISSING.
@@ -277,6 +328,11 @@ selected item, state:
 
 List withheld material and its reason: duplicate, insufficient, not authorized,
 sensitive, stale, out of scope, or unknown. Withholding is not deletion.
+Every selected ID must resolve to a preserved evidence or memory record, and
+that record must be `AUTHORIZED` for the named use. A plausible but dangling
+ID is not an influence receipt. If the selected item is memory, it must also
+be `CURRENT`; a `SUPERSEDED` version remains inspectable only as withheld
+history.
 
 The generated answer must separate:
 
@@ -338,8 +394,12 @@ The agent may call the work complete only when:
 - source, artifact, and claim distinctions are recorded where needed;
 - peripheral candidates were not promoted by status;
 - recurrence and origin were not conflated;
-- motion and absence have baselines;
-- disconfirmation and uncertainty are visible;
+- any motion claim resolves to at least two authorized, time-bearing records
+  sharing one alignment key, and any absence claim has its required baseline;
+- any memory influence resolves to a `CURRENT`, authorized, scoped, versioned
+  record whose payload digest and frozen lineage anchor validate;
+- comparison and disconfirmation are substantive or carry their typed bounded
+  inactive reason, and uncertainty is visible;
 - stop or escalation is reasoned;
 - influence and withholding are recorded;
 - external action remains with the authorized human;

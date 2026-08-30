@@ -8,10 +8,23 @@ Run from the repository root:
     python3 qa/research/validate_research_boundaries.py
 
 The validator checks current project separation, the exact EP unfavorable-
-result taxonomy, the broader agenda's required flagship outcomes, explicit
-unrun/no-results language, and future-protocol authorization boundaries. It
-does not call a model, provider, participant, dataset, registry, publication,
-or deployment channel.
+result taxonomy, explicit unrun/no-results language, future-protocol
+authorization boundaries, generic-diligence and mechanism-isolation sequencing,
+the two resource estimands, decision-accuracy/accepted-error priority, the
+narrow-wedge memo's no-selection contract, Candidate A's equivalent baselines,
+study-mode split and composite-treatment boundary, Candidate B's orthogonal
+axes and key/trace separation, the dated targeted source route,
+publication-time recheck language, and high-signal novelty/effectiveness/result
+inflation phrases. It performs structural claim-boundary QA only. It does not
+open the web, call a model, provider, participant, dataset, registry,
+publication, or deployment channel.
+
+The read-only public-source check behind the current route is recorded in
+[CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md](CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md).
+That report records opened primary/official landing pages, preprint versus
+conference/official status, partial resolver checks, unresolved claims, and the
+mandatory publication-time recheck. It is targeted wayfinding QA, not a
+systematic review or research result.
 
 The active EP v1.1 design checkpoint has its own provider-free deterministic
 checks:

@@ -12,9 +12,11 @@ agent to select, acquire, compare, preserve, or weigh information beyond what
 the user supplied?**
 
 - **No:** use the ordinary path. Perform the reversible transformation, keep
-  the user’s instruction and supplied input visible, state any material
-  assumption, and stop. Do not create an evidence register, comparison matrix,
-  or learning plan merely to demonstrate process.
+  only the supplied scope, material assumptions, unchecked boundaries, and
+  output, and stop. Do not create an evidence register, route, stop, outcome,
+  learning, or six-family record merely to demonstrate process. Use the
+  repository template `framework/templates/ORDINARY_RECORD.md`, not the
+  layered decision receipt.
 - **Yes:** use the smallest path below that matches consequence, uncertainty,
   repetition, and cost. New acquisition, competing sources, missing expected
   material, scoped memory, or a consequential recommendation usually creates
@@ -28,8 +30,12 @@ or consequential boundary.
 1. **Define the decision.** Write the real question, intended use, audience,
    consequence, owner, deadline, and what would count as useful.
 2. **Check authority.** Separate technical access from permission to acquire,
-   transform, retain, disclose, or act. If permission is absent or unclear for
-   a consequential operation, stop and escalate.
+   transform, retain, disclose, or act. Preserve `AUTHORIZED`, `UNKNOWN`,
+   `NOT_AUTHORIZED`, and `REVOKED` as different states. If permission is
+   absent, unclear, or revoked for a consequential operation, stop and
+   escalate with the state-specific reason and resume condition. Use the exact
+   typed permission keys; reject contradictory legacy authorization booleans
+   inside the permission object or at receipt top level.
 3. **Set a budget.** State the time, money, tokens, compute, privacy,
    disclosure, and human-attention boundary. State the no-action boundary.
 4. **Write the default path.** Record the familiar query, source set,
@@ -43,16 +49,23 @@ or consequential boundary.
    separate fields. Use `UNKNOWN` rather than inventing a reputation.
 7. **Compare.** Choose the peer, period, attribute, structure, or origin
    comparison that could change the answer. Mark incomparable and unknown
-   fields instead of filling them.
+   fields instead of filling them. If an answer route has no relevant
+   comparison unit, record `NOT_APPLICABLE` with one bounded reason and create
+   no comparison placeholder.
 8. **Challenge.** Search for one strongest contrary item, missing perspective,
-   alternative explanation, measurement change, or common origin.
-9. **Route and stop.** Choose `ACQUIRE`, `COMPARE`, `CLARIFY`, `ANSWER`,
+   alternative explanation, measurement change, or common origin. If a
+   bounded answer legitimately skips this check, record `SKIPPED` with one
+   bounded reason and create no disconfirmation placeholder.
+9. **Route and stop.** After Stage 0 has selected the layered path, choose
+   `ACQUIRE`, `COMPARE`, `CLARIFY`, `ANSWER`,
    `ANSWER_PROVISIONALLY`, `HOLD`, `DEFER`, `ESCALATE`, or `REFUSE`. Separately
    record stop status `CONTINUE`, `COMPLETE`, `STOPPED_BUDGET`,
    `STOPPED_DEADLINE`, or `STOPPED_OTHER`, why the next action is worth its
    cost, and what will stop or resume it.
 10. **Record influence.** List what shaped the answer, what was withheld, why,
     which uncertainties remain, and who has authority for any external action.
+    Memory may be selected only when it is both `CURRENT` and `AUTHORIZED`;
+    keep superseded versions as withheld history.
 
 ## Minimum output
 
@@ -74,30 +87,32 @@ If a later outcome is defined, preserve the original expectation. After the
 outcome window, compare the observed outcome, actual cost, corrections, and
 context with it; propose one bounded update; request and record human
 disposition; only then record `LEARNING_REVIEWED`. Use
-[`../templates/OUTCOME_REVIEW.md`](../templates/OUTCOME_REVIEW.md). Until then,
-keep the locked expectation at `LEARNING_PENDING_OUTCOME`. Do not make learning
-mandatory for an ordinary-path task.
+`framework/templates/OUTCOME_REVIEW.md`. Until then, keep the locked
+expectation at `LEARNING_PENDING_OUTCOME`. Do not make learning mandatory for
+an ordinary-path task.
 
 If a field was not needed, write NOT_APPLICABLE and why. If it was needed but
 could not be established, write UNKNOWN. Do not fill a missing field with a
-plausible assumption.
+plausible assumption. A family that is not material gets one concise skip
+reason at most and no placeholder artifact.
 
 ## Hard stops
 
 | Trigger | Agent action |
 | --- | --- |
-| Permission is absent or revoked | Do not acquire, disclose, or act; record NOT_AUTHORIZED and escalate |
+| Permission is absent or denied | Do not acquire, disclose, or act; record NOT_AUTHORIZED and escalate |
 | Permission has not been established | Do not acquire, disclose, or act; preserve UNKNOWN and escalate |
+| Previous permission was revoked | Do not acquire, disclose, reuse, or act; record REVOKED and require a new scoped authorization |
 | High-consequence claim lacks support or baseline | HOLD or ESCALATE; offer only an explicitly provisional bounded statement |
 | Identity, provenance, or transformation check fails | Keep the item out of influence; record the failure |
 | Observation failure is the only basis for an alleged absence | State FAILED_CAPTURE or UNKNOWN, not absence |
-| One point is the only basis for velocity | Do not call it motion; request another time point or state insufficient |
+| Fewer than two distinct authorized observation IDs resolve to two real, distinct UTC-Z instants under one alignment key | Do not call it motion; acquire a comparable point or state insufficient |
 | Budget or deadline is reached | Choose the permitted route; separately record STOPPED_BUDGET or STOPPED_DEADLINE with remaining uncertainty |
 | External action is requested beyond the agent’s authority | Leave the action to the named human authority |
 
 ## Smallest safe response shape
 
-For a short task, use:
+For a short task that passed Stage 0, use:
 
 1. Answer or provisional answer.
 2. What was observed and what was interpreted.

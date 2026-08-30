@@ -13,6 +13,16 @@ and operational proposal. Local schemas, fixtures, validators, archives, and
 advisory reviews establish integrity or inspectability only. They are not
 evidence that the framework improves work.
 
+The component areas have substantial established and active prior work across
+context engineering, information retrieval and selection, source reliability
+and redundancy, adaptive acquisition and stopping, agent memory, attribution,
+provenance, human correction, and deep-research evaluation. The bounded v16
+contribution is an authored human-governed design/governance synthesis and a
+testable agenda.
+It is not a novel mechanism, exhaustive taxonomy, newly discovered technical
+layer, or effectiveness result. The optional source route records the current
+targeted—not systematic or exhaustive—2025–2026 wayfinding review.
+
 ## Research firebreak
 
 The owner-intent contract remains above this agenda. Research may narrow a
@@ -25,7 +35,7 @@ The two principal tracks are deliberately separate:
 | Track | Question | Unit | Current status | What it cannot establish alone |
 | --- | --- | --- | --- | --- |
 | Research Track 01 / ECHO-01 — **The Echo Problem** | Can a bounded origin-accounting treatment prevent repeated or derived reports from being represented as independent corroboration? | Report, proposition, and supplied origin relation under a frozen rule | EP v0.1 preserved; protocol and deterministic harness retained; unrun; no results | Whether the broader six-family playbook improves AI-assisted work |
-| Research Track 02 / DL-PLAYBOOK-01 — **Matched-budget playbook study** | Does an operational Discrimination Layer playbook improve defined decision artifacts relative to ordinary prompting under the same resource envelope? | Task packet, output, evidence/decision receipt, and human correction episode | Protocol candidate v0.1 only; no task corpus, model, provider, power target, or run authorized | Universal effectiveness, causal field impact, replacement of expertise, or product validation |
+| Research Track 02 / DL-PLAYBOOK-01 — **Matched-budget playbook study** | Does an operational Discrimination Layer playbook change defined decision artifacts beyond ordinary and generic-diligence routes under matched resources, after narrow mechanisms are isolated? | Task packet, output, evidence/decision receipt, and human correction episode | Protocol candidate v0.1 only; no task corpus, model, provider, power target, or run authorized | Universal effectiveness, causal field impact, replacement of expertise, or product validation |
 
 Removing Track 01 leaves the broad research question intact. Removing the
 broader framework leaves Track 01 as a coherent study of false corroboration.
@@ -58,24 +68,90 @@ The current project has Levels 1–3 and advisory review of procedure wording.
 It has no Level 5–7 result. Even a future Level 5 result would not automatically
 justify a field or universal claim.
 
+## Mechanism isolation before the flagship
+
+The omnibus six-family playbook is not the first automatic empirical step. A
+future research program must first determine whether a narrower mechanism can
+be distinguished from ordinary diligence, label following, or format
+compliance. The current unrun decision memo compares:
+
+- a composite claim-scoped influence receipt against an ordinary source list
+  under the same task, evidence-access, and output requirements; and
+- an orthogonal observation-boundary record that initially separates
+  observation from process/capture while holding access, permission, and
+  currency fixed.
+
+The owner-review source is
+`research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md`. It recommends
+specification and prior-art review sequencing only. It selects no study,
+provider, model, corpus, participant, sample size, or run.
+
+Before DL-PLAYBOOK-01 can be interpreted, a later frozen design must include:
+
+1. an ordinary baseline that resembles plausible ordinary use;
+2. a generic-diligence comparator that asks for careful sourcing, comparison,
+   and uncertainty without Pattern Map vocabulary;
+3. one or more mechanism-isolated arms justified before any omnibus arm;
+4. a fixed-total-resource estimand that counts treatment instructions and
+   records inside the shared budget;
+5. a separately labeled equal-operating-overhead estimand, if needed, that
+   gives each condition enough resources to operate and reports the extra cost;
+   and
+6. a predeclared rule for stopping the omnibus path if the narrow mechanism is
+   null, harmful, invalid, cue-driven, or prohibitively costly.
+
+The equal-operating-overhead result cannot replace or be blended with the
+fixed-total-resource result. A weak ordinary prompt is not a sufficient
+baseline merely because it makes a structured treatment look better.
+
+For the influence-receipt wedge, a later design must choose between a
+generation study and a fixed-answer interface/correction study. In the former,
+outputs may differ and decision accuracy or accepted-error may be eligible. In
+the latter, answer content is fixed, so generated-answer or decision accuracy
+is not eligible; correction, acceptance, and burden outcomes answer a different
+question. The full receipt remains a composite unless a component ablation is
+predeclared.
+
+For the observation-boundary wedge, frozen task/world keys must remain separate
+from trace-derived run states. World presence, expectedness, allowed boundary,
+access, permission, currency, and correct decision belong in the pre-run key;
+attempted checks, capture success or failure, returned observations, and output
+belong in the run trace. A later design may not infer one axis from another or
+backfill the frozen key from an output.
+
 ## Flagship question: DL-PLAYBOOK-01
 
 The flagship candidate asks:
 
 > Under matched task, evidence-access, model, time, token, tool-call, and human-
-> review budgets, does the operational Discrimination Layer playbook improve
-> decision usefulness, supported novelty, evidence diversity, missing-
-> perspective detection, and human correction effort relative to ordinary
-> prompting?
+> review budgets, does the operational Discrimination Layer playbook improve a
+> task-defined decision-accuracy or accepted-error outcome beyond ordinary and
+> generic-diligence routes, without hiding support, permission, correction, or
+> resource costs?
 
 The question is comparative. “The playbook produced a good answer” is not an
-estimand. The study must compare it with a credible ordinary route and count
-the playbook's instruction, logging, review, latency, and abstention costs.
+estimand. The study must compare it with a credible ordinary route and
+generic-diligence comparator, isolate plausible mechanisms, and count the
+playbook's instruction, logging, review, latency, and abstention costs.
 
 The full protocol candidate is
 [`future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md`](future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md).
 
-### Primary outcomes to operationalize before any run
+### Outcome hierarchy to operationalize before any run
+
+For a generation or decision-production study, the first decision-facing
+outcome should be **decision accuracy or accepted-error rate** under a frozen
+task-specific decision key. Where a single correct decision is inappropriate,
+the design must define the materially unacceptable error states and the
+threshold for an acceptable artifact before any run. A fixed-answer
+interface/correction study cannot use generated-answer or decision accuracy as
+its outcome because the answer is held constant; it must instead predeclare a
+correction or acceptance outcome. A receipt-completion score, stylistic
+preference, or subjective usefulness rating cannot be the primary outcome.
+
+The broader outcomes below remain required secondary, explanatory, or
+guardrail measures. They may become primary only in a separately justified
+mechanism-specific design:
 
 - **Decision usefulness:** task-specific rubric covering whether the output
   helps the named user make the bounded decision, without rewarding verbosity.
@@ -87,7 +163,8 @@ The full protocol candidate is
   expected perspective, field, period, baseline, or uncertainty, with false
   gap calls measured separately.
 - **Human correction effort:** reviewer time and observable correction actions
-  needed to make the artifact acceptable for its stated use.
+  needed to make the artifact acceptable for its stated use. This cannot be
+  called measured without separately authorized human work.
 
 ### Required guardrails and costs
 
@@ -122,6 +199,11 @@ These are later questions, not bundled evidence for the flagship result:
    model, ordering, and evidence quality?
 7. Can the playbook preserve a specialist or minority perspective without
    romanticizing obscurity or amplifying manipulation?
+8. Does a claim-scoped influence receipt change accepted-error or correction
+   behavior beyond an ordinary or generic-diligence source mapping?
+9. With access available, permission authorized, and material current, does an
+   orthogonal observation/process-capture record reduce consequential false-
+   absence errors beyond an equally explicit untyped boundary statement?
 
 ## Unfavorable-result contract
 
@@ -154,7 +236,8 @@ need to freeze:
 
 1. the narrow claim and estimand;
 2. task-construction and contamination rules;
-3. ordinary and playbook conditions;
+3. ordinary, generic-diligence, mechanism-isolated, and any later omnibus
+   conditions;
 4. matched resource budgets and stopping rules;
 5. selected model/provider, reproducible configuration, logging, retention,
    and maximum spend;

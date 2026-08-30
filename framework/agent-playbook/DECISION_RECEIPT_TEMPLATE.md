@@ -1,7 +1,10 @@
-# Decision receipt template
+# Layered decision receipt template
 
 Use this after the preflight and again when the answer or route is complete.
 It is a compact audit trail, not a claim that the answer is correct.
+A Stage-0 ordinary transformation does not use this receipt. Use repository
+template `framework/templates/ORDINARY_RECORD.md` and stop before route, stop,
+outcome, learning, or family records.
 
 ## Header
 
@@ -10,7 +13,7 @@ It is a compact audit trail, not a claim that the answer is correct.
 - Receipt version:
 - Started / ended:
 - Operator / agent:
-- Operating level: ORDINARY / LIGHTWEIGHT / MODERATE / ADVANCED
+- Operating level: LIGHTWEIGHT / MODERATE / ADVANCED
 - Reviewer / authority:
 
 ## Decision and consequence
@@ -25,13 +28,26 @@ It is a compact audit trail, not a claim that the answer is correct.
 
 ## Permission
 
-| Operation | Technical access | Operational authorization | Retention / disclosure | Result |
-| --- | --- | --- | --- | --- |
-| Acquire |  |  |  |  |
-| Transform |  |  |  |  |
-| Retain / memory |  |  |  |  |
-| Disclose |  |  |  |  |
-| Act |  |  |  |  |
+| Operation | Technical access | Permission state | Scope | Reason code | Reason | Resume condition |
+| --- | --- | --- | --- | --- | --- | --- |
+| Acquire |  |  |  |  |  |  |
+| Transform |  |  |  |  |  |  |
+| Retain / memory |  |  |  |  |  |  |
+| Disclose |  |  |  |  |  |  |
+| Act |  |  |  |  |  |  |
+
+Use exactly `AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED` for
+permission state. Unknown, absent/denied, and revoked permission have different
+reasons and resume conditions; none may appear in selected influence. An
+executable permission object contains only `technical_access`, `state`,
+`scope`, `reason_code`, `reason`, and `resume_condition`. Reject legacy
+booleans such as `authorized` or `permission_granted` rather than allowing two
+permission answers in one record. Reject the same fields if repeated at the
+receipt top level.
+
+For the current single-global-permission receipt, an `UNKNOWN`,
+`NOT_AUTHORIZED`, or `REVOKED` state leaves evidence, baseline, comparison,
+disconfirmation, memory, and influence empty and records memory as `NOT_USED`.
 
 ## Cost and stop envelope
 
@@ -56,6 +72,9 @@ It is a compact audit trail, not a claim that the answer is correct.
 | F5 Structured patterns |  |  |  | Comparison and unknown relations |
 | F6 Learning loop |  |  |  | Outcome update proposed, history preserved |
 
+An inactive family receives one concise skip reason and no artifact. The table
+is a proportionality record, not a requirement to activate all six families.
+
 ## Evidence and comparison
 
 - Default path:
@@ -66,11 +85,30 @@ It is a compact audit trail, not a claim that the answer is correct.
 - Support / contradiction / qualification:
 - Origin / recurrence / independence:
 - Comparison frame:
-- Motion baseline:
+- Motion baseline, shared alignment key, and two or more authorized
+  time-bearing observation IDs resolving to at least two distinct real UTC-Z
+  instants:
 - Absence baseline and observation boundary:
 - Memory links:
 - Disconfirmation log:
 - Typed uncertainty:
+
+- Comparison disposition: PERFORMED / NOT_APPLICABLE
+- Comparison inactive reason (one bounded line; no placeholder record):
+- Disconfirmation disposition: PERFORMED / SKIPPED
+- Disconfirmation inactive reason (one bounded line; no placeholder record):
+
+Every baseline, comparison, disconfirmation, influence, and memory ID named in
+this receipt must resolve to a substantive preserved record. Empty status
+booleans and dangling IDs do not establish that a check occurred. When memory
+is material, use `framework/templates/MEMORY_RECORD.md`.
+Only a `CURRENT`, `AUTHORIZED` memory record may be used or selected;
+`SUPERSEDED` records remain preserved as withheld history.
+
+Every `ANSWER` or `ANSWER_PROVISIONALLY` route needs a substantive comparison
+and disconfirmation record, or the matching typed inactive status with one
+bounded task-specific reason. `PERFORMED` requires resolvable records;
+`NOT_APPLICABLE` or `SKIPPED` requires none.
 
 ## Route
 
@@ -96,6 +134,10 @@ It is a compact audit trail, not a claim that the answer is correct.
 | Withheld item | Reason | Could change conclusion? | Re-entry condition |
 | --- | --- | --- | --- |
 |  |  |  |  |
+
+For memory, Selected material is limited to `CURRENT` + `AUTHORIZED` records.
+List a `SUPERSEDED` version only in Withheld material with its lineage link; do
+not treat preservation as current influence.
 
 ## Output boundary
 

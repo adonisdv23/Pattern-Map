@@ -4,27 +4,33 @@
   "evidence_selection": "NEEDED",
   "consequence": "HIGH",
   "permission": {
-    "technical_access": true,
-    "authorized": false,
-    "disclosure_allowed": false
+    "technical_access": "AVAILABLE",
+    "state": "NOT_AUTHORIZED",
+    "scope": "No acquisition, transformation, retention, or disclosure is authorized.",
+    "reason_code": "PERMISSION_ABSENT",
+    "reason": "The named authority did not authorize this operation.",
+    "resume_condition": "Resume only after the named authority records purpose-limited authorization."
   },
   "budget": {
     "remaining_minutes": 15,
     "limit_minutes": 15
   },
-  "baseline": {
-    "present": false,
-    "motion_repeated": false,
-    "absence_expected": false
+  "evidence_records": [],
+  "baseline_records": [],
+  "comparison_records": [],
+  "comparison_disposition": {
+    "status": "NOT_APPLICABLE",
+    "reason": "Global permission is absent, so no material may be compared."
   },
-  "comparison": {
-    "done": false,
-    "unit": "NOT_STARTED",
-    "origin_state": "UNKNOWN"
+  "disconfirmation_records": [],
+  "disconfirmation_disposition": {
+    "status": "SKIPPED",
+    "reason": "Global permission is absent, so no material may be inspected."
   },
-  "disconfirmation": {
-    "attempted": false,
-    "result": "blocked before acquisition"
+  "memory_records": [],
+  "memory_use": {
+    "status": "NOT_USED",
+    "record_ids": []
   },
   "influence": {
     "recorded": false,

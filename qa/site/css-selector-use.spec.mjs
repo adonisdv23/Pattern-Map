@@ -16,9 +16,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 const css = fs.readFileSync(path.join(ROOT, "site", "src", "site.css"), "utf8");
 const script = fs.readFileSync(path.join(ROOT, "site", "src", "site.js"), "utf8");
 const distDir = path.join(ROOT, "site", "dist");
+const publicDistDir = path.join(ROOT, "site", "public-dist");
 const standalonePath = path.join(ROOT, "site", "exports", "standalone", "pattern-map-v16.html");
+const publicStandalonePath = path.join(ROOT, "site", "exports", "standalone", "pattern-map-v16-public.html");
 
 assert.ok(fs.existsSync(distDir), "run `npm run build` in site/ before this check");
+assert.ok(fs.existsSync(publicDistDir), "run `npm run build` in site/ before this check");
 
 const htmlFiles = [];
 const walk = (directory) => {
@@ -29,7 +32,9 @@ const walk = (directory) => {
   }
 };
 walk(distDir);
+walk(publicDistDir);
 if (fs.existsSync(standalonePath)) htmlFiles.push(standalonePath);
+if (fs.existsSync(publicStandalonePath)) htmlFiles.push(publicStandalonePath);
 assert.ok(htmlFiles.length > 0, "no generated pages found to check stylesheet selectors");
 
 const renderedClasses = new Set();

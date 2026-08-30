@@ -28,6 +28,33 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` is the
+  convergence record for the applied, public-presentation, current-research,
+  portable-transfer, and regenerated-PDF lanes. It distinguishes the passing
+  exact-source and Claude checkpoints from the post-manifest clean-clone,
+  remote, sealed-ZIP, publication-time, and physical/manual gates. Later
+  self-hash and packet observations are delivered externally to avoid a
+  self-referential resealing loop.
+- `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`
+  preserves the read-only Claude Opus review of exact `fb7d808`, including the
+  sealing findings that were accepted, revised, deferred, or rejected. It is
+  advisory model feedback, not a participant, study, or effectiveness result.
+- `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md`
+  preserves Claude Opus's detached, read-only exact-tip recheck. It reproduced
+  the 14-test portable pass, found no new conceptual or transfer defect, and
+  isolated the stale owner manifest as the one remaining pre-seal gate. The
+  review does not replace the final manifest or clean-clone checks.
+- `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` records the
+  terminal ordinary path, typed permission, linked comparison/disconfirmation,
+  real-instant motion, and accepted current-memory fixture boundaries. These
+  are structural/procedural checks, not live-agent or effectiveness evidence.
+- `qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md` and
+  `qa/site/public-mode-contract.spec.mjs` record shared-source review/public
+  parity, prose-first viewports, the deterministic teaching reveal, Stage 0
+  applicability, fail-closed release metadata, and honest manual residuals.
+- `qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md` and
+  `qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md` constrain current
+  claims and the unrun narrow-wedge designs without selecting a study.
 - `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` records the
   independent `d5b3431` source/packet review, claim-by-claim dispositions,
   accepted `c86e537` framework and portability corrections, focused checks,
@@ -42,7 +69,9 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 - `qa/handoff/test_portable_bundle.py` verifies exact-commit bundle
   determinism, the complete START_HERE contract, manifest path/byte/hash
   records, embedded verification, whole-ZIP sidecar, all-payload marker safety,
-  optional local-input behavior in a fresh clone, and overwrite refusal.
+  optional local-input behavior in a fresh clone, explicit operating-input
+  selection, exhaustive classification of retained out-of-packet Markdown
+  links, and overwrite refusal.
 - `qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md` is the active
   claim-by-claim Claude-package adjudication and EP v1.1 implementation record.
   It preserves the no-results boundary, reports the real-tokenizer parity

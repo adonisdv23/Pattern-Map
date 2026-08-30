@@ -39,7 +39,14 @@ Withholding is not deletion. Provenance is not correctness. A selected item is
 allowed to influence this bounded output; it is not permanently trusted or
 authorized for external action. If permission to use an item has not been
 established, preserve `UNKNOWN` until an authorized person or policy resolves
-its use.
+its use. A selected memory item must also be `CURRENT`; retain a `SUPERSEDED`
+version only as withheld history.
+
+This withheld-material table assumes the top-level operation is authorized and
+individual items have different states. In the current single-global-permission
+receipt, top-level `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED` leaves both
+Selected and Withheld empty; it does not disclose blocked material to explain
+why it was blocked.
 
 ## Output boundary
 
