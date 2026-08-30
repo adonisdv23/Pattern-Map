@@ -37,12 +37,12 @@ operating checkpoint contains the converged applied contracts; resolve the
 current head before use so later reviewed corrections are also present:
 
 ```text
-branch:  codex/pattern-map-v16-public-transfer-hardening
+branch:  codex/pattern-map-v16-final-convergence
 human manuscript/content interface: 874a0a8e09f0bde11532cf873087865addb7d973
 minimum integrated operating contract: cbc89db45493fd1dcfd121af0d1da1393046a196
 head:    resolve with Git; sealed packet head is BUNDLE_METADATA.json.source_commit
-PR:      https://github.com/adonisdv23/Pattern-Map/pull/2
-state:   last observed open/draft/unmerged at 2026-08-30T06:53:26Z; resolve current state at use
+PR:      https://github.com/adonisdv23/Pattern-Map/pull/3
+state:   last observed open/draft/unmerged at 2026-08-30T11:05:25Z; resolve current state at use
 ```
 
 The immediate predecessor before terminal geometry, vocabulary, portability,
@@ -365,7 +365,7 @@ summary below is the current resolution.
 
 | Claude item | What it meant | Current resolution |
 | --- | --- | --- |
-| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: human-content lineage is fixed at `874a0a8`, the minimum operating contract is `cbc89db`, and current public/transfer hardening is on `codex/pattern-map-v16-public-transfer-hardening`. Resolve the current branch head from Git. Authorized pushes and time-qualified remote PR readbacks are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
+| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: human-content lineage is fixed at `874a0a8`, the minimum operating contract is `cbc89db`, and current owner-review convergence is on `codex/pattern-map-v16-final-convergence`. Resolve the current branch head from Git. Authorized pushes and time-qualified remote PR readbacks are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
 | **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`. Use the current branch or sealed packet source for the route; `874a0a8` is only its human-content lineage checkpoint, while `cbc89db` is the minimum integrated operating checkpoint. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
 | **Decide if the evidence rule bites too hard** | Claude tightened guards around unreachable CSS, false file extensions, exact checkpoints, and planning-versus-event language. | The strictness is now the canonical safety posture recorded in the locked intent, D-025, the acceptance matrix, and the current QA. No new owner decision is needed to consume v16. If an owner later wants a guard relaxed, record an explicit decision and revise the affected contract; do not silently weaken it. |
 

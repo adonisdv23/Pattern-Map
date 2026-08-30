@@ -4,8 +4,9 @@ Status date: 2026-08-30
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
+| Current final owner-review convergence | `codex/pattern-map-v16-final-convergence` | Exact current source resolves from Git or sealed packet metadata; first pushed exact-review checkpoint `6a61f6d` | Authorized push target; draft PR #3 was observed open, draft, clean, and unmerged at `2026-08-30T11:05:25Z`; resolve current state at use |
 | Foundation owner-review history | `codex/pattern-map-v16-foundation` | `874a0a8` fixed human manuscript/content-interface checkpoint; `c86e537` post-Ultracode contract source; current foundation head resolves from Git | Authorized historical push target; draft PR #1 was open, draft, and unmerged at the 2026-08-28 readback; do not use `874a0a8` as the current operating checkout |
-| Current owner-review orchestration and public/transfer hardening | `codex/pattern-map-v16-public-transfer-hardening` | Phase 0 baseline `37c7c85`; minimum integrated operating contract `cbc89db`; corrections through at least `c0b006f`; exact current source resolves from Git or sealed packet metadata | Authorized push target; draft PR #2 was last observed open, draft, clean, and unmerged; resolve current state at use |
+| Predecessor public/transfer hardening | `codex/pattern-map-v16-public-transfer-hardening` | Phase 0 baseline `37c7c85`; minimum integrated operating contract `cbc89db`; corrections through at least `c0b006f`; exact predecessor source resolves from Git | Authorized historical push target; draft PR #2 was last observed open, draft, clean, and unmerged; do not substitute it for the final-convergence branch |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | EP v1.1 design checkpoint | `codex/pattern-map-v16-echo-v1-1` | `c141eac` | Integrated into foundation as `9fa2355`; local source branch not required by the downstream handoff |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
@@ -14,7 +15,18 @@ Status date: 2026-08-30
 | Authored site and interaction polish | `codex/pattern-map-v16-site-polish` | `85dff94` | Pushed; integrated into foundation |
 | Protected destination | `main` | `5eea238` at orchestration start | Not merged or modified by this work |
 
-Current hardening draft pull request: [#2 — Pattern Map v16 — public and transfer hardening](https://github.com/adonisdv23/Pattern-Map/pull/2)
+Current final-convergence draft pull request: [#3 — Pattern Map v16 — final owner-review convergence](https://github.com/adonisdv23/Pattern-Map/pull/3)
+
+- Base branch: `main`.
+- Head branch: `codex/pattern-map-v16-final-convergence`.
+- First pushed exact-review checkpoint:
+  `6a61f6da9b2c1f0255dd5d8a15e596c88b031f36`.
+- State observed at `2026-08-30T11:05:25Z`: open, draft, clean, and unmerged,
+  with remote head `6a61f6da9b2c1f0255dd5d8a15e596c88b031f36`. Resolve its
+  current head and review state at use; generated packet metadata binds a
+  later exact sealed source without forcing this narrative to hash itself.
+
+Predecessor hardening draft pull request: [#2 — Pattern Map v16 — public and transfer hardening](https://github.com/adonisdv23/Pattern-Map/pull/2)
 
 - Base branch: `codex/pattern-map-v16-foundation` at
   `4d2e11ceb26b36fd7428dc7de963c135802a8dea` when opened.
@@ -49,7 +61,7 @@ Foundation draft pull request: [#1 — Pattern Map v16 — canonical owner-revie
   current remote head and state at use rather than treating this tracked file
   as self-referential proof of a later push.
 
-Both draft PRs track their named head branches. The canonical foundation
+All three draft PRs track their named head branches. The canonical foundation
 source checkpoint above includes
 the bounded ChatGPT Pro corrections, site hygiene, Signal handoff, EP v1.1,
 the owner visual/export repair that restores standalone route containment,

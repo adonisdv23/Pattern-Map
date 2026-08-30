@@ -249,8 +249,8 @@ used, why it mattered, what remains unknown, and who can correct the route. It
 can retain the original observations and a versioned decision without turning
 the record into an end in itself.
 
-For consequential, contested, or repeated work, an advanced implementation
-might use software to track baselines, permissions, source relationships,
+For consequential, contested, or repeated work, software might help track
+baselines, permissions, source relationships,
 costs, and outcomes over time. That is an implementation choice, not a
 mandatory architecture, and naming a service the “Discrimination Layer” would
 not establish that it works.

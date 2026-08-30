@@ -14,7 +14,10 @@ const ordinaryTemplate = read("framework/templates/ORDINARY_RECORD.md");
 const quickstart = read("framework/agent-playbook/QUICKSTART.md");
 const implementationChoices = read("framework/IMPLEMENTATION_CHOICES.md");
 const applyHtml = read("site/public-dist/apply/index.html");
+const guidedHtml = read("site/public-dist/guided/index.html");
 const siteScript = read("site/src/site.js");
+const pdfSource = read("site/scripts/generate_review_pdf.py");
+const manuscript = read("manuscript/PATTERN_RECOGNITION_V16.md");
 
 for (const phrase of ["Supplied scope", "Material assumptions", "Unchecked boundaries", "Output"]) {
   assert.match(ordinaryTemplate, new RegExp(`- ${phrase}:`));
@@ -23,6 +26,13 @@ for (const phrase of ["Supplied scope", "Material assumptions", "Unchecked bound
 assert.match(ordinaryTemplate, /terminal; it is not an ANSWER, route, stop,\s*learning, or influence receipt/);
 assert.match(ordinaryTemplate, /Do not add layered evidence, outcome, or\s*six-family fields/);
 assert.match(quickstart, /use the ordinary path[\s\S]*supplied scope[\s\S]*material assumptions[\s\S]*unchecked boundaries[\s\S]*output[\s\S]*stop/i);
+for (const [label, artifact] of [["Apply", applyHtml], ["Guided", guidedHtml], ["PDF source", pdfSource]]) {
+  assert.match(artifact, /material claim judgment[\s\S]*comparison[\s\S]*selection or withholding[\s\S]*permission resolution[\s\S]*memory reuse[\s\S]*acquisition[\s\S]*human action gate[\s\S]*consequential external influence/i, `${label} lost the complete Stage 0 disqualifier`);
+}
+assert.doesNotMatch(guidedHtml, /If the work only formats, translates, rewrites, summarizes, or transforms supplied material, use the ordinary path/);
+assert.doesNotMatch(pdfSource, /weighing information beyond supplied material/);
+assert.match(manuscript, /For consequential, contested, or repeated work, software might help track/);
+assert.doesNotMatch(manuscript, /For consequential, contested, or repeated work, an advanced implementation/);
 
 const ordinary = api.recommend({ evidenceSelection: "none" });
 assert.equal(ordinary.recommendedAction, "ORDINARY_RECORD");
@@ -37,6 +47,16 @@ for (const field of ["route", "stop_status", "learning_status", "evidence_record
     `ordinary API accepted undeclared ${field}`,
   );
 }
+const hiddenExtra = { evidenceSelection: "none" };
+Object.defineProperty(hiddenExtra, "route", { value: "ANSWER", enumerable: false });
+assert.throws(() => api.recommend(hiddenExtra), /exact declared fields/, "ordinary API accepted a non-enumerable extra field");
+const symbolExtra = { evidenceSelection: "none", [Symbol("route")]: "ANSWER" };
+assert.throws(() => api.recommend(symbolExtra), /exact declared fields/, "ordinary API accepted a symbol extra field");
+const inheritedExtra = Object.assign(Object.create({ route: "ANSWER" }), { evidenceSelection: "none" });
+assert.throws(() => api.recommend(inheritedExtra), /exact declared fields/, "ordinary API accepted inherited fields");
+const accessorInput = {};
+Object.defineProperty(accessorInput, "evidenceSelection", { enumerable: true, get: () => "none" });
+assert.throws(() => api.recommend(accessorInput), /Invalid evidenceSelection/, "ordinary API accepted an accessor-shaped declared field");
 
 for (const state of ["AUTHORIZED", "UNKNOWN", "NOT_AUTHORIZED", "REVOKED"]) {
   assert.match(quickstart, new RegExp(`\\b${state}\\b`));

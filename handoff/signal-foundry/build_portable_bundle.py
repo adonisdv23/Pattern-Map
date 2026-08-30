@@ -33,10 +33,10 @@ import zipfile
 PACKAGE_NAME = "pattern-map-v16-signal-foundry-portable"
 PACKAGE_PREFIX = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE"
 SOURCE_REPOSITORY = "https://github.com/adonisdv23/Pattern-Map"
-SOURCE_BRANCH_HINT = "codex/pattern-map-v16-public-transfer-hardening"
-DRAFT_PR = "https://github.com/adonisdv23/Pattern-Map/pull/2"
+SOURCE_BRANCH_HINT = "codex/pattern-map-v16-final-convergence"
+DRAFT_PR = "https://github.com/adonisdv23/Pattern-Map/pull/3"
 DRAFT_PR_STATE_OBSERVED = "open / draft / unmerged"
-DRAFT_PR_STATE_OBSERVED_AT = "2026-08-30T06:53:26Z"
+DRAFT_PR_STATE_OBSERVED_AT = "2026-08-30T11:05:25Z"
 DRAFT_PR_STATE_RESOLUTION = "resolve current state at use"
 DRAFT_PR_STATE_SUMMARY = (
     f"{DRAFT_PR_STATE_OBSERVED}; observed at {DRAFT_PR_STATE_OBSERVED_AT}; "

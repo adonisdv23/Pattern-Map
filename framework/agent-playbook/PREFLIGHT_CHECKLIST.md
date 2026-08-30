@@ -7,8 +7,8 @@ reason. An `UNKNOWN` required field is not a silent pass.
 
 Ordinary is valid only for a reversible transformation of user-supplied
 material that requires no material claim judgment, comparison, selection or
-withholding, permission resolution, memory reuse, new acquisition, or
-externally consequential influence. Only that task bypasses this layered
+withholding, permission resolution, memory reuse, new acquisition, externally
+consequential influence, or a separate human action gate. Only that task bypasses this layered
 preflight. The four-field ordinary record is terminal; it is not an ANSWER,
 route, stop, learning, or influence receipt. Stage 0 grants no external-action
 authority; externally consequential action remains with an explicitly

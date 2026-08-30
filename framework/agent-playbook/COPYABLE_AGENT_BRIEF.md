@@ -17,13 +17,14 @@ and actions separate.
 0. STAGE 0 — EVIDENCE-SELECTION GATE
    Ask: Does this task require any material claim judgment, comparison,
    selection or withholding, permission resolution, memory reuse, new
-   acquisition, or externally consequential influence, rather than only a
+   acquisition, externally consequential influence, or a separate human
+   action gate, rather than only a
    reversible transformation of user-supplied material?
 
    Ordinary is valid only for a reversible transformation of user-supplied
    material that requires no material claim judgment, comparison, selection or
-   withholding, permission resolution, memory reuse, new acquisition, or
-   externally consequential influence.
+   withholding, permission resolution, memory reuse, new acquisition,
+   externally consequential influence, or a separate human action gate.
 
    If NO, perform only the reversible supplied-material transformation and
    return:

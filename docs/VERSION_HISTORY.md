@@ -72,6 +72,14 @@ manifest and clean-clone gate were completed. This is independent sealing
 evidence, not a new version, reader result, publication, or effectiveness
 claim.
 
+The exact-`6a61f6d` recheck and D-040 corrections remain v16. They make the
+ordinary/layered boundary identical across Guided, implementation cards,
+Apply, and the PDF; positively classify public IPv6 release hosts; harden the
+plain-record API against hidden or inherited fields; preserve one Advanced
+rule; and correct the PDF producer checkpoint through a non-self-referential
+two-commit sequence. They do not change the human
+thesis, six families, Echo split, research ceiling, or manual gates.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

@@ -9,14 +9,14 @@ reviewer see what it did.
 
 Ask one question before opening the playbook: **Does this task require any
 material claim judgment, comparison, selection or withholding, permission
-resolution, memory reuse, new acquisition, or externally consequential
-influence, rather than only a reversible transformation of user-supplied
-material?**
+resolution, memory reuse, new acquisition, externally consequential influence,
+or a separate human action gate, rather than only a reversible transformation
+of user-supplied material?**
 
 Ordinary is valid only for a reversible transformation of user-supplied
 material that requires no material claim judgment, comparison, selection or
-withholding, permission resolution, memory reuse, new acquisition, or
-externally consequential influence.
+withholding, permission resolution, memory reuse, new acquisition, externally
+consequential influence, or a separate human action gate.
 
 - **No:** use the ordinary path. Perform the reversible transformation, keep
   only the supplied scope, material assumptions, unchecked boundaries, and

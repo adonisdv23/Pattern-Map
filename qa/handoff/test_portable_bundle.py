@@ -267,12 +267,8 @@ class PortableBundleTests(unittest.TestCase):
         self.assertEqual(manifest["manifest_self_exclusion"], "BUNDLE_MANIFEST.json is excluded from its own files list because self-hashing is circular.")
         self.assertEqual(metadata["source_commit"], git_head())
         self.assertEqual(manifest["source_commit"], git_head())
-        self.assertEqual(
-            metadata["source_branch"], "codex/pattern-map-v16-public-transfer-hardening"
-        )
-        self.assertEqual(
-            manifest["source_branch"], "codex/pattern-map-v16-public-transfer-hardening"
-        )
+        self.assertEqual(metadata["source_branch"], builder.SOURCE_BRANCH_HINT)
+        self.assertEqual(manifest["source_branch"], builder.SOURCE_BRANCH_HINT)
         containment = metadata["source_branch_containment"]
         self.assertEqual(
             set(containment),
@@ -288,8 +284,8 @@ class PortableBundleTests(unittest.TestCase):
         self.assertIn(
             containment["verified_ref"],
             {
-                "refs/heads/codex/pattern-map-v16-public-transfer-hardening",
-                "refs/remotes/origin/codex/pattern-map-v16-public-transfer-hardening",
+                f"refs/heads/{builder.SOURCE_BRANCH_HINT}",
+                f"refs/remotes/origin/{builder.SOURCE_BRANCH_HINT}",
             },
         )
         self.assertRegex(containment["verified_ref_tip"], r"^[0-9a-f]{40}$")

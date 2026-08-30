@@ -78,6 +78,33 @@ for (const field of [
   );
 }
 
+const hiddenExtra = { evidenceSelection: "none" };
+Object.defineProperty(hiddenExtra, "route", { value: "ANSWER", enumerable: false });
+assert.throws(
+  () => api.recommend(hiddenExtra),
+  /exact declared fields/,
+  "ordinary input accepted a non-enumerable extra field",
+);
+const symbolExtra = { evidenceSelection: "none", [Symbol("route")]: "ANSWER" };
+assert.throws(
+  () => api.recommend(symbolExtra),
+  /exact declared fields/,
+  "ordinary input accepted a symbol extra field",
+);
+const inheritedExtra = Object.assign(Object.create({ route: "ANSWER" }), { evidenceSelection: "none" });
+assert.throws(
+  () => api.recommend(inheritedExtra),
+  /exact declared fields/,
+  "ordinary input accepted inherited fields",
+);
+const accessorInput = {};
+Object.defineProperty(accessorInput, "evidenceSelection", { enumerable: true, get: () => "none" });
+assert.throws(
+  () => api.recommend(accessorInput),
+  /Invalid evidenceSelection/,
+  "ordinary input accepted an accessor-shaped declared field",
+);
+
 const choices = {
   consequence: ["reversible", "consequential"],
   uncertainty: ["low", "mixed", "high"],

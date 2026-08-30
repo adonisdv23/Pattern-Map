@@ -21,12 +21,12 @@ Then inspect the two repositories at their exact stated checkpoints:
 ```text
 Pattern Map:
   https://github.com/adonisdv23/Pattern-Map
-  codex/pattern-map-v16-public-transfer-hardening
+  codex/pattern-map-v16-final-convergence
   human manuscript/content-interface checkpoint @ 874a0a8e09f0bde11532cf873087865addb7d973
   minimum integrated operating-contract checkpoint @ cbc89db45493fd1dcfd121af0d1da1393046a196
   current head: resolve with Git; sealed packet head: BUNDLE_METADATA.json.source_commit
-  draft review: https://github.com/adonisdv23/Pattern-Map/pull/2
-  review state: last observed open/draft/unmerged at 2026-08-30T06:53:26Z; resolve current state at use
+  draft review: https://github.com/adonisdv23/Pattern-Map/pull/3
+  review state: last observed open/draft/unmerged at 2026-08-30T11:05:25Z; resolve current state at use
   audited predecessors @ d4b7b9e481165b3f692986cdda1b8a0da8b4388b / c88926034cd75773dcc42d3842983c879dda5b58 / ad964dd91eff521b0442f613c55bc4e9e97c2f2a
 
 Signal Foundry:
@@ -344,7 +344,7 @@ Read these first, in order:
 Use the exact audited source identities below, then re-resolve Git:
 
 - Pattern Map v16 is the broad human-first Pattern Recognition / Discrimination
-  Layer project at branch codex/pattern-map-v16-public-transfer-hardening. Its
+  Layer project at branch codex/pattern-map-v16-final-convergence. Its
   fixed human manuscript/content-interface checkpoint is
   874a0a8e09f0bde11532cf873087865addb7d973; do not use that older commit as an
   operating checkout. The minimum integrated operating-contract checkpoint is
@@ -436,11 +436,11 @@ checklist, not an authorization receipt or a product result.
   "product_name": "Signal Foundry",
   "pattern_map": {
     "repository": "https://github.com/adonisdv23/Pattern-Map",
-    "branch": "codex/pattern-map-v16-public-transfer-hardening",
+    "branch": "codex/pattern-map-v16-final-convergence",
     "head": null,
     "head_resolution": {
       "status": "resolve_at_use",
-      "git_command": "git rev-parse --verify refs/heads/codex/pattern-map-v16-public-transfer-hardening",
+      "git_command": "git rev-parse --verify refs/heads/codex/pattern-map-v16-final-convergence",
       "sealed_packet_field": "BUNDLE_METADATA.json.source_commit"
     },
     "human_manuscript_content_interface_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",
@@ -451,9 +451,9 @@ checklist, not an authorization receipt or a product result.
     "research_status": "unrun_no_results"
   },
   "draft_review": {
-    "url": "https://github.com/adonisdv23/Pattern-Map/pull/2",
+    "url": "https://github.com/adonisdv23/Pattern-Map/pull/3",
     "last_observed_state": "open_draft_unmerged",
-    "observed_at": "2026-08-30T06:53:26Z",
+    "observed_at": "2026-08-30T11:05:25Z",
     "resolution": "resolve_current_state_at_use"
   },
   "signal_foundry": {

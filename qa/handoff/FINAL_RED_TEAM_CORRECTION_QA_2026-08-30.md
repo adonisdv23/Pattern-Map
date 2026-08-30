@@ -39,7 +39,8 @@ accepted material finding before changing source.
    checking.
 7. **Cold-reader entrance.** Public mode begins with ordinary-language meaning;
    its Read door stands alone; Home and Guided no longer repeat the same
-   release example. Review mode retains the mentor-continuation context.
+   release example adjacently within their respective routed compositions.
+   Review mode retains the mentor-continuation context.
 8. **F2 public language.** The stable question is now: “For this claim, what
    can each source actually tell us—and how did the information reach us?” Its
    purpose supplies the boundary instead of repeating the question.

@@ -12,13 +12,14 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
 CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
-OWNER_REVIEW_PDF_CHECKPOINT = "72a672c5172ff5212e29f01ba2277dd49cc6ea98"
+OWNER_REVIEW_PDF_CHECKPOINT = "PENDING_SOURCE_COMMIT"
 PHASE_0_BASELINE = "37c7c852ff406431454346eacc694ac04c5f57a5"
 LANE_HEADS = {
     "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
@@ -155,6 +156,7 @@ REQUIRED_PATHS = [
     "qa/editorial/MANUSCRIPT_QA_REPORT.md",
     "qa/editorial/validate_content_interface.py",
     "qa/editorial/advisory/FINAL_INTENT_READER_REDTEAM_2026-08-30_d40ca61.md",
+    "qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_6a61f6d.md",
     "qa/applied/README.md",
     "qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md",
     "qa/applied/STAGE_ZERO_ORDINARY_CONTRACT_CONVERGENCE_QA_2026-08-30_0beee9a.md",
@@ -181,6 +183,7 @@ REQUIRED_PATHS = [
     "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
     "qa/research/test_research_claim_convergence.py",
     "qa/research/advisory/FINAL_RESEARCH_PROVENANCE_REDTEAM_2026-08-30_d40ca61.md",
+    "qa/research/advisory/FINAL_RESEARCH_PROVENANCE_RECHECK_2026-08-30_6a61f6d.md",
     "qa/site/SITE_QA_REPORT.md",
     "qa/site/SITE_POLISH_QA.md",
     "qa/site/audit_site.py",
@@ -192,6 +195,7 @@ REQUIRED_PATHS = [
     "qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md",
     "qa/site/public-mode-contract.spec.mjs",
     "qa/site/advisory/FINAL_APPLIED_SITE_REDTEAM_2026-08-30_d40ca61.md",
+    "qa/site/advisory/FINAL_APPLIED_SITE_RECHECK_2026-08-30_6a61f6d.md",
     "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md",
@@ -299,6 +303,14 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def assert_pdf_checkpoint_bound() -> None:
+    if not re.fullmatch(r"[0-9a-f]{40}", OWNER_REVIEW_PDF_CHECKPOINT):
+        raise AssertionError(
+            "owner-review PDF checkpoint is pending; commit regenerated PDF bytes, "
+            "then bind that exact producer commit before writing or verifying the manifest"
+        )
+
+
 def current_records() -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     for relative in sorted(REQUIRED_PATHS):
@@ -316,6 +328,7 @@ def current_records() -> list[dict[str, object]]:
 
 
 def write_manifest() -> None:
+    assert_pdf_checkpoint_bound()
     records = current_records()
     payload = {
         "schema_version": 2,
@@ -344,6 +357,7 @@ def write_manifest() -> None:
 
 
 def verify_manifest() -> None:
+    assert_pdf_checkpoint_bound()
     if not MANIFEST.is_file():
         raise FileNotFoundError(f"manifest missing: {MANIFEST.relative_to(ROOT)}")
     payload = json.loads(MANIFEST.read_text(encoding="utf-8"))

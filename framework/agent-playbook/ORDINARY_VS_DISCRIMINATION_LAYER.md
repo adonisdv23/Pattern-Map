@@ -4,7 +4,8 @@ The Discrimination Layer is not a mandate to turn every request into a
 protocol. Ordinary is valid only for a reversible transformation of
 user-supplied material that requires no material claim judgment, comparison,
 selection or withholding, permission resolution, memory reuse, new
-acquisition, or externally consequential influence. Low consequence by itself
+acquisition, externally consequential influence, or a separate human action
+gate. Low consequence by itself
 does not make a task ordinary.
 
 ## Side-by-side behavior
@@ -29,8 +30,8 @@ every word and its order.”
 
 Ordinary path is appropriate. The wrapper is reversible; all supplied content
 passes through without material claim judgment, comparison, selection or
-withholding, permission resolution, memory reuse, new acquisition, or
-externally consequential influence. The receipt contains only:
+withholding, permission resolution, memory reuse, new acquisition, externally
+consequential influence, or a separate human action gate. The receipt contains only:
 
 - supplied scope: wrap the attached meeting note in a Markdown blockquote;
 - assumptions: removing the markers recovers the complete supplied note;
@@ -40,8 +41,9 @@ externally consequential influence. The receipt contains only:
 
 It has no evidence, route, stop, outcome, learning, or six-family fields. If a
 material claim judgment, comparison, selection or withholding, permission
-resolution, memory reuse, new acquisition, or externally consequential
-influence becomes material, the task no longer qualifies as ordinary.
+resolution, memory reuse, new acquisition, externally consequential influence,
+or a separate human action gate becomes material, the task no
+longer qualifies as ordinary.
 
 Adding a full graph or research packet here would be over-discrimination.
 

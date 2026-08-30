@@ -9,13 +9,14 @@ publish, deploy, or act externally.
 
 Before choosing a level, ask: **Does the task require any material claim
 judgment, comparison, selection or withholding, permission resolution, memory
-reuse, new acquisition, or externally consequential influence, rather than
-only a reversible transformation of user-supplied material?**
+reuse, new acquisition, externally consequential influence, or a separate
+human action gate, rather than only a reversible transformation of
+user-supplied material?**
 
 Ordinary is valid only for a reversible transformation of user-supplied
 material that requires no material claim judgment, comparison, selection or
-withholding, permission resolution, memory reuse, new acquisition, or
-externally consequential influence.
+withholding, permission resolution, memory reuse, new acquisition, externally
+consequential influence, or a separate human action gate.
 
 - If no, use the ordinary path: perform the reversible supplied-material
   transformation, save only the supplied scope, material assumptions,

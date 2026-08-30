@@ -4,7 +4,7 @@ export const REQUIRED_RELEASE_FIELDS = ["author_name", "canonical_url", "social_
 
 const RESERVED_DOMAIN_SUFFIXES = [
   ".localhost", ".local", ".test", ".invalid", ".example",
-  ".internal", ".home.arpa",
+  ".internal", ".localdomain", ".home.arpa",
 ];
 const RESERVED_EXAMPLE_DOMAINS = new Set(["example.com", "example.net", "example.org"]);
 
@@ -25,6 +25,39 @@ const isPublicIpv4 = (hostname) => {
   return true;
 };
 
+const parseIpv6Hextets = (hostname) => {
+  if (!hostname.includes(":") || hostname.includes("%") || /[^0-9a-f:]/i.test(hostname)) return null;
+  if ((hostname.match(/::/g) ?? []).length > 1) return null;
+
+  const compressed = hostname.includes("::");
+  const [leftRaw, rightRaw = ""] = hostname.split("::");
+  const left = leftRaw ? leftRaw.split(":") : [];
+  const right = rightRaw ? rightRaw.split(":") : [];
+  if ([...left, ...right].some((part) => !/^[0-9a-f]{1,4}$/i.test(part))) return null;
+
+  const explicitCount = left.length + right.length;
+  if ((!compressed && explicitCount !== 8) || (compressed && explicitCount >= 8)) return null;
+  const zeroCount = compressed ? 8 - explicitCount : 0;
+  return [...left, ...Array(zeroCount).fill("0"), ...right].map((part) => Number.parseInt(part, 16));
+};
+
+const isPublicIpv6 = (hostname) => {
+  const hextets = parseIpv6Hextets(hostname);
+  if (!hextets) return false;
+  const [first, second] = hextets;
+
+  // Accept only positively identified global-unicast space (2000::/3), then
+  // fail closed for IETF special-purpose and documentation allocations that
+  // sit inside that broad range. Reachability still requires a release-time
+  // check; this gate only prevents an obviously non-public destination.
+  if ((first & 0xe000) !== 0x2000) return false;
+  if (first === 0x2001 && second <= 0x01ff) return false; // 2001::/23
+  if (first === 0x2001 && second === 0x0db8) return false; // documentation
+  if (first === 0x2002) return false; // deprecated 6to4
+  if (first === 0x3fff && second <= 0x0fff) return false; // documentation
+  return true;
+};
+
 export const isPublicReleaseHost = (value) => {
   if (typeof value !== "string" || !value) return false;
   const hostname = value.toLowerCase().replace(/^\[|\]$/g, "").replace(/\.$/, "");
@@ -34,15 +67,7 @@ export const isPublicReleaseHost = (value) => {
   if (ipv4 !== null) return ipv4;
 
   if (hostname.includes(":")) {
-    if (hostname === "::" || hostname === "::1" || hostname.startsWith("::ffff:")) return false;
-    const first = hostname.split(":").find(Boolean) ?? "0";
-    const firstValue = Number.parseInt(first, 16);
-    if (!Number.isFinite(firstValue)) return false;
-    if ((firstValue & 0xfe00) === 0xfc00) return false;
-    if ((firstValue & 0xffc0) === 0xfe80) return false;
-    if ((firstValue & 0xff00) === 0xff00) return false;
-    if (hostname.startsWith("2001:db8:")) return false;
-    return true;
+    return isPublicIpv6(hostname);
   }
 
   if (!hostname.includes(".") || hostname.split(".").some((label) => !label)) return false;

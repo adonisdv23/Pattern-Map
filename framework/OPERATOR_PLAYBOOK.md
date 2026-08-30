@@ -9,8 +9,8 @@ with a notebook, Markdown files, a spreadsheet, or software.
 First apply Stage 0. Ordinary is valid only for a reversible transformation of
 user-supplied material that requires no material claim judgment, comparison,
 selection or withholding, permission resolution, memory reuse, new
-acquisition, or externally consequential influence. That path returns only its
-four-field terminal record; it is not an `ANSWER` route or an influence
+acquisition, externally consequential influence, or a separate human action
+gate. That path returns only its four-field terminal record; it is not an `ANSWER` route or an influence
 receipt.
 
 For every other task, ask four questions to choose the smallest layered route:

@@ -21,7 +21,7 @@
     permissionState: "NOT_APPLICABLE",
     humanActionGate: "NOT_APPLICABLE",
     capacityFit: "NOT_APPLICABLE",
-    requiredGate: "Use Stage 0 only when the supplied-material transformation is already permitted and needs no permission decision, evidence judgment, memory reuse, human action gate, or external influence.",
+    requiredGate: "Use Stage 0 only when the supplied-material transformation is already permitted, reversible, and needs no material claim judgment, comparison, selection or withholding, permission resolution, memory reuse, acquisition, human action gate, or consequential external influence.",
     plannedStopCondition: "Return only the supplied scope, material assumptions, unchecked boundaries, and output; then stop.",
     learningOption: "LEARNING_NOT_APPLICABLE — this ordinary record creates no route, stop event, outcome, or learning event.",
     title: "End ordinary work with four fields.",
@@ -55,21 +55,43 @@
     },
   };
 
+  const assertPlainJsonRecord = (input, label) => {
+    if (!input || typeof input !== "object" || Array.isArray(input)) {
+      throw new TypeError(`${label} input must use the exact declared fields (plain JSON object required).`);
+    }
+    const prototype = Object.getPrototypeOf(input);
+    if (prototype !== Object.prototype && prototype !== null) {
+      throw new TypeError(`${label} input must use the exact declared fields (inherited fields are not accepted).`);
+    }
+  };
+
   const assertEvidenceSelection = (input) => {
-    if (!input || !new Set(["none", "needed"]).has(input.evidenceSelection)) {
+    assertPlainJsonRecord(input, "Recommendation");
+    const descriptor = Object.getOwnPropertyDescriptor(input, "evidenceSelection");
+    if (!descriptor || !descriptor.enumerable || !("value" in descriptor)
+      || !new Set(["none", "needed"]).has(descriptor.value)) {
       throw new TypeError("Invalid evidenceSelection choice.");
     }
   };
 
   const assertExactInputKeys = (input, expectedKeys, label) => {
-    const suppliedKeys = Object.keys(input).sort();
+    assertPlainJsonRecord(input, label);
+    const ownKeys = Reflect.ownKeys(input);
+    const symbolKeys = ownKeys.filter((key) => typeof key === "symbol");
+    const suppliedKeys = ownKeys.filter((key) => typeof key === "string").sort();
     const expected = [...expectedKeys].sort();
     const unexpected = suppliedKeys.filter((key) => !expectedKeys.has(key));
     const missing = expected.filter((key) => !Object.prototype.hasOwnProperty.call(input, key));
-    if (unexpected.length || missing.length) {
+    const malformed = expected.filter((key) => {
+      const descriptor = Object.getOwnPropertyDescriptor(input, key);
+      return descriptor && (!descriptor.enumerable || !("value" in descriptor));
+    });
+    if (unexpected.length || missing.length || malformed.length || symbolKeys.length) {
       const details = [
         unexpected.length ? `unexpected: ${unexpected.join(", ")}` : "",
+        symbolKeys.length ? `unexpected symbols: ${symbolKeys.map((key) => key.description ?? "anonymous").join(", ")}` : "",
         missing.length ? `missing: ${missing.join(", ")}` : "",
+        malformed.length ? `non-enumerable or accessor fields: ${malformed.join(", ")}` : "",
       ].filter(Boolean).join("; ");
       throw new TypeError(`${label} input must use the exact declared fields (${details}).`);
     }

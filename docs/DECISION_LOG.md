@@ -1405,3 +1405,47 @@ current captures in `qa/visual/final-redteam/`.
 **Governing requirement:** A02/A06/A13; semantic HTML; stable direct links;
 standalone structural integrity; smallest coherent correction; automated
 evidence may not impersonate physical/manual approval.
+
+## D-040 — Close the last cross-artifact, public-host, strict-input, and PDF-provenance seams
+
+**Date:** 2026-08-30
+
+**Status:** Accepted; final seal follows exact-commit recheck
+
+Three read-only lanes independently rechecked exact checkpoint `6a61f6d`.
+The intent/reader lane found no P0/P1/P2. The applied/site and
+research/provenance lanes found a small final set that the integrator
+reproduced before accepting it.
+
+The ordinary route now uses the same complete Stage 0 predicate in Guided,
+implementation cards, Apply, and the PDF. Supplied material alone is never
+enough: material claim judgment, comparison, selection or withholding,
+permission resolution, memory reuse, acquisition, a human action gate, or
+consequential external influence each require a layered route. The exported
+recommendation API also rejects non-enumerable, symbol, accessor-shaped, and
+inherited deviations from its plain record contract.
+
+The publication gate accepts IPv6 only when it is positively classified as
+global unicast and rejects special-purpose/documentation space plus local
+domain suffixes. This remains a syntactic precondition, not proof that a host
+is reachable or authorized for publication. The human essay keeps its useful
+software-capability observation but no longer labels consequential,
+contested, or repeated work as formal Advanced; the canonical conjunction
+remains consequence + high uncertainty + substantial separately approved
+capacity.
+
+Finally, the current PDF's producer checkpoint is corrected from the
+historical `72a672c` value. Because the accepted Stage 0 wording changes page
+5 after `6a61f6d`, final provenance uses a two-commit sequence: commit the
+regenerated PDF first, then bind that exact producer in a successor before the
+owner manifest is generated. The manifest remains last, after sources,
+generated exports, reports, and dispositions stop moving.
+
+**Evidence:** three exact-`6a61f6d` reports; cross-artifact and hostile-input
+tests; public release-config tests; deterministic PDF comparison; owner
+manifest writer/verifier.
+
+**Governing requirement:** A06–A08/A11/A13–A17; exact provenance; one
+proportionality rule; fail-closed public release; model feedback advisory;
+no merge, deployment, publication, study, provider/model call, spend,
+outreach, or result claim.

@@ -7,7 +7,7 @@
     "SUPPLIED-001 identifies the complete input, and removing the blockquote markers recovers it exactly."
   ],
   "unchecked_boundaries": [
-    "No claim was judged; no comparison, selection or withholding, permission resolution, memory reuse, new acquisition, or external influence was performed."
+    "No claim was judged; no comparison, selection or withholding, permission resolution, memory reuse, new acquisition, or external influence was performed; no separate human action gate was required."
   ],
   "output": {
     "output_ref": "OUTPUT-001",

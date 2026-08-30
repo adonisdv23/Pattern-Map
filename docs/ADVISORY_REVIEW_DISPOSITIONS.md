@@ -402,3 +402,27 @@ or proof of effectiveness.
 
 No finding authorizes a merge, deployment, publication, study, provider/model
 call, spend, outreach, or claim that an unrun design produced a result.
+
+## Exact-`6a61f6d` terminal recheck dispositions — 2026-08-30
+
+Three independent read-only lanes rechecked exact clean checkpoint
+`6a61f6da9b2c1f0255dd5d8a15e596c88b031f36`. Their preserved reports remain
+advisory model evidence, not owner approval, human-reader or accessibility
+results, literature completeness, or proof of effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| IR-R2-01 | Say cross-route example repetition was eliminated completely | **Accepted with revision** | The supported correction is removal of adjacent repetition inside each routed composition | Convergence QA | Exact wording says “adjacently within their respective routed compositions” |
+| IR-R2-02 | Say claims checks “contain” claims | **Accepted** | “Constrain” names the evidence-ceiling function without implying the claims are housed there | Acceptance matrix A11 | Editorial exact-string recheck |
+| AS-R2-01 | Let supplied material automatically qualify a task as ordinary | **Rejected; full Stage 0 predicate accepted** | Supplied inputs may still require material judgment, permission, memory, acquisition, a human gate, or consequential influence | Guided, implementation choices, PDF, parity tests | Every disqualifier is visible; old shortcut phrases fail tests |
+| AS-R2-02 | Treat unlisted IPv6 and `localhost.localdomain` as public release destinations | **Rejected; positive global-unicast gate accepted** | Release metadata must fail closed for non-public/special hosts | Publication config and public tests | Special ranges rejected; known global-unicast control accepted; reachability remains publication-time work |
+| AS-R2-03 | Let repeated or contested work independently select formal Advanced | **Rejected; capability wording accepted** | Reuse can shape software capabilities but Advanced still requires consequence + high uncertainty + substantial approved capacity | Canonical essay and parity tests | Formal level label removed from the capability sentence |
+| AS-R2-04 | Call the JS input API exact while accepting non-enumerable, symbol, or inherited fields | **Rejected; plain-record contract accepted** | An exported fail-closed boundary must enforce its advertised shape | Recommender and hostile input tests | Plain prototype, `Reflect.ownKeys`, enumerated own data fields |
+| RP-R2-01 | Attribute current PDF bytes to `72a672c` | **Rejected; exact producer accepted with sequencing revision** | Byte integrity with false producer provenance is not a valid seal; the accepted Stage 0 copy correction changes the PDF after `6a61f6d` | Owner manifest writer/verifier | Commit regenerated PDF first; successor binds that exact producer; manifest generated after final source freeze |
+
+No item changes the locked thesis, six families, Echo split, research ceiling,
+or manual owner/accessibility/publication gates.
+
+The older PM-04 row remains immutable review history for the PDF bytes current
+at that checkpoint. RP-R2-01 supersedes its producer value for the newly
+regenerated companion; it does not rewrite the historical audit.

@@ -2,8 +2,8 @@
 
 Ordinary is valid only for a reversible transformation of user-supplied
 material that requires no material claim judgment, comparison, selection or
-withholding, permission resolution, memory reuse, new acquisition, or
-externally consequential influence. Complete that transformation, record the
+withholding, permission resolution, memory reuse, new acquisition, externally
+consequential influence, or a separate human action gate. Complete that transformation, record the
 four fields below, and stop.
 
 The four-field ordinary record is terminal; it is not an ANSWER, route, stop,

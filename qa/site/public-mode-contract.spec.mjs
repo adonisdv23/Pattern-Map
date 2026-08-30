@@ -62,6 +62,13 @@ const adversarialReleaseConfigs = [
   ["unspecified canonical", { ...validReleaseConfig, canonical_url: "https://0.0.0.0/pattern-map" }],
   ["private canonical", { ...validReleaseConfig, canonical_url: "https://192.168.1.10/pattern-map" }],
   ["IPv6 loopback canonical", { ...validReleaseConfig, canonical_url: "https://[::1]/pattern-map" }],
+  ["IPv6 former site-local canonical", { ...validReleaseConfig, canonical_url: "https://[fec0::1]/pattern-map" }],
+  ["IPv6 unallocated canonical", { ...validReleaseConfig, canonical_url: "https://[4000::1]/pattern-map" }],
+  ["IPv6 special-purpose canonical", { ...validReleaseConfig, canonical_url: "https://[100::1]/pattern-map" }],
+  ["IPv6 IETF special-purpose canonical", { ...validReleaseConfig, canonical_url: "https://[2001::1]/pattern-map" }],
+  ["IPv6 deprecated 6to4 canonical", { ...validReleaseConfig, canonical_url: "https://[2002::1]/pattern-map" }],
+  ["IPv6 documentation canonical", { ...validReleaseConfig, canonical_url: "https://[3fff::1]/pattern-map" }],
+  ["localhost localdomain canonical", { ...validReleaseConfig, canonical_url: "https://localhost.localdomain/pattern-map" }],
   ["reserved test canonical", { ...validReleaseConfig, canonical_url: "https://pattern-map.example.test/pattern-map" }],
   ["reserved example canonical", { ...validReleaseConfig, canonical_url: "https://example.org/pattern-map" }],
   ["localhost social image", { ...validReleaseConfig, social_image_url: "https://localhost/card.png" }],
@@ -77,7 +84,8 @@ assert.doesNotThrow(() => assertPublicationReleaseConfig(validReleaseConfig));
 assert.equal(publicationMetadataEnabled(validReleaseConfig, false), false, "release metadata was enabled without --release");
 assert.equal(publicationMetadataEnabled(validReleaseConfig, true), true, "valid release configuration did not enable metadata with --release");
 assert.equal(isPublicReleaseHost("pattern-map.release-candidate.dev"), true);
-for (const host of ["localhost", "internal", "127.0.0.1", "0.0.0.0", "192.168.1.10", "::1", "pattern-map.example.test", "example.org"]) {
+assert.equal(isPublicReleaseHost("2606:4700:4700::1111"), true, "known global-unicast IPv6 host was rejected");
+for (const host of ["localhost", "localhost.localdomain", "internal", "127.0.0.1", "0.0.0.0", "192.168.1.10", "::1", "fec0::1", "4000::1", "100::1", "2001::1", "2002::1", "3fff::1", "pattern-map.example.test", "example.org"]) {
   assert.equal(isPublicReleaseHost(host), false, `non-public host passed: ${host}`);
 }
 assert.equal(normalizedCanonicalBaseUrl("https://pattern-map.release-candidate.dev/projects/pattern-map///"), "https://pattern-map.release-candidate.dev/projects/pattern-map/");

@@ -527,12 +527,12 @@ def build_pdf() -> None:
         [
             kicker("04  /  Apply it"),
             p("First decide whether a workflow is needed at all.", "Headline"),
-            p("Stage 0 asks whether the task requires selecting, acquiring, comparing, preserving, or weighing information beyond supplied material. If not, use the ordinary path and stop. If yes, the local studio can recommend the smallest justified lightweight, moderate, or advanced plan. It does not run work or record an observed stop, outcome, learning review, or human decision.", "Body"),
+            p("Stage 0 asks whether the work is an already-permitted, reversible supplied-material transformation with no material claim judgment, comparison, selection or withholding, permission resolution, memory reuse, acquisition, human action gate, or consequential external influence. If any condition fails, use the smallest layered route. The local studio recommends a plan; it does not run work or record an observed stop, outcome, learning review, or human decision.", "Body"),
         ]
     )
     level_rows = [[p("LEVEL", "TableHead"), p("WHEN IT FITS", "TableHead"), p("OBSERVABLE OUTPUT", "TableHead")]]
     levels = [
-        ("Ordinary", "An already-permitted reversible transformation uses only supplied material and needs no layered decision.", "Supplied scope, material assumptions, unchecked boundaries, and output - then stop."),
+        ("Ordinary", "Every Stage 0 condition holds for an already-permitted, reversible supplied-material transformation.", "Supplied scope, material assumptions, unchecked boundaries, and output - then stop."),
         ("Lightweight", "One ambiguity or alternate comparison is worth a bounded pass.", "One alternate route, one challenge, a stated limit, and provisional wording if needed."),
         ("Moderate", "Consequential or high-uncertainty work that does not meet every Advanced condition needs explicit comparison.", "Evidence register, comparison, uncertainty, permission, and named human review."),
         ("Advanced", "Consequential work, high uncertainty, and substantial separately approved capacity are all present.", "Queryable records and repeatable review controls, only when their added cost is justified."),

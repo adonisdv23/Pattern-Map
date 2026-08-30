@@ -22,8 +22,8 @@ ROOT = Path(__file__).resolve().parents[2]
 ORDINARY_ELIGIBILITY_CONTRACT = (
     "Ordinary is valid only for a reversible transformation of user-supplied "
     "material that requires no material claim judgment, comparison, selection "
-    "or withholding, permission resolution, memory reuse, new acquisition, or "
-    "externally consequential influence."
+    "or withholding, permission resolution, memory reuse, new acquisition, "
+    "externally consequential influence, or a separate human action gate."
 )
 ORDINARY_TERMINAL_CONTRACT = (
     "The four-field ordinary record is terminal; it is not an ANSWER, route, "
@@ -103,6 +103,7 @@ def qa_ordinary_eligibility(case: dict[str, bool]) -> bool:
         "memory_reuse",
         "new_acquisition",
         "externally_consequential_influence",
+        "human_action_gate",
     }
     require(set(case) == expected and all(isinstance(value, bool) for value in case.values()),
             "Stage 0 QA case does not use the exact boolean contract")
@@ -114,6 +115,7 @@ def qa_ordinary_eligibility(case: dict[str, bool]) -> bool:
         "memory_reuse",
         "new_acquisition",
         "externally_consequential_influence",
+        "human_action_gate",
     )
     return (
         case["reversible"]
@@ -198,7 +200,7 @@ def validate_stage_zero_contract() -> None:
         "without changing, reordering, selecting, or omitting any supplied content",
         "no claim was judged",
         "no comparison, selection or withholding, permission resolution, memory reuse, "
-        "new acquisition, or external influence was performed",
+        "new acquisition, or external influence was performed; no separate human action gate was required",
     ):
         require(phrase in fixture_text,
                 f"ordinary fixture does not demonstrate the corrected boundary: {phrase}")
@@ -213,6 +215,7 @@ def validate_stage_zero_contract() -> None:
         "memory_reuse": False,
         "new_acquisition": False,
         "externally_consequential_influence": False,
+        "human_action_gate": False,
     }
     require(qa_ordinary_eligibility(ordinary_control),
             "Stage 0 QA rejected the exact reversible supplied-material control")
@@ -231,6 +234,7 @@ def validate_stage_zero_contract() -> None:
         "externally consequential influence": {
             "externally_consequential_influence": True,
         },
+        "separate human action gate": {"human_action_gate": True},
     }
     for label, mutation in disqualifying_mutations.items():
         case = ordinary_control | mutation
