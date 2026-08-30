@@ -107,6 +107,25 @@ and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233)
   Together they require dimension-specific outcomes, frozen evaluation
   boundaries, and cue-robust checks; no benchmark label is a Pattern Map
   effectiveness result.
+- **Supplemental opportunity scan — perspective, context, memory, provenance,
+  and stopping.** The bounded report
+  `qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md` records a second
+  targeted, non-exhaustive pass over 12 directly adjacent primary records,
+  with source-by-source status, findings, limits, and dispositions. The
+  compact route highlights [Open-World Evaluation for Retrieving Diverse
+  Perspectives](https://aclanthology.org/2025.naacl-long.431/) (perspective
+  coverage), [Context Length Alone Hurts LLM Performance Despite Perfect
+  Retrieval](https://aclanthology.org/2025.findings-emnlp.1264/) (context
+  burden), [EvoMemBench](https://arxiv.org/abs/2605.18421) (conditional memory
+  usefulness), [PROV-AGENT](https://arxiv.org/abs/2508.02866) (workflow
+  provenance), and [HALT](https://arxiv.org/abs/2608.02009) (evidence-coverage
+  stopping). The report also covers iterative counterevidence verification,
+  temporal validity, structured memory and outcome updates, and
+  perspective-sensitive source-diversity evaluation. These works constrain
+  component-level novelty and support the existing matched-budget, no-results,
+  and human-authority boundaries; they do not establish that more evidence,
+  more context, memory, provenance, or stopping improves decisions, nor do
+  they select a v16 study route.
 
 The component areas have substantial established and active prior work. The
 bounded contribution is an **authored, proportional, human-governed
