@@ -12,6 +12,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Source authority and lineage | `docs/SOURCE_AUTHORITY_AND_LINEAGE.md`, `docs/MIGRATION_INVENTORY.md` |
 | Acceptance and roadmap | `docs/V16_ACCEPTANCE_CRITERIA.md`, `docs/V16_ROADMAP.md` |
 | Public/transfer hardening contract | `docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md` |
+| Opportunity expansion and removal tests | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md` |
 | Decisions and advisory dispositions | `docs/DECISION_LOG.md`, `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Claim control | `docs/CLAIMS_AND_SOURCE_LEDGER_V16.md` |
 | Version status | `docs/VERSION_HISTORY.md` |
@@ -58,6 +59,16 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Preflight | `framework/agent-playbook/PREFLIGHT_CHECKLIST.md` |
 | Decision receipt | `framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md` |
 | Ordinary-versus-layered examples | `framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md` |
+| Optional project-use starter | `framework/agent-playbook/PROJECT_USE_STARTER.md` — internal repository-local wayfinding over the canonical bundle; not a portable or mandatory adoption layer |
+
+## Unpublished mentor and public-review rehearsal
+
+| Artifact | Path | Boundary |
+| --- | --- | --- |
+| Rehearsal-kit index | `publication/README.md` | Optional owner convenience; not a second essay, content authority, or release action |
+| Private mentor sequence | `publication/MENTOR_REVIEW_SEQUENCE_V16.md` | Unsent challenge/response path; no mentor contact or comprehension claim |
+| X copy variants | `publication/X_COPY_VARIANTS_V16.md` | Unsent copy rehearsal with no URL, handle, byline, image, or posting authority |
+| Release decision checklist | `publication/RELEASE_DECISION_CHECKLIST_V16.md` | Fail-closed human gate; current state remains HOLD / NOT AUTHORIZED |
 
 ## Local reader surface
 
@@ -75,6 +86,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Owner visual/export closeout | `qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md` | Traces the attached export failure to a real standalone-markup defect, records its structural repair, and verifies the flow-native recurrence visual, term-helper containment, and print-width safeguards |
 | Terminal finalization QA | `qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md`, `qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md` | Exact-baseline independent audits, accepted desktop term-panel correction, deferred focus/touch/taste items, package closeout, and honest synthetic-browser limits |
 | Public presentation QA | `qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md`, `qa/site/public-mode-contract.spec.mjs`, `qa/visual/public-mode/**` | Shared-source parity, prose-first viewports, deterministic reveal, Stage 0 applicability, responsive captures, and fail-closed release contract; physical/manual gates remain open |
+| Owner-reported principal-door correction | `qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md`, `qa/site/door-card-preview-contract.spec.mjs` | Reproduces and repairs unequal door footers, caption/arrow collisions, detached Map-preview traces, and the missed desktop/mobile geometry contract |
 | Final convergence site QA | `qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md` | Exact implementation checkpoint for doors-before-reveal, F2 role/authority language, strict Apply semantics, social-image alternative-text gate, live desktop/mobile geometry, and honest manual residuals |
 | Final site hygiene | `qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md`, `qa/visual/verify_image_formats.py` | Stale-selector removal, truthful current image signatures, immutable archive exceptions, and human-first standalone regression |
 | Prior Pro correction QA | `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md` | Round 1 exact review history; superseded for the current Apply matrix and term/mobile behavior |
@@ -108,6 +120,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Matched-budget protocol candidate | `research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md` |
 | Narrow-wedge decision memo | `research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md` |
 | Current adjacent-source and boundary QA | `qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md`, `qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md` |
+| Supplemental opportunity source scan | `qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md` — targeted, non-exhaustive primary-source boundary review; not a study or literature-completeness claim |
 | Research QA | `qa/research/**` in Git; the bounded owner manifest explicitly includes the current convergence QA, its unit test, the final provenance red team, and the named integrity entry points rather than claiming a full repository manifest |
 
 ## Historical archive
@@ -129,6 +142,8 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Portable-bundle regression | `qa/handoff/test_portable_bundle.py` |
 | Public/transfer convergence QA | `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` |
 | Final exact-integrated red-team correction QA | `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` plus the three final reports under `qa/editorial/advisory/`, `qa/site/advisory/`, and `qa/research/advisory/` |
+| Opportunity-expansion plan and terminal QA | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`, `qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md` |
+| Opportunity-expansion review loops | Three Loop 1 reports and three exact-integrated Loop 2 reports under `qa/publication/advisory/`, `qa/research/advisory/`, and `qa/applied/advisory/`; static/model review evidence only |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
 | Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |

@@ -8,6 +8,8 @@ set -eu
 
 qa_repository_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 qa_source_zip=""
+qa_signal_packet_checkpoint="529852497109dc152928de642038d07b109a52e2"
+qa_signal_packet_worktree=""
 
 usage() {
   printf '%s\n' \
@@ -50,7 +52,13 @@ printf '\n[1/12] Locked owner intent\n'
 
 printf '\n[2/12] Immutable v14 transfer ledger\n'
 qa_v14_log=$(mktemp -t pattern-map-v14-ledger.XXXXXX)
-trap 'rm -f "$qa_v14_log"' EXIT HUP INT TERM
+cleanup() {
+  rm -f "$qa_v14_log"
+  if [ -n "$qa_signal_packet_worktree" ] && [ -d "$qa_signal_packet_worktree" ]; then
+    git -C "$qa_repository_root" worktree remove --force "$qa_signal_packet_worktree" >/dev/null 2>&1 || true
+  fi
+}
+trap cleanup EXIT HUP INT TERM
 (
   cd archive/transfers/v14-complete-2026-08-18
   shasum -a 256 -c 00_START_HERE/SHA256SUMS.txt > "$qa_v14_log"
@@ -98,15 +106,44 @@ printf '\n[8/12] Site build and route checks\n'
   npm run check
 )
 
-printf '\n[9/12] Site, visual, and research-boundary audits\n'
+printf '\n[9/12] Site, visual, publication-rehearsal, and research-boundary audits\n'
 python3 qa/site/audit_site.py
 python3 qa/visual/verify_image_formats.py
+if [ -f qa/publication/publication-kit-contract.spec.mjs ]; then
+  node qa/publication/publication-kit-contract.spec.mjs
+else
+  printf '%s\n' \
+    "NOTE: optional publication-rehearsal lane is absent; core owner-review checks continue."
+fi
 python3 qa/research/validate_research_boundaries.py
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
   -s qa/research -p 'test_*.py' -v
 
-printf '\n[10/12] Cross-computer portable-bundle contract\n'
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v qa/handoff/test_portable_bundle.py
+printf '\n[10/12] Cross-computer Signal Foundry packet contract\n'
+qa_current_head=$(git rev-parse --verify HEAD)
+if [ "$qa_current_head" = "$qa_signal_packet_checkpoint" ]; then
+  PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v qa/handoff/test_portable_bundle.py
+else
+  if ! git cat-file -e "$qa_signal_packet_checkpoint^{commit}" 2>/dev/null; then
+    printf 'FAIL: canonical Signal Foundry packet checkpoint is unavailable: %s\n' \
+      "$qa_signal_packet_checkpoint" >&2
+    exit 1
+  fi
+  qa_signal_packet_worktree=$(mktemp -d -t pattern-map-signal-packet.XXXXXX)
+  rmdir "$qa_signal_packet_worktree"
+  git worktree add --quiet --detach "$qa_signal_packet_worktree" \
+    "$qa_signal_packet_checkpoint"
+  printf 'NOTE: current work continues after the sealed Signal Foundry packet;\n'
+  printf '      verifying its exact canonical source checkpoint %s instead.\n' \
+    "$qa_signal_packet_checkpoint"
+  (
+    cd "$qa_signal_packet_worktree"
+    PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v \
+      qa/handoff/test_portable_bundle.py
+  )
+  git worktree remove --force "$qa_signal_packet_worktree"
+  qa_signal_packet_worktree=""
+fi
 
 printf '\n[11/12] Bounded owner-review manifest\n'
 python3 handoff/verify_owner_review_package.py

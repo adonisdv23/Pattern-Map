@@ -80,6 +80,16 @@ rule; and correct the PDF producer checkpoint through a non-self-referential
 two-commit sequence whose byte-producing checkpoint is `06c6168`. They do not change the human
 thesis, six families, Echo split, research ceiling, or manual gates.
 
+The opportunity-expansion cycle remains v16. It adds one optional
+repository-local project-use adapter, an unpublished mentor/X/release
+rehearsal kit, a narrow public-navigation correction, and a targeted
+non-exhaustive source scan. Two further adversarial loops removed repeated
+procedure, an accidental downstream-validator dependency, hybrid review
+statuses, and an overbroad source-scan sentence. These are wayfinding,
+review-preparation, presentation, and claim-boundary improvements—not a v17
+thesis, mandatory adoption layer, transfer/effectiveness result, publication,
+outreach action, or study.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

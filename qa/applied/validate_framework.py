@@ -58,6 +58,7 @@ BUDGET_CONTRACT_FILES = (
     "framework/IMPLEMENTATION_CHOICES.md",
 )
 ADVANCED_CONTRACT_FILES = BUDGET_CONTRACT_FILES
+PROJECT_USE_STARTER = "framework/agent-playbook/PROJECT_USE_STARTER.md"
 
 
 class CheckFailure(Exception):
@@ -248,6 +249,95 @@ def validate_stage_zero_contract() -> None:
     require(not qa_ordinary_eligibility(supplied_summary),
             "Stage 0 QA admitted a selective supplied-material summary as ordinary")
 
+
+def validate_project_use_starter() -> None:
+    """Check the optional repository-local adapter without making it universal."""
+
+    starter = read_text(PROJECT_USE_STARTER)
+    normalized = normalized_text(starter)
+    require("# Project-use starter" in starter
+            and "optional internal agent/operator repository-local wayfinding" in normalized
+            and "not a portable packet" in normalized
+            and "mandatory route" in normalized
+            and "conformance standard" in normalized
+            and "proof of transfer" in normalized,
+            "project-use starter is missing its bounded wayfinding identity")
+    for phrase in (
+        ORDINARY_ELIGIBILITY_CONTRACT,
+        ORDINARY_AUTHORITY_CONTRACT,
+        BUDGET_COMPLEXITY_CONTRACT,
+        "The six-family map is orientation, not a completion checklist.",
+        "create no placeholder artifact",
+        "The block is a routing summary, not a second receipt.",
+        "This page is not self-contained.",
+    ):
+        require(normalized_text(phrase) in normalized,
+                f"project-use starter is missing bounded contract: {phrase}")
+
+    stage_zero = normalized.index("## 1. Gate ordinary work first")
+    context = normalized.index("## 2. Map local context to existing records")
+    route = normalized.index("## 3. Choose the smallest existing route")
+    require(stage_zero < context < route,
+            "project-use starter must gate context intake before layered route selection")
+    require(normalized.index("**NO:**") < normalized.index("**YES:**"),
+            "project-use starter must make the ordinary branch precede layered work")
+    require(normalized_text("Do not create project, evidence, family, route, stop, learning, outcome, or influence records.") in normalized,
+            "ordinary Stage 0 branch must stop before layered records")
+
+    required_templates = (
+        "framework/templates/ORDINARY_RECORD.md",
+        "framework/templates/DECISION_BRIEF.md",
+        "framework/templates/ACQUISITION_RECEIPT.md",
+        "framework/templates/EVIDENCE_REGISTER.md",
+        "framework/templates/COMPARISON_MATRIX.md",
+        "framework/templates/DISCONFIRMATION_LOG.md",
+        "framework/templates/INFLUENCE_RECEIPT.md",
+        "framework/templates/MEMORY_RECORD.md",
+        "framework/templates/OUTCOME_REVIEW.md",
+    )
+    for relative in required_templates + (
+        "framework/agent-playbook/QUICKSTART.md",
+        "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
+        "framework/IMPLEMENTATION_CHOICES.md",
+    ):
+        require(relative in starter and (ROOT / relative).is_file(),
+                f"project-use starter does not resolve existing entry point {relative}")
+
+    handoff = starter.split("```text", 1)
+    require(len(handoff) == 2 and "```" in handoff[1],
+            "project-use starter is missing its context handoff block")
+    handoff_block = handoff[1].split("```", 1)[0]
+    handoff_fields = re.findall(r"^([a-z_]+):\s*$", handoff_block, re.MULTILINE)
+    require(handoff_fields == [
+                "project", "decision_question", "intended_use_and_audience",
+                "consequence_and_reversibility", "decision_owner_and_reviewer",
+                "human_action_boundary", "deadline_and_outcome_window",
+                "supplied_material_refs", "default_path_and_expected_baseline",
+                "permission_scope_and_state", "cost_and_no_action_boundary",
+                "known_unknowns_and_non_applicable_checks",
+                "likely_families_and_one_line_reasons",
+                "resume_or_escalation_condition",
+            ],
+            "project-use starter context block changed its ordered minimal fields")
+
+    for marker in (
+        "read, acquire, transform, retain/reuse, disclose, and act",
+        "evidence, baseline, comparison, disconfirmation, memory, and influence empty",
+        "records memory as `NOT_USED`",
+        "cannot acquire, disclose, reuse, or act",
+        "`LIGHTWEIGHT`", "`MODERATE`", "`ADVANCED`",
+        "`AUTHORIZED`", "`UNKNOWN`", "`NOT_AUTHORIZED`", "`REVOKED`",
+    ):
+        require(normalized_text(marker) in normalized,
+                f"project-use starter omits stable boundary marker: {marker}")
+
+    starter_lower = starter.lower()
+    for phrase in (
+        "seventh family", "universal conformance score", "source reputation score",
+        "second ledger", "autonomous authority", "general validation",
+    ):
+        require(phrase not in starter_lower,
+                f"project-use starter introduces prohibited expansion: {phrase}")
 
 def validate_spec() -> None:
     spec = load_json("framework/SIX_FAMILIES.json")
@@ -1925,6 +2015,8 @@ def main() -> int:
         ("ordinary and layered receipt contracts", validate_receipts),
         ("permission/reference/memory fail-closed mutations", validate_receipt_guard_mutations),
     ]
+    if (ROOT / PROJECT_USE_STARTER).is_file():
+        checks.insert(3, ("optional project-use adapter contract", validate_project_use_starter))
     try:
         for label, check in checks:
             check()

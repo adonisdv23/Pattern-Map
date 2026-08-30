@@ -1495,3 +1495,154 @@ research/provenance adjudications; expanded portable-bundle regression suite.
 **Governing requirement:** cross-computer usability; no accidental mutation
 authority; exact provenance; fail-closed integrity; D-036/RP-02; advisory
 findings require independent reproduction and disposition.
+
+## D-042 — Expand through friction-reducing opportunity loops, not a larger framework
+
+**Date:** 2026-08-30
+
+**Status:** Accepted for isolated feature-branch implementation; external and
+human gates remain closed
+
+After the exact `529852497109dc152928de642038d07b109a52e2` owner-review
+checkpoint passed deterministic, clean-clone, independent-agent, Claude, remote,
+and copied-packet review, the owner explicitly requested another execution
+cycle followed by two additional opportunity loops with subagents.
+
+This instruction authorizes a bounded expansion audit and local build. It does
+not make additional artifacts inherently desirable and does not reopen the
+locked thesis, six families, human-authority boundary, permanent Echo split, or
+ordinary-work escape. The governing test is reduced friction: an addition must
+make the human idea easier to enter, a private/public review package easier to
+assess, an agent behavior more observable, a future-project transfer safer, or
+a claim more precise. Existing composition is preferred over a duplicate
+adoption layer.
+
+Three isolated lanes cover unpublished public/mentor/X rehearsal, proportional
+agent/operator/project transfer, and current primary-source/claim verification.
+Two later loops cross-challenge the lanes and then apply hostile removal,
+cold-start transfer, public-surface, claims, and proportionality tests. Reviews
+remain advisory; the primary orchestrator reproduces and dispositions material
+findings before integration.
+
+No merge, deployment, publication, X post, mentor outreach, final identity or
+canonical-URL choice, empirical/model-comparison/participant/live-product
+study, research-provider selection or call, corpus acquisition, spend, or
+result claim is authorized by this cycle.
+
+**Plan:** `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`.
+
+**Governing requirement:** locked owner intent; A01–A17; proportionality and
+anti-bureaucracy; artifact firebreaks; reviews are advisory; no-results and
+external-action boundaries.
+
+## D-043 — Retain only the narrow opportunity adapters after cross-lane challenge
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; exact-integrated Loop 2 still required
+
+Loop 1 produced a material disagreement about the project-use starter. The
+research/claims lane treated the file's presence in repository validation as a
+generic-adoption dependency; the public lane judged it a credible but internal
+convenience adapter. The integrator rejects the dependency inference: an
+accepted optional artifact can be integrity-checked without becoming mandatory
+for every task. D-042 is also a later explicit owner instruction to improve
+future-project entry, while D-031's warning against a generic adoption layer
+still governs scope.
+
+The retained starter is therefore explicitly optional, internal,
+repository-local, and non-portable. It points to operation-level permission,
+useful-answer, abstention, and complete level-fit contracts rather than
+replacing them; its QA now describes a static composition hypothesis rather
+than observed transfer or reduced effort. It remains absent from the public
+site, publication kit, and existing Signal Foundry packet.
+
+The mentor/X/release kit is retained as optional owner convenience packaging.
+One discovery pointer is integrated, while the site, manuscript, and owner
+packet remain the substantive source. A later exact release decision must name
+the artifact/channel before marking a gate not applicable. No identity, URL,
+handle, image, posting, contact, deployment, or publication decision is made.
+
+The targeted research scan is retained in QA with only a compact optional
+source-route pointer. It narrows contribution claims and identifies testable
+questions; it does not select a paper, provider, corpus, sample, or study and
+does not redefine the broad v16 thesis.
+
+**Evidence:** three Loop 0 lane reports; three Loop 1 cross-lane reports;
+focused framework, publication, site, and research checks.
+
+**Governing requirement:** D-042; A01–A17; human-first progressive disclosure;
+proportionality; model reviews advisory; no-results and external-action
+boundaries.
+
+## D-044 — Close opportunity Loop 2 by removing accidental dependencies
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; terminal verification and owner packaging
+remain
+
+The exact-integrated Loop 2 reviews found that the project-use adapter's unique
+value was narrower than its first retained form and that an unconditional
+applied-validator check made this optional repository-local file a required
+input to the selected Signal Foundry packet. They also found uncontrolled
+hybrid review dispositions, one categorical sentence in a targeted source
+scan, and an unnecessary universal-runner dependency on the optional
+publication lane.
+
+The integrator accepts those findings. The project-use starter is reduced to a
+context-to-existing-record adapter; detailed operating procedure stays in the
+Quickstart, implementation choices, and canonical templates. Its validator now
+runs only when the optional file exists, so the selected downstream packet
+remains runnable without importing a generic adoption artifact. The
+publication lane is likewise conditional in the universal runner while its
+focused contract remains required when that lane is present. New review
+records use one controlled disposition, the source-scan claim is scoped to the
+records actually inspected, and removal/closure language is explicitly static
+document-composition evidence.
+
+The public/mentor kit, public navigation spacing correction, compact source
+route, and narrow project-use adapter survive the second removal test. No new
+public route, bitmap, generic conformance layer, receipt, score, ledger,
+family, autonomous authority, Signal Foundry packet input, paper, provider,
+corpus, or study is added.
+
+This decision does not establish reader comprehension, project transfer,
+answer improvement, publication readiness, framework effectiveness, or any
+empirical result. It authorizes only final deterministic, visual, packaging,
+Git, and draft-PR verification within the existing external-action boundary.
+
+**Evidence:** three Loop 2 advisory reports against exact
+`2b2d1bad8e9b7c954f209f0c9c6e0cfbc9d4815b`; focused applied, publication,
+research, site, and checksum checks.
+
+**Governing requirement:** D-042/D-043; A01–A17; controlled review protocol;
+artifact firebreaks; proportionality; no-results and external-action
+boundaries.
+
+## D-045 — Treat the owner's live principal-door bug report as direct evidence
+
+**Date:** 2026-08-30
+
+**Status:** Accepted and corrected
+
+The owner identified the lower portion of the three Home door cards as buggy
+in the locally served public preview. Live geometry reproduced a real defect:
+unequal preview heights were being distributed with `space-between`, all three
+captions collided with their arrows, and the Map preview used detached diagonal
+traces that did not read as a stable relationship.
+
+The correction gives every card one explicit footer track, reserves a separate
+arrow lane, keeps the Apply caption in flow, and connects Map nodes through
+their actual grid gaps. A new focused contract is part of the site suite, and
+live rechecks cover 1440, 390, and 320 pixels without page overflow. This is a
+presentation correction only; it does not change the locked thesis, six-family
+specification, agent behavior, research boundaries, or selected Signal Foundry
+packet.
+
+**Evidence:** `qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md` and
+`qa/site/door-card-preview-contract.spec.mjs`.
+
+**Governing requirement:** A01–A03, A06, A13; human-first first screen;
+responsive and understandable code-native visuals; owner evidence outranks
+advisory reassurance.

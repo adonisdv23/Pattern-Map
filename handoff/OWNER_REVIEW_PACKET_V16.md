@@ -69,12 +69,19 @@ origin accounting. All six original families remain visible: peripheral
 signal; source weighing; velocity/motion; absence + memory; structured
 patterns; and the learning loop.
 
-GitHub public/transfer owner-review surface: draft pull request
-[#2](https://github.com/adonisdv23/Pattern-Map/pull/2), targeting the preserved
-`codex/pattern-map-v16-foundation` review branch from
-`codex/pattern-map-v16-public-transfer-hardening`. The underlying foundation
-candidate remains separately visible in draft pull request
-[#1](https://github.com/adonisdv23/Pattern-Map/pull/1). Both remain unmerged.
+The opportunity-expansion cycle then tested whether the sealed candidate could
+be more useful without becoming larger for its own sake. Three isolated lanes,
+three cross-lane challenges, and three exact-integrated red teams leave only a
+reduced optional project-use adapter, an unpublished mentor/X/release
+rehearsal kit, one public-navigation spacing correction, and a targeted
+non-exhaustive source scan. The cycle removed an accidental downstream packet
+dependency and repeated operating prose; it does not establish transfer,
+comprehension, publication readiness, answer quality, or effectiveness.
+
+The exact current branch and draft pull-request state is recorded in
+[`BRANCH_AND_PR_STATE.md`](BRANCH_AND_PR_STATE.md) and must be resolved at use.
+Earlier draft pull requests remain review history. None authorizes a merge,
+deployment, or publication.
 
 ## Recommended review path
 
@@ -94,7 +101,10 @@ candidate remains separately visible in draft pull request
    Both are local review artifacts; neither command publishes anything.
 4. Inspect the [six-family specification](../framework/SIX_FAMILIES.md),
    [implementation choices](../framework/IMPLEMENTATION_CHOICES.md), and
-   [agent Quickstart](../framework/agent-playbook/QUICKSTART.md).
+   [agent Quickstart](../framework/agent-playbook/QUICKSTART.md). For a new
+   project, the optional internal [project-use starter](../framework/agent-playbook/PROJECT_USE_STARTER.md)
+   is repository-local wayfinding over those contracts, not a portable packet
+   or transfer result.
 5. Inspect the bounded [Signal Foundry illustration](../cases/signal-foundry/README.md)
    and the two domain-neutral cases. For the actual downstream transfer, give
    Claude both the [canonical handoff](signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md)
@@ -108,8 +118,13 @@ candidate remains separately visible in draft pull request
 8. Finish with the [acceptance matrix](../qa/FINAL_ACCEPTANCE_MATRIX_V16.md),
    [public/transfer convergence QA](../qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md),
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
+   [opportunity-expansion terminal QA](../qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md),
    [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
    manifest.
+9. If the owner is preparing a private mentor review or rehearsing a possible
+   later public explanation, open the optional
+   [publication-rehearsal kit](../publication/README.md). It remains unsent,
+   unpublished, identity-unset, and subordinate to the manuscript and site.
 
 The [PDF](../site/exports/pattern-map-v16-owner-review.pdf) is a compact visual
 review companion. It is intentionally labeled untagged; the standalone HTML is
@@ -117,7 +132,7 @@ the semantic accessibility route.
 
 ## What is complete as an artifact
 
-- A 3,289-word canonical human essay with an estimated 13.7–14.3-minute read.
+- A 3,285-word canonical human essay with an estimated 13.7–14.3-minute read.
 - A 250-word cumulative short version with an early concrete example, the
   broad thesis, six family questions, human judgment, and the boundary beyond
   origin accounting.
@@ -212,6 +227,13 @@ anchors without pretending the external ZIP lives in Git.
   601/768/821/1024/1100; and the default desktop Apply state. No inspected
   document had horizontal overflow. Stage 0, permission precedence, and
   unchanged observed state pass in Apply.
+- A later owner-marked Home defect was independently reproduced rather than
+  dismissed as a local rendering artifact. The three door previews now share
+  one explicit footer track, captions reserve a separate arrow lane, and the
+  Map preview uses flow-native node-gap connectors instead of detached diagonal
+  traces. Rechecks at 1440/390/320 pixels show zero horizontal caption/arrow
+  overlap and no page overflow; the focused regression is part of the site
+  suite. See `qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md`.
 - The terminal live audit covers all ten routes plus standalone at 1440, 1101,
   1100, 1024, 821, 768, 601, 600, 480, 390, and 320 pixels where meaningful,
   the historical 108-state Apply contract, Map/More/no-script state, print

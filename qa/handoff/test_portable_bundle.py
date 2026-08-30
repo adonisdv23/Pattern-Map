@@ -161,6 +161,13 @@ class PortableBundleTests(unittest.TestCase):
                 "portable builder is not committed at HEAD; rerun after the builder commit"
             )
         builder = load_builder_module()
+        try:
+            builder._verify_source_branch_contains_commit(ROOT, git_head())
+        except RuntimeError as error:
+            raise unittest.SkipTest(
+                "portable tests bind the exact named Signal Foundry packet branch tip; "
+                f"run the canonical owner-review runner for predecessor-packet verification ({error})"
+            ) from error
         exact_commit_inputs = [
             str(BUILDER.relative_to(ROOT)),
             *builder.SOURCE_PATHS,

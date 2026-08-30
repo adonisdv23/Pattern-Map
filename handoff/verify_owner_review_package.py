@@ -33,6 +33,13 @@ CONVERGENCE_CORRECTION_HEADS = {
     "research_claim_convergence": "280eb4bc4a2eb910535b61a480226de5b4aac33f",
     "public_site_apply_convergence": "5bcd08df150f385c2bb3471a4a641a7ce9cb356d",
 }
+OPPORTUNITY_EXPANSION_BASELINE = "529852497109dc152928de642038d07b109a52e2"
+OPPORTUNITY_EXPANSION_LANE_HEADS = {
+    "project_use_starter": "9ed522afcacaa45e9bfa5950f03f454a87e3dd92",
+    "public_mentor_rehearsal": "f2311d095d0afc094356e222624cff3aa1e3b939",
+    "research_opportunity_scan": "30d4af6564e07154f0f60e8fd2d8a59f3c815944",
+}
+OPPORTUNITY_LOOP_2_REVIEWED_HEAD = "2b2d1bad8e9b7c954f209f0c9c6e0cfbc9d4815b"
 
 
 REQUIRED_PATHS = [
@@ -50,6 +57,7 @@ REQUIRED_PATHS = [
     "docs/V16_ACCEPTANCE_CRITERIA.md",
     "docs/V16_ROADMAP.md",
     "docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md",
+    "docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md",
     "docs/CONTENT_INTERFACE_FREEZE_V16.md",
     "docs/CONTENT_INTERFACE_V16.json",
     "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md",
@@ -84,6 +92,7 @@ REQUIRED_PATHS = [
     "framework/templates/ORDINARY_RECORD.md",
     "framework/templates/OUTCOME_REVIEW.md",
     "framework/agent-playbook/QUICKSTART.md",
+    "framework/agent-playbook/PROJECT_USE_STARTER.md",
     "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
     "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
     "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
@@ -92,6 +101,10 @@ REQUIRED_PATHS = [
     "cases/signal-foundry/README.md",
     "cases/general-research/README.md",
     "cases/product-and-process/README.md",
+    "publication/README.md",
+    "publication/MENTOR_REVIEW_SEQUENCE_V16.md",
+    "publication/X_COPY_VARIANTS_V16.md",
+    "publication/RELEASE_DECISION_CHECKLIST_V16.md",
     "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
     "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
     "handoff/signal-foundry/build_portable_bundle.py",
@@ -160,9 +173,12 @@ REQUIRED_PATHS = [
     "qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_58f2756.md",
     "qa/applied/README.md",
     "qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md",
+    "qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md",
     "qa/applied/STAGE_ZERO_ORDINARY_CONTRACT_CONVERGENCE_QA_2026-08-30_0beee9a.md",
     "qa/applied/memory_anchor_registry.json",
     "qa/applied/validate_framework.py",
+    "qa/applied/advisory/PUBLIC_MENTOR_KIT_CROSS_LANE_CHALLENGE_2026-08-30_f2311d0.md",
+    "qa/applied/advisory/OPPORTUNITY_LOOP2_REMOVAL_TRANSFER_2026-08-30_2b2d1ba.md",
     "qa/applied/receipts/blocked-permission.json",
     "qa/applied/receipts/layered-ready.json",
     "qa/applied/receipts/lightweight-low-stakes.json",
@@ -174,6 +190,7 @@ REQUIRED_PATHS = [
     "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
     "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
     "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
+    "qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md",
     "qa/research/validate_research_boundaries.py",
@@ -181,10 +198,13 @@ REQUIRED_PATHS = [
     "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
     "qa/research/RESEARCH_CLAIM_CONVERGENCE_QA_2026-08-30_0beee9a.md",
     "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md",
+    "qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md",
     "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
     "qa/research/test_research_claim_convergence.py",
     "qa/research/advisory/FINAL_RESEARCH_PROVENANCE_REDTEAM_2026-08-30_d40ca61.md",
     "qa/research/advisory/FINAL_RESEARCH_PROVENANCE_RECHECK_2026-08-30_6a61f6d.md",
+    "qa/research/advisory/PROJECT_USE_STARTER_CROSS_LANE_CHALLENGE_2026-08-30_9ed522a.md",
+    "qa/research/advisory/OPPORTUNITY_LOOP2_CLAIMS_BOUNDARY_2026-08-30_2b2d1ba.md",
     "qa/site/SITE_QA_REPORT.md",
     "qa/site/SITE_POLISH_QA.md",
     "qa/site/audit_site.py",
@@ -193,8 +213,11 @@ REQUIRED_PATHS = [
     "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
     "qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md",
     "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
+    "qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md",
     "qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md",
     "qa/site/public-mode-contract.spec.mjs",
+    "qa/site/public-nav-spacing-contract.spec.mjs",
+    "qa/site/door-card-preview-contract.spec.mjs",
     "qa/site/advisory/FINAL_APPLIED_SITE_REDTEAM_2026-08-30_d40ca61.md",
     "qa/site/advisory/FINAL_APPLIED_SITE_RECHECK_2026-08-30_6a61f6d.md",
     "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
@@ -208,10 +231,19 @@ REQUIRED_PATHS = [
     "qa/handoff/test_portable_bundle.py",
     "qa/handoff/CLAUDE_FINAL_PORTABLE_AUDIT_DISPOSITION_2026-08-30_c23c665.md",
     "qa/content/reader-language-contract.spec.mjs",
+    "qa/publication/OPPORTUNITY_EXPANSION_PUBLIC_MENTOR_REHEARSAL_QA_2026-08-30_d05aca5.md",
+    "qa/publication/publication-kit-contract.spec.mjs",
+    "qa/publication/advisory/PROJECT_USE_STARTER_PUBLIC_LANE_CHALLENGE_2026-08-30_9ed522a.md",
+    "qa/publication/advisory/OPPORTUNITY_LOOP2_PUBLIC_MENTOR_2026-08-30_2b2d1ba.md",
     "qa/visual/README.md",
     "qa/visual/POLISH_PLAN.md",
     "qa/visual/VISUAL_NEEDS.md",
     "qa/visual/VISUAL_QA_REPORT.md",
+    "qa/visual/opportunity-final/README.md",
+    "qa/visual/opportunity-final/public-home-1280x720.jpg",
+    "qa/visual/opportunity-final/public-home-390x844.jpg",
+    "qa/visual/opportunity-final/public-map-1280x720.jpg",
+    "qa/visual/opportunity-final/public-map-detail-1280x720.jpg",
     "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
     "qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md",
     "qa/site/css-selector-use.spec.mjs",
@@ -342,13 +374,16 @@ def write_manifest() -> None:
         "phase_0_hardening_baseline": PHASE_0_BASELINE,
         "integrated_lane_heads": LANE_HEADS,
         "convergence_correction_heads": CONVERGENCE_CORRECTION_HEADS,
+        "opportunity_expansion_baseline": OPPORTUNITY_EXPANSION_BASELINE,
+        "opportunity_expansion_lane_heads": OPPORTUNITY_EXPANSION_LANE_HEADS,
+        "opportunity_loop_2_reviewed_head": OPPORTUNITY_LOOP_2_REVIEWED_HEAD,
         "source_head": None,
         "source_head_resolution": {
             "status": "resolve_at_use",
             "command": "git rev-parse --verify HEAD",
             "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
         },
-        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
+        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; two post-build opportunity/red-team loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),
@@ -376,6 +411,12 @@ def verify_manifest() -> None:
         raise AssertionError("integrated lane-head provenance mismatch")
     if payload.get("convergence_correction_heads") != CONVERGENCE_CORRECTION_HEADS:
         raise AssertionError("convergence-correction provenance mismatch")
+    if payload.get("opportunity_expansion_baseline") != OPPORTUNITY_EXPANSION_BASELINE:
+        raise AssertionError("opportunity-expansion baseline mismatch")
+    if payload.get("opportunity_expansion_lane_heads") != OPPORTUNITY_EXPANSION_LANE_HEADS:
+        raise AssertionError("opportunity-expansion lane provenance mismatch")
+    if payload.get("opportunity_loop_2_reviewed_head") != OPPORTUNITY_LOOP_2_REVIEWED_HEAD:
+        raise AssertionError("opportunity Loop 2 reviewed-head mismatch")
     if payload.get("source_head") is not None:
         raise AssertionError("owner-review manifest must not hard-code its self-referential source head")
     resolution = payload.get("source_head_resolution")
