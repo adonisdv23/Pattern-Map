@@ -722,7 +722,7 @@ main { overflow: visible; }
 .public-reading-route { padding-top: 0; }
 .public-short-entry { margin-top: 0; padding-top: 0.5rem; }
 .public-short-entry > .eyebrow { margin-bottom: 0.35rem; }
-.public-short-entry h3 { max-width: 25ch; margin-bottom: 0.55rem; font-size: clamp(1.55rem, 2.6vw, 2.2rem); }
+.public-short-entry h2, .public-short-entry h3 { max-width: 25ch; margin-bottom: 0.55rem; font-size: clamp(1.55rem, 2.6vw, 2.2rem); }
 .public-reading-next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; max-width: var(--reading); margin: 1.7rem auto 0; }
 .public-reading-next a { display: grid; gap: 0.2rem; min-height: 4.4rem; padding: 0.75rem; border: 1px solid var(--line); background: rgba(255,255,255,0.34); color: var(--ink); text-decoration: none; }
 .public-reading-next span { color: var(--accent-deep); font: 800 0.56rem/1.3 "SFMono-Regular", Consolas, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -943,7 +943,7 @@ main { overflow: visible; }
   .mode-public .route-intro h1 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
   .mode-public .route-lede { font-size: 0.97rem; line-height: 1.4; }
   .public-short-entry { padding-top: 0.2rem; }
-  .public-short-entry h3 { font-size: 1.45rem; }
+  .public-short-entry h2, .public-short-entry h3 { font-size: 1.45rem; }
 }
 
 @media (forced-colors: active) {
@@ -1005,7 +1005,7 @@ main { overflow: visible; }
     <ol class="decision-reveal-path" aria-label="Four upstream checks">
       <li class="reveal-stage reveal-default"><span>01 · DEFAULT PATH</span><strong>Familiar release coverage</strong><small>The product story looks complete because every source repeats the same visible features.</small></li>
       <li class="reveal-stage reveal-widen"><span>02 · WIDEN ONCE</span><strong>One specialist note</strong><small>A monitoring concern becomes a candidate to inspect—not a shortcut to truth.</small></li>
-      <li class="reveal-stage reveal-compare"><span>03 · COMPARE</span><strong>Earlier releases</strong><small><span class="term-help" data-term-help><dfn>baseline</dfn><span class="term-inline"> — an earlier or expected state used to judge change or absence</span><button type="button" class="term-popover-trigger" data-term-trigger aria-label="Explain baseline" aria-expanded="false" aria-controls="home-term-popover-home-reveal-baseline">See it</button><span class="term-popover" id="home-term-popover-home-reveal-baseline" role="note" hidden><strong>baseline</strong><span>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</span><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><span class="term-popover-boundary"><b>Boundary:</b> One convenient comparison is not automatically a fair baseline.</span><a href="#map-term-baseline">Open the glossary entry</a></span></span> shows what a normal release packet usually contains.</small></li>
+      <li class="reveal-stage reveal-compare"><span>03 · COMPARE</span><strong>Earlier releases</strong><small><span class="term-help" data-term-help><dfn>baseline</dfn><span class="term-inline"> — an earlier or expected state used to judge change or absence</span><button type="button" class="term-popover-trigger" data-term-trigger aria-label="Explain baseline" aria-expanded="false" aria-controls="home-term-popover-home-reveal-baseline">See it</button><span class="term-popover" id="home-term-popover-home-reveal-baseline" role="note" hidden><strong>baseline</strong><span>A baseline may be a prior period, comparable peer, stated expectation, or normal range. Name which one is being used.</span><span class="term-mini term-mini-baseline" aria-hidden="true"><i style="--term-bar:42%"></i><i style="--term-bar:46%"></i><i style="--term-bar:44%"></i><i class="is-current" style="--term-bar:88%"></i></span><span class="term-visual-text">Three earlier comparable observations establish context for a higher current observation.</span><span class="term-popover-boundary"><b>Boundary:</b> One convenient comparison is not automatically a fair baseline.</span><a href="#map-term-baseline">Open the glossary entry</a></span></span> shows what this illustrative team expected from a release packet after four previous releases.</small></li>
       <li class="reveal-stage reveal-absence"><span>04 · EXPECTED ABSENCE</span><strong>Two fields are missing</strong><small>No monitoring window. No named rollback owner. The observation boundary stays explicit.</small></li>
     </ol>
     <details class="decision-reveal-boundary">
@@ -1075,7 +1075,7 @@ main { overflow: visible; }
 
 
   <section class="reading-route public-reading-route" id="read-read-idea" data-reading-route>
-    <section class="short-entry reading-column reading-section public-short-entry" id="read-read-quick" data-reading-section aria-label="Cumulative 60–90 second version"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h4 id="read-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h4>
+    <section class="short-entry reading-column reading-section public-short-entry" id="read-read-quick" data-reading-section aria-label="Cumulative 60–90 second version"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h3 id="read-short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h3>
 <p>An AI answer can sound polished yet be generic because weakness can begin before writing. Ask a system to assess a product release. The obvious search finds familiar coverage. A stronger pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks do not decide the answer; they improve the information available to it.</p>
 <p>Pattern Recognition makes those upstream choices deliberate and correctable. Its six families ask:</p>
 <ol><li>What might the obvious path have missed?</li><li>What can each source actually support?</li><li>What is changing against a useful baseline?</li><li>What expected information is missing, and what should memory preserve?</li><li>What appears when peers, periods, structures, or origins are compared?</li><li>After a defined outcome, what bounded update should be proposed?</li></ol>

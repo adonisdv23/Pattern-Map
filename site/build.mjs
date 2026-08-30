@@ -2,6 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import {
+  assertPublicationReleaseConfig,
+  publicationMetadataEnabled,
+  publicationReleaseReady as isPublicationReleaseReady,
+} from "./src/publication-config.mjs";
 
 const SITE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(SITE_DIR, "..");
@@ -50,24 +55,8 @@ if (!BUILD_MODES.has(modeArgument)) throw new Error(`Unknown build mode: ${modeA
 if (releaseBuildRequested && modeArgument !== "public") throw new Error("--release requires --mode=public");
 
 const isPublic = (ctx) => ctx.mode === "public";
-const PUBLICATION_RELEASE_STATUS = "READY_FOR_AUTHORIZED_RELEASE";
-const requiredReleaseFields = ["author_name", "canonical_url", "social_image_url"];
-const publicationReleaseReady = () => publicationConfig.status === PUBLICATION_RELEASE_STATUS
-  && requiredReleaseFields.every((field) => typeof publicationConfig[field] === "string" && publicationConfig[field].trim())
-  && /^https:\/\//.test(publicationConfig.canonical_url)
-  && /^https:\/\//.test(publicationConfig.social_image_url);
-const validatePublicationConfig = () => {
-  if (publicationConfig.status !== PUBLICATION_RELEASE_STATUS) {
-    throw new Error(`Public release is gated: publication.config.json status must be ${PUBLICATION_RELEASE_STATUS}`);
-  }
-  for (const field of requiredReleaseFields) {
-    if (typeof publicationConfig[field] !== "string" || !publicationConfig[field].trim()) {
-      throw new Error(`Public release is gated: publication.config.json ${field} is unset`);
-    }
-  }
-  if (!/^https:\/\//.test(publicationConfig.canonical_url)) throw new Error("Public release is gated: canonical_url must use https");
-  if (!/^https:\/\//.test(publicationConfig.social_image_url)) throw new Error("Public release is gated: social_image_url must use https");
-};
+const publicationReleaseReady = () => isPublicationReleaseReady(publicationConfig);
+const validatePublicationConfig = () => assertPublicationReleaseConfig(publicationConfig);
 
 if (releaseBuildRequested) validatePublicationConfig();
 
@@ -636,7 +625,7 @@ const renderPublicationMetadata = ({ title, intro, ctx, active }) => {
     return '<meta name="description" content="Pattern Recognition / The Discrimination Layer v16 — local owner-review site.">';
   }
   const description = intro || contentInterface.first_screen.standfirst;
-  const releaseMetadataEnabled = releaseBuildRequested && publicationReleaseReady();
+  const releaseMetadataEnabled = publicationMetadataEnabled(publicationConfig, releaseBuildRequested);
   const canonicalBase = releaseMetadataEnabled ? publicationConfig.canonical_url.replace(/\/$/, "") : "";
   const routePath = active && active !== "home" ? `/${ROUTES[active]?.directory ?? active}/` : "/";
   const canonical = canonicalBase ? `${canonicalBase}${routePath}` : "";
@@ -817,7 +806,7 @@ const renderDecisionReveal = (ctx) => `
     <ol class="decision-reveal-path" aria-label="Four upstream checks">
       <li class="reveal-stage reveal-default"><span>01 · DEFAULT PATH</span><strong>Familiar release coverage</strong><small>The product story looks complete because every source repeats the same visible features.</small></li>
       <li class="reveal-stage reveal-widen"><span>02 · WIDEN ONCE</span><strong>One specialist note</strong><small>A monitoring concern becomes a candidate to inspect—not a shortcut to truth.</small></li>
-      <li class="reveal-stage reveal-compare"><span>03 · COMPARE</span><strong>Earlier releases</strong><small>${renderTerm("baseline", "home-reveal-baseline", ctx)} shows what a normal release packet usually contains.</small></li>
+      <li class="reveal-stage reveal-compare"><span>03 · COMPARE</span><strong>Earlier releases</strong><small>${renderTerm("baseline", "home-reveal-baseline", ctx)} shows what this illustrative team expected from a release packet after four previous releases.</small></li>
       <li class="reveal-stage reveal-absence"><span>04 · EXPECTED ABSENCE</span><strong>Two fields are missing</strong><small>No monitoring window. No named rollback owner. The observation boundary stays explicit.</small></li>
     </ol>
     <details class="decision-reveal-boundary">
@@ -871,7 +860,7 @@ const renderRoot = (ctx) => {
 };
 
 const renderRead = (ctx) => {
-  const short = renderMarkdown(readText("manuscript/NINETY_SECOND_VERSION.md"), { ctx, headingOffset: 2, idPrefix: "short-" });
+  const short = renderMarkdown(readText("manuscript/NINETY_SECOND_VERSION.md"), { ctx, headingOffset: isPublic(ctx) ? 1 : 2, idPrefix: "short-" });
   const essayBody = essaySource.replace(/^#\s+[^\n]+\n+/, "");
   const essay = renderMarkdown(essayBody, { ctx, headingOffset: 1, idPrefix: "essay-" });
   const cover = renderMarkdown(readText("manuscript/MENTOR_COVER_NOTE.md"), { ctx, headingOffset: 2, idPrefix: "cover-" });
