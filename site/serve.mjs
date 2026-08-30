@@ -4,7 +4,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SITE_DIR = path.dirname(fileURLToPath(import.meta.url));
-const DIST_DIR = path.join(SITE_DIR, "dist");
+const mode = process.argv.includes("--public") ? "public" : "review";
+const DIST_DIR = path.join(SITE_DIR, mode === "public" ? "public-dist" : "dist");
 const PORT = Number(process.env.SITE_PORT || 4173);
 const MIME_TYPES = {
   ".html": "text/html; charset=utf-8",
@@ -46,5 +47,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`Pattern Map local preview: http://127.0.0.1:${PORT}/`);
+  console.log(`Pattern Map ${mode} local preview: http://127.0.0.1:${PORT}/`);
 });

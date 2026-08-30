@@ -1,10 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const SITE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(SITE_DIR, "..");
 const DIST_DIR = path.join(SITE_DIR, "dist");
+const PUBLIC_DIST_DIR = path.join(SITE_DIR, "public-dist");
 const EXPORT_DIR = path.join(SITE_DIR, "exports", "standalone");
 const HISTORICAL_DIAGRAM = "historical-v13-pattern-recognition-diagram-v12.png";
 
@@ -33,12 +35,41 @@ const slugify = (value) =>
 
 const familySource = readJson("framework/SIX_FAMILIES.json");
 const contentInterface = readJson("docs/CONTENT_INTERFACE_V16.json");
+const publicationConfig = JSON.parse(fs.readFileSync(path.join(SITE_DIR, "publication.config.json"), "utf8"));
 const essaySource = readText("manuscript/PATTERN_RECOGNITION_V16.md");
 const glossarySource = readText("framework/GLOSSARY.md");
 const styles = fs.readFileSync(path.join(SITE_DIR, "src", "site.css"), "utf8");
 const recommendationScript = fs.readFileSync(path.join(SITE_DIR, "src", "recommendation.js"), "utf8");
 const termPopoverGeometryScript = fs.readFileSync(path.join(SITE_DIR, "src", "term-popover-geometry.js"), "utf8");
 const scripts = fs.readFileSync(path.join(SITE_DIR, "src", "site.js"), "utf8");
+
+const BUILD_MODES = new Set(["review", "public", "all"]);
+const modeArgument = process.argv.find((argument) => argument.startsWith("--mode="))?.split("=")[1] ?? "all";
+const releaseBuildRequested = process.argv.includes("--release");
+if (!BUILD_MODES.has(modeArgument)) throw new Error(`Unknown build mode: ${modeArgument}`);
+if (releaseBuildRequested && modeArgument !== "public") throw new Error("--release requires --mode=public");
+
+const isPublic = (ctx) => ctx.mode === "public";
+const PUBLICATION_RELEASE_STATUS = "READY_FOR_AUTHORIZED_RELEASE";
+const requiredReleaseFields = ["author_name", "canonical_url", "social_image_url"];
+const publicationReleaseReady = () => publicationConfig.status === PUBLICATION_RELEASE_STATUS
+  && requiredReleaseFields.every((field) => typeof publicationConfig[field] === "string" && publicationConfig[field].trim())
+  && /^https:\/\//.test(publicationConfig.canonical_url)
+  && /^https:\/\//.test(publicationConfig.social_image_url);
+const validatePublicationConfig = () => {
+  if (publicationConfig.status !== PUBLICATION_RELEASE_STATUS) {
+    throw new Error(`Public release is gated: publication.config.json status must be ${PUBLICATION_RELEASE_STATUS}`);
+  }
+  for (const field of requiredReleaseFields) {
+    if (typeof publicationConfig[field] !== "string" || !publicationConfig[field].trim()) {
+      throw new Error(`Public release is gated: publication.config.json ${field} is unset`);
+    }
+  }
+  if (!/^https:\/\//.test(publicationConfig.canonical_url)) throw new Error("Public release is gated: canonical_url must use https");
+  if (!/^https:\/\//.test(publicationConfig.social_image_url)) throw new Error("Public release is gated: social_image_url must use https");
+};
+
+if (releaseBuildRequested) validatePublicationConfig();
 
 const ROUTES = {
   read: { label: "Read the idea", directory: "read" },
@@ -475,6 +506,7 @@ const renderGlossary = (ctx) => `
   </section>`;
 
 const renderSourceManifest = (surfaceId, ctx) => {
+  if (isPublic(ctx)) return "";
   const surface = [...contentInterface.doors, ...contentInterface.secondary_routes].find((item) => item.id === surfaceId);
   if (!surface) return "";
   return `<details class="source-manifest"><summary>Canonical source manifest for this route</summary><ul>${surface.sources.map((source) => `<li><code>${escapeHtml(source)}</code></li>`).join("")}</ul><p class="muted">The site presents these sources through a local owner-review build; it does not replace them as canonical authority.</p></details>`;
@@ -581,7 +613,7 @@ const renderSecondaryNav = (ctx, active = "") => `
 
 const renderHeader = (ctx, active = "") => `
   <header class="site-header">
-    <a class="wordmark" href="${routeHref(ctx, "home", "top")}"><span>Pattern Map</span><small>v16 / local owner review</small></a>
+    <a class="wordmark" href="${routeHref(ctx, "home", "top")}"><span>Pattern Map</span><small>${isPublic(ctx) ? "v16 / read · explore · apply" : "v16 / local owner review"}</small></a>
     <nav class="primary-nav" aria-label="Principal routes">
       ${contentInterface.doors.map((door) => `<a class="${active === door.id ? "is-active" : ""}"${active === door.id ? ' aria-current="page"' : ""} href="${routeHref(ctx, door.id, door.id === "read" ? "read-idea" : door.id)}">${escapeHtml(door.label)}</a>`).join("")}
       <button class="nav-more" type="button" aria-expanded="false" aria-controls="secondary-routes">More <span aria-hidden="true">+</span></button>
@@ -589,32 +621,68 @@ const renderHeader = (ctx, active = "") => `
     <div class="secondary-nav-wrap" id="secondary-routes">${renderSecondaryNav(ctx, active)}</div>
   </header>`;
 
-const renderFooter = (ctx) => `
+const renderFooter = (ctx) => isPublic(ctx) ? `
+  <footer class="site-footer">
+    <div><p class="eyebrow">A HUMAN-FIRST THOUGHT PIECE + APPLIED FRAMEWORK</p><p>Inspect what enters the room before generation, use only the structure the decision warrants, and keep consequential authority with people.</p></div>
+    <div class="footer-links"><a href="${routeHref(ctx, "home", "top")}">Back to the beginning</a><a href="${routeHref(ctx, "sources", "sources")}">Targeted sources</a><a href="${routeHref(ctx, "boundaries", "boundaries")}">Boundaries</a></div>
+  </footer>` : `
   <footer class="site-footer">
     <div><p class="eyebrow">LOCAL OWNER-REVIEW SURFACE</p><p>Built from the frozen v16 content interface. This package is a review candidate, not a deployment or research result.</p></div>
     <div class="footer-links"><a href="${routeHref(ctx, "home", "top")}">Back to the beginning</a><a href="${routeHref(ctx, "sources", "sources")}">Targeted sources</a><a href="${routeHref(ctx, "history", "history")}">Lineage and history</a></div>
   </footer>`;
 
+const renderPublicationMetadata = ({ title, intro, ctx, active }) => {
+  if (!isPublic(ctx)) {
+    return '<meta name="description" content="Pattern Recognition / The Discrimination Layer v16 — local owner-review site.">';
+  }
+  const description = intro || contentInterface.first_screen.standfirst;
+  const releaseMetadataEnabled = releaseBuildRequested && publicationReleaseReady();
+  const canonicalBase = releaseMetadataEnabled ? publicationConfig.canonical_url.replace(/\/$/, "") : "";
+  const routePath = active && active !== "home" ? `/${ROUTES[active]?.directory ?? active}/` : "/";
+  const canonical = canonicalBase ? `${canonicalBase}${routePath}` : "";
+  const socialImage = releaseMetadataEnabled ? publicationConfig.social_image_url : "";
+  return [
+    `<meta name="description" content="${escapeAttribute(description)}">`,
+    `<meta name="pattern-map-publication-status" content="${escapeAttribute(publicationConfig.status)}">`,
+    releaseMetadataEnabled ? '<meta name="robots" content="index,follow">' : '<meta name="robots" content="noindex,nofollow">',
+    '<meta property="og:type" content="article">',
+    `<meta property="og:site_name" content="Pattern Map">`,
+    `<meta property="og:title" content="${escapeAttribute(title)} — Pattern Map v16">`,
+    `<meta property="og:description" content="${escapeAttribute(description)}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+    `<meta name="twitter:title" content="${escapeAttribute(title)} — Pattern Map v16">`,
+    `<meta name="twitter:description" content="${escapeAttribute(description)}">`,
+    canonical ? `<link rel="canonical" href="${escapeAttribute(canonical)}"><meta property="og:url" content="${escapeAttribute(canonical)}">` : "",
+    socialImage ? `<meta property="og:image" content="${escapeAttribute(socialImage)}"><meta name="twitter:image" content="${escapeAttribute(socialImage)}">` : "",
+    releaseMetadataEnabled
+      ? `<meta name="author" content="${escapeAttribute(publicationConfig.author_name)}">`
+      : "",
+    releaseMetadataEnabled && typeof publicationConfig.author_handle === "string" && publicationConfig.author_handle.trim()
+      ? `<meta name="twitter:creator" content="${escapeAttribute(publicationConfig.author_handle)}">`
+      : "",
+  ].filter(Boolean).join("\n  ");
+};
+
 const renderPage = ({ title, eyebrow, intro, content, ctx, active = "", id = "page" }) => {
   const orientationActive = active || (ctx.standalone ? "all" : "home");
   const routeIntro = eyebrow ? `<section class="route-intro"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h1>${escapeHtml(title)}</h1>${intro ? `<p class="route-lede">${intro}</p>` : ""}</section>` : "";
-  const mobileOrientation = ctx.embedded ? "" : renderOrientationMobile(ctx, orientationActive);
+  const mobileOrientation = ctx.embedded || isPublic(ctx) ? "" : renderOrientationMobile(ctx, orientationActive);
   return `<!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-presentation-mode="${escapeAttribute(ctx.mode)}" data-publication-status="${escapeAttribute(isPublic(ctx) ? publicationConfig.status : "OWNER_REVIEW")}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pattern Recognition / The Discrimination Layer v16 — local owner-review site.">
+  ${renderPublicationMetadata({ title, intro, ctx, active: active || "home" })}
   <title>${escapeHtml(title)} — Pattern Map v16</title>
   ${ctx.standalone ? `<style>${styles}</style>` : `<link rel="stylesheet" href="${ctx.base}assets/site.css">`}
   <noscript><style>.secondary-nav-wrap { display: block; }.nav-more, [data-route-studio], [data-route-recommendation] { display: none !important; }.no-script-note { display: block !important; }</style></noscript>
 </head>
-<body id="${escapeAttribute(id)}">
+<body id="${escapeAttribute(id)}" class="mode-${escapeAttribute(ctx.mode)}">
   <a class="skip-link" href="#main">Skip to main content</a>
   ${renderHeader(ctx, active)}
   <main id="main" tabindex="-1">
-    <div class="page-frame">
-      ${renderOrientationRail(ctx, orientationActive)}
+    <div class="page-frame${isPublic(ctx) ? " page-frame-public" : ""}">
+      ${isPublic(ctx) ? "" : renderOrientationRail(ctx, orientationActive)}
       <div class="page-content">
         <!-- PATTERN_MAP_PAGE_CONTENT_START -->
         ${routeIntro}
@@ -733,11 +801,35 @@ const renderCurrentTopology = (ctx) => {
   </section>`;
 };
 
-const renderOpeningCase = (ctx, instance = "home") => `
+const renderGuidedOpeningCase = (ctx, instance = "guided") => `
   <aside class="opening-case" aria-labelledby="${escapeAttribute(instance)}-case-heading">
     <div class="opening-case-copy"><p class="eyebrow">A QUICK EXAMPLE</p><h2 id="${escapeAttribute(instance)}-case-heading">A product release can look strong until the room changes.</h2><p>The obvious search finds familiar coverage. A better pass also checks a specialist note, compares earlier releases, and notices that the monitoring window and rollback owner are missing. Those checks happen before prose.</p></div>
     <div class="opening-case-track" aria-label="A familiar search is widened, compared with a baseline, and checked for an expected absence"><span><b>01</b><strong>Familiar coverage</strong><small>the default path</small></span><i aria-hidden="true">→</i><span><b>02</b><strong>Earlier releases</strong><small>${renderTerm("baseline", `${instance}-case-baseline`, ctx)}</small></span><i aria-hidden="true">→</i><span><b>03</b><strong>Missing fields</strong><small>monitoring + rollback owner</small></span></div>
   </aside>`;
+
+const renderDecisionReveal = (ctx) => `
+  <figure class="decision-reveal" data-teaching-reveal aria-labelledby="decision-reveal-heading">
+    <div class="decision-reveal-intro">
+      <p class="eyebrow">A QUICK EXAMPLE / BEFORE THE PROSE</p>
+      <h2 id="decision-reveal-heading">Watch the decision change before any answer is written.</h2>
+      <p>The point is not to search forever. It is to widen once, compare once, and make one important absence visible before a person decides what happens next.</p>
+    </div>
+    <ol class="decision-reveal-path" aria-label="Four upstream checks">
+      <li class="reveal-stage reveal-default"><span>01 · DEFAULT PATH</span><strong>Familiar release coverage</strong><small>The product story looks complete because every source repeats the same visible features.</small></li>
+      <li class="reveal-stage reveal-widen"><span>02 · WIDEN ONCE</span><strong>One specialist note</strong><small>A monitoring concern becomes a candidate to inspect—not a shortcut to truth.</small></li>
+      <li class="reveal-stage reveal-compare"><span>03 · COMPARE</span><strong>Earlier releases</strong><small>${renderTerm("baseline", "home-reveal-baseline", ctx)} shows what a normal release packet usually contains.</small></li>
+      <li class="reveal-stage reveal-absence"><span>04 · EXPECTED ABSENCE</span><strong>Two fields are missing</strong><small>No monitoring window. No named rollback owner. The observation boundary stays explicit.</small></li>
+    </ol>
+    <details class="decision-reveal-boundary">
+      <summary>Reveal the decision boundary <span aria-hidden="true">→</span></summary>
+      <div class="decision-reveal-ledger">
+        <div><span>BECAME VISIBLE</span><strong>A concern worth checking and two expected-but-missing fields.</strong></div>
+        <div><span>REMAINS UNKNOWN</span><strong>Whether the concern is correct and why the fields are absent.</strong></div>
+        <div><span>HUMAN DECISION</span><strong>A person decides whether to ask, hold, or proceed; the map does not decide for them.</strong></div>
+      </div>
+    </details>
+    <figcaption class="decision-reveal-equivalent"><strong>Text equivalent:</strong> the familiar path is widened by one specialist candidate, compared with earlier releases, and checked for an expected absence. That makes a concern and two gaps inspectable while their meaning stays unknown and the consequential decision stays human.</figcaption>
+  </figure>`;
 
 const renderRoot = (ctx) => {
   const short = renderMarkdown(readText("manuscript/NINETY_SECOND_VERSION.md"), { ctx, headingOffset: 2, idPrefix: "short-" });
@@ -750,13 +842,13 @@ const renderRoot = (ctx) => {
       <p class="hero-bridge">This is a broad proposal about the room before the answer: what gets noticed, compared, preserved, questioned, and allowed to shape generation.</p>
       <p class="hero-term-line">${renderTerm("upstream-choices", "home-upstream", ctx)}</p>
     </div>
-    ${renderOpeningCase(ctx)}
+    ${renderDecisionReveal(ctx)}
     <nav class="door-grid" aria-label="Three principal doors">
       ${renderDoorCard("read", ctx)}${renderDoorCard("map", ctx)}${renderDoorCard("apply", ctx)}
     </nav>
     <p class="guided-cta"><a href="${routeHref(ctx, "guided", "guided")}"><strong>Take the guided read</strong><span>One continuous path through the idea, map, and smallest useful application · approximately 8–12 minutes</span><b aria-hidden="true">→</b></a></p>
   </section>
-  ${ctx.embedded ? "" : renderOrientationMobile(ctx, "home")}
+  ${ctx.embedded || isPublic(ctx) ? "" : renderOrientationMobile(ctx, "home")}
   <section class="home-section home-short" aria-labelledby="short-entry-heading">
     <div class="section-heading"><p class="eyebrow">A CUMULATIVE 60–90 SECOND ENTRY</p><h2 id="short-entry-heading">The idea before the machinery.</h2><p>Start here if you want the broad proposition in one sitting. The longer piece remains a human thought piece, not a protocol preamble.</p></div>
     <div class="short-entry reading-column">${short}</div>
@@ -784,6 +876,17 @@ const renderRead = (ctx) => {
   const essay = renderMarkdown(essayBody, { ctx, headingOffset: 1, idPrefix: "essay-" });
   const cover = renderMarkdown(readText("manuscript/MENTOR_COVER_NOTE.md"), { ctx, headingOffset: 2, idPrefix: "cover-" });
   const abstract = renderMarkdown(readText("manuscript/PUBLIC_ABSTRACT.md"), { ctx, headingOffset: 2, idPrefix: "abstract-" });
+  const essaySourceNote = isPublic(ctx) ? "" : '<p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p>';
+  if (isPublic(ctx)) {
+    return `
+  <section class="reading-route public-reading-route" id="read-idea" data-reading-route>
+    <section class="short-entry reading-column reading-section public-short-entry" id="read-quick" data-reading-section aria-label="Cumulative 60–90 second version"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p>${short}</section>
+    <nav class="public-reading-next" aria-label="Continue reading"><a href="#read-essay"><span>Continue</span><strong>Read the complete thought</strong></a><a href="#read-mentor"><span>Optional</span><strong>Open the mentor handoff</strong></a></nav>
+    <section class="essay-section reading-section" id="read-essay" data-reading-section aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2>${essaySourceNote}</div><article class="reading-column essay-content">${essay}</article></section>
+    <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column">${cover}</div></details></section>
+    <section class="abstract-box" aria-labelledby="abstract-heading"><details><summary id="abstract-heading">Public abstract</summary><div class="reading-column">${abstract}</div></details></section>
+  </section>`;
+  }
   return `
   <section class="reading-route" id="read-idea" data-reading-route>
     <div class="route-brief" aria-label="How to use the Read route"><span><strong>What this is</strong> A human thought piece about upstream choices.</span><span><strong>What you can do</strong> Start short, then read deep.</span><span><strong>Next</strong> Explore the six-family map.</span></div>
@@ -795,7 +898,7 @@ const renderRead = (ctx) => {
     <div class="reading-progress-wrap"><span>Reading progress</span><div class="reading-progress" data-reading-progress role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><span data-reading-progress-value>0%</span></div>
     <blockquote class="pull-quote"><p>“The answer inherits those upstream choices.”</p><cite>Frozen v16 standfirst</cite></blockquote>
     <section class="short-entry reading-column reading-section" id="read-quick" data-reading-section aria-labelledby="read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h2 id="read-short-heading">The broad idea first.</h2>${short}</section>
-    <section class="essay-section reading-section" id="read-essay" data-reading-section aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2><p class="muted">Canonical source: <code>manuscript/PATTERN_RECOGNITION_V16.md</code>. This route keeps the full essay intact and lets technical detail arrive after the reader understands the problem.</p></div><article class="reading-column essay-content">${essay}</article></section>
+    <section class="essay-section reading-section" id="read-essay" data-reading-section aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2>${essaySourceNote}</div><article class="reading-column essay-content">${essay}</article></section>
     <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column">${cover}</div></details></section>
     <section class="abstract-box" aria-labelledby="abstract-heading"><details><summary id="abstract-heading">Public abstract and concise metadata context</summary><div class="reading-column">${abstract}</div></details></section>
     ${renderSourceManifest("read", ctx)}
@@ -855,9 +958,10 @@ const renderRouteStudio = (ctx) => `
     <div class="route-studio-layout">
       <form class="route-studio-form" data-route-studio>
         <fieldset><legend>00 · Evidence selection</legend><label><input type="radio" name="evidenceSelection" value="none" checked> No — supplied-material transformation only <small>stay ordinary; create no evidence bureaucracy</small></label><label><input type="radio" name="evidenceSelection" value="needed"> Yes — material must be selected or weighed <small>use the smallest warranted evidence route</small></label></fieldset>
-        <fieldset><legend>01 · Consequence</legend><label><input type="radio" name="consequence" value="reversible" checked> Reversible / supplied input <small>an ordinary path may fit only when Stage 0 is no</small></label><label><input type="radio" name="consequence" value="consequential"> Consequential / downstream effect <small>keep a human gate visible</small></label></fieldset>
-        <fieldset><legend>02 · Uncertainty</legend><label><input type="radio" name="uncertainty" value="low" checked> Low <small>the question and material are clear</small></label><label><input type="radio" name="uncertainty" value="mixed"> Mixed <small>one comparison or challenge is warranted</small></label><label><input type="radio" name="uncertainty" value="high"> High <small>gaps, conflicts, or unknown origins remain</small></label></fieldset>
-        <fieldset><legend>03 · Budget</legend><label><input type="radio" name="budget" value="quick" checked> Quick <small>short bounded pass</small></label><label><input type="radio" name="budget" value="bounded"> Bounded <small>repeated work needs a record</small></label><label><input type="radio" name="budget" value="substantial"> Substantial <small>engineering is justified only if value is visible</small></label></fieldset>
+        <p class="stage0-status" id="stage0-dependent-status" data-stage0-status role="status">Consequence, uncertainty, and evidence-route budget are not applicable while Stage 0 remains supplied-material only.</p>
+        <fieldset data-stage0-dependent="consequence" aria-describedby="stage0-dependent-status" disabled><legend>01 · Consequence</legend><label><input type="radio" name="consequence" value="reversible" checked> Reversible evidence use <small>a bounded route may fit</small></label><label><input type="radio" name="consequence" value="consequential"> Consequential / downstream effect <small>keep a human gate visible</small></label></fieldset>
+        <fieldset data-stage0-dependent="uncertainty" aria-describedby="stage0-dependent-status" disabled><legend>02 · Uncertainty</legend><label><input type="radio" name="uncertainty" value="low" checked> Low <small>the question and material are clear</small></label><label><input type="radio" name="uncertainty" value="mixed"> Mixed <small>one comparison or challenge is warranted</small></label><label><input type="radio" name="uncertainty" value="high"> High <small>gaps, conflicts, or unknown origins remain</small></label></fieldset>
+        <fieldset data-stage0-dependent="budget" aria-describedby="stage0-dependent-status" disabled><legend>03 · Evidence-route budget</legend><label><input type="radio" name="budget" value="quick" checked> Quick <small>short bounded pass</small></label><label><input type="radio" name="budget" value="bounded"> Bounded <small>repeated work needs a record</small></label><label><input type="radio" name="budget" value="substantial"> Substantial <small>engineering is justified only if value is visible</small></label></fieldset>
         <fieldset><legend>04 · Permission</legend><label><input type="radio" name="permission" value="supplied" checked> Supplied / ordinary authority <small>access and use are clear</small></label><label><input type="radio" name="permission" value="restricted"> Restricted / clarify before influence <small>hold ambiguous operations</small></label><label><input type="radio" name="permission" value="human-gate"> Human gate required <small>route can propose; a person decides</small></label></fieldset>
         <div class="studio-actions"><button class="studio-submit" type="submit">Build route recommendation <span aria-hidden="true">→</span></button><button class="quiet-button" type="button" data-route-reset>Reset choices</button></div>
         <p class="studio-boundary"><strong>Planning only.</strong> The controls create no network request, perform no task, and make no external change.</p>
@@ -868,17 +972,16 @@ const renderRouteStudio = (ctx) => `
         <p data-recommendation-summary>Stage 0 found no evidence-selection work. Transform only the supplied material, keep material assumptions visible, and do not manufacture an evidence workflow.</p>
         <section aria-labelledby="recommendation-heading"><h4 id="recommendation-heading">Recommended plan</h4><dl class="recommendation-facts"><div><dt>Recommended action</dt><dd data-recommendation-action>ANSWER</dd></div><div><dt>Required gate</dt><dd data-recommendation-gate>No additional gate identified; consequential action still remains with the named person.</dd></div><div><dt>Planned stop condition</dt><dd data-recommendation-stop>Finish the supplied-material transformation. Do not begin external acquisition unless the brief changes.</dd></div><div><dt>Learning option</dt><dd data-recommendation-learning>No learning route is planned. A later outcome would need its own expectation and review window.</dd></div></dl></section>
         <p class="recommendation-status" data-recommendation-status role="status" aria-live="polite" aria-atomic="true">Ordinary route recommendation ready; no execution or human decision has been recorded.</p>
-        <section class="observed-state" aria-labelledby="observed-state-heading"><h4 id="observed-state-heading">Observed state</h4><p>Planning inputs cannot create events. These fields remain unchanged until a real, separately authorized run produces evidence.</p><dl><div><dt>Execution</dt><dd data-observed-execution>NOT_RUN</dd></div><div><dt>Stop outcome</dt><dd data-observed-stop>NOT_TRIGGERED</dd></div><div><dt>Outcome</dt><dd data-observed-outcome>NOT_OBSERVED</dd></div><div><dt>Learning review</dt><dd data-observed-learning>NOT_AVAILABLE</dd></div><div><dt>Human decision</dt><dd data-observed-human>NOT_RECORDED</dd></div></dl></section>
-        <section class="simulation-controls" aria-labelledby="simulation-heading"><p class="eyebrow">OPTIONAL LOCAL SIMULATION</p><h4 id="simulation-heading">Inspect an example without mistaking it for a record.</h4><div><button type="button" data-simulation-action="hold">Simulate human HOLD</button><button type="button" data-simulation-action="clarify">Simulate clarification received</button><button type="button" data-simulation-action="reset">Reset simulation</button></div><dl class="simulation-record"><div><dt>Simulation</dt><dd data-simulation-state>NOT_SIMULATED</dd></div><div><dt>Reason</dt><dd data-simulation-reason>Use the controls only to inspect example state changes. They do not record a real person, run, stop, or outcome.</dd></div><div><dt>Local display time</dt><dd data-simulation-time>NOT_RECORDED</dd></div></dl></section>
+        ${isPublic(ctx) ? '<details class="studio-inspection-details"><summary>Inspect internal planning state and a local simulation</summary><div>' : ""}
+          <section class="observed-state" aria-labelledby="observed-state-heading"><h4 id="observed-state-heading">Observed state</h4><p>Planning inputs cannot create events. These fields remain unchanged until a real, separately authorized run produces evidence.</p><dl><div><dt>Execution</dt><dd data-observed-execution>NOT_RUN</dd></div><div><dt>Stop outcome</dt><dd data-observed-stop>NOT_TRIGGERED</dd></div><div><dt>Outcome</dt><dd data-observed-outcome>NOT_OBSERVED</dd></div><div><dt>Learning review</dt><dd data-observed-learning>NOT_AVAILABLE</dd></div><div><dt>Human decision</dt><dd data-observed-human>NOT_RECORDED</dd></div></dl></section>
+          <section class="simulation-controls" aria-labelledby="simulation-heading"><p class="eyebrow">OPTIONAL LOCAL SIMULATION</p><h4 id="simulation-heading">Inspect an example without mistaking it for a record.</h4><div><button type="button" data-simulation-action="hold">Simulate human HOLD</button><button type="button" data-simulation-action="clarify">Simulate clarification received</button><button type="button" data-simulation-action="reset">Reset simulation</button></div><dl class="simulation-record"><div><dt>Simulation</dt><dd data-simulation-state>NOT_SIMULATED</dd></div><div><dt>Reason</dt><dd data-simulation-reason>Use the controls only to inspect example state changes. They do not record a real person, run, stop, or outcome.</dd></div><div><dt>Local display time</dt><dd data-simulation-time>NOT_RECORDED</dd></div></dl></section>
+        ${isPublic(ctx) ? "</div></details>" : ""}
       </aside>
     </div>
-    <details class="static-route-equivalent" open><summary>Static decision guide: complete no-script equivalent</summary><div class="static-route-body"><p><strong>Stage 0 comes first:</strong> if the task only transforms supplied material, use the ordinary path and create no evidence records. If the system must select, acquire, compare, preserve, or weigh material beyond what was supplied, choose at least the lightweight path. Restricted permission still requires <code>CLARIFY</code>; a named human gate still requires <code>HOLD</code>.</p><p>The table expresses planning recommendations only. It does not claim that work ran, a budget or deadline was reached, an outcome was observed, learning occurred, or a person made a decision.</p><div class="table-wrap"><table><caption>Proportionate planning choices after Stage 0</caption><thead><tr><th scope="col">Choice</th><th scope="col">Fit</th><th scope="col">Recommended action</th><th scope="col">Required gate</th><th scope="col">Planned stop condition</th></tr></thead><tbody><tr><th scope="row">ordinary</th><td>Stage 0 no: transform only supplied material</td><td><code>ANSWER</code></td><td>no additional evidence gate</td><td>finish the supplied-material transformation</td></tr><tr><th scope="row">lightweight</th><td>Stage 0 yes: one bounded comparison or alternate route</td><td><code>ANSWER_PROVISIONALLY</code></td><td>human review before consequential use</td><td>one route + one challenge + stated time limit</td></tr><tr><th scope="row">moderate</th><td>repeated, uncertain, or consequential evidence-selection work</td><td><code>COMPARE</code></td><td>named human review</td><td>named comparison, critical gap, or resource boundary</td></tr><tr><th scope="row">advanced</th><td>queryable records and review justify their cost</td><td><code>COMPARE</code></td><td>explicit permission + accountable review</td><td>approved resource boundary or blocking gap</td></tr><tr><th scope="row">restricted permission</th><td>any Stage 0, consequence, or budget choice</td><td><code>CLARIFY</code></td><td>permission must be resolved before influence</td><td>hold while permission is unclear</td></tr><tr><th scope="row">human gate</th><td>any Stage 0, consequence, or budget choice</td><td><code>HOLD</code></td><td>named person must approve proposed use</td><td>remain on hold until the gate is satisfied</td></tr></tbody></table></div><p class="static-plan"><strong>Observed state remains:</strong> execution <code>NOT_RUN</code> · stop outcome <code>NOT_TRIGGERED</code> · outcome <code>NOT_OBSERVED</code> · learning review <code>NOT_AVAILABLE</code> · human decision <code>NOT_RECORDED</code>.</p></div></details>
+    <details class="static-route-equivalent" open${isPublic(ctx) ? " data-progressive-static-guide" : ""}><summary>Static decision guide: complete no-script equivalent</summary><div class="static-route-body"><p><strong>Stage 0 comes first:</strong> if the task only transforms supplied material, use the ordinary path and create no evidence records. Consequence, uncertainty, and evidence-route budget are then <strong>not applicable</strong>, not silently ignored. If the system must select, acquire, compare, preserve, or weigh material beyond what was supplied, choose at least the lightweight path. Restricted permission still requires <code>CLARIFY</code>; a named human gate still requires <code>HOLD</code>.</p><p>The table expresses planning recommendations only. It does not claim that work ran, a budget or deadline was reached, an outcome was observed, learning occurred, or a person made a decision.</p><div class="table-wrap"><table><caption>Proportionate planning choices after Stage 0</caption><thead><tr><th scope="col">Choice</th><th scope="col">Fit</th><th scope="col">Recommended action</th><th scope="col">Required gate</th><th scope="col">Planned stop condition</th></tr></thead><tbody><tr><th scope="row">ordinary</th><td>Stage 0 no: transform only supplied material; dependent evidence-route fields are not applicable</td><td><code>ANSWER</code></td><td>no additional evidence gate</td><td>finish the supplied-material transformation</td></tr><tr><th scope="row">lightweight</th><td>Stage 0 yes: one bounded comparison or alternate route</td><td><code>ANSWER_PROVISIONALLY</code></td><td>human review before consequential use</td><td>one route + one challenge + stated time limit</td></tr><tr><th scope="row">moderate</th><td>repeated, uncertain, or consequential evidence-selection work</td><td><code>COMPARE</code></td><td>named human review</td><td>named comparison, critical gap, or resource boundary</td></tr><tr><th scope="row">advanced</th><td>queryable records and review justify their cost</td><td><code>COMPARE</code></td><td>explicit permission + accountable review</td><td>approved resource boundary or blocking gap</td></tr><tr><th scope="row">restricted permission</th><td>any Stage 0 or evidence-route choice</td><td><code>CLARIFY</code></td><td>permission must be resolved before influence</td><td>hold while permission is unclear</td></tr><tr><th scope="row">human gate</th><td>any Stage 0 or evidence-route choice</td><td><code>HOLD</code></td><td>named person must approve proposed use</td><td>remain on hold until the gate is satisfied</td></tr></tbody></table></div><p class="static-plan"><strong>Observed state remains:</strong> execution <code>NOT_RUN</code> · stop outcome <code>NOT_TRIGGERED</code> · outcome <code>NOT_OBSERVED</code> · learning review <code>NOT_AVAILABLE</code> · human decision <code>NOT_RECORDED</code>.</p></div></details>
   </section>`;
 
-const renderApply = (ctx) => `
-  <section class="apply-route" id="apply">
-    ${renderRouteStudio(ctx)}
-    ${renderImplementationLevels(ctx)}
+const renderApplyDeepContent = (ctx) => `
     <section class="operator-section" aria-labelledby="operator-heading"><div class="section-heading"><p class="eyebrow">OPERATOR PATH</p><h2 id="operator-heading">Twelve observable moves from decision to learning.</h2><p>Frame the real decision, set permission and cost, widen one bounded route, compare, challenge, route, preserve influence, and close the loop without rewriting the original record.</p></div><div class="operator-steps">${[
       ["01", "Frame the decision", "Write the decision, intended use, audience, consequence, deadline, and useful-answer condition."],
       ["02", "Set permission and cost", "Separate technical reach from authorized acquisition, retention, disclosure, and action."],
@@ -895,7 +998,15 @@ const renderApply = (ctx) => `
     ].map(([number, title, description]) => `<article class="operator-step"><span class="step-number">${number}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p></article>`).join("")}</div></section>
     ${renderStateVocabulary(ctx)}
     <section class="agent-section" aria-labelledby="agent-heading"><div class="section-heading"><p class="eyebrow">AGENT COMPANION</p><h2 id="agent-heading">Copyable procedures, not an exhortation to be creative.</h2><p>The agent guide makes acquisition, comparison, disconfirmation, uncertainty, cost, stop, escalation, influence, and learning visible in artifacts another person can inspect.</p></div><div class="agent-docs"><details class="agent-doc agent-quickstart" open><summary>Quickstart — the smallest safe procedure</summary><div class="source-markdown">${renderMarkdown(readText("framework/agent-playbook/QUICKSTART.md"), { ctx, headingOffset: 2, idPrefix: "agent-quickstart-" })}</div></details><details class="agent-doc"><summary>Full operating guide — deeper procedure</summary><div class="source-markdown">${renderMarkdown(readText("framework/agent-playbook/FULL_OPERATING_GUIDE.md"), { ctx, headingOffset: 2, idPrefix: "agent-guide-" })}</div></details><details class="agent-doc"><summary>Copyable agent brief</summary><div class="source-markdown">${renderMarkdown(readText("framework/agent-playbook/COPYABLE_AGENT_BRIEF.md"), { ctx, headingOffset: 2, idPrefix: "agent-brief-" })}</div></details><details class="agent-doc"><summary>Preflight and decision receipt</summary><div class="source-markdown">${renderMarkdown(readText("framework/agent-playbook/PREFLIGHT_CHECKLIST.md"), { ctx, headingOffset: 2, idPrefix: "agent-preflight-" })}${renderMarkdown(readText("framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md"), { ctx, headingOffset: 2, idPrefix: "agent-receipt-" })}</div></details></div></section>
-    ${renderTemplateShelf(ctx)}
+    ${renderTemplateShelf(ctx)}`;
+
+const renderApply = (ctx) => `
+  <section class="apply-route" id="apply">
+    ${renderRouteStudio(ctx)}
+    ${renderImplementationLevels(ctx)}
+    ${isPublic(ctx)
+      ? `<details class="public-builder-depth"><summary><span>For builders and agents</span><strong>Open the operator path, state vocabulary, agent companion, and copyable records</strong></summary><div class="public-builder-depth-body">${renderApplyDeepContent(ctx)}</div></details>`
+      : renderApplyDeepContent(ctx)}
     ${renderSourceManifest("apply", ctx)}
   </section>`;
 
@@ -907,7 +1018,7 @@ const renderGuided = (ctx) => {
     <div class="route-brief" aria-label="How to use the Guided read"><span><strong>What this is</strong> One continuous path through the publication.</span><span><strong>What it preserves</strong> Read, Map, and Apply remain separate doors.</span><span><strong>Time</strong> Approximately 8–12 minutes; editorial estimate only.</span></div>
     <nav class="guided-index" aria-label="Guided reading path"><a class="is-current" data-reading-link href="#guided-opening"><span>01</span>Start with the problem</a><a data-reading-link href="#guided-families"><span>02</span>Meet the six questions</a><a data-reading-link href="#guided-relations"><span>03</span>See the relationships</a><a data-reading-link href="#guided-apply"><span>04</span>Choose the smallest useful path</a><a data-reading-link href="#guided-examples"><span>05</span>Test it against examples</a><a data-reading-link href="#guided-boundary"><span>06</span>Keep the human boundary</a></nav>
     <div class="reading-progress-wrap"><span>Guided progress</span><div class="reading-progress" data-reading-progress role="progressbar" aria-label="Guided reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><span data-reading-progress-value>0%</span></div>
-    <section class="guided-section guided-opening" id="guided-opening" data-reading-section aria-labelledby="guided-opening-heading"><div class="section-heading"><p class="eyebrow">01 · THE HUMAN PROBLEM</p><h2 id="guided-opening-heading">The answer inherits the room it was given.</h2><p>Generation is only the visible end of the work. The less visible decisions—what to notice, compare, preserve, question, and permit—shape what the answer can become.</p></div>${renderOpeningCase(ctx, "guided")}<div class="guided-short reading-column">${short}</div><p class="guided-transition"><a href="${routeHref(ctx, "read", "read-essay")}">Read the complete thought piece <span aria-hidden="true">→</span></a></p></section>
+    <section class="guided-section guided-opening" id="guided-opening" data-reading-section aria-labelledby="guided-opening-heading"><div class="section-heading"><p class="eyebrow">01 · THE HUMAN PROBLEM</p><h2 id="guided-opening-heading">The answer inherits the room it was given.</h2><p>Generation is only the visible end of the work. The less visible decisions—what to notice, compare, preserve, question, and permit—shape what the answer can become.</p></div>${renderGuidedOpeningCase(ctx)}<div class="guided-short reading-column">${short}</div><p class="guided-transition"><a href="${routeHref(ctx, "read", "read-essay")}">Read the complete thought piece <span aria-hidden="true">→</span></a></p></section>
     <section class="guided-section" id="guided-families" data-reading-section aria-labelledby="guided-families-heading"><div class="section-heading"><p class="eyebrow">02 · SIX QUESTIONS</p><h2 id="guided-families-heading">Use the family that exposes the missing decision.</h2><p>The identifiers preserve the historical map. They do not turn the families into six compulsory steps.</p></div><div class="guided-family-grid">${familyQuestions}</div></section>
     <section class="guided-section" id="guided-relations" data-reading-section aria-labelledby="guided-relations-heading"><div class="section-heading"><p class="eyebrow">03 · RELATIONSHIPS</p><h2 id="guided-relations-heading">Four connections keep the map honest.</h2><p>${renderTerm("baseline", "guided-baseline", ctx)} makes motion and expected absence meaningful. ${renderTerm("common-origin", "guided-origin", ctx)} keeps repetition separate from independent support. ${renderTerm("human-authority", "guided-authority", ctx)} constrains consequential influence. The ${renderTerm("learning-loop", "guided-learning", ctx)} waits for an observed outcome before proposing an update.</p></div><div class="guided-relation-strip"><span><b>baseline</b><small>F3 motion · F4 absence</small></span><span><b>origin</b><small>F2 weighing · F5 comparison</small></span><span><b>authority</b><small>evidence ≠ permission to act</small></span><span><b>outcome</b><small>review before update</small></span></div><p class="guided-transition"><a href="${routeHref(ctx, "map", "current-map")}">Open the interactive relationship map <span aria-hidden="true">→</span></a></p></section>
     <section class="guided-section" id="guided-apply" data-reading-section aria-labelledby="guided-apply-heading"><div class="section-heading"><p class="eyebrow">04 · PROPORTIONALITY</p><h2 id="guided-apply-heading">First ask whether evidence selection is even part of the task.</h2><p>If the work only formats, translates, rewrites, summarizes, or transforms supplied material, use the ordinary path. Add evidence records only when the system must select, acquire, compare, preserve, or weigh material that could change a decision.</p></div>${renderImplementationLevels(ctx)}<p class="guided-transition"><a href="${routeHref(ctx, "apply", "route-studio")}">Build a local route recommendation <span aria-hidden="true">→</span></a></p></section>
@@ -1044,31 +1155,59 @@ const standalonePageContent = (html) => {
   return html.slice(start + startMarker.length, end);
 };
 
-const build = () => {
-  fs.rmSync(DIST_DIR, { recursive: true, force: true });
-  fs.mkdirSync(DIST_DIR, { recursive: true });
-  fs.mkdirSync(path.join(DIST_DIR, "assets", "diagrams"), { recursive: true });
-  fs.copyFileSync(path.join(SITE_DIR, "src", "site.css"), path.join(DIST_DIR, "assets", "site.css"));
-  fs.copyFileSync(path.join(SITE_DIR, "src", "recommendation.js"), path.join(DIST_DIR, "assets", "recommendation.js"));
-  fs.copyFileSync(path.join(SITE_DIR, "src", "term-popover-geometry.js"), path.join(DIST_DIR, "assets", "term-popover-geometry.js"));
-  fs.copyFileSync(path.join(SITE_DIR, "src", "site.js"), path.join(DIST_DIR, "assets", "site.js"));
+const canonicalSourcePaths = [
+  "docs/CONTENT_INTERFACE_V16.json",
+  ...contentInterface.doors.flatMap((door) => door.sources),
+  ...contentInterface.secondary_routes.flatMap((route) => route.sources),
+].filter((source, index, sources) => sources.indexOf(source) === index).sort();
+
+const canonicalSourceHashes = () => Object.fromEntries(canonicalSourcePaths.map((relativePath) => {
+  const sourcePath = path.join(ROOT, relativePath);
+  if (!fs.existsSync(sourcePath) || !fs.statSync(sourcePath).isFile()) throw new Error(`Canonical site source is missing: ${relativePath}`);
+  const hash = crypto.createHash("sha256").update(fs.readFileSync(sourcePath)).digest("hex");
+  return [relativePath, hash];
+}));
+
+const writeBuildManifest = (distDir, mode) => {
+  const manifest = {
+    schema_version: "pattern-map.site-build-manifest.v1",
+    mode,
+    route_ids: ["home", ...Object.keys(ROUTES)],
+    canonical_source_sha256: canonicalSourceHashes(),
+    claim_anchors: [...contentInterface.claims],
+    family_tuple: contentInterface.families.map(({ id, name, reader_question: readerQuestion }) => ({ id, name, reader_question: readerQuestion })),
+    publication_status: mode === "public" ? publicationConfig.status : "OWNER_REVIEW",
+    release_build: mode === "public" && releaseBuildRequested && publicationReleaseReady(),
+  };
+  writeFile(path.join(distDir, "build-manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
+};
+
+const buildMode = (mode) => {
+  const distDir = mode === "public" ? PUBLIC_DIST_DIR : DIST_DIR;
+  fs.rmSync(distDir, { recursive: true, force: true });
+  fs.mkdirSync(distDir, { recursive: true });
+  fs.mkdirSync(path.join(distDir, "assets", "diagrams"), { recursive: true });
+  fs.copyFileSync(path.join(SITE_DIR, "src", "site.css"), path.join(distDir, "assets", "site.css"));
+  fs.copyFileSync(path.join(SITE_DIR, "src", "recommendation.js"), path.join(distDir, "assets", "recommendation.js"));
+  fs.copyFileSync(path.join(SITE_DIR, "src", "term-popover-geometry.js"), path.join(distDir, "assets", "term-popover-geometry.js"));
+  fs.copyFileSync(path.join(SITE_DIR, "src", "site.js"), path.join(distDir, "assets", "site.js"));
   const diagramSource = path.join(ROOT, "assets", "diagrams", HISTORICAL_DIAGRAM);
   if (!fs.existsSync(diagramSource)) {
     throw new Error(`Missing historical diagram: ${diagramSource}`);
   }
-  fs.copyFileSync(diagramSource, path.join(DIST_DIR, "assets", "diagrams", HISTORICAL_DIAGRAM));
+  fs.copyFileSync(diagramSource, path.join(distDir, "assets", "diagrams", HISTORICAL_DIAGRAM));
 
-  const rootPages = pageDefinitions({ base: "", standalone: false });
-  const nestedPages = pageDefinitions({ base: "../", standalone: false });
-  writeFile(path.join(DIST_DIR, "index.html"), rootPages.home);
+  const rootPages = pageDefinitions({ base: "", standalone: false, mode });
+  const nestedPages = pageDefinitions({ base: "../", standalone: false, mode });
+  writeFile(path.join(distDir, "index.html"), rootPages.home);
   Object.entries(nestedPages).filter(([key]) => key !== "home").forEach(([key, html]) => {
     writeFile(
-      path.join(DIST_DIR, ROUTES[key].directory, "index.html"),
+      path.join(distDir, ROUTES[key].directory, "index.html"),
       html.replaceAll('href="assets/', 'href="../assets/').replaceAll('src="assets/', 'src="../assets/')
     );
   });
 
-  const standalonePages = pageDefinitions({ base: "", standalone: true, embedded: true });
+  const standalonePages = pageDefinitions({ base: "", standalone: true, embedded: true, mode });
   const standaloneHeadline = escapeHtml(contentInterface.first_screen.headline);
   const standaloneStatusNote = `<aside class="standalone-export-note callout-inline" aria-label="Standalone export status"><p class="eyebrow">STANDALONE OWNER-REVIEW EXPORT</p><p><strong>Direct-open · local only · no results.</strong> This all-routes file opens from disk inside the repository package. It uses no deployed URL or external runtime; its one historical image is repository-relative.</p></aside>`;
   const standaloneContent = Object.entries(standalonePages).map(([key, html]) => {
@@ -1083,19 +1222,26 @@ const build = () => {
       const heroEnd = normalized.indexOf("</section>", heroStart);
       if (heroStart < 0 || heroEnd < 0) throw new Error("Standalone Home hero could not be located");
       const insertAt = heroEnd + "</section>".length;
-      normalized = `${normalized.slice(0, insertAt)}\n${standaloneStatusNote}${normalized.slice(insertAt)}`;
+      if (mode === "review") normalized = `${normalized.slice(0, insertAt)}\n${standaloneStatusNote}${normalized.slice(insertAt)}`;
     }
     return `<section class="standalone-section" id="${key}" aria-label="${escapeAttribute(label)}">${normalized}</section>`;
   }).join("\n");
   const standalone = renderPage({
     title: contentInterface.first_screen.headline,
     content: standaloneContent,
-    ctx: { base: "", standalone: true },
+    ctx: { base: "", standalone: true, mode },
     id: "standalone-export",
   });
-  writeFile(path.join(EXPORT_DIR, "pattern-map-v16.html"), standalone.replaceAll("../../../assets/diagrams/", "../../../assets/diagrams/"));
-  console.log(`Built ${Object.keys(rootPages).length} routes to ${DIST_DIR}`);
-  console.log(`Built standalone export to ${path.join(EXPORT_DIR, "pattern-map-v16.html")}`);
+  const standaloneName = mode === "public" ? "pattern-map-v16-public.html" : "pattern-map-v16.html";
+  writeFile(path.join(EXPORT_DIR, standaloneName), standalone.replaceAll("../../../assets/diagrams/", "../../../assets/diagrams/"));
+  writeBuildManifest(distDir, mode);
+  console.log(`Built ${Object.keys(rootPages).length} ${mode} routes to ${distDir}`);
+  console.log(`Built ${mode} standalone export to ${path.join(EXPORT_DIR, standaloneName)}`);
 };
 
-build();
+if (modeArgument === "all") {
+  buildMode("review");
+  buildMode("public");
+} else {
+  buildMode(modeArgument);
+}

@@ -4,8 +4,11 @@ import { fileURLToPath } from "node:url";
 
 const SITE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.join(SITE_DIR, "dist");
+const PUBLIC_DIST_DIR = path.join(SITE_DIR, "public-dist");
 const EXPORT_PATH = path.join(SITE_DIR, "exports", "standalone", "pattern-map-v16.html");
+const PUBLIC_EXPORT_PATH = path.join(SITE_DIR, "exports", "standalone", "pattern-map-v16-public.html");
 const CSS_PATH = path.join(SITE_DIR, "src", "site.css");
+const PUBLICATION_CONFIG_PATH = path.join(SITE_DIR, "publication.config.json");
 
 const requiredRoutes = [
   "index.html",
@@ -78,7 +81,7 @@ const cssHexVariable = (css, name) => {
   return value;
 };
 
-const checkLink = (fromFile, href) => {
+const checkLink = (fromFile, href, distRoot = DIST_DIR) => {
   if (!href || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(href)) return;
   if (href.startsWith("#")) {
     const fragment = decodeURIComponent(href.slice(1));
@@ -89,7 +92,7 @@ const checkLink = (fromFile, href) => {
   const [filePart] = withoutHash.split("?");
   if (!filePart) return;
   const target = path.resolve(path.dirname(fromFile), filePart);
-  assert(target.startsWith(`${DIST_DIR}${path.sep}`), `${fromFile} escapes dist: ${href}`);
+  assert(target.startsWith(`${distRoot}${path.sep}`), `${fromFile} escapes dist: ${href}`);
   assert(fs.existsSync(target), `${fromFile} points to missing local target: ${href}`);
   if (fragment && target.endsWith(".html")) {
     assert(idsIn(read(target)).has(decodeURIComponent(fragment)), `${fromFile} points to missing target fragment: ${href}`);
@@ -98,7 +101,9 @@ const checkLink = (fromFile, href) => {
 
 const main = () => {
   for (const route of requiredRoutes) assert(fs.existsSync(path.join(DIST_DIR, route)), `missing built route: ${route}`);
+  for (const route of requiredRoutes) assert(fs.existsSync(path.join(PUBLIC_DIST_DIR, route)), `missing public built route: ${route}`);
   assert(fs.existsSync(EXPORT_PATH), "missing committed standalone export; run build first");
+  assert(fs.existsSync(PUBLIC_EXPORT_PATH), "missing committed public standalone export; run build first");
   const root = read(path.join(DIST_DIR, "index.html"));
   const map = read(path.join(DIST_DIR, "map/index.html"));
   const readRoute = read(path.join(DIST_DIR, "read/index.html"));
@@ -109,6 +114,7 @@ const main = () => {
   const research = read(path.join(DIST_DIR, "research/index.html"));
   const history = read(path.join(DIST_DIR, "history/index.html"));
   const css = read(CSS_PATH);
+  const siteScript = read(path.join(SITE_DIR, "src", "site.js"));
   const headline = "AI slop often begins before the model writes a word.";
   const standfirst = "A polished answer can still feel generic when the system follows the obvious search path";
   const conceptualBridge = "This is a broad proposal about the room before the answer";
@@ -280,6 +286,103 @@ const main = () => {
   }
   assert(contrastRatio(cssHexVariable(css, "focus-dark"), paper) >= 3, "dark focus ring lacks 3:1 contrast on paper");
   assert(contrastRatio(cssHexVariable(css, "focus-light"), cssHexVariable(css, "navy")) >= 3, "light focus ring lacks 3:1 contrast on dark surfaces");
+
+  const reviewManifest = JSON.parse(read(path.join(DIST_DIR, "build-manifest.json")));
+  const publicManifest = JSON.parse(read(path.join(PUBLIC_DIST_DIR, "build-manifest.json")));
+  for (const field of ["route_ids", "canonical_source_sha256", "claim_anchors", "family_tuple"]) {
+    assert(JSON.stringify(reviewManifest[field]) === JSON.stringify(publicManifest[field]), `review/public build drift in ${field}`);
+  }
+  assert(reviewManifest.mode === "review" && publicManifest.mode === "public", "build manifests do not identify their presentation mode");
+  assert(reviewManifest.route_ids.join(",") === "home,read,map,apply,guided,examples,boundaries,sources,research,history", "dual-mode route set changed");
+  assert(Object.keys(reviewManifest.canonical_source_sha256).length >= 30, "dual-mode source manifest is unexpectedly narrow");
+
+  const publicationConfig = JSON.parse(read(PUBLICATION_CONFIG_PATH));
+  assert(publicationConfig.status === "LOCAL_PREVIEW_UNSET", "public preview must remain in the explicit unset state before release authorization");
+  for (const field of ["author_name", "author_handle", "canonical_url", "social_image_url"]) {
+    assert(publicationConfig[field] === null, `public preview invented publication identity: ${field}`);
+  }
+
+  const publicRouteFiles = requiredRoutes.map((route) => path.join(PUBLIC_DIST_DIR, route));
+  const publicRouteHtml = publicRouteFiles.map(read);
+  const publicRoot = publicRouteHtml[0];
+  const publicRead = read(path.join(PUBLIC_DIST_DIR, "read/index.html"));
+  const publicApply = read(path.join(PUBLIC_DIST_DIR, "apply/index.html"));
+  const publicMap = read(path.join(PUBLIC_DIST_DIR, "map/index.html"));
+  const publicResearch = read(path.join(PUBLIC_DIST_DIR, "research/index.html"));
+  const publicStandalone = read(PUBLIC_EXPORT_PATH);
+  for (const html of [...publicRouteHtml, publicStandalone]) {
+    assert(html.includes('data-presentation-mode="public"'), "public surface lacks explicit presentation mode");
+    assert(html.includes('data-publication-status="LOCAL_PREVIEW_UNSET"'), "public surface lacks fail-closed publication status");
+    assert(html.includes('<meta name="robots" content="noindex,nofollow">'), "unset public preview is indexable");
+    for (const reviewChrome of [
+      "local owner review",
+      "local owner-review surface",
+      "standalone owner-review export",
+      "canonical source manifest for this route",
+      '<aside class="orientation-rail"',
+      '<details class="orientation-mobile"',
+    ]) assert(!html.toLowerCase().includes(reviewChrome), `public surface leaked review chrome: ${reviewChrome}`);
+    for (const releaseOnlyMetadata of ['rel="canonical"', 'property="og:url"', 'name="author"', 'property="og:image"', 'name="twitter:image"']) {
+      assert(!html.includes(releaseOnlyMetadata), `public preview invented release metadata: ${releaseOnlyMetadata}`);
+    }
+  }
+  assert(publicRoot.includes(headline) && publicRoot.includes(standfirst), "public mode changed the human-first opening");
+  for (const door of ["Read the idea", "Explore the map", "Apply it"]) assert(publicRoot.includes(door), `public mode lost principal door: ${door}`);
+  for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) {
+    assert(publicMap.includes(familyName), `public mode lost family: ${familyName}`);
+  }
+  assert(publicApply.includes("Planning only.") && publicApply.includes("Human authority stays explicit."), "public Apply lost planning or human-authority boundary");
+  assert(publicResearch.includes("UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED"), "public Research lost the no-results boundary");
+  assert(publicResearch.includes("The Echo Problem — separate project — unrun — no results"), "public mode collapsed the Echo separation");
+
+  const shortOpening = "An AI answer can sound polished yet be generic because weakness can begin before writing.";
+  const shortOpeningIndex = publicRead.indexOf(shortOpening);
+  const publicEssayIndex = publicRead.indexOf('id="read-essay"');
+  assert(shortOpeningIndex > 0 && shortOpeningIndex < publicEssayIndex, "public Read does not put existing short-version prose first");
+  for (const delayedScaffold of ['class="route-brief"', 'class="reading-index"', 'class="reading-progress-wrap"', 'class="pull-quote"']) {
+    assert(!publicRead.includes(delayedScaffold), `public Read retained redundant opening scaffold: ${delayedScaffold}`);
+  }
+  assert(!publicRead.includes("manuscript/PATTERN_RECOGNITION_V16.md"), "public Read exposed a repository path in the ordinary reading flow");
+  assert(publicRead.includes('class="public-reading-next"'), "public Read lost compact onward navigation");
+
+  const teachingStart = publicRoot.indexOf('<figure class="decision-reveal"');
+  const teachingEnd = publicRoot.indexOf("</figure>", teachingStart);
+  assert(teachingStart > 0 && teachingEnd > teachingStart && teachingEnd < publicRoot.indexOf("Three principal doors"), "teaching reveal is missing or arrives after the doors");
+  const teaching = publicRoot.slice(teachingStart, teachingEnd);
+  for (const label of ["01 · DEFAULT PATH", "02 · WIDEN ONCE", "03 · COMPARE", "04 · EXPECTED ABSENCE", "BECAME VISIBLE", "REMAINS UNKNOWN", "HUMAN DECISION", "Text equivalent:"]) {
+    assert(teaching.includes(label), `teaching reveal is missing stage or boundary: ${label}`);
+  }
+  for (const forbiddenTeachingToken of ["http://", "https://", "source score", "observed result", "automated action", "validated", "proven improvement"]) {
+    assert(!teaching.toLowerCase().includes(forbiddenTeachingToken), `teaching reveal overreached or introduced a dependency: ${forbiddenTeachingToken}`);
+  }
+  assert((publicRoot.match(/data-teaching-reveal/g) ?? []).length === 1, "public Home must contain exactly one teaching reveal");
+  assert(css.includes(".decision-reveal-equivalent") && /@media print[\s\S]*?\.decision-reveal-boundary:not\(\[open\]\)/.test(css), "teaching reveal lacks static text or print expansion");
+
+  assert(publicApply.includes('data-stage0-dependent="consequence" aria-describedby="stage0-dependent-status" disabled'), "Apply consequence controls are not initially inapplicable at Stage 0");
+  assert(publicApply.includes('data-stage0-dependent="uncertainty" aria-describedby="stage0-dependent-status" disabled'), "Apply uncertainty controls are not initially inapplicable at Stage 0");
+  assert(publicApply.includes('data-stage0-dependent="budget" aria-describedby="stage0-dependent-status" disabled'), "Apply budget controls are not initially inapplicable at Stage 0");
+  assert(publicApply.includes("are not applicable while Stage 0 remains supplied-material only"), "Apply does not explain dependent-field inapplicability");
+  const publicPlanIndex = publicApply.indexOf("Recommended plan");
+  const publicInternalIndex = publicApply.indexOf("Inspect internal planning state and a local simulation");
+  assert(publicPlanIndex > 0 && publicInternalIndex > publicPlanIndex, "public Apply does not put the plain plan before internal state");
+  assert(publicApply.includes('<details class="static-route-equivalent" open data-progressive-static-guide><summary>'), "public Apply no-script equivalent is not natively open");
+  assert(siteScript.includes('document.querySelectorAll("[data-progressive-static-guide]")') && siteScript.includes("guide.open = false"), "public Apply does not collapse the static table after JavaScript initializes");
+  assert(publicApply.includes('class="public-builder-depth"') && publicApply.indexOf("For builders and agents") > publicApply.indexOf("FOUR PROPORTIONATE CHOICES"), "public Apply does not progressively disclose builder depth");
+
+  for (const filePath of publicRouteFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href, PUBLIC_DIST_DIR);
+  const publicStandaloneIds = idListIn(publicStandalone);
+  assert(publicStandaloneIds.length === new Set(publicStandaloneIds).size, "public standalone contains duplicate IDs");
+  assert((publicStandalone.match(/<h1\b/g) ?? []).length === 1, "public standalone must contain exactly one h1");
+  const publicStandaloneStructure = assertBalancedMainMarkup(publicStandalone);
+  assert(JSON.stringify(publicStandaloneStructure.pageFrameChildren) === JSON.stringify(["page-content"]), `public standalone page frame children are ${publicStandaloneStructure.pageFrameChildren.join(", ")}`);
+  for (const section of ["home", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"]) {
+    assert(publicStandaloneStructure.standaloneParents.get(section) === "page-content", `public standalone route escaped page content: ${section}`);
+  }
+  for (const href of localLinksIn(publicStandalone)) {
+    if (!href.startsWith("#")) continue;
+    const fragment = decodeURIComponent(href.slice(1));
+    assert(!fragment || idsIn(publicStandalone).has(fragment), `public standalone points to missing fragment: ${href}`);
+  }
   console.log(`PASS routes: ${requiredRoutes.length}`);
   console.log("PASS exact first-screen framing, non-result boundary, and principal-door presence");
   console.log("PASS six-family order/names, implementation levels, teaching patterns");
@@ -292,6 +395,10 @@ const main = () => {
   console.log("PASS Stage 0, descriptive term controls, mobile route brief, and medium-popover contracts");
   console.log("PASS normal-text and dual-focus contrast thresholds");
   console.log("PASS standalone export exists");
+  console.log("PASS shared-source review/public route, claim, family, and hash parity");
+  console.log("PASS fail-closed public metadata and review-chrome removal");
+  console.log("PASS public Read prose-first order and Apply progressive disclosure");
+  console.log("PASS deterministic teaching reveal, Stage 0 applicability, and public standalone structure");
 };
 
 main();

@@ -4,9 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.mjs",
+    "build": "node build.mjs --mode=all",
+    "build:review": "node build.mjs --mode=review",
+    "build:public": "node build.mjs --mode=public",
     "dev": "node serve.mjs",
+    "dev:public": "node serve.mjs --public",
     "preview": "node serve.mjs",
-    "check": "node check.mjs && node ../qa/interaction/apply-state-contract.spec.mjs && node ../qa/interaction/map-layout-contract.spec.mjs && node ../qa/interaction/term-popover-geometry-contract.spec.mjs && node ../qa/content/reader-language-contract.spec.mjs && node ../qa/site/css-selector-use.spec.mjs"
+    "preview:public": "node serve.mjs --public",
+    "check": "node check.mjs && node ../qa/site/public-mode-contract.spec.mjs && node ../qa/interaction/apply-state-contract.spec.mjs && node ../qa/interaction/map-layout-contract.spec.mjs && node ../qa/interaction/term-popover-geometry-contract.spec.mjs && node ../qa/content/reader-language-contract.spec.mjs && node ../qa/site/css-selector-use.spec.mjs"
   }
 }

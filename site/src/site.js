@@ -1,4 +1,8 @@
 (() => {
+  document.querySelectorAll("[data-progressive-static-guide]").forEach((guide) => {
+    guide.open = false;
+  });
+
   const familyGrid = document.querySelector(".family-grid");
   const focusStatus = document.querySelector("#family-focus-status");
   const familyCards = [...document.querySelectorAll("[data-family-card]")];
@@ -211,6 +215,27 @@
       const element = recommendationCard.querySelector(selector);
       if (element) element.textContent = value;
     };
+    const stageZeroStatus = routeStudio.querySelector("[data-stage0-status]");
+    const stageZeroDependent = [...routeStudio.querySelectorAll("[data-stage0-dependent]")];
+    const ordinaryDefaults = Object.freeze({ consequence: "reversible", uncertainty: "low", budget: "quick" });
+    const syncStageZeroApplicability = () => {
+      const ordinary = fieldValue("evidenceSelection") === "none";
+      if (ordinary) {
+        for (const [name, value] of Object.entries(ordinaryDefaults)) {
+          const input = routeStudio.querySelector(`input[name="${name}"][value="${value}"]`);
+          if (input) input.checked = true;
+        }
+      }
+      stageZeroDependent.forEach((fieldset) => {
+        fieldset.disabled = ordinary;
+        fieldset.dataset.applicability = ordinary ? "not-applicable" : "active";
+      });
+      if (stageZeroStatus) {
+        stageZeroStatus.textContent = ordinary
+          ? "Consequence, uncertainty, and evidence-route budget are not applicable while Stage 0 remains supplied-material only."
+          : "Evidence selection is in scope. Choose consequence, uncertainty, and an evidence-route budget before building the recommendation.";
+      }
+    };
     const renderObservedState = () => {
       const observed = recommendationApi.INITIAL_OBSERVED_STATE;
       setCardText("[data-observed-execution]", observed.executionState);
@@ -254,10 +279,18 @@
 
     routeStudio.addEventListener("submit", (event) => {
       event.preventDefault();
+      syncStageZeroApplicability();
       renderRecommendation();
+    });
+    routeStudio.querySelectorAll('input[name="evidenceSelection"]').forEach((input) => {
+      input.addEventListener("change", () => {
+        syncStageZeroApplicability();
+        renderRecommendation();
+      });
     });
     routeStudio.querySelector("[data-route-reset]")?.addEventListener("click", () => {
       routeStudio.reset();
+      syncStageZeroApplicability();
       renderRecommendation();
     });
     recommendationCard.querySelectorAll("[data-simulation-action]").forEach((button) => {
@@ -286,6 +319,7 @@
         recommendationCard.dataset.simulation = action;
       });
     });
+    syncStageZeroApplicability();
     renderRecommendation();
   }
 
