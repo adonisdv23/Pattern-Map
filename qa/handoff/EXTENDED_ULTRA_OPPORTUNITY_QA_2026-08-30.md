@@ -124,10 +124,13 @@ the contract.
 
 The first exact-commit fuzz cycle caught the remaining decimal-conversion seam:
 `-1e-9999` became `-0.0`, and `9007199254740993.0` collapsed to the same float
-as `9007199254740992.0`. The strict loader now rejects a decimal token when its
-exact value cannot survive the parser's binary-float representation. Both raw
-byte cases are permanent negative mutations; the clean-cycle count restarted
-on the successor rather than treating the superseded checkpoint as clean.
+as `9007199254740992.0`. The strict loader now rejects a decimal token when
+parsing it to a finite float and rendering that float with Python's canonical
+decimal string changes the token's numeric value. This closes the two
+reproduced collapse cases; it is not arbitrary-precision JSON-number support.
+Both raw byte cases are permanent negative mutations; the clean-cycle count
+restarted on the successor rather than treating the superseded checkpoint as
+clean.
 
 Two operator-template contradictions were also corrected. Origin and
 recurrence now have distinct Evidence Register columns. A reviewed outcome
