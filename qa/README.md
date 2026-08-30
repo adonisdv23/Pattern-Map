@@ -33,6 +33,10 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   portable-transfer, and regenerated-PDF lanes. It distinguishes the passing
   local source checkpoint from still-open Claude, clean-clone, remote, sealed-
   ZIP, publication-time, and physical/manual gates.
+- `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`
+  preserves the read-only Claude Opus review of exact `fb7d808`, including the
+  sealing findings that were accepted, revised, deferred, or rejected. It is
+  advisory model feedback, not a participant, study, or effectiveness result.
 - `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` records the
   terminal ordinary path, typed permission, linked comparison/disconfirmation,
   real-instant motion, and accepted current-memory fixture boundaries. These

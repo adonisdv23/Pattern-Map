@@ -338,6 +338,17 @@ def validate_artifact_inventory() -> None:
             "Stage 0 is outside the copied prompt")
     require(copied_prompt.index("0. STAGE 0") < copied_prompt.index("1. FRAME"),
             "Stage 0 must occur before FRAME in the copied prompt")
+    require("0A. SCOPE THE ROUTE" in copied_prompt,
+            "copyable brief does not scope the smallest layered route")
+    require(copied_prompt.index("0. STAGE 0")
+            < copied_prompt.index("0A. SCOPE THE ROUTE")
+            < copied_prompt.index("1. FRAME"),
+            "route scoping must follow Stage 0 and precede FRAME")
+    for level in ("LIGHTWEIGHT", "MODERATE", "ADVANCED"):
+        require(level in copied_prompt,
+                f"copyable route scoping omits {level}")
+    require("A higher level is not better" in copied_prompt,
+            "copyable route scoping implies that more machinery is better")
     for field in ("supplied_scope:", "assumptions:",
                   "unchecked_boundaries:", "output:"):
         require(field in copied_prompt,

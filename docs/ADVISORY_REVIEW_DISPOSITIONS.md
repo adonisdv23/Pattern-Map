@@ -298,3 +298,29 @@ result.
 | PTH-RESEARCH-05 | Collapse observation, capture/process, access, permission, and currency into one missingness status | **Rejected; orthogonal axes accepted** | Distinct causes require distinct decisions and cannot be inferred from an empty slot | Claims ledger, narrow-wedge memo, research QA | Initial unrun wedge holds access/permission/currency fixed and varies observation × capture only |
 | PTH-PKG-05 | Either recursively mirror all linked files or leave selected-packet links as an informal warning | **Rejected as a binary choice; machine classification accepted** | Signal Foundry needs a lean packet whose omissions are still explicit and testable | Portable builder, metadata, tests | Every retained external relative link is classified; new/unclassified or absent targets fail the build |
 | PTH-MANUAL-01 | Infer human comprehension or physical accessibility from model/browser proxies | **Rejected as inference; Deferred as human work** | Automated and model checks cannot certify those experiences | Public candidate and release checklist | Owner/mentor, physical keyboard, screen reader, real zoom/forced colors/print/touch stay open |
+
+## Claude terminal sealing audit dispositions — 2026-08-30
+
+Claude Code `2.1.220` with Opus/max reviewed exact clean checkpoint
+`fb7d808819e5e24c826605be3be6f2ab67de73fc` in a detached read-only
+worktree. The review is preserved at
+`qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`.
+It is advisory model feedback, not owner intent, a participant review, a study,
+or evidence of effectiveness. The integrator reproduced the material sealing
+findings before accepting them.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / final verification |
+| --- | --- | --- | --- | --- | --- |
+| PM-01 | Add the newly retained hardening-plan link to the selected-packet link policy | **Accepted** | A lean packet still needs fail-closed, exhaustive omission classification | Portable builder/link policy | Exact target is `owner_review_only`; current-worktree classification passes |
+| PM-02 | Treat pre-commit exact-packet tests as proof of the edited tree | **Rejected as evidence; accepted as a test-isolation defect** | The builder reads payload bytes from a Git commit, so working-tree changes cannot be claimed as tested package bytes | Portable regression and convergence QA | Exact-input dirty state skips visibly; only post-commit zero-skip runs count |
+| PM-03 | Seal against the stale schema-1 owner manifest | **Rejected; regeneration required** | Manifest bytes must be last, after source, generated exports, QA, and dispositions | Owner-review manifest | Schema-2 writer/verifier and final clean-clone check gate sealing |
+| PM-04 | Attribute the regenerated review PDF to the historical human-content checkpoint | **Rejected; current PDF checkpoint accepted** | `874a0a8` did not produce the regenerated PDF | Owner manifest/PDF evidence | PDF checkpoint is `72a672c5172ff5212e29f01ba2277dd49cc6ea98` |
+| PM-05 | Use `874a0a8` as the cross-computer operating checkout | **Rejected; three-level provenance accepted** | Human-content continuity, minimum integrated operating contract, and exact current source are different roles | Two Signal handoffs, machine JSON, builder, tests | `874a0a8` human only; `cbc89db` minimum operating; Git/sealed metadata exact source |
+| PM-06 | Emit timeless branch and PR assertions | **Rejected; fail-closed/time-qualified proof accepted** | A portable packet must not convert a stale sentence into current GitHub state | Builder, metadata, START_HERE, handoffs, embedded verifier | Required checkpoint ancestry; exact named-branch tip; local/remote scope; UTC PR observation; resolve-at-use |
+| PM-07 | Retain a matrix header that says later changes are only terminal corrections | **Rejected; header corrected** | The body already proves substantive applied/public/research hardening | Acceptance matrix | Human checkpoint and operating integration roles are explicit |
+| PM-08 | Freeze a total standalone ID count as an acceptance criterion | **Rejected; structural invariant accepted** | Bounded accessible controls may change the count without creating duplicate IDs | Owner packet/standalones | One main, one h1, ten sections, no duplicate IDs; exact count is build output |
+| PM-09 | Omit read-only public-source wayfinding from the action audit | **Accepted as an omission** | The action was permitted and should be recorded without inflating it into research | Final action audit | Targeted diagnostic browsing only; no dataset/provider/study/outreach/spend |
+| PM-10 | Ship operating fixtures without their existing structural validator | **Accepted with revision** | A fresh receiver should be able to check the selected contract provider-free | Portable selected paths, staged build, extraction test | Exact structural-only PASS required before ZIP and after extraction |
+| PM-11 | Add robots metadata to the local review standalone as a release blocker | **Deferred / rejected as a blocker** | Public preview carries `noindex,nofollow`; review mode is a local artifact | Review standalone | Publication remains separately gated |
+| PM-12 | Describe the active refresh as 2024–2026 | **Accepted as a precision defect** | Every active refreshed item is dated 2025 or 2026 | Current source route, ledger, agenda, QA | Active labels narrowed; preserved historical files untouched |
+| PM-13 | Present layered work as if only a full ten-section route exists | **Accepted with revision** | The copied prompt must carry the anti-bureaucracy middle path already present elsewhere | Copyable agent brief/applied validator | Smallest justified lightweight/moderate/advanced scoping precedes layered FRAME |

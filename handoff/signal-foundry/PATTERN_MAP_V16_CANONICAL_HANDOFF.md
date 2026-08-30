@@ -8,15 +8,16 @@ deployment**
 ## If you only read five lines
 
 1. Give Claude exactly `handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md` and `handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md`.
-2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` as the fixed **content checkpoint**, then resolve the current `codex/pattern-map-v16-public-transfer-hardening` head with Git (or `BUNDLE_METADATA.json.source_commit` in a sealed packet); preserve `bc7e7c5`, `d4b7b9e`, `c889260`, and `ad964dd` only as audited predecessor anchors.
+2. Treat `874a0a8e09f0bde11532cf873087865addb7d973` only as the fixed **human manuscript/content-interface checkpoint**. The minimum integrated operating-contract checkpoint is `cbc89db45493fd1dcfd121af0d1da1393046a196`; use the current branch head—or `BUNDLE_METADATA.json.source_commit` in a sealed packet—as the actual operating source. Do not use `874a0a8` as the operating checkout.
 3. Use Signal Foundry `main` at audited checkpoint `f9bf3775ca3d5b52ea5083cea52306c025727e23`, preserving its existing local files.
 4. The product is **Signal Foundry**; there is no verified V14 deep link, Pattern Map classifier output, or “Sigma Foundry” project to supply.
 5. This is design/review only: test the existing `OPERATOR_DECISION` + `RATIONALE` seam first; do not mutate Signal Foundry or invent a new event type.
 
 This is the one place to start when another task asks for the Pattern Map /
-Discrimination Layer. It names the exact canonical content checkpoint, the
-audited predecessor anchors, the artifacts that matter, what is historical,
-and what a downstream Signal Foundry task may safely do.
+Discrimination Layer. It separates the fixed human-content checkpoint from the
+minimum operating-contract checkpoint and exact source to use, then names the
+artifacts that matter, what is historical, and what a downstream Signal
+Foundry task may safely do.
 
 The product is **Signal Foundry**, not “Sigma Foundry.” Signal Foundry’s own
 README names the product explicitly. Legacy infrastructure slugs such as
@@ -25,20 +26,23 @@ not the user-facing product name.
 
 ## Start here
 
-### Canonical Pattern Map content checkpoint and current head
+### Human-content checkpoint, operating minimum, and current head
 
 Repository: <https://github.com/adonisdv23/Pattern-Map>
 
-The fixed converged content checkpoint is below. The branch may contain later
-evidence, QA, handoff, or packaging corrections, so resolve its current head
-before use:
+The fixed human manuscript/content-interface checkpoint is below. It preserves
+the broad thesis and shared content interface, but it predates later operating
+contracts and is not a safe implementation checkout. The named minimum
+operating checkpoint contains the converged applied contracts; resolve the
+current head before use so later reviewed corrections are also present:
 
 ```text
 branch:  codex/pattern-map-v16-public-transfer-hardening
-content: 874a0a8e09f0bde11532cf873087865addb7d973
+human manuscript/content interface: 874a0a8e09f0bde11532cf873087865addb7d973
+minimum integrated operating contract: cbc89db45493fd1dcfd121af0d1da1393046a196
 head:    resolve with Git; sealed packet head is BUNDLE_METADATA.json.source_commit
 PR:      https://github.com/adonisdv23/Pattern-Map/pull/2
-state:   draft/open/unmerged; owner review and manual gates remain open
+state:   last observed open/draft/unmerged at 2026-08-30T06:53:26Z; resolve current state at use
 ```
 
 The immediate predecessor before terminal geometry, vocabulary, portability,
@@ -49,10 +53,12 @@ predecessor head was
 checkpoint was `c88926034cd75773dcc42d3842983c879dda5b58`, and the earlier
 converged source before the owner visual/export repair was
 `ad964dd91eff521b0442f613c55bc4e9e97c2f2a`. They remain audit anchors, not
-the current branch head. Evidence, checksum, handoff, or packaging commits
-after `874a0a8` may advance that head without replacing the fixed content
-checkpoint. Resolve Git before editing and do not substitute an older
-conversation, screenshot, or deep link for this source commit.
+the current branch head. The branch after `874a0a8` includes substantive
+operating-contract work as well as evidence, QA, handoff, and packaging
+corrections. Preserve `874a0a8` for human-content lineage, require at least
+`cbc89db` for the integrated operating contract, and resolve the current source
+before editing. Do not substitute an older conversation, screenshot, or deep
+link for that source.
 
 No source-machine filesystem path is canonical. From your own Pattern Map
 repository root, resolve the branch and commit with Git before editing. Do not
@@ -359,8 +365,8 @@ summary below is the current resolution.
 
 | Claude item | What it meant | Current resolution |
 | --- | --- | --- |
-| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: the fixed content checkpoint is `874a0a8`; current public/transfer hardening is on `codex/pattern-map-v16-public-transfer-hardening`. Resolve the current branch head from Git. Authorized pushes and remote PR readbacks are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
-| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`; its converged content checkpoint is `874a0a8`, with terminal predecessor `bc7e7c5`, Pro correction history at `c889260`, and earlier converged source `ad964dd`. Resolve the current branch head before attributing source state. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
+| **Push it yourself** | The Claude session’s stored GitHub token was invalid, so it could not push the Pattern Map branch. | Resolved by the primary orchestration path: human-content lineage is fixed at `874a0a8`, the minimum operating contract is `cbc89db`, and current public/transfer hardening is on `codex/pattern-map-v16-public-transfer-hardening`. Resolve the current branch head from Git. Authorized pushes and time-qualified remote PR readbacks are recorded in the owner-review handoff. The separate Signal Foundry audit branch remains local-only. |
+| **Look at the Map route** | Claude wanted the owner to judge whether the corrected current Map route matched the owner’s visual expectation. | The route exists and is locally buildable at `site/dist/map/index.html`. Use the current branch or sealed packet source for the route; `874a0a8` is only its human-content lineage checkpoint, while `cbc89db` is the minimum integrated operating checkpoint. Automated and proxy checks pass; physical keyboard, screen reader, real zoom, forced colors, print preview, touch, and owner taste remain human review gates. |
 | **Decide if the evidence rule bites too hard** | Claude tightened guards around unreachable CSS, false file extensions, exact checkpoints, and planning-versus-event language. | The strictness is now the canonical safety posture recorded in the locked intent, D-025, the acceptance matrix, and the current QA. No new owner decision is needed to consume v16. If an owner later wants a guard relaxed, record an explicit decision and revise the affected contract; do not silently weaken it. |
 
 ## “Orphaned” work in plain language
@@ -437,9 +443,10 @@ assume, infer, or copy those untracked files onto another computer.
 
 - The product-name question is settled: Signal Foundry.
 - The six-family framework, agent playbook, and site source are present.
-- The canonical Pattern Map content checkpoint is frozen at `874a0a8`; later
-  evidence, QA, handoff, or packaging commits may advance the branch head
-  without replacing that content checkpoint.
+- The human manuscript/content-interface checkpoint is frozen at `874a0a8`;
+  the minimum integrated operating-contract checkpoint is `cbc89db`, and the
+  exact operating source must be resolved from the current branch or sealed
+  packet. The older human checkpoint is not an operating checkout.
 - The local Signal Foundry transfer audit is recoverable and its orphan status
   is understood.
 - Signal Foundry’s existing deterministic Signals v0 is not a missing Pattern

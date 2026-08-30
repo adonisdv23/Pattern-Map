@@ -1200,3 +1200,47 @@ those later gates actually complete.
 A01–A17; progressive disclosure; anti-bureaucracy; shared-source publication;
 exact cross-computer provenance; no-results/no-merge/no-deploy/no-publish/no-
 study/no-spend boundary.
+
+## D-035 — Separate human-content lineage from the exact operating source and fail closed at transfer
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revision; terminal sealing correction
+
+The exact-checkpoint Claude audit of `fb7d808` passed the human thesis, six
+families, public presentation, operator substance, Echo split, and research
+containment, but reproduced sealing ambiguities. The project now names three
+different provenance roles instead of asking one historical hash to carry all
+of them:
+
+1. `874a0a8e09f0bde11532cf873087865addb7d973` is the fixed human
+   manuscript/content-interface checkpoint.
+2. `cbc89db45493fd1dcfd121af0d1da1393046a196` is the minimum integrated
+   operating-contract checkpoint.
+3. The exact operating and packet source is resolved from the current named
+   branch or `BUNDLE_METADATA.json.source_commit`.
+
+The portable builder must reject a selection that predates either fixed
+checkpoint, reject a selection that is not the exact tip of the named local or
+remote-tracking branch ref, and label the verification scope. Generated
+metadata binds the selected commit, verified ref/tip, required ancestry,
+time-qualified draft-PR observation, classified subset links, and staged
+provider-free applied validator. The embedded verifier checks those records;
+the receiving task must still resolve later GitHub and Signal Foundry state at
+use. A branch or PR observation is not a timeless fact and a local-only proof
+is not represented as remote availability.
+
+This correction does not reopen or elevate the operating machinery above the
+coffee-conversation thesis. It prevents a tired owner or another computer from
+using a historically important but operationally stale checkout. It also
+retains the ordinary four-field exit and adds an explicit smallest-justified
+layered route so stronger provenance does not become stronger bureaucracy.
+
+**Evidence:** exact Claude advisory report; independent applied/public
+read-only audits; two Signal handoffs; portable builder/embedded verifier and
+adversarial tests; acceptance/action audit corrections.
+
+**Governing requirement:** locked owner intent; source authority order; A07,
+A08, A09, A11, A14, A15, and A16; cross-computer recoverability;
+anti-bureaucracy; model reviews advisory only; no merge/deploy/publication/
+study/provider selection/spend/outreach.

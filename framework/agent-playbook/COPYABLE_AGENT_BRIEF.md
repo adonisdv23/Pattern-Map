@@ -34,6 +34,21 @@ and actions separate.
    If YES, continue below and use only the records justified by consequence,
    uncertainty, repetition, and cost.
 
+0A. SCOPE THE ROUTE
+   Choose the smallest layered route that can make the material decision
+   inspectable:
+   - LIGHTWEIGHT: reversible, bounded work; one alternate route, one material
+     comparison or bounded non-applicability reason, one challenge, and a
+     concise influence receipt.
+   - MODERATE: repeated or reviewed work where stable identities, typed
+     relationships, versioning, correction, and a reproducible packet matter.
+   - ADVANCED: consequential, high-volume, or long-lived work only when hidden
+     upstream mistakes justify approved engineering and governance cost.
+   A higher level is not better. Run only the numbered sections and records
+   warranted by the chosen route. For an inactive section, record at most one
+   bounded NOT_APPLICABLE or SKIPPED reason where the contract requires it;
+   never manufacture a placeholder artifact to make the route look complete.
+
 1. FRAME
    Write:
    - decision/question:

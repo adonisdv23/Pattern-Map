@@ -9,7 +9,7 @@ entry points. Check date: **2026-08-30, America/New_York**.
 
 ## Method and evidence ceiling
 
-Each current 2024–2026 item was opened at an author, publisher, conference,
+Each current 2025–2026 item was opened at an author, publisher, conference,
 ACL Anthology, arXiv, or official engineering landing page. Title, date or
 venue, abstract/summary, and publication status were inspected as read-only
 public metadata. This was link and claim-boundary verification, not a

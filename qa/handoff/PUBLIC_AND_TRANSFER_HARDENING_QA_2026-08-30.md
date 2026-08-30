@@ -1,6 +1,7 @@
 # Pattern Map v16 public-and-transfer hardening QA
 
-Status: **PRE-SEAL INTEGRATION PASS — FINAL REMOTE, CLAUDE, AND PACKAGE READBACKS PENDING**
+Status: **SOURCE CORRECTIONS PASS — EXACT-COMMIT RECHECK, MANIFEST, CLEAN
+CLONE, AND FINAL ZIP PENDING**
 
 Audit date: 2026-08-30
 
@@ -23,13 +24,15 @@ or outreach was authorized or performed.
 
 | Lane | Exact source head | Integrated checkpoint | Role |
 | --- | --- | --- | --- |
-| Phase 0 plan | `37c7c852648b5da25365725453960464552a46b8` | already on the integration branch | Locked the bounded public/transfer scope |
+| Phase 0 plan | `37c7c852ff406431454346eacc694ac04c5f57a5` | already on the integration branch | Locked the bounded public/transfer scope |
 | Applied integrity | `93265692e95d56e35f8de68afcc435519419684b` | `28fe04a`, `d71cbbc`, `811e39e` | Stage 0, permission, evidence-reference, motion, and memory contracts |
 | Public presentation | `361243c95050723f1693907f7446be5d690b9e58` | `63aceb7`, `b761146` | Shared-source public adapter, teaching reveal, and fail-closed release gate |
 | Research/claims | `54bd0a7a11f4c072c8ceaab1a2abf7bc81a380cb` | `51643ad`, `d8f6f09` | Targeted current-source route and unrun narrow-wedge boundary |
 | Initial convergence | advisory/source checkpoint `cbc89db45493fd1dcfd121af0d1da1393046a196` | `cbc89db` | First three-lane integrated review surface |
 | Research correction | `ecf37ee64adfeb1847a5b6342d7550f7f5da6695` | `c3ab1d7` | Separates study modes and missingness axes; removes a false public self-link |
 | Public URL correction | `c4a0f4c62e71cb2475f286f67ae0254a13f130a3` | `c0b006f` | Parsed canonical-base validation and URL-semantic route resolution |
+| Regenerated PDF and convergence evidence | primary-integrator source | `72a672c` | Cover-only punctuation repair, six-page render inspection, and owner/source evidence |
+| Draft-PR pointer checkpoint | primary-integrator source | `fb7d808` | Points the transfer handoffs to matching draft PR #2; exact checkpoint reviewed by Claude |
 
 These commits are implementation provenance, not independent evidence that the
 framework works. Model and agent findings were dispositioned under the
@@ -126,9 +129,57 @@ six pages were inspected. No clipping, overlapping cards/tables, unreadable
 glyphs, or broken footer was observed. The PDF is still deliberately untagged;
 the standalone HTML remains the semantic accessibility route.
 
-## Verification completed at the pre-seal checkpoint
+### 7. Exact-checkpoint Claude sealing audit
 
-The following provider-free checks pass in the integration worktree:
+**Accepted as advisory evidence; findings independently dispositioned.** Claude
+Code `2.1.220` with Opus/max reviewed exact clean checkpoint `fb7d808` in a
+detached read-only worktree. It passed the human thesis, all six families,
+public presentation, operator substance, Echo separation, claim restraint, and
+research containment. Its NOT READY verdict concerned sealing rather than the
+concept: an unclassified new link, stale manifest, misleading use of the old
+human checkpoint as an operating source, missing branch/PR proof, a stale
+standalone count, omitted applied validator, and small evidence-label issues.
+
+The integrator accepted the reproducible defects with revisions and rejected
+their overbroad implications. The resulting source separates the fixed
+`874a0a8` human manuscript/content interface from the `cbc89db` minimum
+integrated operating contract and the exact current/sealed source. The builder
+requires both checkpoints as ancestors, binds the exact named branch tip,
+labels local versus remote proof, records a UTC-qualified PR observation, runs
+the selected applied validator before ZIP creation, and keeps resolve-at-use
+instructions. The full advisory report and per-finding dispositions are in
+`qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`
+and `docs/ADVISORY_REVIEW_DISPOSITIONS.md`. No model review is treated as a
+reader result, research result, or authority over owner intent.
+
+## Live in-app browser evidence
+
+The in-app browser subsequently loaded the current local review/public routes
+and both standalone exports rather than relying on screenshots alone:
+
+- review Home and the quick example were scrolled at 1280 pixels;
+- desktop term helpers retained at least eight pixels of trigger clearance and
+  stayed inside the viewport;
+- public Home/Read began with ordinary-reader prose and removed review chrome;
+- public Map remained line-free and coherent at desktop and 390 pixels, with
+  the six families changing from a wide grid to one card per row without page
+  overflow;
+- public Apply at 390 pixels enforced Stage 0 disabling and returned `CLARIFY`
+  for a restricted consequential route while observed fields remained
+  `NOT_RUN`, `NOT_TRIGGERED`, `NOT_OBSERVED`, `NOT_AVAILABLE`, and
+  `NOT_RECORDED`;
+- the review standalone retained one `main`, one `h1`, ten route sections, and
+  a two-child page frame, with Sources, Research, and History inside
+  `.page-content`; the public standalone retained ten sections and removed the
+  review rail.
+
+These are local browser/DOM/layout observations. They do not replace the
+physical/manual accessibility and human-comprehension gates below.
+
+## Verification completed for the current source corrections
+
+The following provider-free checks pass after the Claude dispositions and
+working-tree source corrections:
 
 ```text
 (cd docs && shasum -a 256 -c OWNER_INTENT_V16.sha256)
@@ -136,7 +187,6 @@ python3 qa/editorial/validate_content_interface.py
 python3 qa/applied/validate_framework.py
 python3 qa/research/validate_research_boundaries.py
 (cd site && npm run build && npm run check)
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v qa/handoff/test_portable_bundle.py
 git diff --check
 ```
 
@@ -154,10 +204,11 @@ Observed results within those commands' stated scopes:
 - Apply Stage 0 and all 108 planning combinations: pass;
 - line-free Map, desktop term geometry, reader language, and CSS reachability:
   pass;
-- portable packet regressions: 12/12 pass, including deterministic ZIPs,
-  manifest coverage, embedded verification, all-payload marker scanning,
-  optional local-input guards, operating-input/exclusion policy, and inline and
-  reference-link classification;
+- current-worktree Python compilation, 22-link selected-subset classification,
+  required-checkpoint ancestry against the reviewed branch, and direct applied
+  validation pass. The full portable suite deliberately does not count a dirty
+  pre-commit packet as a pass; it must run with zero skips after these exact
+  bytes are committed and the named remote branch reaches that commit;
 - regenerated PDF: six pages, Letter size, unencrypted, no JavaScript; all six
   Poppler renders visually inspected.
 
@@ -182,16 +233,13 @@ The following stay open for the owner/publication path:
 
 Before this record can be marked terminal, the orchestrator must:
 
-1. commit the converged source and this evidence record;
-2. regenerate the owner-review manifest from the exact committed bytes;
-3. run the full twelve-stage verifier in a clean clone;
-4. obtain and disposition one read-only independent Claude review of the exact
-   integration checkpoint;
-5. perform a final live local-browser inspection when the in-app browser
-   control path is available, without substituting it for the manual gates;
-6. push the authorized feature branch, open/read back a matching draft PR, and
-   keep it unmerged;
-7. build the cross-computer Signal Foundry ZIP from the exact pushed commit,
+1. commit and push the corrected source, then require the exact portable suite
+   to pass with zero skips against the remote branch tip;
+2. obtain a focused read-only recheck of the accepted Claude sealing findings;
+3. regenerate the owner-review manifest from the final exact bytes;
+4. run the full twelve-stage verifier in a clean clone;
+5. read back matching draft PR #2 and keep it unmerged;
+6. build the cross-computer Signal Foundry ZIP from the exact pushed commit,
    then verify its sidecar, archive structure, embedded verifier, manifest,
    source-path/key-marker scan, branch/commit/PR metadata, and copied-location
    fresh-computer flow.

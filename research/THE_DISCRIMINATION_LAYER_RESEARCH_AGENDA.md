@@ -21,7 +21,7 @@ contribution is an authored human-governed design/governance synthesis and a
 testable agenda.
 It is not a novel mechanism, exhaustive taxonomy, newly discovered technical
 layer, or effectiveness result. The optional source route records the current
-targeted—not systematic or exhaustive—2024–2026 wayfinding review.
+targeted—not systematic or exhaustive—2025–2026 wayfinding review.
 
 ## Research firebreak
 

@@ -4,8 +4,8 @@ Status date: 2026-08-30
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
-| Primary orchestration and owner-review package | `codex/pattern-map-v16-foundation` | `874a0a8` canonical content checkpoint; `c86e537` post-Ultracode contract source; current evidence head resolves from Git or sealed packet metadata | Authorized push target; draft PR #1 was open, draft, and unmerged at the 2026-08-28 readback; resolve its current head at use |
-| Public and transfer hardening | `codex/pattern-map-v16-public-transfer-hardening` | Phase 0 baseline `37c7c85`; initial three-lane convergence `cbc89db`; corrections through `c0b006f`; current head resolves from Git or sealed packet metadata | Authorized push target; draft PR #2 was opened against the foundation branch and read back open, draft, clean, and unmerged on 2026-08-30 |
+| Foundation owner-review history | `codex/pattern-map-v16-foundation` | `874a0a8` fixed human manuscript/content-interface checkpoint; `c86e537` post-Ultracode contract source; current foundation head resolves from Git | Authorized historical push target; draft PR #1 was open, draft, and unmerged at the 2026-08-28 readback; do not use `874a0a8` as the current operating checkout |
+| Current owner-review orchestration and public/transfer hardening | `codex/pattern-map-v16-public-transfer-hardening` | Phase 0 baseline `37c7c85`; minimum integrated operating contract `cbc89db`; corrections through `c0b006f`; exact current source resolves from Git or sealed packet metadata | Authorized push target; draft PR #2 was last observed open, draft, clean, and unmerged; resolve current state at use |
 | The Echo Problem / Track 01 | `codex/echo-problem-track-01` | `90c64ad` | Pushed; integrated into foundation |
 | EP v1.1 design checkpoint | `codex/pattern-map-v16-echo-v1-1` | `c141eac` | Integrated into foundation as `9fa2355`; local source branch not required by the downstream handoff |
 | Manuscript and mentor reader | `codex/pattern-map-v16-manuscript` | `74f0392` | Pushed; integrated into foundation |
@@ -21,9 +21,11 @@ Current hardening draft pull request: [#2 — Pattern Map v16 — public and tra
 - Head branch: `codex/pattern-map-v16-public-transfer-hardening`.
 - Initial pushed source/evidence checkpoint:
   `72a672c5172ff5212e29f01ba2277dd49cc6ea98`.
-- State observed on 2026-08-30: open, draft, merge-state clean, and unmerged.
-  Resolve the current remote head at use; the generated Signal Foundry packet
-  binds the later exact sealed commit in `BUNDLE_METADATA.json.source_commit`.
+- State observed at `2026-08-30T06:53:26Z`: open, draft, and unmerged, with
+  remote head `fb7d808819e5e24c826605be3be6f2ab67de73fc`. An earlier readback also
+  reported merge-state clean. Resolve current state and head at use; the
+  generated Signal Foundry packet binds the later exact sealed commit in
+  `BUNDLE_METADATA.json.source_commit`.
 
 Foundation draft pull request: [#1 — Pattern Map v16 — canonical owner-review candidate](https://github.com/adonisdv23/Pattern-Map/pull/1)
 

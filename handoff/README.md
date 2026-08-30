@@ -12,6 +12,8 @@ This directory contains the local owner-review handoff:
   and Claude Code handoff; give it together with the canonical handoff;
 - `signal-foundry/build_portable_bundle.py` — deterministic exact-commit
   cross-computer ZIP/manifest/verifier/sidecar builder;
+- `../qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`
+  — exact-checkpoint independent sealing audit and limitations;
 - `../site/exports/standalone/pattern-map-v16.html` — direct-open owner-review
   composition;
 - `../site/exports/standalone/pattern-map-v16-public.html` — direct-open

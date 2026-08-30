@@ -38,6 +38,16 @@ publication instruction supplies a byline, valid canonical URL, and valid
 social image. The future narrow-wedge memo remains unrun and does not select a
 provider, model, corpus, sample, or first paper.
 
+Terminal sealing corrections preserve `874a0a8` as the human
+manuscript/content-interface checkpoint while requiring `cbc89db` or later for
+the integrated operating contract and the exact current Git/sealed source for
+use. They also replace brittle standalone counts with structural invariants,
+carry the smallest-justified layered route into the copied agent prompt, and
+make the cross-computer packet prove fixed-checkpoint ancestry, exact branch
+tip, time-qualified review state, selected-contract validation, and payload
+integrity. These are transfer and proportionality corrections, not v17, a
+publication, a Signal Foundry implementation, or an effectiveness result.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

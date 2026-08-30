@@ -2,13 +2,17 @@
 
 Status: **OWNER-REVIEW CANDIDATE — MANUAL GATES REMAIN OPEN**
 
-Canonical converged source checkpoint:
-`874a0a8e09f0bde11532cf873087865addb7d973`. It advances the immediate
-predecessor `bc7e7c5f95c85b8f6f969ed87ff7fa81cdb2ae91` only for terminal
-geometry, operator-vocabulary, cross-computer handoff, and package-integrity
-corrections. The current evidence index
-distinguishes regenerated PDF renders and exact-checkpoint live/source
-evidence from the superseded `a319794` routed-site screenshot matrix.
+The fixed human manuscript/content-interface checkpoint is
+`874a0a8e09f0bde11532cf873087865addb7d973`. It remains the continuity anchor
+for the broad thesis and six-family reading experience, not the current
+operating checkout. Public-presentation, applied-contract, research-boundary,
+cross-computer handoff, and packaging hardening continue through the integrated
+operating checkpoint `cbc89db45493fd1dcfd121af0d1da1393046a196` and later
+reviewed corrections. Resolve the exact current source with Git; a sealed
+Signal Foundry packet records it in `BUNDLE_METADATA.json.source_commit`.
+The current evidence index distinguishes regenerated PDF renders and
+exact-checkpoint live/source evidence from the superseded `a319794` routed-site
+screenshot matrix.
 
 This matrix distinguishes artifact/implementation evidence from reader,
 screen-reader, or real-world evidence. A `PASS` means the repository contains

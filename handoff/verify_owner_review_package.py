@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
 CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
+OWNER_REVIEW_PDF_CHECKPOINT = "72a672c5172ff5212e29f01ba2277dd49cc6ea98"
 PHASE_0_BASELINE = "37c7c852ff406431454346eacc694ac04c5f57a5"
 LANE_HEADS = {
     "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
@@ -164,6 +165,7 @@ REQUIRED_PATHS = [
     "qa/applied/receipts/unknown-permission.json",
     "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
     "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
+    "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
     "qa/research/validate_research_boundaries.py",
     "qa/research/README.md",
     "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
@@ -298,7 +300,7 @@ def write_manifest() -> None:
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
         "generated_date": "2026-08-30",
         "historical_converged_checkpoint": CONTENT_CHECKPOINT,
-        "owner_review_pdf_checkpoint": CONTENT_CHECKPOINT,
+        "owner_review_pdf_checkpoint": OWNER_REVIEW_PDF_CHECKPOINT,
         "phase_0_hardening_baseline": PHASE_0_BASELINE,
         "integrated_lane_heads": LANE_HEADS,
         "convergence_correction_heads": CONVERGENCE_CORRECTION_HEADS,
@@ -308,7 +310,7 @@ def write_manifest() -> None:
             "command": "git rev-parse --verify HEAD",
             "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
         },
-        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the historical review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
+        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),
@@ -327,7 +329,7 @@ def verify_manifest() -> None:
         raise AssertionError("unsupported owner-review manifest schema")
     if payload.get("historical_converged_checkpoint") != CONTENT_CHECKPOINT:
         raise AssertionError("historical converged checkpoint mismatch")
-    if payload.get("owner_review_pdf_checkpoint") != CONTENT_CHECKPOINT:
+    if payload.get("owner_review_pdf_checkpoint") != OWNER_REVIEW_PDF_CHECKPOINT:
         raise AssertionError("owner-review PDF checkpoint mismatch")
     if payload.get("phase_0_hardening_baseline") != PHASE_0_BASELINE:
         raise AssertionError("Phase 0 hardening checkpoint mismatch")

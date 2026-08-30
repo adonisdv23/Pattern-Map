@@ -2,15 +2,13 @@
 
 Status: **LOCAL OWNER-REVIEW CANDIDATE — NOT MERGED, DEPLOYED, PUBLISHED, OR EMPIRICALLY VALIDATED**
 
-Canonical converged source checkpoint:
-`874a0a8e09f0bde11532cf873087865addb7d973`. It incorporates the bounded
-second ChatGPT Pro correction checkpoint `c889260`, site/visual hygiene,
-Signal Foundry transfer, EP v1.1 design reconciliation, and the standalone
-layout/owner-export correction after predecessor `ad964dd`, plus the terminal
-term-panel geometry, operator-vocabulary, path-neutral handoff, and portable-
-package corrections after immediate predecessor `bc7e7c5`. The following
-evidence/checksum commit refreshes this packet and deterministic manifest
-without replacing that source checkpoint.
+Fixed human manuscript/content-interface checkpoint:
+`874a0a8e09f0bde11532cf873087865addb7d973`. It remains the continuity anchor
+for the broad human thesis and six-family reading surface, not the current
+operating checkout. It incorporates the bounded second ChatGPT Pro correction
+checkpoint `c889260`, site/visual hygiene, Signal Foundry transfer, EP v1.1
+design reconciliation, and the standalone layout/owner-export correction after
+predecessor `ad964dd`, plus terminal term-panel geometry after `bc7e7c5`.
 
 Post-Ultracode source checkpoint `c86e537` then hardens the reusable contracts
 without changing that content checkpoint: F2 restores scoped track record and
@@ -20,7 +18,7 @@ cross-computer handoff treats source-machine-only inputs as optional while
 required tracked contracts remain blocking. The full disposition is in
 `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
 
-Public-and-transfer hardening implementation checkpoint `cbc89db` preserves
+Minimum integrated operating-contract checkpoint `cbc89db` preserves
 the same human thesis and adds three bounded improvements. Genuine supplied-
 material work now terminates through a four-field ordinary record, while
 layered work has typed permission, resolvable comparison/disconfirmation, real
@@ -34,6 +32,13 @@ unrun. Convergence corrections through `c0b006f` separate all five missingness
 axes, remove a false public self-link, and resolve route canonical URLs with URL
 semantics rather than string concatenation. These changes do not create v17,
 validate the framework, or make Echo the definition of v16.
+
+Use the exact current branch source for owner review and the exact
+`BUNDLE_METADATA.json.source_commit` in a sealed Signal Foundry packet. Later
+reviewed source, evidence, and sealing commits may advance that head. They do
+not replace the fixed human checkpoint, but they can materially advance the
+operating contract; do not use `874a0a8` as the downstream implementation
+checkout.
 
 The routed-site PNG matrix remains an accurate historical record of the
 earlier `a319794` site-polish checkpoint, but it is superseded for current Map
@@ -193,10 +198,13 @@ anchors without pretending the external ZIP lives in Git.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, planning-state, Map-layout,
   reader-language, and historical-asset checks pass.
-- The current standalone has one main, one h1, 339 unique IDs, ten named route
-  sections, one publication rail, one mobile guide, one page frame, balanced
-  main markup, exactly two frame children, every route inside `.page-content`,
-  and no falsely current route.
+- The current review standalone has one main, one h1, ten named route sections,
+  no duplicate IDs, one publication rail, one mobile guide, one page frame,
+  balanced main markup, exactly two frame children, every route inside
+  `.page-content`, and no falsely current route. The public standalone preserves
+  the ten-section and unique-ID invariants while omitting owner-review chrome.
+  Exact aggregate ID counts are not a release contract because bounded
+  accessibility and interaction additions may legitimately change them.
 - Live browser inspection covers the new Home planning preview at 390 pixels;
   one-column Apply route briefs and 44-pixel discrete route targets at
   320/390/480/600; flow-native term panels at
@@ -230,7 +238,9 @@ anchors without pretending the external ZIP lives in Git.
   finding is dispositioned; Pro source corrections are implemented at
   `c889260`; the earlier converged source was `ad964dd`; and the full current
   converged predecessor including owner visual/export corrections is
-  `bc7e7c5`; the terminal accepted source is `874a0a8`.
+  `bc7e7c5`; the fixed human-content source is `874a0a8`. Applied/public/
+  research integration begins no later than `cbc89db`, and the exact current
+  owner-review source resolves from Git or sealed packet metadata.
   The protected headline
   remains under locked owner intent, and only physical, publication-time, or
   owner-taste gates remain after the final PR readback.

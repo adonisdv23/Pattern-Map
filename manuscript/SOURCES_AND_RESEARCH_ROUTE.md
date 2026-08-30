@@ -26,7 +26,7 @@ current system map and is not used here as evidence that the framework works.
 ## Targeted prior-art route
 
 This is a targeted wayfinding route, not a systematic or exhaustive literature
-review. It was refreshed on **2026-08-30**. The current 2024–2026 public landing
+review. It was refreshed on **2026-08-30**. The current 2025–2026 public landing
 pages were opened and inspected; older foundational links were rechecked as
 read-only public access allowed, with blocked resolver status recorded in
 research QA. Publication status varies: conference papers, official
@@ -45,7 +45,7 @@ the original [retrieval-augmented generation paper](https://papers.neurips.cc/pa
 and primary work on [mixed-initiative interfaces](https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/)
 and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233).
 
-### Current adjacent fields, 2024–2026
+### Current adjacent fields, 2025–2026
 
 - **Context engineering and agent harnesses.** Anthropic's official
   [context-engineering guidance](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
