@@ -8,8 +8,10 @@ import {
   PUBLICATION_CONFIG_SCHEMA,
   PUBLICATION_RELEASE_STATUS,
   assertPublicationReleaseConfig,
+  normalizedCanonicalBaseUrl,
   publicationMetadataEnabled,
   publicationReleaseReady,
+  resolveCanonicalRouteUrl,
 } from "../../site/src/publication-config.mjs";
 
 const QA_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -46,6 +48,8 @@ const adversarialReleaseConfigs = [
   ["non-HTTPS canonical URL", { ...validReleaseConfig, canonical_url: "http://example.test/pattern-map" }],
   ["canonical URL with whitespace", { ...validReleaseConfig, canonical_url: " https://example.test/pattern-map" }],
   ["canonical URL with user information", { ...validReleaseConfig, canonical_url: "https://owner@example.test/pattern-map" }],
+  ["canonical URL with a query", { ...validReleaseConfig, canonical_url: "https://example.test/pattern-map?preview=1" }],
+  ["canonical URL with a fragment", { ...validReleaseConfig, canonical_url: "https://example.test/pattern-map#preview" }],
   ["empty social-image host", { ...validReleaseConfig, social_image_url: "https://" }],
   ["malformed social-image URL", { ...validReleaseConfig, social_image_url: "https://example .test/social-card.png" }],
 ];
@@ -59,6 +63,8 @@ assert.equal(publicationReleaseReady(validReleaseConfig), true, "valid absolute 
 assert.doesNotThrow(() => assertPublicationReleaseConfig(validReleaseConfig));
 assert.equal(publicationMetadataEnabled(validReleaseConfig, false), false, "release metadata was enabled without --release");
 assert.equal(publicationMetadataEnabled(validReleaseConfig, true), true, "valid release configuration did not enable metadata with --release");
+assert.equal(normalizedCanonicalBaseUrl("https://example.test/projects/pattern-map///"), "https://example.test/projects/pattern-map/");
+assert.equal(resolveCanonicalRouteUrl("https://example.test/projects/pattern-map///", "read/"), "https://example.test/projects/pattern-map/read/");
 
 const disposableRoot = fs.mkdtempSync(path.join(os.tmpdir(), "pattern-map-publication-gate-"));
 try {
@@ -98,6 +104,27 @@ try {
   assert.match(releaseHtml, /<meta property="og:image" content="https:\/\/example\.test\/pattern-map\/social-card\.png">/);
   assert.match(releaseHtml, /<meta name="author" content="Publication Gate Test">/);
   assert.equal(releaseManifest.release_build, true, "--release did not record the valid release build");
+
+  const normalizedPathConfig = {
+    ...validReleaseConfig,
+    canonical_url: "https://example.test/projects/pattern-map///",
+    social_image_url: "https://images.example.test/cards/pattern-map.png?variant=wide",
+  };
+  fs.writeFileSync(disposableConfigPath, `${JSON.stringify(normalizedPathConfig, null, 2)}\n`);
+  const normalizedRelease = runDisposableBuild("--mode=public", "--release");
+  assert.equal(normalizedRelease.status, 0, `normalized-path release build failed:\n${normalizedRelease.stdout}\n${normalizedRelease.stderr}`);
+  const releaseRoutes = ["", "read", "map", "apply", "guided", "examples", "boundaries", "sources", "research", "history"];
+  for (const route of releaseRoutes) {
+    const routeHtml = fs.readFileSync(path.join(disposableSite, "public-dist", route, "index.html"), "utf8");
+    const expectedCanonical = `https://example.test/projects/pattern-map/${route ? `${route}/` : ""}`;
+    assert.ok(
+      routeHtml.includes(`<link rel="canonical" href="${expectedCanonical}">`),
+      `release route ${route || "home"} did not preserve the normalized project subpath`,
+    );
+    assert.doesNotMatch(routeHtml, /pattern-map\/{2,}|\?preview=1\/|#preview\//);
+  }
+  const normalizedRoot = fs.readFileSync(path.join(disposableSite, "public-dist", "index.html"), "utf8");
+  assert.match(normalizedRoot, /<meta property="og:image" content="https:\/\/images\.example\.test\/cards\/pattern-map\.png\?variant=wide">/);
 } finally {
   fs.rmSync(disposableRoot, { recursive: true, force: true });
 }

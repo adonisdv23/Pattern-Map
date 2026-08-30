@@ -16,6 +16,21 @@ export const isAbsoluteHttpsUrl = (value) => {
   }
 };
 
+export const normalizedCanonicalBaseUrl = (value) => {
+  if (!isAbsoluteHttpsUrl(value)) return null;
+  const parsed = new URL(value);
+  if (parsed.search || parsed.hash) return null;
+  parsed.pathname = `${parsed.pathname.replace(/\/+$/, "")}/`;
+  return parsed.href;
+};
+
+export const resolveCanonicalRouteUrl = (canonicalBase, routePath = "") => {
+  const normalizedBase = normalizedCanonicalBaseUrl(canonicalBase);
+  if (!normalizedBase) return null;
+  const relativeRoute = String(routePath).replace(/^\/+/, "");
+  return new URL(relativeRoute, normalizedBase).href;
+};
+
 export const publicationReleaseErrors = (config) => {
   const errors = [];
   if (!config || config.schema_version !== PUBLICATION_CONFIG_SCHEMA) {
@@ -27,8 +42,8 @@ export const publicationReleaseErrors = (config) => {
   for (const field of REQUIRED_RELEASE_FIELDS) {
     if (typeof config?.[field] !== "string" || !config[field].trim()) errors.push(`${field} is unset`);
   }
-  if (typeof config?.canonical_url === "string" && config.canonical_url.trim() && !isAbsoluteHttpsUrl(config.canonical_url)) {
-    errors.push("canonical_url must be an absolute https URL with a nonempty host, no whitespace, and no user information");
+  if (typeof config?.canonical_url === "string" && config.canonical_url.trim() && !normalizedCanonicalBaseUrl(config.canonical_url)) {
+    errors.push("canonical_url must be an absolute https base URL with a nonempty host, no whitespace or user information, and no query or fragment");
   }
   if (typeof config?.social_image_url === "string" && config.social_image_url.trim() && !isAbsoluteHttpsUrl(config.social_image_url)) {
     errors.push("social_image_url must be an absolute https URL with a nonempty host, no whitespace, and no user information");

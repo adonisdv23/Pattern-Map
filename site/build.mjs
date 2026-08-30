@@ -6,6 +6,7 @@ import {
   assertPublicationReleaseConfig,
   publicationMetadataEnabled,
   publicationReleaseReady as isPublicationReleaseReady,
+  resolveCanonicalRouteUrl,
 } from "./src/publication-config.mjs";
 
 const SITE_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -626,9 +627,8 @@ const renderPublicationMetadata = ({ title, intro, ctx, active }) => {
   }
   const description = intro || contentInterface.first_screen.standfirst;
   const releaseMetadataEnabled = publicationMetadataEnabled(publicationConfig, releaseBuildRequested);
-  const canonicalBase = releaseMetadataEnabled ? publicationConfig.canonical_url.replace(/\/$/, "") : "";
-  const routePath = active && active !== "home" ? `/${ROUTES[active]?.directory ?? active}/` : "/";
-  const canonical = canonicalBase ? `${canonicalBase}${routePath}` : "";
+  const routePath = active && active !== "home" ? `${ROUTES[active]?.directory ?? active}/` : "";
+  const canonical = releaseMetadataEnabled ? resolveCanonicalRouteUrl(publicationConfig.canonical_url, routePath) : "";
   const socialImage = releaseMetadataEnabled ? publicationConfig.social_image_url : "";
   return [
     `<meta name="description" content="${escapeAttribute(description)}">`,
