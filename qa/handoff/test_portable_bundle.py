@@ -252,8 +252,12 @@ class PortableBundleTests(unittest.TestCase):
         self.assertEqual(manifest["manifest_self_exclusion"], "BUNDLE_MANIFEST.json is excluded from its own files list because self-hashing is circular.")
         self.assertEqual(metadata["source_commit"], git_head())
         self.assertEqual(manifest["source_commit"], git_head())
-        self.assertEqual(metadata["source_branch"], "codex/pattern-map-v16-foundation")
-        self.assertEqual(manifest["source_branch"], "codex/pattern-map-v16-foundation")
+        self.assertEqual(
+            metadata["source_branch"], "codex/pattern-map-v16-public-transfer-hardening"
+        )
+        self.assertEqual(
+            manifest["source_branch"], "codex/pattern-map-v16-public-transfer-hardening"
+        )
         self.assertEqual(manifest["file_count"], len(records))
         self.assertEqual(manifest["total_bytes"], sum(record["bytes"] for record in records))
 
@@ -286,6 +290,11 @@ class PortableBundleTests(unittest.TestCase):
             "site/exports/standalone/pattern-map-v16.html",
             "site/exports/pattern-map-v16-owner-review.pdf",
             "research/the-echo-problem/",
+            "framework/templates/ORDINARY_RECORD.md",
+            "framework/templates/MEMORY_RECORD.md",
+            "distinct `UNKNOWN`, `NOT_AUTHORIZED`, and `REVOKED`",
+            "public-presentation adapter",
+            "intentionally excluded",
         )
         for fact in required_facts:
             with self.subTest(fact=fact):
@@ -308,6 +317,64 @@ class PortableBundleTests(unittest.TestCase):
 
         self.assertIn("optional local evidence, not required packet inputs", normalized_start)
         self.assertIn("record `absent/unverified` and continue", normalized_start)
+
+    def test_selected_operating_contract_and_owner_only_exclusions(self) -> None:
+        metadata = json.loads(
+            (self.bundle_root / "BUNDLE_METADATA.json").read_text(encoding="utf-8")
+        )
+        selected = set(metadata["selected_source_paths"])
+        required = {
+            "framework/templates/ORDINARY_RECORD.md",
+            "framework/templates/MEMORY_RECORD.md",
+            "qa/applied/memory_anchor_registry.json",
+            "qa/applied/receipts/memory-append-only-correction.json",
+            "qa/applied/receipts/unknown-permission.json",
+            "qa/applied/receipts/revoked-permission.json",
+        }
+        self.assertTrue(required <= selected, sorted(required - selected))
+        for relative in required:
+            self.assertTrue((self.bundle_root / relative).is_file(), relative)
+
+        excluded = set(metadata["intentionally_excluded_owner_review_artifacts"])
+        expected_excluded = {
+            "site/exports/standalone/pattern-map-v16-public.html",
+            "site/publication.config.json",
+            "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+        }
+        self.assertTrue(expected_excluded <= excluded)
+        self.assertTrue(selected.isdisjoint(expected_excluded))
+        for relative in expected_excluded:
+            self.assertFalse((self.bundle_root / relative).exists(), relative)
+
+    def test_out_of_packet_markdown_links_are_exhaustively_classified(self) -> None:
+        metadata = json.loads(
+            (self.bundle_root / "BUNDLE_METADATA.json").read_text(encoding="utf-8")
+        )
+        policy = metadata["selected_subset_link_policy"]
+        links = policy["classified_links"]
+        self.assertEqual(policy["classified_link_count"], len(links))
+        self.assertGreater(len(links), 0)
+        self.assertEqual(
+            links,
+            sorted(links, key=lambda item: (item["source"], item["resolved_repository_path"])),
+        )
+        self.assertEqual(
+            {item["classification"] for item in links},
+            {"archive", "owner_review_only", "outside_selected_packet"},
+        )
+        selected = set(metadata["selected_source_paths"])
+        for item in links:
+            self.assertIn(item["source"], selected)
+            self.assertNotIn(item["resolved_repository_path"], selected)
+
+        builder = load_builder_module()
+        source_payloads = {
+            "README.md": b"[new transfer claim](docs/UNCLASSIFIED_TRANSFER.md)\n"
+        }
+        with self.assertRaisesRegex(RuntimeError, "unclassified out-of-packet"):
+            builder._classify_out_of_packet_links(
+                source_payloads, {"README.md", "docs/UNCLASSIFIED_TRANSFER.md"}
+            )
 
     def test_optional_local_inputs_are_guarded_and_nonblocking(self) -> None:
         canonical = (

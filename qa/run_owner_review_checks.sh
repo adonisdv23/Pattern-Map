@@ -111,6 +111,7 @@ python3 handoff/verify_owner_review_package.py
 
 printf '\n[12/12] Reproducible export and clean authored diff\n'
 git diff --exit-code -- site/exports/standalone/pattern-map-v16.html
+git diff --exit-code -- site/exports/standalone/pattern-map-v16-public.html
 git diff --check
 
 printf '\nPASS: complete local owner-review verification sequence\n'

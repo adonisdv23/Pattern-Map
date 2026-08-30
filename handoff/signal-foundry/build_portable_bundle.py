@@ -33,7 +33,7 @@ import zipfile
 PACKAGE_NAME = "pattern-map-v16-signal-foundry-portable"
 PACKAGE_PREFIX = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE"
 SOURCE_REPOSITORY = "https://github.com/adonisdv23/Pattern-Map"
-SOURCE_BRANCH_HINT = "codex/pattern-map-v16-foundation"
+SOURCE_BRANCH_HINT = "codex/pattern-map-v16-public-transfer-hardening"
 DRAFT_PR = "https://github.com/adonisdv23/Pattern-Map/pull/1"
 SIGNAL_FOUNDRY_AUDITED_CHECKPOINT = "f9bf3775ca3d5b52ea5083cea52306c025727e23"
 PREVIOUS_BUNDLE_NAME = "PATTERN_MAP_V16_SIGNAL_FOUNDRY_PORTABLE_2026-08-27_d5b3431.zip"
@@ -81,6 +81,8 @@ SOURCE_PATHS: tuple[str, ...] = (
     "framework/templates/DISCONFIRMATION_LOG.md",
     "framework/templates/EVIDENCE_REGISTER.md",
     "framework/templates/INFLUENCE_RECEIPT.md",
+    "framework/templates/MEMORY_RECORD.md",
+    "framework/templates/ORDINARY_RECORD.md",
     "framework/templates/OUTCOME_REVIEW.md",
     "framework/agent-playbook/QUICKSTART.md",
     "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
@@ -91,8 +93,12 @@ SOURCE_PATHS: tuple[str, ...] = (
     "qa/applied/receipts/blocked-permission.json",
     "qa/applied/receipts/layered-ready.json",
     "qa/applied/receipts/lightweight-low-stakes.json",
+    "qa/applied/receipts/memory-append-only-correction.json",
     "qa/applied/receipts/ordinary-supplied-material.json",
+    "qa/applied/receipts/revoked-permission.json",
     "qa/applied/receipts/stopped-budget.json",
+    "qa/applied/receipts/unknown-permission.json",
+    "qa/applied/memory_anchor_registry.json",
     "cases/README.md",
     "cases/signal-foundry/README.md",
     "cases/general-research/README.md",
@@ -130,6 +136,95 @@ SOURCE_PATHS: tuple[str, ...] = (
     "assets/IMAGE_USE_LEDGER.md",
     "assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png",
 )
+
+# This packet is deliberately a selected downstream context surface, not a
+# recursive mirror of Pattern Map. Every relative Markdown link that resolves
+# to a repository file outside SOURCE_PATHS must be classified here. The build
+# fails if a new unresolved link appears, an expected link disappears, or its
+# exact target is absent at the source commit.
+OUT_OF_PACKET_LINK_POLICY: tuple[tuple[str, str, str], ...] = (
+    ("README.md", "docs/V13_TO_V16_FIDELITY_MATRIX.md", "owner_review_only"),
+    ("README.md", "docs/V16_ROADMAP.md", "owner_review_only"),
+    ("README.md", "docs/CONTENT_INTERFACE_FREEZE_V16.md", "owner_review_only"),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/10_FULL_REPOSITORY_SNAPSHOT/reports/V13_RECOVERY_AND_INTENT_MEMO.md",
+        "archive",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/10_FULL_REPOSITORY_SNAPSHOT/source/THOUGHT_PIECE_V14.md",
+        "archive",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/03_RESEARCH_PACKAGE/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md",
+        "archive",
+    ),
+    (
+        "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+        "archive/transfers/v14-complete-2026-08-18/03_RESEARCH_PACKAGE/REFERENCES.md",
+        "archive",
+    ),
+    (
+        "handoff/OWNER_REVIEW_PACKET_V16.md",
+        "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
+        "owner_review_only",
+    ),
+    ("handoff/OWNER_REVIEW_PACKET_V16.md", "qa/visual/README.md", "owner_review_only"),
+    (
+        "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
+        "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+        "owner_review_only",
+    ),
+    (
+        "research/the-echo-problem/README.md",
+        "research/the-echo-problem/qa/EP_V0_1_QA.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/README.md",
+        "archive/transfers/v15.2-owner-handoff/ACCESSION_RECORD.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "research/the-echo-problem/preserved/v15.2/protocol/ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V0.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "archive/transfers/v15.2-owner-handoff/03_RESEARCH_PROGRAM_UNRUN/research/overnight/rounds/08_LOOP2_OPERATIONALIZATION_SPEC.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "archive/transfers/v15.2-owner-handoff/03_RESEARCH_PROGRAM_UNRUN/research/PAPER_PROSPECTUS_V0.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "research/the-echo-problem/preserved/v15.2/prior-art/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+        "archive/transfers/v15.2-owner-handoff/05_HISTORY_AND_VISUALS/prior-version-surfaces/THOUGHT_PIECE_V14.md",
+        "archive",
+    ),
+    (
+        "research/the-echo-problem/v1_1/README.md",
+        "research/the-echo-problem/v1_1/harness/README.md",
+        "outside_selected_packet",
+    ),
+    (
+        "research/the-echo-problem/v1_1/README.md",
+        "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
+        "owner_review_only",
+    ),
+)
+LINK_CLASSIFICATIONS = frozenset({"archive", "owner_review_only", "outside_selected_packet"})
+MARKDOWN_LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\(([^)\n]+)\)")
 
 GENERATED_PAYLOAD_NAMES: tuple[str, ...] = (
     "START_HERE.md",
@@ -262,6 +357,102 @@ def _git_file_bytes(repo_root: Path, commit: str, relative: str) -> bytes:
     return _run_git(repo_root, ["show", f"{commit}:{relative}"])
 
 
+def _git_file_set(repo_root: Path, commit: str) -> set[str]:
+    return {
+        line
+        for line in _run_git(
+            repo_root, ["ls-tree", "-r", "--name-only", "--full-tree", commit]
+        )
+        .decode("utf-8")
+        .splitlines()
+        if line
+    }
+
+
+def _relative_markdown_target(source: str, raw_target: str) -> str | None:
+    target = raw_target.strip()
+    if target.startswith("<"):
+        closing = target.find(">")
+        if closing < 0:
+            raise RuntimeError(f"malformed angle-bracket Markdown link in {source}")
+        target = target[1:closing]
+    else:
+        target = target.split(maxsplit=1)[0]
+    if not target or target.startswith("#") or re.match(r"^[A-Za-z][A-Za-z0-9+.-]*:", target):
+        return None
+    path_only = target.split("#", 1)[0].split("?", 1)[0]
+    if not path_only:
+        return None
+    if path_only.startswith("/") or "\\" in path_only:
+        raise RuntimeError(f"non-portable relative Markdown link in {source}: {target}")
+    parts: list[str] = []
+    for part in (PurePosixPath(source).parent / PurePosixPath(path_only)).parts:
+        if part in {"", "."}:
+            continue
+        if part == "..":
+            if not parts:
+                raise RuntimeError(f"Markdown link escapes repository root in {source}: {target}")
+            parts.pop()
+            continue
+        parts.append(part)
+    return PurePosixPath(*parts).as_posix()
+
+
+def _classify_out_of_packet_links(
+    source_payloads: Mapping[str, bytes], repository_files: set[str]
+) -> list[dict[str, str]]:
+    selected = set(source_payloads)
+    policy: dict[tuple[str, str], str] = {}
+    for source, resolved_target, classification in OUT_OF_PACKET_LINK_POLICY:
+        key = (source, resolved_target)
+        if key in policy:
+            raise RuntimeError(f"duplicate out-of-packet link policy: {source} -> {resolved_target}")
+        if classification not in LINK_CLASSIFICATIONS:
+            raise RuntimeError(f"unknown out-of-packet link classification: {classification}")
+        policy[key] = classification
+
+    discovered: dict[tuple[str, str], dict[str, str]] = {}
+    for source, payload in sorted(source_payloads.items()):
+        if not source.endswith(".md"):
+            continue
+        try:
+            markdown = payload.decode("utf-8")
+        except UnicodeDecodeError as error:
+            raise RuntimeError(f"selected Markdown is not UTF-8: {source}") from error
+        for match in MARKDOWN_LINK_PATTERN.finditer(markdown):
+            raw_target = match.group(1).strip()
+            resolved_target = _relative_markdown_target(source, raw_target)
+            if resolved_target is None:
+                continue
+            if resolved_target in selected or any(
+                path.startswith(resolved_target.rstrip("/") + "/") for path in selected
+            ):
+                continue
+            key = (source, resolved_target)
+            if key not in policy:
+                raise RuntimeError(
+                    f"unclassified out-of-packet Markdown link: {source} -> {resolved_target}"
+                )
+            if resolved_target not in repository_files and not any(
+                path.startswith(resolved_target.rstrip("/") + "/") for path in repository_files
+            ):
+                raise RuntimeError(
+                    f"classified Markdown target is absent at source commit: {source} -> {resolved_target}"
+                )
+            discovered[key] = {
+                "source": source,
+                "target": raw_target,
+                "resolved_repository_path": resolved_target,
+                "classification": policy[key],
+            }
+
+    missing_expected = sorted(set(policy) - set(discovered))
+    if missing_expected:
+        rendered = ", ".join(f"{source} -> {target}" for source, target in missing_expected)
+        raise RuntimeError(f"stale out-of-packet link policy entries: {rendered}")
+    return [discovered[key] for key in sorted(discovered)]
+
+
 def _path_is_safe(relative: str) -> bool:
     if not relative or "\x00" in relative or "\\" in relative:
         return False
@@ -344,6 +535,8 @@ Before editing, inspect the receiving Signal Foundry checkout, branch, remotes, 
 
 This is a selected packet, not the full Pattern Map repository. Some bundled Markdown intentionally links to historical archives or other repository files outside the packet. If a relative link does not resolve, request the exact missing file or current repository state; do not infer, recreate, or silently substitute its contents.
 
+Use the packet's four-field `framework/templates/ORDINARY_RECORD.md` for a genuine supplied-material transformation. Use `framework/templates/MEMORY_RECORD.md` and the selected memory fixture only when prior material may actually influence a layered answer. The public-presentation adapter, publication configuration, public standalone, visual captures, lane QA, and the unrun narrow-wedge research decision memo are owner-repository review artifacts; they are intentionally not Signal Foundry inputs and their omission does not authorize reconstruction.
+
 Use the existing OPERATOR_DECISION plus RATIONALE pair as the first seam to inspect. Do not invent a Pattern Map classifier, a V14 deep link, “Sigma Foundry,” a second ledger, a universal score, or a new event type. CONTEXT_DISPOSITION is a conceptual completeness worksheet only; it is not valid against the current Signal Foundry decision-memory schema and must not be implemented from this packet.
 
 This packet is context and review material, not mutation authority. Do not deploy, publish, merge, change production, call a provider or model, acquire an external dataset, spend, preregister, contact people, or run an empirical/participant study merely because this packet is present. If a required tracked packet file, receiving schema, route, or record is missing, STOP and request the exact missing file or current repository evidence; do not infer, recreate, or silently substitute it. Optional local evidence named above may be absent on another computer: record UNVERIFIED and continue from tracked contracts. If current Signal Foundry contracts conflict materially with this packet, report the exact conflict before changing anything.
@@ -416,6 +609,16 @@ Some selected Markdown intentionally retains links to historical archives or
 other repository files outside this packet. An unresolved relative link is a
 subset boundary, not evidence that the target is absent or permission to infer
 it; request the exact file or current repository state when it matters.
+`BUNDLE_METADATA.json` classifies every such retained link and the build fails
+if a new out-of-packet target is not explicitly classified.
+
+The packet includes the four-field ordinary-work template, the bounded memory
+template and root-anchor fixture, and distinct `UNKNOWN`, `NOT_AUTHORIZED`, and
+`REVOKED` permission examples. The public-presentation adapter, publication
+configuration, public standalone, public visual captures, lane QA, and the
+unrun narrow-wedge study decision memo remain owner-repository review
+artifacts. They are intentionally excluded because Signal Foundry needs the
+operating contract, not a second publication surface or research program.
 
 ## Downstream guardrails
 
@@ -685,7 +888,12 @@ def _manifest_payload(records: Sequence[Mapping[str, object]], commit: str, bran
 
 
 def _metadata_payload(
-    *, commit: str, branch: str, date: str, source_records: Sequence[Mapping[str, object]]
+    *,
+    commit: str,
+    branch: str,
+    date: str,
+    source_records: Sequence[Mapping[str, object]],
+    out_of_packet_links: Sequence[Mapping[str, str]],
 ) -> dict[str, object]:
     return {
         "schema_version": 1,
@@ -711,7 +919,21 @@ def _metadata_payload(
         "selected_subset_link_policy": {
             "scope": "Bundled Markdown may retain relative links to archives or repository files outside the selected packet.",
             "unresolved_link_action": "Request the exact missing file or current repository state; do not infer, recreate, or silently substitute it.",
+            "classification_contract": "Every retained relative link outside the selected packet is classified; any new unclassified target fails the build.",
+            "classified_link_count": len(out_of_packet_links),
+            "classified_links": list(out_of_packet_links),
         },
+        "intentionally_excluded_owner_review_artifacts": [
+            "site/exports/standalone/pattern-map-v16-public.html",
+            "site/publication.config.json",
+            "site/src/publication-config.mjs",
+            "qa/visual/public-mode/",
+            "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
+            "qa/site/public-mode-contract.spec.mjs",
+            "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+            "qa/research/CURRENT_SOURCE_VERIFICATION_2026-08-30.md",
+            "qa/research/PUBLIC_TRANSFER_RESEARCH_BOUNDARY_QA_2026-08-30.md",
+        ],
         "scope": (
             "Selected human thesis, framework, operator and agent playbook, bounded cases, "
             "handoff records, research-separation boundaries, standalone HTML, PDF companion, "
@@ -796,6 +1018,7 @@ def build_bundle(
     with tempfile.TemporaryDirectory(prefix="pattern-map-portable-") as temporary:
         stage = Path(temporary)
         source_records: list[dict[str, object]] = []
+        source_payloads: dict[str, bytes] = {}
         seen: set[str] = set()
         for relative in SOURCE_PATHS:
             if relative in seen:
@@ -803,6 +1026,7 @@ def build_bundle(
             seen.add(relative)
             data = _git_file_bytes(repo_root, commit, relative)
             _write_bytes(stage, relative, data)
+            source_payloads[relative] = data
             source_records.append(
                 {
                     "path": relative,
@@ -810,6 +1034,10 @@ def build_bundle(
                     "sha256": _sha256_bytes(data),
                 }
             )
+
+        out_of_packet_links = _classify_out_of_packet_links(
+            source_payloads, _git_file_set(repo_root, commit)
+        )
 
         prompt = _copyable_prompt(commit, branch)
         _write_bytes(stage, "START_HERE.md", _start_here(
@@ -826,6 +1054,7 @@ def build_bundle(
             branch=branch,
             date=date,
             source_records=source_records,
+            out_of_packet_links=out_of_packet_links,
         )
         _write_bytes(stage, "BUNDLE_METADATA.json", _json_bytes(metadata))
 

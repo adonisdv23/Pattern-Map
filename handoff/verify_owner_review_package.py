@@ -18,6 +18,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
 CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
+PHASE_0_BASELINE = "37c7c852ff406431454346eacc694ac04c5f57a5"
+LANE_HEADS = {
+    "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
+    "public_presentation": "361243c95050723f1693907f7446be5d690b9e58",
+    "research_boundary_2026": "54bd0a7a11f4c072c8ceaab1a2abf7bc81a380cb",
+}
 
 
 REQUIRED_PATHS = [
@@ -34,6 +40,7 @@ REQUIRED_PATHS = [
     "docs/V13_TO_V16_FIDELITY_MATRIX.md",
     "docs/V16_ACCEPTANCE_CRITERIA.md",
     "docs/V16_ROADMAP.md",
+    "docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md",
     "docs/CONTENT_INTERFACE_FREEZE_V16.md",
     "docs/CONTENT_INTERFACE_V16.json",
     "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md",
@@ -57,6 +64,16 @@ REQUIRED_PATHS = [
     "framework/IMPLEMENTATION_CHOICES.md",
     "framework/MECHANISMS.md",
     "framework/BOUNDARIES_AND_FAILURES.md",
+    "framework/templates/README.md",
+    "framework/templates/ACQUISITION_RECEIPT.md",
+    "framework/templates/COMPARISON_MATRIX.md",
+    "framework/templates/DECISION_BRIEF.md",
+    "framework/templates/DISCONFIRMATION_LOG.md",
+    "framework/templates/EVIDENCE_REGISTER.md",
+    "framework/templates/INFLUENCE_RECEIPT.md",
+    "framework/templates/MEMORY_RECORD.md",
+    "framework/templates/ORDINARY_RECORD.md",
+    "framework/templates/OUTCOME_REVIEW.md",
     "framework/agent-playbook/QUICKSTART.md",
     "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
     "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
@@ -70,20 +87,26 @@ REQUIRED_PATHS = [
     "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
     "handoff/signal-foundry/build_portable_bundle.py",
     "site/README.md",
+    "site/.gitignore",
     "site/package.json",
     "site/package-lock.json",
     "site/build.mjs",
     "site/check.mjs",
+    "site/serve.mjs",
+    "site/publication.config.json",
+    "site/src/publication-config.mjs",
     "site/src/site.css",
     "site/src/site.js",
     "site/src/term-popover-geometry.js",
     "site/src/recommendation.js",
     "site/scripts/generate_review_pdf.py",
     "site/exports/standalone/pattern-map-v16.html",
+    "site/exports/standalone/pattern-map-v16-public.html",
     "site/exports/pattern-map-v16-owner-review.pdf",
     "research/README.md",
     "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
     "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md",
+    "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
     "research/the-echo-problem/README.md",
     "research/the-echo-problem/STATUS_AND_BOUNDARIES.md",
     "research/the-echo-problem/RELATION_TO_V16.md",
@@ -124,14 +147,22 @@ REQUIRED_PATHS = [
     "qa/editorial/MANUSCRIPT_QA_REPORT.md",
     "qa/editorial/validate_content_interface.py",
     "qa/applied/README.md",
+    "qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md",
+    "qa/applied/memory_anchor_registry.json",
     "qa/applied/validate_framework.py",
     "qa/applied/receipts/blocked-permission.json",
     "qa/applied/receipts/layered-ready.json",
     "qa/applied/receipts/lightweight-low-stakes.json",
+    "qa/applied/receipts/memory-append-only-correction.json",
     "qa/applied/receipts/ordinary-supplied-material.json",
+    "qa/applied/receipts/revoked-permission.json",
     "qa/applied/receipts/stopped-budget.json",
+    "qa/applied/receipts/unknown-permission.json",
     "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
     "qa/research/validate_research_boundaries.py",
+    "qa/research/README.md",
+    "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
+    "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md",
     "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
     "qa/site/SITE_QA_REPORT.md",
     "qa/site/SITE_POLISH_QA.md",
@@ -140,6 +171,8 @@ REQUIRED_PATHS = [
     "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
     "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
     "qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md",
+    "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
+    "qa/site/public-mode-contract.spec.mjs",
     "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
     "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md",
@@ -193,6 +226,11 @@ REQUIRED_PATHS = [
     "qa/visual/screenshots-final-v16-polish/interaction-states/map-f1-focused-1280x720.jpg",
     "qa/visual/screenshots-final-v16-polish/interaction-states/apply-advanced-hold-1280x720.jpg",
     "qa/visual/screenshots-final-v16-polish/interaction-states/standalone-all-routes-1280x720.jpg",
+    "qa/visual/public-mode/public-apply-stage0-1280x720.jpg",
+    "qa/visual/public-mode/public-home-reveal-1280x720.jpg",
+    "qa/visual/public-mode/public-home-reveal-390x844.jpg",
+    "qa/visual/public-mode/public-read-1280x720.jpg",
+    "qa/visual/public-mode/public-read-390x844.jpg",
     "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-1.png",
     "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-2.png",
     "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-3.png",
@@ -250,12 +288,21 @@ def current_records() -> list[dict[str, object]]:
 def write_manifest() -> None:
     records = current_records()
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "package": "pattern-map-v16-owner-review",
         "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-28",
-        "content_site_source_and_pdf_checkpoint": CONTENT_CHECKPOINT,
-        "evidence_note": "The manifest covers canonical content checkpoint 874a0a8 plus the post-Ultracode reusable-contract source checkpoint c86e537: the prior ChatGPT Pro and owner visual/export corrections; exhaustive 108-case Stage 0/permission/state behavior; a genuine ordinary supplied-material receipt; F2 role/track-record/claim-authority separation; fail-closed reviewed learning and selected influence; exact ordered F1-F6 schema identity; descriptive no-script term help; responsive line-free Map; flow-native common-origin teaching visual; measured desktop term-panel clearance and viewport clamping; structurally contained human-first standalone routes with contrast-safe demoted callout headings; a non-overlapping normal-flow Home Apply preview; print-safe evidence routes and tables; fresh-clone-safe Signal Foundry handoffs; all-payload portable marker scanning; deterministic exact-commit bundle construction; EP v1.1 design, strict offline harness, frozen 300-pair render fixture, and claim dispositions; the six-page review companion; and the evidence index that labels a319794 routed-site captures as historical and superseded for current Map/Apply semantics. Manual owner/keyboard/screen-reader/real-zoom/forced-colors/native-print/touch gates remain open. Claude and Luna reviews were advisory only. No study, deployment, publication, merge, research-provider selection/call, or incremental spend is implied.",
+        "generated_date": "2026-08-30",
+        "historical_converged_checkpoint": CONTENT_CHECKPOINT,
+        "owner_review_pdf_checkpoint": CONTENT_CHECKPOINT,
+        "phase_0_hardening_baseline": PHASE_0_BASELINE,
+        "integrated_lane_heads": LANE_HEADS,
+        "source_head": None,
+        "source_head_resolution": {
+            "status": "resolve_at_use",
+            "command": "git rev-parse --verify HEAD",
+            "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
+        },
+        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the historical review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
         "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),
@@ -270,10 +317,21 @@ def verify_manifest() -> None:
         raise FileNotFoundError(f"manifest missing: {MANIFEST.relative_to(ROOT)}")
     payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
     expected = current_records()
-    if payload.get("schema_version") != 1:
+    if payload.get("schema_version") != 2:
         raise AssertionError("unsupported owner-review manifest schema")
-    if payload.get("content_site_source_and_pdf_checkpoint") != CONTENT_CHECKPOINT:
-        raise AssertionError("content checkpoint mismatch")
+    if payload.get("historical_converged_checkpoint") != CONTENT_CHECKPOINT:
+        raise AssertionError("historical converged checkpoint mismatch")
+    if payload.get("owner_review_pdf_checkpoint") != CONTENT_CHECKPOINT:
+        raise AssertionError("owner-review PDF checkpoint mismatch")
+    if payload.get("phase_0_hardening_baseline") != PHASE_0_BASELINE:
+        raise AssertionError("Phase 0 hardening checkpoint mismatch")
+    if payload.get("integrated_lane_heads") != LANE_HEADS:
+        raise AssertionError("integrated lane-head provenance mismatch")
+    if payload.get("source_head") is not None:
+        raise AssertionError("owner-review manifest must not hard-code its self-referential source head")
+    resolution = payload.get("source_head_resolution")
+    if not isinstance(resolution, dict) or resolution.get("status") != "resolve_at_use":
+        raise AssertionError("source-head resolution contract mismatch")
     if payload.get("files") != expected:
         raise AssertionError("owner-review manifest does not match current artifact bytes")
     if payload.get("file_count") != len(expected):
