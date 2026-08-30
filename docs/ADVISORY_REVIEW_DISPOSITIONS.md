@@ -267,3 +267,26 @@ evidence is in `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md`.
 
 The accepted source checkpoint is `c86e53764f6e33b62097f0424125b5922441ce58`.
 No item above is an empirical result or a claim that Pattern Map is effective.
+
+## Public-and-transfer hardening dispositions — 2026-08-30
+
+Three independent high-reasoning lanes reviewed exact clean checkpoint
+`4d2e11ceb26b36fd7428dc7de963c135802a8dea` and then challenged one another.
+Their findings remain advisory. The primary integrator reproduced the material
+contract conflicts and accepted only changes consistent with locked owner
+intent. No audit is a participant, comprehension, effectiveness, or transfer
+result.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / future verification |
+| --- | --- | --- | --- | --- | --- |
+| PTH-AGENT-01 | Put Stage 0 inside the fenced copyable prompt | **Accepted** | The advertised copied block currently bypasses the ordinary-work escape | Agent brief and applied QA | Ordinary branch precedes `FRAME`, terminates, and creates no layered record |
+| PTH-AGENT-02 | Keep route/outcome/learning fields in every ordinary receipt | **Rejected; minimal record accepted instead** | Planning recommendations are not observed receipts; ordinary work should not manufacture event machinery | Full guide, templates, ordinary fixture/validator | Minimal supplied scope, assumptions, unchecked boundaries, and output only |
+| PTH-AGENT-03 | Treat booleans and arbitrary IDs as proof of substantive comparison, disconfirmation, influence, permission, or memory | **Rejected; reference integrity accepted** | Shape-only checks cannot establish the named record relation | Applied fixtures and validator | Typed states and resolvable-reference mutation tests fail closed |
+| PTH-AGENT-04 | Add a generic adoption brief or conformance dictionary now | **Deferred / rejected as current scope** | One detailed design transfer plus invented cases does not support abstraction; another artifact would duplicate current entry points | No canonical artifact yet | Repeated friction in a second materially different real project is required |
+| PTH-PUBLIC-01 | Rewrite the essay or add another route to appear more public | **Rejected** | The human thesis and voice are already strong; public defects are presentation-mode issues | Essay, Home, route set | Canonical prose and three-door interface remain intact |
+| PTH-PUBLIC-02 | Add a shared-source public mode and show prose before review scaffolding | **Accepted with revision** | A view adapter can remove review chrome without creating a second content system | Site builder and QA | Same canonical hashes/route IDs; first-viewport and no-public-only-claim tests |
+| PTH-PUBLIC-03 | Add a live model demo, score, dashboard, or network graph | **Rejected; one fixed reveal accepted** | Those additions create provider, topology, result, and accessibility risk | Existing opening teaching object only | Deterministic replacement, no network/model, no observed-result or action claim |
+| PTH-RESEARCH-01 | Claim the six mechanisms or context-engineering responsibility as technically novel | **Rejected** | Targeted current primary work occupies the component neighborhoods | Sources, claims ledger, research agenda | Design/governance synthesis ceiling; targeted-not-exhaustive language |
+| PTH-RESEARCH-02 | Run the omnibus playbook study first | **Deferred** | Bundling mechanisms prevents attribution and risks measuring ceremony | Future research planning only | Narrow-wedge decision memo, credible baselines, no run without exact authorization |
+| PTH-RESEARCH-03 | Let a narrow receipt or missingness study redefine v16 | **Rejected** | The easiest measurable fragment is not the owner-locked broad thesis | Research firebreak and publication framing | Position/design framing remains broad; Echo stays separate |
+| PTH-MANUAL-01 | Infer human comprehension or physical accessibility from model/browser proxies | **Rejected as inference; Deferred as human work** | Automated and model checks cannot certify those experiences | Public candidate and release checklist | Owner/mentor, physical keyboard, screen reader, real zoom/forced colors/print/touch stay open |

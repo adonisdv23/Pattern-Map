@@ -1072,3 +1072,62 @@ taste.
 
 **Governing requirement:** owner visual expectation; A01–A06/A12/A13/A17;
 flow-native, comprehensible teaching surfaces; no-deploy/no-publish boundary.
+
+## D-033 — Advance v16 through public and transfer hardening, not thesis expansion
+
+**Date:** 2026-08-30
+
+**Status:** Accepted for local feature-branch implementation; external gates
+remain closed
+
+The owner authorized a further high-reasoning audit, adversarial red-team, and
+implementation cycle intended to make Pattern Map more useful for future
+projects, mentor review, and a possible later public/X release. Three
+independent read-only lanes reviewed the exact clean checkpoint
+`4d2e11ceb26b36fd7428dc7de963c135802a8dea`: human/public experience,
+operator/agent executability and transfer, and current research/claims. A
+second convergence loop required the lanes to challenge one another. The
+primary integrator reproduced the material cross-artifact findings before
+acceptance.
+
+The owner-review baseline remains intact. The next phase is a bounded public
+and transfer hardening cycle, not v17 and not a new thesis. It accepts:
+
+1. Stage 0 must exist inside the actual copied agent prompt and must terminate
+   ordinary supplied-material work before layered records.
+2. Ordinary work receives only a minimal scope/assumption/boundary record; it
+   does not manufacture evidence, route, stop, outcome, learning, or six-family
+   ceremony.
+3. Applied validators must require typed permission states and resolvable
+   baseline, comparison, disconfirmation, influence, and memory references
+   before those records can claim the corresponding structural state.
+4. One existing neutral case must demonstrate sparse family use, and F4 memory
+   receives a fail-closed append-only correction/supersession fixture.
+5. A public presentation mode may remove review chrome and improve reading
+   order only as a view adapter over the same canonical sources and route IDs.
+6. One deterministic code-native teaching reveal may replace an existing
+   static example. It may not call a model, score sources, create an observed
+   event, or imply comprehension/effectiveness.
+7. The optional source/research route must be updated for directly relevant
+   2025–2026 work and preserve the contribution ceiling: authored
+   human-governed design/governance synthesis and testable agenda, not novel
+   mechanism, exhaustive taxonomy, or validated method.
+8. A generic adoption artifact remains deferred until Signal Foundry and a
+   materially different second real project expose the same transfer friction.
+   Even then it would be a candidate abstraction, not proof of generality.
+
+The canonical essay, 90-second version, mentor note, six families, permanent
+Echo split, human-authority boundary, and no-results boundary are not reopened
+by these technical findings. Publication identity, physical accessibility,
+owner/mentor judgment, publication-time metadata/link checks, deployment,
+publication, study execution, and merge remain separate gates.
+
+**Evidence:** `docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md`; exact baseline
+and locked-intent readback; full owner-review runner; live ten-route desktop and
+mobile inspection; read-only human/public, operator/agent, and research/claims
+audits and their adversarial convergence.
+
+**Governing requirement:** locked owner intent; D-001/D-007/D-008/D-031;
+A01–A17; proportionality and ordinary-work escape; observable rather than
+inspirational agent behavior; research may constrain claims but may not
+redefine the thesis; no-merge/no-deploy/no-publish/no-study/no-spend boundary.
