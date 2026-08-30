@@ -23,14 +23,14 @@ memory-defense, screen-reader-support, or research-result evidence.
 ### Family focus controls
 
 The six enhanced Map buttons all displayed `Focus this family` and exposed
-that same undifferentiated accessible name. A screen-reader button list could
-not identify which family each control affected. The renderer now retains the
-visible words and appends the family ID and name, for example:
+that same undifferentiated accessible name. Those six accessible names alone
+did not identify which family each control affected. The renderer now retains
+the visible words and appends the family ID and name, for example:
 
 `Focus this family: F4 · Absence + memory`
 
-The built Map exposes six distinct names in both the DOM and Chrome
-accessibility tree. This follows the W3C ARIA Authoring Practices
+The built Map exposes six distinct names in both the DOM and the in-app
+browser accessibility tree. This follows the W3C ARIA Authoring Practices
 [names-and-descriptions guidance](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/)
 to distinguish same-role controls while retaining the visible words inside the
 accessible name, consistent with WCAG's
