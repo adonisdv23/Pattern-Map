@@ -1619,3 +1619,30 @@ research, site, and checksum checks.
 **Governing requirement:** D-042/D-043; A01–A17; controlled review protocol;
 artifact firebreaks; proportionality; no-results and external-action
 boundaries.
+
+## D-045 — Treat the owner's live principal-door bug report as direct evidence
+
+**Date:** 2026-08-30
+
+**Status:** Accepted and corrected
+
+The owner identified the lower portion of the three Home door cards as buggy
+in the locally served public preview. Live geometry reproduced a real defect:
+unequal preview heights were being distributed with `space-between`, all three
+captions collided with their arrows, and the Map preview used detached diagonal
+traces that did not read as a stable relationship.
+
+The correction gives every card one explicit footer track, reserves a separate
+arrow lane, keeps the Apply caption in flow, and connects Map nodes through
+their actual grid gaps. A new focused contract is part of the site suite, and
+live rechecks cover 1440, 390, and 320 pixels without page overflow. This is a
+presentation correction only; it does not change the locked thesis, six-family
+specification, agent behavior, research boundaries, or selected Signal Foundry
+packet.
+
+**Evidence:** `qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md` and
+`qa/site/door-card-preview-contract.spec.mjs`.
+
+**Governing requirement:** A01–A03, A06, A13; human-first first screen;
+responsive and understandable code-native visuals; owner evidence outranks
+advisory reassurance.

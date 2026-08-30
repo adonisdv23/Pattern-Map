@@ -227,6 +227,13 @@ anchors without pretending the external ZIP lives in Git.
   601/768/821/1024/1100; and the default desktop Apply state. No inspected
   document had horizontal overflow. Stage 0, permission precedence, and
   unchanged observed state pass in Apply.
+- A later owner-marked Home defect was independently reproduced rather than
+  dismissed as a local rendering artifact. The three door previews now share
+  one explicit footer track, captions reserve a separate arrow lane, and the
+  Map preview uses flow-native node-gap connectors instead of detached diagonal
+  traces. Rechecks at 1440/390/320 pixels show zero horizontal caption/arrow
+  overlap and no page overflow; the focused regression is part of the site
+  suite. See `qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md`.
 - The terminal live audit covers all ten routes plus standalone at 1440, 1101,
   1100, 1024, 821, 768, 601, 600, 480, 390, and 320 pixels where meaningful,
   the historical 108-state Apply contract, Map/More/no-script state, print
