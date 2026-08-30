@@ -34,7 +34,7 @@
   "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; two post-build opportunity/red-team loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 281,
-  "total_bytes": 14433582,
+  "total_bytes": 14434160,
   "files": [
     {
       "path": ".gitignore",
@@ -123,8 +123,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 117666,
-      "sha256": "b35cb41213f8a42d6849ed53d7ea158b28b586dd43f0388c6a41a1d99567490f"
+      "bytes": 117736,
+      "sha256": "345a3e3d89bcb12396ff43903cdc99eeb7b4f10e90ce0ec4eb67d634650e6ed4"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -359,7 +359,7 @@
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
       "bytes": 20671,
-      "sha256": "8c5f37c9455ab02d9703dac215cd1199a2882b7d476be29b822b80d625ee54c9"
+      "sha256": "bee6634d1555cb25889179b99019bd035b8ac01162ad28c98b4d2aefef17ccff"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
@@ -389,7 +389,7 @@
     {
       "path": "handoff/verify_owner_review_package.py",
       "bytes": 24558,
-      "sha256": "d2039c389a80c040389655e1c3e2dc40621e793dc7e0ccb211902d7307c2b59a"
+      "sha256": "00e3448d999179202f9eb75ccd88c569a1629c7517af6eb0412dfd5d0c3d2428"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -443,8 +443,8 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 17673,
-      "sha256": "018d6bbddde78c26c1e0943fe6273aa3b469def20e49aa77b532f32cb75fbcb6"
+      "bytes": 17683,
+      "sha256": "ad23ceae752e40e28c7b9d662dbccb7b19dd3edaf7704cb037fd0d357fd360b1"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
@@ -603,8 +603,8 @@
     },
     {
       "path": "qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md",
-      "bytes": 8417,
-      "sha256": "fe5b06d61b60844e4d7d20c5e68591d13111a44e7bbdfb4c1b4b06ec892c0f95"
+      "bytes": 8915,
+      "sha256": "852b2c5c4bb005a4df1359d06c39d2be3c0191e02d9c71b5a5ba21ab160232d4"
     },
     {
       "path": "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
@@ -934,25 +934,25 @@
     {
       "path": "qa/visual/opportunity-final/README.md",
       "bytes": 1357,
-      "sha256": "710ac4d9eec7b82587c3a11d12c76e4cbb30c6aa3ddd3d56606500cbf4c4c887"
+      "sha256": "38790a90c7ddc898bf86beaa8b2aaa17794ec44a12a1e535223646689e2c328f"
     },
     {
-      "path": "qa/visual/opportunity-final/public-home-1280x720.png",
+      "path": "qa/visual/opportunity-final/public-home-1280x720.jpg",
       "bytes": 93036,
       "sha256": "29e669b27c305d06d47f8c18cb3181c0fbda270b3272d41ab421d84cd3ca40dd"
     },
     {
-      "path": "qa/visual/opportunity-final/public-home-390x844.png",
+      "path": "qa/visual/opportunity-final/public-home-390x844.jpg",
       "bytes": 56437,
       "sha256": "7532c6d6bba9413cc99de09edf5055e27f39c8904d78d7c1a3f71e5837eb88f7"
     },
     {
-      "path": "qa/visual/opportunity-final/public-map-1280x720.png",
+      "path": "qa/visual/opportunity-final/public-map-1280x720.jpg",
       "bytes": 78992,
       "sha256": "0e48931c659ef553b42544c90a50fa8e51dc03dc95505ae5d2babf99645d17e1"
     },
     {
-      "path": "qa/visual/opportunity-final/public-map-detail-1280x720.png",
+      "path": "qa/visual/opportunity-final/public-map-detail-1280x720.jpg",
       "bytes": 141831,
       "sha256": "2275643b7a3bdc005446aaf50fe083e2a8911b09e80487649654cde6ea67a1f0"
     },
