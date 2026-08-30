@@ -31,8 +31,10 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 - `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` is the
   convergence record for the applied, public-presentation, current-research,
   portable-transfer, and regenerated-PDF lanes. It distinguishes the passing
-  local source checkpoint from still-open Claude, clean-clone, remote, sealed-
-  ZIP, publication-time, and physical/manual gates.
+  exact-source and Claude checkpoints from the post-manifest clean-clone,
+  remote, sealed-ZIP, publication-time, and physical/manual gates. Later
+  self-hash and packet observations are delivered externally to avoid a
+  self-referential resealing loop.
 - `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md`
   preserves the read-only Claude Opus review of exact `fb7d808`, including the
   sealing findings that were accepted, revised, deferred, or rejected. It is

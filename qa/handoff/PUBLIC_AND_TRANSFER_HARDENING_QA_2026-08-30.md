@@ -228,11 +228,13 @@ Observed results within those commands' stated scopes:
 - Apply Stage 0 and all 108 planning combinations: pass;
 - line-free Map, desktop term geometry, reader language, and CSS reachability:
   pass;
-- current-worktree Python compilation, 22-link selected-subset classification,
-  required-checkpoint ancestry against the reviewed branch, and direct applied
-  validation pass. The full portable suite deliberately does not count a dirty
-  pre-commit packet as a pass; it must run with zero skips after these exact
-  bytes are committed and the named remote branch reaches that commit;
+- exact remote tip `284d6359686426fdc8a2d9b0926d0c38269c852d`
+  passed the complete portable suite: 14 tests, zero skips, including exact
+  branch-tip and checkpoint ancestry, deterministic ZIP equality, classified
+  selected-subset links, bundled applied validation, optional local-input
+  degradation, malicious binary reseals, and benign binary controls;
+- stale-manifest verification now fails closed with one concise
+  `FAIL owner-review manifest` message instead of a bare traceback;
 - regenerated PDF: six pages, Letter size, unencrypted, no JavaScript; all six
   Poppler renders visually inspected.
 
@@ -253,20 +255,36 @@ The following stay open for the owner/publication path:
 - publication-time byline, canonical URL, social image, external-link,
   Open Graph, and metadata verification.
 
-## Remaining terminal gates
+## Terminal sealing state at this tracked evidence checkpoint
 
-Before this record can be marked terminal, the orchestrator must:
+The two source-review gates are complete:
 
-1. commit and push the corrected source, then require the exact portable suite
-   to pass with zero skips against the remote branch tip;
-2. obtain a focused read-only recheck of the accepted Claude sealing findings;
-3. regenerate the owner-review manifest from the final exact bytes;
-4. run the full twelve-stage verifier in a clean clone;
-5. read back matching draft PR #2 and keep it unmerged;
-6. build the cross-computer Signal Foundry ZIP from the exact pushed commit,
+1. the exact remote-tip portable suite passes 14 tests with zero skips at
+   `284d635`;
+2. the focused Claude recheck at `4a1acab` reproduced that suite and found no
+   new conceptual or transfer-design defect; its only NOT READY reason was the
+   intentionally stale pre-seal manifest.
+
+The following actions deliberately occur after this narrative stops moving:
+
+1. regenerate and commit the schema-2 owner-review manifest from the final
+   tracked bytes;
+2. run the full twelve-stage verifier in a clean clone;
+3. read back matching draft PR #2 and keep it unmerged;
+4. build the cross-computer Signal Foundry ZIP from that exact pushed commit,
    then verify its sidecar, archive structure, embedded verifier, manifest,
    source-path/key-marker scan, branch/commit/PR metadata, and copied-location
    fresh-computer flow.
 
-Until those gates are recorded, this is a passing pre-seal checkpoint rather
-than a terminal owner handoff.
+Those post-manifest observations are reported with the delivered artifact;
+writing their later commit or ZIP hash back into this self-hashed narrative
+would create an endless resealing loop. This record therefore states the
+ordering and evidence ceiling rather than pretending to contain proof of its
+own future checksum.
+
+**Evidence:** implementation checkpoint `cbc89db`; source/evidence checkpoint
+`284d635`; focused applied, research, site, 108-state Apply, zero-skip portable,
+owner-intent, and exact-tip Claude checks; public and transfer hardening plan;
+lane QA and advisory dispositions. The manifest, clean-clone, remote, and final
+packet readbacks remain external terminal observations bound to their exact
+delivered hashes.
