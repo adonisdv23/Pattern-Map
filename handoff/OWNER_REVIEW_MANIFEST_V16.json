@@ -33,8 +33,8 @@
   },
   "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site, deterministic teaching reveal, and JavaScript-enabled headless print retention; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; current principal-door evidence; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 292,
-  "total_bytes": 14839189,
+  "file_count": 293,
+  "total_bytes": 14882942,
   "files": [
     {
       "path": ".gitignore",
@@ -123,8 +123,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 125685,
-      "sha256": "d73b71c1653bb98f4c0520f1962fa922dbfda270d9c90efb6e4606d4dde2f1f8"
+      "bytes": 130523,
+      "sha256": "c29f6273d8b3ff06291adfbc9356a130dde9d0342b6a764d6fc8b1cf9e13830d"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -138,8 +138,8 @@
     },
     {
       "path": "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md",
-      "bytes": 15257,
-      "sha256": "e0bc8a8a7d5bdb3ed711900fa23bdd141e11632430a9651852e4b657bea4b98d"
+      "bytes": 15545,
+      "sha256": "9181389770d52787edf416806bde010bb1b313e471b6a8fc189db8ce1800bef0"
     },
     {
       "path": "docs/CONTENT_INTERFACE_FREEZE_V16.md",
@@ -153,8 +153,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 92374,
-      "sha256": "fff648273e85da9338407eb1931f1ebe3d907965b4955d489dae0af90ae49e98"
+      "bytes": 94639,
+      "sha256": "30d9fcc928775a5561fdcf0e112ee93cbea98ba9fd518d9a1356c41f3ba64538"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -218,13 +218,13 @@
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 8468,
-      "sha256": "9898acb8bd618dfb6951a62b3c7e31fb80c667897a2dc273772034118a18ddf7"
+      "bytes": 9017,
+      "sha256": "d023bd68822015d355d8a115fc3ac4e6b63c8b289eff8db018845c1d4c10c09c"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
-      "bytes": 7931,
-      "sha256": "1c2f1ca11d9a5da58e0188ff341cf5f19daa64bbd15bb3f8d48f12bb6c0a9781"
+      "bytes": 8253,
+      "sha256": "f3beacfdb0ac247fc52309a8cebab2a40c4179b9722024e1368cd9ed970c9d0c"
     },
     {
       "path": "framework/GLOSSARY.md",
@@ -258,8 +258,8 @@
     },
     {
       "path": "framework/SIX_FAMILIES.md",
-      "bytes": 15283,
-      "sha256": "30c9195711a1c863d3443d9283baebb17b905b43ddc2ef4ac98878d54f7be14d"
+      "bytes": 15470,
+      "sha256": "37817ffd838f1585a69ae53da89c22fd269c8e1fe64bb1990d298e7e87309e6c"
     },
     {
       "path": "framework/SIX_FAMILIES.schema.json",
@@ -268,18 +268,18 @@
     },
     {
       "path": "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
-      "bytes": 9839,
-      "sha256": "9696ffe96d8948778322e9c0427a8d80c5325233a91d73932365cf23bac87ce8"
+      "bytes": 10115,
+      "sha256": "2cc1cb40a3b7f2012bebafbda43ef2c68e7dcec42eb0ef83e093695051b8e2ff"
     },
     {
       "path": "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
-      "bytes": 8077,
-      "sha256": "4a233274227a65c3bb98d0cbf0622a6fcff7f8ca1913629763283dd2d8a44bf1"
+      "bytes": 8129,
+      "sha256": "442fc3801fa15d83832a212269c3321b03b2b88698d9d6ccd58b25c27c763055"
     },
     {
       "path": "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
-      "bytes": 18253,
-      "sha256": "c0e4453da442ba9fe7a7108d650ed2f09c842d5b83577f6367dc4039c8f87a66"
+      "bytes": 18509,
+      "sha256": "cd3d81877cea4c874d69b559f1ffeb0551ce600364f4dcfa0ab22a7599cc5523"
     },
     {
       "path": "framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md",
@@ -298,8 +298,8 @@
     },
     {
       "path": "framework/agent-playbook/QUICKSTART.md",
-      "bytes": 7875,
-      "sha256": "d937b42d606ccc904581051e61b94a7ad6c6713e0ecded3fb69147f055df823c"
+      "bytes": 8061,
+      "sha256": "fc3e2d914b6f49931abc20bf7e1fe583f9426bd449b1aaeb4f822ca0246602d5"
     },
     {
       "path": "framework/templates/ACQUISITION_RECEIPT.md",
@@ -323,8 +323,8 @@
     },
     {
       "path": "framework/templates/EVIDENCE_REGISTER.md",
-      "bytes": 2812,
-      "sha256": "c20d0836aa7310a36a50cdb5cc503bdc020dcb8573135e91463f1747ae5f9af4"
+      "bytes": 2849,
+      "sha256": "ce392d29ecc6eb04e9dd99c63ca68db5b379bcd0cc16e2e56ccb705267e89a70"
     },
     {
       "path": "framework/templates/INFLUENCE_RECEIPT.md",
@@ -333,8 +333,8 @@
     },
     {
       "path": "framework/templates/MEMORY_RECORD.md",
-      "bytes": 2635,
-      "sha256": "9854ba97206334ccfa9cf269a60fe93769edae069b991e2f8f7a442ae898bafe"
+      "bytes": 2953,
+      "sha256": "642ed002739a73fa37cbe27d54827c9c90c8e16560c07c084f5d42613e49cdfc"
     },
     {
       "path": "framework/templates/ORDINARY_RECORD.md",
@@ -363,8 +363,8 @@
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 15130,
-      "sha256": "adf5d8c565ac3b0c7da97465cad9c625b257a4fe35434991e4c173172e85a7d5"
+      "bytes": 15355,
+      "sha256": "681ea2949bde329739af46e5e4b6055b93e785992934599bed18261a69eaf06b"
     },
     {
       "path": "handoff/README.md",
@@ -388,8 +388,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 25462,
-      "sha256": "e837d786890d4c6f536c4e2f8e5f36df820d05cc53223bb10942cc81e016e2ec"
+      "bytes": 25524,
+      "sha256": "a6e3262dc35e41c69ce52133f45e28bb43d9614d5f15a3c24cb415c8a35f56a2"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -418,8 +418,8 @@
     },
     {
       "path": "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
-      "bytes": 10328,
-      "sha256": "e4a2e30602ebcdce8b8600da09776029e4d4e2c1288a8d7395783bceab78b9d7"
+      "bytes": 11834,
+      "sha256": "30ef2c8faeee81a3db1ab88413ea6da9b0f8093c5966d7205bed05d2b82941ac"
     },
     {
       "path": "publication/MENTOR_REVIEW_SEQUENCE_V16.md",
@@ -448,13 +448,13 @@
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
-      "bytes": 8973,
-      "sha256": "cf3c29a7391885cff6e7b46ca8836858204b57a9f369eaefafccef7e1ece0322"
+      "bytes": 9405,
+      "sha256": "2c7e5deaafc441472ad8f33e613abdb5ffca5abc7502010303ccca753c7652f6"
     },
     {
       "path": "qa/README.md",
-      "bytes": 9560,
-      "sha256": "b605bbcc283b8f8a39d033d322f0927a2c3594d9373c58143ef7055f655c4f53"
+      "bytes": 10024,
+      "sha256": "4b75cda5444f24ad7d154c6d0e457ed1ea237542791dfe9e39e123225fbc2257"
     },
     {
       "path": "qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md",
@@ -558,8 +558,8 @@
     },
     {
       "path": "qa/applied/validate_framework.py",
-      "bytes": 118414,
-      "sha256": "223a93161920ae62c7fd91932bde6aa3832134a15a9d24ec4dd02d21149f668c"
+      "bytes": 128653,
+      "sha256": "b6053529d73dd33409f579511a8ac6d43e31c738b58f8b49276e6e15c1f382b6"
     },
     {
       "path": "qa/content/reader-language-contract.spec.mjs",
@@ -605,6 +605,11 @@
       "path": "qa/handoff/CLAUDE_FINAL_PORTABLE_AUDIT_DISPOSITION_2026-08-30_c23c665.md",
       "bytes": 2908,
       "sha256": "92d013eaa0d66b90d8c30afa01cc54634272a8254109b1ed4546a8335dde1629"
+    },
+    {
+      "path": "qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md",
+      "bytes": 9574,
+      "sha256": "2f7fa67dfac3ae0ce8e518565c9a6bfbc1c120c084f25151794e10d9f57ecf6f"
     },
     {
       "path": "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
@@ -688,8 +693,8 @@
     },
     {
       "path": "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
-      "bytes": 10843,
-      "sha256": "0c5efbd9906300d6e9a0dc47b1647dc08976226d6baac67574640a95f4406a98"
+      "bytes": 13737,
+      "sha256": "01bc0af9317289dead574de9deb8951e32ac3d750cc0091f78b0fe53570f4b4e"
     },
     {
       "path": "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
@@ -698,8 +703,8 @@
     },
     {
       "path": "qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md",
-      "bytes": 34275,
-      "sha256": "7b604b33bfed0c549b9f9077611a7b56e53fc209737a7f4f547d3817eac15b9d"
+      "bytes": 34724,
+      "sha256": "1f631b7f0928417033c900d064fe34aa977a71c8a04002b0d5e6eb363719a345"
     },
     {
       "path": "qa/research/README.md",
@@ -1293,8 +1298,8 @@
     },
     {
       "path": "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
-      "bytes": 24228,
-      "sha256": "52626e319f2ccf34ba84497af033e8f8e8e755b36db3d3e6b2e3c7cb006d6754"
+      "bytes": 24737,
+      "sha256": "e404f145ff4e9d2c44ef39132a4c4a15efc1aca46df948cea976245848c3ca58"
     },
     {
       "path": "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md",
@@ -1423,13 +1428,13 @@
     },
     {
       "path": "site/build.mjs",
-      "bytes": 124724,
-      "sha256": "1a5959a8a947969686e84d30e4801f2fb3c3d4281e380b7b2c6cf9eeba2e064d"
+      "bytes": 124821,
+      "sha256": "e90a3deaad3c39e5fdf8f08e6f4ecf5574ae5b6f874fe81aa84f581307ff9edf"
     },
     {
       "path": "site/check.mjs",
-      "bytes": 39159,
-      "sha256": "ed177b7e07f0fb2db923198ad96741cda9181ecd9ab21ffb775928696f380784"
+      "bytes": 39763,
+      "sha256": "f6efe3f2a284bbe57169b9e23d1bb16e2e0695ed7ba29cf4942354e2cff4b187"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
@@ -1438,13 +1443,13 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16-public.html",
-      "bytes": 495979,
-      "sha256": "a87729a274292be50729d9319da842c9f521c3cf51896bca84bf1f8e749b2c09"
+      "bytes": 499516,
+      "sha256": "f0808f71c2f7aad00fb237f2ec7b21d47e652ccdb37d6ffb15bac3d6366db393"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 508895,
-      "sha256": "e119580a3bedb87bc8dd74fa39e0395742e4d5cfdfa84789f67f4d907bb58665"
+      "bytes": 512432,
+      "sha256": "07eebd8ac0bca988b30d91d43e4fc4af6f8c45b93beb8e37aeb6160988065691"
     },
     {
       "path": "site/package-lock.json",
@@ -1483,8 +1488,8 @@
     },
     {
       "path": "site/src/site.css",
-      "bytes": 88251,
-      "sha256": "155638d316afa247d57efb48d3a3709c33c088c4d77a7f27b874cfa75f919546"
+      "bytes": 88301,
+      "sha256": "8be331772f32f2bfa29feac3712de69088cf468390df897066d852a1265ee888"
     },
     {
       "path": "site/src/site.js",
