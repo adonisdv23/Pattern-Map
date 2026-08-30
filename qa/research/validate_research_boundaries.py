@@ -71,8 +71,8 @@ def main() -> int:
     source_qa = read(
         "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md"
     )
-    hardening_qa = read(
-        "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md"
+    convergence_qa = read(
+        "qa/research/RESEARCH_CLAIM_CONVERGENCE_QA_2026-08-30_0beee9a.md"
     )
     for label in (
         "Research Track 01",
@@ -159,7 +159,7 @@ def main() -> int:
         "Permission and participant gates",
         "Unfavorable outcomes and no-go conditions",
         "without selecting a study",
-        "NO PROVIDER, MODEL, CORPUS, DATASET, PARTICIPANT",
+        "NO FIRST PAPER, PROVIDER, MODEL, CORPUS, DATASET",
     ):
         require(phrase.lower() in memo.lower(),
                 f"narrow-wedge memo omits required section/boundary: {phrase}")
@@ -187,15 +187,23 @@ def main() -> int:
 
     normalized_memo = " ".join(memo.lower().split())
     for phrase in (
-        "same task, evidence-access boundary, and required output specification",
-        "generation study",
-        "fixed-answer interface/correction study",
+        "candidate a — provisional appropriate-reliance interface",
+        "candidate a is **fixed-answer only**",
+        "same answer, the same available evidence, the same evidence-access boundary",
+        "existing applied receipt is a stimulus, not a proposed new trace or receipt mechanism",
         "generated-answer or decision accuracy is not an eligible outcome",
-        "a2 is a **composite treatment**",
-        "ablation is predeclared",
+        "a2 is a **composite interface**",
+        "no sequencing recommendation between a and b",
+        "candidate b is not a settled missingness taxonomy",
     ):
         require(phrase in normalized_memo,
                 f"Candidate A design boundary is missing: {phrase}")
+    require("Candidate A — claim-scoped influence receipt" not in memo,
+            "Candidate A is still positioned as a trace/receipt mechanism")
+    require("Generation-study primary candidates" not in memo,
+            "Candidate A still exposes a generation-study outcome route")
+    require("Specify Candidate B first" not in memo,
+            "Candidate B is implicitly selected through sequencing")
     for axis in (
         "**observation:**",
         "**process/capture:**",
@@ -237,7 +245,7 @@ def main() -> int:
     for text, name in (
         (source_route, "source route"),
         (agenda, "research agenda"),
-        (hardening_qa, "research hardening QA"),
+        (convergence_qa, "research convergence QA"),
     ):
         require(revised_component_boundary in text.lower(),
                 f"{name} omits the revised adjacent-work boundary")
@@ -247,28 +255,43 @@ def main() -> int:
     for phrase in (
         "not a novel mechanism",
         "exhaustive taxonomy",
-        "technical layer",
-        "demonstrated improvement",
+        "validated method",
+        "effectiveness result",
+        "universal architecture",
     ):
         require(phrase in normalized_source_route,
                 f"source route omits contribution ceiling: {phrase}")
 
+    logical_boundary = (
+        "logical responsibility boundary"
+    )
+    for text, name in (
+        (source_route, "source route"),
+        (claims_ledger, "claims ledger"),
+        (agenda, "research agenda"),
+        (memo, "narrow-wedge memo"),
+    ):
+        require(logical_boundary in text.lower(),
+                f"{name} omits the logical before-generation boundary")
+        require("iterative" in text.lower(),
+                f"{name} does not place the boundary inside iterative loops")
+
     current_urls = (
         "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
-        "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
-        "https://aclanthology.org/2025.findings-emnlp.303/",
-        "https://aclanthology.org/2026.lrec-1.53/",
-        "https://aclanthology.org/2025.emnlp-main.1738/",
-        "https://arxiv.org/abs/2608.13956",
-        "https://aclanthology.org/2025.emnlp-main.22/",
+        "https://iclr.cc/virtual/2026/poster/10008343",
+        "https://arxiv.org/abs/2601.06189",
+        "https://www.nist.gov/programs-projects/building-evaluation-probes-agentic-ai",
+        "https://arxiv.org/abs/2608.18398",
+        "https://aclanthology.org/2026.acl-demo.29/",
+        "https://aclanthology.org/2025.naacl-demo.35/",
+        "https://doi.org/10.1145/3706598.3714020",
+        "https://doi.org/10.1145/3706598.3714097",
+        "https://aclanthology.org/2026.eacl-long.361/",
+        "https://aclanthology.org/2026.lrec-1.808/",
         "https://aclanthology.org/2026.acl-long.1185/",
-        "https://arxiv.org/abs/2507.05257",
-        "https://arxiv.org/abs/2507.04480",
-        "https://aclanthology.org/2025.findings-acl.1087/",
-        "https://aclanthology.org/2026.acl-long.1586/",
-        "https://iclr.cc/virtual/2026/poster/10010639",
-        "https://arxiv.org/abs/2506.11763",
-        "https://aclanthology.org/2025.findings-emnlp.720/",
+        "https://arxiv.org/abs/2602.18940",
+        "https://aclanthology.org/2026.acl-long.1023/",
+        "https://aclanthology.org/2026.acl-long.384/",
     )
     for url in current_urls:
         require(url in source_route,
@@ -279,17 +302,29 @@ def main() -> int:
             "source QA conceals partial resolver checks")
     require("No systematic-search completeness" in source_qa,
             "source QA omits its non-exhaustive evidence ceiling")
+    for status_phrase in (
+        "official engineering report",
+        "ongoing official NIST project",
+        "arXiv preprint",
+        "system-demonstration paper",
+        "conference paper",
+    ):
+        require(status_phrase.lower() in source_qa.lower(),
+                f"source QA omits publication-status label: {status_phrase}")
 
     for claim_id in ("C16-014", "C16-016", "C16-017"):
         require(claim_id in claims_ledger,
                 f"claims ledger omits current research claim: {claim_id}")
     for phrase in (
-        "authored human-governed design/governance synthesis",
+        "authored, proportional, human-governed design/governance synthesis",
         "novel mechanism",
-        "model/provider/corpus",
+        "selected provider/model",
+        "appropriate-reliance interface",
     ):
         require(phrase.lower() in claims_ledger.lower(),
                 f"claims ledger omits current claim boundary: {phrase}")
+    require("Candidate A — claim-scoped influence receipt" not in claims_ledger,
+            "claims ledger retains Candidate A as a receipt mechanism")
 
     active_claim_text = "\n".join(
         (source_route, claims_ledger, agenda, protocol, memo)

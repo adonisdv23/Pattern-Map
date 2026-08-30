@@ -1,248 +1,259 @@
 # DL narrow-wedge research decision memo v0.1
 
 Status: **DESIGN COMPARISON ONLY / UNRUN / NO RESULTS / NOT A PROTOCOL OR
-PREREGISTRATION / NO PROVIDER, MODEL, CORPUS, DATASET, PARTICIPANT, SAMPLE SIZE,
-REGISTRY, OR SPEND SELECTED**
+PREREGISTRATION / NO FIRST PAPER, PROVIDER, MODEL, CORPUS, DATASET,
+PARTICIPANT, SAMPLE SIZE, REGISTRY, RUN, OR SPEND SELECTED**
 
 Checked against targeted public primary/official sources: **2026-08-30**.
+This was a targeted update, not a systematic or exhaustive review.
 
-This memo compares two possible mechanism-isolated research directions before
-the broader DL-PLAYBOOK-01 matched-budget study. It does not choose a first
-paper, authorize a run, acquire material, call a model, recruit a person, or
-claim an empirical contribution. Any of those steps requires a later exact
+This memo compares two provisional research questions that could be specified
+before the broader DL-PLAYBOOK-01 matched-budget study. It does not choose a
+candidate, authorize a run, acquire material, call a model, recruit a person,
+or claim an empirical contribution. Any of those steps requires a later exact
 owner instruction and a separately frozen execution packet.
 
 ## 1. Decision this memo can support
 
-The current decision is only which construct deserves additional specification
-and prior-art review first:
+The present decision is only whether either construct deserves more
+specification and prior-art review:
 
-- **Candidate A — claim-scoped influence receipt:** compare a compact record of
-  which authorized material influenced which claims with an ordinary source
-  list; or
-- **Candidate B — orthogonal observation-boundary state:** compare a bounded
-  record that keeps observation, process/capture, access, permission, and
-  currency separate with ordinary narrative uncertainty or an untyped boundary
-  statement.
+- **Candidate A — provisional appropriate-reliance interface:** with an answer
+  and its evidence held fixed, compare an ordinary source list, a generic
+  claim-to-source mapping, and a compact claim/evidence view to ask whether the
+  view changes appropriate acceptance, rejection, or correction and reviewer
+  burden; or
+- **Candidate B — provisional orthogonal observation-boundary state:** compare
+  a bounded record that keeps observation, process/capture, access, permission,
+  and currency separate with ordinary narrative uncertainty or an equally
+  explicit untyped boundary statement.
 
-The decision is not whether Pattern Map works. It is not whether either
-candidate is novel. It is not a choice of provider, model, corpus, participants,
-sample size, or statistical test.
+There is **no sequencing recommendation between A and B** and no selection of a
+first paper. Candidate A is not a proposal for a new receipt, ledger, trace, or
+attribution mechanism. Candidate B is not a settled missingness taxonomy.
 
-## 2. Contribution ceiling and adjacent-work warning
+## 2. Contribution ceiling and logical boundary
 
-Both candidates overlap active fields. Document- and citation-attribution work
-already asks which retrieved material contributes to an answer. Iterative RAG
-work already represents evidence sufficiency and structured gaps. Memory and
-deep-research benchmarks already test retrieval, revision, citation accuracy,
-implicit criteria, and long-horizon state. A credible study therefore cannot be
-premised on “nobody has done this.”
+The component areas have substantial established and active prior work. The
+maximum current contribution is an **authored, proportional, human-governed
+design/governance synthesis and testable agenda**. It is not a novel mechanism,
+exhaustive taxonomy, validated method, effectiveness result, universal
+architecture, or priority claim over adjacent work.
 
-At most, a later study could test whether one precisely frozen, human-governed
-interface or record changes a defined decision artifact under defined
-conditions and costs. It could not establish a new general mechanism, an
-exhaustive framework, or the value of all six families.
+“Before generation” names a logical responsibility boundary within iterative
+agent loops. Each time the loop decides what a search result, memory item,
+comparison, prior draft, or trace may contribute to the next generation, the
+boundary applies again. It is not a claim that all discrimination happens once
+before the first model call or that selection and correction stop after the
+first token.
 
-## 3. Side-by-side decision surface
+Candidate A tests a later human-facing use of an existing record. Even if that
+interface question eventually produced a favorable result, it would not
+validate upstream context selection, faithful model-internal attribution, or
+the six-family playbook. Candidate B would test only its frozen boundary-state
+construct under its frozen conditions.
 
-| Dimension | Candidate A — influence receipt | Candidate B — orthogonal boundary state |
+## 3. Targeted source convergence and dispositions
+
+These are claim-control dispositions, not evidence that Pattern Map works.
+
+| Neighbor | Status checked | Disposition | Consequence for this memo |
+| --- | --- | --- | --- |
+| Anthropic context engineering and ACE evolving playbooks | Anthropic 2025 official engineering report; ACE peer-reviewed ICLR 2026 paper | **Accepted** as adjacent work | Context curation, iterative adaptation, memory, and evolving playbooks are occupied areas. Reject novelty positioning for the broad framework. |
+| GroupQA | 2026 arXiv preprint / ACL ARR submission | **Accepted with revision** | Its bounded result that paraphrase can outweigh distinct independent support sharpens the recurrence-versus-support question; it does not prove origin relations or generalize to every RAG system. |
+| NIST evaluation probes | Ongoing official NIST project begun April 2026; not a standard | **Accepted with revision** | Rubric-based claim grounding and machine-readable audit trails are already an official measurement direction. Do not describe the project page as a validated standard. |
+| LEDGER and Graph of Trace | LEDGER August 2026 arXiv preprint; Graph of Trace peer-reviewed ACL 2026 system demonstration | **Accepted** as direct overlap | Claim-to-evidence trace graphs and human-readable execution traces make “new receipt/trace mechanism” an indefensible Candidate A center. |
+| FACTS&EVIDENCE and appropriate-reliance HCI | FACTS&EVIDENCE peer-reviewed NAACL 2025 system demonstration; two peer-reviewed CHI 2025 papers | **Accepted with revision** | Claim/evidence interfaces and reliance interventions are established, with mixed and task-bounded effects. Reframe Candidate A as a provisional fixed-answer interface question with over- and under-reliance plus burden guardrails. |
+| Over-Searching and budget-constrained agentic search | Peer-reviewed EACL 2026 and LREC 2026 papers | **Accepted** as cost/stopping constraints | Search depth, abstention, noise, and resource use belong in the estimand and guardrails. More acquisition cannot be presumed better. |
+| DREAM, BrowseComp-Plus, and ReportLogic | DREAM 2026 arXiv preprint; BrowseComp-Plus and ReportLogic peer-reviewed ACL 2026 long papers | **Accepted with revision** | Separate retrieval, reasoning, temporal/factual verification, report logic, and judge-cue failure. No single benchmark score can stand in for decision quality. |
+| A new trace or receipt mechanism as Candidate A's contribution | Directly overlapped by the sources above | **Rejected** | The existing applied receipt may be rendered as a stimulus, but trace production, self-reported influence, and field completeness are not the research outcome. |
+| Candidate B as the automatic first study | Gap/sufficiency and missingness overlap remains unresolved | **Deferred** | Keep the construct provisional until expectedness, key/trace separation, cue leakage, and real-domain adjudication are defensible. |
+
+## 4. Side-by-side decision surface
+
+| Dimension | Candidate A — appropriate-reliance interface | Candidate B — orthogonal boundary state |
 | --- | --- | --- |
-| Intended mechanism | Make claim-scoped influence and authorization inspectable | Prevent observation, check/capture, access, permission, and currency from collapsing into one flat “absent” state |
-| Strongest potential value | A reviewer can focus correction on material that actually shaped a consequential claim | A reviewer can distinguish “not found within this boundary” from “does not exist” and can see when checking never occurred |
-| Strongest case against | It may be citation theater: more formatting and reviewer burden without better decisions, and “influence” may be a post-hoc self-report rather than faithful attribution | It may be label-following theater: a model can emit the right status vocabulary without observing the boundary correctly, and the expected/observable ground truth may be impossible to freeze |
-| Principal novelty uncertainty | Source/citation attribution, evidence ledgers, provenance interfaces, and rationale records are established | Gap judging, sufficiency control, uncertainty taxonomies, missing-data reasoning, and observation-boundary practices are established |
-| Smallest isolatable question | Does the claim-to-source mapping change accepted-error or correction behavior beyond a source list under the same task, evidence-access, and output requirements? | With access available, permission authorized, and material current, does separating observation from check/capture state reduce false absence beyond an equally explicit untyped boundary statement? |
-| Main cue-leak risk | Receipt vocabulary, visible length, claim IDs, and structured formatting expose condition | Upper-case status labels, field count, and explicit “missingness” terminology expose condition |
-| Human-work dependency | High if correction effort or acceptability is measured | Potentially lower for purpose-built known-state tasks; still high for real expectedness or domain judgment |
-| Current sequencing recommendation | Wait until the receipt contract is semantically repaired and independently inspectable | Specify first as a construct-isolation exercise, but do not select it as the first empirical paper yet |
+| Intended question | Does a compact claim/evidence view change appropriate review of a fixed answer relative to an ordinary source list and generic mapping? | Does separating observation from process/capture reduce consequential false-absence errors when other axes are held fixed? |
+| What is held fixed | Answer text, available evidence, task, review decision, and evidence-access boundary | Task/world key, allowed observation boundary, access, permission, currency, and required decision |
+| Strongest potential value | Reviewers more often accept supported claims and reject, correct, or hold unsupported ones without disproportionate burden | Reviewers or agents distinguish “not observed” from “not checked,” “capture failed,” and “does not exist” |
+| Strongest case against | The view may create evidence theater, false confidence, cue-driven behavior, or reading burden; ordinary mapping may already suffice | The schema may produce correct-looking labels without better observation, and expectedness may be impossible to freeze |
+| Principal novelty uncertainty | Fine-grained verification views, source/citation interfaces, provenance, trace graphs, and appropriate-reliance interventions are established | Gap judging, sufficiency control, missing-data reasoning, abstention, and observation-boundary practices are established |
+| Eligible primary family | Appropriate acceptance/rejection/correction against a frozen claim/support key | Decision accuracy or accepted error where observation/process state changes the correct action |
+| Ineligible shortcut | Receipt completeness, perceived professionalism, generated-answer accuracy, or self-reported faithful influence | Schema completion, token matching, or a state inferred from another axis |
+| Human-work dependency | Required for reliance, correction, acceptance, comprehension, or burden claims | Avoidable only in a purpose-built model-only known-state design; required for real-domain expectedness or human outcomes |
+| Current status | Provisional interface question; no trace/receipt novelty claim | Provisional construct; no preferred sequence or study selection |
 
-## 4. Candidate A — claim-scoped influence receipt
+## 5. Candidate A — provisional appropriate-reliance interface
 
-### 4.1 Frozen treatment concept required before review
+### 5.1 Fixed-answer-only treatment concept
 
-The smallest candidate treatment would map each material decision claim to:
+Candidate A is **fixed-answer only**. Every condition must receive the same
+answer, the same available evidence, the same evidence-access boundary, and the
+same required review decision. Only the view changes.
 
-- one or more resolvable evidence records;
-- source/artifact identity and exact support span where available;
-- claim-scoped role and support;
-- authorization state for influence;
-- whether the item was selected, withheld, or left unknown; and
-- the operator's bounded reason for influence.
+The smallest candidate view may show, for each material claim:
 
-It must not claim causal faithfulness merely because the generating system
-self-reports influence. “Selected for the answer” is an inspectable workflow
-record; it is not an explanation of model internals.
+- the unchanged claim text;
+- resolvable source identity and exact support span where available;
+- a pre-keyed support relation such as supported, contradicted, insufficient,
+  or unresolved;
+- a distinct permission state when permission is relevant to use; and
+- the review actions available: accept, reject, correct, or hold.
 
-Before a comparator or outcome is frozen, the design must choose one of two
-non-interchangeable study modes:
+The existing applied receipt is a stimulus, not a proposed new trace or receipt
+mechanism. Post-hoc self-reported “influence” is not required and cannot be
+treated as a faithful explanation of model internals. The study would test how
+people use a view, not whether the system generated a complete receipt.
 
-- **Generation study:** every arm receives the same task, evidence-access
-  boundary, and required output specification, but the generated answers may
-  differ as a consequence of the treatment. Decision accuracy or accepted-error
-  may be eligible against a frozen task key.
-- **Fixed-answer interface/correction study:** the answer and available evidence
-  are held fixed while only the ordinary list, mapping, or receipt interface
-  changes. Generated-answer or decision accuracy is not an eligible outcome,
-  because the answer does not vary. Eligible outcomes would instead concern
-  correction detection, appropriate correction or acceptance, false
-  acceptance, and authorized reviewer burden.
+### 5.2 Strongest case against
 
-These modes must not be pooled or described with one accuracy estimand.
+An ordinary source list or generic mapping may already provide enough
+information. Adding relations, spans, states, and controls can increase reading
+time, make the treatment obvious, and induce automation bias. A polished view
+may cause reviewers to accept a wrong claim because it looks audited, while a
+warning-heavy view may cause unnecessary rejection of correct claims.
 
-### 4.2 Strongest case against
+Appropriate-reliance studies already show that interventions can reduce one
+error while increasing another, or change reliance without improving the joint
+outcome. Candidate A should be abandoned if its only defensible result is that
+the structured view looks clearer or receives more interaction.
 
-The ordinary source list may already give reviewers enough information. Adding
-claim IDs, spans, roles, and reasons can increase output length, expose the
-treatment, and shift reviewer attention without changing the underlying
-decision. A structured receipt can also create false confidence: an item may be
-listed as influential because the prompt demanded a record, not because it
-actually changed generation. If the comparison rewards receipt completeness,
-the study would measure obedience to a format it supplied.
+### 5.3 Adjacent work and novelty uncertainty
 
-This candidate should be abandoned if its only defensible outcome is “the
-treatment produced more structured fields.”
+A later construct review must cover at least:
 
-### 4.3 Adjacent work and novelty uncertainty
+- claim-level verification and evidence interfaces, including FACTS&EVIDENCE;
+- sources, explanations, inconsistency cues, and other appropriate-reliance
+  interventions;
+- citation correctness, support relations, and provenance views;
+- agent audit trails, LEDGER-style claim/evidence graphs, and execution-trace
+  visualizations; and
+- the difference between workflow selection, evidentiary support, and
+  model-internal or counterfactual attribution.
 
-Relevant work includes document-level source attribution in RAG, sentence-level
-citation and verification interfaces, provenance records, attribution-bias
-evaluation, and auditable correction workflows. A targeted review would need
-to distinguish:
+No novelty claim is currently available. The only live question is whether one
+precisely frozen interface changes a defined reliance behavior under defined
+conditions and costs.
 
-- model-internal or counterfactual attribution;
-- generated citation correctness;
-- provenance and lineage;
-- human-facing rationale or decision records; and
-- the narrower claim-to-authorized-influence workflow proposed here.
+### 5.4 Construct-validity risks
 
-Until that mapping is complete, a novelty claim is **UNRESOLVED** and must not
-appear in a prospectus or abstract.
+- “Appropriate” action may be ambiguous without a frozen claim/support and
+  permitted-use key.
+- Seeded errors may be artificial or easier than real errors.
+- An explicit support label can disclose the keyed answer rather than support
+  verification.
+- Exact support may be complementary across sources rather than local to one
+  span.
+- Source presence, polished layout, and explanation length can change reliance
+  independently of correctness.
+- Reviewers may confuse provenance, support, permission, and truth.
+- Domain expertise and prior belief may dominate the interface.
+- Review time confounds reading length, unfamiliarity, accessibility, and
+  deliberation.
+- A visible receipt can reward trust in the system that produced it rather than
+  independent checking.
 
-### 4.4 Construct-validity risks
+### 5.5 Credible comparators
 
-- Self-reported influence may not be faithful to generation.
-- Claim segmentation may be unstable or condition-dependent.
-- Exact support can be complementary across sources rather than attributable to
-  one span.
-- A receipt can reward verbosity or provide a checklist cue.
-- Reviewers may treat a source mapping as correctness.
-- “Ordinary source list” can be a deliberately weak straw baseline.
-- Correction time confounds reading length, interface familiarity, and domain
-  expertise.
-- Authorization and evidentiary support can be mistakenly fused.
+A provisional fixed-answer design would require at least:
 
-### 4.5 Credible comparators
+1. **A0 — ordinary source list:** unchanged answer and evidence, with ordinary
+   citations or a source list and no claim-scoped mapping;
+2. **A1 — generic claim-to-source mapping:** the same answer and evidence plus
+   a concise mapping from important claims to sources, without Pattern Map
+   vocabulary or supplied support labels; and
+3. **A2 — compact claim/evidence view:** the same answer and evidence rendered
+   through the smallest frozen set of claim, span, support, permission, and
+   review-action fields justified by the construct.
 
-Before any omnibus playbook comparison, a mechanism-isolated design would need
-at least:
+A2 is a **composite interface**. No effect may be attributed to support labels,
+spans, permission, layout, or review actions individually unless the component
+is isolated in a predeclared ablation. A0 must not be made artificially weak,
+and A1 is required so A2 is not compared only with an unstructured straw
+baseline.
 
-1. **A0 — ordinary source list:** the same task, evidence-access boundary, and
-   required output specification as A1 and A2, with an ordinary citation/source
-   list and no claim-scoped mapping;
-2. **A1 — generic diligence mapping:** those same task, evidence-access, and
-   output requirements plus a concise request to say which source supports each
-   important claim, without Pattern Map vocabulary; and
-3. **A2 — typed influence receipt:** those same task, evidence-access, and
-   output requirements plus the smallest frozen treatment above.
+### 5.6 Candidate outcomes and guardrails
 
-In a generation study, answer content may differ across arms; in a fixed-answer
-interface/correction study, the answer content must be identical across arms.
-A2 is a **composite treatment** because it combines claim mapping, exact
-support, authorization, selected/withheld state, and an influence reason. No
-effect may be attributed to one of those components unless a corresponding
-ablation is predeclared.
+The primary candidate must jointly count correct reliance and both error
+directions against a frozen claim-level key:
 
-An optional diagnostic arm could retain claim-to-source mapping while removing
-authorization or influence-reason fields. It should exist only as a predeclared
-ablation that answers a named mechanism question and whose multiplicity and
-resource cost are justified.
+- appropriate acceptance of supported claims;
+- appropriate rejection, correction, or hold for contradicted, unsupported, or
+  insufficiently supported claims;
+- false acceptance of a seeded material error; and
+- unnecessary correction or rejection of an adequately supported claim.
 
-### 4.6 Candidate outcomes and guardrails
+Secondary outcomes may include reviewer actions, evidence opening, elapsed
+review time, and comprehension or burden measures, but only with separately
+authorized human work. A generic trust rating, satisfaction score, receipt
+completion score, or perceived professionalism is not a primary outcome.
 
-**Generation-study primary candidates, subject to later construct review:**
+**Generated-answer or decision accuracy is not an eligible outcome** because
+the answer is fixed. Interface outcomes cannot be represented as evidence that
+generation, retrieval, upstream selection, or the six-family playbook improved.
 
-- decision accuracy or accepted-error rate on tasks with a frozen decision key;
-- rate of unsupported or contradicted claims that remain influential; and
-- proportion of artifacts reaching a predeclared acceptable state without an
-  evidence or permission correction.
+Guardrails include false support, fabricated spans, unresolved identifiers,
+permission collapse, inaccessible presentation, materially greater burden,
+over-refusal, and condition-specific missing evidence. A favorable aggregate
+cannot erase a harmful subgroup or error direction.
 
-**Fixed-answer interface/correction candidates:**
-
-- seeded-error detection and appropriate correction or acceptance;
-- false acceptance and unnecessary correction against a frozen error key; and
-- reviewer actions and elapsed review time, only with separately authorized
-  human work.
-
-Generated-answer or decision accuracy is ineligible in this mode because the
-answer is fixed. Interface outcomes cannot be used as evidence that generation
-improved.
-
-**Secondary only in a generation study:**
-
-- reviewer correction actions and elapsed review time;
-- claim/evidence-link precision and recall against a frozen key;
-- appropriate withholding of unauthorized material; and
-- reviewer ability to locate the source of a seeded error.
-
-**Guardrails:** answer quality cannot compensate for unauthorized influence,
-false source support, fabricated spans, unresolved IDs, or a materially greater
-review burden. Satisfaction and perceived professionalism are not primary
-outcomes.
-
-### 4.7 Resource estimands
+### 5.7 Resource estimands
 
 Any later design must report two separately labeled comparisons:
 
-- **fixed-total-resource:** instructions, context, output, tool calls, time, and
-  review all count inside the same total budget; and
-- **equal-operating-overhead:** each condition receives enough budget to
-  produce its required interface, with the added operating cost reported rather
-  than hidden.
+- **fixed-total-resource:** interface exposure, reading, evidence opening,
+  review time, and correction all count inside one total budget; and
+- **equal-operating-overhead:** each condition receives enough time to use its
+  interface, with added operating and review cost reported rather than hidden.
 
-The second cannot replace the first. Receipt length and reviewer reading time
-are treatment costs.
+The second cannot replace the first. Additional fields, evidence clicks,
+training, and accessibility support are treatment costs.
 
-### 4.8 Blinding and cue leakage
+### 5.8 Blinding and cue leakage
 
-Outputs would need neutral rendering that removes framework names, status
-tokens, table styling, headings, and nonessential length differences while
-preserving the actual information being compared. The evaluator rubric cannot
-reward fields unique to A2. If neutralization removes the proposed mechanism,
-blinded outcome scoring and a separate interface-utility evaluation must be
-treated as different studies.
+Participants cannot be blind to a visibly different interface. The design may
+blind outcome adjudicators to condition and normalize nonessential typography,
+length, ordering, and framework names. It may not remove the information whose
+utility is being tested.
 
-### 4.9 Permission and participant gates
+The scoring rubric cannot reward A2-only fields. If support labels reveal the
+key, use evidence-plus-action tasks that require independent verification or
+remove the label and treat that removal as a different interface. Report
+condition recognition and cue leakage instead of claiming full blinding.
 
-A model-only artifact comparison cannot measure real human correction effort.
-Any reviewer-time, comprehension, or acceptance outcome requires separate
-participant or expert-review authorization, ethics/privacy handling,
-recruitment and compensation decisions, accessibility planning, and retention
-rules. No private source material may be used merely because it is accessible.
+### 5.9 Permission and participant gates
 
-### 4.10 Unfavorable outcomes and no-go conditions
+No model-only artifact comparison can measure appropriate reliance, human
+correction, comprehension, or review burden. Those outcomes require separate
+participant authorization, ethics/privacy handling, recruitment and
+compensation decisions, accessibility planning, evaluator training, and
+retention rules. No private source becomes usable merely because it is
+accessible.
+
+### 5.10 Unfavorable outcomes and no-go conditions
 
 Retain null, harmful, shortcut-driven, fragile, non-transfer, stopped, invalid,
 and indeterminate outcomes. Stop or do not proceed if:
 
-- no defensible distinction from established attribution or citation
+- the question reduces to a new trace, ledger, graph, or receipt claim;
+- no defensible distinction from established verification and reliance
   interfaces survives targeted review;
-- receipt correctness cannot be scored independently of receipt format;
-- claim segmentation or evidence identity cannot be frozen;
-- the baseline omits a generic-diligence mapping;
+- the claim/support key or evidence identity cannot be frozen independently;
+- A0, A1, and A2 do not share identical answer and evidence content;
+- the evaluator rewards A2-only fields or support-label leakage;
+- over-reliance and under-reliance are not both counted;
 - authorization cannot be separated from support;
-- blinding is impossible for the primary outcome;
-- human effort is called “measured” without authorized human work; or
-- the semantically repaired receipt contract is not complete.
+- interface burden or accessibility is excluded from the cost; or
+- human reliance is called “measured” without authorized human work.
 
-## 5. Candidate B — orthogonal observation-boundary state
+## 6. Candidate B — provisional orthogonal observation-boundary state
 
-### 5.1 Frozen treatment concept required before review
+### 6.1 Treatment concept requiring further review
 
 The candidate must not encode every failure or gap in one flat status. The
 smallest complete record would name the expected item or field and rationale,
-the observation boundary (sources, period, scope, and allowed operations), the
-decision consequence, and what would change the record, while keeping these
-axes independent:
+the observation boundary, the decision consequence, and what would change the
+record while keeping these axes independent:
 
 - **observation:** `OBSERVED`, `NOT_OBSERVED`, or `UNKNOWN`;
 - **process/capture:** `NOT_CHECKED`, `CHECK_COMPLETED`, `FAILED_CAPTURE`, or
@@ -251,210 +262,144 @@ axes independent:
 - **permission:** `AUTHORIZED`, `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED`; and
 - **currency:** `CURRENT`, `STALE`, `SUPERSEDED`, or `UNKNOWN`.
 
-The vocabulary and valid cross-axis combinations remain provisional. A later
-design must justify them and must not pretend that all domains share one
-complete missingness taxonomy. Unknown values stay unknown rather than being
-inferred from another axis.
+This vocabulary is provisional. It is not one universal missingness taxonomy,
+and unknown values must not be inferred from another axis.
 
-The **initial construct-isolation wedge** should be narrower than the full
-record: hold access at `AVAILABLE`, permission at `AUTHORIZED`, and currency at
-`CURRENT`, then isolate observation from process/capture across completed
-checks, checks not performed, and failed captures. Access, permission, and
-currency should enter only as separately justified later extensions or
-predeclared factorial arms. This is specification sequencing, not selection or
-authorization of a study.
+The smallest construct-isolation question would hold access at `AVAILABLE`,
+permission at `AUTHORIZED`, and currency at `CURRENT`, then vary observation
+by process/capture across completed checks, checks not performed, and failed
+captures. Additional axes would require separately justified extensions. This
+is specification, not selection of a study.
 
-### 5.1.1 Frozen keys are not run states
+### 6.2 Frozen task/world keys are not trace-derived run states
 
-A task/world key frozen before a run should identify the expected item and
-rationale, world presence or absence where knowable, allowed observation
-boundary and operations, access condition, permission condition, currency
-condition, and the correct decision or unacceptable errors. It must not be
-backfilled from the produced answer or from a post-hoc trace.
+A frozen task/world key must identify the expected item and rationale, world
+presence where knowable, allowed observation boundary and operations, access,
+permission, currency, and the correct decision or unacceptable errors. It must
+not be backfilled from the produced answer or a post-hoc trace.
 
-Run states are derived from the execution trace: which checks were attempted,
-whether capture completed or failed, what was actually returned or observed,
-the resulting observation and process/capture states, and the downstream
+A trace-derived run state records which checks were attempted, whether capture
+completed or failed, what was returned or observed, and the downstream
 decision. A world item can exist while remaining `NOT_OBSERVED`; a check can be
-`NOT_CHECKED` without implying anything about world presence. Scoring must keep
-the frozen task/world key and trace-derived run state separate.
+`NOT_CHECKED` without implying anything about world presence.
 
-### 5.2 Strongest case against
+### 6.3 Strongest case against and novelty uncertainty
 
-The candidate may measure nothing beyond forced label production. If a prompt
-contains the exact categories and the task surface cues reveal the answer, a
-model can fill the schema without better observation or judgment. Expectedness
-is also domain- and decision-dependent: a supposed “known” absence can encode
-the task author's assumptions rather than an external truth. In open-web work,
-the complete observation universe is unknowable, making false-absence labels
-difficult to adjudicate.
+The candidate may measure forced label production. If task wording exposes the
+state, a model can fill the schema without better observation or judgment.
+Expectedness is domain- and decision-dependent; in open-web work the complete
+observation universe is unknowable. Structured gap judging, evidence
+sufficiency, missing-data reasoning, abstention, and versioned state are active
+research areas. A renamed set of labels is not a defensible wedge.
 
-Structured gap judging and evidence-sufficiency control are already active
-research areas. If the only distinction is a renamed set of status labels, this
-candidate is not a defensible research wedge.
+Any possible contribution remains a `DESIGN_HYPOTHESIS`: a human-governed
+record of expected item, observation boundary, independent process state, and
+decision consequence. Whether that combination is distinct enough to study is
+unresolved.
 
-### 5.3 Adjacent work and novelty uncertainty
+### 6.4 Construct-validity risks
 
-A targeted review must cover iterative gap/sufficiency controllers, selective
-retrieval and stopping, missing-data and open-world reasoning, information
-foraging/metareasoning, dataset annotation of unavailable or unanswerable
-questions, versioned memory, and abstention/calibration. The candidate's only
-possible distinct emphasis is the combined human-governed record of expected
-item, observation boundary, permission/check state, and decision consequence.
+- “Expected” may encode author bias or task leakage.
+- The observation boundary may be incompletely applied.
+- `NOT_OBSERVED` may be mistaken for nonexistence.
+- A surface phrase may reveal the correct status.
+- Frozen keys and trace-derived states may be contaminated.
+- Correct status classification may not improve the downstream decision.
+- The schema may increase calibrated language while increasing over-refusal.
+- Closed known-state tasks may not transfer to open-world research.
 
-That distinction is a **DESIGN HYPOTHESIS**, not a novelty finding.
+### 6.5 Credible comparators
 
-### 5.4 Construct-validity risks
+1. **B0 — ordinary uncertainty:** the same task, evidence-access boundary, and
+   required output specification, with material uncertainty in ordinary prose;
+2. **B1 — generic boundary diligence:** state what was searched, what could not
+   be checked, and why, without a supplied taxonomy; and
+3. **B2 — orthogonal boundary record:** use only the initial
+   observation-by-process/capture wedge while holding access, permission, and
+   currency fixed.
 
-- “Expected” may reflect author bias or leakage.
-- The observation boundary can be incompletely or inconsistently applied.
-- Surface tokens may reveal the correct status.
-- `NOT_OBSERVED` can be mistaken for nonexistence.
-- `NOT_CHECKED`, failed capture, and unavailable access may be observationally
-  indistinguishable without tool traces if the axes are collapsed.
-- A trace-derived check or observation state can be leaked into, or confused
-  with, the frozen task/world key.
-- Correct status classification may not change the downstream decision.
-- A schema can increase calibrated language while reducing useful action.
-- Closed synthetic tasks may not transfer to open-world research.
+Optional arms may vary one additional axis only if they isolate a predeclared
+question rather than treating the five-axis record as one effect.
 
-### 5.5 Credible comparators
+### 6.6 Candidate outcomes and guardrails
 
-A mechanism-isolated design would need at least:
+Primary candidates, subject to later construct review, are decision accuracy or
+accepted-error rate when a gap changes the correct action, false-absence rate,
+and correct consequential classification against separate frozen task/world
+and trace-derived keys. Schema completion is not an outcome.
 
-1. **B0 — ordinary uncertainty:** use the same task, evidence-access boundary,
-   and required output specification as B1 and B2, and state material
-   uncertainties in ordinary prose;
-2. **B1 — generic boundary diligence:** under those same requirements,
-   explicitly state what was searched, what could not be checked, and why,
-   without a supplied status taxonomy; and
-3. **B2 — orthogonal boundary record:** under those same requirements, use the
-   initial observation-by-process/capture wedge above while holding access,
-   permission, and currency fixed.
+Guardrails include harmful over-refusal, permission violations, manufactured
+expectedness, label leakage, resource use, and failure to change a downstream
+decision. A higher state-classification score cannot offset a worse decision.
 
-Optional later diagnostic arms may vary one additional axis or provide the
-state vocabulary without the expected-item rationale or decision consequence.
-They are justified only if predeclared to isolate one named mechanism rather
-than treating the five-axis record as a single effect.
+### 6.7 Resource, cue, permission, and no-go gates
 
-### 5.6 Candidate outcomes and guardrails
-
-**Primary candidates, subject to later construct review:**
-
-- decision accuracy or accepted-error rate when a gap changes the correct
-  action;
-- false-absence rate: claims of nonexistence when the correct state is a
-  bounded observation or failed/unperformed check; and
-- correct consequential classification of the observation and process/capture
-  axes against separate frozen task/world and trace-derived run keys.
-
-**Secondary only:**
-
-- appropriate hold, qualify, or request-more-information behavior;
-- unnecessary abstention or over-refusal;
-- axis-specific calibration across paraphrase and evidence order; and
-- resource and review burden.
-
-**Guardrails:** a higher axis-classification score cannot offset worse decision
-accuracy, permission violations, manufactured expectedness, or harmful
-over-refusal. Schema completion is never the primary outcome.
-
-### 5.7 Resource estimands
-
-As with Candidate A, report both fixed-total-resource and
-equal-operating-overhead comparisons. The typed schema's tokens, additional
-tool checks, delay, and reviewer burden are costs. Budget exhaustion is a stop
-state and remains in the denominator under a predeclared policy.
-
-### 5.8 Blinding and cue leakage
-
-Task construction must remove direct lexical mapping from evidence to status
-labels. Surface features such as “access denied,” missing cells, or explicit
-timestamps cannot make the treatment answer trivial. Neutral evaluator views
-should hide condition names and normalize style. Purpose-built items require a
-separate leakage audit and held-out perturbations before they can support a
-construct claim.
-
-### 5.9 Permission and participant gates
-
-No real private, inaccessible, or licensed system should be probed to create a
-`NOT_AUTHORIZED` case. Purpose-built material may represent the state without
-accessing a real restricted source. Any real-domain expectedness key requires
-authorized subject-matter review; any human correction/comprehension measure
-requires the separate participant gates described for Candidate A.
-
-### 5.10 Unfavorable outcomes and no-go conditions
+Report fixed-total-resource and equal-operating-overhead comparisons separately.
+Typed fields, extra checks, delay, and review are costs. Neutral evaluator
+views should hide condition names and normalize style without erasing the
+construct. No real private or restricted system may be probed to manufacture a
+permission case.
 
 Retain null, harmful, shortcut-driven, fragile, non-transfer, stopped, invalid,
-and indeterminate outcomes. Stop or do not proceed if:
+and indeterminate outcomes. Stop or do not proceed if expectedness cannot be
+frozen, task/world and trace-derived states cannot stay separate, labels solve
+the task, B1 is absent, false absence and over-refusal are collapsed, or real
+unauthorized access would be required.
 
-- targeted review reduces the contribution to renamed gap labels;
-- expectedness or observation boundaries cannot be independently frozen;
-- frozen task/world keys cannot be kept separate from trace-derived run states;
-- a label can be solved from surface wording rather than observation;
-- a generic boundary-diligence comparator is absent;
-- the outcome rewards status completion instead of decision quality;
-- false absence and harmful over-refusal are not separate guardrails;
-- permission states would require real unauthorized access; or
-- the design cannot separate a model-only artifact test from human outcomes.
+## 7. Sequencing without selecting a study
 
-## 6. Recommended sequencing—without selecting a study
+1. Map Candidate A against verification-interface, trace, provenance, and
+   appropriate-reliance work; define a frozen joint over-/under-reliance
+   outcome before designing fields.
+2. Map Candidate B against gap/sufficiency, missingness, abstention, and
+   open-world observation work; test whether expectedness and key/trace
+   separation can be specified without leakage.
+3. Red-team both constructs for reduction to existing terminology, format
+   obedience, and inaccessible or disproportionate interfaces.
+4. Return the comparison to the owner with a `proceed`, `narrow`, or `stop`
+   recommendation for each. Do not infer selection from this memo.
+5. If one candidate later receives exact owner authorization, freeze its
+   ordinary, generic-diligence, and component-isolated conditions before any
+   omnibus playbook condition.
+6. Keep participant work behind a separate authorization even if a model-only
+   artifact design is authorized.
 
-1. **Repair the applied contracts first.** Candidate A cannot be evaluated
-   while the influence receipt permits unresolved IDs, collapsed permission
-   states, or post-hoc structure without substantive references.
-2. **Specify Candidate B first as a construct-isolation exercise.** Its
-   orthogonal axes and task-key/run-trace boundary can be mapped and
-   adversarially tested without the complete receipt system or a participant
-   study. This is a recommendation for design work, not a selection of the
-   first empirical paper.
-3. **Run a targeted novelty/construct review of both candidates.** Include the
-   strongest adjacent interfaces and direct attempts to reduce each candidate
-   to existing terminology.
-4. **Choose at most one narrow wedge only after that review.** Selection would
-   require a later owner decision and a versioned execution packet.
-5. **Require A0/B0, generic-diligence, and mechanism-isolated conditions before
-   the omnibus playbook.** If the isolated mechanism has no meaningful signal
-   or adds unacceptable cost, do not proceed to DL-PLAYBOOK-01.
-6. **Leave human correction for a separate authorization stage.** First decide
-   whether a model-only, known-state artifact design can establish a useful
-   construct without implying participant evidence.
+## 8. Relationship to DL-PLAYBOOK-01
 
-## 7. Relationship to DL-PLAYBOOK-01
+The omnibus playbook remains a future Research Track 02 candidate. Its current
+matched-budget protocol uses `M-A` as shorthand for a claim-scoped influence
+receipt. This memo narrows that shorthand: if Candidate A ever advances, the
+existing receipt can only supply candidate interface content. The protocol
+would need revision to a fixed-answer appropriate-reliance design before it
+could be analysis-ready.
 
-The omnibus playbook remains a future Research Track 02 candidate, not the
-first automatic study. Before it is interpretable, the research program needs:
+The broader generation study still requires an ordinary baseline, a credible
+generic-diligence comparator, component isolation, separately labeled resource
+estimands, decision-facing outcomes, and safety, support, permission,
+over-refusal, and burden guardrails. Candidate A cannot provide a generation
+result because its answer is fixed. Candidate B remains provisional and is not
+selected as the first mechanism study.
 
-- an ordinary baseline;
-- a credible generic-diligence comparator;
-- one or more mechanism-isolated arms;
-- fixed-total-resource and equal-operating-overhead estimands;
-- decision accuracy or accepted-error as the primary decision-facing outcome
-  for a generation study, or a separately defined correction/acceptance outcome
-  for a fixed-answer interface study;
-- safety, permission, support, over-refusal, and burden guardrails; and
-- evidence that the treatment is more than framework vocabulary or receipt
-  formatting.
+A null, harmful, cue-driven, or prohibitively costly narrow result is a reason
+to narrow or stop the omnibus plan, not to hide it inside a composite.
 
-A failed or costly narrow mechanism is a reason to narrow or stop the omnibus
-plan, not a reason to hide the mechanism result inside a composite.
+## 9. Relationship to The Echo Problem
 
-## 8. Relationship to The Echo Problem
+The Echo Problem remains separate Research Track 01. GroupQA's paraphrase
+finding is adjacent to recurrence, but it does not supply an origin relation,
+an Echo result, or evidence that the Echo protocol works. No Echo fixture,
+power calculation, implementation check, or status is imported here as a
+result.
 
-The Echo Problem remains separate Research Track 01. Its origin-accounting
-protocol can inform dependence-related task construction, but it cannot define
-Candidate A, Candidate B, or the six-family playbook. No Echo protocol, fixture,
-power calculation, or implementation check is imported here as a result.
-
-## 9. Decisions and actions explicitly deferred
+## 10. Decisions and actions explicitly deferred
 
 The following remain **UNSELECTED AND UNAUTHORIZED**:
 
-- first paper or empirical wedge;
+- Candidate A or Candidate B as a first paper or empirical wedge;
 - provider, model, version, configuration, or credentials;
 - corpus, dataset, task packet, source material, or rights basis;
 - participants, experts, recruitment, compensation, or ethics route;
-- sample size, power target, primary analysis model, or registry;
+- sample size, precision or power target, analysis model, or registry;
 - monetary budget;
 - model call, pilot, dry run that produces study observations, or study run;
 - preregistration, publication, deployment, or outreach.

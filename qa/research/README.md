@@ -6,14 +6,16 @@ evaluation.
 Run from the repository root:
 
     python3 qa/research/validate_research_boundaries.py
+    python3 -m unittest discover -s qa/research -p 'test_*.py' -v
 
 The validator checks current project separation, the exact EP unfavorable-
 result taxonomy, explicit unrun/no-results language, future-protocol
 authorization boundaries, generic-diligence and mechanism-isolation sequencing,
 the two resource estimands, decision-accuracy/accepted-error priority, the
-narrow-wedge memo's no-selection contract, Candidate A's equivalent baselines,
-study-mode split and composite-treatment boundary, Candidate B's orthogonal
-axes and key/trace separation, the dated targeted source route,
+narrow-wedge memo's no-selection contract, Candidate A's fixed-answer
+appropriate-reliance interface boundary and composite-treatment status,
+Candidate B's provisional orthogonal axes and key/trace separation, the dated
+targeted source route,
 publication-time recheck language, and high-signal novelty/effectiveness/result
 inflation phrases. It performs structural claim-boundary QA only. It does not
 open the web, call a model, provider, participant, dataset, registry,
@@ -25,6 +27,10 @@ That report records opened primary/official landing pages, preprint versus
 conference/official status, partial resolver checks, unresolved claims, and the
 mandatory publication-time recheck. It is targeted wayfinding QA, not a
 systematic review or research result.
+
+The scoped 2026 source/claim convergence, dispositions, Candidate A/B
+containment, checks, and unresolved uncertainty are recorded in
+[RESEARCH_CLAIM_CONVERGENCE_QA_2026-08-30_0beee9a.md](RESEARCH_CLAIM_CONVERGENCE_QA_2026-08-30_0beee9a.md).
 
 The active EP v1.1 design checkpoint has its own provider-free deterministic
 checks:

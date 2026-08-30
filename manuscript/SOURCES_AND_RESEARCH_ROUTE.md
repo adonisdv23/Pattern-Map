@@ -4,6 +4,12 @@ This route is deliberately subordinate to the manuscript. A reader should be
 able to understand the idea without opening a framework, protocol, source
 ledger, or historical archive.
 
+In this project, **before generation** names a logical responsibility boundary,
+not a one-time chronological stage. In an iterative agent loop, the boundary
+applies whenever a search result, memory item, comparison, or prior draft is
+considered for the next generation. It does not claim that all discrimination
+precedes the first model call or ends after the first token is produced.
+
 ## Authority and historical continuity
 
 - [Locked v16 owner intent](../docs/OWNER_INTENT_V16.md) — current proposition,
@@ -47,68 +53,67 @@ and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233)
 
 ### Current adjacent fields, 2025–2026
 
-- **Context engineering and agent harnesses.** Anthropic's official
-  [context-engineering guidance](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
-  already treats context as a finite resource to be curated through
-  just-in-time retrieval, progressive disclosure, compaction, memory, and
-  subagents. Its [long-running-agent harness report](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
-  uses persistent artifacts and incremental handoffs. Pattern Map therefore
-  cannot claim to invent context curation, memory, or agent decomposition.
-- **Discovery, selection, organization, and perspective coverage.** The
-  peer-reviewed [ResearchArena](https://aclanthology.org/2025.findings-emnlp.303/)
-  separates research into discovery, selection, and organization, while a
-  2026 [source-diversity study](https://aclanthology.org/2026.lrec-1.53/)
-  shows that source choice can change represented perspectives in one bounded
-  historical-RAG setting. Neither establishes a universal diversity benefit or
-  validates the six-family map.
-- **Source reliability, dependence, and redundancy.** Peer-reviewed
-  [Reliability-Aware RAG](https://aclanthology.org/2025.emnlp-main.1738/)
-  estimates source reliability and uses it in retrieval. A separate August
-  2026 [redundancy/diversity preprint](https://arxiv.org/abs/2608.13956)
-  compares duplicate, paraphrased, and diverse evidence in a controlled
-  synthetic setting. These works make an empty-field claim untenable. They
-  also leave Pattern Map's separation of role, support, origin, relevance,
-  track record, and permission as a design boundary rather than a validated
-  scoring mechanism.
-- **Adaptive acquisition, sufficiency, and stopping.** Peer-reviewed
-  [DeepResearcher](https://aclanthology.org/2025.emnlp-main.22/) studies
-  planning, cross-validation, reflection, and redirection in real-web research.
-  [S2G-RAG](https://aclanthology.org/2026.acl-long.1185/) explicitly predicts
-  evidence sufficiency and structured gaps during iterative retrieval. The
-  proposal to acquire adaptively and stop on sufficiency or cost is therefore
-  adjacent to active technical work, not a new mechanism established by v16.
-- **Memory, revision, and long-horizon continuity.** The 2025
-  [MemoryAgentBench preprint](https://arxiv.org/abs/2507.05257) evaluates
-  retrieval, test-time learning, long-range understanding, and selective
-  forgetting in incremental interactions. This reinforces the need to test
-  versioning, correction, and forgetting separately; it does not show that the
-  v16 memory contract works.
-- **Attribution, provenance, and correctability.** A 2025
-  [document-attribution preprint](https://arxiv.org/abs/2507.04480) examines
-  which retrieved documents influence a RAG answer and the cost of estimating
-  that influence. Peer-reviewed work on
-  [attribution bias](https://aclanthology.org/2025.findings-acl.1087/) shows
-  that source metadata can itself change attribution. The 2026
-  [DeepFact](https://aclanthology.org/2026.acl-long.1586/) benchmark uses
-  versioned, auditable evidence-backed corrections. Together they warn against
-  treating a citation, influence estimate, metadata cue, or accepted human
-  disposition as truth.
-- **Deep-research evaluation and reproducibility.** The peer-reviewed
-  [ResearchRubrics](https://iclr.cc/virtual/2026/poster/10010639) evaluates
-  long-form research against fine-grained explicit and implicit criteria. The
-  [DeepResearch Bench preprint](https://arxiv.org/abs/2506.11763) separates
-  report assessment from effective-citation count and citation accuracy.
-  Peer-reviewed [OAgents](https://aclanthology.org/2025.findings-emnlp.720/)
-  reports nontrivial run variance and redundant-seeming agent components under
-  its tested setting. These sources support stronger baselines, matched
-  resources, mechanism isolation, and reproducibility checks; they do not
-  supply a result for Pattern Map.
+- **Context selection, adaptation, and evolving playbooks.** Anthropic's 2025
+  official [context-engineering guidance](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+  treats context as finite and iteratively curated through retrieval,
+  compaction, memory, and progressive disclosure. The peer-reviewed ICLR 2026
+  paper [Agentic Context Engineering (ACE)](https://iclr.cc/virtual/2026/poster/10008343)
+  goes further by treating context as an evolving playbook updated through
+  generation, reflection, and curation. These sources rule out a claim that
+  Pattern Map invented context curation, iterative context adaptation, or
+  playbook evolution. Anthropic's report is first-party practice guidance, not
+  independent validation of this project.
+- **Recurrence versus support.** The 2026
+  [GroupQA preprint](https://arxiv.org/abs/2601.06189) reports, in its tested
+  RAG setting, that paraphrasing an argument can be more persuasive than adding
+  distinct independent support. That result directly motivates separating
+  recurrence, origin relation, and claim support, but it does not establish the
+  provenance or independence of any source in a Pattern Map example.
+- **Audit trails and execution traces.** NIST's ongoing official
+  [agent-evaluation-probes project](https://www.nist.gov/programs-projects/building-evaluation-probes-agentic-ai)
+  is developing rubric-based grounding checks and machine-readable audit
+  trails; it is an early project, not a published standard. The August 2026
+  [LEDGER preprint](https://arxiv.org/abs/2608.18398) builds claim-to-evidence
+  trace graphs, while the peer-reviewed ACL 2026 system demonstration
+  [Graph of Trace](https://aclanthology.org/2026.acl-demo.29/) visualizes
+  agent execution traces for human review. A new trace, graph, audit trail, or
+  receipt is therefore not the defensible research contribution here.
+- **Evidence views and appropriate reliance.** The peer-reviewed NAACL 2025
+  system demonstration [FACTS&EVIDENCE](https://aclanthology.org/2025.naacl-demo.35/)
+  already presents claim-level verification, explanations, and multiple
+  evidence sources to users. Two CHI 2025 conference papers—
+  [Fostering Appropriate Reliance on Large Language Models](https://doi.org/10.1145/3706598.3714020)
+  and [To Rely or Not to Rely?](https://doi.org/10.1145/3706598.3714097)—show
+  that interface cues can change over- and under-reliance in nonuniform ways
+  in their bounded tasks. This narrows Candidate A to a provisional
+  fixed-answer appropriate-reliance interface question; it supplies no reason
+  to assume that a claim/evidence view improves judgment.
+- **Stopping and resource cost.** The peer-reviewed EACL 2026 paper
+  [Over-Searching](https://aclanthology.org/2026.eacl-long.361/) reports
+  unnecessary search, added cost, and worse abstention under some tested
+  conditions. The peer-reviewed LREC 2026
+  [budget-constrained agentic-search study](https://aclanthology.org/2026.lrec-1.808/)
+  varies search depth, retrieval strategy, and completion budget under fixed
+  constraints. [S2G-RAG](https://aclanthology.org/2026.acl-long.1185/) adds an
+  explicit sufficiency-and-gap controller. These works make stopping and
+  budget accounting required comparators and costs, not Pattern Map inventions.
+- **Deep-research evaluation.** The 2026 [DREAM preprint](https://arxiv.org/abs/2602.18940)
+  proposes tool-using evaluation for temporal, factual, and reasoning checks.
+  The peer-reviewed ACL 2026 papers
+  [BrowseComp-Plus](https://aclanthology.org/2026.acl-long.1023/) and
+  [ReportLogic](https://aclanthology.org/2026.acl-long.384/) respectively
+  separate retriever contribution from end-to-end agent performance and test
+  report-level support relations plus judge sensitivity to superficial cues.
+  Together they require dimension-specific outcomes, frozen evaluation
+  boundaries, and cue-robust checks; no benchmark label is a Pattern Map
+  effectiveness result.
 
-The component areas have substantial established and active prior work; the
-proposal is to hold them together as one proportional, human-governed
-responsibility before generation. That is
-an authored design and governance synthesis with a testable agenda—not a novel
-mechanism, exhaustive taxonomy, technical layer, or demonstrated improvement.
+The component areas have substantial established and active prior work. The
+bounded contribution is an **authored, proportional, human-governed
+design/governance synthesis and testable agenda**. It is not a novel mechanism,
+exhaustive taxonomy, validated method, effectiveness result, universal
+architecture, or claim that one technical layer must sit at a single moment in
+an agent loop.
 
 ## Echo route
 

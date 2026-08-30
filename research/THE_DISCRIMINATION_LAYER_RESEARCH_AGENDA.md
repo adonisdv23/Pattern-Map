@@ -17,11 +17,17 @@ The component areas have substantial established and active prior work across
 context engineering, information retrieval and selection, source reliability
 and redundancy, adaptive acquisition and stopping, agent memory, attribution,
 provenance, human correction, and deep-research evaluation. The bounded v16
-contribution is an authored human-governed design/governance synthesis and a
-testable agenda.
-It is not a novel mechanism, exhaustive taxonomy, newly discovered technical
-layer, or effectiveness result. The optional source route records the current
-targeted—not systematic or exhaustive—2025–2026 wayfinding review.
+contribution is an authored, proportional, human-governed design/governance
+synthesis and testable agenda. It is not a novel mechanism, exhaustive
+taxonomy, validated method, newly discovered technical layer, effectiveness
+result, or universal architecture. The optional source route records the
+current targeted—not systematic or exhaustive—2025–2026 wayfinding review.
+
+“Before generation” is a logical responsibility boundary inside an iterative
+agent loop. It applies each time the loop decides whether a retrieved item,
+memory, comparison, trace, or prior draft may influence the next generation.
+It is not a temporal claim that all discrimination occurs once before the first
+model call or ends when generation begins.
 
 ## Research firebreak
 
@@ -75,16 +81,27 @@ future research program must first determine whether a narrower mechanism can
 be distinguished from ordinary diligence, label following, or format
 compliance. The current unrun decision memo compares:
 
-- a composite claim-scoped influence receipt against an ordinary source list
-  under the same task, evidence-access, and output requirements; and
-- an orthogonal observation-boundary record that initially separates
-  observation from process/capture while holding access, permission, and
-  currency fixed.
+- **Candidate A, revised:** a provisional fixed-answer appropriate-reliance
+  interface question. It would compare an existing compact claim/evidence view
+  with an ordinary source list and generic claim-to-source mapping while the
+  answer and evidence remain identical. The view is a study stimulus, not a
+  proposed new trace or receipt mechanism.
+- **Candidate B, still provisional:** an orthogonal observation-boundary
+  record that initially separates observation from process/capture while
+  holding access, permission, and currency fixed.
 
 The owner-review source is
 `research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md`. It recommends
-specification and prior-art review sequencing only. It selects no study,
-provider, model, corpus, participant, sample size, or run.
+additional specification and prior-art review only. It does not prefer or
+select either candidate, a first paper, provider, model, corpus, participant,
+sample size, or run.
+
+The existing matched-budget protocol uses `M-A` as shorthand for a
+claim-scoped influence receipt. The active research interpretation is now
+narrower: that existing applied artifact could be rendered as one interface
+stimulus, but its existence, trace structure, and self-reported influence are
+not the hypothesized contribution. The protocol remains an unrun candidate and
+would require revision before Candidate A could advance.
 
 Before DL-PLAYBOOK-01 can be interpreted, a later frozen design must include:
 
@@ -104,13 +121,16 @@ The equal-operating-overhead result cannot replace or be blended with the
 fixed-total-resource result. A weak ordinary prompt is not a sufficient
 baseline merely because it makes a structured treatment look better.
 
-For the influence-receipt wedge, a later design must choose between a
-generation study and a fixed-answer interface/correction study. In the former,
-outputs may differ and decision accuracy or accepted-error may be eligible. In
-the latter, answer content is fixed, so generated-answer or decision accuracy
-is not eligible; correction, acceptance, and burden outcomes answer a different
-question. The full receipt remains a composite unless a component ablation is
-predeclared.
+For Candidate A, only a fixed-answer interface/correction question remains in
+scope. Every condition must receive the identical answer and evidence; only the
+review view may differ. Generated-answer or decision accuracy is therefore not
+eligible. Candidate outcomes would concern appropriate acceptance, rejection,
+or correction against a frozen claim/support key, false acceptance,
+unnecessary correction, and authorized reviewer burden. The compact view is a
+composite interface unless a component ablation is predeclared. Even a
+favorable interface result would not validate upstream selection, faithful
+model-internal attribution, the full receipt contract, or the six-family
+playbook.
 
 For the observation-boundary wedge, frozen task/world keys must remain separate
 from trace-derived run states. World presence, expectedness, allowed boundary,
@@ -189,8 +209,9 @@ These are later questions, not bundled evidence for the flagship result:
    matched budget, and which merely add ceremony?
 2. When does a lightweight route perform as well as a moderate or advanced
    route?
-3. Can people understand and correct influence receipts faster than ordinary
-   source lists?
+3. Under a fixed answer and evidence set, does a compact claim/evidence view
+   improve appropriate acceptance, rejection, or correction relative to an
+   ordinary source list and a generic mapping, and at what review burden?
 4. Does typed uncertainty improve appropriate abstention without producing
    harmful over-refusal?
 5. Does versioned outcome review improve later calibration, or encode reviewer
@@ -199,8 +220,9 @@ These are later questions, not bundled evidence for the flagship result:
    model, ordering, and evidence quality?
 7. Can the playbook preserve a specialist or minority perspective without
    romanticizing obscurity or amplifying manipulation?
-8. Does a claim-scoped influence receipt change accepted-error or correction
-   behavior beyond an ordinary or generic-diligence source mapping?
+8. Which, if any, element of the Candidate A interface changes reliance
+   behavior rather than merely increasing structure, length, or perceived
+   professionalism?
 9. With access available, permission authorized, and material current, does an
    orthogonal observation/process-capture record reduce consequential false-
    absence errors beyond an equally explicit untyped boundary statement?
