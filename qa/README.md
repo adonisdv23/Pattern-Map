@@ -37,6 +37,11 @@ boundary that the 41,436,496-byte distribution container is outside Git.
   preserves the read-only Claude Opus review of exact `fb7d808`, including the
   sealing findings that were accepted, revised, deferred, or rejected. It is
   advisory model feedback, not a participant, study, or effectiveness result.
+- `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md`
+  preserves Claude Opus's detached, read-only exact-tip recheck. It reproduced
+  the 14-test portable pass, found no new conceptual or transfer defect, and
+  isolated the stale owner manifest as the one remaining pre-seal gate. The
+  review does not replace the final manifest or clean-clone checks.
 - `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` records the
   terminal ordinary path, typed permission, linked comparison/disconfirmation,
   real-instant motion, and accepted current-memory fixture boundaries. These

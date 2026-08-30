@@ -166,6 +166,7 @@ REQUIRED_PATHS = [
     "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
     "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
+    "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md",
     "qa/research/validate_research_boundaries.py",
     "qa/research/README.md",
     "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
@@ -361,10 +362,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", action="store_true", help="rewrite the deterministic manifest from current files")
     args = parser.parse_args()
-    if args.write:
-        write_manifest()
-    else:
-        verify_manifest()
+    try:
+        if args.write:
+            write_manifest()
+        else:
+            verify_manifest()
+    except (AssertionError, FileNotFoundError, json.JSONDecodeError, OSError) as exc:
+        raise SystemExit(f"FAIL owner-review manifest: {exc}") from None
 
 
 if __name__ == "__main__":

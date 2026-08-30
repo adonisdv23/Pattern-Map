@@ -1244,3 +1244,39 @@ adversarial tests; acceptance/action audit corrections.
 A08, A09, A11, A14, A15, and A16; cross-computer recoverability;
 anti-bureaucracy; model reviews advisory only; no merge/deploy/publication/
 study/provider selection/spend/outreach.
+
+## D-036 — Seal only after exact-tip independent recheck and final-byte convergence
+
+**Date:** 2026-08-30
+
+**Status:** Accepted; deterministic terminal gate
+
+Claude Opus/max independently rechecked exact remote tip `4a1acab` in a
+detached read-only worktree, reproduced all 14 portable tests with zero skips,
+and found no new conceptual, public, operator, Echo, research, or transfer
+defect. Its sole NOT READY finding was the expected stale schema-1 owner
+manifest. That finding is accepted because checksums generated before the
+final source, exports, QA, and dispositions would immediately become false.
+
+The terminal order is therefore fixed: finish all source and evidence edits;
+regenerate the schema-2 owner manifest; commit and push it; reproduce the full
+twelve-stage runner in a clean clone; read back the unmerged draft PR; then
+build the Signal Foundry transfer ZIP from that exact remote tip and verify it
+again after copying and extracting it elsewhere. The owner manifest resolves
+its own source head at use rather than hard-coding a self-referential commit;
+the generated Signal Foundry packet binds its exact source commit in
+`BUNDLE_METADATA.json`.
+
+The recheck's two optional clarity findings are accepted: expected manifest
+verification failures receive one concise fail-closed CLI message, and the
+branch-state record describes corrections as extending through *at least* the
+named historical floor. Neither change reopens v16's thesis or adds operating
+bureaucracy.
+
+**Evidence:** exact Claude recheck report; zero-skip portable suite at
+`4a1acab`; manifest writer/verifier; final clean-clone and packet evidence to be
+recorded in the convergence QA after completion.
+
+**Governing requirement:** A14/A15; source authority and immutable provenance;
+cross-computer recoverability; model reviews advisory only; no merge,
+deployment, publication, study, provider selection/call, spend, or outreach.

@@ -324,3 +324,25 @@ findings before accepting them.
 | PM-11 | Add robots metadata to the local review standalone as a release blocker | **Deferred / rejected as a blocker** | Public preview carries `noindex,nofollow`; review mode is a local artifact | Review standalone | Publication remains separately gated |
 | PM-12 | Describe the active refresh as 2024–2026 | **Accepted as a precision defect** | Every active refreshed item is dated 2025 or 2026 | Current source route, ledger, agenda, QA | Active labels narrowed; preserved historical files untouched |
 | PM-13 | Present layered work as if only a full ten-section route exists | **Accepted with revision** | The copied prompt must carry the anti-bureaucracy middle path already present elsewhere | Copyable agent brief/applied validator | Smallest justified lightweight/moderate/advanced scoping precedes layered FRAME |
+
+## Claude exact-tip terminal recheck dispositions — 2026-08-30
+
+Claude Code `2.1.220` with Opus/max independently rechecked exact clean remote
+tip `4a1acabfd6aab596b507bd48dbbd89ad46882bd9` in a detached read-only
+worktree. The report is preserved at
+`qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md`.
+Claude reproduced the complete portable suite with 14 tests and zero skips and
+found no new thesis, six-family, Echo, operator, research, or transfer-design
+defect. Its NOT READY verdict was limited to the deliberately unsealed schema-1
+owner manifest.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / final verification |
+| --- | --- | --- | --- | --- | --- |
+| PM-R01 | Treat the stale schema-1 owner manifest as the sole terminal blocker | **Accepted** | The manifest must be generated only after source, exports, QA, and dispositions stop moving | Owner manifest and clean-clone gate | Schema-2 regeneration, manifest verification, then the complete twelve-stage clean-clone runner |
+| PM-R02 | Improve bare assertion tracebacks in the manifest verifier | **Accepted** | A fail-closed CLI should also tell a tired operator what failed without a traceback | `handoff/verify_owner_review_package.py` | Expected verification errors emit one `FAIL owner-review manifest` line and remain nonzero |
+| PM-R03 | Clarify that branch-state corrections extend beyond the named historical floor | **Accepted** | “Through at least” keeps the audit anchor while avoiding an implied terminal hash | `handoff/BRANCH_AND_PR_STATE.md` | Current head remains resolve-at-use; sealed packet binds its exact source commit |
+| PM-R04 | Reopen the conceptual or public artifact despite all scoped passes | **Rejected** | No reproduced defect supports redesign; the remaining gate is deterministic sealing | No conceptual file changed | Locked owner intent and anti-bureaucracy boundary; model reviews remain advisory |
+
+The recheck does not certify physical accessibility, human comprehension,
+publication metadata, or effectiveness. Those residuals remain explicitly
+manual and do not justify inventing another automated pass.

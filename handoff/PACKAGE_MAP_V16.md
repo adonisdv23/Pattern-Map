@@ -128,6 +128,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Portable-bundle regression | `qa/handoff/test_portable_bundle.py` |
 | Public/transfer convergence QA | `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
+| Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
 | Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |
 | Advisory ledger | `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Owner packet | `handoff/OWNER_REVIEW_PACKET_V16.md` |

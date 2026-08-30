@@ -152,6 +152,30 @@ instructions. The full advisory report and per-finding dispositions are in
 and `docs/ADVISORY_REVIEW_DISPOSITIONS.md`. No model review is treated as a
 reader result, research result, or authority over owner intent.
 
+### 8. Exact-tip Claude recheck
+
+**Accepted as advisory sealing evidence.** Claude Code `2.1.220` with
+Opus/max then rechecked exact clean remote tip
+`4a1acabfd6aab596b507bd48dbbd89ad46882bd9` in a second detached, read-only
+worktree. It independently reproduced the portable suite—14 tests, zero
+skips—and passed PM-01, PM-02, and PM-05 through PM-10. It found no new thesis,
+six-family, public-presentation, operator, Echo, research, or transfer-design
+defect.
+
+Claude's sole NOT READY reason was the expected pre-seal state: the committed
+owner manifest was still schema 1 while the current verifier requires schema
+2. PM-04 passed in the writer but could not appear in the stale manifest bytes
+until that final regeneration. The integrator accepts this as the deterministic
+last-byte gate, not as a conceptual defect. Claude's two optional clarity
+findings were also accepted: expected manifest-verification failures now emit
+a concise fail-closed message, and the branch-state table says later
+corrections extend through *at least* the named historical floor.
+
+The full report is
+`qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md`.
+It does not certify comprehension, effectiveness, physical accessibility, or
+publication readiness, and it did not edit the reviewed checkout.
+
 ## Live in-app browser evidence
 
 The in-app browser subsequently loaded the current local review/public routes

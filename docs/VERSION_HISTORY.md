@@ -48,6 +48,13 @@ tip, time-qualified review state, selected-contract validation, and payload
 integrity. These are transfer and proportionality corrections, not v17, a
 publication, a Signal Foundry implementation, or an effectiveness result.
 
+The exact-tip Claude recheck at `4a1acab` reproduced the 14-test portable
+contract with zero skips and found no new conceptual or transfer-design
+defect. It correctly withheld terminal readiness until the schema-2 owner
+manifest and clean-clone gate were completed. This is independent sealing
+evidence, not a new version, reader result, publication, or effectiveness
+claim.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |
