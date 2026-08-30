@@ -34,7 +34,7 @@
   "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; current principal-door evidence; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 291,
-  "total_bytes": 14812770,
+  "total_bytes": 14822529,
   "files": [
     {
       "path": ".gitignore",
@@ -123,8 +123,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 123542,
-      "sha256": "7db7ae4934f72b9d100ffe8b7e510c50254f0df4434db917b83fe4a9a0a91df1"
+      "bytes": 124643,
+      "sha256": "9ad400fb1d3085a45eb664eeebfe4e268add1e5c3c34302812e741955cd5da47"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -153,8 +153,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 88367,
-      "sha256": "4409e80058e961b14744748066eb2ff9a6a15731225fbebc4b51c2c0f6a34bb0"
+      "bytes": 90242,
+      "sha256": "f85873ae996b34318b0c39b04d2b24b941e809ce53de5698ecc38169aa73222d"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -218,8 +218,8 @@
     },
     {
       "path": "docs/VERSION_HISTORY.md",
-      "bytes": 8274,
-      "sha256": "b27c4de9fb0a34bed3140f6346752fd46eafa3e7c32928263656849cd3843957"
+      "bytes": 8346,
+      "sha256": "49676343d67598fbff63d49e2e6c56b78d20c681e367584d31d122d961c904f3"
     },
     {
       "path": "framework/BOUNDARIES_AND_FAILURES.md",
@@ -358,13 +358,13 @@
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
-      "bytes": 22047,
-      "sha256": "ca5d884aeede5b989ba19c5be5ee462b9ea1beabf2efa70d76b80352bcf9b545"
+      "bytes": 22300,
+      "sha256": "b855d0c6ef8a8f8395666cc366d07e2e3f6aff6356a87c15ea6900ad699574b4"
     },
     {
       "path": "handoff/PACKAGE_MAP_V16.md",
-      "bytes": 14894,
-      "sha256": "4acb80eb21fca95b3be75d8e800f869d02f7e802a8742c9595128998dac5c4e8"
+      "bytes": 14982,
+      "sha256": "59e7cd0a267fdf091c8561dec29112170a84284a828c4cf7ae1fa6b2888afe38"
     },
     {
       "path": "handoff/README.md",
@@ -443,8 +443,8 @@
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
-      "bytes": 18221,
-      "sha256": "eebbe58e769a7e8165c71f7e4eda085260910f2befa7bf3ec0a4dc9ea0087a75"
+      "bytes": 18349,
+      "sha256": "9d5b41506316b1fdafacbdd769c7a787641157c184539051da617f9cbd592358"
     },
     {
       "path": "qa/FINAL_ACTION_AUDIT_V16.md",
@@ -628,8 +628,8 @@
     },
     {
       "path": "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
-      "bytes": 8346,
-      "sha256": "63bf082c8870d2eda1c8578bc9bb796dc2aa665748aed11b34ea2d2a1cdee16a"
+      "bytes": 9475,
+      "sha256": "1e114799c1d6dc6363e24581fa894a24357204920d6bc81720c20e000bb5b88c"
     },
     {
       "path": "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
@@ -648,8 +648,8 @@
     },
     {
       "path": "qa/interaction/apply-cross-artifact-contract.spec.mjs",
-      "bytes": 8350,
-      "sha256": "97dc14a79ec0b0911423ad0f978e24ada90d03db3f02bfeb6caca5b502442d53"
+      "bytes": 8978,
+      "sha256": "5ec2dca5a9033ce1234d6ae9a09d4ddb8af521f21e63686ae1a764e05804f896"
     },
     {
       "path": "qa/interaction/apply-state-contract.spec.mjs",
@@ -858,8 +858,8 @@
     },
     {
       "path": "qa/site/audit_site.py",
-      "bytes": 17987,
-      "sha256": "093431db4fcce77b1390e099ba3b1f690d6357a8440c0a6abe803258cb65ac12"
+      "bytes": 19297,
+      "sha256": "230065ab5bcbb7b58f6d634663b278b2c022e04de5d8325e669fe4a56f8571d1"
     },
     {
       "path": "qa/site/css-selector-use.spec.mjs",
@@ -873,8 +873,8 @@
     },
     {
       "path": "qa/site/public-mode-contract.spec.mjs",
-      "bytes": 19305,
-      "sha256": "2fd8e8774d9ab70976ee100663eb9ae0e1923e7fcd687d00cd01bbe638805374"
+      "bytes": 19759,
+      "sha256": "170f81b6fd0282ea459320c9b8a9ff89e5ce486c26045886b247480ba2a7f400"
     },
     {
       "path": "qa/site/public-nav-spacing-contract.spec.mjs",
@@ -1418,13 +1418,13 @@
     },
     {
       "path": "site/build.mjs",
-      "bytes": 124667,
-      "sha256": "f03b902edad2a305498dc7cd3834af9a36ae5d4419417b6de7232d7aaef49689"
+      "bytes": 124724,
+      "sha256": "1a5959a8a947969686e84d30e4801f2fb3c3d4281e380b7b2c6cf9eeba2e064d"
     },
     {
       "path": "site/check.mjs",
-      "bytes": 37209,
-      "sha256": "0bbf4bd90e152146985c7e4f6601463963a3127e571fe8eabfb2a54346d2d815"
+      "bytes": 38742,
+      "sha256": "0619682da115f3465c60e64c624cb2ad4dddb572c42037532dd21d2c7ae18b23"
     },
     {
       "path": "site/exports/pattern-map-v16-owner-review.pdf",
@@ -1433,13 +1433,13 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16-public.html",
-      "bytes": 494753,
-      "sha256": "fd80394cbbb493b3ce65ff0a03ebb8027fb72ccb0ae0180ceae60628f907c8eb"
+      "bytes": 495179,
+      "sha256": "afc101152f017e26d7f6f8fa30c5c13eace4c1d37ea4e965407e6333448ca82d"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 507669,
-      "sha256": "b79783d88a1c6d65c4e0adb913b83324b40adab0ce270aebbb98f4ee0cb6e56b"
+      "bytes": 508095,
+      "sha256": "458cd0ba14b583dc066c7186f4068b76d8a08f79f837f0e57df86a1a3bacc540"
     },
     {
       "path": "site/package-lock.json",
@@ -1478,13 +1478,13 @@
     },
     {
       "path": "site/src/site.css",
-      "bytes": 88103,
-      "sha256": "f0190b3604f2bef83f57d162622758e8535d122a4aef8952ecde6617684a8920"
+      "bytes": 88251,
+      "sha256": "155638d316afa247d57efb48d3a3709c33c088c4d77a7f27b874cfa75f919546"
     },
     {
       "path": "site/src/site.js",
-      "bytes": 17359,
-      "sha256": "b7825a4476ae74b5d71c7b53b763144ea033b1a28effc412bd7e7d9a930f79d7"
+      "bytes": 17490,
+      "sha256": "88e623482e72d872fa2bf5c1e7eefedf9e4bfa3007a3c9fc49396fccbdaa387e"
     },
     {
       "path": "site/src/term-popover-geometry.js",

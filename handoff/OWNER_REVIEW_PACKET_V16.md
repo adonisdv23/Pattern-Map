@@ -81,7 +81,9 @@ comprehension, publication readiness, answer quality, or effectiveness.
 The successor ultra-finalization cycle retains that scope and repairs only
 reproduced defects: current visual/PDF provenance, compressed-copy qualifiers,
 locally complete no-script/print Stage 0 labels, typed uncertainty, and an
-actual preserved pending-to-reviewed learning link. It adds no route, family,
+actual preserved pending-to-reviewed learning link. A successor exact audit
+also removed no-script Map false affordances and locked the static Apply guide
+to the complete Stage 0 predicate. It adds no route, family,
 bitmap, study, provider, external registry, or Signal Foundry mutation. Its
 bounded record is
 [`ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md`](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md).
@@ -170,7 +172,8 @@ the semantic accessibility route.
   line-free relationship view; contextual plain-language term helpers with
   code-native microvisuals; a provider-free local Apply studio that recommends
   a plan from an explicit Stage 0 gate without fabricating actual event states;
-  a direct-open all-routes
+  enhancement-only Map controls that remain inert without JavaScript; an exact
+  no-script/print Stage 0 equivalent; a direct-open all-routes
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.

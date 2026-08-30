@@ -160,10 +160,14 @@ const main = () => {
   const mapFamilyNodes = [...map.matchAll(/<button\b[^>]*\bdata-map-family="([^"]+)"[^>]*>/g)];
   assert(mapFamilyNodes.map((match) => match[1]).join(",") === "F1,F2,F3,F4,F5,F6", "current map presentation does not cover exactly the six canonical family IDs");
   for (const match of mapFamilyNodes) {
+    assert(/\bdisabled\b/.test(match[0]), `current map ${match[1]} is enabled before enhancement initializes`);
     for (const field of ["name", "question", "inputs", "comparison", "records", "boundary", "connections"]) {
       assert(new RegExp(`\\bdata-map-${field}="[^"]+"`).test(match[0]), `current map ${match[1]} is missing presentation field: ${field}`);
     }
   }
+  const familyFocusControls = [...map.matchAll(/<button\b[^>]*\bdata-family-focus="([^"]+)"[^>]*>/g)];
+  assert(familyFocusControls.length === 6 && familyFocusControls.every((match) => /\bdisabled\b/.test(match[0])), "family focus controls are enabled before enhancement initializes");
+  assert(/<button\b[^>]*\bdata-family-clear\b[^>]*\bdisabled\b[^>]*>/.test(map), "Map reset control is enabled before enhancement initializes");
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) assert(map.includes(familyName), `family name missing: ${familyName}`);
   assert(!map.includes('class="relationship-connectors"'), "current map still renders detachable connector lines");
   for (const relationship of ["REQUIRES A BASELINE", "CAN REVEAL A SHARED PATH", "CONSTRAINS INFLUENCE", "MAY UPDATE AFTER AN OUTCOME"]) assert(map.includes(relationship), `map relationship band missing: ${relationship}`);
@@ -402,7 +406,13 @@ const main = () => {
   const publicInternalIndex = publicApply.indexOf("Inspect internal planning state and a local simulation");
   assert(publicPlanIndex > 0 && publicInternalIndex > publicPlanIndex, "public Apply does not put the plain plan before internal state");
   assert(publicApply.includes('<details class="static-route-equivalent" open data-progressive-static-guide><summary>'), "public Apply no-script equivalent is not natively open");
+  const staticGuide = publicApply.match(/<details class="static-route-equivalent"[\s\S]*?<\/details>/)?.[0] ?? "";
+  assert(/material claim judgment[\s\S]*comparison[\s\S]*selection or withholding[\s\S]*permission resolution[\s\S]*memory reuse[\s\S]*acquisition[\s\S]*human action gate[\s\S]*consequential external influence/i.test(staticGuide), "public Apply static guide lost the canonical Stage 0 predicate");
+  const ordinaryStaticRow = staticGuide.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "";
+  assert(/permission resolution[\s\S]*consequential external influence/i.test(ordinaryStaticRow), "public Apply static ordinary row drifted from the canonical Stage 0 predicate");
   assert(siteScript.includes('document.querySelectorAll("[data-progressive-static-guide]")') && siteScript.includes("guide.open = false"), "public Apply does not collapse the static table after JavaScript initializes");
+  assert(siteScript.includes("button.disabled = false"), "Map controls are not enabled after enhancement initializes");
+  assert(css.includes(".no-js [data-family-focus], .no-js [data-family-clear] { display: none; }"), "no-script CSS does not hide redundant Map focus/reset controls");
   assert(publicApply.includes('class="public-builder-depth"') && publicApply.indexOf("For builders and agents") > publicApply.indexOf("FOUR PROPORTIONATE CHOICES"), "public Apply does not progressively disclose builder depth");
 
   for (const filePath of publicRouteFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href, PUBLIC_DIST_DIR);

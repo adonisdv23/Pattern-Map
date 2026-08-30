@@ -74,7 +74,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 
 | Artifact | Path | Boundary |
 | --- | --- | --- |
-| Shared site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored ten-route source with review/public adapters; continuous Guided read, line-free current Map, contextual term helpers, planning-only Apply, and fail-closed publication metadata; no hosting |
+| Shared site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored ten-route source with review/public adapters; continuous Guided read, line-free current Map, initially inert enhancement-only controls, contextual term helpers, an exact no-script/print Stage 0 equivalent, planning-only Apply, and fail-closed publication metadata; no hosting |
 | Apply recommendation model | `site/src/recommendation.js`, `qa/interaction/apply-state-contract.spec.mjs`, `qa/interaction/apply-cross-artifact-contract.spec.mjs` | One strict terminal ordinary input plus 144 valid layered consequence/uncertainty/capacity/permission/human-gate states; fails closed on invalid ordinary fields and never records actual events from planning inputs |
 | Map, term, and reader regressions | `qa/interaction/map-layout-contract.spec.mjs`, `qa/interaction/term-popover-geometry-contract.spec.mjs`, `qa/content/reader-language-contract.spec.mjs` | Narrow/medium/wide Map contract, measured desktop term-panel clearance/viewport clamp, and cumulative-entry/plain-language contract |
 | Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open ten-section review companion; one rail/guide/frame and no false current route |

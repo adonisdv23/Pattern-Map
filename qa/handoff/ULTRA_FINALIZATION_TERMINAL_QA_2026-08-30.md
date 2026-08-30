@@ -59,6 +59,13 @@ this was not change for novelty or model preference.
    source.
 8. The bounded owner manifest selects both pending/reviewed outcome fixtures
    and the new terminal evidence. The sealed Signal subset remains unchanged.
+9. A first exact-integrated clean-cycle attempt then found two bounded fallback
+   defects. All Map enhancement controls now start disabled and are enabled
+   only after JavaScript initializes; redundant focus/reset controls disappear
+   under `.no-js`. The static Apply paragraph and ordinary row now use the same
+   complete Stage 0 predicate as the interactive control, Guided route,
+   playbook, and PDF. Focused regressions prevent correct wording elsewhere on
+   the page from masking static-guide drift.
 
 ## Wave findings and controlled dispositions
 
@@ -86,9 +93,18 @@ The complete rows are in `docs/ADVISORY_REVIEW_DISPOSITIONS.md`.
 - Site build/check passes all ten review routes, all ten public routes, shared
   source/hash/family parity, one ordinary plus 144 layered Apply states,
   fail-closed release metadata, public/no-script behavior, door-card geometry,
-  Map layouts, term geometry, reader-language, and stylesheet reachability.
+  Map layouts, initially inert enhancement controls, exact static Stage 0
+  parity, term geometry, reader-language, and stylesheet reachability.
 - Site semantic audit, image-signature audit, publication-rehearsal contract,
   research-boundary validator, and seven research claim-convergence tests pass.
+- A focused 390×844 headless localhost correction audit verified all thirteen
+  Map controls enabled and functional after enhancement, all thirteen disabled
+  without scripting, all seven redundant focus/reset controls hidden under
+  `.no-js`, all six Map cards and the text equivalent visible, the complete
+  static Stage 0 predicate present under no-script and print media, and zero
+  horizontal overflow or clipped interactive controls. This is an
+  implementation proxy, not physical keyboard, screen-reader, or human
+  comprehension evidence.
 - A 140-observation headless audit at exact source checkpoint `9916076` covered
   ten public routes at ten widths, ten review routes at 1440/390, and both
   standalones at ten widths. It found one main and `h1`, no duplicate IDs,

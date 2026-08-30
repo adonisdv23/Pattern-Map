@@ -326,6 +326,9 @@
     renderRecommendation();
   }
 
+  [...focusButtons, ...mapButtons, ...(clearButton ? [clearButton] : [])].forEach((button) => {
+    button.disabled = false;
+  });
   document.documentElement.classList.remove("no-js");
   document.documentElement.classList.add("js");
   document.documentElement.dataset.enhanced = "true";

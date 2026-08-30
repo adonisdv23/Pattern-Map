@@ -217,6 +217,11 @@ assert.match(publicApply, /capacity[^.]*never (?:makes Advanced appropriate|just
 assert.match(publicApply, /When conditions overlap, resolve them in this order:/);
 assert.match(publicApply, /unresolved or blocked permission[\s\S]*required human action gate[\s\S]*insufficient capacity[\s\S]*base level action/);
 assert.match(publicApply, /capacity mismatch[\s\S]*<code>CLARIFY<\/code>[\s\S]*<code>NARROW_OR_ESCALATE<\/code>/);
+const initialMapControls = [...publicMap.matchAll(/<button\b[^>]*(?:data-map-family|data-family-focus|data-family-clear)[^>]*>/g)];
+assert.equal(initialMapControls.length, 13, "public Map did not expose exactly thirteen enhancement controls");
+for (const tag of initialMapControls) {
+  assert.match(tag[0], /\bdisabled\b/, "public Map enhancement control is enabled in the initial no-script DOM");
+}
 assert.match(publicMap, /For this claim, what can each source actually tell us—and how did the information reach us\?/);
 assert.match(publicMap, /Weigh what the source can support without turning its pathway, reputation, or repetition into proof\./);
 assert.match(publicMap, /Keep source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission separate\./);
@@ -230,6 +235,7 @@ assert.match(siteScript, /guide\.open = false/);
 assert.match(siteScript, /syncStageZeroApplicability/);
 assert.match(siteScript, /fieldset\.disabled = ordinary/);
 assert.match(siteScript, /fieldset\.dataset\.applicability = ordinary \? "not-applicable" : "active"/);
+assert.match(siteScript, /button\.disabled = false/);
 
 const publicHome = read("site/public-dist/index.html");
 assert.match(publicHome, /<meta property="og:title" content="AI slop often begins before the model writes a word\.">/);

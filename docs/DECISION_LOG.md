@@ -1690,3 +1690,39 @@ writer/verifier; and the final terminal QA record.
 **Governing requirement:** A01–A04, A06–A11, A13–A17; C16-009; D-020;
 owner-intent authority; two-project separation; exact provenance;
 anti-bureaucracy and removal tests; no prohibited external action.
+
+## D-047 — Make static fallbacks truthful before restarting clean-cycle review
+
+**Date:** 2026-08-30
+
+**Status:** Accepted and corrected
+
+An exact-integrated read-only human/site audit found two bounded fallback
+defects after the first ultra-finalization seal. Map focus and reset controls
+were enabled in the initial HTML even though they had no behavior without
+JavaScript. The Apply guide also called itself a complete no-script equivalent
+while abbreviating the canonical Stage 0 predicate in a way that could route
+non-consequential external influence into unnecessary layered work.
+
+The correction keeps the open Map text and all six family cards intact, starts
+the thirteen enhancement-only controls disabled, hides redundant focus/reset
+affordances under `.no-js`, and enables them only after the existing handlers
+initialize. The static Apply paragraph and ordinary row now preserve
+`permission resolution` and `consequential external influence` exactly. New
+regressions inspect the local static subtree and initial Map DOM so correct
+wording or behavior elsewhere cannot mask either defect.
+
+This is a semantic-parity and false-affordance correction, not a new route,
+interaction model, score, receipt, or claim. Because source bytes changed, the
+clean-cycle count restarts on the successor exact commit and the owner manifest
+is regenerated only after all selected bytes freeze. The Signal Foundry packet
+and Echo research track remain untouched.
+
+**Evidence:** `site/build.mjs`, `site/src/site.js`, `site/src/site.css`,
+`site/check.mjs`, `qa/site/audit_site.py`,
+`qa/site/public-mode-contract.spec.mjs`, and
+`qa/interaction/apply-cross-artifact-contract.spec.mjs`.
+
+**Governing requirement:** A06, A07, A13–A15; D-036, D-040, D-046;
+progressive enhancement, no-script/print equivalence, proportionality, and
+two consecutive clean exact-commit review cycles.
