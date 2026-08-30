@@ -255,6 +255,7 @@ class PortableBundleTests(unittest.TestCase):
         )
 
     def test_embedded_verifier_and_manifest_cover_extracted_files(self) -> None:
+        builder = load_builder_module()
         verifier = self.run_embedded_verifier()
         self.assertEqual(verifier.returncode, 0, msg=verifier.stdout + verifier.stderr)
         self.assertRegex(verifier.stdout, r"PASS portable bundle: [0-9]+ files / [0-9]+ bytes")
