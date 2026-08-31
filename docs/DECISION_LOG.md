@@ -1808,3 +1808,65 @@ controls.
 **Governing requirement:** A03, A06–A08, A11, A13–A17; D-036, D-040,
 D-046–D-048; owner intent; two-project separation; proportionality;
 anti-bureaucracy; and no unsupported empirical or security claim.
+
+## D-050 — Use the final ultra window for red/blue correction and recipient-verifiable transfer
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revision; exact-commit sealing and external readback remain terminal steps
+
+**Decision:** Use the owner's final ultra-review window for three independent
+questions: whether the public surface is readable and navigable at the actual
+rendered boundary; whether the machine receipt preserves the distinctions it
+claims to preserve; and whether a recipient can verify one deterministic,
+complete, exact-commit owner-review package without trusting the sender's
+working tree.
+
+Accept only reproduced corrections. On the public surface, repair the Echo
+callout contrast, route document references to exact rendered destinations,
+label repository-only documents honestly, reveal nested fragment targets
+without focus theft, keep review and unreleased public output fail-closed with
+`noindex,nofollow`, and lead the short entry with human function rather than
+internal framework identity. In the receipt contract, reconcile memory use
+with selected influence, reject duplicate identifiers and ambiguous budgets,
+require exact synthetic-fixture status, preserve `UNKNOWN` on non-answer
+routes, reject explicit origin contradictions symmetrically, and treat all
+incoming payloads as untrusted data rather than control. This is a procedural
+boundary, not a prompt-injection or production-security result.
+
+For transfer, preserve the bounded selected-artifact manifest and add a
+separate complete-payload package: exact Git blobs from one named non-default
+branch tip, one enclosing ZIP root, strict full manifest and metadata schemas,
+a copied-location verifier, a separately delivered ZIP digest, byte binding of
+both executed staged verifiers to trusted builder-adjacent programs,
+bounded-manifest verification inside the staged payload,
+branch-name-independent deterministic bytes, portable path rules, exclusive
+non-overwriting publication with final inode/digest revalidation, and truthful
+Git-versus-extracted verification modes. A normal complete-suite run must
+reject a dirty checkout before stage 1, reject an unrelated enclosing Git
+root, and recheck cleanliness at stage 12.
+High-signal credential-path/private-key checks remain hygiene guards, not proof
+that arbitrary content is secret-free. A coordinated replacement of ZIP,
+manifest, verifier, and sidecar remains outside unsigned hash consistency; no
+signing infrastructure is invented here.
+
+Keep the essay body, six-family identity, public topology, Echo firebreak,
+immutable archive, and sealed Signal Foundry packet unchanged. Add explicit
+publication-time identity, copyright/license, historical-image-rights, social-
+image-rights, destination, link, accessibility, and owner-authorization gates;
+do not select a license or imply rights clearance. Remote branch/PR observations
+and final ZIP digests remain external exact-hash attestations so they do not
+invalidate the manifest-covered source narrative.
+
+**Evidence:** `qa/site/PUBLIC_SURFACE_ACCESSIBILITY_NAVIGATION_QA_2026-08-30_76ade6e.md`;
+`qa/applied/MACHINE_RECEIPT_CONTRACT_ULTRA_QA_2026-08-30_76ade6e.md`;
+`qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md`;
+`qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md`; focused source,
+browser, mutation, package-race, extraction, and publication-gate checks.
+The final clean exact-commit owner-review sequence and external ZIP/readback
+attestation remain terminal requirements, not evidence already produced here.
+
+**Governing requirement:** A01, A03, A06–A08, A11, A13–A17; D-036, D-040,
+D-046–D-049; locked owner intent; exact provenance; controlled dispositions;
+progressive disclosure; proportionality; two-project separation; and no
+prohibited external action.

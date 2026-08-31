@@ -110,6 +110,21 @@ does not change the human essay, six families, public topology, Echo, or the
 sealed Signal Foundry packet, and it is not accessibility, effectiveness, or
 security-defense evidence.
 
+The final red/blue ultra correction also remains v16. It repairs the actual
+Echo callout states, gives rendered source documents exact stable destinations,
+reveals nested fragment targets without focus theft, keeps review and unreleased
+public output fail-closed, and lets the short heading state human function
+before the internal framework name. It reconciles memory use with selected
+influence, tightens receipt identity/budget/origin/consequence rules, and makes
+the general untrusted-payload data/control boundary procedural and explicit
+without claiming a security defense. It also adds a deterministic complete
+exact-commit owner-ZIP construction and verification path, strict copied-
+extraction verification, dual clean-tree checks, race-safe non-overwrite
+behavior, and explicit identity/rights/release gates alongside the existing
+bounded manifest. These are presentation,
+contract, and private-transfer corrections—not v17, a digital signature,
+rights clearance, a study, a result, a deployment, or a publication.
+
 ## The Echo Problem sequence
 
 | Version | Role | Status |

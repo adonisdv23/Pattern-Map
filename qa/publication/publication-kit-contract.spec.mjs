@@ -29,6 +29,13 @@ assert.match(readme, /DO NOT POST, SEND, DEPLOY, OR\s+PUBLISH/);
 for (const token of ["UNRESOLVED", "UNSET", "NOT GRANTED", "noindex,nofollow", "separate unrun project"]) {
   assert.match(readme, new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `README lost fail-closed token: ${token}`);
 }
+for (const rightsBoundary of [
+  "Code/content license or all-rights-reserved posture",
+  "Historical/social-image rights and attribution",
+]) {
+  assert.match(readme, new RegExp(rightsBoundary.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `README lost rights boundary: ${rightsBoundary}`);
+}
+assert.match(readme, /Repository visibility does\s+not select reuse rights/, "README lost the no-inferred-license boundary");
 
 for (const phrase of [
   "NO MENTOR CONTACT HAS OCCURRED",
@@ -70,10 +77,19 @@ for (const phrase of [
   "Owner and content gates",
   "Human and accessibility gates",
   "Action and claim audit",
+  "Rights, licensing, and attribution gates",
   "exact proposed artifact and channel",
   "HOLD / NOT AUTHORIZED",
 ]) {
   assert.match(checklist, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `release checklist lost ${phrase}`);
+}
+for (const rightsBoundary of [
+  "Code license / reuse posture",
+  "Prose, site, and documentation rights notice",
+  "Historical/third-party visual rights and attribution",
+  "An absent license is not permission to choose one",
+]) {
+  assert.match(checklist, new RegExp(rightsBoundary.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `release checklist lost rights boundary: ${rightsBoundary}`);
 }
 for (const token of ["UNRESOLVED", "UNSET", "NOT AUTHORIZED", "NOT GRANTED", "noindex,nofollow"]) {
   assert.match(checklist, new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `release checklist lost fail-closed token: ${token}`);

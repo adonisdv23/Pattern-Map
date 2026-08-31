@@ -565,3 +565,53 @@ result.
 No item authorizes merge, deployment, publication, Release creation,
 research/provider/participant execution, dataset acquisition, preregistration,
 outreach, spend, or a statement that an unrun design produced a result.
+
+## Final red/blue ultra dispositions — 2026-08-30
+
+Independent site/accessibility, receipt-contract, and owner-package lanes
+challenged exact starting checkpoint
+`76ade6e2c255151e32ddd9cbb3d4650cf46570d1`. The package lane continued as a
+hostile blue team while the integrator applied reproduced corrections. Direct
+in-app browser checks then exercised the rendered successor at 1440×900,
+390×844, and 320×800. This is static, structural, deterministic, rendered, and
+advisory-model evidence—not owner approval, a physical accessibility pass, a
+security result, a study, or proof of framework effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| U50-SITE-01 | Leave the Echo callout's low-contrast normal/hover link states and token-only contrast assertions | **Accepted with revision** | The actual purple surface failed normal-text contrast and the prior PASS label exceeded tested state pairs | Site palette, state selectors, contrast contract | A06/A13; actual normal/visited/hover/focus pairs meet the named thresholds |
+| U50-SITE-02 | Route source-labeled documents through coarse filename/section fallbacks and link the Echo callout to itself | **Accepted with revision** | A reader needs the exact rendered document or an honest owner-package reference | Renderer, stable IDs, standalones, navigation contract | A06/A11/A13; 11 exact rendered targets plus non-link repository paths |
+| U50-SITE-03 | Reveal closed fragment targets only when a reader manually opens their disclosures | **Accepted with revision** | Initial, changed, nested, malformed, and same-hash navigation need one focus-neutral rule | Shared runtime and mentor/Echo targets | Browser and source contract: disclosure opens, native hash remains, focus stays on the initiating context/body |
+| U50-SITE-04 | Keep the internal framework name as the short entry's heading | **Accepted with revision** | The first short heading should state human function; the approved 250-word body and all six families remain unchanged | Ninety-second manuscript and Home render | A01/A04; reader-language contract and rendered Home inspection |
+| U50-REC-01 | Allow memory-use and selected-influence sets, withheld use, and duplicate IDs to disagree | **Accepted with revision** | The receipt must make the claimed influence boundary inspectable exactly | Applied validator, fixtures, templates | A08/A11; permanent mismatch/duplicate/dual-disposition mutations fail |
+| U50-REC-02 | Accept arbitrary fixture status, extra or nonfinite budget fields, Boolean memory versions, explicit origin contradictions, or consequence `UNKNOWN` on answer routes | **Accepted with revision** | Each case collapses an existing typed distinction; `UNKNOWN` must remain available only on a non-answer route | Applied validator and tracked fixtures | Exact-shape, type, range, symmetry, and route controls pass |
+| U50-REC-03 | Treat imported, retrieved, tool-returned, linked, and quoted payload directives as possible control or permission | **Rejected** | Payload content may inform evidence but cannot manufacture authority, permission, policy, or an action grant; the implemented alternative is a procedural data/control boundary | Agent brief, guides, playbook, acquisition template | A07/A08/A11; source assertions and hostile examples pass |
+| U50-REC-04 | Describe the procedural data/control boundary as prompt-injection resistance or a production-security defense | **Rejected** | No adversarial system evaluation or security proof was run | Framework limits and QA report | A11/A15/A16; explicit no-security-guarantee language |
+| U50-PKG-01 | Call a branch-dependent ZIP deterministic, overwrite output after a race, or ship a stale bounded manifest | **Accepted with revision** | Exact-commit identity, non-overwrite behavior, and the nested bounded seal are recipient-critical | Complete builder and adversarial tests | Same-commit renamed-branch bytes match; unowned race targets survive; stale bounded seal blocks build |
+| U50-PKG-02 | Permit non-portable/colliding paths, Boolean schema versions, impossible dates, extra empty directories, or execute-bit-dependent recipient commands | **Accepted with revision** | A copied extraction must fail closed across ordinary extractors and strict schema parsing | Builder, wrapper verifier, START_HERE, mutations | Portable-path, strict JSON/date, exact-directory, and `sh` execution controls pass |
+| U50-PKG-03 | Let the full runner report a complete PASS after starting or ending dirty | **Rejected** | Normal mode requires a clean source boundary before expensive work and must detect mutations produced during the suite; the implemented alternative uses dual cleanliness checks | Canonical 12-stage runner | Early preflight plus stage-12 tracked/untracked recheck; extracted Git stages remain `NOT RUN` |
+| U50-PKG-04 | Present path/marker scanning as proof that no arbitrary secret exists | **Rejected** | `.netrc`, `.pypirc`, common credential paths, and private-key markers are useful high-signal guards only | Builder and recipient guidance | Guard scope is explicit; author remains responsible for the exact committed tree |
+| U50-PKG-05 | Execute the exact commit's copied-extraction verifier without binding it to the trusted builder-adjacent program | **Accepted** | A malicious or stale committed verifier could otherwise approve its own altered payload | Complete builder and hostile committed-verifier fixture | Stable non-symlink trusted bytes must match before staging or execution; a committed PASS stub blocks construction |
+| U50-PKG-06 | Treat exclusive link creation as sufficient after a source swap or final-ZIP replacement race | **Accepted with revision** | The builder must not return success for bytes other than the exact invocation-owned ZIP and sidecar it verified | Publication boundary and injected race tests | Source/destination inode identity, no-follow re-open, final ZIP rehash, exact sidecar bytes, and final inode reassertion |
+| U50-PKG-07 | Let an extracted repository nested inside an unrelated Git checkout impersonate a complete source checkout | **Accepted** | Being inside some Git worktree does not establish that the extracted Pattern Map root is that worktree's root | Canonical 12-stage runner and nested-repository regression | Physical `git --show-toplevel` must equal the physical project root before stage 1; otherwise use extracted mode |
+| U50-PKG-08 | Follow a symlinked bounded owner-review manifest in recipient or author mode | **Accepted** | The manifest is a control file and must not resolve outside its repository path | Bounded writer/verifier and symlink mutation | Every parent stays local and non-symlink; the manifest must remain a regular repository file before parse or write |
+| U50-PKG-09 | Author a bounded manifest or complete ZIP from detached HEAD or a default branch while claiming a feature-branch boundary | **Accepted with revision** | The executable gate must match the documented review workflow | Both authoring paths and explicit default/detached controls | Clean named non-default branch required; exact commit and optional upstream equality remain independently enforced |
+| U50-PKG-10 | Reapply active-tree cache exclusions to immutable archive paths after adding the ZIP wrapper prefix | **Accepted** | The repository correctly preserves historical cache artifacts, and wrapper-relative portability checks must not misclassify them as active generated output | Complete builder path policy and every full-build fixture | Portable-path validation is separate from repository hygiene; archived `__pycache__` remains allowed and the real tracked tree is preflighted |
+| U50-PUB-01 | Select a license or treat local copy/configuration checks as publication authorization or rights clearance | **Rejected** | Rights, identity, destination, metadata, accessibility, and owner authorization are human/publication-time facts; the implemented alternative is an explicit fail-closed gate set | Publication checklist, README, contract | Current fields remain fail-closed and no publication action occurred |
+| U50-SCOPE-01 | Add a new route, dashboard, score, security subsystem, seventh family, empirical run, Echo change, or Signal-packet reseal | **Rejected** | No reproduced defect requires topology expansion or broader authority | No new architecture or cross-project mutation | Owner intent, A01–A03/A09–A12/A15–A17, removal test |
+
+The deeper owner-package pass reproduced three further P1s—the unbound copied
+verifier, publication-race success, and a wrapper-prefixed archive-policy
+misclassification that would block the real ZIP—and three further P2 classes:
+unrelated nested Git roots, a symlinked bounded manifest, and
+detached/default-branch authoring. Each is now corrected and covered by a
+permanent hostile control. The complete nine-test package suite passes after
+revision, leaving no reproduced P0/P1. Production-tree test cost and the deliberately
+non-comprehensive secret guard remain documented P3 limitations. Manual
+owner/mentor, physical-keyboard, supported screen-reader, real zoom,
+forced-colors, native-print, hardware-touch, and publication-time checks remain
+open.
+
+No disposition authorizes merge, deployment, publication, Release creation,
+research/provider/participant execution, dataset acquisition, preregistration,
+outreach, spend, or a claim that an unrun design produced a result.

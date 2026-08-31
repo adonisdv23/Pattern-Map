@@ -88,10 +88,28 @@ bitmap, study, provider, external registry, or Signal Foundry mutation. Its
 bounded record is
 [`ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md`](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md).
 
+The final red/blue ultra pass keeps that scope and closes three recipient-facing
+seams: exact rendered-document navigation and Echo callout states; exact
+memory/influence, budget, origin, consequence, and untrusted-payload receipt
+boundaries; and a deterministic complete exact-commit owner ZIP with staged
+bounded-manifest verification, copied-extraction checks, and race-safe
+non-overwrite behavior. Its integrated and package-control records are linked
+in the review path below. It adds no route, family, security claim, rights
+clearance, study, or publication action.
+
 The exact current branch and draft pull-request state is recorded in
 [`BRANCH_AND_PR_STATE.md`](BRANCH_AND_PR_STATE.md) and must be resolved at use.
 Earlier draft pull requests remain review history. None authorizes a merge,
 deployment, or publication.
+
+If this material arrived as a ZIP rather than a Git checkout, begin with
+[`START_HERE_OWNER_REVIEW.md`](START_HERE_OWNER_REVIEW.md). Verify the original
+ZIP against its separately delivered sidecar, extract into a new empty
+directory, and run the wrapper-root `VERIFY_PACKAGE.py`. The bounded manifest
+in this directory is a selected-artifact control, not the full ZIP inventory.
+Complete Git-tip, canonical Signal-packet, and authored-diff checks require a
+Git clone/worktree and must be reported `NOT RUN` in extracted mode. Never use
+the author-only manifest-writing mode to verify received bytes.
 
 ## Recommended review path
 
@@ -130,8 +148,12 @@ deployment, or publication.
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [opportunity-expansion terminal QA](../qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md),
    [ultra-finalization terminal QA](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md),
-   [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
-   manifest.
+   [extended ultra opportunity QA](../qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md),
+   [final red/blue ultra QA](../qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md),
+   [owner-package control ultra QA](../qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md),
+   [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), this package's bounded
+   selected-artifact manifest, and—when reviewing a built owner ZIP—the wrapper-
+   root full payload manifest, copied-location verifier, and external ZIP sidecar.
 9. If the owner is preparing a private mentor review or rehearsing a possible
    later public explanation, open the optional
    [publication-rehearsal kit](../publication/README.md). It remains unsent,
@@ -184,6 +206,13 @@ the semantic accessibility route.
   progressive disclosure plus a static equivalent. Release output fails closed
   until a later authorized step supplies valid publication identity and
   absolute-HTTPS metadata; ordinary previews remain `noindex,nofollow`.
+- A complete owner-review package builder that reads every payload byte from
+  one exact clean Git tip, produces branch-name-independent deterministic ZIP
+  bytes, reruns the committed bounded verifier inside the staged repository,
+  verifies a copied extraction, and publishes the ZIP and external digest only
+  through exclusive non-overwriting operations. Wrapper-root verification is
+  complete file-set/hash consistency without `.git`; it is not a digital
+  signature, secret-absence proof, publication, or release.
 - A deterministic exact-commit Signal Foundry portable builder with one plain
   `START_HERE.md`, copyable downstream prompt, sorted per-file path/byte/hash
   manifest, standard-library verifier, whole-ZIP checksum sidecar, source-path
@@ -208,7 +237,7 @@ the semantic accessibility route.
 ## Verification summary
 
 The twelve-stage clone-contained sequence can be replayed with
-`qa/run_owner_review_checks.sh`. Supplying `--source-zip PATH` additionally
+`sh qa/run_owner_review_checks.sh`. Supplying `--source-zip PATH` additionally
 checks the exact owner-local v15.2 distribution container; the default run
 still verifies its complete extracted accession, manifest, sidecar, and hash
 anchors without pretending the external ZIP lives in Git.
@@ -329,6 +358,10 @@ gate. Please record the following before calling v16 fully accepted:
 6. Inspect browser print preview for the principal and key secondary routes.
 7. Inspect forced-colors behavior and hardware-touch activation on navigation,
    term helpers, Map focus, and Apply.
+8. Before any separately authorized publication, choose the byline, canonical
+   URL, destination, social image and alternative text, code/content rights or
+   license posture, and historical/social-image attribution basis; then recheck
+   live links and explicitly authorize the exact artifact and channel.
 
 The exact checklist is in `qa/FINAL_ACCEPTANCE_MATRIX_V16.md`. External source
 destinations should be reverified before any later authorized publication.

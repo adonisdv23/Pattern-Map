@@ -107,11 +107,39 @@ invented.
 Run the complete provider-free repository verification with:
 
 ```sh
-qa/run_owner_review_checks.sh
+sh qa/run_owner_review_checks.sh
 ```
 
 Pass `--source-zip PATH` only when the separately preserved exact v15.2 ZIP is
 available and its container hash should also be checked.
+
+If you received an owner-review ZIP rather than a Git checkout, begin with
+[`handoff/START_HERE_OWNER_REVIEW.md`](handoff/START_HERE_OWNER_REVIEW.md).
+The extracted wrapper's `VERIFY_PACKAGE.py` checks every shipped path, byte
+count, and SHA-256 without Git. The repository runner's explicit
+`--extracted-package` mode can exercise additional artifact checks, but it
+labels Git-only stages `NOT RUN` and never impersonates the complete suite.
+`handoff/OWNER_REVIEW_MANIFEST_V16.json` is a bounded selected-artifact
+manifest, not the full ZIP inventory.
+
+After all source/evidence bytes are committed, pushed, and read back, an author
+can build a new deterministic exact-commit owner package outside the repository
+with:
+
+```sh
+python3 handoff/build_owner_review_bundle.py \
+  --date YYYY-MM-DD \
+  --output-dir /absolute/path/to/output-directory \
+  --require-upstream
+```
+
+That command writes one enclosing-directory, branch-name-independent ZIP and a
+separate `.sha256` sidecar. It stages exact Git blobs, reruns the committed
+bounded verifier inside the payload, verifies a copied extraction, publishes
+ZIP and sidecar exclusively without overwrite, and refuses a dirty/non-tip or
+upstream-mismatched input. It is local packaging, not publication or release.
+Recipients must never use the bounded verifier's author-only `--write` mode to
+verify received bytes.
 
 ## Repository map
 
@@ -131,7 +159,8 @@ available and its container hash should also be checked.
   candidates with a complete use ledger.
 - `archive/` — immutable historical transfers and version checkpoints.
 - `qa/` — editorial, applied, research, site, and visual acceptance evidence.
-- `handoff/` — owner-review packets, package maps, and release checksums.
+- `handoff/` — owner-review entrypoint, bounded and full-package verifiers,
+  deterministic local builders, package maps, and checksums.
 
 ## Non-result boundary
 

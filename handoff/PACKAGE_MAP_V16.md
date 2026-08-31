@@ -145,15 +145,21 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Opportunity-expansion plan and terminal QA | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`, `qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md` |
 | Ultra-finalization terminal QA | `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` — exact baseline, accepted corrections, removal decisions, deterministic/rendered evidence, Signal boundary, and manual residuals |
 | Extended ultra opportunity QA | `qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md` — bounded design/accessibility, current-source, memory-safety, and hostile receipt-contract corrections plus controlled deferrals |
+| Final red/blue ultra convergence | `qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md` — integrated rendered, receipt-contract, package, PDF, residual, and terminal-sequencing evidence |
+| Owner-package control ultra QA | `qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md` — branch-invariant exact-commit construction, staged bounded verification, copied-extraction controls, no-overwrite races, and blue-team dispositions |
 | Opportunity-expansion review loops | Three Loop 1 reports and three exact-integrated Loop 2 reports under `qa/publication/advisory/`, `qa/research/advisory/`, and `qa/applied/advisory/`; static/model review evidence only |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
 | Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |
 | Advisory ledger | `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Owner packet | `handoff/OWNER_REVIEW_PACKET_V16.md` |
+| Recipient start | `handoff/START_HERE_OWNER_REVIEW.md` — separates original-ZIP, extracted-package, and Git-checkout verification |
 | Branch/PR state | `handoff/BRANCH_AND_PR_STATE.md` |
-| Checksum manifest | `handoff/OWNER_REVIEW_MANIFEST_V16.json` |
-| Manifest verifier | `handoff/verify_owner_review_package.py` |
+| Bounded selected-artifact manifest | `handoff/OWNER_REVIEW_MANIFEST_V16.json` — canonical review entrypoints plus archive ledgers/verifiers; not a full ZIP inventory |
+| Bounded manifest verifier | `handoff/verify_owner_review_package.py` — strict recipient verification plus separately guarded author-only writing |
+| Complete exact-commit owner builder | `handoff/build_owner_review_bundle.py` — one enclosing directory, branch-name-independent deterministic bytes, staged bounded-manifest verification, full payload manifest, copied-location verification, exclusive non-overwriting ZIP/sidecar publication |
+| Extracted full-payload verifier | `handoff/verify_extracted_owner_bundle.py` — travels as wrapper-root `VERIFY_PACKAGE.py` and verifies every shipped Git file without `.git` |
+| Owner-bundle adversarial regression | `qa/handoff/test_owner_review_bundle.py` |
 
 Historical archives remain immutable. Generated site output under `site/dist/`
 and caches/dependency directories are not package artifacts and are not
