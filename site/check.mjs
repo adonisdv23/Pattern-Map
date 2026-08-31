@@ -221,7 +221,8 @@ const main = () => {
   assert(research.includes("UNRUN") && research.includes("NO RESULTS") && research.includes("NO PROVIDER OR MODEL SELECTED"), "research no-results status missing");
   assert(research.includes("separate project — unrun — no results"), "Echo status missing from research route");
   assert(research.includes('id="echo"'), "Echo section has no stable route fragment");
-  assert(research.includes('href="../research/index.html#echo"'), "Echo source route does not target the separate Echo section");
+  assert(research.includes('href="../research/index.html#echo-identity-document"'), "Echo callout does not target the rendered identity document");
+  assert(!research.includes('href="../research/index.html#echo">The Echo Problem'), "Echo callout retains its redundant section self-link");
   assert(history.includes("Historical v13 origin — not the current v16 topology."), "historical label missing");
   assert(history.includes("current relationship view"), "current/historical distinction missing");
   const metareasoningHref = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"';
@@ -289,6 +290,10 @@ const main = () => {
   assert(standalone.includes(signalFoundryStatus), "standalone export mutated Signal Foundry status");
   const htmlFiles = requiredRoutes.map((route) => path.join(DIST_DIR, route));
   for (const filePath of htmlFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href);
+  for (const html of [...htmlFiles.map(read), standalone]) {
+    assert(html.includes('data-presentation-mode="review"'), "review surface lacks explicit presentation mode");
+    assert(html.includes('<meta name="robots" content="noindex,nofollow">'), "review surface is missing noindex,nofollow");
+  }
   for (const href of localLinksIn(standalone)) {
     if (!href.startsWith("#")) continue;
     const fragment = decodeURIComponent(href.slice(1));
@@ -317,6 +322,29 @@ const main = () => {
   }
   assert(contrastRatio(cssHexVariable(css, "focus-dark"), paper) >= 3, "dark focus ring lacks 3:1 contrast on paper");
   assert(contrastRatio(cssHexVariable(css, "focus-light"), cssHexVariable(css, "navy")) >= 3, "light focus ring lacks 3:1 contrast on dark surfaces");
+  assert(/\.boundary-banner,\s*\.source-notice,\s*\.research-status,\s*\.echo-callout\s*\{[^}]*background:\s*var\(--navy\);[^}]*color:\s*var\(--inverse-heading\)/i.test(css), "dark callouts do not declare their actual navy/heading pair");
+  assert(/\.echo-callout\s*\{[^}]*background:\s*var\(--echo-surface\)/i.test(css), "Echo callout does not declare its actual purple surface");
+  assert(/\.boundary-banner p,\s*\.source-notice p,\s*\.research-status p,\s*\.echo-callout p\s*\{\s*color:\s*var\(--inverse-body\)/i.test(css), "dark callout body text does not use the inverse-body color");
+  assert(/\.boundary-banner \.eyebrow,\s*\.source-notice \.eyebrow,\s*\.research-status \.eyebrow,\s*\.echo-callout \.eyebrow\s*\{\s*color:\s*var\(--inverse-accent\)/i.test(css), "dark callout accents do not use the inverse-accent color");
+  assert(/\.echo-callout a,\s*\.echo-callout a:visited\s*\{\s*color:\s*var\(--inverse-accent\)/i.test(css), "Echo normal/visited links do not use the inverse palette");
+  assert(/\.echo-callout a:hover\s*\{\s*color:\s*var\(--inverse-bright\)/i.test(css), "Echo hover links do not use the bright inverse color");
+  assert(/\.echo-callout a:focus-visible\s*\{[^}]*color:\s*var\(--echo-surface\);[^}]*background:\s*var\(--inverse-bright\);[^}]*box-shadow:\s*0 0 0 6px var\(--inverse-accent\)/i.test(css), "Echo focus links do not declare a high-contrast text, fill, and outer indicator");
+  const darkCalloutPairs = [
+    ["navy heading", cssHexVariable(css, "inverse-heading"), cssHexVariable(css, "navy"), 4.5],
+    ["navy body", cssHexVariable(css, "inverse-body"), cssHexVariable(css, "navy"), 4.5],
+    ["navy eyebrow", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "navy"), 4.5],
+    ["Echo heading", cssHexVariable(css, "inverse-heading"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo body", cssHexVariable(css, "inverse-body"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo eyebrow", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo normal/visited link", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo hover link", cssHexVariable(css, "inverse-bright"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo focused link text", cssHexVariable(css, "echo-surface"), cssHexVariable(css, "inverse-bright"), 4.5],
+    ["Echo focus indicator", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "echo-surface"), 3],
+  ];
+  for (const [label, foreground, background, minimum] of darkCalloutPairs) {
+    const ratio = contrastRatio(foreground, background);
+    assert(ratio >= minimum, `${label} contrast is ${ratio.toFixed(2)}:1; expected at least ${minimum}:1`);
+  }
 
   const reviewManifest = JSON.parse(read(path.join(DIST_DIR, "build-manifest.json")));
   const publicManifest = JSON.parse(read(path.join(PUBLIC_DIST_DIR, "build-manifest.json")));
@@ -445,7 +473,7 @@ const main = () => {
   console.log("PASS standalone human-first opening, heading hierarchy, and unique IDs");
   console.log("PASS responsive/no-script navigation and active-route semantics");
   console.log("PASS Stage 0, descriptive term controls, mobile route brief, and medium-popover contracts");
-  console.log("PASS normal-text and dual-focus contrast thresholds");
+  console.log("PASS selected palette-on-paper, declared dark-callout state pairs, and dual-focus contrast thresholds");
   console.log("PASS standalone export exists");
   console.log("PASS shared-source review/public route, claim, family, and hash parity");
   console.log("PASS fail-closed public metadata and review-chrome removal");
@@ -454,3 +482,4 @@ const main = () => {
 };
 
 main();
+await import("../qa/site/source-navigation-disclosure-contract.spec.mjs");

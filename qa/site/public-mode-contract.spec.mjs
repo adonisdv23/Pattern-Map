@@ -195,7 +195,7 @@ for (const route of ["index.html", "read/index.html", "map/index.html", "apply/i
   assertNoSkippedHeadingLevels(read(`site/public-dist/${route}`), `public route ${route}`);
 }
 assertNoSkippedHeadingLevels(read("site/exports/standalone/pattern-map-v16-public.html"), "public standalone");
-assert.match(publicRead, /<h2 id="short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer<\/h2>/);
+assert.match(publicRead, /<h2 id="short-improve-the-room-before-the-answer">Improve the room before the answer<\/h2>/);
 
 const publicApply = read("site/public-dist/apply/index.html");
 const publicMap = read("site/public-dist/map/index.html");

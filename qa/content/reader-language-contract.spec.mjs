@@ -6,8 +6,17 @@ const build = fs.readFileSync(new URL("../../site/build.mjs", import.meta.url), 
 const styles = fs.readFileSync(new URL("../../site/src/site.css", import.meta.url), "utf8");
 const words = short.match(/\b[\w’'-]+\b/g) ?? [];
 const normalizedShort = short.replace(/\s+/g, " ");
+const shortHeading = short.match(/^#\s+(.+)$/m)?.[1] ?? "";
 
 assert.ok(words.length >= 220 && words.length <= 250, `90-second version is ${words.length} words; expected 220–250`);
+assert.equal(shortHeading, "Improve the room before the answer", "90-second heading does not lead with the human function");
+for (const internalName of ["Pattern Recognition", "Discrimination Layer"]) {
+  assert.equal(shortHeading.includes(internalName), false, `90-second heading exposes the internal name before ordinary-language meaning: ${internalName}`);
+  assert.ok(
+    short.indexOf(internalName) > short.indexOf("Those checks do not decide the answer; they improve the information available to it."),
+    `90-second version names ${internalName} before explaining the human function`,
+  );
+}
 const questions = [
   "What might the obvious path have missed?",
   "What can each source actually support?",

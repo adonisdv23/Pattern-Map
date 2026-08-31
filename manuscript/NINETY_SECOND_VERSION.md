@@ -1,4 +1,4 @@
-# Pattern Recognition: The Discrimination Layer
+# Improve the room before the answer
 
 An AI answer can sound polished yet be generic because weakness can begin
 before writing. Ask a system to assess a product release. The obvious

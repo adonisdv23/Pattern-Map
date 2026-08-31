@@ -84,70 +84,46 @@ const routeHref = (ctx, route, fragment = "") => {
 const externalHref = (href) =>
   /^https?:\/\//i.test(href) || /^mailto:/i.test(href) || /^tel:/i.test(href);
 
-const sourceRouteFor = (href) => {
-  const normalized = href.toLowerCase();
-  const mappings = [
-    ["templates/outcome_review", "apply"],
-    ["owner_intent_v16", "sources"],
-    ["thesis_and_audience_contract_v16", "sources"],
-    ["future_execution_plan", "research"],
-    ["preserved_v15_2_index", "research"],
-    ["ep_v0_1_qa", "research"],
-    ["relation_to_v16", "research"],
-    ["status_and_boundaries", "research"],
-    ["transfers/v14-complete-2026-08-18/05_historical_v13", "history"],
-    ["version_history", "history"],
-    ["pattern_recognition_v16", "read"],
-    ["ninety_second_version", "read"],
-    ["mentor_cover_note", "read"],
-    ["public_abstract", "read"],
-    ["six_families", "map"],
-    ["relationship_map", "map"],
-    ["glossary", "map"],
-    ["operator_playbook", "apply"],
-    ["implementation_choices", "apply"],
-    ["boundaries_and_failures", "boundaries"],
-    ["agent-playbook", "apply"],
-    ["framework/templates", "apply"],
-    ["cases/", "examples"],
-    ["signal-foundry", "examples"],
-    ["general-research", "examples"],
-    ["product-and-process", "examples"],
-    ["sources_and_research_route", "sources"],
-    ["claims_and_source_ledger", "sources"],
-    ["the_discrimination_layer_research_agenda", "research"],
-    ["future-studies", "research"],
-    ["the-echo-problem", "research"],
-    ["v1_1", "research"],
-    ["origin_note", "history"],
-    ["source_authority_and_lineage", "history"],
-    ["archive/", "history"],
-  ];
-  return mappings.find(([needle]) => normalized.includes(needle))?.[1] ?? null;
+const SOURCE_DESTINATIONS = new Map([
+  ["docs/ARTIFACT_BOUNDARIES.md", { route: "boundaries", fragment: "artifact-boundaries-document" }],
+  ["docs/CLAIMS_AND_SOURCE_LEDGER_V16.md", { route: "sources", fragment: "claims-ledger-document" }],
+  ["docs/SOURCE_AUTHORITY_AND_LINEAGE.md", { route: "history", fragment: "source-lineage-document" }],
+  ["manuscript/ORIGIN_NOTE.md", { route: "history", fragment: "origin-note-document" }],
+  ["research/README.md", { route: "research", fragment: "research-overview-document" }],
+  ["research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md", { route: "research", fragment: "research-agenda-document" }],
+  ["research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md", { route: "research", fragment: "dl-playbook-protocol-document" }],
+  ["research/the-echo-problem/README.md", { route: "research", fragment: "echo-identity-document" }],
+  ["research/the-echo-problem/STATUS_AND_BOUNDARIES.md", { route: "research", fragment: "echo-status-document" }],
+  ["archive/README.md", { route: "history", fragment: "archive-index-document" }],
+  ["archive/v13/README.md", { route: "history", fragment: "archive-v13-document" }],
+]);
+
+const sourceRouteFor = (sourcePath) => SOURCE_DESTINATIONS.get(sourcePath)?.route ?? null;
+
+const sourceFragmentFor = (sourcePath) => SOURCE_DESTINATIONS.get(sourcePath)?.fragment ?? "";
+
+const repositorySourcePathFor = (href, sourcePath) => {
+  if (!sourcePath) throw new Error(`Local Markdown link lacks a source-document path: ${href}`);
+  const withoutFragment = href.split("#", 1)[0];
+  const withoutQuery = withoutFragment.split("?", 1)[0];
+  const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(sourcePath), withoutQuery));
+  if (!resolved || resolved === "." || resolved.startsWith("../") || path.posix.isAbsolute(resolved)) {
+    throw new Error(`Local Markdown link escapes the owner package: ${sourcePath} -> ${href}`);
+  }
+  return resolved;
 };
 
-const sourceFragmentFor = (href) => {
-  const normalized = href.toLowerCase();
-  const echoSources = [
-    "the-echo-problem",
-    "future_execution_plan",
-    "preserved_v15_2_index",
-    "ep_v0_1_qa",
-    "relation_to_v16",
-    "status_and_boundaries",
-    "v1_1",
-  ];
-  return echoSources.some((needle) => normalized.includes(needle)) ? "echo" : "";
-};
-
-const siteSourceHref = (href, ctx) => {
-  if (externalHref(href)) return href;
-  if (href.startsWith("#")) return href;
-  const [withoutQuery, query = ""] = href.split("?");
-  const [withoutFragment, fragment = ""] = withoutQuery.split("#");
-  const route = sourceRouteFor(withoutFragment);
-  if (!route) throw new Error(`Unmapped local Markdown link: ${href}`);
-  return routeHref(ctx, route, fragment || sourceFragmentFor(withoutFragment) || query || "");
+const siteSourceDestination = (href, ctx, sourcePath) => {
+  if (externalHref(href)) return { kind: "external", href };
+  if (href.startsWith("#")) return { kind: "rendered", href };
+  const repositoryPath = repositorySourcePathFor(href, sourcePath);
+  const route = sourceRouteFor(repositoryPath);
+  if (!route) return { kind: "owner-package", repositoryPath };
+  return {
+    kind: "rendered",
+    href: routeHref(ctx, route, sourceFragmentFor(repositoryPath)),
+    repositoryPath,
+  };
 };
 
 // Canonical route and status identifiers use underscores. This deliberately
@@ -158,7 +134,7 @@ const applyEmphasis = (value) =>
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>");
 
-const inlineMarkdown = (value, ctx) => {
+const inlineMarkdown = (value, ctx, sourcePath = "") => {
   const tokens = [];
   const storeToken = (html) => {
     const token = `\uE000${tokens.length}\uE001`;
@@ -184,9 +160,11 @@ const inlineMarkdown = (value, ctx) => {
     storeToken(`<span class="inline-media-note">[${formatLabel(alt)}: ${escapeHtml(href)}]</span>`)
   );
   output = output.replace(/\[([^\]]+)\]\(((?:[^()]|\([^()]*\))*)\)/g, (_, label, href) => {
-    const resolved = siteSourceHref(href, ctx);
-    const external = externalHref(href);
-    return storeToken(`<a href="${escapeAttribute(resolved)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${formatLabel(label)}</a>`);
+    const destination = siteSourceDestination(href, ctx, sourcePath);
+    if (destination.kind === "owner-package") {
+      return storeToken(`<span class="owner-package-reference">${formatLabel(label)} <span class="owner-package-path">Owner package path: <code>${escapeHtml(destination.repositoryPath)}</code></span></span>`);
+    }
+    return storeToken(`<a href="${escapeAttribute(destination.href)}"${destination.kind === "external" ? ' target="_blank" rel="noreferrer"' : ""}>${formatLabel(label)}</a>`);
   });
   return restoreTokens(applyEmphasis(escapeHtml(output)));
 };
@@ -211,6 +189,7 @@ const renderMarkdown = (markdown, options = {}) => {
     idPrefix = "",
     stripMermaid = false,
     headingIdCounts = new Map(),
+    sourcePath = "",
   } = options;
   const lines = markdown.replaceAll("\r\n", "\n").split("\n");
   const output = [];
@@ -218,7 +197,7 @@ const renderMarkdown = (markdown, options = {}) => {
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
-    output.push(`<p>${inlineMarkdown(paragraph.join(" "), ctx)}</p>`);
+    output.push(`<p>${inlineMarkdown(paragraph.join(" "), ctx, sourcePath)}</p>`);
     paragraph = [];
   };
 
@@ -254,7 +233,7 @@ const renderMarkdown = (markdown, options = {}) => {
     if (heading) {
       flushParagraph();
       const level = Math.min(6, heading[1].length + headingOffset);
-      const text = inlineMarkdown(heading[2], ctx);
+      const text = inlineMarkdown(heading[2], ctx, sourcePath);
       const baseId = `${idPrefix}${slugify(heading[2])}`;
       const occurrence = (headingIdCounts.get(baseId) ?? 0) + 1;
       headingIdCounts.set(baseId, occurrence);
@@ -278,7 +257,7 @@ const renderMarkdown = (markdown, options = {}) => {
         quote.push(lines[index].trim().replace(/^>\s?/, ""));
         index += 1;
       }
-      output.push(`<blockquote>${renderMarkdown(quote.join("\n"), { ctx, headingOffset, idPrefix, stripMermaid, headingIdCounts })}</blockquote>`);
+      output.push(`<blockquote>${renderMarkdown(quote.join("\n"), { ctx, headingOffset, idPrefix, stripMermaid, headingIdCounts, sourcePath })}</blockquote>`);
       continue;
     }
 
@@ -291,10 +270,10 @@ const renderMarkdown = (markdown, options = {}) => {
         rows.push(tableCells(lines[index]));
         index += 1;
       }
-      const headerHtml = header.map((cell) => `<th scope="col">${inlineMarkdown(cell, ctx)}</th>`).join("");
+      const headerHtml = header.map((cell) => `<th scope="col">${inlineMarkdown(cell, ctx, sourcePath)}</th>`).join("");
       const rowsHtml = rows.map((row) => {
         const cells = header.map((_, cellIndex) => row[cellIndex] ?? "");
-        return `<tr>${cells.map((cell) => `<td>${inlineMarkdown(cell, ctx)}</td>`).join("")}</tr>`;
+        return `<tr>${cells.map((cell) => `<td>${inlineMarkdown(cell, ctx, sourcePath)}</td>`).join("")}</tr>`;
       }).join("");
       output.push(`<div class="table-wrap"><table><thead><tr>${headerHtml}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`);
       continue;
@@ -315,7 +294,7 @@ const renderMarkdown = (markdown, options = {}) => {
         }
       }
       const tag = ordered ? "ol" : "ul";
-      output.push(`<${tag}>${items.map((item) => `<li>${inlineMarkdown(item, ctx)}</li>`).join("")}</${tag}>`);
+      output.push(`<${tag}>${items.map((item) => `<li>${inlineMarkdown(item, ctx, sourcePath)}</li>`).join("")}</${tag}>`);
       continue;
     }
 
@@ -631,7 +610,7 @@ const renderFooter = (ctx) => isPublic(ctx) ? `
 
 const renderPublicationMetadata = ({ title, intro, ctx, active }) => {
   if (!isPublic(ctx)) {
-    return '<meta name="description" content="Pattern Recognition / The Discrimination Layer v16 — local owner-review site.">';
+    return '<meta name="description" content="Pattern Recognition / The Discrimination Layer v16 — local owner-review site.">\n  <meta name="robots" content="noindex,nofollow">';
   }
   const homeShareTitle = "AI slop often begins before the model writes a word.";
   const homeShareDescription = "AI answers inherit what was found, missed, compared, and remembered before generation. Pattern Map makes those upstream choices visible, challengeable, and proportionate.";
@@ -878,9 +857,9 @@ const renderRead = (ctx) => {
     return `
   <section class="reading-route public-reading-route" id="read-idea" data-reading-route>
     <section class="short-entry reading-column reading-section public-short-entry" id="read-quick" data-reading-section aria-label="Cumulative 60–90 second version"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p>${short}</section>
-    <nav class="public-reading-next" aria-label="Continue reading"><a href="#read-essay"><span>Continue</span><strong>Read the complete thought</strong></a><a href="#read-mentor"><span>Optional</span><strong>Open the mentor handoff</strong></a></nav>
+    <nav class="public-reading-next" aria-label="Continue reading"><a href="#read-essay"><span>Continue</span><strong>Read the complete thought</strong></a><a href="#mentor-handoff-document"><span>Optional</span><strong>Open the mentor handoff</strong></a></nav>
     <section class="essay-section reading-section" id="read-essay" data-reading-section aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2>${essaySourceNote}</div><article class="reading-column essay-content">${essay}</article></section>
-    <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column">${cover}</div></details></section>
+    <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details id="mentor-handoff-disclosure"><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column" id="mentor-handoff-document">${cover}</div></details></section>
     <section class="abstract-box" aria-labelledby="abstract-heading"><details><summary id="abstract-heading">Public abstract</summary><div class="reading-column">${abstract}</div></details></section>
   </section>`;
   }
@@ -896,7 +875,7 @@ const renderRead = (ctx) => {
     <blockquote class="pull-quote"><p>“The answer inherits those upstream choices.”</p><cite>Frozen v16 standfirst</cite></blockquote>
     <section class="short-entry reading-column reading-section" id="read-quick" data-reading-section aria-labelledby="read-short-heading"><p class="eyebrow">CUMULATIVE 60–90 SECOND VERSION</p><h2 id="read-short-heading">The broad idea first.</h2>${short}</section>
     <section class="essay-section reading-section" id="read-essay" data-reading-section aria-labelledby="complete-essay-heading"><div class="section-heading"><p class="eyebrow">COMPLETE HUMAN THOUGHT PIECE</p><h2 id="complete-essay-heading">Pattern Recognition: The Discrimination Layer</h2>${essaySourceNote}</div><article class="reading-column essay-content">${essay}</article></section>
-    <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column">${cover}</div></details></section>
+    <section class="optional-handoff reading-section" id="read-mentor" data-reading-section aria-labelledby="mentor-heading"><details id="mentor-handoff-disclosure"><summary id="mentor-heading">Optional handoff: cover note for mentor review</summary><div class="reading-column" id="mentor-handoff-document">${cover}</div></details></section>
     <section class="abstract-box" aria-labelledby="abstract-heading"><details><summary id="abstract-heading">Public abstract and concise metadata context</summary><div class="reading-column">${abstract}</div></details></section>
     ${renderSourceManifest("read", ctx)}
   </section>`;
@@ -1059,24 +1038,25 @@ const renderBoundaries = (ctx) => `
     <div class="boundary-banner"><p class="eyebrow">CLAIM + AUTHORITY BOUNDARY</p><h2>Make upstream choices visible without pretending they are settled science.</h2><p>The framework is a design proposal and a set of testable questions. A fixture, validator, protocol, case, or review can establish integrity or inspectability; it is not an effectiveness result.</p></div>
     <div class="source-markdown long-source">${renderMarkdown(readText("framework/BOUNDARIES_AND_FAILURES.md"), { ctx, headingOffset: 1, idPrefix: "boundaries-source-" })}</div>
     <section class="firebreak-grid" aria-label="Permanent project boundaries"><article><p class="eyebrow">TWO PROJECTS</p><h3>V16 is broad.</h3><p>The Echo Problem is a separate origin-accounting research track. Removing it leaves the six-family idea intact.</p></article><article><p class="eyebrow">HUMAN JUDGMENT</p><h3>Scaffold the floor; do not automate the ceiling.</h3><p>Comparison, memory, gap detection, and source tracing can be scaffolded. Taste, accountability, permission, contextual judgment, and consequential authority remain human.</p></article><article><p class="eyebrow">WHEN NOT TO USE IT</p><h3>Ordinary is a valid route.</h3><p>Use less structure for creative transformations, supplied-input formatting, reversible low-stakes work, or any task where the record would cost more than the consequence of being wrong.</p></article></section>
-    <section class="artifact-boundaries"><details><summary>Artifact firebreaks and the five collapse tests</summary><div class="source-markdown">${renderMarkdown(readText("docs/ARTIFACT_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "artifact-boundary-" })}</div></details></section>
+    <section class="artifact-boundaries"><details id="artifact-boundaries-disclosure"><summary>Artifact firebreaks and the five collapse tests</summary><div class="source-markdown" id="artifact-boundaries-document">${renderMarkdown(readText("docs/ARTIFACT_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "artifact-boundary-", sourcePath: "docs/ARTIFACT_BOUNDARIES.md" })}</div></details></section>
     ${renderSourceManifest("boundaries", ctx)}
   </section>`;
 
 const renderSources = (ctx) => `
   <section class="sources-route" id="sources">
     <div class="source-notice"><p class="eyebrow">TARGETED, NOT EXHAUSTIVE</p><h2>Sources are a wayfinding route, not a literature-defense opening.</h2><p>The links below inherit their status from the canonical source files. They are not presented as newly reverified for public release. Re-verify links before any future publication.</p></div>
-    <div class="source-markdown long-source">${renderMarkdown(readText("manuscript/SOURCES_AND_RESEARCH_ROUTE.md"), { ctx, headingOffset: 1, idPrefix: "sources-route-" })}</div>
-    <details class="claims-source"><summary>Claims and source ledger</summary><div class="source-markdown">${renderMarkdown(readText("docs/CLAIMS_AND_SOURCE_LEDGER_V16.md"), { ctx, headingOffset: 2, idPrefix: "claims-ledger-" })}</div></details>
+    <div class="source-markdown long-source" id="sources-route-document">${renderMarkdown(readText("manuscript/SOURCES_AND_RESEARCH_ROUTE.md"), { ctx, headingOffset: 1, idPrefix: "sources-route-", sourcePath: "manuscript/SOURCES_AND_RESEARCH_ROUTE.md" })}</div>
+    <details class="claims-source" id="claims-ledger-disclosure"><summary>Claims and source ledger</summary><div class="source-markdown" id="claims-ledger-document">${renderMarkdown(readText("docs/CLAIMS_AND_SOURCE_LEDGER_V16.md"), { ctx, headingOffset: 2, idPrefix: "claims-ledger-", sourcePath: "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md" })}</div></details>
     ${renderSourceManifest("sources", ctx)}
   </section>`;
 
 const renderResearch = (ctx) => `
   <section class="research-route" id="research">
     <div class="research-status"><span class="status-dot" aria-hidden="true"></span><div><p class="eyebrow">RESEARCH ROUTE / STATUS</p><h2>UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED</h2><p>This route describes future questions and boundaries only. It does not authorize a model call, provider selection, participant activity, dataset acquisition, preregistration, publication, deployment, or spend.</p></div></div>
-    <div class="source-markdown long-source">${renderMarkdown(readText("research/README.md"), { ctx, headingOffset: 1, idPrefix: "research-readme-" })}${renderMarkdown(readText("research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md"), { ctx, headingOffset: 1, idPrefix: "research-agenda-" })}</div>
-    <details class="protocol-source"><summary>Future protocol candidate: DL-PLAYBOOK-01 v0.1 — specification only</summary><div class="source-markdown">${renderMarkdown(readText("research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md"), { ctx, headingOffset: 2, idPrefix: "protocol-" })}</div></details>
-    <section class="echo-section" id="echo" aria-labelledby="echo-heading"><div class="echo-callout"><p class="eyebrow">SEPARATE PROJECT / RESEARCH TRACK 01</p><h2 id="echo-heading">The Echo Problem — separate project — unrun — no results</h2><p>Echo is a v15.2-derived origin-accounting project. Its preserved protocol, fixtures, harness, prior art, and unfavorable-result classes remain in its own track. V16 uses common-origin recurrence as one worked example; it does not borrow results or let Echo define the map.</p><p><a href="${routeHref(ctx, "research", "echo")}">The Echo Problem — separate project — unrun — no results</a></p></div><details><summary>Read the Echo identity and exact no-results status</summary><div class="source-markdown">${renderMarkdown(readText("research/the-echo-problem/README.md"), { ctx, headingOffset: 2, idPrefix: "echo-readme-" })}${renderMarkdown(readText("research/the-echo-problem/STATUS_AND_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "echo-status-" })}</div></details></section>
+    <div class="source-markdown long-source" id="research-overview-document">${renderMarkdown(readText("research/README.md"), { ctx, headingOffset: 1, idPrefix: "research-readme-", sourcePath: "research/README.md" })}</div>
+    <div class="source-markdown long-source" id="research-agenda-document">${renderMarkdown(readText("research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md"), { ctx, headingOffset: 1, idPrefix: "research-agenda-", sourcePath: "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md" })}</div>
+    <details class="protocol-source" id="dl-playbook-protocol-disclosure"><summary>Future protocol candidate: DL-PLAYBOOK-01 v0.1 — specification only</summary><div class="source-markdown" id="dl-playbook-protocol-document">${renderMarkdown(readText("research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md"), { ctx, headingOffset: 2, idPrefix: "protocol-", sourcePath: "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md" })}</div></details>
+    <section class="echo-section" id="echo" aria-labelledby="echo-heading"><div class="echo-callout"><p class="eyebrow">SEPARATE PROJECT / RESEARCH TRACK 01</p><h2 id="echo-heading">The Echo Problem — separate project — unrun — no results</h2><p>Echo is a v15.2-derived origin-accounting project. Its preserved protocol, fixtures, harness, prior art, and unfavorable-result classes remain in its own track. V16 uses common-origin recurrence as one worked example; it does not borrow results or let Echo define the map.</p><p><a href="${routeHref(ctx, "research", "echo-identity-document")}">Open the exact Echo identity and no-results record</a></p></div><details id="echo-documents-disclosure"><summary>Read the Echo identity and exact no-results status</summary><div class="source-markdown" id="echo-identity-document">${renderMarkdown(readText("research/the-echo-problem/README.md"), { ctx, headingOffset: 2, idPrefix: "echo-readme-", sourcePath: "research/the-echo-problem/README.md" })}</div><div class="source-markdown" id="echo-status-document">${renderMarkdown(readText("research/the-echo-problem/STATUS_AND_BOUNDARIES.md"), { ctx, headingOffset: 2, idPrefix: "echo-status-", sourcePath: "research/the-echo-problem/STATUS_AND_BOUNDARIES.md" })}</div></details></section>
     ${renderSourceManifest("research", ctx)}
   </section>`;
 
@@ -1087,7 +1067,7 @@ const renderHistory = (ctx) => {
     <div class="history-intro"><p class="eyebrow">LINEAGE WITHOUT MYTHOLOGY</p><h2>V13 is an origin anchor, not today's topology.</h2><p>V16 returns to the broad reader problem and keeps the six families visible. V14 and v15 contributed rigor and limits; v15.2 is the source checkpoint for the separate Echo project.</p></div>
     <div class="lineage-grid"><article><span class="lineage-step">v13</span><h3>Historical origin</h3><p>Broad reader problem, six-family ambition, and the original visual map. Preserved as historical material.</p></article><article><span class="lineage-step">v14–v15</span><h3>Rigor and restraint</h3><p>Accessibility, terminology, implementation alternatives, prior-art caution, and explicit limits.</p></article><article><span class="lineage-step">v15.2 → EP v0.1</span><h3>Separate Echo track</h3><p>Origin accounting with an explicit no-results boundary. It does not redefine v16.</p></article><article><span class="lineage-step">v16</span><h3>Current broad map</h3><p>Pattern Recognition / The Discrimination Layer, organized around the six families and a human-correctable responsibility.</p></article></div>
     <section class="historical-figure" aria-labelledby="historical-heading"><p class="eyebrow">PRESERVED ASSET / HASH-ANCHORED</p><h2 id="historical-heading">Historical v13 origin — not the current v16 topology.</h2><figure><img src="${escapeAttribute(imageSrc)}" alt="Historical v13 Pattern Recognition diagram showing the original six-family visual map. This image is not the current v16 topology." loading="lazy"><figcaption><strong>Historical v13 origin — not the current v16 topology.</strong> The current relationship view is the code-native map on the Explore route. The recovered asset is shown for continuity only.</figcaption></figure></section>
-    <section class="history-notes"><div class="source-markdown long-source">${renderMarkdown(readText("manuscript/ORIGIN_NOTE.md"), { ctx, headingOffset: 1, idPrefix: "origin-note-" })}${renderMarkdown(readText("docs/SOURCE_AUTHORITY_AND_LINEAGE.md"), { ctx, headingOffset: 1, idPrefix: "lineage-" })}</div><details><summary>Archive index and historical recovery note</summary><div class="source-markdown">${renderMarkdown(readText("archive/README.md"), { ctx, headingOffset: 2, idPrefix: "archive-readme-" })}${renderMarkdown(readText("archive/v13/README.md"), { ctx, headingOffset: 2, idPrefix: "archive-v13-" })}</div></details></section>
+    <section class="history-notes"><div class="source-markdown long-source" id="origin-note-document">${renderMarkdown(readText("manuscript/ORIGIN_NOTE.md"), { ctx, headingOffset: 1, idPrefix: "origin-note-", sourcePath: "manuscript/ORIGIN_NOTE.md" })}</div><div class="source-markdown long-source" id="source-lineage-document">${renderMarkdown(readText("docs/SOURCE_AUTHORITY_AND_LINEAGE.md"), { ctx, headingOffset: 1, idPrefix: "lineage-", sourcePath: "docs/SOURCE_AUTHORITY_AND_LINEAGE.md" })}</div><details id="archive-index-disclosure"><summary>Archive index and historical recovery note</summary><div class="source-markdown" id="archive-index-document">${renderMarkdown(readText("archive/README.md"), { ctx, headingOffset: 2, idPrefix: "archive-readme-", sourcePath: "archive/README.md" })}</div><div class="source-markdown" id="archive-v13-document">${renderMarkdown(readText("archive/v13/README.md"), { ctx, headingOffset: 2, idPrefix: "archive-v13-", sourcePath: "archive/v13/README.md" })}</div></details></section>
     ${renderSourceManifest("history", ctx)}
   </section>`;
 };
