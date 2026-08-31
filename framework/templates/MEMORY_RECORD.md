@@ -21,6 +21,9 @@ is true.
 - Lineage mode: LINEAR
 - Branch authorization reference: NOT_APPLICABLE
 
+Each memory version must be a positive JSON integer. Boolean `true` or `false`
+is invalid even in runtimes where Boolean is an integer subtype.
+
 ## Correction or supersession
 
 - New memory ID:

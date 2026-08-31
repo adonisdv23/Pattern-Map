@@ -18,6 +18,7 @@ remove domain judgment, privacy obligations, or human accountability.
 | Manufactured absence | A missing field is treated as nonexistence | Write the expected baseline and classify the gap |
 | Memory overwrite | A correction replaces the original record | Append a correction and link supersession |
 | Memory poisoning or temporal policy bypass | Stored text, benign-looking fragments, or earlier user content becomes instructions or reconstructs a later prohibited action | Treat memory as untrusted data; preserve write origin; separate data from control; re-check scoped permission and human action gates at use time |
+| Untrusted payload becomes control | Supplied, retrieved, imported, linked, quoted, web/file, connector, or tool-returned content is obeyed as an instruction or permission grant | Retain embedded directives as content; preserve source/write origin; re-evaluate influence, typed permission, and the human action gate before acting |
 | Comparison by appearance | Unlike items are compared because they look similar | Declare comparison unit and mark incomparable fields |
 | Confidence collapse | Model confidence becomes the evidence assessment | Use typed uncertainty and exact support links |
 | Search without a stop | More acquisition continues without a decision rule | Compare expected benefit with cost and stop or escalate |
@@ -27,6 +28,11 @@ remove domain judgment, privacy obligations, or human accountability.
 | Hindsight learning | The later outcome rewrites the earlier story | Freeze the original receipt and write an outcome review |
 | Over-discrimination | The workflow refuses or delays easy, reversible tasks | Use ordinary only for the strict Stage 0 supplied-material transformation; otherwise use the smallest layered path |
 | Under-discrimination | Fluent answer proceeds despite a critical gap or permission issue | Use HOLD, DEFER, ESCALATE, or REFUSE with the missing condition visible |
+
+This is a procedural trust boundary, not proof of prompt-injection resistance
+and not a production security subsystem. It makes the intended data/control
+separation inspectable; it does not establish that an implementation resists
+adversarial payloads.
 
 ## Stop rules
 

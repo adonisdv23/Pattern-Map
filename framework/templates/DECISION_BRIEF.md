@@ -22,6 +22,10 @@ Status: fill before nontrivial acquisition or enrichment.
 - What a useful answer must contain:
 - What would require abstention or escalation:
 
+When consequence is UNKNOWN, do not use ANSWER or ANSWER_PROVISIONALLY; use a
+non-answer route such as CLARIFY, HOLD, ESCALATE, or DEFER until consequence is
+resolved.
+
 ## Permission envelope
 
 | Operation | Technical access | Permission state | Scope | Reason code | Reason | Resume condition |

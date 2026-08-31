@@ -42,6 +42,11 @@ established, preserve `UNKNOWN` until an authorized person or policy resolves
 its use. A selected memory item must also be `CURRENT`; retain a `SUPERSEDED`
 version only as withheld history.
 
+Selected memory IDs must exactly match memory_use.record_ids; NOT_USED permits
+no selected memory; a used memory record cannot also be withheld. The
+memory-use, selected-item, and withheld-item ID lists must contain no
+duplicates; selected non-memory evidence remains valid.
+
 This withheld-material table assumes the top-level operation is authorized and
 individual items have different states. In the current single-global-permission
 receipt, top-level `UNKNOWN`, `NOT_AUTHORIZED`, or `REVOKED` leaves both

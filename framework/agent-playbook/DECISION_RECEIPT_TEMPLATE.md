@@ -26,6 +26,10 @@ outcome, learning, influence, or family records.
 - Deadline:
 - Human action boundary:
 
+When consequence is UNKNOWN, do not use ANSWER or ANSWER_PROVISIONALLY; use a
+non-answer route such as CLARIFY, HOLD, ESCALATE, or DEFER until consequence is
+resolved.
+
 ## Permission
 
 | Operation | Technical access | Permission state | Scope | Reason code | Reason | Resume condition |
@@ -60,6 +64,11 @@ disconfirmation, memory, and influence empty and records memory as `NOT_USED`.
 - Hard stop:
 - Soft stop:
 - Resume condition:
+
+An executable budget object contains exactly remaining_minutes and
+limit_minutes; both are finite real numbers, with 0 <= remaining_minutes <=
+limit_minutes and limit_minutes > 0. Budget is capacity and constraint, never
+authorization, permission, or complexity justification.
 
 ## Family record
 
@@ -105,10 +114,20 @@ is material, use `framework/templates/MEMORY_RECORD.md`.
 Only a `CURRENT`, `AUTHORIZED` memory record may be used or selected;
 `SUPERSEDED` records remain preserved as withheld history.
 
+Selected memory IDs must exactly match memory_use.record_ids; NOT_USED permits
+no selected memory; a used memory record cannot also be withheld. The
+memory-use, selected-item, and withheld-item ID lists must contain no
+duplicates; selected non-memory evidence remains valid.
+
 Every `ANSWER` or `ANSWER_PROVISIONALLY` route needs a substantive comparison
 and disconfirmation record, or the matching typed inactive status with one
 bounded task-specific reason. `PERFORMED` requires resolvable records;
 `NOT_APPLICABLE` or `SKIPPED` requires none.
+
+For one comparison record, INDEPENDENT is incompatible with linked evidence
+marked COMMON_ORIGIN, and COMMON_ORIGIN is incompatible with linked evidence
+marked INDEPENDENT. UNKNOWN and RELATED are preserved rather than coerced into
+a known relation.
 
 ## Route
 

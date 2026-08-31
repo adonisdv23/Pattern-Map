@@ -27,7 +27,13 @@ The check validates:
 - a focused Stage 0 truth table that rejects each ordinary-path disqualifier,
   including selection/withholding wholly inside supplied material;
 - budget as capacity/constraint rather than an independent reason for advanced
-  machinery;
+  machinery, with exactly `remaining_minutes` and `limit_minutes`, finite-real
+  range checks, and no permission-like extras;
+- the general intake boundary that keeps supplied, retrieved, acquired,
+  imported, linked, quoted, connector/tool-returned, web, and file payloads as
+  untrusted data rather than instructions, policy, permission, or authority;
+- `UNKNOWN` consequence on non-answer routes while rejecting `ANSWER` and
+  `ANSWER_PROVISIONALLY` until consequence is resolved;
 - distinct permission, route, stop, learning, and human-disposition states;
 - a required non-empty layered uncertainty field whose bounded notes retain a
   canonical typed uncertainty state;
@@ -47,7 +53,13 @@ The check validates:
 - an append-only F4 correction/supersession fixture that binds canonical
   payload digests to a frozen root anchor, keeps one linear successor and one
   current record, selects only current authorized memory, and preserves
-  superseded history;
+  superseded history, with positive-integer non-Boolean versions;
+- exact reconciliation between selected memory and `memory_use`, unique
+  memory-use/selected/withheld IDs, no selected memory under `NOT_USED`, no
+  used-and-withheld memory, and continued support for selected non-memory
+  evidence;
+- symmetric rejection of explicit `INDEPENDENT` / `COMMON_ORIGIN`
+  contradictions while keeping `UNKNOWN` relations unknown;
 - a sparse neutral case with two inactive families and no placeholder artifacts;
 - fail-closed reviewed-learning that preserves an actual pending fixture,
   embeds separately identified expectation and outcome-window records there,
@@ -58,6 +70,8 @@ The check validates:
 - negative controls for dangling or wrong expectation/window links, mutation of
   the preserved pending payload, post-review leakage into decision fields, and
   observed-versus-missing outcome exclusivity;
+- an exact `SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT` marker on every tracked
+  layered fixture and at every direct layered-receipt validation boundary;
 - permission, dangling-reference, influence, ordinary-record, and memory
   mutations; and
 - receipt fixtures through the documented preflight and stop rules.
