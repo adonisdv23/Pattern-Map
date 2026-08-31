@@ -123,6 +123,7 @@ try {
   const release = runDisposableBuild("--mode=public", "--release");
   assert.equal(release.status, 0, `valid release build failed:\n${release.stdout}\n${release.stderr}`);
   const releaseHtml = fs.readFileSync(path.join(disposableSite, "public-dist", "index.html"), "utf8");
+  const releaseApplyHtml = fs.readFileSync(path.join(disposableSite, "public-dist", "apply", "index.html"), "utf8");
   const releaseManifest = JSON.parse(fs.readFileSync(path.join(disposableSite, "public-dist", "build-manifest.json"), "utf8"));
   assert.match(releaseHtml, /<meta name="robots" content="index,follow">/);
   assert.match(releaseHtml, /<link rel="canonical" href="https:\/\/pattern-map\.release-candidate\.dev\/pattern-map\/">/);
@@ -130,6 +131,8 @@ try {
   assert.match(releaseHtml, /<meta property="og:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="twitter:image:alt" content="Diagram showing Pattern Map&#39;s six connected discrimination families\.">/);
   assert.match(releaseHtml, /<meta name="author" content="Publication Gate Test">/);
+  assert.match(releaseApplyHtml, /<caption>Stage 0 and proportionate planning choices<\/caption>/);
+  assert.doesNotMatch(releaseApplyHtml, /Stage 0 (?:no|yes):/);
   assert.equal(releaseManifest.release_build, true, "--release did not record the valid release build");
 
   const normalizedPathConfig = {
@@ -175,7 +178,12 @@ const releaseAttempt = spawnSync(process.execPath, ["build.mjs", "--mode=public"
 });
 assert.notEqual(releaseAttempt.status, 0, "release build unexpectedly succeeded with unset identity and URL fields");
 assert.match(`${releaseAttempt.stdout}\n${releaseAttempt.stderr}`, /Public release is gated/);
-assert.match(read("site/build.mjs"), /releaseMetadataEnabled = publicationMetadataEnabled\(publicationConfig, releaseBuildRequested\)/);
+const siteBuild = read("site/build.mjs");
+assert.match(siteBuild, /releaseMetadataEnabled = publicationMetadataEnabled\(publicationConfig, releaseBuildRequested\)/);
+assert.match(siteBuild, /<caption>Stage 0 and proportionate planning choices<\/caption>/);
+assert.match(siteBuild, /No layered evidence decision is required: Stage 0 is terminal/);
+assert.match(siteBuild, /A Stage 0 disqualifier is present:/);
+assert.doesNotMatch(siteBuild, /Stage 0 (?:no|yes):/);
 
 const publicRead = read("site/public-dist/read/index.html");
 const shortOpening = "An AI answer can sound polished yet be generic because weakness can begin before writing.";
@@ -187,7 +195,7 @@ for (const route of ["index.html", "read/index.html", "map/index.html", "apply/i
   assertNoSkippedHeadingLevels(read(`site/public-dist/${route}`), `public route ${route}`);
 }
 assertNoSkippedHeadingLevels(read("site/exports/standalone/pattern-map-v16-public.html"), "public standalone");
-assert.match(publicRead, /<h2 id="short-pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer<\/h2>/);
+assert.match(publicRead, /<h2 id="short-improve-the-room-before-the-answer">Improve the room before the answer<\/h2>/);
 
 const publicApply = read("site/public-dist/apply/index.html");
 const publicMap = read("site/public-dist/map/index.html");
@@ -209,6 +217,11 @@ assert.match(publicApply, /capacity[^.]*never (?:makes Advanced appropriate|just
 assert.match(publicApply, /When conditions overlap, resolve them in this order:/);
 assert.match(publicApply, /unresolved or blocked permission[\s\S]*required human action gate[\s\S]*insufficient capacity[\s\S]*base level action/);
 assert.match(publicApply, /capacity mismatch[\s\S]*<code>CLARIFY<\/code>[\s\S]*<code>NARROW_OR_ESCALATE<\/code>/);
+const initialMapControls = [...publicMap.matchAll(/<button\b[^>]*(?:data-map-family|data-family-focus|data-family-clear)[^>]*>/g)];
+assert.equal(initialMapControls.length, 13, "public Map did not expose exactly thirteen enhancement controls");
+for (const tag of initialMapControls) {
+  assert.match(tag[0], /\bdisabled\b/, "public Map enhancement control is enabled in the initial no-script DOM");
+}
 assert.match(publicMap, /For this claim, what can each source actually tell us—and how did the information reach us\?/);
 assert.match(publicMap, /Weigh what the source can support without turning its pathway, reputation, or repetition into proof\./);
 assert.match(publicMap, /Keep source role, track record, authority, support, recurrence, origin, relevance, provenance, and permission separate\./);
@@ -219,9 +232,14 @@ assert.doesNotMatch(publicExamples, /<b>00<\/b> counted support paths/);
 const siteScript = read("site/src/site.js");
 assert.match(siteScript, /document\.querySelectorAll\("\[data-progressive-static-guide\]"\)/);
 assert.match(siteScript, /guide\.open = false/);
+assert.match(siteScript, /window\.addEventListener\("beforeprint"/);
+assert.match(siteScript, /window\.addEventListener\("afterprint"/);
+assert.match(siteScript, /guide\.open = true/);
+assert.match(siteScript, /guide\.open = prePrintGuideStates\.get\(guide\)/);
 assert.match(siteScript, /syncStageZeroApplicability/);
 assert.match(siteScript, /fieldset\.disabled = ordinary/);
 assert.match(siteScript, /fieldset\.dataset\.applicability = ordinary \? "not-applicable" : "active"/);
+assert.match(siteScript, /button\.disabled = false/);
 
 const publicHome = read("site/public-dist/index.html");
 assert.match(publicHome, /<meta property="og:title" content="AI slop often begins before the model writes a word\.">/);

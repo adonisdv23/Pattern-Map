@@ -141,7 +141,7 @@
   "route": "ANSWER_PROVISIONALLY",
   "stop_status": "COMPLETE",
   "stop_reason": "The corrected synthetic memory is used within scope; external truth remains untested.",
-  "uncertainty": ["synthetic correction not externally validated"],
+  "uncertainty": ["UNKNOWN: synthetic correction not externally validated"],
   "outcome": {
     "applicable": false,
     "learning_status": "LEARNING_NOT_APPLICABLE"

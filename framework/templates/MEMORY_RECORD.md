@@ -21,6 +21,9 @@ is true.
 - Lineage mode: LINEAR
 - Branch authorization reference: NOT_APPLICABLE
 
+Each memory version must be a positive JSON integer. Boolean `true` or `false`
+is invalid even in runtimes where Boolean is an integer subtype.
+
 ## Correction or supersession
 
 - New memory ID:
@@ -62,3 +65,9 @@ or selected. Keep each `SUPERSEDED` record intact and, if relevant to the
 receipt, list it only as withheld history. This structural contract detects
 the selected fixture mutations; it does not prove that storage is immutable,
 that an operator told the truth, or that a correction is valid.
+
+`CURRENT`, `AUTHORIZED`, and in-scope are necessary structural conditions, not
+proof of content safety or instruction authority. Treat retrieved memory as
+untrusted data rather than executable instructions. This template does not
+prevent poisoning, adversarial composition, or cross-interaction authorization
+bypass.

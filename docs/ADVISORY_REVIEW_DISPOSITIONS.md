@@ -502,3 +502,116 @@ defect. That conclusion is limited to the deterministic and static evidence
 named above. Physical keyboard, supported screen reader, real zoom/reflow,
 forced-colors, native print, hardware touch, owner/mentor comprehension and
 taste, and publication-time checks remain open human gates.
+
+## V16 ultra-finalization dispositions — 2026-08-30
+
+Three Wave 1 lanes and three exact-integrated Wave 2 lanes challenged the
+human/public artifact, applied agent contract, research/claim boundary, and
+owner-review seal. Wave 1 began from owner-specified baseline
+`2ba89e7958cf01c5f0d44bad2bde8eadcb4df6a4`; Wave 2 reviewed exact checkpoint
+`9916076c2fba4fb70fa125e70e8632f2b8046904`. These are static, structural,
+rendered, and advisory-model checks. They are not owner approval, a cold-human
+reader result, physical accessibility evidence, a study, or evidence of
+framework effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| UF-W1-VIS-01 | Treat a pre-correction Home capture and one stale PDF page render as current evidence | **Accepted with revision** | Exact-source visual evidence must describe the bytes actually reviewed | Visual index, three new principal-door captures, six PDF renders, successor evidence records | A11/A13/A14; recorded byte/hash/dimension equality and direct visual inspection |
+| UF-W1-COPY-01 | Drop `often` from the compressed upstream-problem claim or let Variant C imply improved AI performance | **Accepted with revision** | Compression cannot turn a bounded thesis into a categorical or effectiveness claim | Unsent X-copy rehearsal and publication contract | A01/A04/A11; exact local character checks; still unsent/unpublished |
+| UF-W1-APP-01 | Require typed top-level uncertainty instead of permitting omission | **Accepted with revision** | Uncertainty must remain visible at the decision boundary rather than inferred from nested records | Layered fixtures and applied validator | A08/A11; missing, empty, and untyped mutations fail closed |
+| UF-W1-APP-02 | Require an exact linked review instead of treating `LEARNING_REVIEWED` as established by a status token | **Accepted with revision** | A result, missing outcome, cost, confounder, attribution boundary, update proposal, and human disposition must be inspectable together | Outcome template, decision receipt, synthetic fixtures, validator | A08/A11; exact reviewed-state shape and observed/missing XOR controls |
+| W2-HUM-01 | Keep detached `Stage 0 yes/no` shorthand in the no-script/print Apply table | **Accepted with revision** | Without the interactive question, the shorthand can invert the ordinary escape and layered disqualifier | Apply static equivalent and regression contract | A06/A07/A13; locally complete labels and bare-shorthand rejection |
+| W2-HUM-02 | Describe Guided as a generated rather than authored route in the PDF | **Accepted with revision** | Guided is deterministic authored composition over canonical material, not model-generated content | Review-PDF source, regenerated PDF, successor render evidence | A04/A06/A11/A13; exact text and six-page visual inspection |
+| W2-HUM-03 | Preserve `often` by weakening `obvious/default search path` to any search path | **Accepted with revision** | The upstream defect is the unexamined obvious/default route, not search itself | Unsent X-copy Variant A and contract | A01/A04/A11; exact 278-character local rehearsal |
+| HNR2-01 | Reconstruct a pending digest from a reviewed receipt while retaining post-window facts and accepting syntax-only expectation/window links | **Accepted with revision** | A reviewed record cannot claim chronological linkage to a snapshot that never existed or to pointers that are never resolved | Actual pending fixture, reviewed missing-outcome fixture, outcome records, applied validator and docs | A08/A11/C16-009/D-020; preserved-payload digest, in-fixture resolution, wrong/dangling-link, mutation, leakage, and XOR controls |
+| AUD-W2-PKG-01 | Treat the stale owner manifest as a terminal package | **Accepted** | The expected failure proves the seal is fail-closed while source bytes move | Owner manifest writer/verifier | A14/A15/D-036/D-040; regenerate only after final source freeze and verify from exact committed bytes |
+| AUD-W2-PKG-02 | Leave required pending/reviewed outcome fixtures outside the bounded owner manifest | **Accepted with revision** | A receiver must receive the positive no-result contract and its actual preserved predecessor | Owner-manifest required paths only | A08/A11/A14; both fixtures are selected; sealed Signal subset remains unchanged |
+| UF-C1-HUM-01 | Leave Map focus/reset controls enabled in the initial no-script DOM even though their behavior exists only in JavaScript | **Accepted with revision** | Essential text remained available, but enabled dead buttons were a false affordance and polluted keyboard order | Map renderer, enhancement bootstrap, no-script CSS, standalones, site regressions | A06/A13/D-046; all thirteen enhancement controls start disabled, redundant focus/reset controls hide under `.no-js`, and JavaScript enables them only after initialization |
+| UF-C1-HUM-02 | Call the static Apply guide a complete equivalent while abbreviating `permission resolution` and `consequential external influence` | **Accepted with revision** | The more restrictive fallback was safe but not semantically equivalent and could add unnecessary ceremony to ordinary work | Apply static guide and ordinary row, cross-artifact/site regressions, standalones | A06/A07/A13/D-046; the static guide now carries the canonical full predicate and focused checks inspect that local subtree rather than matching correct wording elsewhere |
+| C1-RSCH-PROV-01 | Attribute later fallback behavior to exact PDF/standalone producer `385af09` | **Accepted with revision** | That commit produced the current PDF and then-current exports, but the inert Map controls and exact static predicate arrived later | Active version history | A11/A14/D-047; producer work and later fallback corrections are now separate grammatical subjects without a self-referential successor hash |
+| UF-C1-HUM-03 | Hide the interactive Apply surface for print while leaving its replacement guide inside a JavaScript-closed native `details` | **Accepted with revision** | Computed display rules did not restore the closed subtree, so normal enhanced public printing omitted Stage 0, `ORDINARY_RECORD`, and the unobserved-state boundary | Enhancement runtime, public route/standalone print output, headless print regression | A06/A13/D-047; `beforeprint` opens the guide, `afterprint` restores prior screen state, and actual routed/standalone PDF text must retain the ordered predicate and planning-state tokens |
+| UF-RSCH-01 | Add every newly checked 2025–2026 adjacent paper to the compact public source route | **Deferred** | The targeted primary sources reinforce existing caveats but expose no named reader or claim gap that earns more citation weight | No canonical source-route edit | A04/A11/A16; retain targeted/non-exhaustive ceiling and cite the audit externally |
+| UF-SCOPE-01 | Add another route, bitmap, dashboard, score, general adoption artifact, seventh family, external receipt registry, blockchain, or new provenance subsystem | **Rejected** | None repairs a reproduced defect; each adds ceremony, topology, or unsupported capability | No new architecture | Owner intent, A01–A03/A06–A08/A12/A13, anti-bureaucracy boundary |
+| UF-SCOPE-02 | Reopen Echo, treat the synthetic outcome fixture as a result, or reseal/mutate Signal Foundry for later Pattern Map changes | **Rejected** | Echo remains separate and unrun; fixtures remain no-result; the Signal packet remains the exact sealed read-only illustration | Echo and Signal Foundry boundaries | A09–A11/A15/A16; exact Signal source checkpoint `5298524`; zero downstream mutation |
+
+No finding authorizes merge to `main`, deployment, publication, provider/model
+or participant execution, dataset acquisition, preregistration, outreach,
+incremental spend, or any statement that an unrun design produced a result.
+
+## Extended ultra opportunity dispositions — 2026-08-30
+
+Three read-only ultra lanes and direct browser reproduction challenged exact
+baseline `18128005d79b19e3a9d36ac68096acf264ff08d0`. The complete bounded
+integration record is
+`qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md`. This is static,
+structural, browser, source-status, and advisory-model evidence—not a human
+reader result, physical assistive-technology review, study, or effectiveness
+result.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| XU-DES-01 | Replace the six identical Map focus-button accessible names with family-specific names | **Accepted with revision** | Same-role controls need a name that identifies their family while retaining the visible label | Map renderer, standalones, static and AX checks | A06/A13; six family-specific names in the in-app browser accessibility tree |
+| XU-DES-02 | Rotate the full `if triggered →` phrase at the narrow breakpoint | **Accepted** | The phrase overlapped both adjacent nodes; the arrow-only transform was applied too broadly | Site CSS, standalones, site check | A06/A13; zero live sibling intersections and zero page overflow at 320 pixels |
+| XU-RSCH-01 | Keep GroupQA, Memory-R1, and PROV-AGENT at stale pre-publication statuses | **Accepted** | Current active records should use official venue metadata while preserving older arXiv links as version history | Source route, current verification, source scan, research memo | A11/A16; official ACL/ORNL/IEEE routes and focused research tests |
+| XU-RSCH-02 | Treat an explicit baseline as sufficient for omission detection or present Candidate B as new omission detection | **Accepted with revision** | AbsenceBench is direct bounded prior art and leaves only the five-axis/downstream-effect question unresolved | Source route, C16-007/C16-017, narrow-wedge memo | A11/A16; no new claim ID, no study selection, no result |
+| XU-RSCH-03 | Treat current, authorized, source-bound memory as safe instructions or a defense guarantee | **Accepted with revision** | MINJA and FragFuse expose a missing data/control boundary; provenance and reuse permission remain structural conditions only | F4, memory template, failure table, three agent entry points, claims/source route | A07/A08/A11/A16; untrusted-data language and explicit no-defense boundary |
+| XU-APP-01 | Permit duplicate/non-finite JSON or unknown layered top-level fields in an exact receipt contract | **Accepted** | Ambiguous bytes and ignored contradictory fields defeat exact-shape claims | Applied validator and permanent mutations | A08/A11; strict loader and exact layered allowlist |
+| XU-APP-02 | Accept invalid or precision-collapsed numeric budgets, mislabeled deadline stops, cross-kind ID collisions, contradictory independence, or unsupported high-consequence final answers | **Accepted with revision** | Each mutation collapses a locked distinction or hard-stop boundary; the first exact-cycle fuzz exposed and closed decimal underflow/precision collapse before sealing | Applied validator and permanent mutations | A07/A08/A11; raw and object-level positive/negative controls pass |
+| XU-APP-03 | Keep operator templates inconsistent with executable origin/recurrence and reviewed-learning states | **Accepted** | Human-readable entry points must not instruct shapes the validator rejects | Evidence Register and decision receipt template | A07/A08; dimensions split and update remains proposal-only |
+| XU-APP-04 | Infer the complete Advanced conjunction from current fields or an arbitrary minute threshold | **Deferred** | High uncertainty and separately approved substantial capacity are not machine-readable in the current receipt | No receipt-shape expansion in this pass | Reopen with explicit schema/fixture/template migration and cross-artifact parity |
+| XU-APP-05 | Add chronology/authority, URI/Unicode, or full JSON-Schema machinery in the same bounded patch | **Deferred** | Each is a real hardening path but changes topology or dependency policy beyond the reproduced minimal correction | No source change | Reopen through the exact conditions in the extended QA record |
+| XU-SCOPE-01 | Add a security subsystem, score, route, dashboard, family, study, or Signal/Echo change | **Rejected** | No accepted finding requires topology expansion or authorizes an effectiveness/security claim | No new architecture or cross-project mutation | Owner intent, A01–A03/A09–A12/A15–A17; removal and claim ceilings |
+
+No item authorizes merge, deployment, publication, Release creation,
+research/provider/participant execution, dataset acquisition, preregistration,
+outreach, spend, or a statement that an unrun design produced a result.
+
+## Final red/blue ultra dispositions — 2026-08-30
+
+Independent site/accessibility, receipt-contract, and owner-package lanes
+challenged exact starting checkpoint
+`76ade6e2c255151e32ddd9cbb3d4650cf46570d1`. The package lane continued as a
+hostile blue team while the integrator applied reproduced corrections. Direct
+in-app browser checks then exercised the rendered successor at 1440×900,
+390×844, and 320×800. This is static, structural, deterministic, rendered, and
+advisory-model evidence—not owner approval, a physical accessibility pass, a
+security result, a study, or proof of framework effectiveness.
+
+| Finding ID | Recommendation or finding | Disposition | Integrator reason | Affected surface | Governing requirement / verification |
+| --- | --- | --- | --- | --- | --- |
+| U50-SITE-01 | Leave the Echo callout's low-contrast normal/hover link states and token-only contrast assertions | **Accepted with revision** | The actual purple surface failed normal-text contrast and the prior PASS label exceeded tested state pairs | Site palette, state selectors, contrast contract | A06/A13; actual normal/visited/hover/focus pairs meet the named thresholds |
+| U50-SITE-02 | Route source-labeled documents through coarse filename/section fallbacks and link the Echo callout to itself | **Accepted with revision** | A reader needs the exact rendered document or an honest owner-package reference | Renderer, stable IDs, standalones, navigation contract | A06/A11/A13; 11 exact rendered targets plus non-link repository paths |
+| U50-SITE-03 | Reveal closed fragment targets only when a reader manually opens their disclosures | **Accepted with revision** | Initial, changed, nested, malformed, and same-hash navigation need one focus-neutral rule | Shared runtime and mentor/Echo targets | Browser and source contract: disclosure opens, native hash remains, focus stays on the initiating context/body |
+| U50-SITE-04 | Keep the internal framework name as the short entry's heading | **Accepted with revision** | The first short heading should state human function; the approved 250-word body and all six families remain unchanged | Ninety-second manuscript and Home render | A01/A04; reader-language contract and rendered Home inspection |
+| U50-REC-01 | Allow memory-use and selected-influence sets, withheld use, and duplicate IDs to disagree | **Accepted with revision** | The receipt must make the claimed influence boundary inspectable exactly | Applied validator, fixtures, templates | A08/A11; permanent mismatch/duplicate/dual-disposition mutations fail |
+| U50-REC-02 | Accept arbitrary fixture status, extra or nonfinite budget fields, Boolean memory versions, explicit origin contradictions, or consequence `UNKNOWN` on answer routes | **Accepted with revision** | Each case collapses an existing typed distinction; `UNKNOWN` must remain available only on a non-answer route | Applied validator and tracked fixtures | Exact-shape, type, range, symmetry, and route controls pass |
+| U50-REC-03 | Treat imported, retrieved, tool-returned, linked, and quoted payload directives as possible control or permission | **Rejected** | Payload content may inform evidence but cannot manufacture authority, permission, policy, or an action grant; the implemented alternative is a procedural data/control boundary | Agent brief, guides, playbook, acquisition template | A07/A08/A11; source assertions and hostile examples pass |
+| U50-REC-04 | Describe the procedural data/control boundary as prompt-injection resistance or a production-security defense | **Rejected** | No adversarial system evaluation or security proof was run | Framework limits and QA report | A11/A15/A16; explicit no-security-guarantee language |
+| U50-PKG-01 | Call a branch-dependent ZIP deterministic, overwrite output after a race, or ship a stale bounded manifest | **Accepted with revision** | Exact-commit identity, non-overwrite behavior, and the nested bounded seal are recipient-critical | Complete builder and adversarial tests | Same-commit renamed-branch bytes match; unowned race targets survive; stale bounded seal blocks build |
+| U50-PKG-02 | Permit non-portable/colliding paths, Boolean schema versions, impossible dates, extra empty directories, or execute-bit-dependent recipient commands | **Accepted with revision** | A copied extraction must fail closed across ordinary extractors and strict schema parsing | Builder, wrapper verifier, START_HERE, mutations | Portable-path, strict JSON/date, exact-directory, and `sh` execution controls pass |
+| U50-PKG-03 | Let the full runner report a complete PASS after starting or ending dirty | **Rejected** | Normal mode requires a clean source boundary before expensive work and must detect mutations produced during the suite; the implemented alternative uses dual cleanliness checks | Canonical 12-stage runner | Early preflight plus stage-12 tracked/untracked recheck; extracted Git stages remain `NOT RUN` |
+| U50-PKG-04 | Present path/marker scanning as proof that no arbitrary secret exists | **Rejected** | `.netrc`, `.pypirc`, common credential paths, and private-key markers are useful high-signal guards only | Builder and recipient guidance | Guard scope is explicit; author remains responsible for the exact committed tree |
+| U50-PKG-05 | Execute the exact commit's copied-extraction verifier without binding it to the trusted builder-adjacent program | **Accepted** | A malicious or stale committed verifier could otherwise approve its own altered payload | Complete builder and hostile committed-verifier fixture | Stable non-symlink trusted bytes must match before staging or execution; a committed PASS stub blocks construction |
+| U50-PKG-06 | Treat exclusive link creation as sufficient after a source swap or final-ZIP replacement race | **Accepted with revision** | The builder must not return success for bytes other than the exact invocation-owned ZIP and sidecar it verified | Publication boundary and injected race tests | Source/destination inode identity, no-follow re-open, final ZIP rehash, exact sidecar bytes, and final inode reassertion |
+| U50-PKG-07 | Let an extracted repository nested inside an unrelated Git checkout impersonate a complete source checkout | **Accepted** | Being inside some Git worktree does not establish that the extracted Pattern Map root is that worktree's root | Canonical 12-stage runner and nested-repository regression | Physical `git --show-toplevel` must equal the physical project root before stage 1; otherwise use extracted mode |
+| U50-PKG-08 | Follow a symlinked bounded owner-review manifest in recipient or author mode | **Accepted** | The manifest is a control file and must not resolve outside its repository path | Bounded writer/verifier and symlink mutation | Every parent stays local and non-symlink; the manifest must remain a regular repository file before parse or write |
+| U50-PKG-09 | Author a bounded manifest or complete ZIP from detached HEAD or a default branch while claiming a feature-branch boundary | **Accepted with revision** | The executable gate must match the documented review workflow | Both authoring paths and explicit default/detached controls | Clean named non-default branch required; exact commit and optional upstream equality remain independently enforced |
+| U50-PKG-10 | Reapply active-tree cache exclusions to immutable archive paths after adding the ZIP wrapper prefix | **Accepted** | The repository correctly preserves historical cache artifacts, and wrapper-relative portability checks must not misclassify them as active generated output | Complete builder path policy and every full-build fixture | Portable-path validation is separate from repository hygiene; archived `__pycache__` remains allowed and the real tracked tree is preflighted |
+| U50-PUB-01 | Select a license or treat local copy/configuration checks as publication authorization or rights clearance | **Rejected** | Rights, identity, destination, metadata, accessibility, and owner authorization are human/publication-time facts; the implemented alternative is an explicit fail-closed gate set | Publication checklist, README, contract | Current fields remain fail-closed and no publication action occurred |
+| U50-SCOPE-01 | Add a new route, dashboard, score, security subsystem, seventh family, empirical run, Echo change, or Signal-packet reseal | **Rejected** | No reproduced defect requires topology expansion or broader authority | No new architecture or cross-project mutation | Owner intent, A01–A03/A09–A12/A15–A17, removal test |
+
+The deeper owner-package pass reproduced three further P1s—the unbound copied
+verifier, publication-race success, and a wrapper-prefixed archive-policy
+misclassification that would block the real ZIP—and three further P2 classes:
+unrelated nested Git roots, a symlinked bounded manifest, and
+detached/default-branch authoring. Each is now corrected and covered by a
+permanent hostile control. The complete nine-test package suite passes after
+revision, leaving no reproduced P0/P1. Production-tree test cost and the deliberately
+non-comprehensive secret guard remain documented P3 limitations. Manual
+owner/mentor, physical-keyboard, supported screen-reader, real zoom,
+forced-colors, native-print, hardware-touch, and publication-time checks remain
+open.
+
+No disposition authorizes merge, deployment, publication, Release creation,
+research/provider/participant execution, dataset acquisition, preregistration,
+outreach, spend, or a claim that an unrun design produced a result.

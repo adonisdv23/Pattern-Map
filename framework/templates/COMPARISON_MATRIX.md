@@ -36,3 +36,8 @@ corroboration. If a field cannot be aligned, mark it INCOMPARABLE rather than
 filling it with a proxy. An `ANSWER` or `ANSWER_PROVISIONALLY` either links a
 substantive `PERFORMED` comparison or records `NOT_APPLICABLE` with exactly one
 bounded task-specific reason and no placeholder matrix.
+
+For one comparison record, INDEPENDENT is incompatible with linked evidence
+marked COMMON_ORIGIN, and COMMON_ORIGIN is incompatible with linked evidence
+marked INDEPENDENT. UNKNOWN and RELATED are preserved rather than coerced into
+a known relation.

@@ -1646,3 +1646,227 @@ packet.
 **Governing requirement:** A01–A03, A06, A13; human-first first screen;
 responsive and understandable code-native visuals; owner evidence outranks
 advisory reassurance.
+
+## D-046 — Close ultra-finalization defects through evidence-bounded corrections, not expansion
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; terminal exact-commit audits remain
+
+**Decision:** Preserve the broad human thesis, all six families, three-door
+public architecture, authored Guided route, Echo separation, and the already
+sealed Signal Foundry packet. Accept only reproduced ultra-finalization
+defects: current visual/PDF evidence binding, bounded publication-copy
+qualifiers, typed layered uncertainty, a genuinely linked reviewed-learning
+contract, locally intelligible no-script/print Stage 0 labels, and final owner
+manifest coverage.
+
+The reviewed-learning correction preserves an actual
+`LEARNING_PENDING_OUTCOME` synthetic receipt with embedded expectation and
+outcome-window records. Its reviewed successor resolves those exact records,
+hashes the actual preserved operational payload, retains the original decision
+snapshot, and carries typed outcome missingness only inside the review. This is
+a fixture-scoped structural contract. It is not an immutable store, an
+external registry, an empirical result, or evidence that learning improves an
+answer.
+
+The current 2025–2026 primary-source spot-check constrains claims but does not
+justify expanding the compact source route: no reviewed source exposed a named
+public-reader or claim gap not already covered by the claims ceiling. The
+removal test likewise rejects another route, bitmap, dashboard, score, generic
+adoption artifact, family, ledger, or provenance subsystem.
+
+The owner-review manifest must remain stale while source bytes move, then be
+regenerated after source, exports, PDF evidence, QA, and dispositions stop
+changing. The two outcome fixtures enter the owner-review manifest only. They
+do not enter or reseal the Signal Foundry subset, whose exact source remains
+`529852497109dc152928de642038d07b109a52e2`.
+
+**Evidence:** Wave 1 corrections `d878d27`, `c51c234`, and `9916076`; the
+successor ultra-finalization disposition table; applied mutation suite;
+current visual/PDF evidence records; exact-build standalones; owner-manifest
+writer/verifier; and the final terminal QA record.
+
+**Governing requirement:** A01–A04, A06–A11, A13–A17; C16-009; D-020;
+owner-intent authority; two-project separation; exact provenance;
+anti-bureaucracy and removal tests; no prohibited external action.
+
+## D-047 — Make static fallbacks truthful before restarting clean-cycle review
+
+**Date:** 2026-08-30
+
+**Status:** Accepted and corrected
+
+An exact-integrated read-only human/site audit found two bounded fallback
+defects after the first ultra-finalization seal. Map focus and reset controls
+were enabled in the initial HTML even though they had no behavior without
+JavaScript. The Apply guide also called itself a complete no-script equivalent
+while abbreviating the canonical Stage 0 predicate in a way that could route
+non-consequential external influence into unnecessary layered work.
+
+The correction keeps the open Map text and all six family cards intact, starts
+the thirteen enhancement-only controls disabled, hides redundant focus/reset
+affordances under `.no-js`, and enables them only after the existing handlers
+initialize. The static Apply paragraph and ordinary row now preserve
+`permission resolution` and `consequential external influence` exactly. New
+regressions inspect the local static subtree and initial Map DOM so correct
+wording or behavior elsewhere cannot mask either defect.
+
+This is a semantic-parity and false-affordance correction, not a new route,
+interaction model, score, receipt, or claim. Because source bytes changed, the
+clean-cycle count restarts on the successor exact commit and the owner manifest
+is regenerated only after all selected bytes freeze. The Signal Foundry packet
+and Echo research track remain untouched.
+
+**Evidence:** `site/build.mjs`, `site/src/site.js`, `site/src/site.css`,
+`site/check.mjs`, `qa/site/audit_site.py`,
+`qa/site/public-mode-contract.spec.mjs`, and
+`qa/interaction/apply-cross-artifact-contract.spec.mjs`.
+
+**Governing requirement:** A06, A07, A13–A15; D-036, D-040, D-046;
+progressive enhancement, no-script/print equivalence, proportionality, and
+two consecutive clean exact-commit review cycles.
+
+## D-048 — Test the real enhanced print transition and separate producer attribution
+
+**Date:** 2026-08-30
+
+**Status:** Accepted and corrected
+
+The first clean-cycle attempt after D-047 reproduced two further P2 defects.
+The active version history grammatically attributed later fallback behavior to
+exact PDF/standalone producer `385af09`, where that behavior did not exist.
+Separately, normal public enhancement closed the static Apply guide; print CSS
+then hid the interactive surface without making the closed native `details`
+subtree printable. Headless PDF extraction confirmed that enhanced output lost
+the Stage 0 predicate, `ORDINARY_RECORD`, and the explicit unobserved state even
+though no-script output retained them.
+
+The version history now distinguishes `385af09` producer work from later
+fallback corrections without naming a self-referential successor commit. The
+runtime records each progressive guide's screen state, opens the guide during
+`beforeprint`, and restores the prior state during `afterprint`. A focused
+localhost/headless regression prints both the public Apply route and public
+standalone through the DevTools PDF path, extracts their text, requires the
+ordered complete predicate and planning-state tokens, and verifies that the
+closed screen disclosure state returns afterward. Missing Chrome or PDF-text
+tools produce an explicit skip rather than a false pass.
+
+This is a print-semantic and provenance correction only. It does not create a
+new route, duplicate static content, weaken progressive disclosure, revise the
+human thesis, add a claim, or reopen Echo or the sealed Signal Foundry packet.
+The clean-cycle count restarts again on the successor exact commit.
+
+**Evidence:** `site/src/site.js`, regenerated review/public standalones,
+`qa/site/headless_print_contract.sh`, `site/check.mjs`,
+`qa/site/public-mode-contract.spec.mjs`, `docs/VERSION_HISTORY.md`, and the
+ultra-finalization controlled-disposition table.
+
+**Governing requirement:** A06, A11, A13–A15; D-036, D-040, D-047; exact
+provenance, real print-fallback semantics, and two consecutive clean
+exact-commit review cycles.
+
+## D-049 — Spend the extended ultra pass on reproduced corrections, not scope growth
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revisions; final exact-commit sealing remains
+
+**Decision:** Use the owner's additional ultra-review time for independent
+design/accessibility, current-primary-research, and hostile receipt-contract
+challenges. Accept only reproduced defects: indistinguishable Map control
+names; a narrow mobile microvisual collision; stale active publication
+statuses; direct omission-detection prior art; the missing untrusted-memory
+data/control boundary; ambiguous JSON and layered shapes; invalid or
+precision-collapsed budgets and record-ID collisions; contradictory
+independence/support states; and two operator-template mismatches.
+
+Keep the human essay, public topology, six families, Echo separation, and
+sealed Signal Foundry packet unchanged. The security literature constrains
+claims and operating language; it does not create a security subsystem or
+defense result. AbsenceBench narrows Candidate B; it does not select or run a
+study. The validator remains repository-internal structural QA, not a
+production security or permission service.
+
+Defer receipt-shape additions for Advanced sizing, chronology/authority,
+pointer/Unicode semantics, and full JSON-Schema execution until each has an
+explicit migration and cross-artifact test. Do not infer high uncertainty or
+separately approved substantial capacity from an arbitrary minute threshold.
+
+Because source and generated standalone bytes changed, restart exact-commit
+review and regenerate the owner manifest only after every selected source, QA,
+decision, disposition, and export byte is frozen. Preserve remote/ZIP facts as
+external exact-hash attestations rather than writing them back into the sealed
+narrative.
+
+**Evidence:**
+`qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md`; official
+ACL/NeurIPS/USENIX/ORNL publication records; direct in-app browser geometry and
+accessibility-tree reproduction; site contracts; and applied hostile-mutation
+controls.
+
+**Governing requirement:** A03, A06–A08, A11, A13–A17; D-036, D-040,
+D-046–D-048; owner intent; two-project separation; proportionality;
+anti-bureaucracy; and no unsupported empirical or security claim.
+
+## D-050 — Use the final ultra window for red/blue correction and recipient-verifiable transfer
+
+**Date:** 2026-08-30
+
+**Status:** Accepted with revision; exact-commit sealing and external readback remain terminal steps
+
+**Decision:** Use the owner's final ultra-review window for three independent
+questions: whether the public surface is readable and navigable at the actual
+rendered boundary; whether the machine receipt preserves the distinctions it
+claims to preserve; and whether a recipient can verify one deterministic,
+complete, exact-commit owner-review package without trusting the sender's
+working tree.
+
+Accept only reproduced corrections. On the public surface, repair the Echo
+callout contrast, route document references to exact rendered destinations,
+label repository-only documents honestly, reveal nested fragment targets
+without focus theft, keep review and unreleased public output fail-closed with
+`noindex,nofollow`, and lead the short entry with human function rather than
+internal framework identity. In the receipt contract, reconcile memory use
+with selected influence, reject duplicate identifiers and ambiguous budgets,
+require exact synthetic-fixture status, preserve `UNKNOWN` on non-answer
+routes, reject explicit origin contradictions symmetrically, and treat all
+incoming payloads as untrusted data rather than control. This is a procedural
+boundary, not a prompt-injection or production-security result.
+
+For transfer, preserve the bounded selected-artifact manifest and add a
+separate complete-payload package: exact Git blobs from one named non-default
+branch tip, one enclosing ZIP root, strict full manifest and metadata schemas,
+a copied-location verifier, a separately delivered ZIP digest, byte binding of
+both executed staged verifiers to trusted builder-adjacent programs,
+bounded-manifest verification inside the staged payload,
+branch-name-independent deterministic bytes, portable path rules, exclusive
+non-overwriting publication with final inode/digest revalidation, and truthful
+Git-versus-extracted verification modes. A normal complete-suite run must
+reject a dirty checkout before stage 1, reject an unrelated enclosing Git
+root, and recheck cleanliness at stage 12.
+High-signal credential-path/private-key checks remain hygiene guards, not proof
+that arbitrary content is secret-free. A coordinated replacement of ZIP,
+manifest, verifier, and sidecar remains outside unsigned hash consistency; no
+signing infrastructure is invented here.
+
+Keep the essay body, six-family identity, public topology, Echo firebreak,
+immutable archive, and sealed Signal Foundry packet unchanged. Add explicit
+publication-time identity, copyright/license, historical-image-rights, social-
+image-rights, destination, link, accessibility, and owner-authorization gates;
+do not select a license or imply rights clearance. Remote branch/PR observations
+and final ZIP digests remain external exact-hash attestations so they do not
+invalidate the manifest-covered source narrative.
+
+**Evidence:** `qa/site/PUBLIC_SURFACE_ACCESSIBILITY_NAVIGATION_QA_2026-08-30_76ade6e.md`;
+`qa/applied/MACHINE_RECEIPT_CONTRACT_ULTRA_QA_2026-08-30_76ade6e.md`;
+`qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md`;
+`qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md`; focused source,
+browser, mutation, package-race, extraction, and publication-gate checks.
+The final clean exact-commit owner-review sequence and external ZIP/readback
+attestation remain terminal requirements, not evidence already produced here.
+
+**Governing requirement:** A01, A03, A06–A08, A11, A13–A17; D-036, D-040,
+D-046–D-049; locked owner intent; exact provenance; controlled dispositions;
+progressive disclosure; proportionality; two-project separation; and no
+prohibited external action.

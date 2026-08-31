@@ -160,10 +160,17 @@ const main = () => {
   const mapFamilyNodes = [...map.matchAll(/<button\b[^>]*\bdata-map-family="([^"]+)"[^>]*>/g)];
   assert(mapFamilyNodes.map((match) => match[1]).join(",") === "F1,F2,F3,F4,F5,F6", "current map presentation does not cover exactly the six canonical family IDs");
   for (const match of mapFamilyNodes) {
+    assert(/\bdisabled\b/.test(match[0]), `current map ${match[1]} is enabled before enhancement initializes`);
     for (const field of ["name", "question", "inputs", "comparison", "records", "boundary", "connections"]) {
       assert(new RegExp(`\\bdata-map-${field}="[^"]+"`).test(match[0]), `current map ${match[1]} is missing presentation field: ${field}`);
     }
   }
+  const familyFocusControls = [...map.matchAll(/<button\b[^>]*\bdata-family-focus="([^"]+)"[^>]*>/g)];
+  assert(familyFocusControls.length === 6 && familyFocusControls.every((match) => /\bdisabled\b/.test(match[0])), "family focus controls are enabled before enhancement initializes");
+  const familyFocusNames = familyFocusControls.map((match) => match[0].match(/\baria-label="([^"]+)"/)?.[1] ?? "");
+  assert(familyFocusNames.every((name) => name.startsWith("Focus this family: F")), "a family focus control does not retain its visible label in a family-specific accessible name");
+  assert(new Set(familyFocusNames).size === 6, "family focus controls do not expose six distinct accessible names");
+  assert(/<button\b[^>]*\bdata-family-clear\b[^>]*\bdisabled\b[^>]*>/.test(map), "Map reset control is enabled before enhancement initializes");
   for (const familyName of ["Peripheral signal", "Source weighing", "Velocity / motion", "Absence + memory", "Structured patterns", "Learning loop"]) assert(map.includes(familyName), `family name missing: ${familyName}`);
   assert(!map.includes('class="relationship-connectors"'), "current map still renders detachable connector lines");
   for (const relationship of ["REQUIRES A BASELINE", "CAN REVEAL A SHARED PATH", "CONSTRAINS INFLUENCE", "MAY UPDATE AFTER AN OUTCOME"]) assert(map.includes(relationship), `map relationship band missing: ${relationship}`);
@@ -214,7 +221,8 @@ const main = () => {
   assert(research.includes("UNRUN") && research.includes("NO RESULTS") && research.includes("NO PROVIDER OR MODEL SELECTED"), "research no-results status missing");
   assert(research.includes("separate project — unrun — no results"), "Echo status missing from research route");
   assert(research.includes('id="echo"'), "Echo section has no stable route fragment");
-  assert(research.includes('href="../research/index.html#echo"'), "Echo source route does not target the separate Echo section");
+  assert(research.includes('href="../research/index.html#echo-identity-document"'), "Echo callout does not target the rendered identity document");
+  assert(!research.includes('href="../research/index.html#echo">The Echo Problem'), "Echo callout retains its redundant section self-link");
   assert(history.includes("Historical v13 origin — not the current v16 topology."), "historical label missing");
   assert(history.includes("current relationship view"), "current/historical distinction missing");
   const metareasoningHref = 'href="https://doi.org/10.1016/0004-3702(91)90015-C"';
@@ -282,6 +290,10 @@ const main = () => {
   assert(standalone.includes(signalFoundryStatus), "standalone export mutated Signal Foundry status");
   const htmlFiles = requiredRoutes.map((route) => path.join(DIST_DIR, route));
   for (const filePath of htmlFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href);
+  for (const html of [...htmlFiles.map(read), standalone]) {
+    assert(html.includes('data-presentation-mode="review"'), "review surface lacks explicit presentation mode");
+    assert(html.includes('<meta name="robots" content="noindex,nofollow">'), "review surface is missing noindex,nofollow");
+  }
   for (const href of localLinksIn(standalone)) {
     if (!href.startsWith("#")) continue;
     const fragment = decodeURIComponent(href.slice(1));
@@ -297,6 +309,7 @@ const main = () => {
   assert(css.includes("--term-popover-shift") && css.includes("max-width: calc(100vw - 2rem)"), "desktop term popovers lack viewport containment");
   assert(css.includes("--term-popover-block-shift"), "desktop term popovers lack trigger clearance");
   assert(/@media \(max-width: 480px\)[\s\S]*?\.term-mini-chain,[\s\S]*?grid-template-columns:\s*1fr/i.test(css), "complex term microvisuals do not stack at narrow widths");
+  assert(/@media \(max-width: 480px\)[\s\S]*?\.term-mini-stop\s*>\s*i\s*\{[^}]*transform:\s*none/i.test(css), "mobile planned-stop connector can rotate its phrase through adjacent boxes");
   assert(!/@media\s*\(max-width:\s*600px\)[\s\S]{0,2400}?\.route-brief\s*\{[^}]*grid-template-columns:\s*repeat\(3/i.test(css), "narrow route brief regressed to three compressed columns");
   assert(/@media print[\s\S]*?\.standalone-section\s*\{\s*break-before:\s*page/i.test(css), "standalone print routes do not start on deliberate pages");
   assert(/@media print[\s\S]*?\.page-content,[\s\S]*?\.sources-route,[\s\S]*?\.research-route,[\s\S]*?\.history-route[\s\S]*?min-width:\s*0\s*!important/i.test(css), "evidence routes lack explicit print-width containment");
@@ -309,6 +322,29 @@ const main = () => {
   }
   assert(contrastRatio(cssHexVariable(css, "focus-dark"), paper) >= 3, "dark focus ring lacks 3:1 contrast on paper");
   assert(contrastRatio(cssHexVariable(css, "focus-light"), cssHexVariable(css, "navy")) >= 3, "light focus ring lacks 3:1 contrast on dark surfaces");
+  assert(/\.boundary-banner,\s*\.source-notice,\s*\.research-status,\s*\.echo-callout\s*\{[^}]*background:\s*var\(--navy\);[^}]*color:\s*var\(--inverse-heading\)/i.test(css), "dark callouts do not declare their actual navy/heading pair");
+  assert(/\.echo-callout\s*\{[^}]*background:\s*var\(--echo-surface\)/i.test(css), "Echo callout does not declare its actual purple surface");
+  assert(/\.boundary-banner p,\s*\.source-notice p,\s*\.research-status p,\s*\.echo-callout p\s*\{\s*color:\s*var\(--inverse-body\)/i.test(css), "dark callout body text does not use the inverse-body color");
+  assert(/\.boundary-banner \.eyebrow,\s*\.source-notice \.eyebrow,\s*\.research-status \.eyebrow,\s*\.echo-callout \.eyebrow\s*\{\s*color:\s*var\(--inverse-accent\)/i.test(css), "dark callout accents do not use the inverse-accent color");
+  assert(/\.echo-callout a,\s*\.echo-callout a:visited\s*\{\s*color:\s*var\(--inverse-accent\)/i.test(css), "Echo normal/visited links do not use the inverse palette");
+  assert(/\.echo-callout a:hover\s*\{\s*color:\s*var\(--inverse-bright\)/i.test(css), "Echo hover links do not use the bright inverse color");
+  assert(/\.echo-callout a:focus-visible\s*\{[^}]*color:\s*var\(--echo-surface\);[^}]*background:\s*var\(--inverse-bright\);[^}]*box-shadow:\s*0 0 0 6px var\(--inverse-accent\)/i.test(css), "Echo focus links do not declare a high-contrast text, fill, and outer indicator");
+  const darkCalloutPairs = [
+    ["navy heading", cssHexVariable(css, "inverse-heading"), cssHexVariable(css, "navy"), 4.5],
+    ["navy body", cssHexVariable(css, "inverse-body"), cssHexVariable(css, "navy"), 4.5],
+    ["navy eyebrow", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "navy"), 4.5],
+    ["Echo heading", cssHexVariable(css, "inverse-heading"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo body", cssHexVariable(css, "inverse-body"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo eyebrow", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo normal/visited link", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo hover link", cssHexVariable(css, "inverse-bright"), cssHexVariable(css, "echo-surface"), 4.5],
+    ["Echo focused link text", cssHexVariable(css, "echo-surface"), cssHexVariable(css, "inverse-bright"), 4.5],
+    ["Echo focus indicator", cssHexVariable(css, "inverse-accent"), cssHexVariable(css, "echo-surface"), 3],
+  ];
+  for (const [label, foreground, background, minimum] of darkCalloutPairs) {
+    const ratio = contrastRatio(foreground, background);
+    assert(ratio >= minimum, `${label} contrast is ${ratio.toFixed(2)}:1; expected at least ${minimum}:1`);
+  }
 
   const reviewManifest = JSON.parse(read(path.join(DIST_DIR, "build-manifest.json")));
   const publicManifest = JSON.parse(read(path.join(PUBLIC_DIST_DIR, "build-manifest.json")));
@@ -402,7 +438,15 @@ const main = () => {
   const publicInternalIndex = publicApply.indexOf("Inspect internal planning state and a local simulation");
   assert(publicPlanIndex > 0 && publicInternalIndex > publicPlanIndex, "public Apply does not put the plain plan before internal state");
   assert(publicApply.includes('<details class="static-route-equivalent" open data-progressive-static-guide><summary>'), "public Apply no-script equivalent is not natively open");
+  const staticGuide = publicApply.match(/<details class="static-route-equivalent"[\s\S]*?<\/details>/)?.[0] ?? "";
+  assert(/material claim judgment[\s\S]*comparison[\s\S]*selection or withholding[\s\S]*permission resolution[\s\S]*memory reuse[\s\S]*acquisition[\s\S]*human action gate[\s\S]*consequential external influence/i.test(staticGuide), "public Apply static guide lost the canonical Stage 0 predicate");
+  const ordinaryStaticRow = staticGuide.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "";
+  assert(/permission resolution[\s\S]*consequential external influence/i.test(ordinaryStaticRow), "public Apply static ordinary row drifted from the canonical Stage 0 predicate");
   assert(siteScript.includes('document.querySelectorAll("[data-progressive-static-guide]")') && siteScript.includes("guide.open = false"), "public Apply does not collapse the static table after JavaScript initializes");
+  assert(siteScript.includes('window.addEventListener("beforeprint"') && siteScript.includes('window.addEventListener("afterprint"'), "public Apply does not preserve progressive-guide state across printing");
+  assert(siteScript.includes("guide.open = true") && siteScript.includes("guide.open = prePrintGuideStates.get(guide)"), "public Apply does not open its static guide for print and restore the screen state");
+  assert(siteScript.includes("button.disabled = false"), "Map controls are not enabled after enhancement initializes");
+  assert(css.includes(".no-js [data-family-focus], .no-js [data-family-clear] { display: none; }"), "no-script CSS does not hide redundant Map focus/reset controls");
   assert(publicApply.includes('class="public-builder-depth"') && publicApply.indexOf("For builders and agents") > publicApply.indexOf("FOUR PROPORTIONATE CHOICES"), "public Apply does not progressively disclose builder depth");
 
   for (const filePath of publicRouteFiles) for (const href of localLinksIn(read(filePath))) checkLink(filePath, href, PUBLIC_DIST_DIR);
@@ -429,7 +473,7 @@ const main = () => {
   console.log("PASS standalone human-first opening, heading hierarchy, and unique IDs");
   console.log("PASS responsive/no-script navigation and active-route semantics");
   console.log("PASS Stage 0, descriptive term controls, mobile route brief, and medium-popover contracts");
-  console.log("PASS normal-text and dual-focus contrast thresholds");
+  console.log("PASS selected palette-on-paper, declared dark-callout state pairs, and dual-focus contrast thresholds");
   console.log("PASS standalone export exists");
   console.log("PASS shared-source review/public route, claim, family, and hash parity");
   console.log("PASS fail-closed public metadata and review-chrome removal");
@@ -438,3 +482,4 @@ const main = () => {
 };
 
 main();
+await import("../qa/site/source-navigation-disclosure-contract.spec.mjs");

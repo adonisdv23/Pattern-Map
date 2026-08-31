@@ -155,6 +155,16 @@ def main() -> None:
     )
     output.append("PASS no-script essential meaning is present in static HTML")
 
+    initial_map_controls = re.findall(
+        r'<button\b[^>]*(?:data-map-family|data-family-focus|data-family-clear)[^>]*>',
+        map_text,
+    )
+    require(len(initial_map_controls) == 13, "Map does not expose exactly thirteen enhancement controls")
+    require(
+        all(re.search(r'\bdisabled\b', control) is not None for control in initial_map_controls),
+        "a Map enhancement control is enabled in the initial no-script DOM",
+    )
+
     for value in ["ordinary", "lightweight", "moderate", "advanced", "ACQUIRE", "STOPPED_BUDGET", "LEARNING_PENDING_OUTCOME"]:
         require(value.lower() in apply_text.lower(), f"Apply vocabulary missing: {value}")
     require('name="evidenceSelection"' in apply_text and "Stage 0 comes first" in apply_text, "Apply Stage 0 evidence-selection gate missing")
@@ -173,6 +183,18 @@ def main() -> None:
     ordinary_row = re.search(r'<tr><th scope="row">ordinary</th>[\s\S]*?</tr>', apply_text)
     require(ordinary_row is not None and "ORDINARY_RECORD" in ordinary_row.group(0), "ordinary Stage 0 row lacks ORDINARY_RECORD")
     require("<code>ANSWER</code>" not in ordinary_row.group(0), "ordinary Stage 0 row fabricates an ANSWER route")
+    static_guide = re.search(r'<details class="static-route-equivalent"[\s\S]*?</details>', apply_text)
+    require(static_guide is not None, "Apply static guide missing")
+    canonical_stage_zero = re.compile(
+        r'material claim judgment[\s\S]*comparison[\s\S]*selection or withholding[\s\S]*permission resolution[\s\S]*memory reuse[\s\S]*acquisition[\s\S]*human action gate[\s\S]*consequential external influence',
+        flags=re.IGNORECASE,
+    )
+    require(canonical_stage_zero.search(static_guide.group(0)) is not None, "Apply static guide lost the canonical Stage 0 predicate")
+    require(
+        ordinary_row is not None
+        and re.search(r'permission resolution[\s\S]*consequential external influence', ordinary_row.group(0), flags=re.IGNORECASE) is not None,
+        "ordinary Stage 0 row drifted from the canonical predicate",
+    )
     for fact in ("data-recommendation-permission", "data-recommendation-human-gate", "data-recommendation-capacity"):
         require(fact in apply_text, f"Apply recommendation omits explicit planning fact: {fact}")
     require(

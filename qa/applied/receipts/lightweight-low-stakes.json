@@ -1,4 +1,5 @@
 {
+  "fixture_status": "SYNTHETIC_CONTRACT_ONLY_NOT_A_RESULT",
   "receipt_id": "DR-LIGHT-001",
   "operating_level": "LIGHTWEIGHT",
   "evidence_selection": "NEEDED",
@@ -93,7 +94,7 @@
   "route": "ANSWER_PROVISIONALLY",
   "stop_status": "COMPLETE",
   "stop_reason": "Remaining search is not worth the low-consequence task budget.",
-  "uncertainty": ["scope limited to supplied material"],
+  "uncertainty": ["INSUFFICIENT_SUPPORT: scope limited to supplied material"],
   "outcome": {
     "applicable": false,
     "learning_status": "LEARNING_NOT_APPLICABLE"

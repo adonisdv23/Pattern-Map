@@ -22,6 +22,9 @@ Record the scope of the proposed action, or leave it unresolved:
 | Author handle | `UNRESOLVED` |
 | Social image URL | `UNSET` |
 | Social image alternative text | `UNSET` |
+| Code license / reuse posture | `UNRESOLVED` |
+| Prose, site, and documentation rights notice | `UNRESOLVED` |
+| Historical/third-party visual rights and attribution | `UNRESOLVED` |
 | Publication authorization | `NOT GRANTED` |
 
 If any field is unknown, stop at `HOLD`. Do not substitute a test host,
@@ -68,6 +71,24 @@ Unknown applicability remains `HOLD`.
 - [ ] The release build is invoked only after the owner changes the status and
       fields in the configuration under that exact authorization.
 
+## 2a. Rights, licensing, and attribution gates
+
+- [ ] The owner has explicitly chosen a code-license or all-rights-reserved
+      posture; no agent inferred a license from repository visibility.
+- [ ] The owner has explicitly chosen the reuse terms or rights notice for the
+      essay, site copy, framework, templates, and review documentation.
+- [ ] Rights and required attribution for the preserved historical v13 visual
+      have been verified for the exact proposed publication surface.
+- [ ] Every social/open-graph image proposed for release has a documented
+      source, permission basis, required attribution, and final alternative
+      text.
+- [ ] A final artifact includes the selected LICENSE/COPYING/NOTICE/CITATION
+      material, or records an explicit owner decision that the applicable work
+      remains all rights reserved.
+
+An absent license is not permission to choose one. Unresolved ownership,
+attribution, or reuse terms keep the release at `HOLD`.
+
 ## 3. Human and accessibility gates
 
 - [ ] Owner/mentor judgment confirms the voice is a continuation of a serious
@@ -96,6 +117,8 @@ may support these checks but cannot mark them complete by assertion.
       owner-authorized future evidence record.
 - [ ] The final artifact inventory distinguishes canonical content, review
       evidence, and optional rehearsal material.
+- [ ] The final rights/license/attribution files match the owner's recorded
+      decision and do not silently broaden rights for third-party material.
 
 ## 5. Decision
 

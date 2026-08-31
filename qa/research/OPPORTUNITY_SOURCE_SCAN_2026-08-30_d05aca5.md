@@ -374,14 +374,18 @@ execution.
 
 ### OPP-09 — Memory-R1: Outcome-Driven Memory Operations
 
-Source: [Yan et al., “Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning”](https://arxiv.org/abs/2508.19828).
+Source: [Yan et al., “Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning”](https://aclanthology.org/2026.acl-long.583/).
 
-**Verified bibliographic and status facts.** The arXiv record identifies Sikuan
-Yan, Xiufeng Yang, Zuchao Huang, Ercong Nie, Zifeng Ding, Zonggen Li, Xiaowen
-Ma, Jinhe Bi, Kristian Kersting, Jeff Z. Pan, Hinrich Schütze, Volker Tresp,
-and Yunpu Ma as authors. The record was submitted 27 August 2025 and last
-revised as version 5 on 14 January 2026. The checked record is an arXiv
-preprint; its page does not establish a peer-reviewed venue.
+**Verified bibliographic and status facts.** The ACL Anthology identifies
+Sikuan Yan, Xiufeng Yang, Zuchao Huang, Ercong Nie, Zifeng Ding, Zonggen Li,
+Xiaowen Ma, Jinhe Bi, Kristian Kersting, Jeff Z. Pan, Hinrich Schütze, Volker
+Tresp, and Yunpu Ma as authors. It publishes the paper in the peer-reviewed
+Proceedings of the 64th Annual Meeting of the Association for Computational
+Linguistics (Volume 1: Long Papers), July 2026, pages 12805–12825, DOI
+`10.18653/v1/2026.acl-long.583`. The
+[arXiv route](https://arxiv.org/abs/2508.19828) was submitted 27 August 2025
+and last revised as version 5 on 14 January 2026; it is no longer the strongest
+available publication-status record.
 
 **Authors' reported setting and findings.** Memory-R1 uses a Memory Manager
 with `ADD`, `UPDATE`, `DELETE`, and `NOOP` operations plus an Answer Agent that
@@ -399,7 +403,7 @@ the original observation and that human disposition remains required.
 
 **What this source does not establish.** Outcome-driven reinforcement learning
 is not proof that a memory update is correct, source-grounded, authorized, or
-safe. The result is a preprint report tied to its training pairs, benchmarks,
+safe. The reported ACL result remains tied to its training pairs, benchmarks,
 models, and reward design. It does not establish a human-governed learning
 loop, permission handling, or the effectiveness of Pattern Map.
 
@@ -409,15 +413,17 @@ scheme and do not add a result fixture.
 
 ### OPP-10 — PROV-AGENT: Unified Provenance for Agentic Workflows
 
-Source: [Souza et al., “PROV-AGENT: Unified Provenance for Tracking AI Agent Interactions in Agentic Workflows”](https://arxiv.org/abs/2508.02866).
+Source: [Souza et al., “PROV-AGENT: Unified Provenance for Tracking AI Agent Interactions in Agentic Workflows”](https://impact.ornl.gov/en/publications/prov-agent-unified-provenance-for-tracking-ai-agent-interactions-/).
 
-**Verified bibliographic and status facts.** The arXiv record identifies Renan
-Souza, Amal Gueroudji, Stephen DeWitt, Daniel Rosendo, Tirthankar Ghosal,
-Robert Ross, Prasanna Balaprakash, and Rafael Ferreira da Silva as authors. It
-was submitted 4 August 2025 and last revised as version 3 on 20 August 2025.
-The record's comments state that the paper was accepted for the 2025 IEEE
-21st International Conference on e-Science; this scan did not independently
-replace that statement with a proceedings landing page.
+**Verified bibliographic and status facts.** The official Oak Ridge National
+Laboratory publication record identifies Renan Souza, Amal Gueroudji, Stephen
+DeWitt, Daniel Rosendo, Tirthankar Ghosal, Robert Ross, Prasanna Balaprakash,
+and Rafael Ferreira da Silva as authors. It records the paper in the
+peer-reviewed Proceedings of the 2025 IEEE International Conference on
+e-Science, pages 467–473, DOI `10.1109/eScience65000.2025.00093`. The
+[arXiv route](https://arxiv.org/abs/2508.02866) was submitted 4 August 2025 and
+last revised as version 3 on 20 August 2025; the proceedings metadata now
+independently establishes the venue.
 
 **Authors' reported setting and findings.** The authors propose a provenance
 model extending W3C PROV and using MCP and data observability to connect

@@ -4,6 +4,7 @@ Status date: 2026-08-30
 
 | Role | Branch | Integrated/pushed checkpoint | State |
 | --- | --- | --- | --- |
+| Current ultra-finalization owner-review delta | `codex/pattern-map-v16-ultra-finalization` | First pushed source/PDF correction checkpoint `385af09`; exact current source resolves from Git | Authorized push target; stacked draft PR #5 was observed open, draft, clean, and unmerged at `2026-08-30T21:33:15Z`; resolve current head and state at use |
 | Current opportunity-expansion owner-review delta | `codex/pattern-map-v16-next-level` | Exact current source resolves from Git; the first pushed Loop 2 correction checkpoint was `df9bfda` | Authorized push target; stacked draft PR #4 was observed open, draft, clean, and unmerged at `2026-08-30T13:44:36Z`; resolve current head and state at use |
 | Predecessor final owner-review convergence | `codex/pattern-map-v16-final-convergence` | Sealed source and selected Signal Foundry packet checkpoint `5298524` | Authorized predecessor push target; draft PR #3 was observed open, draft, clean, and unmerged at the 2026-08-30 readback; do not substitute a later additive branch for the sealed Signal Foundry packet |
 | Foundation owner-review history | `codex/pattern-map-v16-foundation` | `874a0a8` fixed human manuscript/content-interface checkpoint; `c86e537` post-Ultracode contract source; current foundation head resolves from Git | Authorized historical push target; draft PR #1 was open, draft, and unmerged at the 2026-08-28 readback; do not use `874a0a8` as the current operating checkout |
@@ -16,7 +17,19 @@ Status date: 2026-08-30
 | Authored site and interaction polish | `codex/pattern-map-v16-site-polish` | `85dff94` | Pushed; integrated into foundation |
 | Protected destination | `main` | `5eea238` at orchestration start | Not merged or modified by this work |
 
-Current opportunity-expansion draft pull request: [#4 — Pattern Map v16 — opportunity expansion and final red teams](https://github.com/adonisdv23/Pattern-Map/pull/4)
+Current ultra-finalization draft pull request: [#5 — Pattern Map v16 — ultra finalization](https://github.com/adonisdv23/Pattern-Map/pull/5)
+
+- Base branch: `codex/pattern-map-v16-next-level`.
+- Head branch: `codex/pattern-map-v16-ultra-finalization`.
+- First pushed source/PDF correction checkpoint:
+  `385af09679bac12d8ce807bda6c3d4ee3f143723`.
+- State observed at `2026-08-30T21:33:15Z`: open, draft, clean, and
+  unmerged, with remote head
+  `385af09679bac12d8ce807bda6c3d4ee3f143723`. Resolve its current head
+  and review state at use; later manifest and QA commits update the same stacked
+  draft without changing the sealed Signal Foundry packet.
+
+Opportunity-expansion draft pull request: [#4 — Pattern Map v16 — opportunity expansion and final red teams](https://github.com/adonisdv23/Pattern-Map/pull/4)
 
 - Base branch: `codex/pattern-map-v16-final-convergence`.
 - Head branch: `codex/pattern-map-v16-next-level`.
@@ -74,7 +87,7 @@ Foundation draft pull request: [#1 — Pattern Map v16 — canonical owner-revie
   current remote head and state at use rather than treating this tracked file
   as self-referential proof of a later push.
 
-All four draft PRs track their named head branches. The canonical foundation
+All five draft PRs track their named head branches. The canonical foundation
 source checkpoint above includes
 the bounded ChatGPT Pro corrections, site hygiene, Signal handoff, EP v1.1,
 the owner visual/export repair that restores standalone route containment,
@@ -89,6 +102,10 @@ This tracked narrative deliberately does not hard-code its own later commit.
 The stacked opportunity-expansion branch adds optional review, project-use,
 and source-boundary aids plus two further red-team loops; it does not replace
 the exact `5298524` Signal Foundry packet or authorize downstream mutation.
+The stacked ultra-finalization branch corrects only reproduced copy, visual,
+fallback-comprehension, reviewed-learning, and owner-seal defects; it adds no
+route, family, study, provider, runtime, publication action, or downstream
+authority.
 The routed-site screenshots from
 `a319794` remain historical QA, not current Map/Apply evidence.
 

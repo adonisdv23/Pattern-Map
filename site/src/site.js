@@ -1,6 +1,66 @@
 (() => {
-  document.querySelectorAll("[data-progressive-static-guide]").forEach((guide) => {
+  const revealHashTarget = () => {
+    if (!window.location.hash || window.location.hash === "#") return;
+    let targetId;
+    try {
+      targetId = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    let disclosure = target.closest("details");
+    let revealed = false;
+    while (disclosure) {
+      if (!disclosure.open) {
+        disclosure.open = true;
+        revealed = true;
+      }
+      disclosure = disclosure.parentElement?.closest("details") ?? null;
+    }
+    if (revealed) {
+      window.requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    }
+  };
+  revealHashTarget();
+  window.addEventListener("hashchange", revealHashTarget);
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest?.("a[href]");
+    if (!link) return;
+    let destination;
+    try {
+      destination = new URL(link.href, window.location.href);
+    } catch {
+      return;
+    }
+    if (destination.href === window.location.href && destination.hash) {
+      window.requestAnimationFrame(revealHashTarget);
+    }
+  });
+
+  const progressiveStaticGuides = [...document.querySelectorAll("[data-progressive-static-guide]")];
+  progressiveStaticGuides.forEach((guide) => {
     guide.open = false;
+  });
+  const prePrintGuideStates = new Map();
+  let printGuideStateRecorded = false;
+  window.addEventListener("beforeprint", () => {
+    if (!printGuideStateRecorded) {
+      prePrintGuideStates.clear();
+      progressiveStaticGuides.forEach((guide) => prePrintGuideStates.set(guide, guide.open));
+      printGuideStateRecorded = true;
+    }
+    progressiveStaticGuides.forEach((guide) => {
+      guide.open = true;
+    });
+  });
+  window.addEventListener("afterprint", () => {
+    if (!printGuideStateRecorded) return;
+    progressiveStaticGuides.forEach((guide) => {
+      if (prePrintGuideStates.has(guide)) guide.open = prePrintGuideStates.get(guide);
+    });
+    prePrintGuideStates.clear();
+    printGuideStateRecorded = false;
   });
 
   const familyGrid = document.querySelector(".family-grid");
@@ -326,6 +386,9 @@
     renderRecommendation();
   }
 
+  [...focusButtons, ...mapButtons, ...(clearButton ? [clearButton] : [])].forEach((button) => {
+    button.disabled = false;
+  });
   document.documentElement.classList.remove("no-js");
   document.documentElement.classList.add("js");
   document.documentElement.dataset.enhanced = "true";

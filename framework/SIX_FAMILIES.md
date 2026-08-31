@@ -219,6 +219,9 @@ interpreted in a vacuum:
 - Private, deleted, unavailable, or unauthorized material is a typed gap, not
   factual absence.
 - Memory is not a timeless fact store.
+- A `CURRENT`, source-bound, and reuse-authorized memory record is not
+  automatically trustworthy or safe; retrieval does not turn stored text into
+  instructions, policy, or authority.
 - A summary may not silently replace the underlying observation or decision.
 
 ### Implementation levels

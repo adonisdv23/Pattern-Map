@@ -29,6 +29,9 @@ assert.match(quickstart, /use the ordinary path[\s\S]*supplied scope[\s\S]*mater
 for (const [label, artifact] of [["Apply", applyHtml], ["Guided", guidedHtml], ["PDF source", pdfSource]]) {
   assert.match(artifact, /material claim judgment[\s\S]*comparison[\s\S]*selection or withholding[\s\S]*permission resolution[\s\S]*memory reuse[\s\S]*acquisition[\s\S]*human action gate[\s\S]*consequential external influence/i, `${label} lost the complete Stage 0 disqualifier`);
 }
+const staticGuide = applyHtml.match(/<details class="static-route-equivalent"[\s\S]*?<\/details>/)?.[0] ?? "";
+assert.match(staticGuide, /material claim judgment[\s\S]*comparison[\s\S]*selection or withholding[\s\S]*permission resolution[\s\S]*memory reuse[\s\S]*acquisition[\s\S]*human action gate[\s\S]*consequential external influence/i, "Apply static guide lost the exact Stage 0 predicate");
+assert.match(staticGuide.match(/<tr><th scope="row">ordinary<\/th>[\s\S]*?<\/tr>/)?.[0] ?? "", /permission resolution[\s\S]*consequential external influence/i, "Apply static ordinary row drifted from the exact Stage 0 predicate");
 assert.doesNotMatch(guidedHtml, /If the work only formats, translates, rewrites, summarizes, or transforms supplied material, use the ordinary path/);
 assert.doesNotMatch(pdfSource, /weighing information beyond supplied material/);
 assert.match(guidedHtml, /Ordinary remains available only when every Stage 0 condition immediately above holds/);

@@ -36,7 +36,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Relationship and terms | `framework/RELATIONSHIP_MAP.md`, `framework/GLOSSARY.md` |
 | Operating choices | `framework/OPERATOR_PLAYBOOK.md`, `framework/IMPLEMENTATION_CHOICES.md`, `framework/BOUNDARIES_AND_FAILURES.md` |
 | Mechanisms and templates | `framework/mechanisms/**`, `framework/templates/**` |
-| Proportionate applied controls | `framework/templates/ORDINARY_RECORD.md`, `framework/templates/MEMORY_RECORD.md`, `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` |
+| Proportionate applied controls | `framework/templates/ORDINARY_RECORD.md`, `framework/templates/MEMORY_RECORD.md`, `framework/templates/OUTCOME_REVIEW.md`, `qa/applied/receipts/pending-outcome-review.json`, `qa/applied/receipts/reviewed-missing-outcome.json`, `qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md` |
 | Signal Foundry | `cases/signal-foundry/README.md` |
 | Neutral cases | `cases/general-research/README.md`, `cases/product-and-process/README.md` |
 
@@ -74,13 +74,13 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 
 | Artifact | Path | Boundary |
 | --- | --- | --- |
-| Shared site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored ten-route source with review/public adapters; continuous Guided read, line-free current Map, contextual term helpers, planning-only Apply, and fail-closed publication metadata; no hosting |
+| Shared site source/build | `site/build.mjs`, `site/src/**`, `site/check.mjs` | Dependency-free authored ten-route source with review/public adapters; continuous Guided read, line-free current Map, initially inert enhancement-only controls, contextual term helpers, an exact no-script/print Stage 0 equivalent, planning-only Apply, and fail-closed publication metadata; no hosting |
 | Apply recommendation model | `site/src/recommendation.js`, `qa/interaction/apply-state-contract.spec.mjs`, `qa/interaction/apply-cross-artifact-contract.spec.mjs` | One strict terminal ordinary input plus 144 valid layered consequence/uncertainty/capacity/permission/human-gate states; fails closed on invalid ordinary fields and never records actual events from planning inputs |
 | Map, term, and reader regressions | `qa/interaction/map-layout-contract.spec.mjs`, `qa/interaction/term-popover-geometry-contract.spec.mjs`, `qa/content/reader-language-contract.spec.mjs` | Narrow/medium/wide Map contract, measured desktop term-panel clearance/viewport clamp, and cumulative-entry/plain-language contract |
 | Standalone HTML | `site/exports/standalone/pattern-map-v16.html` | Semantic direct-open ten-section review companion; one rail/guide/frame and no false current route |
 | Public-preview standalone | `site/exports/standalone/pattern-map-v16-public.html` | Prose-first direct-open ten-section public adapter; no review/package chrome; local `noindex,nofollow` candidate only |
 | PDF companion | `site/exports/pattern-map-v16-owner-review.pdf` | Untagged visual companion; not the accessibility route |
-| Site implementation QA | `qa/site/SITE_QA_REPORT.md`, `qa/site/audit_site.py` | Structural/accessibility proxy only |
+| Site implementation QA | `qa/site/SITE_QA_REPORT.md`, `qa/site/audit_site.py`, `qa/site/headless_print_contract.sh` | Structural/accessibility proxy plus actual localhost/headless public-route and standalone PDF-text retention; native print preview remains manual |
 | Current-head live browser boundary | `qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md` | Pointer/focus/state evidence; physical keyboard/screen-reader/print remain manual |
 | Historical Pro correction QA | `qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md` | Round 2 exact review/correction, then-current 108-case Stage 0 contract, mobile/medium live viewports, transparent P2 dispositions, and manual residuals; superseded for current Apply semantics by final convergence |
 | Owner visual/export closeout | `qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md` | Traces the attached export failure to a real standalone-markup defect, records its structural repair, and verifies the flow-native recurrence visual, term-helper containment, and print-width safeguards |
@@ -91,7 +91,7 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Final site hygiene | `qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md`, `qa/visual/verify_image_formats.py` | Stale-selector removal, truthful current image signatures, immutable archive exceptions, and human-first standalone regression |
 | Prior Pro correction QA | `qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md`, `qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md` | Round 1 exact review history; superseded for the current Apply matrix and term/mobile behavior |
 | Historical site-polish QA | `qa/site/SITE_POLISH_QA.md`, `qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md` | Earlier `a319794` design checkpoint; superseded for current Map/Apply semantics |
-| Visual QA | `qa/visual/POLISH_PLAN.md`, `qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, historical routed-site screenshots, current PDF renders | Design history and bounded rendered evidence; `qa/visual/README.md` distinguishes current from superseded captures |
+| Visual QA | `qa/visual/POLISH_PLAN.md`, `qa/visual/VISUAL_QA_REPORT.md`, `qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md`, `qa/visual/ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md`, `qa/visual/W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md`, historical routed-site screenshots, current principal-door captures, current PDF renders | Design history and bounded rendered evidence; `qa/visual/README.md` distinguishes current from superseded captures |
 | Image decision/use records | `qa/visual/VISUAL_NEEDS.md`, `assets/IMAGE_USE_LEDGER.md` | No generated bitmap candidates |
 
 ## The Echo Problem / ECHO-01
@@ -143,15 +143,23 @@ Status: **CANONICAL LOCAL REVIEW MAP**
 | Public/transfer convergence QA | `qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md` |
 | Final exact-integrated red-team correction QA | `qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md` plus the three final reports under `qa/editorial/advisory/`, `qa/site/advisory/`, and `qa/research/advisory/` |
 | Opportunity-expansion plan and terminal QA | `docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md`, `qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md` |
+| Ultra-finalization terminal QA | `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` — exact baseline, accepted corrections, removal decisions, deterministic/rendered evidence, Signal boundary, and manual residuals |
+| Extended ultra opportunity QA | `qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md` — bounded design/accessibility, current-source, memory-safety, and hostile receipt-contract corrections plus controlled deferrals |
+| Final red/blue ultra convergence | `qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md` — integrated rendered, receipt-contract, package, PDF, residual, and terminal-sequencing evidence |
+| Owner-package control ultra QA | `qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md` — branch-invariant exact-commit construction, staged bounded verification, copied-extraction controls, no-overwrite races, and blue-team dispositions |
 | Opportunity-expansion review loops | Three Loop 1 reports and three exact-integrated Loop 2 reports under `qa/publication/advisory/`, `qa/research/advisory/`, and `qa/applied/advisory/`; static/model review evidence only |
 | Exact-checkpoint Claude sealing audit | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md` |
 | Exact-checkpoint Claude terminal recheck | `qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md` |
 | Post-Ultracode finalization | `qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md` |
 | Advisory ledger | `docs/ADVISORY_REVIEW_DISPOSITIONS.md` |
 | Owner packet | `handoff/OWNER_REVIEW_PACKET_V16.md` |
+| Recipient start | `handoff/START_HERE_OWNER_REVIEW.md` — separates original-ZIP, extracted-package, and Git-checkout verification |
 | Branch/PR state | `handoff/BRANCH_AND_PR_STATE.md` |
-| Checksum manifest | `handoff/OWNER_REVIEW_MANIFEST_V16.json` |
-| Manifest verifier | `handoff/verify_owner_review_package.py` |
+| Bounded selected-artifact manifest | `handoff/OWNER_REVIEW_MANIFEST_V16.json` — canonical review entrypoints plus archive ledgers/verifiers; not a full ZIP inventory |
+| Bounded manifest verifier | `handoff/verify_owner_review_package.py` — strict recipient verification plus separately guarded author-only writing |
+| Complete exact-commit owner builder | `handoff/build_owner_review_bundle.py` — one enclosing directory, branch-name-independent deterministic bytes, staged bounded-manifest verification, full payload manifest, copied-location verification, exclusive non-overwriting ZIP/sidecar publication |
+| Extracted full-payload verifier | `handoff/verify_extracted_owner_bundle.py` — travels as wrapper-root `VERIFY_PACKAGE.py` and verifies every shipped Git file without `.git` |
+| Owner-bundle adversarial regression | `qa/handoff/test_owner_review_bundle.py` |
 
 Historical archives remain immutable. Generated site output under `site/dist/`
 and caches/dependency directories are not package artifacts and are not

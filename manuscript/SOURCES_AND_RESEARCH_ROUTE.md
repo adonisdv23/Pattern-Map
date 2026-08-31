@@ -63,12 +63,29 @@ and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233)
   Pattern Map invented context curation, iterative context adaptation, or
   playbook evolution. Anthropic's report is first-party practice guidance, not
   independent validation of this project.
-- **Recurrence versus support.** The 2026
-  [GroupQA preprint](https://arxiv.org/abs/2601.06189) reports, in its tested
-  RAG setting, that paraphrasing an argument can be more persuasive than adding
-  distinct independent support. That result directly motivates separating
-  recurrence, origin relation, and claim support, but it does not establish the
-  provenance or independence of any source in a Pattern Map example.
+- **Recurrence versus support.** The peer-reviewed Findings of ACL 2026 paper
+  [GroupQA](https://aclanthology.org/2026.findings-acl.2003/), also retained as
+  an [earlier arXiv record](https://arxiv.org/abs/2601.06189), reports in its
+  tested RAG setting that paraphrasing an argument can be more persuasive than
+  adding distinct independent support. That result directly motivates
+  separating recurrence, origin relation, and claim support, but it does not
+  establish the provenance or independence of any source in a Pattern Map
+  example.
+- **Expected absence and durable-memory safety.** The peer-reviewed NeurIPS
+  2025 [AbsenceBench](https://proceedings.neurips.cc/paper_files/paper/2025/hash/36b31e1bb8ecd4f4081686448e9eff2d-Abstract-Datasets_and_Benchmarks_Track.html)
+  reports omission-detection errors even when original and edited contexts are
+  both supplied. That bounded result makes an explicit baseline insufficient
+  by itself and does not establish open-world absence or Candidate B's
+  orthogonal boundary construct. NeurIPS 2025
+  [MINJA](https://proceedings.neurips.cc/paper_files/paper/2025/hash/42a97bbd9844d2bf68596730af80bcdf-Abstract-Conference.html)
+  and USENIX Security 2026
+  [FragFuse](https://www.usenix.org/conference/usenixsecurity26/presentation/rao)
+  report distinct attacks in which persistent memory carries adversarial
+  influence or reconstructs blocked content across interactions. These results
+  require a negative boundary: scoped provenance and versioning are not
+  security guarantees, and retrieved memory remains untrusted data rather than
+  becoming instruction or authority merely through reuse. None of these
+  bounded studies validates a Pattern Map record or establishes a defense.
 - **Audit trails and execution traces.** NIST's ongoing official
   [agent-evaluation-probes project](https://www.nist.gov/programs-projects/building-evaluation-probes-agentic-ai)
   is developing rubric-based grounding checks and machine-readable audit
@@ -117,15 +134,18 @@ and [human–AI interaction guidelines](https://doi.org/10.1145/3290605.3300233)
   coverage), [Context Length Alone Hurts LLM Performance Despite Perfect
   Retrieval](https://aclanthology.org/2025.findings-emnlp.1264/) (context
   burden), [EvoMemBench](https://arxiv.org/abs/2605.18421) (conditional memory
-  usefulness), [PROV-AGENT](https://arxiv.org/abs/2508.02866) (workflow
-  provenance), and [HALT](https://arxiv.org/abs/2608.02009) (evidence-coverage
-  stopping). The report also covers iterative counterevidence verification,
-  temporal validity, structured memory and outcome updates, and
-  perspective-sensitive source-diversity evaluation. These works constrain
-  component-level novelty and support the existing matched-budget, no-results,
-  and human-authority boundaries; they do not establish that more evidence,
-  more context, memory, provenance, or stopping improves decisions, nor do
-  they select a v16 study route.
+  usefulness), [Memory-R1](https://aclanthology.org/2026.acl-long.583/)
+  (outcome-driven memory operations),
+  [PROV-AGENT](https://impact.ornl.gov/en/publications/prov-agent-unified-provenance-for-tracking-ai-agent-interactions-/)
+  (peer-reviewed workflow provenance), and
+  [HALT](https://arxiv.org/abs/2608.02009) (evidence-coverage stopping). The
+  report also covers iterative counterevidence verification, temporal validity,
+  structured memory and outcome updates, and perspective-sensitive
+  source-diversity evaluation. These works constrain component-level novelty
+  and support the existing matched-budget, no-results, and human-authority
+  boundaries; they do not establish that more evidence, more context, memory,
+  provenance, or stopping improves decisions, nor do they select a v16 study
+  route.
 
 The component areas have substantial established and active prior work. The
 bounded contribution is an **authored, proportional, human-governed

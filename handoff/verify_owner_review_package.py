@@ -13,13 +13,15 @@ import argparse
 import hashlib
 import json
 import re
+import stat
+import subprocess
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
 CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
-OWNER_REVIEW_PDF_CHECKPOINT = "06c61680f709861ccd3ffd2df5029e04c63cb450"
+OWNER_REVIEW_PDF_CHECKPOINT = "385af09679bac12d8ce807bda6c3d4ee3f143723"
 PHASE_0_BASELINE = "37c7c852ff406431454346eacc694ac04c5f57a5"
 LANE_HEADS = {
     "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
@@ -40,6 +42,73 @@ OPPORTUNITY_EXPANSION_LANE_HEADS = {
     "research_opportunity_scan": "30d4af6564e07154f0f60e8fd2d8a59f3c815944",
 }
 OPPORTUNITY_LOOP_2_REVIEWED_HEAD = "2b2d1bad8e9b7c954f209f0c9c6e0cfbc9d4815b"
+
+MANIFEST_SCHEMA_VERSION = 2
+PACKAGE_NAME = "pattern-map-v16-owner-review"
+PACKAGE_STATUS = (
+    "owner-review candidate; not merged, deployed, published, or empirically validated"
+)
+GENERATED_DATE = "2026-08-30"
+SOURCE_HEAD_RESOLUTION = {
+    "status": "resolve_at_use",
+    "command": "git rev-parse --verify HEAD",
+    "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
+}
+EVIDENCE_NOTE = (
+    "This manifest covers the locked human thesis and six-family content; the "
+    "preserved Echo boundary; the shared-source review/public site, deterministic "
+    "teaching reveal, exact document destinations, focus-neutral nested-disclosure "
+    "navigation, dark-callout state contrast, and JavaScript-enabled headless print "
+    "retention; fail-closed publication metadata, semantic headings, and explicit "
+    "identity/rights/authorization gates; a genuine four-field ordinary "
+    "route; typed permission, resolvable comparison/disconfirmation, real UTC "
+    "motion instants, exactly reconciled memory use and selected influence, exact "
+    "budget/fixture shapes, general untrusted-payload data/control separation, and "
+    "append-only current-memory fixtures; "
+    "an actual pending-to-reviewed synthetic no-result fixture with exact "
+    "expectation/window resolution and a preserved-payload digest; the targeted "
+    "2025–2026 adjacent-work boundary and two unrun study-mode candidates; the "
+    "optional repository-local project-use starter; the unpublished mentor/X/release-"
+    "decision rehearsal kit; the supplemental targeted opportunity source scan; "
+    "opportunity/red-team and ultra-finalization review loops; exact-commit Signal "
+    "Foundry subset construction with classified out-of-packet links; strict "
+    "deterministic complete-payload owner packaging plus copied-extraction controls; "
+    "current principal-door evidence; and the byte-identical six-page review PDF. Manual "
+    "owner/mentor comprehension, physical keyboard, supported screen reader, real "
+    "zoom, forced colors, native print, hardware touch, byline, canonical URL, social "
+    "image, and publication-time link checks remain open. Agent and Claude reviews "
+    "are advisory only. No study, deployment, publication, merge, research-provider "
+    "selection/call, external dataset acquisition, outreach, or incremental spend is "
+    "implied."
+)
+ARCHIVE_SCOPE = (
+    "Key ledgers and verifiers are included here; immutable archive payload hashes "
+    "remain authoritative in their own manifests."
+)
+MANIFEST_KEYS = {
+    "schema_version",
+    "package",
+    "status",
+    "generated_date",
+    "historical_converged_checkpoint",
+    "owner_review_pdf_checkpoint",
+    "phase_0_hardening_baseline",
+    "integrated_lane_heads",
+    "convergence_correction_heads",
+    "opportunity_expansion_baseline",
+    "opportunity_expansion_lane_heads",
+    "opportunity_loop_2_reviewed_head",
+    "source_head",
+    "source_head_resolution",
+    "evidence_note",
+    "archive_scope",
+    "file_count",
+    "total_bytes",
+    "files",
+}
+FILE_RECORD_KEYS = {"path", "bytes", "sha256"}
+AUTHOR_CONFIRMATION = "I_AM_AUTHORING_FROM_A_CLEAN_GIT_CHECKOUT"
+DEFAULT_BRANCH_NAMES = {"main", "master", "trunk"}
 
 
 REQUIRED_PATHS = [
@@ -175,6 +244,7 @@ REQUIRED_PATHS = [
     "qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md",
     "qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md",
     "qa/applied/STAGE_ZERO_ORDINARY_CONTRACT_CONVERGENCE_QA_2026-08-30_0beee9a.md",
+    "qa/applied/MACHINE_RECEIPT_CONTRACT_ULTRA_QA_2026-08-30_76ade6e.md",
     "qa/applied/memory_anchor_registry.json",
     "qa/applied/validate_framework.py",
     "qa/applied/advisory/PUBLIC_MENTOR_KIT_CROSS_LANE_CHALLENGE_2026-08-30_f2311d0.md",
@@ -184,6 +254,8 @@ REQUIRED_PATHS = [
     "qa/applied/receipts/lightweight-low-stakes.json",
     "qa/applied/receipts/memory-append-only-correction.json",
     "qa/applied/receipts/ordinary-supplied-material.json",
+    "qa/applied/receipts/pending-outcome-review.json",
+    "qa/applied/receipts/reviewed-missing-outcome.json",
     "qa/applied/receipts/revoked-permission.json",
     "qa/applied/receipts/stopped-budget.json",
     "qa/applied/receipts/unknown-permission.json",
@@ -191,6 +263,11 @@ REQUIRED_PATHS = [
     "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
     "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
     "qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md",
+    "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
+    "qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md",
+    "qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md",
+    "qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md",
+    "qa/handoff/test_owner_review_bundle.py",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
     "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md",
     "qa/research/validate_research_boundaries.py",
@@ -208,6 +285,7 @@ REQUIRED_PATHS = [
     "qa/site/SITE_QA_REPORT.md",
     "qa/site/SITE_POLISH_QA.md",
     "qa/site/audit_site.py",
+    "qa/site/headless_print_contract.sh",
     "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
     "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
     "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
@@ -215,7 +293,9 @@ REQUIRED_PATHS = [
     "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
     "qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md",
     "qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md",
+    "qa/site/PUBLIC_SURFACE_ACCESSIBILITY_NAVIGATION_QA_2026-08-30_76ade6e.md",
     "qa/site/public-mode-contract.spec.mjs",
+    "qa/site/source-navigation-disclosure-contract.spec.mjs",
     "qa/site/public-nav-spacing-contract.spec.mjs",
     "qa/site/door-card-preview-contract.spec.mjs",
     "qa/site/advisory/FINAL_APPLIED_SITE_REDTEAM_2026-08-30_d40ca61.md",
@@ -239,6 +319,11 @@ REQUIRED_PATHS = [
     "qa/visual/POLISH_PLAN.md",
     "qa/visual/VISUAL_NEEDS.md",
     "qa/visual/VISUAL_QA_REPORT.md",
+    "qa/visual/ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md",
+    "qa/visual/W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md",
+    "qa/visual/ultra-finalization/public-home-doors-1440x720.jpg",
+    "qa/visual/ultra-finalization/public-home-map-door-390x844.jpg",
+    "qa/visual/ultra-finalization/public-home-apply-door-390x844.jpg",
     "qa/visual/opportunity-final/README.md",
     "qa/visual/opportunity-final/public-home-1280x720.jpg",
     "qa/visual/opportunity-final/public-home-390x844.jpg",
@@ -325,6 +410,9 @@ REQUIRED_PATHS = [
     "handoff/OWNER_REVIEW_PACKET_V16.md",
     "handoff/PACKAGE_MAP_V16.md",
     "handoff/BRANCH_AND_PR_STATE.md",
+    "handoff/START_HERE_OWNER_REVIEW.md",
+    "handoff/build_owner_review_bundle.py",
+    "handoff/verify_extracted_owner_bundle.py",
     "handoff/verify_owner_review_package.py",
 ]
 
@@ -337,6 +425,118 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def strict_json_object(path: Path) -> dict[str, object]:
+    """Load one unambiguous JSON object.
+
+    Python's default decoder accepts duplicate keys and the non-standard values
+    NaN/Infinity.  Neither is safe for a package control record.
+    """
+
+    def reject_duplicate_keys(pairs: list[tuple[str, object]]) -> dict[str, object]:
+        result: dict[str, object] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate object key {key!r}")
+            result[key] = value
+        return result
+
+    def reject_nonfinite(value: str) -> object:
+        raise ValueError(f"non-finite JSON value {value!r}")
+
+    payload = json.loads(
+        path.read_text(encoding="utf-8"),
+        object_pairs_hook=reject_duplicate_keys,
+        parse_constant=reject_nonfinite,
+    )
+    if not isinstance(payload, dict):
+        raise ValueError("manifest root must be a JSON object")
+    return payload
+
+
+def assert_regular_repository_file(relative: str) -> Path:
+    """Return a required path only when every component is non-symlink and local."""
+
+    parts = Path(relative).parts
+    if not parts or Path(relative).is_absolute() or ".." in parts:
+        raise AssertionError(f"unsafe required owner-review path: {relative}")
+    current = ROOT
+    for part in parts:
+        current = current / part
+        if current.is_symlink():
+            raise AssertionError(f"owner-review artifact may not be a symlink: {relative}")
+    if not current.exists():
+        raise FileNotFoundError(f"required owner-review artifact missing: {relative}")
+    mode = current.lstat().st_mode
+    if not stat.S_ISREG(mode):
+        raise AssertionError(f"owner-review artifact is not a regular file: {relative}")
+    try:
+        current.resolve().relative_to(ROOT.resolve())
+    except ValueError as error:
+        raise AssertionError(f"owner-review artifact escapes repository root: {relative}") from error
+    return current
+
+
+def manifest_control_file() -> Path:
+    """Return the bounded manifest only when it is a local regular path."""
+
+    try:
+        relative = MANIFEST.relative_to(ROOT).as_posix()
+    except ValueError as error:
+        raise AssertionError("owner-review manifest escapes repository root") from error
+    return assert_regular_repository_file(relative)
+
+
+def assert_clean_git_authoring_context() -> None:
+    """Fail closed before the author-only manifest writer can change bytes."""
+
+    def git(*args: str) -> str:
+        completed = subprocess.run(
+            ["git", *args],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=False,
+        )
+        if completed.returncode != 0:
+            raise AssertionError(
+                "manifest authoring requires a Git checkout; verification of a "
+                "received package must never use --write"
+            )
+        return completed.stdout.strip()
+
+    top = Path(git("rev-parse", "--show-toplevel")).resolve()
+    if top != ROOT.resolve():
+        raise AssertionError("manifest authoring must run at the Pattern Map Git root")
+    branch_probe = subprocess.run(
+        ["git", "symbolic-ref", "--quiet", "--short", "HEAD"],
+        cwd=ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        text=True,
+        check=False,
+    )
+    if branch_probe.returncode != 0 or not branch_probe.stdout.strip():
+        raise AssertionError(
+            "manifest authoring requires a named non-default branch; detached "
+            "HEAD is not allowed"
+        )
+    branch = branch_probe.stdout.strip()
+    if branch.casefold() in DEFAULT_BRANCH_NAMES:
+        raise AssertionError(
+            f"manifest authoring requires a named non-default branch, not {branch!r}"
+        )
+    head = git("rev-parse", "--verify", "HEAD")
+    if not re.fullmatch(r"[0-9a-f]{40}", head):
+        raise AssertionError("manifest authoring could not resolve an exact Git HEAD")
+    dirty = git("status", "--porcelain=v1", "--untracked-files=all")
+    if dirty:
+        raise AssertionError(
+            "manifest authoring requires a clean Git checkout; commit all intended "
+            "source/evidence bytes first"
+        )
+
+
 def assert_pdf_checkpoint_bound() -> None:
     if not re.fullmatch(r"[0-9a-f]{40}", OWNER_REVIEW_PDF_CHECKPOINT):
         raise AssertionError(
@@ -346,11 +546,11 @@ def assert_pdf_checkpoint_bound() -> None:
 
 
 def current_records() -> list[dict[str, object]]:
+    if len(REQUIRED_PATHS) != len(set(REQUIRED_PATHS)):
+        raise AssertionError("required owner-review path list contains duplicates")
     records: list[dict[str, object]] = []
     for relative in sorted(REQUIRED_PATHS):
-        path = ROOT / relative
-        if not path.is_file():
-            raise FileNotFoundError(f"required owner-review artifact missing: {relative}")
+        path = assert_regular_repository_file(relative)
         records.append(
             {
                 "path": relative,
@@ -363,12 +563,14 @@ def current_records() -> list[dict[str, object]]:
 
 def write_manifest() -> None:
     assert_pdf_checkpoint_bound()
+    assert_clean_git_authoring_context()
+    manifest_path = manifest_control_file()
     records = current_records()
     payload = {
-        "schema_version": 2,
-        "package": "pattern-map-v16-owner-review",
-        "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-        "generated_date": "2026-08-30",
+        "schema_version": MANIFEST_SCHEMA_VERSION,
+        "package": PACKAGE_NAME,
+        "status": PACKAGE_STATUS,
+        "generated_date": GENERATED_DATE,
         "historical_converged_checkpoint": CONTENT_CHECKPOINT,
         "owner_review_pdf_checkpoint": OWNER_REVIEW_PDF_CHECKPOINT,
         "phase_0_hardening_baseline": PHASE_0_BASELINE,
@@ -378,75 +580,124 @@ def write_manifest() -> None:
         "opportunity_expansion_lane_heads": OPPORTUNITY_EXPANSION_LANE_HEADS,
         "opportunity_loop_2_reviewed_head": OPPORTUNITY_LOOP_2_REVIEWED_HEAD,
         "source_head": None,
-        "source_head_resolution": {
-            "status": "resolve_at_use",
-            "command": "git rev-parse --verify HEAD",
-            "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
-        },
-        "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site and deterministic teaching reveal; fail-closed publication metadata and semantic headings; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, selected influence, and append-only current-memory fixtures; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; two post-build opportunity/red-team loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; and the regenerated six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
-        "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
+        "source_head_resolution": SOURCE_HEAD_RESOLUTION,
+        "evidence_note": EVIDENCE_NOTE,
+        "archive_scope": ARCHIVE_SCOPE,
         "file_count": len(records),
         "total_bytes": sum(int(record["bytes"]) for record in records),
         "files": records,
     }
-    MANIFEST.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    manifest_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
     print(f"WROTE {MANIFEST.relative_to(ROOT)}: {len(records)} files / {payload['total_bytes']} bytes")
 
 
 def verify_manifest() -> None:
     assert_pdf_checkpoint_bound()
-    if not MANIFEST.is_file():
-        raise FileNotFoundError(f"manifest missing: {MANIFEST.relative_to(ROOT)}")
-    payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    manifest_path = manifest_control_file()
+    payload = strict_json_object(manifest_path)
     expected = current_records()
-    if payload.get("schema_version") != 2:
+    if set(payload) != MANIFEST_KEYS:
+        missing = sorted(MANIFEST_KEYS - set(payload))
+        extra = sorted(set(payload) - MANIFEST_KEYS)
+        raise AssertionError(f"owner-review manifest key mismatch; missing={missing}, extra={extra}")
+    if type(payload["schema_version"]) is not int or payload["schema_version"] != MANIFEST_SCHEMA_VERSION:
         raise AssertionError("unsupported owner-review manifest schema")
-    if payload.get("historical_converged_checkpoint") != CONTENT_CHECKPOINT:
+    if payload["package"] != PACKAGE_NAME:
+        raise AssertionError("owner-review package identity mismatch")
+    if payload["status"] != PACKAGE_STATUS:
+        raise AssertionError("owner-review package status/authority boundary mismatch")
+    if payload["generated_date"] != GENERATED_DATE:
+        raise AssertionError("owner-review manifest generated-date mismatch")
+    if payload["evidence_note"] != EVIDENCE_NOTE:
+        raise AssertionError("owner-review manifest evidence/no-results boundary mismatch")
+    if payload["archive_scope"] != ARCHIVE_SCOPE:
+        raise AssertionError("owner-review manifest archive-scope boundary mismatch")
+    if payload["historical_converged_checkpoint"] != CONTENT_CHECKPOINT:
         raise AssertionError("historical converged checkpoint mismatch")
-    if payload.get("owner_review_pdf_checkpoint") != OWNER_REVIEW_PDF_CHECKPOINT:
+    if payload["owner_review_pdf_checkpoint"] != OWNER_REVIEW_PDF_CHECKPOINT:
         raise AssertionError("owner-review PDF checkpoint mismatch")
-    if payload.get("phase_0_hardening_baseline") != PHASE_0_BASELINE:
+    if payload["phase_0_hardening_baseline"] != PHASE_0_BASELINE:
         raise AssertionError("Phase 0 hardening checkpoint mismatch")
-    if payload.get("integrated_lane_heads") != LANE_HEADS:
+    if payload["integrated_lane_heads"] != LANE_HEADS:
         raise AssertionError("integrated lane-head provenance mismatch")
-    if payload.get("convergence_correction_heads") != CONVERGENCE_CORRECTION_HEADS:
+    if payload["convergence_correction_heads"] != CONVERGENCE_CORRECTION_HEADS:
         raise AssertionError("convergence-correction provenance mismatch")
-    if payload.get("opportunity_expansion_baseline") != OPPORTUNITY_EXPANSION_BASELINE:
+    if payload["opportunity_expansion_baseline"] != OPPORTUNITY_EXPANSION_BASELINE:
         raise AssertionError("opportunity-expansion baseline mismatch")
-    if payload.get("opportunity_expansion_lane_heads") != OPPORTUNITY_EXPANSION_LANE_HEADS:
+    if payload["opportunity_expansion_lane_heads"] != OPPORTUNITY_EXPANSION_LANE_HEADS:
         raise AssertionError("opportunity-expansion lane provenance mismatch")
-    if payload.get("opportunity_loop_2_reviewed_head") != OPPORTUNITY_LOOP_2_REVIEWED_HEAD:
+    if payload["opportunity_loop_2_reviewed_head"] != OPPORTUNITY_LOOP_2_REVIEWED_HEAD:
         raise AssertionError("opportunity Loop 2 reviewed-head mismatch")
-    if payload.get("source_head") is not None:
+    if payload["source_head"] is not None:
         raise AssertionError("owner-review manifest must not hard-code its self-referential source head")
-    resolution = payload.get("source_head_resolution")
-    expected_resolution = {
-        "status": "resolve_at_use",
-        "command": "git rev-parse --verify HEAD",
-        "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
-    }
-    if resolution != expected_resolution:
+    if payload["source_head_resolution"] != SOURCE_HEAD_RESOLUTION:
         raise AssertionError("source-head resolution contract mismatch")
-    if payload.get("files") != expected:
+    files = payload["files"]
+    if not isinstance(files, list):
+        raise AssertionError("owner-review manifest files must be a list")
+    seen_paths: set[str] = set()
+    for index, record in enumerate(files):
+        if not isinstance(record, dict) or set(record) != FILE_RECORD_KEYS:
+            raise AssertionError(f"owner-review file record {index} has an invalid shape")
+        relative = record["path"]
+        byte_count = record["bytes"]
+        digest = record["sha256"]
+        if not isinstance(relative, str) or not relative or relative in seen_paths:
+            raise AssertionError(f"owner-review file record {index} has an invalid/duplicate path")
+        if Path(relative).is_absolute() or ".." in Path(relative).parts:
+            raise AssertionError(f"owner-review file record {index} has an unsafe path")
+        if type(byte_count) is not int or byte_count < 0:
+            raise AssertionError(f"owner-review file record {index} has an invalid byte count")
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise AssertionError(f"owner-review file record {index} has an invalid SHA-256")
+        seen_paths.add(relative)
+    if [record["path"] for record in files] != sorted(seen_paths):
+        raise AssertionError("owner-review file records are not sorted exactly once")
+    if files != expected:
         raise AssertionError("owner-review manifest does not match current artifact bytes")
-    if payload.get("file_count") != len(expected):
+    if type(payload["file_count"]) is not int or payload["file_count"] != len(expected):
         raise AssertionError("owner-review manifest file count mismatch")
     total = sum(int(record["bytes"]) for record in expected)
-    if payload.get("total_bytes") != total:
+    if type(payload["total_bytes"]) is not int or payload["total_bytes"] != total:
         raise AssertionError("owner-review manifest byte count mismatch")
     print(f"PASS owner-review manifest: {len(expected)} files / {total} bytes")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--write", action="store_true", help="rewrite the deterministic manifest from current files")
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="AUTHOR ONLY: rewrite the bounded manifest from an exact clean Git checkout",
+    )
+    parser.add_argument(
+        "--author-confirm",
+        metavar="TOKEN",
+        help=f"required with --write; exact token: {AUTHOR_CONFIRMATION}",
+    )
     args = parser.parse_args()
     try:
         if args.write:
+            if args.author_confirm != AUTHOR_CONFIRMATION:
+                raise AssertionError(
+                    "--write is author-only and requires --author-confirm "
+                    f"{AUTHOR_CONFIRMATION}; never use it to verify a received package"
+                )
             write_manifest()
         else:
+            if args.author_confirm is not None:
+                raise AssertionError("--author-confirm is valid only with the author-only --write mode")
             verify_manifest()
-    except (AssertionError, FileNotFoundError, json.JSONDecodeError, OSError) as exc:
+    except (
+        AssertionError,
+        FileNotFoundError,
+        json.JSONDecodeError,
+        OSError,
+        RuntimeError,
+        ValueError,
+    ) as exc:
         raise SystemExit(f"FAIL owner-review manifest: {exc}") from None
 
 

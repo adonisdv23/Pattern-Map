@@ -61,11 +61,17 @@ These values are intentionally unresolved in this local package:
 | Canonical URL | `UNRESOLVED` |
 | Publication destination | `UNRESOLVED` |
 | Social image and alternative text | `UNSET` |
+| Code/content license or all-rights-reserved posture | `UNRESOLVED` |
+| Historical/social-image rights and attribution | `UNRESOLVED` |
 | Release authorization | `NOT GRANTED` |
 
 Do not replace those tokens with guesses, test URLs, a temporary handle, a
-publication name, or metadata copied from an external page. The local site
-configuration must remain `LOCAL_PREVIEW_UNSET` with its release fields null.
+publication name, an inferred open-source license, or metadata copied from an
+external page. The local site configuration must remain
+`LOCAL_PREVIEW_UNSET` with its release fields null. Repository visibility does
+not select reuse rights; the owner must separately choose the code/content
+posture and verify historical/social-image permission and attribution before
+any publication.
 
 ## Evidence boundary
 

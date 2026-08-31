@@ -78,10 +78,38 @@ non-exhaustive source scan. The cycle removed an accidental downstream packet
 dependency and repeated operating prose; it does not establish transfer,
 comprehension, publication readiness, answer quality, or effectiveness.
 
+The successor ultra-finalization cycle retains that scope and repairs only
+reproduced defects: current visual/PDF provenance, compressed-copy qualifiers,
+locally complete no-script/print Stage 0 labels, typed uncertainty, and an
+actual preserved pending-to-reviewed learning link. A successor exact audit
+also removed no-script Map false affordances and locked the static Apply guide
+to the complete Stage 0 predicate. It adds no route, family,
+bitmap, study, provider, external registry, or Signal Foundry mutation. Its
+bounded record is
+[`ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md`](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md).
+
+The final red/blue ultra pass keeps that scope and closes three recipient-facing
+seams: exact rendered-document navigation and Echo callout states; exact
+memory/influence, budget, origin, consequence, and untrusted-payload receipt
+boundaries; and a deterministic complete exact-commit owner ZIP with staged
+bounded-manifest verification, copied-extraction checks, and race-safe
+non-overwrite behavior. Its integrated and package-control records are linked
+in the review path below. It adds no route, family, security claim, rights
+clearance, study, or publication action.
+
 The exact current branch and draft pull-request state is recorded in
 [`BRANCH_AND_PR_STATE.md`](BRANCH_AND_PR_STATE.md) and must be resolved at use.
 Earlier draft pull requests remain review history. None authorizes a merge,
 deployment, or publication.
+
+If this material arrived as a ZIP rather than a Git checkout, begin with
+[`START_HERE_OWNER_REVIEW.md`](START_HERE_OWNER_REVIEW.md). Verify the original
+ZIP against its separately delivered sidecar, extract into a new empty
+directory, and run the wrapper-root `VERIFY_PACKAGE.py`. The bounded manifest
+in this directory is a selected-artifact control, not the full ZIP inventory.
+Complete Git-tip, canonical Signal-packet, and authored-diff checks require a
+Git clone/worktree and must be reported `NOT RUN` in extracted mode. Never use
+the author-only manifest-writing mode to verify received bytes.
 
 ## Recommended review path
 
@@ -119,8 +147,13 @@ deployment, or publication.
    [public/transfer convergence QA](../qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md),
    [post-Ultracode finalization](../qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md),
    [opportunity-expansion terminal QA](../qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md),
-   [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), and this package's checksum
-   manifest.
+   [ultra-finalization terminal QA](../qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md),
+   [extended ultra opportunity QA](../qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md),
+   [final red/blue ultra QA](../qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md),
+   [owner-package control ultra QA](../qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md),
+   [action audit](../qa/FINAL_ACTION_AUDIT_V16.md), this package's bounded
+   selected-artifact manifest, and—when reviewing a built owner ZIP—the wrapper-
+   root full payload manifest, copied-location verifier, and external ZIP sidecar.
 9. If the owner is preparing a private mentor review or rehearsing a possible
    later public explanation, open the optional
    [publication-rehearsal kit](../publication/README.md). It remains unsent,
@@ -146,7 +179,10 @@ the semantic accessibility route.
   Ordinary work has exactly supplied scope, assumptions, unchecked boundaries,
   and output. Layered fixtures keep all four permission states distinct,
   require real linked records for claimed work, and preserve accepted current
-  memory without silently rewriting its superseded predecessor.
+  memory without silently rewriting its superseded predecessor. Reviewed-
+  learning fixtures preserve an actual pending receipt, resolve its
+  expectation/window records, and carry an explicitly synthetic unavailable-
+  outcome review without presenting a result or immutable-store claim.
 - Bounded Signal Foundry and two domain-neutral fixtures; none is represented
   as validation or observed product behavior. Two explicit Signal Foundry
   transfer artifacts identify the exact current repositories, reuse the
@@ -158,7 +194,9 @@ the semantic accessibility route.
   line-free relationship view; contextual plain-language term helpers with
   code-native microvisuals; a provider-free local Apply studio that recommends
   a plan from an explicit Stage 0 gate without fabricating actual event states;
-  a direct-open all-routes
+  enhancement-only Map controls that remain inert without JavaScript; an exact
+  no-script/print Stage 0 equivalent whose enhanced print state is restored
+  after use; a direct-open all-routes
   standalone HTML export; a six-page secondary visual PDF companion; and a
   byte-identical historical v13 diagram labeled as history rather than current
   topology.
@@ -168,6 +206,13 @@ the semantic accessibility route.
   progressive disclosure plus a static equivalent. Release output fails closed
   until a later authorized step supplies valid publication identity and
   absolute-HTTPS metadata; ordinary previews remain `noindex,nofollow`.
+- A complete owner-review package builder that reads every payload byte from
+  one exact clean Git tip, produces branch-name-independent deterministic ZIP
+  bytes, reruns the committed bounded verifier inside the staged repository,
+  verifies a copied extraction, and publishes the ZIP and external digest only
+  through exclusive non-overwriting operations. Wrapper-root verification is
+  complete file-set/hash consistency without `.git`; it is not a digital
+  signature, secret-absence proof, publication, or release.
 - A deterministic exact-commit Signal Foundry portable builder with one plain
   `START_HERE.md`, copyable downstream prompt, sorted per-file path/byte/hash
   manifest, standard-library verifier, whole-ZIP checksum sidecar, source-path
@@ -192,7 +237,7 @@ the semantic accessibility route.
 ## Verification summary
 
 The twelve-stage clone-contained sequence can be replayed with
-`qa/run_owner_review_checks.sh`. Supplying `--source-zip PATH` additionally
+`sh qa/run_owner_review_checks.sh`. Supplying `--source-zip PATH` additionally
 checks the exact owner-local v15.2 distribution container; the default run
 still verifies its complete extracted accession, manifest, sidecar, and hash
 anchors without pretending the external ZIP lives in Git.
@@ -205,8 +250,8 @@ anchors without pretending the external ZIP lives in Git.
   pass at the verified local source path.
 - EP curated set: 82 files / 11,323,689 bytes pass; 15 deterministic harness
   tests pass as implementation checks only.
-- EP v1.1: 12 deterministic tests pass with the standard interpreter (one
-  optional tokenizer test explicitly skipped); all 12 pass in an ephemeral
+- EP v1.1: 11 deterministic tests pass with the standard interpreter and one
+  optional tokenizer test is explicitly skipped; all 12 pass in an ephemeral
   `tiktoken 0.14.0` environment. The frozen 300-pair F1/F2 render fixture
   reaches exact `cl100k_base` token parity under the replacement solver. The
   original Claude solver remains refuted by its own three failing tests. No
@@ -214,6 +259,12 @@ anchors without pretending the external ZIP lives in Git.
 - Editorial, content-interface, applied, research-boundary, site, link,
   standalone-semantic, contrast, no-script, planning-state, Map-layout,
   reader-language, and historical-asset checks pass.
+- When Chrome/Chromium and a PDF text extractor are available, the focused
+  localhost headless-print contract requires both the enhanced public Apply
+  route and the public standalone to retain the ordered Stage 0 predicate,
+  ordinary route, and unobserved-state boundary in actual PDF output, then
+  restore their prior screen disclosure state. Missing optional tools are an
+  explicit skip; native print preview remains manual.
 - The current review standalone has one main, one h1, ten named route sections,
   no duplicate IDs, one publication rail, one mobile guide, one page frame,
   balanced main markup, exactly two frame children, every route inside
@@ -307,6 +358,10 @@ gate. Please record the following before calling v16 fully accepted:
 6. Inspect browser print preview for the principal and key secondary routes.
 7. Inspect forced-colors behavior and hardware-touch activation on navigation,
    term helpers, Map focus, and Apply.
+8. Before any separately authorized publication, choose the byline, canonical
+   URL, destination, social image and alternative text, code/content rights or
+   license posture, and historical/social-image attribution basis; then recheck
+   live links and explicitly authorize the exact artifact and channel.
 
 The exact checklist is in `qa/FINAL_ACCEPTANCE_MATRIX_V16.md`. External source
 destinations should be reverified before any later authorized publication.

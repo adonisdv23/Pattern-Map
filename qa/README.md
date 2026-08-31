@@ -8,7 +8,7 @@ Run the complete clone-contained verification sequence from the repository
 root with:
 
 ```sh
-qa/run_owner_review_checks.sh
+sh qa/run_owner_review_checks.sh
 ```
 
 When the exact owner-local v15.2 ZIP is available, add its separately verified
@@ -28,6 +28,25 @@ boundary that the 41,436,496-byte distribution container is outside Git.
 
 ## Current implementation and rendered evidence
 
+- `qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md` and
+  `qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md` record the
+  final rendered public-surface, hostile receipt-contract, deterministic
+  complete-package, PDF, controlled-disposition, and terminal-sequencing work.
+  They are source/rendered/transfer QA, not owner approval, a security result,
+  rights clearance, publication, or effectiveness evidence.
+- `qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md` records the
+  additional design/accessibility, current-primary-research, and hostile
+  receipt-contract challenge of exact baseline `1812800`; accepted bounded
+  corrections; direct post-fix browser geometry/AX evidence; and controlled
+  deferrals. It is structural, rendered, source-status, and advisory evidence,
+  not a human-reader, physical assistive-technology, security, or effectiveness
+  result.
+- `qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md` records the exact
+  owner-specified baseline, two review waves, accepted source/visual/package
+  corrections, removal decisions, PDF producer, sealed Signal boundary, and
+  manual residuals. The separately preserved pending/reviewed fixtures and
+  model reviews are structural/advisory evidence, not outcomes or effectiveness
+  results.
 - `qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md` and its two
   cross-lane advisory challenges record the optional repository-local
   agent/operator starter, its static composition boundary, and the accepted
