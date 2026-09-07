@@ -97,7 +97,9 @@ candidate IDs and step deadline, reopening/commitment rules, and the private
 world-to-observation release map. Freeze global model-token and elapsed-time
 ceilings separately. Requests have exactly
 `{action_id, candidate_ids, response}`; `response.reason` contains the brief
-rationale. The model-facing actions and charging rules are:
+rationale. The identical public contract supplied to every arm specifies exact
+field types and the 16,384-byte UTF-8 request limit. Requests may not contain
+extra fields, duplicate JSON keys or nonfinite numbers. The model-facing actions and charging rules are:
 
 | Action | Allowed effect and cost in acquisition units |
 | --- | --- |
@@ -122,7 +124,9 @@ release map is fixed before calls and identical across arms in a matched block.
 Terminal `response` has exactly `decision`, `selected_candidate_ids`,
 `implementation`, `source_ids`, `constraints`, `unresolved`, `failure_reason`,
 `next_step`, and `reason`; decision/candidate IDs must agree with the action.
-Source IDs must refer to actually visible evidence. Terminal fields are identical
+SELECT requires a nonempty list identifying every supplied mechanism materially
+instantiated or combined. A new implementation name cannot bypass a rejected
+candidate. Source IDs must refer to actually visible evidence. Terminal fields are identical
 for every arm and are assessed semantically against the frozen rubric.
 
 These are prospective model-facing requirements. Pure development helpers do
@@ -170,9 +174,9 @@ absent from the author's list. Novel implementations require blinded semantic
 adjudication; lexical matching is insufficient. A routine option can win.
 An unlisted implementation must instantiate supplied mechanisms or compatible
 combinations using capabilities supported by visible evidence. It cannot invent
-another tool, source, permission or operating property. Candidate IDs may be
-empty for such an implementation; the semantic reviewer must trace it to the
-supplied mechanisms and evidence instead of grading its name.
+another tool, source, permission or operating property. Candidate IDs must bind the supplied mechanisms
+being instantiated or combined, and may not be empty for SELECT. The semantic
+reviewer must check that binding and evidence instead of grading the name.
 Unfamiliarity, verbosity, family coverage and schema completion earn no credit.
 
 A hold/stop receives credit only when the decision conditions warrant it;

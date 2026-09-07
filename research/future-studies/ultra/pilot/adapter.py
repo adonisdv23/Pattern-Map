@@ -23,7 +23,7 @@ CONTRACT = {
     'nonterminal_response': {'reason': 'nonempty text, at most 40 whitespace-separated words; no other fields'},
     'terminal_response_fields': sorted(TERMINAL_FIELDS),
     'terminal_types': 'decision is SELECT, HOLD or STOP matching action_id; selected_candidate_ids equals candidate_ids; source_ids, constraints and unresolved are string lists; implementation, failure_reason, next_step and reason are strings. Cite only visible source IDs. All prose totals at most 300 whitespace-separated words, including reason (at most 40).',
-    'candidate_arguments': 'INSPECT uses zero IDs, COMPARE two different IDs, REJECT/REOPEN one. SELECT may name listed candidates or describe an alternative instantiation or combination of supplied mechanisms supported by visible facts; implementation text is required and rejected candidates cannot be selected until reopened. HOLD/STOP use zero IDs. A new name or empty ID list is not automatic acceptance.',
+    'candidate_arguments': 'INSPECT uses zero IDs, COMPARE two different IDs, REJECT/REOPEN one. SELECT must name at least one listed candidate, binding every supplied mechanism materially instantiated or combined; an unforeseen implementation name is allowed, but implementation text is required and rejected candidates cannot be selected until reopened. HOLD/STOP use zero IDs. A new name is not automatic acceptance and an empty SELECT ID list is rejected.',
     'reopening': 'REJECT retains all evidence and history. REOPEN requires reversible=true. COMPARE reveals no additional facts.',
     'charging': 'Every attempt counts toward max_attempts. INSPECT costs one unit, including duplicates and failed capture. Other valid actions cost zero. Malformed, unknown, unavailable or rejected attempts charge min(1,remaining units) and reveal no facts. Deadline_attempt applies to the attempted step, starting at 1.',
     'termination': 'No paid inspection may exceed acquisition_units. Exhausting units still permits a valid terminal action within max_attempts. Reaching max_attempts without a valid terminal decision ends as EFFORT_FAILURE. No actions follow a terminal decision. Intermediate rejection alone is not terminal failure.',
@@ -129,6 +129,7 @@ class Episode:
             if kind == 'INSPECT':
                 fields.add('target_evidence_id')
             if (kind not in KINDS or set(row) != fields
+                    or not isinstance(row['description'], str) or not row['description'].strip()
                     or type(row['cost_units']) is not int
                     or row['cost_units'] != (1 if kind == 'INSPECT' else 0)
                     or not _integer(row['deadline_attempt'], 1)
@@ -185,6 +186,7 @@ class Episode:
             row = deepcopy(action)
             row['available'] = (self._terminal is None
                 and next_attempt <= action['deadline_attempt']
+                and (action['kind'] != 'REOPEN' or self._task['rejection_policy']['reversible'])
                 and self._spent + action['cost_units'] <= self._task['limits']['acquisition_units'])
             result['action_set'].append(row)
         result['state'] = {
@@ -229,7 +231,7 @@ class Episode:
             if sum(len(x.split()) for x in prose) > 300:
                 return 'REJECTED_TERMINAL_LENGTH'
             if kind == 'SELECT':
-                if set(ids) & self._rejected or not response['implementation'].strip():
+                if not ids or set(ids) & self._rejected or not response['implementation'].strip():
                     return 'REJECTED_SELECTION'
             elif ids:
                 return 'REJECTED_HOLD_STOP_SELECTION'

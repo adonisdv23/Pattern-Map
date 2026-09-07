@@ -68,6 +68,20 @@ class AdapterContract(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'nested'):
                 Episode(task, releases)
 
+    def test_action_description_is_text_and_irreversibility_is_visible(self):
+        task, releases = specimen()
+        task['action_set'][0]['description'] = {'private_answer': 'SYNTHETIC_CANARY'}
+        with self.assertRaisesRegex(ValueError, 'action'):
+            Episode(task, releases)
+        task, releases = specimen()
+        task['rejection_policy']['reversible'] = False
+        episode = Episode(task, releases)
+        view = episode.submit(request('REJECT', ['C1']))
+        reopen = next(x for x in view['action_set'] if x['kind'] == 'REOPEN')
+        self.assertFalse(reopen['available'])
+        rejected = episode.submit(request('REOPEN', ['C1']))
+        self.assertEqual(rejected['state']['history'][-1]['status'], 'REJECTED_IRREVERSIBLE')
+
     def test_duplicate_failure_costs_and_presence_survives_failed_capture(self):
         episode = self.episode()
         first = episode.submit(request('INSPECT:E2'))
@@ -145,10 +159,12 @@ class AdapterContract(unittest.TestCase):
             Episode(task, releases)
 
     def test_unforeseen_implementation_goes_to_semantic_review(self):
-        result = self.episode().submit(request('SELECT', [], implementation='An alternative implementation'))
+        result = self.episode().submit(request('SELECT', ['C1'], implementation='An unforeseen implementation of the supplied mechanism'))
         self.assertEqual(result['state']['terminal'], 'SELECT')
         self.assertNotIn('accepted', result)
         self.assertNotIn('score', result)
+        empty = self.episode().submit(request('SELECT', [], implementation='Renamed rejected route'))
+        self.assertEqual(empty['state']['history'][-1]['status'], 'REJECTED_SELECTION')
 
     def test_loaded_packets_match_strict_contract(self):
         directory = Path(__file__).parent
