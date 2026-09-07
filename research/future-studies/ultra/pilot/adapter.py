@@ -17,6 +17,19 @@ TERMINAL_FIELDS = {
     'constraints', 'unresolved', 'failure_reason', 'next_step', 'reason',
 }
 KINDS = {'INSPECT', 'COMPARE', 'REJECT', 'REOPEN', 'SELECT', 'HOLD', 'STOP'}
+CONTRACT = {
+    'request_fields': ['action_id', 'candidate_ids', 'response'],
+    'request_types': 'action_id is a listed string; candidate_ids is a unique list of listed IDs; response is an object. No extra or duplicate JSON keys, nonfinite numbers, or JSON wrappers.',
+    'nonterminal_response': {'reason': 'nonempty text, at most 40 whitespace-separated words; no other fields'},
+    'terminal_response_fields': sorted(TERMINAL_FIELDS),
+    'terminal_types': 'decision is SELECT, HOLD or STOP matching action_id; selected_candidate_ids equals candidate_ids; source_ids, constraints and unresolved are string lists; implementation, failure_reason, next_step and reason are strings. Cite only visible source IDs. All prose totals at most 300 whitespace-separated words, including reason (at most 40).',
+    'candidate_arguments': 'INSPECT uses zero IDs, COMPARE two different IDs, REJECT/REOPEN one. SELECT may name listed candidates or describe an alternative instantiation or combination of supplied mechanisms supported by visible facts; implementation text is required and rejected candidates cannot be selected until reopened. HOLD/STOP use zero IDs. A new name or empty ID list is not automatic acceptance.',
+    'reopening': 'REJECT retains all evidence and history. REOPEN requires reversible=true. COMPARE reveals no additional facts.',
+    'charging': 'Every attempt counts toward max_attempts. INSPECT costs one unit, including duplicates and failed capture. Other valid actions cost zero. Malformed, unknown, unavailable or rejected attempts charge min(1,remaining units) and reveal no facts. Deadline_attempt applies to the attempted step, starting at 1.',
+    'termination': 'No paid inspection may exceed acquisition_units. Exhausting units still permits a valid terminal action within max_attempts. Reaching max_attempts without a valid terminal decision ends as EFFORT_FAILURE. No actions follow a terminal decision. Intermediate rejection alone is not terminal failure.',
+    'capture': 'Process state and observation are separate. A later capture failure cannot erase prior positive evidence. No released observation means no additional world fact.',
+    'limits': 'Requests are limited to 16384 UTF-8 bytes. No external tool, source, permission or operating capability may be invented. These are toy acquisition units; model/token/time limits require a separate authorized transport.',
+}
 TEXT_FIELDS = {'implementation', 'failure_reason', 'next_step', 'reason'}
 LIST_FIELDS = {'selected_candidate_ids', 'source_ids', 'constraints', 'unresolved'}
 
@@ -164,6 +177,7 @@ class Episode:
         result = {key: deepcopy(self._task[key]) for key in sorted(PUBLIC_FIELDS)
                   if key not in {'initial_evidence', 'action_set'}}
         result['surface'] = self._surface
+        result['contract'] = deepcopy(CONTRACT)
         result['evidence'] = deepcopy(list(self._evidence.values()))
         result['action_set'] = []
         next_attempt = len(self._history) + 1

@@ -53,6 +53,8 @@ class AdapterContract(unittest.TestCase):
         initial = episode.view()
         self.assertNotIn('positive event', json.dumps(initial))
         self.assertNotIn('process_state', json.dumps(initial))
+        self.assertEqual(initial['contract']['request_fields'], ['action_id', 'candidate_ids', 'response'])
+        self.assertIn('selected_candidate_ids', initial['contract']['terminal_response_fields'])
         initial['candidates'][0]['summary'] = 'mutated copy'
         self.assertNotEqual(initial['candidates'], episode.view()['candidates'])
         self.assertEqual(strict_json(json.dumps(episode.view(), allow_nan=False)), episode.view())
