@@ -1870,3 +1870,80 @@ attestation remain terminal requirements, not evidence already produced here.
 D-046–D-049; locked owner intent; exact provenance; controlled dispositions;
 progressive disclosure; proportionality; two-project separation; and no
 prohibited external action.
+
+## D-051 — Execute the owner's audit recommendations through bounded project use
+
+**Date:** 2026-09-07
+
+**Status:** Accepted with revision; local review changes, no merge or publication
+
+**Decision:** Execute the explicit next-phase goal from audited v16 `ac981f7`.
+Keep the essay, six-family identity and locked owner checkpoint unchanged.
+Prepare a faithful short-version/full-essay PDF and separate mentor handoff;
+add a short repository entry into canonical routing; and add a constructed
+positive option-discovery case to the existing Examples route. Identify one
+current successor and a cumulative review/integration path instead of treating
+five open draft PRs as five different final versions.
+
+Test Signal Foundry's existing decision/rationale seam first. Four synthetic
+cases fit without a new event type or runtime change. Preserve the old sealed
+transfer and write a separate operating-delta supplement. Record that the
+owner's prior sharing and its effect remain unverified. Correct Council's
+distinct-origin/independence collapse on its own branch, including the duplicate
+display projection and origin defaults. Require an explicit scoped assessment
+and basis, preserve unknowns, and document the conservative legacy migration.
+
+Both bounded implementation decisions retained their initial recommendations;
+do not infer causal decision improvement, user adoption, savings or commercial
+demand. Defer shared Protocol Foundry packaging until repeated practical need
+is demonstrated. Reuse the portfolio's existing evidence, retrieval and source
+authority boundaries. Catalogue recommendations are advisory evidence only.
+
+**Evidence and files:** `qa/strategic/BOUNDED_APPLICATIONS_2026-09-07.md`;
+`handoff/NEXT_PHASE_REVIEW_2026-09-07.md`; the successor Signal supplement;
+mentor generator/handoff; agent entry; discovery case; site source mapping and
+explicit bounded-manifest/out-of-packet link updates. Council commit
+`1e82adaaa99a9b497f26aeb9cd7ce31447e1c43b`; Signal commit
+`f8066eef2029168734bb5dcd4dfb08ffcff216ce`. Pattern Map's exact authored/sealed
+heads are resolved from Git and the final external verification attestation.
+
+**Governing requirement:** later explicit owner instruction; A01–A03, A06–A08,
+A11, A13–A17; artifact boundaries; unknown relations; proportionality; source
+authority; immutable history and no unsupported research or product claim.
+
+## D-052 — Advance research with isolated mechanisms and counterexamples
+
+**Date:** 2026-09-07
+
+**Status:** Accepted with revision; design and source comparison only
+
+**Decision:** Treat useful unfamiliar option discovery as the intellectual
+direction, with evaluation timing and search expansion specified separately.
+Close six primary-method comparisons and retain the finding that no novel
+mechanism is established. Recommend a narrowly bounded observation/capture
+measurement pilot for subsequent exact review, while preserving Echo and human
+appropriate-reliance work as distinct tracks.
+
+Construct four discovery and six observation development cases, plus 12
+candidate pilot packets. Separate world/task keys from visible trace payloads,
+keep facts equal across strong prose and structured arms, and reject an oracle
+that expects an unobservable world fact. State that formatting changes use of
+information, not the information available. Candidate packet/order variants
+are not independently approved study materials or independent paraphrases.
+
+Specify decision-facing outcomes, task-level dependence, unfavorable classes,
+assigned/attempted denominators, actual costs, and analysis/stop rules before
+any future calls. The 96-output, 384,000-token and USD 40 proposed maxima are
+preparation only. Independent key/surface review, exact provider/model/version,
+priced caps, data handling, environment and owner authorization remain future
+execution gates. Do not select a provider, acquire a dataset or run a study.
+
+**Evidence and files:** `research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md`
+and `research/future-studies/development/`; primary full text linked in the
+comparison table; deterministic design-invariant and negative-control checks.
+The existing future protocols and all preserved Echo files retain their bytes.
+
+**Governing requirement:** owner research ambition; research may constrain
+claims but not redefine intent; meaningful baselines and counterexamples;
+fixed budgets; no protocol/fixture as result; two-project separation; exact
+authorization for empirical execution.

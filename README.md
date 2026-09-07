@@ -27,6 +27,12 @@ no study run is authorized.
 
 ## Current state
 
+The 2026-09-07 next-phase work is on a separate review branch. Start with its
+[execution and integration handoff](handoff/NEXT_PHASE_REVIEW_2026-09-07.md) for
+the research proposal, mentor reading packet, two bounded applications and
+Council/Signal Foundry changes. The prior final candidate is `ac981f7`; neither
+that checkpoint nor this successor is a merge, deployment or research result.
+
 The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family
 framework, an operational agent companion, bounded cases, a separate EP v0.1

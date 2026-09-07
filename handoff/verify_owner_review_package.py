@@ -48,13 +48,19 @@ PACKAGE_NAME = "pattern-map-v16-owner-review"
 PACKAGE_STATUS = (
     "owner-review candidate; not merged, deployed, published, or empirically validated"
 )
-GENERATED_DATE = "2026-08-30"
+GENERATED_DATE = "2026-09-07"
 SOURCE_HEAD_RESOLUTION = {
     "status": "resolve_at_use",
     "command": "git rev-parse --verify HEAD",
     "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
 }
 EVIDENCE_NOTE = (
+    "The 2026-09-07 successor adds a targeted research methods comparison, "
+    "unrun pilot proposal and synthetic development/candidate packets; two "
+    "bounded applications with explicit no-benefit and unmeasured-effort limits; "
+    "a separately generated faithful mentor reading PDF; a short repository "
+    "entry; a constructed useful-discovery example; and review supplements for "
+    "local Council/Signal Foundry changes. None is empirical efficacy evidence. "
     "This manifest covers the locked human thesis and six-family content; the "
     "preserved Echo boundary; the shared-source review/public site, deterministic "
     "teaching reveal, exact document destinations, focus-neutral nested-disclosure "
@@ -112,6 +118,19 @@ DEFAULT_BRANCH_NAMES = {"main", "master", "trunk"}
 
 
 REQUIRED_PATHS = [
+    "docs/NEXT_PHASE_GOAL_2026-09-07.md",
+    "handoff/NEXT_PHASE_REVIEW_2026-09-07.md",
+    "handoff/signal-foundry/NEXT_PHASE_SUPPLEMENT_2026-09-07.md",
+    "framework/agent-playbook/START_WITH_ONE_DECISION.md",
+    "publication/MENTOR_HANDOFF_2026-09-07.md",
+    "publication/generate_mentor_reading_pdf.py",
+    "cases/grounded-option-discovery/README.md",
+    "research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md",
+    "research/future-studies/development/README.md",
+    "research/future-studies/development/DISCOVERY_CASES.json",
+    "research/future-studies/development/observation_cases.py",
+    "qa/strategic/PATTERN_MAP_STRATEGIC_AUDIT_2026-09-07_ac981f7.md",
+    "qa/strategic/BOUNDED_APPLICATIONS_2026-09-07.md",
     "README.md",
     "AGENTS.md",
     ".gitignore",

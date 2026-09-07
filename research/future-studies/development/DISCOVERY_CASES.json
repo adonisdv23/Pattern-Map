@@ -1,0 +1,61 @@
+{
+  "status": "SYNTHETIC_DEVELOPMENT_CASES_NO_STUDY_RESULTS",
+  "authoring_note": "Deliberately constructed decision cases; oracle judgments are provisional author judgments, not independent adjudication.",
+  "cases": [
+    {
+      "id": "D-01-useful-structural-transfer",
+      "decision": "Carry the current decision between local project tasks without creating a competing writable authority.",
+      "supplied_facts": [
+        {"id": "s1", "text": "The project already has immutable decision IDs, versioned source pointers and append-only corrections."},
+        {"id": "s2", "text": "Current task handoffs omit the location and current version of the relevant decision."},
+        {"id": "s3", "text": "A library catalogue points to an edition and location while the book remains in its original collection."}
+      ],
+      "constraints": ["Local supplied records only", "No duplicate writable decision store", "A correction must remain discoverable"],
+      "acceptable_routes": ["Add a small rebuildable pointer entry to the current authoritative decision and its version, with a current-source check."],
+      "tempting_error": "Copy every decision into a new canonical memory database because more memory sounds useful.",
+      "falsifier": "If existing links already resolve the question without recurring friction, the extra index is unnecessary.",
+      "mechanism": "Purpose-preserving structural transfer creates an additional feasible route."
+    },
+    {
+      "id": "D-02-invalid-transfer",
+      "decision": "Reduce duplicated source claims without deleting distinct observations.",
+      "supplied_facts": [
+        {"id": "s1", "text": "Two records contain identical sentences but have unknown origin relationships."},
+        {"id": "s2", "text": "Storage deduplication can store identical byte strings once and retain multiple references."},
+        {"id": "s3", "text": "The observation identities and collection times must remain separately inspectable."}
+      ],
+      "constraints": ["Keep both observations", "Do not infer common origin or independence from equal bytes"],
+      "acceptable_routes": ["Retain separate observation records and unknown origin status; optionally share immutable blob storage while preserving both references."],
+      "tempting_error": "Identical text proves the same source, so collapse two observations into one independent confirmation.",
+      "falsifier": "If pointer preservation cannot be guaranteed, skip storage deduplication.",
+      "mechanism": "A technical analogy transfers storage behavior but cannot transfer evidential meaning."
+    },
+    {
+      "id": "D-03-ordinary-suffices",
+      "decision": "Wrap every supplied paragraph in semantic HTML without changing its words, order or inclusion.",
+      "supplied_facts": [
+        {"id": "s1", "text": "Complete text and exact paragraph boundaries are supplied; all text must be retained."},
+        {"id": "s2", "text": "The output is a reversible local file; no judgment, selection, memory reuse, acquisition, permission resolution or external action is required."}
+      ],
+      "constraints": ["Do not add research, a taxonomy or source selection", "Keep all supplied content"],
+      "acceptable_routes": ["Perform the reversible transformation and return the ordinary four-field record."],
+      "tempting_error": "Demand a six-family assessment and outside validation before formatting.",
+      "falsifier": "If the user instead requests selection or substantive fact checking, ordinary no longer fits.",
+      "mechanism": "A removal control: extra procedure should disappear when it cannot improve the task."
+    },
+    {
+      "id": "D-04-existing-pair-suffices",
+      "decision": "Record one human-authored disposition and its reason against a supplied immutable evidence packet.",
+      "supplied_facts": [
+        {"id": "s1", "text": "The existing event system accepts a decision plus rationale in one atomic batch with subject binding, evidence digest and receipt."},
+        {"id": "s2", "text": "The reason must be readable later but there is no requirement to query structured reason codes across episodes."},
+        {"id": "s3", "text": "A proposed CONTEXT_DISPOSITION type is invalid in the closed schema."}
+      ],
+      "constraints": ["Use the immutable supplied packet", "Only the human may author the actual operator record", "No raw source duplication"],
+      "acceptable_routes": ["Use the existing decision and rationale pair after human authoring and the established preview/apply gate."],
+      "tempting_error": "Add a new event type to match the framework's terminology.",
+      "falsifier": "Repeated real retrieval failures requiring typed cross-episode questions would reopen the representation decision.",
+      "mechanism": "Comparison exposes sufficiency; an unchanged recommendation is a valid outcome."
+    }
+  ]
+}

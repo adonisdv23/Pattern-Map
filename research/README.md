@@ -11,6 +11,11 @@ acquisition, or preregistration is authorized in this phase.
 
 Start with:
 
+- [Research next stage, 2026-09-07](future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md)
+  — the successor methods comparison, grounded-discovery designs and bounded
+  observation/capture pilot proposal; includes development cases and candidate
+  packets, with no model/provider selected and no study run;
+
 - [`THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md`](THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md)
   — the broader, explicitly unrun research agenda and evidence ladder;
 - `research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md` — an unrun

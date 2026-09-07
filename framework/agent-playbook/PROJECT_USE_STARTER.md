@@ -8,6 +8,9 @@ Use this page when a materially different project needs a first bridge into
 v16. Its only job is to map local context to existing records. The Quickstart,
 decision brief, implementation choices, and templates remain canonical.
 
+For a short task entry, use [Start with one decision](START_WITH_ONE_DECISION.md),
+then return here for the complete routing and permission rules.
+
 ## 1. Gate ordinary work first
 
 Ask:

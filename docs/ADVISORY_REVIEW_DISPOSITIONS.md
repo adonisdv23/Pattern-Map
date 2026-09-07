@@ -615,3 +615,29 @@ open.
 No disposition authorizes merge, deployment, publication, Release creation,
 research/provider/participant execution, dataset acquisition, preregistration,
 outreach, spend, or a claim that an unrun design produced a result.
+
+## Next-phase audit dispositions — 2026-09-07
+
+Reviewed baseline: `ac981f7519b52d315aff70a30247bd069103c986`; strategic audit
+`fd66393`; later explicit owner request to create and execute the goal. These
+are the primary agent's dispositions, not an independent-model review.
+
+| ID | Recommendation / finding | Disposition | Reason, affected paths and governing requirement | Integration / verification |
+| --- | --- | --- | --- | --- |
+| NP-01 | Clarify current version and simplify review | **Accepted** | One cumulative successor and separate project commits; source authority and D051; `handoff/NEXT_PHASE_REVIEW_2026-09-07.md` | Five draft PR states re-read; exact local heads recorded; no remote mutation |
+| NP-02 | Mentor reading and lighter first use | **Accepted with revision** | Preserve complete essay, separate cover, canonical routing and Stage 0; D051; publication handoff/generator and agent entry | 86 PDF text blocks and all eight rendered pages checked; site suite passes |
+| NP-03 | Improve useful discovery example | **Accepted** | Add a candidate-selection illustration with a transfer failure and removal test; preserve three required cases; D051; `cases/grounded-option-discovery/`, site and source mapping | Browser disclosure and site contracts; no benefit claim |
+| NP-04 | Reconcile Signal transfer and test existing seam | **Accepted with revision** | Preserve earlier seal; existing pair fits four synthetic dispositions; no new event; D051; successor supplement and Signal test commit | Signal `f8066ee`; 70 focused tests pass |
+| NP-05 | Infer that prior sharing improved Signal Foundry | **Rejected** | Recipient and effect are unverified; user only reports sharing; no causal inference permitted | Explicit unresolved fact in supplement; no invented adoption |
+| NP-06 | Repair Council unknown-independence handling | **Accepted with revision** | Scoped basis, retained unknown, single grouping rule and explicit legacy migration; D051; Council module, displays, inputs and tests | Council `1e82ada`; 233 tests pass; fresh Context Pack; no production migration |
+| NP-07 | Use two bounded decisions to decide what to generalize | **Accepted with revision** | Both initial recommendations survive; effort uninstrumented and no efficacy comparison; no fabricated improvement; `qa/strategic/BOUNDED_APPLICATIONS_2026-09-07.md` | Actual local choices plus a bounded live catalogue read |
+| NP-08 | Build shared adapter, platform, classifier or custom model now | **Deferred** for a proven small adapter; **Rejected** for generic infrastructure now | Existing portfolio meets these two needs; D051 and anti-bureaucracy | Reopen only for repeated named failure; nothing speculative built |
+| NP-09 | Advance discovery/observation research | **Accepted with revision** | Six primary-method comparisons, separate mechanisms, counterfactual keys and cost-aware pilot design; no established novel mechanism; D052; research successor and development files | Ten development cases and 12 candidate packets pass mechanical design checks; zero model calls |
+| NP-10 | Execute empirical study or infer effectiveness from fixtures | **Deferred** for later exact run; **Rejected** for effectiveness inference | Candidate materials need independent review and exact model/cost/data scope; D052 and repository research boundary | No model/provider selected, no study, no new external dataset |
+| NP-11 | Explore commercial route | **Accepted with revision** | Scoped decision-review offer remains a Revenue demand hypothesis; no buyer, payment or saved effort observed | Research proposal; future actual-demand gate remains |
+
+Pattern Map integrates these records on
+`codex/pattern-map-research-adoption-2026-09-07`; final exact source and manifest
+heads are given by Git and the external verification attestation. No accepted
+disposition substitutes for the owner's later merge, study, outreach or
+publication authorization.
