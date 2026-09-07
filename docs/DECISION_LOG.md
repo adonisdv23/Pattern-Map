@@ -1902,7 +1902,9 @@ authority boundaries. Catalogue recommendations are advisory evidence only.
 **Evidence and files:** `qa/strategic/BOUNDED_APPLICATIONS_2026-09-07.md`;
 `handoff/NEXT_PHASE_REVIEW_2026-09-07.md`; the successor Signal supplement;
 mentor generator/handoff; agent entry; discovery case; site source mapping and
-explicit bounded-manifest/out-of-packet link updates. Council commit
+explicit bounded-manifest and editorial-source updates. The historical Signal
+subset builder remains unchanged; the supplement carries successor guidance.
+Council commit
 `1e82adaaa99a9b497f26aeb9cd7ce31447e1c43b`; Signal commit
 `f8066eef2029168734bb5dcd4dfb08ffcff216ce`. Pattern Map's exact authored/sealed
 heads are resolved from Git and the final external verification attestation.

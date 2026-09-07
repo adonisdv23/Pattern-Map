@@ -52,8 +52,10 @@ affected display projection, service/storage origin defaults and CLI inputs;
 otherwise the normalization correction would leave another route making the
 same unsupported inference. The contract note records those paths and the
 legacy migration consequence. Pattern Map's existing bounded package controls
-also received explicit successor paths and out-of-packet link classifications;
-old sealed artifacts were not overwritten.
+also received explicit successor paths, and the editorial validator names the
+two new rendered sources. The Signal subset builder remains byte-identical to
+the predecessor: it is tied to its historical named branch, not this successor.
+Old sealed artifacts were not overwritten.
 
 | Repository | Execution branch | Starting source | Scoped paths |
 | --- | --- | --- | --- |

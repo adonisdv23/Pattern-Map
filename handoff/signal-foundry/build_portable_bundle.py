@@ -152,8 +152,6 @@ SOURCE_PATHS: tuple[str, ...] = (
 # fails if a new unresolved link appears, an expected link disappears, or its
 # exact target is absent at the source commit.
 OUT_OF_PACKET_LINK_POLICY: tuple[tuple[str, str, str], ...] = (
-    ("README.md", "handoff/NEXT_PHASE_REVIEW_2026-09-07.md", "owner_review_only"),
-    ("research/README.md", "research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md", "outside_selected_packet"),
     ("README.md", "docs/V13_TO_V16_FIDELITY_MATRIX.md", "owner_review_only"),
     ("README.md", "docs/V16_ROADMAP.md", "owner_review_only"),
     ("README.md", "docs/CONTENT_INTERFACE_FREEZE_V16.md", "owner_review_only"),

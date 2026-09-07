@@ -108,6 +108,13 @@ while retaining every existing invariant. The failed run remains in the
 external verification records. None was a model efficacy result or a hidden
 discarded study run.
 
+A supplementary current-source link diagnostic also rejected using the old
+Signal subset selection on this successor. That builder binds the historical
+named branch and contains its historical link policy. It is preserved unchanged;
+the final full sequence verifies the exact original packet checkpoint. The
+separate supplement and complete successor owner package carry the new work.
+No new Signal subset ZIP is claimed.
+
 ## What I recommend next
 
 1. Review the Council compatibility change and the Pattern Map successor as
