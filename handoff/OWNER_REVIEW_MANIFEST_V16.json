@@ -34,7 +34,7 @@
   "evidence_note": "The 2026-09-07 successor adds a targeted research methods comparison, unrun pilot proposal and synthetic development/candidate packets; two bounded applications with explicit no-benefit and unmeasured-effort limits; a separately generated faithful mentor reading PDF; a short repository entry; a constructed useful-discovery example; and review supplements for local Council/Signal Foundry changes. None is empirical efficacy evidence. This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site, deterministic teaching reveal, exact document destinations, focus-neutral nested-disclosure navigation, dark-callout state contrast, and JavaScript-enabled headless print retention; fail-closed publication metadata, semantic headings, and explicit identity/rights/authorization gates; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, exactly reconciled memory use and selected influence, exact budget/fixture shapes, general untrusted-payload data/control separation, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; strict deterministic complete-payload owner packaging plus copied-extraction controls; current principal-door evidence; and the byte-identical six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
   "file_count": 315,
-  "total_bytes": 15320176,
+  "total_bytes": 15320658,
   "files": [
     {
       "path": ".gitignore",
@@ -158,8 +158,8 @@
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 102942,
-      "sha256": "b88e412222d6e602c40e7cf6fa133f04868331d42f9e1e8c860e86ce682ae850"
+      "bytes": 103043,
+      "sha256": "645a35a68b04b1f3624e6f67ae970a932866d951d71bfef3c6596e914922aad1"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
@@ -168,8 +168,8 @@
     },
     {
       "path": "docs/NEXT_PHASE_GOAL_2026-09-07.md",
-      "bytes": 5009,
-      "sha256": "140ccea42fece620a34b5047e4e323a060fb342df92c9a0ab624366c520ae2df"
+      "bytes": 5166,
+      "sha256": "cd9e513e2285f6c8ba67cce6d8c7ec0eca518c32b7d16489616b191c7910d4b6"
     },
     {
       "path": "docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md",
@@ -373,8 +373,8 @@
     },
     {
       "path": "handoff/NEXT_PHASE_REVIEW_2026-09-07.md",
-      "bytes": 11217,
-      "sha256": "0a024a530ebc2698b609115ece407b7e73f37a34eecb526a83a96fdb001e7e14"
+      "bytes": 11640,
+      "sha256": "e9a9df2a4f64c355acc805c08cf6aefa586efb0d051a5edaf23abdf110743dea"
     },
     {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
@@ -418,8 +418,8 @@
     },
     {
       "path": "handoff/signal-foundry/build_portable_bundle.py",
-      "bytes": 66498,
-      "sha256": "f69b3f9ca27aa561a8f86038794f1e6ab801ed26d4ab2523492f6ef7f449aabf"
+      "bytes": 66299,
+      "sha256": "abeb7a687cacfdf988fbbce68d3e3eb7de83c2cb08f18be79f19cf790ff87b5d"
     },
     {
       "path": "handoff/verify_extracted_owner_bundle.py",
