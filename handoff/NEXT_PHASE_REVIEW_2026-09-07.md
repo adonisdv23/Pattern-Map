@@ -102,7 +102,11 @@ catalog metadata read failed before the properties-only recovery; the PDF's
 text checker initially treated a running footer inside a split paragraph as
 missing text and now removes only the known footer; one guessed Council test
 filename did not exist, after which the actual repository suite was enumerated
-and run. None was a model efficacy result or a hidden discarded study run.
+and run; the first complete owner check caught the editorial validator's old
+source allowlist, which was updated with exactly the two new rendered sources
+while retaining every existing invariant. The failed run remains in the
+external verification records. None was a model efficacy result or a hidden
+discarded study run.
 
 ## What I recommend next
 

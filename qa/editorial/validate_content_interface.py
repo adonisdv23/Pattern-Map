@@ -140,6 +140,7 @@ EXPECTED_SOURCE_MANIFESTS = {
         "cases/signal-foundry/README.md",
         "cases/general-research/README.md",
         "cases/product-and-process/README.md",
+        "cases/grounded-option-discovery/README.md",
     ],
     "boundaries": [
         "framework/BOUNDARIES_AND_FAILURES.md",
@@ -152,6 +153,7 @@ EXPECTED_SOURCE_MANIFESTS = {
     "research": [
         "research/README.md",
         "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
+        "research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md",
         "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md",
         "research/the-echo-problem/README.md",
         "research/the-echo-problem/STATUS_AND_BOUNDARIES.md",
