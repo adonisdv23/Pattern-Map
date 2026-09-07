@@ -110,7 +110,7 @@ Every attempted action increments the attempt count, including zero-unit actions
 this prevents unbounded free deliberation. At attempt `k` (starting at 1), check
 `k <= K` and the action's frozen deadline before applying it. Charge at most
 remaining acquisition capacity; an unaffordable paid action releases nothing
-and records effort failure. Exhausting B prevents further paid inspection but
+and records `REJECTED_BUDGET`, an intermediate diagnostic. Exhausting B prevents further paid inspection but
 allows a terminal decision within K; automatically reaching K without a valid
 terminal decision is an effort failure. The adapter must enforce elapsed/model
 ceilings independently. Do not reset limits after parse errors or transport
@@ -168,6 +168,11 @@ visible/retrievable evidence, constraints, and explicit decision priorities.
 Accept a feasible alternative satisfying those conditions even if its name is
 absent from the author's list. Novel implementations require blinded semantic
 adjudication; lexical matching is insufficient. A routine option can win.
+An unlisted implementation must instantiate supplied mechanisms or compatible
+combinations using capabilities supported by visible evidence. It cannot invent
+another tool, source, permission or operating property. Candidate IDs may be
+empty for such an implementation; the semantic reviewer must trace it to the
+supplied mechanisms and evidence instead of grading its name.
 Unfamiliarity, verbosity, family coverage and schema completion earn no credit.
 
 A hold/stop receives credit only when the decision conditions warrant it;
@@ -195,8 +200,21 @@ violating a hard task constraint fails acceptance. Compute `p(t,a)` by averaging
 assigned episodes, then `Delta(R,b) = mean_t[p(t,R)-p(t,b)]` for each baseline
 `b in {O,M}`. Never treat 144 episodes as 144 independent tasks. Report all
 task differences, equally weighted means, assigned/attempted/completed counts,
-and exploratory task-cluster intervals; 12 clusters cannot establish precise
-efficacy, noninferiority, or domain transfer.
+and predeclared domain/regime means. Report the range of leave-one-task-out
+means as sensitivity to these authored tasks, not a confidence interval. No
+population interval is specified: this purposive 3-by-4 task grid has no defined
+probability sample. Twelve tasks cannot establish precise efficacy,
+noninferiority, or domain transfer.
+
+Scoring precedence: an intermediate malformed, denied, duplicate or unaffordable
+attempt remains in the action/cost ledger and does not by itself force zero
+acceptance or the terminal `effort_failure` class. For example, with B=1 and
+K=3, INSPECT, a denied second INSPECT, then a justified STOP may receive terminal
+acceptance. Grade that decision against the frozen rubric and score any
+rubric-defined needless acquisition or scope/permission violation separately.
+Reaching K without a valid terminal decision, exceeding the model/time ceiling,
+or failing final acceptance still scores zero. No favorable ending erases an
+actual scope/permission violation. These rules apply identically to every arm.
 
 Never-launched slots remain visible in the assigned denominator with zero
 operational credit, but a stopped/partial run cannot pass advancement or support

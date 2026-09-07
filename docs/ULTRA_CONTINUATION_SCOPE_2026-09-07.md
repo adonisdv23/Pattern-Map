@@ -59,3 +59,17 @@ study, paid-provider selection or call, external dataset, spending, reset-credit
 redemption, outreach, production migration, merge, deployment or publication.
 Later exact execution decisions remain explicit; the goal is not complete merely
 because artifacts compile, tests pass or a proposal is detailed.
+
+## Local instrument preparation extension
+
+After the first authoring wave exposed remaining local preparation, the primary
+agent assigned the research author only `ultra/pilot/TASKS.json`,
+`PRIVATE_KEYS.json` and `AUTHORING_NOTES.md`; the development author owns only
+`ultra/pilot/SURFACES.json` and `SURFACE_REVIEW.md`, authoring the second surface
+from public records before inspecting private keys. These paths are relative to
+`research/future-studies/`. The primary agent owns the separate strict offline
+`ultra/pilot/adapter.py`, its tests, preparation manifest and instructions.
+This is synthetic instrument authoring, with no model connection or study.
+The Council author cross-reviews the frozen pilot design and adapter; the
+research-development author cross-reviews Council. Advisory reports are saved
+outside source until the primary agent records their exact dispositions.

@@ -108,7 +108,7 @@ task decisions and effort determine value.
 | **Proceed with discovery design; execution blocked** | **Accepted with revision:** make acquisition and transfer assumptions substantive, strengthen M, and use the [pilot decision specification](PILOT_DECISION_SPEC.md). Governed by A07–A08/A11/A15–A17; affects only this successor. |
 | **Narrow Track B to observation-use measurement** | **Accepted with revision:** retain its identifiability controls; give formatting no claim about discovering world facts. Its first-pilot priority is superseded as a recommendation, not silently edited in the predecessor. |
 | **Defer correction-memory evaluation** | **Deferred:** applicability-changing episodes and actual repeated need must justify it against ACE and decision-aware context selection. No new store. |
-| **Stop a mechanism claim when it reduces to existing operations** | **Rejected:** renaming generic careful practice, purpose/mechanism search, or familiar metareasoning cannot establish novelty. Preserve teachable synthesis if useful. |
+| **Claim novelty by renaming existing operations** | **Rejected:** renaming generic careful practice, purpose/mechanism search, or familiar metareasoning cannot establish novelty. Preserve teachable synthesis if useful. |
 
 Narrow or stop further development if favorable cases require planted answer
 cues, hidden-world grading, asymmetric access, an artificially weak comparator,
