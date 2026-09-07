@@ -1,0 +1,1736 @@
+{
+  "schema_version": 1,
+  "status": "PRIVATE_AUTHORING_KEYS_NOT_MODEL_INPUT_NO_STUDY_RESULTS",
+  "keys": {
+    "T001": {
+      "domain": "local_software_workflows",
+      "regime": "useful_unfamiliar_transfer",
+      "releases": {
+        "INSPECT:T001-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T001-E4",
+              "text": "The manifest lists all 18 commands and their aliases. Dispatch loads the chosen command's plug-in before executing it; help itself needs no plug-in initialization."
+            }
+          ]
+        },
+        "INSPECT:T001-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T001-E5",
+              "text": "The eager lookup revision takes 240 ms in the stipulated fixture; it still initializes every plug-in before help."
+            }
+          ]
+        },
+        "INSPECT:T001-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T001-E6",
+              "text": "Restoration preserves the prior workspace path; the image cannot satisfy the requirement to use only current invocation state."
+            }
+          ]
+        },
+        "INSPECT:T001-E7": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T001-E7",
+              "text": "Manifest help takes 70 ms in the stipulated fixture and reads current invocation settings without a saved process image."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T001-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T001-C2"
+            ],
+            "required_evidence_ids": [
+              "T001-E1",
+              "T001-E2",
+              "T001-E3",
+              "T001-E4",
+              "T001-E7"
+            ],
+            "requirements": [
+              "Choose manifest-based help with deferred command initialization.",
+              "Retain full command/alias coverage and initialize the chosen plug-in before command execution.",
+              "Treat 70 ms as an authored fixture premise, not a measured result from this pilot."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any alternative preserving complete help/current state and documenting a <=100 ms startup bound is eligible for semantic review. A newly named optimization without supporting supplied evidence is not established."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T001-E1",
+                "T001-E2",
+                "T001-E3"
+              ],
+              "any_missing_evidence_ids": [
+                "T001-E4",
+                "T001-E7"
+              ]
+            },
+            "justified_assertions": [
+              "The current eager implementation misses the target; manifest acceptance remains unresolved because at least one distinct coverage/dispatch or startup/state obligation lacks support."
+            ],
+            "unjustified_assertions": [
+              "The manifest definitely covers all commands and meets 100 ms without inspecting its records."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T001-E4",
+              "INSPECT:T001-E7"
+            ],
+            "action_basis": "Both manifest obligations can be resolved within the two-unit cap; one alone does not establish acceptance. This recommendation applies only to missing records while the remaining useful sequence is still affordable and within the step deadlines."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T001-E4"
+              ],
+              "any_missing_evidence_ids": [
+                "T001-E7"
+              ]
+            },
+            "justified_assertions": [
+              "Manifest coverage/dispatch are supported; startup/state compliance is unresolved."
+            ],
+            "unjustified_assertions": [
+              "Coverage establishes the startup bound."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T001-E7"
+            ],
+            "action_basis": "The remaining inspection resolves the distinct performance/state obligation."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T001-E7"
+              ],
+              "any_missing_evidence_ids": [
+                "T001-E4"
+              ]
+            },
+            "justified_assertions": [
+              "The manifest timing/state premise is supported; complete command coverage remains unresolved."
+            ],
+            "unjustified_assertions": [
+              "A fast result proves complete help."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T001-E4"
+            ],
+            "action_basis": "The remaining inspection resolves coverage before selection."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T001-E1",
+                "T001-E2",
+                "T001-E3",
+                "T001-E4",
+                "T001-E7"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The worked route has acquired support for each stated acceptance condition, subject to preserving the described implementation and constraints."
+            ],
+            "unjustified_assertions": [
+              "These fictional acceptance premises establish performance in an actual deployment or prove every alternative fails."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Complete support permits the worked route or an equivalent supported implementation; further inspection is not mandatory merely to exhaust the catalogue."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T001-X1",
+            "condition": "Selecting the eager revision despite 240 ms."
+          },
+          {
+            "id": "T001-X2",
+            "condition": "Selecting the process image while ignoring its inherited workspace state."
+          },
+          {
+            "id": "T001-X3",
+            "condition": "Holding without using an available affordable manifest-check sequence."
+          },
+          {
+            "id": "T001-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T001-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T002": {
+      "domain": "document_handoffs",
+      "regime": "adequate_ordinary_route",
+      "releases": {
+        "INSPECT:T002-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T002-E4",
+              "text": "The copy command preserves the supplied bytes; it does not re-encode, translate or reorder the file."
+            }
+          ]
+        },
+        "INSPECT:T002-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T002-E5",
+              "text": "The expansion plan appends seven synonyms, producing 47 pairs instead of the approved 40."
+            }
+          ]
+        },
+        "INSPECT:T002-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T002-E6",
+              "text": "The manual plan would type all 40 pairs into a new editor buffer; it has no byte-equivalence result and creates an avoidable new error opportunity."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T002-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T002-C3"
+            ],
+            "required_evidence_ids": [
+              "T002-E1",
+              "T002-E2",
+              "T002-E3"
+            ],
+            "requirements": [
+              "Choose use/copy of the approved unchanged export.",
+              "No inspection is required to establish its already documented compatibility."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any byte-preserving local copy route is acceptable; the exact copy command is not the contribution. A different transformation needs a reason under the owner's exact-transfer priority."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T002-E1",
+                "T002-E2",
+                "T002-E3"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The supplied file already meets the complete import requirements."
+            ],
+            "unjustified_assertions": [
+              "A new review or synonym expansion is required before choosing it."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "All acceptance facts are initially visible; further inspections do not resolve a decision-relevant uncertainty."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T002-X1",
+            "condition": "Adding synonyms, changing terms/order, or recreating content without need."
+          },
+          {
+            "id": "T002-X2",
+            "condition": "Demanding a hold or mandatory extra review despite the complete supplied check."
+          },
+          {
+            "id": "T002-X3",
+            "condition": "Treating extra inspections as a useful improvement when they do not change supported acceptance."
+          },
+          {
+            "id": "T002-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T002-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T003": {
+      "domain": "small_inventory_operations",
+      "regime": "tempting_invalid_transfer",
+      "releases": {
+        "INSPECT:T003-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T003-E4",
+              "text": "Each position accepts one washer and physically prevents stacking for both supplied thicknesses. The complete thirty-position transfer takes 12 seconds in the stipulated fixture."
+            }
+          ]
+        },
+        "INSPECT:T003-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T003-E5",
+              "text": "The same filled cup holds 26 to 34 washers in the authored arrangements because orientation changes packing."
+            }
+          ]
+        },
+        "INSPECT:T003-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T003-E6",
+              "text": "The batch mixes washers of 1 g and 2 g. A 30 g total can represent different counts; the supplied reference mass cannot resolve the mixture."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T003-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T003-C1"
+            ],
+            "required_evidence_ids": [
+              "T003-E1",
+              "T003-E2",
+              "T003-E3",
+              "T003-E4"
+            ],
+            "requirements": [
+              "Choose the thirty-position board with one washer per position and the documented full-set transfer.",
+              "Do not infer exactly 30 from mass or occupied volume."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "A supported alternative that separates and counts exactly thirty units within 15 seconds is eligible. No released record supports an unlisted automated counter; do not award it invented performance."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T003-E1",
+                "T003-E2",
+                "T003-E3"
+              ],
+              "any_missing_evidence_ids": [
+                "T003-E4"
+              ]
+            },
+            "justified_assertions": [
+              "Mass/volume methods require assumptions; the board's fit/time are not yet established."
+            ],
+            "unjustified_assertions": [
+              "The board is verified merely because it has thirty advertised positions."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T003-E4"
+            ],
+            "action_basis": "One available inspection resolves both board obligations."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T003-E6"
+              ],
+              "any_missing_evidence_ids": [
+                "T003-E4"
+              ]
+            },
+            "justified_assertions": [
+              "The reference-mass count is invalid for the mixed batch."
+            ],
+            "unjustified_assertions": [
+              "No exact-count option exists because the scale fails."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T003-E4"
+            ],
+            "action_basis": "Rejecting the scale does not establish board failure; one inspection can still support the board."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T003-E1",
+                "T003-E2",
+                "T003-E3",
+                "T003-E4"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The worked route has acquired support for each stated acceptance condition, subject to preserving the described implementation and constraints."
+            ],
+            "unjustified_assertions": [
+              "These fictional acceptance premises establish performance in an actual deployment or prove every alternative fails."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Complete support permits the worked route or an equivalent supported implementation; further inspection is not mandatory merely to exhaust the catalogue."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T003-X1",
+            "condition": "Selecting mass division as an exact count after the mixed-mass observation."
+          },
+          {
+            "id": "T003-X2",
+            "condition": "Selecting volume packing as exact despite its range."
+          },
+          {
+            "id": "T003-X3",
+            "condition": "Holding after investigating proxies while leaving an affordable board record unopened."
+          },
+          {
+            "id": "T003-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T003-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T004": {
+      "domain": "local_software_workflows",
+      "regime": "unresolvable_or_not_worthwhile_gap",
+      "releases": {
+        "INSPECT:T004-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T004-E4",
+              "text": "The index lists package byte sizes and version IDs only; it contains no runtime peak-memory measurement."
+            }
+          ]
+        },
+        "INSPECT:T004-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T004-E5",
+              "text": "The feature summary confirms the output features for all three candidates and contains no memory bound."
+            }
+          ]
+        },
+        "INSPECT:T004-E6": {
+          "process_state": "FAILED_CAPTURE",
+          "evidence": []
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T004-R1",
+            "decision": "HOLD",
+            "candidate_ids": [],
+            "required_evidence_ids": [
+              "T004-E1",
+              "T004-E2",
+              "T004-E3"
+            ],
+            "requirements": [
+              "HOLD with no selected candidate, pending a current applicable peak-memory record.",
+              "State that neither compliance nor noncompliance has been established for any candidate.",
+              "A proposed later measurement is a next step, not an executed action."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any later candidate supported by an applicable current memory record could qualify, but no such record is available in this episode. A renamed renderer is not evidence."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T004-E1",
+                "T004-E2",
+                "T004-E3"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "Peak-memory compliance remains unknown, and the listed actions cannot supply the required evidence."
+            ],
+            "unjustified_assertions": [
+              "Streaming proves Brook fits the ceiling.",
+              "Failed measurement proves all candidates exceed 64 MiB."
+            ],
+            "preferred_next_actions": [
+              "HOLD"
+            ],
+            "action_basis": "The missing type of evidence cannot be obtained through the available action set; metadata inspection does not change admissibility."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T004-X1",
+            "condition": "Selecting a candidate using package size or the word streaming as a memory guarantee."
+          },
+          {
+            "id": "T004-X2",
+            "condition": "Concluding failure of the required bound from the absence of a measurement."
+          },
+          {
+            "id": "T004-X3",
+            "condition": "Spending units on already-described metadata and calling that evidence of compliance."
+          },
+          {
+            "id": "T004-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T004-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "World A: Ember is 55 MiB and Brook is 80 MiB. World B: Ember is 80 MiB and Brook is 55 MiB. Neither world fact is exposed by any release, so the same bounded HOLD and unknown assertions apply. Reduced-mode compliance is likewise unobserved."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T005": {
+      "domain": "document_handoffs",
+      "regime": "useful_unfamiliar_transfer",
+      "releases": {
+        "INSPECT:T005-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T005-E4",
+              "text": "Every source cell occurs once in the panels. Each panel repeats the unique row ID and its column headings; the map preserves all original row associations."
+            }
+          ]
+        },
+        "INSPECT:T005-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T005-E5",
+              "text": "Readable row blocks require twelve pages at 11-point body text on portrait A5."
+            }
+          ]
+        },
+        "INSPECT:T005-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T005-E6",
+              "text": "The mapped panels fit six portrait A5 pages with 11-point body text, including repeated row identifiers and headings."
+            }
+          ]
+        },
+        "INSPECT:T005-E7": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T005-E7",
+              "text": "The whole-table scale fits four pages at 8-point body text. It preserves cells but violates the 11-point minimum."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T005-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T005-C3"
+            ],
+            "required_evidence_ids": [
+              "T005-E1",
+              "T005-E2",
+              "T005-E3",
+              "T005-E4",
+              "T005-E6"
+            ],
+            "requirements": [
+              "Select linked panels with repeated row IDs and headings according to the inspected coverage map.",
+              "Retain the six-page/11-point geometry and every cell."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any alternative preserving every cell/row relation at >=11 points on <=6 portrait A5 pages is eligible for semantic review if supplied evidence supports its geometry. A landscape or larger-paper proposal violates fixed constraints."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T005-E1",
+                "T005-E2",
+                "T005-E3"
+              ],
+              "any_missing_evidence_ids": [
+                "T005-E4",
+                "T005-E6"
+              ]
+            },
+            "justified_assertions": [
+              "Panel acceptance remains unresolved while at least one of its distinct coverage/association and geometry obligations lacks support."
+            ],
+            "unjustified_assertions": [
+              "Tiling automatically preserves row associations and fits the printer."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T005-E4",
+              "INSPECT:T005-E6"
+            ],
+            "action_basis": "Both panel obligations can be checked within two units. This recommendation applies only to missing records while the remaining useful sequence is still affordable and within the step deadlines."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T005-E4"
+              ],
+              "any_missing_evidence_ids": [
+                "T005-E6"
+              ]
+            },
+            "justified_assertions": [
+              "The panel map preserves cell/row relationships; geometry is not yet supported."
+            ],
+            "unjustified_assertions": [
+              "A complete mapping guarantees readable six-page output."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T005-E6"
+            ],
+            "action_basis": "Geometry is a separate acceptance condition."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T005-E6"
+              ],
+              "any_missing_evidence_ids": [
+                "T005-E4"
+              ]
+            },
+            "justified_assertions": [
+              "Panel geometry meets size/font limits; full data association is not established."
+            ],
+            "unjustified_assertions": [
+              "A readable layout guarantees complete correct content."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T005-E4"
+            ],
+            "action_basis": "Content association requires its own record."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T005-E1",
+                "T005-E2",
+                "T005-E3",
+                "T005-E4",
+                "T005-E6"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The worked route has acquired support for each stated acceptance condition, subject to preserving the described implementation and constraints."
+            ],
+            "unjustified_assertions": [
+              "These fictional acceptance premises establish performance in an actual deployment or prove every alternative fails."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Complete support permits the worked route or an equivalent supported implementation; further inspection is not mandatory merely to exhaust the catalogue."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T005-X1",
+            "condition": "Using 8-point text or twelve pages despite the fixed constraints."
+          },
+          {
+            "id": "T005-X2",
+            "condition": "Selecting linked panels without retaining the repeated row identifiers/headings."
+          },
+          {
+            "id": "T005-X3",
+            "condition": "Claiming layout success without one of the two required kinds of support."
+          },
+          {
+            "id": "T005-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T005-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T006": {
+      "domain": "small_inventory_operations",
+      "regime": "adequate_ordinary_route",
+      "releases": {
+        "INSPECT:T006-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T006-E4",
+              "text": "The pack can be moved intact; opening it is unnecessary for the already verified request."
+            }
+          ]
+        },
+        "INSPECT:T006-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T006-E5",
+              "text": "The new planner is intended for multi-request, multi-bin tours. For this one request its selected source would be the same nearby pack."
+            }
+          ]
+        },
+        "INSPECT:T006-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T006-E6",
+              "text": "Walking to the remote bin and back requires 90 seconds before any counting."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T006-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T006-C1"
+            ],
+            "required_evidence_ids": [
+              "T006-E1",
+              "T006-E2",
+              "T006-E3"
+            ],
+            "requirements": [
+              "Select the nearby sealed pack, preserving its verification boundary.",
+              "Do not add counting or planner work as a prerequisite."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any equivalent handling plan for the intact nearby pack is acceptable. The precise walking instruction is not prescribed."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T006-E1",
+                "T006-E2",
+                "T006-E3"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The nearby pack already satisfies type, finish, exact count and handling time."
+            ],
+            "unjustified_assertions": [
+              "More inventory research is necessary before selecting a source."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "The complete initial check establishes the preferred admissible route."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T006-X1",
+            "condition": "Choosing the 90-second remote route under the 60-second deadline."
+          },
+          {
+            "id": "T006-X2",
+            "condition": "Reopening/counting an unchanged verified sealed pack without need."
+          },
+          {
+            "id": "T006-X3",
+            "condition": "Holding or introducing new planning as a mandatory prerequisite."
+          },
+          {
+            "id": "T006-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T006-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T007": {
+      "domain": "local_software_workflows",
+      "regime": "tempting_invalid_transfer",
+      "releases": {
+        "INSPECT:T007-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T007-E4",
+              "text": "The shared-handle executor preserves the original operation sequence, including index updates, and completes the stipulated batch in 110 ms."
+            }
+          ]
+        },
+        "INSPECT:T007-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T007-E5",
+              "text": "Discarding an earlier insertion changes the index interpreted by a later move. Last-operation coalescing therefore changes the required final list in this batch."
+            }
+          ]
+        },
+        "INSPECT:T007-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T007-E6",
+              "text": "Grouping changes the order of an insertion and an indexed move. The recorded grouped final list differs from sequential execution; its 45 ms timing does not repair that difference."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T007-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T007-C2"
+            ],
+            "required_evidence_ids": [
+              "T007-E1",
+              "T007-E2",
+              "T007-E3",
+              "T007-E4"
+            ],
+            "requirements": [
+              "Select the shared-handle sequential executor and retain original order.",
+              "Use 110 ms only as the stipulated record for this batch."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "A differently named executor that preserves the exact operation sequence and has supplied <=120 ms support is eligible. Merely asserting a new optimizer is correct/fast is unsupported."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T007-E1",
+                "T007-E2",
+                "T007-E3"
+              ],
+              "any_missing_evidence_ids": [
+                "T007-E4"
+              ]
+            },
+            "justified_assertions": [
+              "The operation order is material; a performance/semantics record is needed before choosing an executor."
+            ],
+            "unjustified_assertions": [
+              "Sorting by field is equivalent to sequential execution."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T007-E4"
+            ],
+            "action_basis": "A single available record supports the shared-handle candidate on both conditions."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T007-E6"
+              ],
+              "any_missing_evidence_ids": [
+                "T007-E4"
+              ]
+            },
+            "justified_assertions": [
+              "The grouped-field candidate fails on the supplied counterexample."
+            ],
+            "unjustified_assertions": [
+              "Every optimization must fail because grouped execution fails."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T007-E4"
+            ],
+            "action_basis": "A different mechanism retains sequence and has its own record."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T007-E1",
+                "T007-E2",
+                "T007-E3",
+                "T007-E4"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The worked route has acquired support for each stated acceptance condition, subject to preserving the described implementation and constraints."
+            ],
+            "unjustified_assertions": [
+              "These fictional acceptance premises establish performance in an actual deployment or prove every alternative fails."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Complete support permits the worked route or an equivalent supported implementation; further inspection is not mandatory merely to exhaust the catalogue."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T007-X1",
+            "condition": "Selecting a reorder/coalescing method that changes the required state."
+          },
+          {
+            "id": "T007-X2",
+            "condition": "Treating faster timing as compensation for altered semantics."
+          },
+          {
+            "id": "T007-X3",
+            "condition": "Holding after leaving the affordable shared-handle record unopened."
+          },
+          {
+            "id": "T007-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T007-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T008": {
+      "domain": "document_handoffs",
+      "regime": "unresolvable_or_not_worthwhile_gap",
+      "releases": {
+        "INSPECT:T008-E4": {
+          "process_state": "FAILED_CAPTURE",
+          "evidence": []
+        },
+        "INSPECT:T008-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T008-E5",
+              "text": "The second draft contains an undated mixture of room names and has no current approval marker. Its export timestamp is a copy time."
+            }
+          ]
+        },
+        "INSPECT:T008-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T008-E6",
+              "text": "The first draft has twelve room names from the prior period and no certification of current membership."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T008-R1",
+            "decision": "HOLD",
+            "candidate_ids": [],
+            "required_evidence_ids": [
+              "T008-E1",
+              "T008-E2",
+              "T008-E3"
+            ],
+            "requirements": [
+              "HOLD the roster portion pending the current approved source, selecting no roster candidate.",
+              "Preserve unknown current membership; do not claim a missing source means missing rooms."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "A later complete approved roster could support any formatting route preserving exact membership; no such source is available in this episode."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T008-E1",
+                "T008-E2",
+                "T008-E3"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The expected count is known but current membership is not, and available actions cannot certify it."
+            ],
+            "unjustified_assertions": [
+              "Twelve names in a draft prove completeness.",
+              "The current roster does not exist because capture failed."
+            ],
+            "preferred_next_actions": [
+              "HOLD"
+            ],
+            "action_basis": "The source gap cannot be resolved by the available metadata/draft actions."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T008-X1",
+            "condition": "Selecting a draft by length or filename despite uncertified currency."
+          },
+          {
+            "id": "T008-X2",
+            "condition": "Presenting a union of drafts as approved current membership."
+          },
+          {
+            "id": "T008-X3",
+            "condition": "Inventing the changed room name or converting capture failure into world absence."
+          },
+          {
+            "id": "T008-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T008-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "World A changes one old room to North Annex; world B changes it to West Annex. Neither changed name appears in the public data or releases. Both worlds require the same bounded HOLD and unknown-membership assertion."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T009": {
+      "domain": "small_inventory_operations",
+      "regime": "useful_unfamiliar_transfer",
+      "releases": {
+        "INSPECT:T009-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T009-E4",
+              "text": "Full assembly after assignment takes 210 seconds for one worker in the stipulated fixture."
+            }
+          ]
+        },
+        "INSPECT:T009-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T009-E5",
+              "text": "The core contains exactly the six common fasteners in separate marked positions and accepts any of the three correct bracket inserts without changing those fasteners."
+            }
+          ]
+        },
+        "INSPECT:T009-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T009-E6",
+              "text": "The advance plan locks in one bracket before assignment. It cannot cover all three possible locations without substitution or rework."
+            }
+          ]
+        },
+        "INSPECT:T009-E7": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T009-E7",
+              "text": "After assignment, choosing the matching bracket, fitting it to the core and checking the complete count takes 85 seconds for one worker in the stipulated fixture."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T009-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T009-C1"
+            ],
+            "required_evidence_ids": [
+              "T009-E1",
+              "T009-E2",
+              "T009-E3",
+              "T009-E5",
+              "T009-E7"
+            ],
+            "requirements": [
+              "Select staged common core plus the correctly matched bracket after assignment.",
+              "Preserve marked fastener positions/count and the compatibility check.",
+              "Do not infer real workshop savings from the authored 85-second premise."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any equivalent staged process with inspected all-location compatibility, correct final bracket and <=120-second support is eligible. A general instruction to add a worker violates the one-worker boundary."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T009-E1",
+                "T009-E2",
+                "T009-E3"
+              ],
+              "any_missing_evidence_ids": [
+                "T009-E5",
+                "T009-E7"
+              ]
+            },
+            "justified_assertions": [
+              "The staged-core route remains unestablished while at least one compatibility/count or completion-time obligation lacks support."
+            ],
+            "unjustified_assertions": [
+              "Pre-staging necessarily fits every bracket or meets the window."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T009-E5",
+              "INSPECT:T009-E7"
+            ],
+            "action_basis": "Two inspections can jointly establish the candidate within the two-unit cap. This recommendation applies only to missing records while the remaining useful sequence is still affordable and within the step deadlines."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T009-E5"
+              ],
+              "any_missing_evidence_ids": [
+                "T009-E7"
+              ]
+            },
+            "justified_assertions": [
+              "The common core preserves parts/count across locations; completion time remains unresolved."
+            ],
+            "unjustified_assertions": [
+              "Compatibility proves timely completion."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T009-E7"
+            ],
+            "action_basis": "The remaining handling record resolves time."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T009-E7"
+              ],
+              "any_missing_evidence_ids": [
+                "T009-E5"
+              ]
+            },
+            "justified_assertions": [
+              "The final-insert operation has an 85-second stipulated record; the common-core compatibility/count condition is unresolved."
+            ],
+            "unjustified_assertions": [
+              "Fast insertion proves the right full kit."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T009-E5"
+            ],
+            "action_basis": "The remaining sheet resolves compatibility and retained parts."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T009-E1",
+                "T009-E2",
+                "T009-E3",
+                "T009-E5",
+                "T009-E7"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The worked route has acquired support for each stated acceptance condition, subject to preserving the described implementation and constraints."
+            ],
+            "unjustified_assertions": [
+              "These fictional acceptance premises establish performance in an actual deployment or prove every alternative fails."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Complete support permits the worked route or an equivalent supported implementation; further inspection is not mandatory merely to exhaust the catalogue."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T009-X1",
+            "condition": "Locking in a bracket before knowing its location."
+          },
+          {
+            "id": "T009-X2",
+            "condition": "Choosing the 210-second process under 120 seconds."
+          },
+          {
+            "id": "T009-X3",
+            "condition": "Selecting staged completion while dropping exact part identity/count."
+          },
+          {
+            "id": "T009-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T009-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T010": {
+      "domain": "local_software_workflows",
+      "regime": "adequate_ordinary_route",
+      "releases": {
+        "INSPECT:T010-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T010-E4",
+              "text": "The proposed partial checker skips rarely edited fields, so it cannot establish a complete check of this file."
+            }
+          ]
+        },
+        "INSPECT:T010-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T010-E5",
+              "text": "The existing command accepts the supplied file directly and requires no adapter or new configuration."
+            }
+          ]
+        },
+        "INSPECT:T010-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T010-E6",
+              "text": "The wrapper requires new scheduling and result-merge code. Its estimated speedup is unnecessary for the already-satisfied 15-second requirement."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T010-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T010-C2"
+            ],
+            "required_evidence_ids": [
+              "T010-E1",
+              "T010-E2",
+              "T010-E3"
+            ],
+            "requirements": [
+              "Select reuse of the complete checker unchanged.",
+              "Do not require new implementation or additional evidence before that selection."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any unchanged invocation of the existing complete checker is acceptable. Rebranding that invocation as a new framework route does not create additional value."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T010-E1",
+                "T010-E2",
+                "T010-E3"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The complete existing check already meets the current deadline and scope."
+            ],
+            "unjustified_assertions": [
+              "A new worker wrapper is required to meet the task."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Initial evidence fully supports the preferred zero-change route."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T010-X1",
+            "condition": "Skipping rarely edited fields."
+          },
+          {
+            "id": "T010-X2",
+            "condition": "Adding implementation work without a changed requirement."
+          },
+          {
+            "id": "T010-X3",
+            "condition": "Holding despite a complete applicable acceptance record."
+          },
+          {
+            "id": "T010-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T010-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T011": {
+      "domain": "document_handoffs",
+      "regime": "tempting_invalid_transfer",
+      "releases": {
+        "INSPECT:T011-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T011-E4",
+              "text": "The overlay hides ZQ-47 visually, but extraction still returns ZQ-47 from the underlying text layer."
+            }
+          ]
+        },
+        "INSPECT:T011-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T011-E5",
+              "text": "The raster output has no searchable text layer, so approved non-tag text is no longer searchable."
+            }
+          ]
+        },
+        "INSPECT:T011-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T011-E6",
+              "text": "The regenerated export contains every approved non-tag text segment in reading order and all remain searchable. ZQ-47 does not appear visibly or in extracted text."
+            }
+          ]
+        },
+        "INSPECT:T011-E7": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T011-E7",
+              "text": "The regenerated export metadata contains no ZQ-47 and carries none of the old document metadata fields."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T011-R1",
+            "decision": "SELECT",
+            "candidate_ids": [
+              "T011-C3"
+            ],
+            "required_evidence_ids": [
+              "T011-E1",
+              "T011-E2",
+              "T011-E3",
+              "T011-E6",
+              "T011-E7"
+            ],
+            "requirements": [
+              "Select regeneration from the approved text with both content and metadata checks retained.",
+              "Do not equate visual hiding with removing extractable text."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "Any alternative export process with supplied support for all removal, completeness, searchability and reading-order conditions is eligible. No blanket claim of security or real redaction safety follows."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T011-E1",
+                "T011-E2",
+                "T011-E3"
+              ],
+              "any_missing_evidence_ids": [
+                "T011-E6",
+                "T011-E7"
+              ]
+            },
+            "justified_assertions": [
+              "Source approval alone does not establish the generated export's content and metadata conditions."
+            ],
+            "unjustified_assertions": [
+              "The export is completely cleared because its visible page has no tag."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T011-E6",
+              "INSPECT:T011-E7"
+            ],
+            "action_basis": "The two records resolve distinct obligations within the cap. This recommendation applies only to missing records while the remaining useful sequence is still affordable and within the step deadlines."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T011-E6"
+              ],
+              "any_missing_evidence_ids": [
+                "T011-E7"
+              ]
+            },
+            "justified_assertions": [
+              "Searchable content and visible/extracted tag removal are supported; metadata remains unresolved."
+            ],
+            "unjustified_assertions": [
+              "Text extraction proves metadata contains no tag."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T011-E7"
+            ],
+            "action_basis": "Inspect the distinct metadata channel."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T011-E7"
+              ],
+              "any_missing_evidence_ids": [
+                "T011-E6"
+              ]
+            },
+            "justified_assertions": [
+              "Metadata is cleared; content/searchability/reading order remain unresolved."
+            ],
+            "unjustified_assertions": [
+              "Cleared metadata proves a usable complete document."
+            ],
+            "preferred_next_actions": [
+              "INSPECT:T011-E6"
+            ],
+            "action_basis": "Inspect generated content before selection."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T011-E1",
+                "T011-E2",
+                "T011-E3",
+                "T011-E6",
+                "T011-E7"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "The worked route has acquired support for each stated acceptance condition, subject to preserving the described implementation and constraints."
+            ],
+            "unjustified_assertions": [
+              "These fictional acceptance premises establish performance in an actual deployment or prove every alternative fails."
+            ],
+            "preferred_next_actions": [
+              "SELECT"
+            ],
+            "action_basis": "Complete support permits the worked route or an equivalent supported implementation; further inspection is not mandatory merely to exhaust the catalogue."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T011-X1",
+            "condition": "Selecting opaque overlay as complete removal."
+          },
+          {
+            "id": "T011-X2",
+            "condition": "Selecting image-only pages despite the searchable-text requirement."
+          },
+          {
+            "id": "T011-X3",
+            "condition": "Ignoring metadata because visible/extracted text looks correct."
+          },
+          {
+            "id": "T011-X4",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T011-X5",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "No different hidden world is needed for this task. Unopened release content is still unavailable to the decision-maker and must not be used to grade factual assertions as though it had been observed."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    },
+    "T012": {
+      "domain": "small_inventory_operations",
+      "regime": "unresolvable_or_not_worthwhile_gap",
+      "releases": {
+        "INSPECT:T012-E4": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T012-E4",
+              "text": "Slate passes the current load acceptance for its unchanged configuration. This record covers load only."
+            }
+          ]
+        },
+        "INSPECT:T012-E5": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T012-E5",
+              "text": "Slate passes the current clearance acceptance for its unchanged configuration. This record covers clearance only."
+            }
+          ]
+        },
+        "INSPECT:T012-E6": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T012-E6",
+              "text": "Slate passes the current latch acceptance for its unchanged configuration. This record covers latch only."
+            }
+          ]
+        },
+        "INSPECT:T012-E7": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T012-E7",
+              "text": "Cove passes the current latch acceptance for its unchanged configuration. This record covers latch only."
+            }
+          ]
+        },
+        "INSPECT:T012-E8": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T012-E8",
+              "text": "Cove passes the current clearance acceptance for its unchanged configuration. This record covers clearance only."
+            }
+          ]
+        },
+        "INSPECT:T012-E9": {
+          "process_state": "CHECK_COMPLETED",
+          "evidence": [
+            {
+              "id": "T012-E9",
+              "text": "Cove passes the current load acceptance for its unchanged configuration. This record covers load only."
+            }
+          ]
+        }
+      },
+      "rubric": {
+        "accepted_routes": [
+          {
+            "route_id": "T012-R1",
+            "decision": "HOLD",
+            "candidate_ids": [],
+            "required_evidence_ids": [
+              "T012-E1",
+              "T012-E2",
+              "T012-E3"
+            ],
+            "requirements": [
+              "HOLD with no selected tray because the required three-record support cannot be acquired within two units.",
+              "Do not say the trays fail their physical criteria; insufficient available support is the issue.",
+              "A later three-record check requires a separate adequately resourced episode."
+            ]
+          }
+        ],
+        "route_policy": "The listed route is a worked acceptable route, not an exhaustive whitelist. An unlisted implementation satisfying the visible constraints, acquired-evidence support and stated priorities requires independent semantic review; do not fail it for an unfamiliar name.",
+        "valid_alternatives": [
+          "With a later larger authorized budget, either unchanged tray could be supported by its three records. Neither receives acceptance credit in this two-unit episode. The key must not backfill unopened passing records."
+        ],
+        "partial_evidence_rules": [
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T012-E1",
+                "T012-E2",
+                "T012-E3"
+              ],
+              "any_missing_evidence_ids": []
+            },
+            "justified_assertions": [
+              "No candidate can obtain all three required records within this episode's budget. Physical compliance is not established by initial data."
+            ],
+            "unjustified_assertions": [
+              "The trays are physically unsafe because the support set is incomplete."
+            ],
+            "preferred_next_actions": [
+              "HOLD"
+            ],
+            "action_basis": "Three distinct paid records are required and only two acquisitions are permitted."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T012-E4",
+                "T012-E6"
+              ],
+              "any_missing_evidence_ids": [
+                "T012-E5"
+              ]
+            },
+            "justified_assertions": [
+              "Slate has visible load/latch acceptance, but clearance remains unobserved."
+            ],
+            "unjustified_assertions": [
+              "Two passes imply clearance passes.",
+              "The private key's third pass may be cited without inspection."
+            ],
+            "preferred_next_actions": [
+              "HOLD"
+            ],
+            "action_basis": "The remaining required record is unaffordable after two acquisitions; the initial decision to spend on an insufficient subset remains an avoidable cost."
+          },
+          {
+            "when": {
+              "all_visible_evidence_ids": [
+                "T012-E9",
+                "T012-E7"
+              ],
+              "any_missing_evidence_ids": [
+                "T012-E8"
+              ]
+            },
+            "justified_assertions": [
+              "Cove has visible load/latch acceptance, but clearance remains unobserved."
+            ],
+            "unjustified_assertions": [
+              "Two current passes certify the whole tray."
+            ],
+            "preferred_next_actions": [
+              "HOLD"
+            ],
+            "action_basis": "The third required record remains unavailable within B; do not use hidden key content."
+          }
+        ],
+        "harms": [
+          {
+            "id": "T012-X1",
+            "condition": "Selecting on fewer than three applicable visible records."
+          },
+          {
+            "id": "T012-X2",
+            "condition": "Mixing record sets across trays or extending them to a hybrid."
+          },
+          {
+            "id": "T012-X3",
+            "condition": "Using hidden passing keys to certify a tray without acquiring the evidence."
+          },
+          {
+            "id": "T012-X4",
+            "condition": "Calling incomplete support a demonstrated physical failure."
+          },
+          {
+            "id": "T012-X5",
+            "condition": "Claiming an unopened evidence item was inspected, citing an unreleased fact as observed, or treating these fictional records as an actual experiment."
+          },
+          {
+            "id": "T012-X6",
+            "condition": "Executing or recommending an external mutation outside this local planning scope."
+          }
+        ],
+        "world_equivalence_notes": [
+          "All release records happen to stipulate passes, but these hidden facts are not initially observable. Alternative worlds may change any unopened record to a failure without changing the current public trace; qualified statements and admissibility must use only actually released records."
+        ],
+        "review_status": "SINGLE_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_SEMANTIC_REVIEW"
+      }
+    }
+  },
+  "rubric_contract": {
+    "scope": "These are authored synthetic grading premises, not validated measurements, model outputs or a claim that these routes generalize. The adapter may receive only releases for one task; no other key fields are model input.",
+    "evidence_conditions": "all_visible_evidence_ids requires every listed ID in the actually visible evidence set; nonempty any_missing_evidence_ids requires at least one listed ID absent; an empty list adds no missing-evidence condition. Matching rules may overlap. required_evidence_ids identifies support needed for the worked route, not a mandatory list of literal citations.",
+    "partial_state_policy": "For every acquired subset, assertions may use initial evidence and successful released facts only. Apply all compatible partial rules; if none describes the exact subset, semantic review must mark each condition supported, contradicted or unknown from those facts. A private passing/failing release cannot repair or condemn an assertion as though it was observed.",
+    "action_conditions": "preferred_next_actions is a set of permissible recommendations, not an exact action sequence. Filter out already acquired targets, unavailable/deadline-expired actions, and inspections that cannot complete a useful sequence within remaining acquisition units and attempts including a terminal action. Judge check value using the public description and visible mechanism/constraints, never by pretending the eventual release outcome was known in advance.",
+    "component_separation": "Record assertion support, constraint compliance, action-effort appropriateness and terminal task acceptance separately. A qualified proposal contingent on an unresolved condition is not an established feasible SELECT; it can appear as a candidate for later work in HOLD. An accurate unknown after wasted inspections retains assertion credit while the earlier acquisition policy and missed attainable decision can fail task acceptance. Do not turn an unnecessary check alone into fabricated-evidence or scope harm.",
+    "terminal_conditions": "When the current trace already establishes a compliant priority-respecting route, SELECT it or a semantically equivalent supported implementation. When no such route is established and no useful authorized sequence remains, a bounded HOLD can be epistemically correct; judge avoidable earlier effort separately. A STOP is acceptable only if its prose conveys the same justified current-task stopping basis and bounded follow-up, not an unsupported claim of permanent impossibility. No terminal action executes the fictional plan.",
+    "alternative_policy": "The catalogue defines the available candidate IDs. Implementations may vary or combine compatible listed candidates where the visible evidence actually supports the result; the author route is not an exact wording whitelist. A new label alone is neither credit nor failure. Off-catalogue unsupported inventions cannot be certified, and the adapter must not invent new candidate IDs.",
+    "harms_policy": "Conditions identify separate possible error classes, not additive utility weights. Apply them to the actual visible evidence, requests and declared implementation. Unknown is different from contradicted; missing evidence is different from world absence. A proposed later prerequisite within a bounded HOLD is not an instruction to perform it now. Owner-approved advancement values remain unset."
+  }
+}
