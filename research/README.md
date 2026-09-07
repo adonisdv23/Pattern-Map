@@ -11,10 +11,16 @@ acquisition, or preregistration is authorized in this phase.
 
 Start with:
 
-- [Research next stage, 2026-09-07](future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md)
-  — the successor methods comparison, grounded-discovery designs and bounded
-  observation/capture pilot proposal; includes development cases and candidate
-  packets, with no model/provider selected and no study run;
+- [Current mechanism and comparator assessment](future-studies/ultra/MECHANISM_AND_COMPARATORS.md)
+  — grounded acquisition and structural transfer under a limited budget, with
+  strong alternatives, failure conditions and primary-source comparisons;
+- [Current pilot decision specification](future-studies/ultra/PILOT_DECISION_SPEC.md)
+  — an unrun proposal with explicit outcomes, harms, costs and launch gates;
+  development cases are authored design checks, not approved study tasks;
+- [Earlier research proposal, 2026-09-07](future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md)
+  — preserved methods comparison and observation/capture candidate. The current
+  assessment above revises its pilot priority and identifies design limitations;
+  its original packets remain available as development history;
 
 - [`THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md`](THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md)
   — the broader, explicitly unrun research agenda and evidence ladder;
