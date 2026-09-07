@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "PUBLIC_ONLY_AUTHORED_NARRATIVE_VARIANTS_NO_STUDY_RESULTS",
+  "source_tasks_sha256": "fb4faaeff2aaa0527a66743a24c310724bae7d7871a16cab19fba8d91c407204",
+  "surfaces": {
+    "T001": {
+      "surface2": "Recommend a change to the fictional Cedar utility that brings help within its time limit while retaining every command. Help currently waits for command plug-ins to load. Two units are available for local inspections. Treat the catalogue entries as proposed mechanisms whose outcomes still need support."
+    },
+    "T002": {
+      "surface2": "Select a preparation method for the fictional Reed workshop's terminology import. There is an approved export to consider alongside two other preparation methods. This is a choice of plan only: neither sending a file nor changing its contents is part of the task."
+    },
+    "T003": {
+      "surface2": "Use the catalogue and whichever local records you inspect to compare a scale, a volume cup and a counting board. The fictional repair room needs a method that puts exactly 30 washers in each kit and finishes within the short preparation window."
+    },
+    "T004": {
+      "surface2": "Decide whether to choose a renderer or leave the fictional Birch preview decision on a bounded hold. The catalogue offers two renderers plus a reduced-mode variant. A documented peak-memory bound is required, and the relevant local record is currently unavailable."
+    },
+    "T005": {
+      "surface2": "Recommend a supported print layout for the fictional Lark handoff without exporting a document. Its wide table must keep row relationships understandable on the fixed printer. Consider linked tiles with repeated identifiers, long-form pagination and uniform shrinking."
+    },
+    "T006": {
+      "surface2": "Plan how the fictional Elm stockroom should handle its request for twenty spacers; do not move any stock. The available approaches are a newly planned picking route, loose stock farther away and a nearby sealed pack."
+    },
+    "T007": {
+      "surface2": "Recommend an executor for the fictional Alder editor's configuration updates. The operations are ordered, and the three proposed executors reduce overhead in different ways. Your choice must keep the requested operation semantics and finish inside the acceptance window."
+    },
+    "T008": {
+      "surface2": "Decide whether the fictional Wren venue handoff is ready to complete or needs to wait for its missing source. It requires a complete, current room roster. Local drafts are available to read, but capture of the current roster failed."
+    },
+    "T009": {
+      "surface2": "Only one kit can be made from the fictional Heron workshop's allocated common parts, and its exhibit location arrives shortly before setup. Choose a supported method within the preparation window: stage common parts for a later location-specific insert, assemble the full kit after assignment or prepare that full kit beforehand."
+    },
+    "T010": {
+      "surface2": "A complete acceptance record already accompanies the fictional Finch repository's existing checker. Choose the necessary plan for one local pre-commit check of the supplied complete configuration file, comparing that checker with a partial check and a newly added parallel wrapper."
+    },
+    "T011": {
+      "surface2": "Compare rebuilding from approved text, converting every page to an image and covering the existing tag for the fictional Mica exercise. The final document must no longer contain its disposable routing tag. The tag is made up; this exercise involves no sensitive document."
+    },
+    "T012": {
+      "surface2": "Assess whether the fictional Ash stockroom can select a carrier tray now, and state the next step for its local parts transfer. There are two tray designs and a proposed hybrid. Acceptance needs three separate current records for the same configuration, while this episode permits only two inspection units."
+    }
+  }
+}
