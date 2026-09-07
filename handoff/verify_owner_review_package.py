@@ -1,0 +1,756 @@
+#!/usr/bin/env python3
+"""Write or verify the bounded Pattern Map v16 owner-review manifest.
+
+The manifest intentionally covers canonical review entry points and the
+integrity ledgers/verifiers for the much larger immutable archives. It does not
+duplicate every archive payload hash; those remain authoritative in their own
+checked manifests.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import stat
+import subprocess
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "handoff" / "OWNER_REVIEW_MANIFEST_V16.json"
+CONTENT_CHECKPOINT = "874a0a8e09f0bde11532cf873087865addb7d973"
+OWNER_REVIEW_PDF_CHECKPOINT = "385af09679bac12d8ce807bda6c3d4ee3f143723"
+PHASE_0_BASELINE = "37c7c852ff406431454346eacc694ac04c5f57a5"
+LANE_HEADS = {
+    "applied_integrity": "93265692e95d56e35f8de68afcc435519419684b",
+    "public_presentation": "361243c95050723f1693907f7446be5d690b9e58",
+    "research_boundary_2026": "54bd0a7a11f4c072c8ceaab1a2abf7bc81a380cb",
+}
+CONVERGENCE_CORRECTION_HEADS = {
+    "public_release_url_semantics": "c4a0f4c62e71cb2475f286f67ae0254a13f130a3",
+    "research_protocol_axis_alignment": "ecf37ee64adfeb1847a5b6342d7550f7f5da6695",
+    "stage_zero_contract_convergence": "1ceceb6c8b7131217c3e7c710976d868c3139260",
+    "research_claim_convergence": "280eb4bc4a2eb910535b61a480226de5b4aac33f",
+    "public_site_apply_convergence": "5bcd08df150f385c2bb3471a4a641a7ce9cb356d",
+}
+OPPORTUNITY_EXPANSION_BASELINE = "529852497109dc152928de642038d07b109a52e2"
+OPPORTUNITY_EXPANSION_LANE_HEADS = {
+    "project_use_starter": "9ed522afcacaa45e9bfa5950f03f454a87e3dd92",
+    "public_mentor_rehearsal": "f2311d095d0afc094356e222624cff3aa1e3b939",
+    "research_opportunity_scan": "30d4af6564e07154f0f60e8fd2d8a59f3c815944",
+}
+OPPORTUNITY_LOOP_2_REVIEWED_HEAD = "2b2d1bad8e9b7c954f209f0c9c6e0cfbc9d4815b"
+
+MANIFEST_SCHEMA_VERSION = 2
+PACKAGE_NAME = "pattern-map-v16-owner-review"
+PACKAGE_STATUS = (
+    "owner-review candidate; not merged, deployed, published, or empirically validated"
+)
+GENERATED_DATE = "2026-09-07"
+SOURCE_HEAD_RESOLUTION = {
+    "status": "resolve_at_use",
+    "command": "git rev-parse --verify HEAD",
+    "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
+}
+EVIDENCE_NOTE = (
+    "The Ultra continuation preserves dacbe02 and adds a grounded-acquisition "
+    "mechanism/comparator assessment, eight deterministic development families, "
+    "twelve fictional pilot tasks, separately authored narratives, private rubrics, "
+    "an offline action adapter and a frozen 144-slot unlaunched assignment. "
+    "Supported task attainment remains separate from justified uncertainty and "
+    "ex ante action quality. Rotating same-model advisory review corrected "
+    "scoring, disclosure, pruning and catalogue-cue defects. Council's successor "
+    "binds current evidence review across projection/ranking/action paths; "
+    "Signal has a prospective complete-flow script, not observed UI adoption. "
+    "The 2026-09-07 successor adds a targeted research methods comparison, "
+    "unrun pilot proposal and synthetic development/candidate packets; two "
+    "bounded applications with explicit no-benefit and unmeasured-effort limits; "
+    "a separately generated faithful mentor reading PDF; a short repository "
+    "entry; a constructed useful-discovery example; and review supplements for "
+    "local Council/Signal Foundry changes. None is empirical efficacy evidence. "
+    "This manifest covers the locked human thesis and six-family content; the "
+    "preserved Echo boundary; the shared-source review/public site, deterministic "
+    "teaching reveal, exact document destinations, focus-neutral nested-disclosure "
+    "navigation, dark-callout state contrast, and JavaScript-enabled headless print "
+    "retention; fail-closed publication metadata, semantic headings, and explicit "
+    "identity/rights/authorization gates; a genuine four-field ordinary "
+    "route; typed permission, resolvable comparison/disconfirmation, real UTC "
+    "motion instants, exactly reconciled memory use and selected influence, exact "
+    "budget/fixture shapes, general untrusted-payload data/control separation, and "
+    "append-only current-memory fixtures; "
+    "an actual pending-to-reviewed synthetic no-result fixture with exact "
+    "expectation/window resolution and a preserved-payload digest; the targeted "
+    "2025–2026 adjacent-work boundary and two unrun study-mode candidates; the "
+    "optional repository-local project-use starter; the unpublished mentor/X/release-"
+    "decision rehearsal kit; the supplemental targeted opportunity source scan; "
+    "opportunity/red-team and ultra-finalization review loops; exact-commit Signal "
+    "Foundry subset construction with classified out-of-packet links; strict "
+    "deterministic complete-payload owner packaging plus copied-extraction controls; "
+    "current principal-door evidence; and the byte-identical six-page review PDF. Manual "
+    "owner/mentor comprehension, physical keyboard, supported screen reader, real "
+    "zoom, forced colors, native print, hardware touch, byline, canonical URL, social "
+    "image, and publication-time link checks remain open. Agent and Claude reviews "
+    "are advisory only. No study, deployment, publication, merge, research-provider "
+    "selection/call, external dataset acquisition, outreach, or incremental spend is "
+    "implied."
+)
+ARCHIVE_SCOPE = (
+    "Key ledgers and verifiers are included here; immutable archive payload hashes "
+    "remain authoritative in their own manifests."
+)
+MANIFEST_KEYS = {
+    "schema_version",
+    "package",
+    "status",
+    "generated_date",
+    "historical_converged_checkpoint",
+    "owner_review_pdf_checkpoint",
+    "phase_0_hardening_baseline",
+    "integrated_lane_heads",
+    "convergence_correction_heads",
+    "opportunity_expansion_baseline",
+    "opportunity_expansion_lane_heads",
+    "opportunity_loop_2_reviewed_head",
+    "source_head",
+    "source_head_resolution",
+    "evidence_note",
+    "archive_scope",
+    "file_count",
+    "total_bytes",
+    "files",
+}
+FILE_RECORD_KEYS = {"path", "bytes", "sha256"}
+AUTHOR_CONFIRMATION = "I_AM_AUTHORING_FROM_A_CLEAN_GIT_CHECKOUT"
+DEFAULT_BRANCH_NAMES = {"main", "master", "trunk"}
+
+
+REQUIRED_PATHS = [
+    "docs/ULTRA_CONTINUATION_SCOPE_2026-09-07.md",
+    "docs/ULTRA_PLAN_AND_GOAL_2026-09-07.md",
+    "handoff/ULTRA_CONTINUATION_REVIEW_2026-09-07.md",
+    "handoff/signal-foundry/PROSPECTIVE_USE_SCRIPT_2026-09-07.md",
+    "qa/strategic/ultra/COUNCIL_ADVISORY_REVIEW.md",
+    "qa/strategic/ultra/PILOT_ADVISORY_REVIEW.md",
+    "qa/strategic/ultra/ADAPTER_ADVISORY_REVIEW.md",
+    "research/future-studies/ultra/MECHANISM_AND_COMPARATORS.md",
+    "research/future-studies/ultra/PILOT_DECISION_SPEC.md",
+    "research/future-studies/ultra/development/README.md",
+    "research/future-studies/ultra/development/case_objects.py",
+    "research/future-studies/ultra/development/cases.py",
+    "research/future-studies/ultra/development/test_cases.py",
+    "research/future-studies/ultra/pilot/README.md",
+    "research/future-studies/ultra/pilot/TASKS.json",
+    "research/future-studies/ultra/pilot/PRIVATE_KEYS.json",
+    "research/future-studies/ultra/pilot/SURFACES.json",
+    "research/future-studies/ultra/pilot/AUTHORING_NOTES.md",
+    "research/future-studies/ultra/pilot/SURFACE_REVIEW.md",
+    "research/future-studies/ultra/pilot/adapter.py",
+    "research/future-studies/ultra/pilot/test_adapter.py",
+    "research/future-studies/ultra/pilot/prepare.py",
+    "research/future-studies/ultra/pilot/INSTRUMENT_MANIFEST.json",
+    "docs/NEXT_PHASE_GOAL_2026-09-07.md",
+    "handoff/NEXT_PHASE_REVIEW_2026-09-07.md",
+    "handoff/signal-foundry/NEXT_PHASE_SUPPLEMENT_2026-09-07.md",
+    "framework/agent-playbook/START_WITH_ONE_DECISION.md",
+    "publication/MENTOR_HANDOFF_2026-09-07.md",
+    "publication/generate_mentor_reading_pdf.py",
+    "cases/grounded-option-discovery/README.md",
+    "research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md",
+    "research/future-studies/development/README.md",
+    "research/future-studies/development/DISCOVERY_CASES.json",
+    "research/future-studies/development/observation_cases.py",
+    "qa/strategic/PATTERN_MAP_STRATEGIC_AUDIT_2026-09-07_ac981f7.md",
+    "qa/strategic/BOUNDED_APPLICATIONS_2026-09-07.md",
+    "README.md",
+    "AGENTS.md",
+    ".gitignore",
+    "docs/OWNER_INTENT_V16.md",
+    "docs/OWNER_INTENT_V16.sha256",
+    "docs/THESIS_AND_AUDIENCE_CONTRACT_V16.md",
+    "docs/ARTIFACT_BOUNDARIES.md",
+    "docs/TWO_PROJECT_SEPARATION.md",
+    "docs/SOURCE_AUTHORITY_AND_LINEAGE.md",
+    "docs/MIGRATION_INVENTORY.md",
+    "docs/V13_TO_V16_FIDELITY_MATRIX.md",
+    "docs/V16_ACCEPTANCE_CRITERIA.md",
+    "docs/V16_ROADMAP.md",
+    "docs/PUBLIC_AND_TRANSFER_HARDENING_PLAN_V16.md",
+    "docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md",
+    "docs/CONTENT_INTERFACE_FREEZE_V16.md",
+    "docs/CONTENT_INTERFACE_V16.json",
+    "docs/CLAIMS_AND_SOURCE_LEDGER_V16.md",
+    "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
+    "docs/DECISION_LOG.md",
+    "docs/REVIEW_AND_DISPOSITION_PROTOCOL.md",
+    "docs/VERSION_HISTORY.md",
+    "docs/BINARY_ARTIFACT_POLICY.md",
+    "manuscript/PATTERN_RECOGNITION_V16.md",
+    "manuscript/NINETY_SECOND_VERSION.md",
+    "manuscript/MENTOR_COVER_NOTE.md",
+    "manuscript/PUBLIC_ABSTRACT.md",
+    "manuscript/ORIGIN_NOTE.md",
+    "manuscript/SOURCES_AND_RESEARCH_ROUTE.md",
+    "framework/SIX_FAMILIES.md",
+    "framework/SIX_FAMILIES.json",
+    "framework/SIX_FAMILIES.schema.json",
+    "framework/RELATIONSHIP_MAP.md",
+    "framework/GLOSSARY.md",
+    "framework/OPERATOR_PLAYBOOK.md",
+    "framework/IMPLEMENTATION_CHOICES.md",
+    "framework/MECHANISMS.md",
+    "framework/BOUNDARIES_AND_FAILURES.md",
+    "framework/templates/README.md",
+    "framework/templates/ACQUISITION_RECEIPT.md",
+    "framework/templates/COMPARISON_MATRIX.md",
+    "framework/templates/DECISION_BRIEF.md",
+    "framework/templates/DISCONFIRMATION_LOG.md",
+    "framework/templates/EVIDENCE_REGISTER.md",
+    "framework/templates/INFLUENCE_RECEIPT.md",
+    "framework/templates/MEMORY_RECORD.md",
+    "framework/templates/ORDINARY_RECORD.md",
+    "framework/templates/OUTCOME_REVIEW.md",
+    "framework/agent-playbook/QUICKSTART.md",
+    "framework/agent-playbook/PROJECT_USE_STARTER.md",
+    "framework/agent-playbook/FULL_OPERATING_GUIDE.md",
+    "framework/agent-playbook/COPYABLE_AGENT_BRIEF.md",
+    "framework/agent-playbook/PREFLIGHT_CHECKLIST.md",
+    "framework/agent-playbook/DECISION_RECEIPT_TEMPLATE.md",
+    "framework/agent-playbook/ORDINARY_VS_DISCRIMINATION_LAYER.md",
+    "cases/signal-foundry/README.md",
+    "cases/general-research/README.md",
+    "cases/product-and-process/README.md",
+    "publication/README.md",
+    "publication/MENTOR_REVIEW_SEQUENCE_V16.md",
+    "publication/X_COPY_VARIANTS_V16.md",
+    "publication/RELEASE_DECISION_CHECKLIST_V16.md",
+    "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
+    "handoff/signal-foundry/SIGNAL_FOUNDRY_INTEGRATION_BRIEF.md",
+    "handoff/signal-foundry/build_portable_bundle.py",
+    "site/README.md",
+    "site/.gitignore",
+    "site/package.json",
+    "site/package-lock.json",
+    "site/build.mjs",
+    "site/check.mjs",
+    "site/serve.mjs",
+    "site/publication.config.json",
+    "site/src/publication-config.mjs",
+    "site/src/site.css",
+    "site/src/site.js",
+    "site/src/term-popover-geometry.js",
+    "site/src/recommendation.js",
+    "site/scripts/generate_review_pdf.py",
+    "site/exports/standalone/pattern-map-v16.html",
+    "site/exports/standalone/pattern-map-v16-public.html",
+    "site/exports/pattern-map-v16-owner-review.pdf",
+    "research/README.md",
+    "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
+    "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md",
+    "research/future-studies/DL_NARROW_WEDGE_DECISION_MEMO_V0_1.md",
+    "research/the-echo-problem/README.md",
+    "research/the-echo-problem/STATUS_AND_BOUNDARIES.md",
+    "research/the-echo-problem/RELATION_TO_V16.md",
+    "research/the-echo-problem/VERSION_HISTORY.md",
+    "research/the-echo-problem/FUTURE_EXECUTION_PLAN.md",
+    "research/the-echo-problem/PRESERVED_V15_2_INDEX.md",
+    "research/the-echo-problem/qa/EP_V0_1_QA.md",
+    "research/the-echo-problem/qa/EP_V0_1_STATUS.json",
+    "research/the-echo-problem/qa/verify_preserved_sources.py",
+    "research/the-echo-problem/v1_1/README.md",
+    "research/the-echo-problem/v1_1/PROTOCOL_V1_1_DESIGN_CHECKPOINT.md",
+    "research/the-echo-problem/v1_1/PRIOR_MEASUREMENT_MATRIX.md",
+    "research/the-echo-problem/v1_1/fixtures/CLAUDE_PRIMARY_RENDER_AUDIT_SEED1_N300.json",
+    "research/the-echo-problem/v1_1/harness/README.md",
+    "research/the-echo-problem/v1_1/harness/__init__.py",
+    "research/the-echo-problem/v1_1/harness/canonical.py",
+    "research/the-echo-problem/v1_1/harness/generate_claude_primary_fixture.py",
+    "research/the-echo-problem/v1_1/harness/parity.py",
+    "research/the-echo-problem/v1_1/harness/parser.py",
+    "research/the-echo-problem/v1_1/harness/planning.py",
+    "research/the-echo-problem/v1_1/harness/scoring.py",
+    "research/the-echo-problem/v1_1/harness/test_v1_1.py",
+    "assets/IMAGE_USE_LEDGER.md",
+    "assets/diagrams/historical-v13-pattern-recognition-diagram-v12.png",
+    "archive/CHECKPOINT_INDEX.json",
+    "archive/verify_checkpoint_index.py",
+    "archive/transfers/v14-complete-2026-08-18/00_START_HERE/PACKAGE_MANIFEST.md",
+    "archive/transfers/v14-complete-2026-08-18/00_START_HERE/SHA256SUMS.txt",
+    "archive/transfers/v15.2-owner-handoff/ACCESSION_RECORD.md",
+    "archive/transfers/v15.2-owner-handoff/PATTERN_MAP_V15_2_OWNER_HANDOFF-manifest.json",
+    "archive/transfers/v15.2-owner-handoff/PATTERN_MAP_V15_2_OWNER_HANDOFF.zip.sha256",
+    "archive/transfers/v15.2-owner-handoff/RECONSTRUCTION_GUIDE.md",
+    "archive/transfers/v15.2-owner-handoff/verify_accession.py",
+    "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
+    "qa/FINAL_ACTION_AUDIT_V16.md",
+    "qa/README.md",
+    "qa/run_owner_review_checks.sh",
+    "qa/editorial/MANUSCRIPT_QA_REPORT.md",
+    "qa/editorial/validate_content_interface.py",
+    "qa/editorial/advisory/FINAL_INTENT_READER_REDTEAM_2026-08-30_d40ca61.md",
+    "qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_6a61f6d.md",
+    "qa/editorial/advisory/FINAL_INTENT_READER_RECHECK_2026-08-30_58f2756.md",
+    "qa/applied/README.md",
+    "qa/applied/PUBLIC_TRANSFER_APPLIED_INTEGRITY_QA_2026-08-30.md",
+    "qa/applied/PROJECT_USE_COLD_START_QA_2026-08-30_d05aca5.md",
+    "qa/applied/STAGE_ZERO_ORDINARY_CONTRACT_CONVERGENCE_QA_2026-08-30_0beee9a.md",
+    "qa/applied/MACHINE_RECEIPT_CONTRACT_ULTRA_QA_2026-08-30_76ade6e.md",
+    "qa/applied/memory_anchor_registry.json",
+    "qa/applied/validate_framework.py",
+    "qa/applied/advisory/PUBLIC_MENTOR_KIT_CROSS_LANE_CHALLENGE_2026-08-30_f2311d0.md",
+    "qa/applied/advisory/OPPORTUNITY_LOOP2_REMOVAL_TRANSFER_2026-08-30_2b2d1ba.md",
+    "qa/applied/receipts/blocked-permission.json",
+    "qa/applied/receipts/layered-ready.json",
+    "qa/applied/receipts/lightweight-low-stakes.json",
+    "qa/applied/receipts/memory-append-only-correction.json",
+    "qa/applied/receipts/ordinary-supplied-material.json",
+    "qa/applied/receipts/pending-outcome-review.json",
+    "qa/applied/receipts/reviewed-missing-outcome.json",
+    "qa/applied/receipts/revoked-permission.json",
+    "qa/applied/receipts/stopped-budget.json",
+    "qa/applied/receipts/unknown-permission.json",
+    "qa/handoff/POST_ULTRACODE_FINALIZATION_QA_2026-08-28.md",
+    "qa/handoff/PUBLIC_AND_TRANSFER_HARDENING_QA_2026-08-30.md",
+    "qa/handoff/FINAL_RED_TEAM_CORRECTION_QA_2026-08-30.md",
+    "qa/handoff/OPPORTUNITY_EXPANSION_TERMINAL_QA_2026-08-30.md",
+    "qa/handoff/ULTRA_FINALIZATION_TERMINAL_QA_2026-08-30.md",
+    "qa/handoff/EXTENDED_ULTRA_OPPORTUNITY_QA_2026-08-30.md",
+    "qa/handoff/OWNER_PACKAGE_CONTROL_ULTRA_QA_2026-08-30_76ade6e.md",
+    "qa/handoff/RED_BLUE_ULTRA_FINALIZATION_QA_2026-08-30.md",
+    "qa/handoff/test_owner_review_bundle.py",
+    "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_AUDIT_2026-08-30_fb7d808.md",
+    "qa/handoff/advisory/CLAUDE_PUBLIC_TRANSFER_TERMINAL_RECHECK_2026-08-30_4a1acab.md",
+    "qa/research/validate_research_boundaries.py",
+    "qa/research/README.md",
+    "qa/research/CURRENT_ADJACENT_SOURCE_VERIFICATION_2026-08-30.md",
+    "qa/research/RESEARCH_CLAIM_CONVERGENCE_QA_2026-08-30_0beee9a.md",
+    "qa/research/RESEARCH_BOUNDARY_HARDENING_QA_2026-08-30.md",
+    "qa/research/OPPORTUNITY_SOURCE_SCAN_2026-08-30_d05aca5.md",
+    "qa/research/ECHO_V1_1_DESIGN_CHECKPOINT_QA_2026-08-23.md",
+    "qa/research/test_research_claim_convergence.py",
+    "qa/research/advisory/FINAL_RESEARCH_PROVENANCE_REDTEAM_2026-08-30_d40ca61.md",
+    "qa/research/advisory/FINAL_RESEARCH_PROVENANCE_RECHECK_2026-08-30_6a61f6d.md",
+    "qa/research/advisory/PROJECT_USE_STARTER_CROSS_LANE_CHALLENGE_2026-08-30_9ed522a.md",
+    "qa/research/advisory/OPPORTUNITY_LOOP2_CLAIMS_BOUNDARY_2026-08-30_2b2d1ba.md",
+    "qa/site/SITE_QA_REPORT.md",
+    "qa/site/SITE_POLISH_QA.md",
+    "qa/site/audit_site.py",
+    "qa/site/headless_print_contract.sh",
+    "qa/site/LIVE_BROWSER_BOUNDARY_CHECK_2026-08-19_79a2392.md",
+    "qa/site/PRO_ROUND_1_CORRECTION_QA_2026-08-20_5eb860e.md",
+    "qa/site/PRO_ROUND_2_CORRECTION_QA_2026-08-22_c889260.md",
+    "qa/site/TERMINAL_FINALIZATION_QA_2026-08-27.md",
+    "qa/site/PUBLIC_MODE_BROWSER_QA_2026-08-30.md",
+    "qa/site/OWNER_REPORTED_DOOR_CARD_CORRECTION_2026-08-30.md",
+    "qa/site/FINAL_CONVERGENCE_SITE_QA_2026-08-30_5bcd08d.md",
+    "qa/site/PUBLIC_SURFACE_ACCESSIBILITY_NAVIGATION_QA_2026-08-30_76ade6e.md",
+    "qa/site/public-mode-contract.spec.mjs",
+    "qa/site/source-navigation-disclosure-contract.spec.mjs",
+    "qa/site/public-nav-spacing-contract.spec.mjs",
+    "qa/site/door-card-preview-contract.spec.mjs",
+    "qa/site/advisory/FINAL_APPLIED_SITE_REDTEAM_2026-08-30_d40ca61.md",
+    "qa/site/advisory/FINAL_APPLIED_SITE_RECHECK_2026-08-30_6a61f6d.md",
+    "qa/site/advisory/CLAUDE_TERMINAL_AUDIT_2026-08-27_e565502.md",
+    "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_2026-08-20_cc5547d.md",
+    "qa/site/advisory/CHATGPT_PRO_INDEPENDENT_REVIEW_ROUND_2_2026-08-22_4d2505e.md",
+    "qa/site/advisory/SITE_VISUAL_EXPERIENCE_POST_POLISH_2026-08-19_a319794.md",
+    "qa/interaction/apply-state-contract.spec.mjs",
+    "qa/interaction/apply-cross-artifact-contract.spec.mjs",
+    "qa/interaction/map-layout-contract.spec.mjs",
+    "qa/interaction/term-popover-geometry-contract.spec.mjs",
+    "qa/handoff/test_portable_bundle.py",
+    "qa/handoff/CLAUDE_FINAL_PORTABLE_AUDIT_DISPOSITION_2026-08-30_c23c665.md",
+    "qa/content/reader-language-contract.spec.mjs",
+    "qa/publication/OPPORTUNITY_EXPANSION_PUBLIC_MENTOR_REHEARSAL_QA_2026-08-30_d05aca5.md",
+    "qa/publication/publication-kit-contract.spec.mjs",
+    "qa/publication/advisory/PROJECT_USE_STARTER_PUBLIC_LANE_CHALLENGE_2026-08-30_9ed522a.md",
+    "qa/publication/advisory/OPPORTUNITY_LOOP2_PUBLIC_MENTOR_2026-08-30_2b2d1ba.md",
+    "qa/visual/README.md",
+    "qa/visual/POLISH_PLAN.md",
+    "qa/visual/VISUAL_NEEDS.md",
+    "qa/visual/VISUAL_QA_REPORT.md",
+    "qa/visual/ULTRA_FINALIZATION_EVIDENCE_REFRESH_2026-08-30_2ba89e7.md",
+    "qa/visual/W2_HUMAN_CORRECTION_PDF_EVIDENCE_2026-08-30.md",
+    "qa/visual/ultra-finalization/public-home-doors-1440x720.jpg",
+    "qa/visual/ultra-finalization/public-home-map-door-390x844.jpg",
+    "qa/visual/ultra-finalization/public-home-apply-door-390x844.jpg",
+    "qa/visual/opportunity-final/README.md",
+    "qa/visual/opportunity-final/public-home-1280x720.jpg",
+    "qa/visual/opportunity-final/public-home-390x844.jpg",
+    "qa/visual/opportunity-final/public-map-1280x720.jpg",
+    "qa/visual/opportunity-final/public-map-detail-1280x720.jpg",
+    "qa/visual/VISUAL_EXPERIENCE_REVISION_REPORT.md",
+    "qa/site/SITE_HYGIENE_QA_2026-08-23_d4b7b9e.md",
+    "qa/site/css-selector-use.spec.mjs",
+    "qa/visual/verify_image_formats.py",
+    "qa/visual/screenshots/home-desktop-1440x1000.jpg",
+    "qa/visual/screenshots/home-tablet-1024x768.jpg",
+    "qa/visual/screenshots/home-mobile-390x844.jpg",
+    "qa/visual/screenshots/map-desktop-1440x1000.jpg",
+    "qa/visual/screenshots/apply-tablet-1024x768.jpg",
+    "qa/visual/screenshots/history-desktop-1440x1000.jpg",
+    "qa/visual/screenshots/history-full.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-1024x768.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-768x1024.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/home-360x800.jpg",
+    "qa/visual/screenshots-final-v16-polish/read-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/read-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-1024x768.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-768x1024.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/map-360x800.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-1024x768.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-768x1024.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/apply-360x800.jpg",
+    "qa/visual/screenshots-final-v16-polish/examples-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/examples-390x844.jpg",
+    "qa/visual/screenshots-final-v16-polish/boundaries-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/sources-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/research-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/history-1440x900.jpg",
+    "qa/visual/screenshots-final-v16-polish/interaction-states/map-f1-focused-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/interaction-states/apply-advanced-hold-1280x720.jpg",
+    "qa/visual/screenshots-final-v16-polish/interaction-states/standalone-all-routes-1280x720.jpg",
+    "qa/visual/public-mode/public-apply-stage0-1280x720.jpg",
+    "qa/visual/public-mode/public-home-reveal-1280x720.jpg",
+    "qa/visual/public-mode/public-home-reveal-390x844.jpg",
+    "qa/visual/public-mode/public-read-1280x720.jpg",
+    "qa/visual/public-mode/public-read-390x844.jpg",
+    "qa/visual/final-redteam/public-home-1440x720.jpg",
+    "qa/visual/final-redteam/public-home-reveal-1440x720.jpg",
+    "qa/visual/final-redteam/public-map-f2-1440x720.jpg",
+    "qa/visual/final-redteam/public-map-f2-390x844.jpg",
+    "qa/visual/final-redteam/public-common-origin-1440x720.jpg",
+    "qa/visual/final-redteam/public-common-origin-390x844.jpg",
+    "qa/visual/final-redteam/public-apply-advanced-hold-1440x720.jpg",
+    "qa/visual/final-redteam/public-apply-advanced-hold-390x844.jpg",
+    "qa/visual/final-redteam/standalone-sources-1440x720.jpg",
+    "qa/visual/final-redteam/standalone-history-1440x720.jpg",
+    "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-1.png",
+    "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-2.png",
+    "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-3.png",
+    "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-4.png",
+    "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-5.png",
+    "qa/visual/pdf-renders/pattern-map-v16-owner-review-final-6.png",
+    "qa/visual/pdf-renders-final-v16-polish/page-1.png",
+    "qa/visual/pdf-renders-final-v16-polish/page-2.png",
+    "qa/visual/pdf-renders-final-v16-polish/page-3.png",
+    "qa/visual/pdf-renders-final-v16-polish/page-4.png",
+    "qa/visual/pdf-renders-final-v16-polish/page-5.png",
+    "qa/visual/pdf-renders-final-v16-polish/page-6.png",
+    "qa/research/advisory/PRIOR_ART_AND_OVERCLAIM_BOUNDARY_2026-08-19_ea8a6e2.md",
+    "qa/research/advisory/HOSTILE_NOVELTY_REVIEW_2026-08-19_6a29ed8.md",
+    "qa/applied/advisory/BUILDER_OPERATOR_ACCEPTANCE_2026-08-19_6a29ed8.md",
+    "qa/applied/advisory/APPLIED_RENDERED_POST_REVISION_VERIFICATION_2026-08-19_8aa5f94.md",
+    "qa/applied/advisory/APPLIED_FINAL_REGRESSION_CHECK_2026-08-19_2a54b24.md",
+    "qa/editorial/advisory/COLD_NONTECHNICAL_READER_2026-08-19_6a29ed8.md",
+    "qa/editorial/advisory/COLD_READER_POST_REVISION_VERIFICATION_2026-08-19_2a54b24.md",
+    "qa/site/advisory/SITE_COMPREHENSION_ACCESSIBILITY_2026-08-19_6a29ed8.md",
+    "qa/site/advisory/SITE_POST_REVISION_VERIFICATION_2026-08-19_2a54b24.md",
+    "qa/site/OWNER_VISUAL_EXPORT_CLOSEOUT_2026-08-23.md",
+    "handoff/README.md",
+    "handoff/OWNER_REVIEW_PACKET_V16.md",
+    "handoff/PACKAGE_MAP_V16.md",
+    "handoff/BRANCH_AND_PR_STATE.md",
+    "handoff/START_HERE_OWNER_REVIEW.md",
+    "handoff/build_owner_review_bundle.py",
+    "handoff/verify_extracted_owner_bundle.py",
+    "handoff/verify_owner_review_package.py",
+]
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def strict_json_object(path: Path) -> dict[str, object]:
+    """Load one unambiguous JSON object.
+
+    Python's default decoder accepts duplicate keys and the non-standard values
+    NaN/Infinity.  Neither is safe for a package control record.
+    """
+
+    def reject_duplicate_keys(pairs: list[tuple[str, object]]) -> dict[str, object]:
+        result: dict[str, object] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate object key {key!r}")
+            result[key] = value
+        return result
+
+    def reject_nonfinite(value: str) -> object:
+        raise ValueError(f"non-finite JSON value {value!r}")
+
+    payload = json.loads(
+        path.read_text(encoding="utf-8"),
+        object_pairs_hook=reject_duplicate_keys,
+        parse_constant=reject_nonfinite,
+    )
+    if not isinstance(payload, dict):
+        raise ValueError("manifest root must be a JSON object")
+    return payload
+
+
+def assert_regular_repository_file(relative: str) -> Path:
+    """Return a required path only when every component is non-symlink and local."""
+
+    parts = Path(relative).parts
+    if not parts or Path(relative).is_absolute() or ".." in parts:
+        raise AssertionError(f"unsafe required owner-review path: {relative}")
+    current = ROOT
+    for part in parts:
+        current = current / part
+        if current.is_symlink():
+            raise AssertionError(f"owner-review artifact may not be a symlink: {relative}")
+    if not current.exists():
+        raise FileNotFoundError(f"required owner-review artifact missing: {relative}")
+    mode = current.lstat().st_mode
+    if not stat.S_ISREG(mode):
+        raise AssertionError(f"owner-review artifact is not a regular file: {relative}")
+    try:
+        current.resolve().relative_to(ROOT.resolve())
+    except ValueError as error:
+        raise AssertionError(f"owner-review artifact escapes repository root: {relative}") from error
+    return current
+
+
+def manifest_control_file() -> Path:
+    """Return the bounded manifest only when it is a local regular path."""
+
+    try:
+        relative = MANIFEST.relative_to(ROOT).as_posix()
+    except ValueError as error:
+        raise AssertionError("owner-review manifest escapes repository root") from error
+    return assert_regular_repository_file(relative)
+
+
+def assert_clean_git_authoring_context() -> None:
+    """Fail closed before the author-only manifest writer can change bytes."""
+
+    def git(*args: str) -> str:
+        completed = subprocess.run(
+            ["git", *args],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=False,
+        )
+        if completed.returncode != 0:
+            raise AssertionError(
+                "manifest authoring requires a Git checkout; verification of a "
+                "received package must never use --write"
+            )
+        return completed.stdout.strip()
+
+    top = Path(git("rev-parse", "--show-toplevel")).resolve()
+    if top != ROOT.resolve():
+        raise AssertionError("manifest authoring must run at the Pattern Map Git root")
+    branch_probe = subprocess.run(
+        ["git", "symbolic-ref", "--quiet", "--short", "HEAD"],
+        cwd=ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        text=True,
+        check=False,
+    )
+    if branch_probe.returncode != 0 or not branch_probe.stdout.strip():
+        raise AssertionError(
+            "manifest authoring requires a named non-default branch; detached "
+            "HEAD is not allowed"
+        )
+    branch = branch_probe.stdout.strip()
+    if branch.casefold() in DEFAULT_BRANCH_NAMES:
+        raise AssertionError(
+            f"manifest authoring requires a named non-default branch, not {branch!r}"
+        )
+    head = git("rev-parse", "--verify", "HEAD")
+    if not re.fullmatch(r"[0-9a-f]{40}", head):
+        raise AssertionError("manifest authoring could not resolve an exact Git HEAD")
+    dirty = git("status", "--porcelain=v1", "--untracked-files=all")
+    if dirty:
+        raise AssertionError(
+            "manifest authoring requires a clean Git checkout; commit all intended "
+            "source/evidence bytes first"
+        )
+
+
+def assert_pdf_checkpoint_bound() -> None:
+    if not re.fullmatch(r"[0-9a-f]{40}", OWNER_REVIEW_PDF_CHECKPOINT):
+        raise AssertionError(
+            "owner-review PDF checkpoint is pending; commit regenerated PDF bytes, "
+            "then bind that exact producer commit before writing or verifying the manifest"
+        )
+
+
+def current_records() -> list[dict[str, object]]:
+    if len(REQUIRED_PATHS) != len(set(REQUIRED_PATHS)):
+        raise AssertionError("required owner-review path list contains duplicates")
+    records: list[dict[str, object]] = []
+    for relative in sorted(REQUIRED_PATHS):
+        path = assert_regular_repository_file(relative)
+        records.append(
+            {
+                "path": relative,
+                "bytes": path.stat().st_size,
+                "sha256": sha256(path),
+            }
+        )
+    return records
+
+
+def write_manifest() -> None:
+    assert_pdf_checkpoint_bound()
+    assert_clean_git_authoring_context()
+    manifest_path = manifest_control_file()
+    records = current_records()
+    payload = {
+        "schema_version": MANIFEST_SCHEMA_VERSION,
+        "package": PACKAGE_NAME,
+        "status": PACKAGE_STATUS,
+        "generated_date": GENERATED_DATE,
+        "historical_converged_checkpoint": CONTENT_CHECKPOINT,
+        "owner_review_pdf_checkpoint": OWNER_REVIEW_PDF_CHECKPOINT,
+        "phase_0_hardening_baseline": PHASE_0_BASELINE,
+        "integrated_lane_heads": LANE_HEADS,
+        "convergence_correction_heads": CONVERGENCE_CORRECTION_HEADS,
+        "opportunity_expansion_baseline": OPPORTUNITY_EXPANSION_BASELINE,
+        "opportunity_expansion_lane_heads": OPPORTUNITY_EXPANSION_LANE_HEADS,
+        "opportunity_loop_2_reviewed_head": OPPORTUNITY_LOOP_2_REVIEWED_HEAD,
+        "source_head": None,
+        "source_head_resolution": SOURCE_HEAD_RESOLUTION,
+        "evidence_note": EVIDENCE_NOTE,
+        "archive_scope": ARCHIVE_SCOPE,
+        "file_count": len(records),
+        "total_bytes": sum(int(record["bytes"]) for record in records),
+        "files": records,
+    }
+    manifest_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    print(f"WROTE {MANIFEST.relative_to(ROOT)}: {len(records)} files / {payload['total_bytes']} bytes")
+
+
+def verify_manifest() -> None:
+    assert_pdf_checkpoint_bound()
+    manifest_path = manifest_control_file()
+    payload = strict_json_object(manifest_path)
+    expected = current_records()
+    if set(payload) != MANIFEST_KEYS:
+        missing = sorted(MANIFEST_KEYS - set(payload))
+        extra = sorted(set(payload) - MANIFEST_KEYS)
+        raise AssertionError(f"owner-review manifest key mismatch; missing={missing}, extra={extra}")
+    if type(payload["schema_version"]) is not int or payload["schema_version"] != MANIFEST_SCHEMA_VERSION:
+        raise AssertionError("unsupported owner-review manifest schema")
+    if payload["package"] != PACKAGE_NAME:
+        raise AssertionError("owner-review package identity mismatch")
+    if payload["status"] != PACKAGE_STATUS:
+        raise AssertionError("owner-review package status/authority boundary mismatch")
+    if payload["generated_date"] != GENERATED_DATE:
+        raise AssertionError("owner-review manifest generated-date mismatch")
+    if payload["evidence_note"] != EVIDENCE_NOTE:
+        raise AssertionError("owner-review manifest evidence/no-results boundary mismatch")
+    if payload["archive_scope"] != ARCHIVE_SCOPE:
+        raise AssertionError("owner-review manifest archive-scope boundary mismatch")
+    if payload["historical_converged_checkpoint"] != CONTENT_CHECKPOINT:
+        raise AssertionError("historical converged checkpoint mismatch")
+    if payload["owner_review_pdf_checkpoint"] != OWNER_REVIEW_PDF_CHECKPOINT:
+        raise AssertionError("owner-review PDF checkpoint mismatch")
+    if payload["phase_0_hardening_baseline"] != PHASE_0_BASELINE:
+        raise AssertionError("Phase 0 hardening checkpoint mismatch")
+    if payload["integrated_lane_heads"] != LANE_HEADS:
+        raise AssertionError("integrated lane-head provenance mismatch")
+    if payload["convergence_correction_heads"] != CONVERGENCE_CORRECTION_HEADS:
+        raise AssertionError("convergence-correction provenance mismatch")
+    if payload["opportunity_expansion_baseline"] != OPPORTUNITY_EXPANSION_BASELINE:
+        raise AssertionError("opportunity-expansion baseline mismatch")
+    if payload["opportunity_expansion_lane_heads"] != OPPORTUNITY_EXPANSION_LANE_HEADS:
+        raise AssertionError("opportunity-expansion lane provenance mismatch")
+    if payload["opportunity_loop_2_reviewed_head"] != OPPORTUNITY_LOOP_2_REVIEWED_HEAD:
+        raise AssertionError("opportunity Loop 2 reviewed-head mismatch")
+    if payload["source_head"] is not None:
+        raise AssertionError("owner-review manifest must not hard-code its self-referential source head")
+    if payload["source_head_resolution"] != SOURCE_HEAD_RESOLUTION:
+        raise AssertionError("source-head resolution contract mismatch")
+    files = payload["files"]
+    if not isinstance(files, list):
+        raise AssertionError("owner-review manifest files must be a list")
+    seen_paths: set[str] = set()
+    for index, record in enumerate(files):
+        if not isinstance(record, dict) or set(record) != FILE_RECORD_KEYS:
+            raise AssertionError(f"owner-review file record {index} has an invalid shape")
+        relative = record["path"]
+        byte_count = record["bytes"]
+        digest = record["sha256"]
+        if not isinstance(relative, str) or not relative or relative in seen_paths:
+            raise AssertionError(f"owner-review file record {index} has an invalid/duplicate path")
+        if Path(relative).is_absolute() or ".." in Path(relative).parts:
+            raise AssertionError(f"owner-review file record {index} has an unsafe path")
+        if type(byte_count) is not int or byte_count < 0:
+            raise AssertionError(f"owner-review file record {index} has an invalid byte count")
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise AssertionError(f"owner-review file record {index} has an invalid SHA-256")
+        seen_paths.add(relative)
+    if [record["path"] for record in files] != sorted(seen_paths):
+        raise AssertionError("owner-review file records are not sorted exactly once")
+    if files != expected:
+        raise AssertionError("owner-review manifest does not match current artifact bytes")
+    if type(payload["file_count"]) is not int or payload["file_count"] != len(expected):
+        raise AssertionError("owner-review manifest file count mismatch")
+    total = sum(int(record["bytes"]) for record in expected)
+    if type(payload["total_bytes"]) is not int or payload["total_bytes"] != total:
+        raise AssertionError("owner-review manifest byte count mismatch")
+    print(f"PASS owner-review manifest: {len(expected)} files / {total} bytes")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="AUTHOR ONLY: rewrite the bounded manifest from an exact clean Git checkout",
+    )
+    parser.add_argument(
+        "--author-confirm",
+        metavar="TOKEN",
+        help=f"required with --write; exact token: {AUTHOR_CONFIRMATION}",
+    )
+    args = parser.parse_args()
+    try:
+        if args.write:
+            if args.author_confirm != AUTHOR_CONFIRMATION:
+                raise AssertionError(
+                    "--write is author-only and requires --author-confirm "
+                    f"{AUTHOR_CONFIRMATION}; never use it to verify a received package"
+                )
+            write_manifest()
+        else:
+            if args.author_confirm is not None:
+                raise AssertionError("--author-confirm is valid only with the author-only --write mode")
+            verify_manifest()
+    except (
+        AssertionError,
+        FileNotFoundError,
+        json.JSONDecodeError,
+        OSError,
+        RuntimeError,
+        ValueError,
+    ) as exc:
+        raise SystemExit(f"FAIL owner-review manifest: {exc}") from None
+
+
+if __name__ == "__main__":
+    main()

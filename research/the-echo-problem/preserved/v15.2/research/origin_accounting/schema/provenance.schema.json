@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/provenance.schema.json",
+  "title": "Restricted origin-accounting provenance graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provenance_graph_id", "origin_family_id", "nodes", "edges", "latent_origin_count", "certified_relation_state"],
+  "properties": {
+    "provenance_graph_id": {"type": "string", "pattern": "^PG-[A-Z2-7]{10}$"},
+    "origin_family_id": {"type": "string", "pattern": "^OF-[A-Z2-7]{10}$"},
+    "nodes": {"type": "array", "minItems": 1, "maxItems": 24, "items": {"type": "object", "additionalProperties": false, "required": ["node_id", "node_type"], "properties": {"node_id": {"type": "string"}, "node_type": {"enum": ["origin", "source", "artifact"]}, "report_id": {"type": "string"}}}},
+    "edges": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["from", "to", "edge_type"], "properties": {"from": {"type": "string"}, "to": {"type": "string"}, "edge_type": {"enum": ["generated_from", "derives_from"]}, "derivation": {"enum": ["copied", "paraphrased", "summarized", "quoted", "inferred", "dependent_copy", "dependent_paraphrase", "summary"]}}}},
+    "latent_origin_count": {"type": "integer", "minimum": 1, "maximum": 6},
+    "certified_relation_state": {"enum": ["single", "multiple", "unknown", "none"]}
+  }
+}

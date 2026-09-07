@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "generated_on": "2026-08-19",
+  "status": "LOCAL_OWNER_REVIEW_NO_EMPIRICAL_RESULTS_NOT_PUBLISHED",
+  "role": "self-contained manuscript comparison; not historical site reconstruction",
+  "landing_file": "index.html",
+  "landing_sha256": "65bea1fe02afe4884d6ccb35c8f30bf851b046929bae29710ff387b50d3fcf4d",
+  "versions": [
+    {
+      "version": "v14",
+      "file": "v14.html",
+      "source": "source/THOUGHT_PIECE_V14.md in the v15.2 release tree",
+      "source_sha256": "52c78b94543b55b427531d783447fe4deef6e66a11acbaa070260083dd15227f",
+      "html_sha256": "cb797c4cb415541a29cc7c8d4379f7eda83040860a8ec7271bbd2f9f86ba4782",
+      "bytes": 73836
+    },
+    {
+      "version": "v15",
+      "file": "v15.html",
+      "source": "sealed commit 82f87b1:source/THOUGHT_PIECE_V15.md",
+      "source_sha256": "08e476489805fa6ded6706bac6981e41a6e094b58b8245a9cbd68f4d825ee191",
+      "html_sha256": "28e73fb3ff5c7cd3e97350e2379a5634ed9c3f092de9da04a5bf28bacb164eed",
+      "bytes": 46004
+    },
+    {
+      "version": "v15.1",
+      "file": "v15-1.html",
+      "source": "source/THOUGHT_PIECE_V15.md in the v15.2 release tree",
+      "source_sha256": "7b73506f644a19c6c5f50d291004ba121210bee11501edf1b63d23e1a6364864",
+      "html_sha256": "47726e8b160bb7b3f48826a0ee7903212c484c3f054b264c9a0dc1d8c3d77a8a",
+      "bytes": 49241
+    },
+    {
+      "version": "v15.2",
+      "file": "v15-2.html",
+      "source": "source/THOUGHT_PIECE_V15_2.md in the v15.2 release tree",
+      "source_sha256": "b454b56221f005f8caee539d8b003716eceb34d0c49d68cae66772d910aea69b",
+      "html_sha256": "4ffebe1b3743eeff6bf7cc1535d1cb2eb193228cde47a1de5cbfce60af65a9d0",
+      "bytes": 24560
+    }
+  ]
+}

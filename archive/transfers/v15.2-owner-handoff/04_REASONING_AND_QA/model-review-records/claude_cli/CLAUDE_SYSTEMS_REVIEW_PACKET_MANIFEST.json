@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "status": "RUN_ONCE_AUTHENTICATION_FAILED_NO_RETRY",
+  "prepared_at": "2026-08-17T22:41:30Z",
+  "packet_mode": "UTF8_CONTENT_STREAM_NO_FILESYSTEM_TOOLS",
+  "prompt_file": {
+    "path": "reviews/claude_cli/CLAUDE_SYSTEMS_REVIEW_PROMPT.md",
+    "sha256": "c764de7395cb7c6ceeb08a33e71f51dee96508bf03f78cca9452345bb36c13ef",
+    "byte_size": 2616
+  },
+  "inputs": [
+    {
+      "path": "reports/V13_RECOVERY_AND_INTENT_MEMO.md",
+      "role": "recovered thesis and historical intent",
+      "sha256": "1e036e09e803eee4522efab13334da368321f78bfb56afc99e3f95da62350655",
+      "byte_size": 17055
+    },
+    {
+      "path": "source/THESIS_AND_TERMINOLOGY_CONTRACT.md",
+      "role": "current thesis and terminology receipt",
+      "sha256": "3775bd991240e0e4149b5ef1c945039eb9ec5d60fe700e57f1bbc8684bd48e44",
+      "byte_size": 12761
+    },
+    {
+      "path": "source/THOUGHT_PIECE_V14.md",
+      "role": "first complete v14 draft",
+      "sha256": "422c3eb0565f883a7d2003844fa8998590b3a48a59b5fec6844bdc0e2f199d06",
+      "byte_size": 49794
+    },
+    {
+      "path": "source/FRAMEWORK_COMPONENT_MAP.md",
+      "role": "framework map",
+      "sha256": "1d9bfcf80054120cc0e5beeed38af2336a7968dacbd792b15f850baaa1a9b225",
+      "byte_size": 26605
+    },
+    {
+      "path": "research/CLAIMS_AND_EVIDENCE_REGISTER.csv",
+      "role": "row-complete claims register",
+      "sha256": "4490c9a5cdf87eaf8c16dcf5f094ea692e58a9e6f63b2ed6c21e9ea56a140959",
+      "byte_size": 21020
+    },
+    {
+      "path": "research/PRIOR_ART_AND_ADJACENT_FIELDS_MAP.md",
+      "role": "prior-art map",
+      "sha256": "a1232668fc248a04051a3278b5fd203fe8f09e63e5915077270e32ecf1e06514",
+      "byte_size": 15430
+    },
+    {
+      "path": "research/OVERCLAIM_AND_COUNTERARGUMENT_REGISTER.md",
+      "role": "counterargument register",
+      "sha256": "ed10d8f95f1eef3dba2d69ce84a01f3c761be8add67314d90559160caea599e7",
+      "byte_size": 10848
+    },
+    {
+      "path": "case-studies/ALPHA_SOLVER_CASE_STUDY_BOUNDARY.md",
+      "role": "Alpha Solver case-study boundary",
+      "sha256": "147b8e7038314a7cb84f8779c8dd4dd40dfc05bff2fbd61b0b0c33b288493361",
+      "byte_size": 4699
+    },
+    {
+      "path": "case-studies/SIGNAL_FOUNDRY_CASE_STUDY_BOUNDARY.md",
+      "role": "Signal Foundry case-study boundary",
+      "sha256": "ad82261f79cd0c8e8d8cdea19bcdf24c8612981cbb750574600416874142dbab",
+      "byte_size": 5141
+    }
+  ],
+  "prompt_construction": {
+    "encoding": "UTF-8",
+    "order": "prompt_file followed by inputs in manifest order",
+    "before_each_input": "\\n\\nBEGIN_PACKET_FILE path=\"<path>\" sha256=\"<sha256>\"\\n",
+    "after_each_input": "\\nEND_PACKET_FILE path=\"<path>\"\\n",
+    "terminal_newline": true
+  },
+  "review_boundary": {
+    "working_directory": "fresh temporary directory outside every repository",
+    "repository_access": false,
+    "built_in_tools": "disabled",
+    "mcp": "empty strict configuration",
+    "browser": false,
+    "session_persistence": false,
+    "customizations": "safe mode",
+    "requested_model": "opus",
+    "requested_effort": "max",
+    "fallback_model": null
+  },
+  "argv": [
+    "claude",
+    "--print",
+    "--output-format",
+    "json",
+    "--model",
+    "opus",
+    "--effort",
+    "max",
+    "--permission-mode",
+    "dontAsk",
+    "--tools",
+    "",
+    "--no-chrome",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--disable-slash-commands",
+    "--no-session-persistence",
+    "--safe-mode",
+    "--system-prompt",
+    "You are a read-only external reviewer. Use only the supplied packet. Do not use tools or attempt external access."
+  ],
+  "exclusions": [
+    "credentials",
+    "environment values",
+    "private provider output",
+    "mutable repository access",
+    "browser control",
+    "MCP access",
+    "publication capability"
+  ],
+  "pre_run_worktree_status_sha256": "ce7ea778ac73c6ef72a5de4125d12b28c880001b4662bfbefecdc53742cdb28d"
+}

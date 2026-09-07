@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "status": "UNAVAILABLE_AUTHENTICATION_FAILED",
+  "attempt_count": 1,
+  "retry_performed": false,
+  "start_timestamp": "2026-08-17T22:41:53.632537Z",
+  "end_timestamp": "2026-08-17T22:41:59.767932Z",
+  "cli": {
+    "name": "Claude Code",
+    "version": "2.1.220",
+    "requested_model": "opus",
+    "requested_effort": "max",
+    "selected_model_id": null,
+    "selected_model_exposed": false,
+    "reason_not_exposed": "Authentication failed before inference; modelUsage was empty."
+  },
+  "exit": {
+    "process_exit_code": 1,
+    "terminal_reason": "api_error",
+    "api_error_status": 401,
+    "exact_failure": "Failed to authenticate. API Error: 401 OAuth access token has been revoked.",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_cost_usd": 0
+  },
+  "argv": [
+    "claude",
+    "--print",
+    "--output-format",
+    "json",
+    "--model",
+    "opus",
+    "--effort",
+    "max",
+    "--permission-mode",
+    "dontAsk",
+    "--tools",
+    "",
+    "--no-chrome",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--disable-slash-commands",
+    "--no-session-persistence",
+    "--safe-mode",
+    "--system-prompt",
+    "You are a read-only external reviewer. Use only the supplied packet. Do not use tools or attempt external access."
+  ],
+  "isolation": {
+    "working_directory": "fresh temporary directory deleted after run",
+    "repository_access": false,
+    "built_in_tools": "disabled",
+    "mcp": "empty strict configuration",
+    "browser": false,
+    "chrome": false,
+    "session_persistence": false,
+    "customizations": "safe mode"
+  },
+  "packet": {
+    "manifest": "reviews/claude_cli/CLAUDE_SYSTEMS_REVIEW_PACKET_MANIFEST.json",
+    "constructed_prompt_sha256": "f067d17d36e5aa56ededa79ca33f780cddbb0104a43fb304f8b2e9b889616749",
+    "constructed_prompt_byte_size": 167860,
+    "inputs_unchanged": true
+  },
+  "output": {
+    "raw_output_file": "reviews/claude_cli/CLAUDE_SYSTEMS_REVIEW_RAW_OUTPUT.md",
+    "raw_stdout_sha256": "6500f93d6d0035f2d50e53e65f79560494508a45b7f90fce811878b36a9df217",
+    "raw_stdout_byte_size": 839,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_byte_size": 0,
+    "stderr_preservation": "Empty stderr is preserved by its zero byte size and SHA-256."
+  },
+  "zero_mutation_verification": {
+    "all_packet_input_hashes_identical_before_and_after": true,
+    "worktree_status_before_sha256": "82081e34f8101e8ed0efc2b6393600d03bbaa4f43dbb75291953cb04f1d8ae30",
+    "worktree_status_after_sha256": "82081e34f8101e8ed0efc2b6393600d03bbaa4f43dbb75291953cb04f1d8ae30",
+    "worktree_status_unchanged_during_call": true
+  },
+  "review_result": {
+    "review_produced": false,
+    "material_findings": 0,
+    "substitute_model_used": false,
+    "second_cli_call_authorized": false
+  }
+}

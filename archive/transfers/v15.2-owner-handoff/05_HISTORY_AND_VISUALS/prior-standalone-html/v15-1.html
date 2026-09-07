@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Pattern Recognition — v15.1 manuscript snapshot</title>
+<style>
+:root { color-scheme: light dark; --paper:#f4f0e6; --ink:#211f1a; --muted:#655f54; --line:#c8c0af; --teal:#0d6668; --panel:#fbf8f0; --code:#e8e1d4; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.68 Georgia, 'Times New Roman', serif; }
+a { color:var(--teal); text-underline-offset:.15em; }
+a:focus-visible, summary:focus-visible { outline:3px solid #c65332; outline-offset:3px; }
+.release { border-bottom:1px solid var(--line); background:color-mix(in srgb, var(--paper) 92%, var(--teal)); font:700 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.09em; text-transform:uppercase; }
+.release-inner { width:min(1120px, calc(100% - 32px)); margin:auto; padding:14px 0; display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:space-between; }
+.version-nav { word-spacing:.25em; }
+.version-nav [aria-current="page"] { color:var(--ink); text-decoration-thickness:3px; }
+.boundary { width:min(1120px, calc(100% - 32px)); margin:24px auto 0; padding:16px 18px; border-left:5px solid var(--teal); background:var(--panel); font:14px/1.55 ui-sans-serif, system-ui, sans-serif; }
+.layout { width:min(1120px, calc(100% - 32px)); margin:32px auto 96px; display:grid; grid-template-columns:minmax(0, 760px) minmax(220px, 1fr); gap:64px; align-items:start; }
+main { min-width:0; }
+aside { position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; padding:18px; border:1px solid var(--line); background:var(--panel); font:13px/1.45 ui-sans-serif, system-ui, sans-serif; }
+aside h2 { margin-top:0; font:700 12px/1.2 ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; }
+aside ul { margin:0; padding-left:18px; } aside .level-3 { margin-left:12px; }
+h1,h2,h3,h4 { line-height:1.08; text-wrap:balance; scroll-margin-top:24px; }
+h1 { margin:.4em 0 .5em; font-size:clamp(2.4rem, 7vw, 5.6rem); letter-spacing:-.045em; }
+h2 { margin:2.15em 0 .65em; font-size:clamp(1.75rem, 4vw, 3rem); border-top:1px solid var(--line); padding-top:.65em; }
+h3 { margin:1.8em 0 .5em; font-size:1.5rem; }
+h4 { margin:1.5em 0 .4em; font:700 1.05rem/1.3 ui-sans-serif, system-ui, sans-serif; }
+p,li { max-width:72ch; }
+blockquote { margin:1.5em 0; padding:.15em 0 .15em 1.25em; border-left:6px solid #b74b35; font-size:1.25em; }
+code,pre { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+code { padding:.08em .28em; background:var(--code); border-radius:3px; font-size:.84em; }
+pre { overflow:auto; padding:18px; background:#1f211f; color:#f5f2e9; font-size:.78em; line-height:1.55; }
+pre code { padding:0; background:transparent; color:inherit; }
+.frontmatter { margin:0 0 2em; border:1px solid var(--line); background:var(--panel); font:14px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.frontmatter summary { cursor:pointer; padding:12px 16px; font-weight:700; }
+.frontmatter pre { margin:0; border-radius:0; }
+.local-ref { text-decoration:underline dotted; text-underline-offset:.15em; }
+.table-wrap { overflow-x:auto; margin:1.5em 0; }
+table { width:100%; border-collapse:collapse; font:15px/1.45 ui-sans-serif, system-ui, sans-serif; }
+th,td { padding:10px 12px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+th { background:var(--panel); }
+hr { margin:3rem 0; border:0; border-top:4px solid var(--ink); }
+.source-note { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font:13px/1.5 ui-sans-serif, system-ui, sans-serif; }
+@media (max-width:850px) { .layout { grid-template-columns:1fr; } aside { position:static; max-height:none; order:-1; } body { font-size:17px; } }
+@media (prefers-color-scheme:dark) { :root { --paper:#171713; --ink:#f0ecdf; --muted:#bdb5a6; --line:#4b493f; --teal:#6fc2c0; --panel:#22221d; --code:#35332b; } }
+@media print { :root { --paper:#fff; --ink:#000; --muted:#444; --line:#999; --teal:#004d4d; --panel:#fff; --code:#eee; } .release, aside { display:none; } .boundary,.layout { width:auto; margin-left:0; margin-right:0; } .layout { display:block; } a { color:inherit; } h2 { break-before:page; } table,blockquote,pre { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<header class="release"><div class="release-inner"><span>Pattern Recognition · historical manuscript reader</span><nav class="version-nav" aria-label="Version snapshots"><a href="v14.html">v14</a> · <a href="v15.html">v15</a> · <a href="v15-1.html" aria-current="page">v15.1</a> · <a href="v15-2.html">v15.2</a></nav></div></header>
+<div class="boundary"><strong>v15.1 manuscript snapshot.</strong> This is a self-contained editorial comparison page, not a reconstruction of the historical site. It reports no empirical result. Current canonical release: v15.2. Source: source/THOUGHT_PIECE_V15.md in the v15.2 release tree.</div>
+<div class="layout">
+<main id="main"><h1 id="pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h1>
+<h2 id="why-repeated-reports-can-still-amount-to-one-origin-and-what-an-ai-system-should-preserve-before-it-generates">Why repeated reports can still amount to one origin—and what an AI system should preserve before it generates</h2>
+<ul>
+<li><strong>Status:</strong> v15.1 thought piece for local owner review</li>
+<li><strong>Empirical status:</strong> conceptual synthesis and research program; no model study, participant study, transfer run, field evaluation, or published result</li>
+<li><strong>Term boundary:</strong> <em>discrimination</em> means technical differentiation among information and possible actions, not social classification</li>
+</ul>
+<h3 id="how-to-read-this">How to read this</h3>
+<ul>
+<li><strong>60–90 seconds:</strong> read “Nine reports, one origin” and the closing paragraph of “The counting error in full.”</li>
+<li><strong>About five minutes:</strong> continue through “What must remain separate.” That is the complete essential argument.</li>
+<li><strong>15–20 minutes:</strong> add the framework, loops, objections, and bounded cases.</li>
+<li><strong>30–45 minutes or more:</strong> add the research note, prior art, and linked technical records.</li>
+</ul>
+<p>The shorter path is not a preview that withholds the conclusion. The longer paths expose the machinery, objections, and research boundary behind it.</p>
+<h2 id="nine-reports-one-origin">Nine reports, one origin</h2>
+<p>Nine favorable articles arrive through nine sites. They use different headlines, different layouts, and slightly different words. A summary says: “Nine sources agree that the new tool is broadly validated.”</p>
+<p>All nine articles trace to one launch announcement.</p>
+<p>The summary has not merely shortened the evidence. It has changed its structure. It has turned nine report observations into nine apparent origin paths, then turned that apparent plurality into corroboration. The claim may still be true. The announcement may still be accurate. The reports may still be useful records of reach, timing, or framing. But repetition alone did not create eight new roots.</p>
+<p>This is a small failure with a large family resemblance. It appears whenever a system gathers, groups, weights, compresses, and selects material before an AI model answers. The final prose may be where the error becomes visible, but the decisive judgment often happened earlier:</p>
+<ul>
+<li>two URLs were treated as two sources;</li>
+<li>two sources were treated as two origins;</li>
+<li>an official statement was treated as support for every claim about the product;</li>
+<li>an unknown relationship was silently treated as independence;</li>
+<li>retrieval rank became attention priority;</li>
+<li>technical access became permission;</li>
+<li>a long context became a reason to stop looking;</li>
+<li>a fluent synthesis hid which evidence actually influenced it.</li>
+</ul>
+<p>The proposal in this essay is modest: make those judgments inspectable before generation. Preserve the difference between a report, where it came from and how it changed, the claim it bears on, its authority for that claim, its relevance to the current decision, the permission to use it, the cost of learning more, and the accountable person’s recorded next step.</p>
+<p>Call that responsibility a <strong>discrimination layer</strong> if the name helps. Rename it if the name misleads. It is not a truth oracle, a universal ranking model, or necessarily a new service in a stack. It is a boundary-preserving way to ask what context is allowed to influence an answer—and to leave a receipt that another person can correct.</p>
+<h2 id="the-counting-error-in-full">The counting error in full</h2>
+<p>The nine-report example is fictional, but its accounting is exact. A technical team is deciding whether a sandbox pilot of a data-migration tool is warranted. No production data are allowed. The research budget is 90 minutes. The claim under review is broad: “The tool is broadly validated.”</p>
+<p>The receipt contains nine unordered observations, <code>O01</code> through <code>O09</code>. Each report derives from <code>Origin A</code>, the launch announcement. Under the declared relation rule, the nine observations form one known common-origin cluster and each is marked <code>DEPENDENT</code>. The observations are preserved; none is deleted or called false.</p>
+<p>The number of counted supporting origins for the broad-validation claim is <strong>zero</strong>, not one. That is intentional. The launch announcement is a known origin, but its stance toward the broader claim has not been established. A vendor announcing a product is not automatically evidence that the product is validated in independent use. Origin accounting cannot be allowed to launder claim support.</p>
+<p>Two other roots, <code>B1</code> and <code>C1</code>, appear only as contrast. They are separately rooted <em>in this illustration</em>; their support for the claim has not been assessed, so they are not counted either. The packet state is <code>INSUFFICIENT</code>. The accountable person’s recorded decision—called a <em>disposition</em> in the technical records—is:</p>
+<blockquote><p><strong>HOLD · VERIFY ANOTHER ORIGIN RELATION</strong></p></blockquote>
+<p>The next step is not “reject the tool.” It is to inspect the announcement, find a separately authored benchmark or failure report, document its origin relation, and then assess the exact claim it supports or refutes.</p>
+<h3 id="origin-accounting-receipt-origin-ex-01">Origin-accounting receipt <code>ORIGIN-EX-01</code></h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Field</th>
+<th>Recorded value</th>
+</tr></thead><tbody>
+<tr>
+<td>Evidence status</td>
+<td>Fictional illustration; no live data; no result</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>Sandbox-pilot warrant</td>
+</tr>
+<tr>
+<td>Permission</td>
+<td>Sandbox only; no production data</td>
+</tr>
+<tr>
+<td>Research budget</td>
+<td>90 minutes</td>
+</tr>
+<tr>
+<td>Claim</td>
+<td>“The tool is broadly validated.”</td>
+</tr>
+<tr>
+<td>Observations</td>
+<td><code>O01</code>–<code>O09</code>, nine unordered report records</td>
+</tr>
+<tr>
+<td>Known relationship</td>
+<td>All derive from <code>Origin A</code>, one launch announcement</td>
+</tr>
+<tr>
+<td>Known common-origin clusters</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>Supporting origins counted for this claim</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>Contrast roots</td>
+<td><code>B1</code>, <code>C1</code>; separately rooted as illustrated, support unassessed</td>
+</tr>
+<tr>
+<td>Claim state</td>
+<td><code>INSUFFICIENT</code></td>
+</tr>
+<tr>
+<td>Disposition</td>
+<td><code>HOLD · VERIFY ANOTHER ORIGIN RELATION</code></td>
+</tr>
+</tbody></table></div>
+<p>Three relation states do most of the work:</p>
+<ul>
+<li><strong>Known shared path (<code>DEPENDENT</code>):</strong> traceable to an existing artifact or path. Preserve the report, but do not count it as a new root under this rule.</li>
+<li><strong>Separate in this test only (<code>INDEPENDENT-AS-STIPULATED</code>):</strong> a separate root declared by an illustration or synthetic benchmark. This is not provenance discovery or a claim about the real world.</li>
+<li><strong>Not established (<code>UNKNOWN</code>):</strong> the relationship is not established. Preserve the uncertainty; do not guess in either direction.</li>
+</ul>
+<p>Unknown is the state most likely to disappear in a polished summary. It is also the state that keeps incomplete lineage from turning into invented corroboration.</p>
+<h2 id="the-judgment-before-the-answer">The judgment before the answer</h2>
+<p>AI interfaces emphasize the answer because the answer is what people see. But the answer inherits a sequence of earlier choices: what could be acquired, which artifacts were treated as versions of one another, which passages were selected, which claims were considered supported, what was omitted, when search stopped, and who could challenge the route.</p>
+<p>“Use better context” is not a sufficient instruction. Better for what? More authoritative, more relevant, more current, more diverse, more independently rooted, cheaper to inspect, safer to disclose, or more likely to change the decision? These properties can align, but they often do not.</p>
+<p>An official manual may be authoritative about a documented command, share an origin with ten derivative tutorials, remain silent about failure under load, be highly relevant to an implementation question, and still be insufficient for a reliability claim. A community post may be low-authority for product policy, separately rooted for a reproduced failure, sensitive to disclose, and the most decision-relevant artifact in the packet. One score cannot explain both cases without burying the reason.</p>
+<p>The layer proposed here is therefore not “quality ranking.” It is a place to keep unlike judgments unlike long enough to inspect their consequences.</p>
+<h2 id="what-must-remain-separate">What must remain separate</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Judgment</th>
+<th>The tempting substitution</th>
+<th>Why the substitution fails</th>
+</tr></thead><tbody>
+<tr>
+<td>Source identity</td>
+<td>Artifact identity</td>
+<td>One source can publish many artifacts; one artifact can move through many sources.</td>
+</tr>
+<tr>
+<td>Provenance</td>
+<td>Correctness</td>
+<td>A false claim can have perfect lineage.</td>
+</tr>
+<tr>
+<td>Recurrence</td>
+<td>Independent corroboration</td>
+<td>Copies, quotations, and common-source reports can recur without adding a new root.</td>
+</tr>
+<tr>
+<td>Origin relation</td>
+<td>Claim support</td>
+<td>A separately rooted report may not bear on the claim; a dependent report may contain a useful exact span.</td>
+</tr>
+<tr>
+<td>Source authority</td>
+<td>Universal trust</td>
+<td>Authority is domain-, role-, time-, and claim-scoped.</td>
+</tr>
+<tr>
+<td>Claim support</td>
+<td>Citation presence</td>
+<td>A cited document can be irrelevant, contradictory, or too broad for the proposition.</td>
+</tr>
+<tr>
+<td>Relevance</td>
+<td>General importance</td>
+<td>Relevance belongs to the current decision and scope.</td>
+</tr>
+<tr>
+<td>Technical access</td>
+<td>Authorization</td>
+<td>A system can reach material it is not allowed to collect, expose, transform, or retain.</td>
+</tr>
+<tr>
+<td>Enrichment value</td>
+<td>Action priority</td>
+<td>Learning more may be useful without being the best permitted next step.</td>
+</tr>
+<tr>
+<td>Action priority</td>
+<td>Truth</td>
+<td>“Run a sandbox test” is a decision, not a factual verdict.</td>
+</tr>
+<tr>
+<td>Owner disposition</td>
+<td>External fact</td>
+<td>Acceptance, deferral, and override are accountable choices, not evidence about the world.</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>Retroactive truth</td>
+<td>A later result can update policy without rewriting what was known at the time.</td>
+</tr>
+</tbody></table></div>
+<p>The table is not a claim that every distinction needs its own model or database column. It is a claim about error visibility. When the distinctions collapse, the system loses the ability to say whether a bad answer began with identity, lineage, claim scope, selection, permission, or action.</p>
+<h2 id="a-systems-responsibility-not-another-oracle">A systems responsibility, not another oracle</h2>
+<p>The current framework decomposes the responsibility into six families and eleven named records. Eleven is not a proven minimum, and six families are not a maturity model. They are a reviewable map: enough structure to show the boundaries, compact enough to argue with.</p>
+<h3 id="1-intent-and-authorization">1. Intent and authorization</h3>
+<p><strong>C01 · Decision brief and authorization envelope.</strong> Record the question, intended use, owner, stakes, expected baselines, allowed operations, sensitive- source rules, and time/money/token/attention budget. Relevance, meaningful absence, stopping, and disclosure are task-relative; without a versioned brief, they become retrospective stories.</p>
+<h3 id="2-evidence-spine">2. Evidence spine</h3>
+<p><strong>C02 · Acquisition controller.</strong> Propose, authorize, record, and stop retrieval or collection. “One more search” consumes resources and can cross a permission boundary. A failed capture is a failure receipt, not evidence that the material does not exist.</p>
+<p><strong>C03 · Source, artifact, normalization, and lineage spine.</strong> Keep a source, an artifact, a capture, a normalized representation, and a summary linked but distinct. Retain where each item came from, who or what handled it, when it changed, and what remains ambiguous. The technical term for that trace is <em>provenance</em>. A summary should not gain authority by losing its origin.</p>
+<h3 id="3-relationships-and-claims">3. Relationships and claims</h3>
+<p><strong>C04 · Relationship, recurrence, common-origin, and gap graph.</strong> Record typed relationships among reports, origins, events, observations, time points, copies, derivations, comparison sets, and expected-but-missing perspectives. Similarity can propose a relation; it cannot certify one. Meaningful absence requires a named expectation.</p>
+<p><strong>C05 · Claim, evidence, comparison, and contradiction graph.</strong> Link atomic, scoped claims to exact spans and to support, refutation, qualification, insufficiency, alternatives, and unresolved questions. One document can carry several claims with different evidence states.</p>
+<h3 id="4-discrimination-policy">4. Discrimination policy</h3>
+<p><strong>C06 · Multidimensional assessment.</strong> Keep attention priority, domain source authority, claim support, origin relation, relevance, enrichment value, action priority, owner disposition, uncertainty, and possible consequence separate. A scalar may summarize one declared decision, but it must not become a universal trust score.</p>
+<p><strong>C07 · Enrichment, stopping, and action router.</strong> Compare permitted next actions: acquire, inspect, compare, clarify, answer, answer provisionally, hold, defer, escalate, or refuse. Record expected benefit, cost range, uncertainty, and the reason to stop. A route is a choice, not a factual state.</p>
+<p><strong>C08 · Bounded context packet.</strong> Assemble the exact material allowed to influence generation, together with provenance, claim links, inclusions, material exclusions, unknowns, budgets, and generation constraints. A long prompt is not automatically a reviewable packet.</p>
+<h3 id="5-human-disposition-and-memory">5. Human disposition and memory</h3>
+<p><strong>C09 · Owner disposition, review, and override.</strong> Give an accountable person a consequential way to accept, reject, defer, hold, override, request more work, correct a relation, or revise a constraint. A human placed after an opaque route is not meaningful oversight.</p>
+<p><strong>C10 · Versioned evidence, decision, and memory ledger.</strong> Preserve raw observations, interpretations, packets, decisions, outputs, corrections, and supersession as append-only history. Build current views over the history; do not overwrite the evidence that produced the original decision.</p>
+<h3 id="6-outcome-feedback">6. Outcome feedback</h3>
+<p><strong>C11 · Outcome feedback and revisable policy update.</strong> Compare a predefined expected outcome with a later observation, state confounders and attribution limits, and propose a policy update for approval. The feedback record may change a future rule. It may not silently alter the old evidence, target, or decision.</p>
+<h2 id="two-loops-one-preserved-history">Two loops, one preserved history</h2>
+<p>The map contains two different loops.</p>
+<p>The fast loop is about the current decision. A gap can send the system back to acquisition. A contradiction can trigger comparison. A permission boundary can stop a route. A packet can be revised before it reaches a generator. A human can correct an origin relation and ask the system to recalculate without deleting either report.</p>
+<p>The slower loop begins only after a defined outcome exists. It compares what was expected with what was later observed and proposes a policy change. It is slower because outcomes are often delayed, confounded, selectively observed, or attached to a different policy version. Treating every click or owner preference as immediate learning would optimize the system toward convenience, not necessarily better evidence judgment.</p>
+<p>Both loops write into one preserved history. Observations, interpretations, decisions, and outcomes remain different record types. A correction supersedes an interpretation; it does not erase the artifact. A later result can revise a pilot rule; it does not travel backward in time to make the original packet omniscient.</p>
+<h2 id="where-the-responsibility-can-live">Where the responsibility can live</h2>
+<p>The layer describes a responsibility, not a deployment hierarchy. It can live in three places, often at once.</p>
+<p><strong>Practice.</strong> A researcher can define the decision, distinguish reports from origins, record material exclusions, preserve unknowns, and state why search stopped without building a new product.</p>
+<p><strong>Coordinating system.</strong> A workflow can maintain identities, provenance, claims, permissions, routes, packets, review, and receipts across retrieval and generation.</p>
+<p><strong>Model behavior.</strong> Training or prompting may encourage a model to seek information, use typed cues, abstain, or expose uncertainty. Model behavior cannot replace external artifact identity, legal/organizational permission, append-only receipts, or human authority.</p>
+<p>None of these placements is inherently more mature. The useful question is where a particular failure can be observed and corrected at acceptable cost.</p>
+<h2 id="when-the-overhead-earns-its-place">When the overhead earns its place</h2>
+<p>The full framework is most plausible when the work is consequential, contested, dependence-heavy, temporally changing, expensive to acquire, sensitive to disclose, or likely to be revisited. A due-diligence synthesis, a research evidence packet, a production-change decision, or a source-sensitive investigation can justify explicit lineage and disposition.</p>
+<p>It is probably unnecessary for a supplied-input calculation, a straightforward format conversion, low-stakes creative rewriting, or a bounded extraction with an obvious source. In those cases, the layer should collapse to a brief, permissions, exact inputs, and a simple receipt—or disappear.</p>
+<p>This negative space is part of the design. A framework that cannot say when it is not worth using becomes a demand for ceremony.</p>
+<h2 id="what-the-prior-art-removes-from-the-claim">What the prior art removes from the claim</h2>
+<p>The component ideas are not blank territory.</p>
+<p><a href="https://www.vldb.org/pvldb/vol2/vldb09-pvldb47.pdf" rel="noreferrer">Dong, Berti-Équille, and Srivastava (2009)</a> modeled copying and source dependence in truth discovery and warned that common values alone do not prove copying. <a href="https://doi.org/10.1186/1471-2288-9-10" rel="noreferrer">Senn (2009)</a> showed how double counting and dependence can overstate evidence in meta-analysis. <a href="https://pubmed.ncbi.nlm.nih.gov/19622839/" rel="noreferrer">Greenberg (2009)</a> traced how citation practices in one biomedical network amplified an unsupported claim into apparent authority. The <a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04" rel="noreferrer">Cochrane Handbook</a> explicitly distinguishes multiple reports from the underlying study while preserving useful secondary reports.</p>
+<p><a href="https://doi.org/10.1145/2588555.2593674" rel="noreferrer">Pochampally et al. (SIGMOD 2014)</a> extends the dependence warning beyond literal copying: sources can be positively correlated because they share extraction rules, or negatively correlated because they cover complementary domains or extract different features. That makes a binary dependent/independent vocabulary too coarse for a general source model. The current diagnostic keeps <code>DPND</code>, <code>INDP</code>, and <code>UNKN</code> as narrow, benchmark-stipulated accounting states; it does not claim to infer common processes, establish real-world independence, or provide a complete dependence taxonomy. A later policy would need typed relation, scope, direction, uncertainty, and relation provenance.</p>
+<p>Retrieval research already has exact deduplication, noisy duplicate detection, diversity-aware reranking, and set-wise selection. <a href="https://arxiv.org/abs/2210.04261" rel="noreferrer">NEWS-COPY</a> defines duplicates as articles from the same original source article despite abridgement or OCR noise. <a href="https://papers.nips.cc/paper/2024/hash/58f52a01a516609336da78ff17e6f81f-Abstract-Datasets<em>and</em>Benchmarks_Track.html" rel="noreferrer">Newswire</a> reconstructs large historical reproduction clusters. MMR and <a href="https://aclanthology.org/2025.acl-long.861/" rel="noreferrer">SetR</a> address diversity and joint retrieval-set value. These are not the same task as origin certification, but they block any claim that redundancy or set structure was ignored before this project.</p>
+<p>The closest direct natural-language provenance comparator is <a href="https://aclanthology.org/2020.acl-main.406/" rel="noreferrer">Zhang, Ives, and Roth (ACL 2020)</a>, a published paper that defines claim-provenance graphs and infers provenance with information extraction and textual entailment. That is an inferred provenance graph, not the supplied relation field in the current benchmark proposal. The full source and status ledger is <span class="local-ref">research/PRIOR<em>ART</em>DELTA<em>V1.md <code>../research/PRIOR</em>ART<em>DELTA</em>V1.md</code></span>, entries S1–S20.</p>
+<p>Current RAG work comes closer still. <a href="https://arxiv.org/abs/2504.13079" rel="noreferrer">RAMDocs</a> is a COLM 2025 conflict benchmark. <a href="https://arxiv.org/abs/2605.29084" rel="noreferrer">Li, Padman, and Krishnan</a> is an arXiv v1 manuscript submitted 2026-05-27; no venue acceptance is shown in the checked record, and its source-dependence labels describe cross-source answers rather than derivation. <a href="https://arxiv.org/abs/2607.10491" rel="noreferrer">EvidentialRAG</a> is an arXiv v1 manuscript submitted 2026-07-11; no venue or acceptance is shown, and it proposes conflict/uncertainty fusion rather than origin inference. <a href="https://arxiv.org/abs/2601.06189" rel="noreferrer">Naphade</a> is an arXiv v1 manuscript submitted 2026-01-08 whose record notes an ACL ARR submission but shows no acceptance; it reports paraphrased-opposing-evidence behavior, but its documents are not verified origins. <a href="https://arxiv.org/abs/2608.13956" rel="noreferrer">Ross and colleagues</a> is an arXiv v1 manuscript submitted 2026-08-14 with no venue or acceptance shown; it directly compares duplicate, paraphrased, and diverse retrieved evidence on a fictional benchmark. The full status labels and task boundaries remain in the delta rather than being inferred from a headline.</p>
+<p>The adjacent retrieval records are also explicit: <a href="https://doi.org/10.1145/290941.291025" rel="noreferrer">MMR</a> is a published SIGIR 1998 diversity-reranking paper; <a href="https://aclanthology.org/2026.acl-industry.35/" rel="noreferrer">NEST</a> is published in the ACL 2026 Industry Track; <a href="https://arxiv.org/abs/2604.19047" rel="noreferrer">RARE</a> is arXiv v2 and says accepted to ACL 2026 Main Conference, but an ACL venue page was not located; and <a href="https://arxiv.org/abs/2605.09611" rel="noreferrer">Schelpe</a> is an arXiv v1 preprint. These are adjacent or future comparators, not required arms of the locked F0/F1/F2 study.</p>
+<p>The plausible contribution that survives is not a new copying detector, a new RAG architecture, or a universal pre-generation mechanism. It is a boundary-preserving synthesis and one narrow experimental question: does a supplied typed origin cue change origin counting beyond an explicit rule when evidence, prompt budget, model, and output contract are held fixed?</p>
+<p>That contribution may still be too small, too obvious, or too brittle to matter. The study is designed to find out.</p>
+<h2 id="the-strongest-objections">The strongest objections</h2>
+<h3 id="this-is-old-work-under-a-new-label">This is old work under a new label</h3>
+<p>Much of it is. Provenance, lineage, claim-evidence graphs, evidence synthesis, truth discovery, copying detection, information foraging, value of information, RAG, mixed initiative, human review, and organizational learning all have mature literatures. The framework is defensible only as a synthesis with explicit boundaries and as a source of narrow tests. If a closer integrated framework is found, the novelty claim must shrink again.</p>
+<h3 id="the-layer-can-become-a-gatekeeper">The layer can become a gatekeeper</h3>
+<p>Any system that selects context can erase peripheral sources, encode institutional preferences, and call the result quality control. The answer is not to hide selection. Exclusions, unknowns, reasons, permissions, appeal, and source coverage must remain inspectable. If the system cannot show what it withheld and who may reverse it, “discrimination” is the wrong word and possibly the wrong design.</p>
+<h3 id="provenance-can-become-rigor-theater">Provenance can become rigor theater</h3>
+<p>Perfect lineage for a false claim is still perfect lineage for a false claim. More fields can create an aesthetic of control without improving a decision. The receipt must point to a consequential distinction and a correctable route; otherwise it is ceremony.</p>
+<h3 id="the-framework-may-cost-more-than-it-saves">The framework may cost more than it saves</h3>
+<p>Eleven responsibilities can become an expensive bureaucracy. The proposal has to beat strong simple baselines under matched time, tokens, retrieval, and review effort. A retrieval-plus-citation workflow that performs equally well at lower cost should win.</p>
+<h3 id="human-review-can-be-decorative">Human review can be decorative</h3>
+<p>A reviewer shown a polished recommendation and a hidden evidence path is likely to approve the recommendation. Real review exposes the exact relation, span, exclusion, uncertainty, and route and makes correction change the packet. If people cannot use that opportunity reliably, the control has failed.</p>
+<h3 id="feedback-can-optimize-the-wrong-thing">Feedback can optimize the wrong thing</h3>
+<p>Clicks, acceptance, short-term completion, and owner preference are not automatically good outcomes. A policy update needs a predefined target, horizon, exposure record, confounders, and approval. Otherwise the system will learn the easiest measurable proxy and call it judgment.</p>
+<h3 id="the-name-may-do-harm">The name may do harm</h3>
+<p>An explicit technical definition may not overcome the social and legal meaning of discrimination or the ML meaning of discriminator. If representative readers still infer a social-classification or classifier thesis after the definition, rename it. <strong>Context judgment layer</strong> is the cleanest current alternative. Historical continuity does not outrank comprehension.</p>
+<h2 id="retirement-tests">Retirement tests</h2>
+<p>For a named task class, materially weaken or retire the framework if:</p>
+<ul>
+<li>a strong simple retrieval-plus-citation baseline performs equivalently at lower cost;</li>
+<li>raters cannot reliably distinguish authority, support, origin relation, relevance, enrichment value, action priority, and disposition;</li>
+<li>origin grouping hides valid convergence as often as it prevents false corroboration;</li>
+<li>the interface increases overload, delay, or overreliance enough to erase the correction benefit;</li>
+<li>permissions and review become ceremonial rather than consequential;</li>
+<li>outcome updates encode local preference or contaminated proxies;</li>
+<li>the eleven-part decomposition adds no explanatory or implementation value;</li>
+<li>the name continues to misstate the thesis.</li>
+</ul>
+<p>Retirement is task-scoped. A failed typed-origin cue does not prove that authorization, claim scope, or append-only correction are useless. Conversely, a successful cue does not validate the rest of the map.</p>
+<h2 id="two-bounded-product-cases">Two bounded product cases</h2>
+<h3 id="alpha-solver">Alpha Solver</h3>
+<p>The inspected Alpha Solver documents illustrate a reasoning posture: define a problem, expose assumptions, consider alternatives, control tool use, and keep the path reviewable. That resemblance can help explain C01, C07, C08, and C09. Repository structure and product intent do not show that this framework improves reasoning quality, safety, or outcomes.</p>
+<h3 id="signal-foundry">Signal Foundry</h3>
+<p>Signal Foundry illustrates several evidence responsibilities in a concrete pipeline: immutable raw acquisition, a documented success/exclusion boundary, source-aware transcript evidence, staged imports that are not auto-applied, and separation of visual evidence from transcript-backed claims. Those are bounded design choices. They are not independent empirical validation of the eleven responsibilities or the origin-accounting hypothesis.</p>
+<p>The case studies are translations, not votes for the framework. Reusing the same design intuitions in several repositories does not create independent support.</p>
+<h2 id="lab-note-one-question-no-results">Lab note: one question, no results</h2>
+<p>The conceptual site can be complete before an experiment. The empirical surface cannot.</p>
+<p>The current scientific program asks:</p>
+<blockquote><p>For one frozen model, does a supplied origin-relation field reduce false corroboration relative to the same evidence and the same origin-counting rule without populated relation values?</p></blockquote>
+<h3 id="three-versions-of-the-same-evidence-task">Three versions of the same evidence task</h3>
+<p>The experiment does not compare three different products. It gives one frozen model the same fictional evidence in three carefully matched versions:</p>
+<ul>
+<li><strong>Ordinary baseline (<code>F0</code>):</strong> assess the evidence and identify what was used, without an origin-counting rule or populated relation labels.</li>
+<li><strong>Rule only (<code>F1</code>):</strong> add an explicit instruction to count distinct origin pathways, avoid treating repeated or derived reports as independent support, and preserve unknown; relation slots remain <code>NONE</code>.</li>
+<li><strong>Rule plus supplied labels (<code>F2</code>):</strong> keep the F1 rule and add short labels that say whether each report follows a known shared path, is separate only as the benchmark stipulates, or remains unresolved. The implementation codes are <code>DPND</code>, <code>INDP</code>, and <code>UNKN</code>.</li>
+</ul>
+<p>The headline comparison is the third version against the second. That isolates whether the supplied relation labels add anything beyond merely stating the rule. The two inputs must use exactly the same byte and token budget under the eventual frozen model tokenizer. The current local approximation is development machinery, not the final check.</p>
+<h3 id="corpus-and-endpoint">Corpus and endpoint</h3>
+<p>The planned corpus contains 80 development cases, 40 feasibility-only pilot cases, <strong>300 primary test cases (<code>N=300</code>)</strong>, and 60 descriptive stress cases. Here, <code>N</code> simply means the number of primary cases; it is not a result or a confidence score. The four structures are one-origin repetition, multiple-origin convergence, unknown-origin agreement, and conflict. The primary endpoint counts a valid assertion of two or more supporting origins as false corroboration when the manifest certifies none/single or withholds certification as unknown. Invalid outputs are conservatively counted as risk events in the fixed set of all 300 assigned bundles.</p>
+<p>The safety set is fixed before any run: primary bundles with multiple stipulated supporting origins. A valid output must retain at least two such origins. Invalid outputs count as safety failures. The set never shrinks to parseable outputs.</p>
+<h3 id="what-success-and-failure-mean">What success and failure mean</h3>
+<p>A bounded positive result requires a beneficial F2-minus-F1 paired effect, a two-sided exact test and paired interval in the declared direction, and passage of the fixed-set recall margin. It would show behavior under a supplied cue on one model. It would not show provenance discovery or general transfer.</p>
+<p>Before any run, the project makes a <strong>locked negative-result commitment</strong>. In plain English: whatever the test finds stays in the record. A null, harmful, unstable, or shortcut-driven result will not be hidden merely because it makes the idea less impressive.</p>
+<p>If F1 and F2 improve over F0 but tie, credit the rule. If F2 reduces apparent false corroboration by ignoring real stipulated convergence, reject it. If the effect is matched by a metadata-only counter, survives without report text, or disappears under label, position, style, parity, or relation-noise controls, report a direct-code, formatting, or oracle-only result. If F2 is worse, report harm. If it is null or unstable, preserve the null or instability.</p>
+<h3 id="optional-real-world-transfer-check-t1">Optional real-world transfer check (<code>T1</code>)</h3>
+<p>The transfer audit recommends an optional descriptive check called <strong>T1</strong>. It would ask whether the pattern appears in naturally repeated news articles, but it would remain outside the main experiment because those datasets do not supply all the ground truth the primary question requires.</p>
+<p>NEWS-COPY can support a bounded same-original/dependent fixture because its duplicate relation is defined as the same original source article. Its nonduplicates cannot be called independent: shared quotations, same-story articles, and breaking-news updates can be nonduplicates. Newswire records large reproduction clusters, but its released row represents a cluster and <code>cluster_size</code> is recurrence, not origin count.</p>
+<p>Neither dataset supplies the claim, stance, exact evidence spans, support and refute origin sets, real-world independence, or multiple-origin ground truth needed by the primary protocol. NEWS-COPY rights remain unresolved; Newswire version and field-level licensing must be pinned. Any future T1 has its own rights and annotation manifest, remains descriptive, and stays outside all primary and safety denominators, confidence intervals, tests, and effect estimates.</p>
+<h3 id="current-readiness">Current readiness</h3>
+<p>The local repository now contains ten closed JSON Schemas, a deterministic fictional generator, strict parser, immutable raw-output receipts, fixed- denominator scorer, prompt-parity scaffolding, leakage/shortcut diagnostics, planning simulations, and seven passing focused offline tests. It contains no selected model, intended-tokenizer lock, primary corpus lock, cleared blocked surface classifier, completed semantic audit, pilot output, result, preregistration, or publication authorization.</p>
+<p>The small surface-only smoke corpus is trivially separable. That is a warning, not a pass. The blocked leakage probe and semantic audit remain stop gates.</p>
+<h2 id="limitations-that-cannot-be-smoothed-away">Limitations that cannot be smoothed away</h2>
+<ol>
+<li><strong>No empirical evaluation.</strong> No model or participant result exists.</li>
+<li><strong>No broad novelty finding.</strong> The mechanisms have extensive precedents; the residual contribution is narrow and search-dependent.</li>
+<li><strong>No proven minimum.</strong> Eleven responsibilities are a decomposition, not a universal implementation requirement.</li>
+<li><strong>No validated constructs.</strong> People and models may not reliably distinguish the proposed fields.</li>
+<li><strong>No provenance discovery.</strong> The study supplies synthetic relation values.</li>
+<li><strong>No real-world independence.</strong> <code>INDP</code> is benchmark-stipulated only.</li>
+<li><strong>No truth result.</strong> Provenance, support, authority, and truth remain separate.</li>
+<li><strong>Open-world evidence remains incomplete.</strong> Sources change, origins are obscured, and important material can remain inaccessible.</li>
+<li><strong>Costs are unknown.</strong> A legible process can still be too slow or expensive.</li>
+<li><strong>Human control is unproven.</strong> Review can become rubber-stamping.</li>
+<li><strong>Memory can amplify error.</strong> Retention can preserve stale, biased, or sensitive content.</li>
+<li><strong>Transfer is unresolved.</strong> Public syndication data do not supply the required ground truth, and rights gates remain.</li>
+<li><strong>The historical web artifact is incomplete.</strong> The v13 image is preserved with its supplied hash; the expected original standalone HTML is not available. The rendered DOM snapshot is not a substitute.</li>
+<li><strong>The product cases are circular if treated as evidence.</strong> They illustrate design boundaries only.</li>
+<li><strong>The name may fail.</strong> Reader comprehension can require renaming.</li>
+<li><strong>No publication or deployment authorization.</strong> This is a local owner- review package.</li>
+</ol>
+<h2 id="closing">Closing</h2>
+<p>The important move is not to count less. It is to count the right unit under a stated rule and to preserve what remains unknown.</p>
+<p>Nine repeated reports may matter as nine observations of circulation, framing, or timing. They may amount to one origin for a corroboration claim. One official source may be authoritative about a command and insufficient about field reliability. A separate root may be independent only inside a synthetic graph and irrelevant to the claim. A human may approve a sandbox step without endorsing the underlying proposition. A later outcome may update policy without rewriting history.</p>
+<p>An AI system will make context judgments whether or not it names them. The case for a discrimination layer is the case for making those judgments visible early enough to contest: before recurrence becomes corroboration, before access becomes permission, before selection becomes truth, and before a fluent answer makes the path disappear.</p>
+<p>Whether that visibility improves anything enough to justify its cost is not a conclusion. It is the next question—and the program is committed to keeping a negative answer.</p>
+<h2 id="evidence-and-status-note">Evidence and status note</h2>
+<p>The verified source-by-source novelty boundary is in <code>research/PRIOR_ART_DELTA_V1.md</code>. Natural-syndication feasibility and rights limits are in <code>research/REAL_SYNDICATION_TRANSFER_FEASIBILITY_V1.md</code>. The canonical scientific design is in <code>research/PAPER_PROSPECTUS_V1.md</code> and <code>research/ORIGIN_ACCOUNTING_STUDY_PROTOCOL_V1.md</code>. Offline implementation status is in <code>research/F0_F1_F2_IMPLEMENTATION_READINESS_V1.md</code>.</p>
+<p>The recovered v13 map remains an unchanged historical origin artifact, not the current topology. The E2 nine-mentions image remains a labeled illustration, not a dataset or result. H1 remains archived because its one-way aperture can imply a gatekeeper the framework does not claim.</p><p class="source-note">Generated 2026-08-19. Inline CSS; no JavaScript, fonts, images, or local runtime dependencies. Repository-relative links are displayed as paths rather than presented as live standalone links.</p></main>
+<aside aria-label="On this page"><h2>On this page</h2><ul><li class="level-1"><a href="#pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</a></li><li class="level-2"><a href="#why-repeated-reports-can-still-amount-to-one-origin-and-what-an-ai-system-should-preserve-before-it-generates">Why repeated reports can still amount to one origin—and what an AI system should preserve before it generates</a></li><li class="level-3"><a href="#how-to-read-this">How to read this</a></li><li class="level-2"><a href="#nine-reports-one-origin">Nine reports, one origin</a></li><li class="level-2"><a href="#the-counting-error-in-full">The counting error in full</a></li><li class="level-3"><a href="#origin-accounting-receipt-origin-ex-01">Origin-accounting receipt ORIGIN-EX-01</a></li><li class="level-2"><a href="#the-judgment-before-the-answer">The judgment before the answer</a></li><li class="level-2"><a href="#what-must-remain-separate">What must remain separate</a></li><li class="level-2"><a href="#a-systems-responsibility-not-another-oracle">A systems responsibility, not another oracle</a></li><li class="level-3"><a href="#1-intent-and-authorization">1. Intent and authorization</a></li><li class="level-3"><a href="#2-evidence-spine">2. Evidence spine</a></li><li class="level-3"><a href="#3-relationships-and-claims">3. Relationships and claims</a></li><li class="level-3"><a href="#4-discrimination-policy">4. Discrimination policy</a></li><li class="level-3"><a href="#5-human-disposition-and-memory">5. Human disposition and memory</a></li><li class="level-3"><a href="#6-outcome-feedback">6. Outcome feedback</a></li><li class="level-2"><a href="#two-loops-one-preserved-history">Two loops, one preserved history</a></li><li class="level-2"><a href="#where-the-responsibility-can-live">Where the responsibility can live</a></li><li class="level-2"><a href="#when-the-overhead-earns-its-place">When the overhead earns its place</a></li><li class="level-2"><a href="#what-the-prior-art-removes-from-the-claim">What the prior art removes from the claim</a></li><li class="level-2"><a href="#the-strongest-objections">The strongest objections</a></li><li class="level-3"><a href="#this-is-old-work-under-a-new-label">This is old work under a new label</a></li><li class="level-3"><a href="#the-layer-can-become-a-gatekeeper">The layer can become a gatekeeper</a></li><li class="level-3"><a href="#provenance-can-become-rigor-theater">Provenance can become rigor theater</a></li><li class="level-3"><a href="#the-framework-may-cost-more-than-it-saves">The framework may cost more than it saves</a></li><li class="level-3"><a href="#human-review-can-be-decorative">Human review can be decorative</a></li><li class="level-3"><a href="#feedback-can-optimize-the-wrong-thing">Feedback can optimize the wrong thing</a></li><li class="level-3"><a href="#the-name-may-do-harm">The name may do harm</a></li><li class="level-2"><a href="#retirement-tests">Retirement tests</a></li><li class="level-2"><a href="#two-bounded-product-cases">Two bounded product cases</a></li><li class="level-3"><a href="#alpha-solver">Alpha Solver</a></li><li class="level-3"><a href="#signal-foundry">Signal Foundry</a></li><li class="level-2"><a href="#lab-note-one-question-no-results">Lab note: one question, no results</a></li><li class="level-3"><a href="#three-versions-of-the-same-evidence-task">Three versions of the same evidence task</a></li><li class="level-3"><a href="#corpus-and-endpoint">Corpus and endpoint</a></li><li class="level-3"><a href="#what-success-and-failure-mean">What success and failure mean</a></li><li class="level-3"><a href="#optional-real-world-transfer-check-t1">Optional real-world transfer check (T1)</a></li><li class="level-3"><a href="#current-readiness">Current readiness</a></li><li class="level-2"><a href="#limitations-that-cannot-be-smoothed-away">Limitations that cannot be smoothed away</a></li><li class="level-2"><a href="#closing">Closing</a></li><li class="level-2"><a href="#evidence-and-status-note">Evidence and status note</a></li></ul></aside>
+</div>
+</body>
+</html>

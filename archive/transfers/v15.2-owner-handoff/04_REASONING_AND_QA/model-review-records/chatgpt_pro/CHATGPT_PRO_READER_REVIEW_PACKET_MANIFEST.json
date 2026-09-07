@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "status": "NOT_SUBMITTED_PRO_MODE_UNAVAILABLE_LOGGED_OUT",
+  "prepared_at": "2026-08-17T22:45:00Z",
+  "prompt": {
+    "path": "reviews/chatgpt_pro/CHATGPT_PRO_READER_REVIEW_PROMPT.md",
+    "sha256": "fa66f633c7601ebc6fe15d93114db03892fb8b6017dd3c97431d37b29a9cfc89",
+    "byte_size": 1703
+  },
+  "inputs": [
+    {
+      "path": "source/THOUGHT_PIECE_V14.md",
+      "role": "revised thought piece",
+      "sha256": "2fcc23a6110c70e4140b084ac366aa0be5e601f0e46612c3a78e3a2e50a3f044",
+      "byte_size": 49791
+    },
+    {
+      "path": "source/FRAMEWORK_COMPONENT_MAP.md",
+      "role": "framework map",
+      "sha256": "1d9bfcf80054120cc0e5beeed38af2336a7968dacbd792b15f850baaa1a9b225",
+      "byte_size": 26605
+    },
+    {
+      "path": "reviews/chatgpt_pro/ONE_PAGE_CLAIMS_SUMMARY.md",
+      "role": "one-page claims summary",
+      "sha256": "1c482f98af36b4d4f84c7005a15d064a3925e2aa83511161c73bb18a221ed902",
+      "byte_size": 4028
+    },
+    {
+      "path": "reviews/chatgpt_pro/ONE_PAGE_INTENDED_READER_SUMMARY.md",
+      "role": "one-page intended-reader summary",
+      "sha256": "d322cc23e794cbaabc8bf4d81e3d50914c989c2239cfefe6c70150234fe72b55",
+      "byte_size": 3091
+    }
+  ],
+  "browser_boundary": {
+    "site": "https://chatgpt.com/",
+    "conversation": "fresh conversation required",
+    "mode": "highest available Pro reasoning mode",
+    "browse_or_tools_requested": false,
+    "repository_access": false,
+    "credentials_in_packet": false,
+    "private_provider_output_in_packet": false,
+    "external_publication": false,
+    "packet_transmitted": false
+  }
+}

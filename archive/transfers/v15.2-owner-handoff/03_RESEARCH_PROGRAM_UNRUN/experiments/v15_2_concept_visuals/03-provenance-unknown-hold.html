@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Provenance, UNKNOWN, and HOLD — concept visual</title>
+  <style>
+    :root {
+      --paper: #f3efe5;
+      --paper-light: #fffdf8;
+      --ink: #1f1d19;
+      --muted: #625d55;
+      --line: #b8afa1;
+      --teal: #1b6265;
+      --violet: #5c467d;
+      --coral: #9c4233;
+      --ochre: #76500f;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 var(--serif); }
+    :focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px var(--ink); }
+    main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 64px; }
+    .eyebrow, .label, .code, .microcopy { font: .68rem/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .eyebrow { margin: 0 0 12px; color: var(--teal); }
+    h1 { max-width: 850px; margin: 0 0 14px; font: 500 clamp(2.3rem, 6vw, 4.6rem)/1 var(--serif); letter-spacing: -.045em; }
+    .lede { max-width: 790px; margin: 0 0 30px; color: var(--muted); font-size: 1.15rem; }
+    figure { margin: 0; border: 1px solid var(--ink); background: var(--paper-light); }
+    figcaption { padding: 20px 22px; border-bottom: 1px solid var(--line); }
+    figcaption strong { display: block; margin-bottom: 5px; font-size: 1.25rem; }
+    figcaption span { display: block; color: var(--muted); }
+    .trace { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); }
+    .trace li { position: relative; min-height: 210px; padding: 24px 22px; background: var(--paper-light); }
+    .trace li:not(:last-child)::after { content: "→"; position: absolute; z-index: 1; top: 50%; right: -17px; width: 32px; height: 32px; transform: translateY(-50%); border: 1px solid var(--teal); border-radius: 50%; background: var(--paper-light); color: var(--teal); font: 1.05rem/29px var(--sans); text-align: center; }
+    .trace li:nth-child(1) { border-top: 6px solid var(--teal); }
+    .trace li:nth-child(2) { border-top: 6px solid var(--blue, #35628c); }
+    .trace li:nth-child(3) { border-top: 6px solid var(--violet); }
+    .trace .label { margin: 0 0 12px; color: var(--teal); }
+    .trace li:nth-child(2) .label { color: var(--blue, #35628c); }
+    .trace li:nth-child(3) .label { color: var(--violet); }
+    .trace h2 { margin: 0 0 9px; font: 500 1.45rem/1.1 var(--serif); }
+    .trace p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .trace code { display: inline-block; margin-top: 15px; padding: 4px 6px; background: var(--paper); color: var(--ink); font: .68rem var(--mono); }
+    .states { padding: 24px 22px; border-top: 1px solid var(--line); }
+    .states h2 { margin: 0 0 13px; font: 500 1.55rem/1.1 var(--serif); }
+    .state-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .state-list li { min-height: 136px; padding: 14px; border: 1px solid var(--line); background: #fbf9f3; }
+    .state-list strong { display: block; margin-bottom: 6px; font: .72rem/1.3 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .state-list li:nth-child(1) strong { color: var(--teal); }
+    .state-list li:nth-child(2) strong { color: var(--ochre); }
+    .state-list li:nth-child(3) { border-left: 4px solid var(--violet); }
+    .state-list li:nth-child(3) strong { color: var(--violet); }
+    .state-list span { display: block; color: var(--muted); font-size: .84rem; }
+    .claim-decision { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1px; background: var(--line); border-top: 1px solid var(--line); }
+    .claim, .hold { padding: 24px 22px; background: var(--paper-light); }
+    .claim h2, .hold h2 { margin: 0 0 10px; font: 500 1.55rem/1.1 var(--serif); }
+    .claim p, .hold p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .claim strong { color: var(--coral); font: .72rem var(--mono); letter-spacing: .08em; }
+    .hold { border-left: 6px solid var(--coral); background: #f8e9e4; }
+    .hold .label { margin: 0 0 8px; color: var(--coral); }
+    .hold h2 { font: 600 .8rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .boundary { margin: 22px; padding: 14px 16px; border-left: 5px solid var(--violet); background: #eee9f4; }
+    .boundary strong { display: block; margin-bottom: 3px; }
+    .boundary span { color: var(--muted); }
+    .microcopy { margin: 18px 0 0; color: var(--muted); }
+    @media (max-width: 780px) {
+      main { width: min(100% - 22px, 560px); padding-top: 30px; }
+      .trace, .state-list, .claim-decision { grid-template-columns: 1fr; }
+      .trace li { min-height: 0; padding: 21px 18px 30px; }
+      .trace li:not(:last-child)::after { top: auto; right: auto; bottom: -17px; left: 50%; transform: translateX(-50%) rotate(90deg); }
+      .states, .claim, .hold { padding-inline: 18px; }
+      .hold { border-top: 6px solid var(--coral); border-left: 0; }
+    }
+    @media print {
+      body { background: #fff; font-size: 10pt; }
+      main { width: 100%; padding: 0; }
+      figure { border-color: #777; }
+      .trace li:not(:last-child)::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Term visual candidate · provenance audit</p>
+    <h1>A trace can explain where material came from without proving the claim.</h1>
+    <p class="lede">Keep lineage, claim support, and the human next step as different records. When the relation is not established, preserve UNKNOWN instead of inventing corroboration.</p>
+
+    <figure aria-labelledby="trace-title" aria-describedby="trace-description">
+      <figcaption>
+        <strong id="trace-title">Three questions, three records</strong>
+        <span id="trace-description">The trace follows identity and derivation. The claim record asks what the material supports. The disposition records what a person may do next.</span>
+      </figcaption>
+      <ol class="trace" aria-label="A provenance trace from an origin to reports to a decision packet">
+        <li>
+          <p class="label">Where did it come from?</p>
+          <h2>Origin A</h2>
+          <p>One launch announcement is the known upstream artifact in this fictional bundle.</p>
+          <code>origin relation · known shared path</code>
+        </li>
+        <li>
+          <p class="label">What changed?</p>
+          <h2>O01–O09</h2>
+          <p>Nine report observations repeat or reframe the announcement. They remain useful records of circulation.</p>
+          <code>derivation · preserve each observation</code>
+        </li>
+        <li>
+          <p class="label">What may influence the answer?</p>
+          <h2>Bounded packet</h2>
+          <p>The packet carries the trace, claim links, unknowns, and a recorded human decision.</p>
+          <code>context · not a truth verdict</code>
+        </li>
+      </ol>
+      <section class="states" aria-labelledby="state-title">
+        <h2 id="state-title">Relation state is not claim support</h2>
+        <ul class="state-list">
+          <li><strong>DEPENDENT</strong><span>Traceable to an existing artifact. Preserve the report; do not count a new root under this rule.</span></li>
+          <li><strong>INDEPENDENT-AS-STIPULATED</strong><span>Separate only inside this illustration or benchmark. It is not real-world provenance discovery.</span></li>
+          <li><strong>UNKNOWN</strong><span>The relation is not established. Do not move it into either the dependent or distinct-origin total.</span></li>
+        </ul>
+      </section>
+      <div class="claim-decision">
+        <section class="claim" aria-labelledby="claim-title">
+          <p class="label">Claim under review</p>
+          <h2 id="claim-title">“The tool is broadly validated.”</h2>
+          <p><strong>INSUFFICIENT</strong> · one known origin does not establish support for this broad claim. A provenance trace cannot launder claim support.</p>
+        </section>
+        <aside class="hold" aria-labelledby="hold-title">
+          <p class="label">Human disposition</p>
+          <h2 id="hold-title">HOLD · VERIFY ANOTHER ORIGIN RELATION</h2>
+          <p>Inspect a separately authored benchmark before changing the claim state.</p>
+        </aside>
+      </div>
+      <p class="boundary"><strong>Boundary</strong><span>UNKNOWN is not a failed guess and HOLD is not a truth verdict. Both are preserved so another person can inspect and correct the route.</span></p>
+    </figure>
+    <p class="microcopy">The arrows are decorative. The ordered trace, state words, claim text, and disposition remain understandable without the connectors or color.</p>
+  </main>
+</body>
+</html>

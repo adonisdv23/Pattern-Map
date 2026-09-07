@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/proposition.schema.json",
+  "title": "Origin-accounting proposition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["proposition_family_id", "domain", "subject", "predicate", "object", "magnitude", "unit", "baseline", "site", "time_window", "truth_state", "lexical_seed"],
+  "properties": {
+    "proposition_family_id": {"type": "string", "pattern": "^PF-[A-Z2-7]{10}$"},
+    "domain": {"enum": ["technical", "environmental"]},
+    "subject": {"type": "string", "minLength": 3, "maxLength": 60},
+    "predicate": {"enum": ["reduced", "increased", "recorded", "did_not_record"]},
+    "object": {"type": "string", "minLength": 3, "maxLength": 80},
+    "magnitude": {"type": "number", "minimum": -1000, "maximum": 1000},
+    "unit": {"enum": ["percent", "milliseconds", "units", "count", "index_points", "none"]},
+    "baseline": {"type": "string", "minLength": 3, "maxLength": 80},
+    "site": {"type": "string", "minLength": 3, "maxLength": 80},
+    "time_window": {"type": "object", "additionalProperties": false, "required": ["start_year", "end_year"], "properties": {"start_year": {"type": "integer", "minimum": 2030, "maximum": 2099}, "end_year": {"type": "integer", "minimum": 2030, "maximum": 2099}}},
+    "truth_state": {"enum": ["supported", "refuted", "insufficient", "contested"]},
+    "lexical_seed": {"type": "integer", "minimum": 0}
+  }
+}

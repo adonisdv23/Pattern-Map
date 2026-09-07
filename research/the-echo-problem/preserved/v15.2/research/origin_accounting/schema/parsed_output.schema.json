@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/parsed-output.schema.json",
+  "title": "Parsed origin-accounting output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["origin_count_supporting", "claim_state", "confidence", "evidence_ids"],
+  "properties": {
+    "origin_count_supporting": {"type": "integer", "minimum": 0, "maximum": 6},
+    "claim_state": {"enum": ["supported", "refuted", "insufficient", "contested"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "evidence_ids": {"type": "array", "minItems": 0, "maxItems": 6, "uniqueItems": true, "items": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"}}
+  }
+}

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample size and negative results — concept visual</title>
+  <style>
+    :root {
+      --paper: #f3efe5;
+      --paper-light: #fffdf8;
+      --ink: #1f1d19;
+      --muted: #625d55;
+      --line: #b8afa1;
+      --teal: #1b6265;
+      --violet: #5c467d;
+      --coral: #9c4233;
+      --ochre: #76500f;
+      --blue: #35628c;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 var(--serif); }
+    :focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px var(--ink); }
+    main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 64px; }
+    .eyebrow, .label, .code, .status, .microcopy { font: .68rem/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .eyebrow { margin: 0 0 12px; color: var(--violet); }
+    h1 { max-width: 860px; margin: 0 0 14px; font: 500 clamp(2.3rem, 6vw, 4.6rem)/1 var(--serif); letter-spacing: -.045em; }
+    .lede { max-width: 790px; margin: 0 0 30px; color: var(--muted); font-size: 1.15rem; }
+    figure { margin: 0; border: 1px solid var(--ink); background: var(--paper-light); }
+    figcaption { padding: 20px 22px; border-bottom: 1px solid var(--line); }
+    figcaption strong { display: block; margin-bottom: 5px; font-size: 1.25rem; }
+    figcaption span { display: block; color: var(--muted); }
+    .sample-block { padding: 24px 22px; }
+    .sample-block h2, .outcome-block h2 { margin: 0 0 8px; font: 500 1.65rem/1.1 var(--serif); }
+    .sample-intro { max-width: 780px; margin: 0 0 18px; color: var(--muted); }
+    .sample-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); }
+    .sample-grid > li { padding: 17px 14px 15px; background: #fbf9f3; }
+    .sample-grid h3 { margin: 0 0 6px; font: 500 1.08rem/1.15 var(--serif); }
+    .sample-grid p { margin: 0 0 12px; color: var(--muted); font-size: .8rem; }
+    .sample-count { display: block; margin-bottom: 12px; color: var(--violet); font: 500 1.75rem/1 var(--serif); }
+    .dots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin: 0; padding: 0; list-style: none; }
+    .dots li { aspect-ratio: 1; border-radius: 50%; background: var(--violet); }
+    .dots li:nth-child(3n) { background: #b89bcf; }
+    .dots-label { margin-top: 9px !important; font: .6rem/1.3 var(--mono) !important; letter-spacing: .04em; text-transform: uppercase; }
+    .sample-total { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 0; padding: 13px 16px; border-left: 5px solid var(--violet); background: #eee9f4; }
+    .sample-total strong { color: var(--violet); font: 500 2rem/1 var(--serif); }
+    .sample-total span { color: var(--muted); }
+    .outcome-block { padding: 24px 22px; border-top: 1px solid var(--line); }
+    .outcome-intro { max-width: 780px; margin: 0 0 18px; color: var(--muted); }
+    .outcomes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .outcomes li { min-height: 175px; padding: 15px; border: 1px solid var(--line); background: #fbf9f3; }
+    .outcomes li:nth-child(1) { border-top: 5px solid var(--blue); }
+    .outcomes li:nth-child(2) { border-top: 5px solid var(--teal); }
+    .outcomes li:nth-child(3) { border-top: 5px solid var(--coral); }
+    .outcomes li:nth-child(4) { border-top: 5px solid var(--ochre); }
+    .outcomes strong { display: block; margin-bottom: 7px; font: .75rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .outcomes li:nth-child(1) strong { color: var(--blue); }
+    .outcomes li:nth-child(2) strong { color: var(--teal); }
+    .outcomes li:nth-child(3) strong { color: var(--coral); }
+    .outcomes li:nth-child(4) strong { color: var(--ochre); }
+    .outcomes span { display: block; color: var(--muted); font-size: .84rem; }
+    .boundary { margin: 22px; padding: 14px 16px; border-left: 5px solid var(--coral); background: #f8e9e4; }
+    .boundary strong { display: block; margin-bottom: 3px; }
+    .boundary span { color: var(--muted); }
+    .microcopy { margin: 18px 0 0; color: var(--muted); }
+    @media (max-width: 900px) {
+      .sample-grid, .outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 580px) {
+      main { width: min(100% - 22px, 560px); padding-top: 30px; }
+      .sample-block, .outcome-block { padding-inline: 18px; }
+      .sample-grid, .outcomes { grid-template-columns: 1fr; }
+      .sample-grid > li, .outcomes li { min-height: 0; }
+      .sample-total { align-items: start; flex-direction: column; gap: 5px; }
+    }
+    @media print {
+      body { background: #fff; font-size: 10pt; }
+      main { width: 100%; padding: 0; }
+      figure { border-color: #777; }
+      .sample-grid, .outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .dots li { border: 1px solid #555; background: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Term visual candidate · Lab status and interpretation</p>
+    <h1>A planned sample is not a result, and failure stays reportable.</h1>
+    <p class="lede">`N=300` names 300 fictional primary bundles assigned to a planned comparison. Before any run, the program also commits to keep a null, harmful, unstable, or shortcut-driven result.</p>
+
+    <figure aria-labelledby="sample-title" aria-describedby="sample-description">
+      <figcaption>
+        <strong id="sample-title">What the planned 300 means</strong>
+        <span id="sample-description">The primary plan is shown as four equal sets of 75 fictional bundles. The dots are a counting aid, not observed cases or favorable outcomes.</span>
+      </figcaption>
+      <section class="sample-block" aria-labelledby="sample-sets-title">
+        <h2 id="sample-sets-title">Four planned structures · 75 each</h2>
+        <p class="sample-intro">The planned structures cover one-origin repetition, multiple-origin convergence, unknown-origin agreement, and conflict. The final number remains provisional until design and safety checks are complete.</p>
+        <ul class="sample-grid" aria-label="Four planned sets of 75 fictional primary bundles">
+          <li>
+            <h3>One-origin repetition</h3>
+            <p>Repeated reports trace to one source.</p>
+            <strong class="sample-count">75 cases</strong>
+            <ul class="dots" aria-label="Twenty-five dots, each representing three planned cases"><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li></ul>
+            <p class="dots-label">25 dots × 3 cases</p>
+          </li>
+          <li>
+            <h3>Multiple-origin convergence</h3>
+            <p>Several stipulated roots support a claim.</p>
+            <strong class="sample-count">75 cases</strong>
+            <ul class="dots" aria-label="Twenty-five dots, each representing three planned cases"><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li></ul>
+            <p class="dots-label">25 dots × 3 cases</p>
+          </li>
+          <li>
+            <h3>Unknown-origin agreement</h3>
+            <p>Reports agree, but the relation is unresolved.</p>
+            <strong class="sample-count">75 cases</strong>
+            <ul class="dots" aria-label="Twenty-five dots, each representing three planned cases"><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li></ul>
+            <p class="dots-label">25 dots × 3 cases</p>
+          </li>
+          <li>
+            <h3>Conflict</h3>
+            <p>Evidence carries competing claims or paths.</p>
+            <strong class="sample-count">75 cases</strong>
+            <ul class="dots" aria-label="Twenty-five dots, each representing three planned cases"><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li><li aria-hidden="true"></li></ul>
+            <p class="dots-label">25 dots × 3 cases</p>
+          </li>
+        </ul>
+        <p class="sample-total"><strong>N=300</strong><span>planned primary bundles · no model selected · no study run · no result</span></p>
+      </section>
+      <section class="outcome-block" aria-labelledby="outcome-title">
+        <h2 id="outcome-title">The result interpretation is locked before the run</h2>
+        <p class="outcome-intro">The promise is not that the cue will work. It is that the record will keep what the test actually shows.</p>
+        <ul class="outcomes" aria-label="Four predeclared result interpretations">
+          <li><strong>Null</strong><span>No evidence that the supplied cue adds value beyond the explicit rule.</span></li>
+          <li><strong>Rule-only</strong><span>If F1 and F2 beat F0 but tie, credit the rule—not the supplied cue.</span></li>
+          <li><strong>Harmful</strong><span>If F2 suppresses valid stipulated convergence or performs worse, reject the cue in this setting.</span></li>
+          <li><strong>Shortcut / unstable</strong><span>If formatting, direct codes, or instability explain the result, narrow the claim to that behavior.</span></li>
+        </ul>
+      </section>
+      <p class="boundary"><strong>Boundary</strong><span>These are planned cases and predeclared interpretations, not results. The visual cannot authorize a live run, establish power, or prove that the framework improves decisions.</span></p>
+    </figure>
+    <p class="microcopy">The dots are decorative counting aids. The headings, counts, and result sentences carry the meaning in text.</p>
+  </main>
+</body>
+</html>

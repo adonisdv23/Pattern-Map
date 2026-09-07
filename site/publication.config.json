@@ -1,0 +1,10 @@
+{
+  "schema_version": "pattern-map.publication-config.v1",
+  "status": "LOCAL_PREVIEW_UNSET",
+  "author_name": null,
+  "author_handle": null,
+  "canonical_url": null,
+  "social_image_url": null,
+  "social_image_alt": null,
+  "release_boundary": "Owner identity, canonical URL, social image, link verification, publication, and deployment require later explicit authorization."
+}

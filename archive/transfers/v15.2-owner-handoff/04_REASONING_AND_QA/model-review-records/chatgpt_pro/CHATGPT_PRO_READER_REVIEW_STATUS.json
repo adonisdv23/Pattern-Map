@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "status": "UNAVAILABLE_LOGGED_OUT_NO_PRO_MODE",
+  "attempt_date": "2026-08-17",
+  "end_timestamp": "2026-08-17T22:49:10Z",
+  "site": "https://chatgpt.com/",
+  "conversation": {
+    "fresh_conversation_opened": true,
+    "authenticated": false,
+    "displayed_model_or_mode_label": "ChatGPT",
+    "pro_reasoning_mode_accessible": false,
+    "alternate_authenticated_browser_available": false
+  },
+  "packet": {
+    "manifest": "reviews/chatgpt_pro/CHATGPT_PRO_READER_REVIEW_PACKET_MANIFEST.json",
+    "prompt_transmitted": false,
+    "files_uploaded": false,
+    "packet_pasted": false,
+    "input_hashes_reverified_after_attempt": true
+  },
+  "response": {
+    "produced": false,
+    "raw_output_file": "reviews/chatgpt_pro/CHATGPT_PRO_READER_REVIEW_RAW_OUTPUT.md",
+    "response_hash": null,
+    "material_findings": 0
+  },
+  "screenshots": {
+    "required_context_attempted": true,
+    "created": false,
+    "attempt_count": 2,
+    "exact_failure": "Timed out running CDP command \"Page.captureScreenshot\" for tab 2",
+    "alternate_capture_surface_used": false,
+    "dom_evidence_preserved_in_raw_output": true
+  },
+  "no_mutation_confirmation": {
+    "remote_conversation_created_by_message_submission": false,
+    "external_write": false,
+    "repository_access_granted": false,
+    "packet_files_unchanged": true,
+    "post_attempt_worktree_status_sha256": "9517300b659fd15c155a89cf359ee62cd46da5e5cd222bb58e8d7c7cafabacab"
+  },
+  "substitute_mode_used": false,
+  "reason": "The regular ChatGPT site was logged out and exposed no Pro reasoning mode. The review was not sent to a lower or unlabeled mode."
+}

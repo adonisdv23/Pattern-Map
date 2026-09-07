@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Pattern Recognition — v15.2 manuscript snapshot</title>
+<style>
+:root { color-scheme: light dark; --paper:#f4f0e6; --ink:#211f1a; --muted:#655f54; --line:#c8c0af; --teal:#0d6668; --panel:#fbf8f0; --code:#e8e1d4; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.68 Georgia, 'Times New Roman', serif; }
+a { color:var(--teal); text-underline-offset:.15em; }
+a:focus-visible, summary:focus-visible { outline:3px solid #c65332; outline-offset:3px; }
+.release { border-bottom:1px solid var(--line); background:color-mix(in srgb, var(--paper) 92%, var(--teal)); font:700 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.09em; text-transform:uppercase; }
+.release-inner { width:min(1120px, calc(100% - 32px)); margin:auto; padding:14px 0; display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:space-between; }
+.version-nav { word-spacing:.25em; }
+.version-nav [aria-current="page"] { color:var(--ink); text-decoration-thickness:3px; }
+.boundary { width:min(1120px, calc(100% - 32px)); margin:24px auto 0; padding:16px 18px; border-left:5px solid var(--teal); background:var(--panel); font:14px/1.55 ui-sans-serif, system-ui, sans-serif; }
+.layout { width:min(1120px, calc(100% - 32px)); margin:32px auto 96px; display:grid; grid-template-columns:minmax(0, 760px) minmax(220px, 1fr); gap:64px; align-items:start; }
+main { min-width:0; }
+aside { position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; padding:18px; border:1px solid var(--line); background:var(--panel); font:13px/1.45 ui-sans-serif, system-ui, sans-serif; }
+aside h2 { margin-top:0; font:700 12px/1.2 ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; }
+aside ul { margin:0; padding-left:18px; } aside .level-3 { margin-left:12px; }
+h1,h2,h3,h4 { line-height:1.08; text-wrap:balance; scroll-margin-top:24px; }
+h1 { margin:.4em 0 .5em; font-size:clamp(2.4rem, 7vw, 5.6rem); letter-spacing:-.045em; }
+h2 { margin:2.15em 0 .65em; font-size:clamp(1.75rem, 4vw, 3rem); border-top:1px solid var(--line); padding-top:.65em; }
+h3 { margin:1.8em 0 .5em; font-size:1.5rem; }
+h4 { margin:1.5em 0 .4em; font:700 1.05rem/1.3 ui-sans-serif, system-ui, sans-serif; }
+p,li { max-width:72ch; }
+blockquote { margin:1.5em 0; padding:.15em 0 .15em 1.25em; border-left:6px solid #b74b35; font-size:1.25em; }
+code,pre { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+code { padding:.08em .28em; background:var(--code); border-radius:3px; font-size:.84em; }
+pre { overflow:auto; padding:18px; background:#1f211f; color:#f5f2e9; font-size:.78em; line-height:1.55; }
+pre code { padding:0; background:transparent; color:inherit; }
+.frontmatter { margin:0 0 2em; border:1px solid var(--line); background:var(--panel); font:14px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.frontmatter summary { cursor:pointer; padding:12px 16px; font-weight:700; }
+.frontmatter pre { margin:0; border-radius:0; }
+.local-ref { text-decoration:underline dotted; text-underline-offset:.15em; }
+.table-wrap { overflow-x:auto; margin:1.5em 0; }
+table { width:100%; border-collapse:collapse; font:15px/1.45 ui-sans-serif, system-ui, sans-serif; }
+th,td { padding:10px 12px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+th { background:var(--panel); }
+hr { margin:3rem 0; border:0; border-top:4px solid var(--ink); }
+.source-note { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font:13px/1.5 ui-sans-serif, system-ui, sans-serif; }
+@media (max-width:850px) { .layout { grid-template-columns:1fr; } aside { position:static; max-height:none; order:-1; } body { font-size:17px; } }
+@media (prefers-color-scheme:dark) { :root { --paper:#171713; --ink:#f0ecdf; --muted:#bdb5a6; --line:#4b493f; --teal:#6fc2c0; --panel:#22221d; --code:#35332b; } }
+@media print { :root { --paper:#fff; --ink:#000; --muted:#444; --line:#999; --teal:#004d4d; --panel:#fff; --code:#eee; } .release, aside { display:none; } .boundary,.layout { width:auto; margin-left:0; margin-right:0; } .layout { display:block; } a { color:inherit; } h2 { break-before:page; } table,blockquote,pre { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<header class="release"><div class="release-inner"><span>Pattern Recognition · historical manuscript reader</span><nav class="version-nav" aria-label="Version snapshots"><a href="v14.html">v14</a> · <a href="v15.html">v15</a> · <a href="v15-1.html">v15.1</a> · <a href="v15-2.html" aria-current="page">v15.2</a></nav></div></header>
+<div class="boundary"><strong>v15.2 manuscript snapshot.</strong> This is a self-contained editorial comparison page, not a reconstruction of the historical site. It reports no empirical result. Current canonical release: v15.2. Source: source/THOUGHT_PIECE_V15_2.md in the v15.2 release tree.</div>
+<div class="layout">
+<main id="main"><details class="frontmatter"><summary>Version metadata</summary><pre>version: &quot;v15.2 owner-review candidate&quot;
+status: &quot;conceptual synthesis; no model selected; no study run; no empirical result; not published&quot;
+reader_routes:
+  first_impression: &quot;60–90 seconds — scene, 09/01/00/HOLD receipt, and why zero is a hold rather than a rejection&quot;
+  essential_argument: &quot;about four minutes — three questions, correction rule, human next step, and no-results boundary&quot;
+  full_essay: &quot;about nine minutes — loops, use boundary, objections, research bridge, history, and closing habit&quot;
+  deeper_records: &quot;Explore contains records and cases; Lab contains the no-results protocol; Sources explains evidence and terms&quot;</pre></details>
+<h1 id="pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h1>
+<h2 id="what-an-ai-system-should-preserve-before-repetition-becomes-corroboration">What an AI system should preserve before repetition becomes corroboration</h2>
+<p><em>Here, “discrimination” means technical differentiation among information and possible actions—not social classification or discriminatory treatment.</em></p>
+<h2 id="nine-reports-one-announcement">Nine reports, one announcement</h2>
+<p><em>Fictional illustration. No live data or result is being reported.</em></p>
+<p>A team is deciding whether a sandbox pilot of a data-migration tool is worth ninety minutes of investigation. Production data are off limits. The claim on the table is broad: “The tool is broadly validated.”</p>
+<p>Nine favorable reports arrive through nine different sites. Their headlines, layouts, and wording differ. A summary says:</p>
+<blockquote><p>Nine sources agree that the new tool is broadly validated.</p></blockquote>
+<p>Then someone traces the reports backward. All nine came from the same launch announcement.</p>
+<p>The reports have not become false. They may still show reach, timing, or how the announcement travelled. But repetition alone did not create eight new roots. The summary has not merely shortened the evidence. It has changed its structure: nine observations became nine apparent paths, then apparent plurality became corroboration.</p>
+<p>If that relationship disappears from the evidence record, an AI system can inherit the inflated plurality when it writes the answer.</p>
+<p>The first receipt keeps four numbers and decisions apart:</p>
+<div class="table-wrap"><table><thead><tr>
+<th>What is being counted?</th>
+<th>Recorded value</th>
+</tr></thead><tbody>
+<tr>
+<td>Report observations</td>
+<td><strong>09</strong></td>
+</tr>
+<tr>
+<td>Known shared information paths</td>
+<td><strong>01</strong></td>
+</tr>
+<tr>
+<td>Paths counted as support for the broad claim</td>
+<td><strong>00</strong></td>
+</tr>
+<tr>
+<td>Recorded human next step</td>
+<td><strong>HOLD · VERIFY ANOTHER ORIGIN RELATION</strong></td>
+</tr>
+</tbody></table></div>
+<p>One path is known; zero paths are counted as support for this broad claim yet. That does not mean no source exists, the reports are false, or the tool is rejected. A vendor can be the right source for what it announced and still not establish that its product is validated in independent use.</p>
+<p>The next action is deliberately small: inspect the announcement, find one separately authored benchmark or failure report, record how it relates to the earlier material, and then reconsider the claim. The receipt does not make the pilot decision. It makes a hidden change in route visible.</p>
+<p><strong>60–90 second stop.</strong> The point is already usable: preserve the nine observations, do not silently count them as nine supporting paths, keep the broad claim on hold, and inspect one more relation.</p>
+<h2 id="three-relation-states-before-technical-codes">Three relation states before technical codes</h2>
+<p>A reader needs three ordinary-language states:</p>
+<ul>
+<li><strong>Shared path:</strong> a report traces to an earlier artifact. Preserve the report; do not count it as a new support path under this rule.</li>
+<li><strong>Separate only in this test:</strong> an illustration or benchmark stipulates a separate root. That is a property of the test, not a discovery about the real web.</li>
+<li><strong>Unresolved:</strong> the relationship has not been established. Do not turn missing knowledge into either dependence or independence.</li>
+</ul>
+<p>Unknown is where a polished summary is most tempted to put a guess. Leaving the relation unresolved is how an incomplete trail stays incomplete instead of becoming invented corroboration.</p>
+<h3 id="receipt-origin-ex-01">Receipt ORIGIN-EX-01</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Field</th>
+<th>Recorded value</th>
+</tr></thead><tbody>
+<tr>
+<td>Claim</td>
+<td>“The tool is broadly validated.”</td>
+</tr>
+<tr>
+<td>Observations</td>
+<td>O01–O09, nine report records</td>
+</tr>
+<tr>
+<td>Relation state</td>
+<td>All nine trace to Origin A, one launch announcement</td>
+</tr>
+<tr>
+<td>Permission</td>
+<td>Sandbox only; no production data; ninety-minute research budget</td>
+</tr>
+<tr>
+<td>Next human action</td>
+<td>HOLD · verify another origin relation</td>
+</tr>
+</tbody></table></div>
+<p>The receipt is not a ranking or a verdict. It does not discover real provenance, establish truth, or act automatically. It records a supplied illustration so another person can inspect and correct the rule.</p>
+<h2 id="the-judgment-before-the-answer">The judgment before the answer</h2>
+<p>An AI answer is the visible end of a route. Before a model writes, someone has already decided what could be acquired, which items belong together, which passages bear on the claim, what stayed out, when search stopped, what could be used or disclosed, and who could challenge the route.</p>
+<p>A single quality score hides why material earned attention. An official manual may be authoritative for a documented command, share an upstream source with ten tutorials, say nothing about failure under load, and still be exactly relevant to an implementation question. A community post may be a poor authority for product policy yet contain a separately reproduced failure that matters more to a reliability decision.</p>
+<p>The proposal is not a grander ranking function. It is to make the pre-answer judgment inspectable through three questions.</p>
+<h3 id="1-can-we-inspect-what-we-saw-and-where-it-came-from">1. Can we inspect what we saw and where it came from?</h3>
+<p>Keep a report distinct from the thing it reports, a capture from a mutable page, a normalized extract from the capture, and a later summary. Record which transformation happened, when, and by whom or what.</p>
+<p>The technical word for that trace is <em>provenance</em>: a record of origin, custody, transformation, and time. It does not mean the material is correct, authoritative, separately rooted, or permitted to use.</p>
+<h3 id="2-does-it-bear-on-this-exact-claim">2. Does it bear on this exact claim?</h3>
+<p>A report can be relevant without supporting the claim in view. A source can be authoritative for one narrow question and silent about another. A citation can be present while the passage contradicts, qualifies, or never reaches the proposition being made.</p>
+<p>Keep three judgments visible: where the report came from; what exact claim it supports, refutes, or leaves unsettled; and what authority, relevance, and permission it has for this decision. Relation and support are connected, but they are not interchangeable.</p>
+<h3 id="3-may-we-use-it-and-what-should-happen-next">3. May we use it, and what should happen next?</h3>
+<p>Technical access is not permission. A team may inspect material but not retain it. It may have enough evidence for one bounded sandbox check but not for production use. It may hold, clarify, acquire one missing perspective, answer provisionally, defer, escalate, or refuse.</p>
+<p>Record the permission and the accountable person’s next step. In the technical records this is called a <em>disposition</em>. In plain language, it is what a person decided should happen next—not a new fact about the world.</p>
+<p>A correction must be consequential. If a reviewer changes a relation from shared path to unresolved, the count and route should change while the original report remains in history. If nothing downstream changes, the review control is decorative.</p>
+<p>Recurrence is not support; provenance is not correctness; access is not permission; a human next step is not a fact.</p>
+<p><strong>About four-minute stop.</strong> The essential behavior is complete: inspect the path, test support against the exact claim, preserve permission and uncertainty, and let a person change the route without erasing what was observed. No study has run and no empirical improvement is claimed.</p>
+<h2 id="two-loops-one-preserved-history">Two loops, one preserved history</h2>
+<p>One loop changes the evidence available to the decision that is open now. A missing expected perspective may justify one targeted search. A contradiction may justify comparison. A permission boundary or budget may stop the route. A corrected relation may change which support is counted.</p>
+<p>A slower loop begins only if a defined later outcome exists. It compares what was expected with what happened and may propose a policy for a future decision. The proposal needs an owner and a new version. A later outcome cannot travel backward and make the original evidence omniscient.</p>
+<p>Both loops preserve observations, interpretations, decisions, outputs, corrections, and outcomes as different records. A correction supersedes an interpretation; it does not erase a report.</p>
+<p>The responsibility can live in careful practice, in a coordinating workflow, or partly in model behavior. Prompts and training may encourage search, abstention, and uncertainty, but they cannot replace identity, authorization, receipts, append-only history, or accountable human authority. These are placements, not maturity levels. A named component earns nothing merely by being named.</p>
+<h2 id="when-the-receipt-earns-its-cost">When the receipt earns its cost</h2>
+<p>The fuller treatment is plausible when a decision is consequential, contested, likely to share sources, time-sensitive, expensive to investigate, sensitive to disclose, or likely to be revisited. Due diligence, a research evidence packet, a production-change decision, or any investigation where the source path affects the decision may justify the overhead.</p>
+<p>It is probably unnecessary for a low-stakes rewrite, direct format conversion, supplied-input calculation, or bounded extraction with an obvious source. Use a short brief, permission check, exact inputs, and a simple note—or skip the layer. A framework that cannot say when it is not worth using becomes a demand for ceremony.</p>
+<h2 id="earlier-work-removes-the-easy-novelty-claim">Earlier work removes the easy novelty claim</h2>
+<p>Selected precedents—not a complete literature review—remove the broad claim that this project invents source dependence, double-counting controls, provenance, duplicate detection, claim graphs, retrieval diversity, evidence synthesis, or human review. The linked source ledger keeps publication, dataset, standard, and preprint status separate.</p>
+<p>The remaining contribution is smaller: a synthesis that keeps those boundaries visible, plus one proposed test. In plain language, the test asks whether a supplied relation note stops one model from counting repeated material as independent support any better than simply telling it the rule in words. It does not infer provenance, establish real-world independence, prove truth, demonstrate human benefit, or validate the whole framework.</p>
+<h2 id="how-the-proposal-could-lose">How the proposal could lose</h2>
+<p><strong>Is this old work under a new label?</strong> Much of it is. If a strong, matched-budget retrieval-and-citation baseline performs as well at lower cost, the extra structure should lose for that task.</p>
+<p><strong>Could it become a gatekeeper?</strong> Yes. Selection can erase peripheral sources or make exclusion look like quality control. Exclusions, unknowns, reasons, permissions, source coverage, and appeal must remain inspectable.</p>
+<p><strong>Could the receipt become rigor theater?</strong> Yes. Perfect lineage for a false claim is still perfect lineage for a false claim. A receipt earns its place only if a recorded distinction changes a consequential decision or permits a real correction.</p>
+<p><strong>Will human review be decorative?</strong> It will be if a reviewer sees only a polished recommendation, cannot inspect the path, or cannot change the packet. Oversight must be a control, not a signature at the bottom.</p>
+<p><strong>Will it cost more than it saves?</strong> It may. The deeper map is an analytical decomposition, not required ceremony. It should collapse for simple tasks and retire for any named task where a simpler route delivers the same decision quality for less cost.</p>
+<h2 id="one-narrow-proposed-comparison-no-result">One narrow proposed comparison, no result</h2>
+<p>This is a proposed comparison, not a result. No model has been selected and no study has run. Local test machinery can create fictional bundles, reject malformed records, and exercise scoring code. That is not a model finding.</p>
+<p>Put simply: does showing the model a relationship note change how it counts repeated material, beyond merely telling it the counting rule?</p>
+<p>The plan compares three versions of one fictional task:</p>
+<div class="table-wrap"><table><thead><tr>
+<th>Plain name</th>
+<th>What the model would receive</th>
+<th>Role</th>
+</tr></thead><tbody>
+<tr>
+<td>Ordinary version</td>
+<td>Evidence assessment without an origin-counting rule or supplied relation note</td>
+<td>Secondary baseline</td>
+</tr>
+<tr>
+<td>Rule-only version</td>
+<td>The same evidence plus an explicit rule not to count repeated paths as separate support</td>
+<td>Planned comparison</td>
+</tr>
+<tr>
+<td>Added-cue version</td>
+<td>The same rule and evidence plus supplied notes for shared, separate-in-this-test, or unresolved relations</td>
+<td>Planned added-cue condition</td>
+</tr>
+</tbody></table></div>
+<p>The narrow comparison is the added-cue version against rule-only. A positive difference could show a response to the visible supplied field in this frozen configuration. It could also reflect code identity, formatting, prompt position, invalid-output differences, or another shortcut. It could not show that the model discovered provenance or understood real-world independence.</p>
+<p>One draft proposes 300 fictional cases, subject to design checks; no run has occurred. The exact sample and safety interval, selected model and its text processing, matched resource use, shortcut controls, semantic audit, and count/claim/evidence coherence all remain open gates in the Lab. Real syndication is a later, descriptive, rights-gated track and cannot enter the primary denominator.</p>
+<p>The program commits in advance to keeping an unhelpful result. In plain English: if the cue does nothing, makes the model worse, only changes invalid answers, works by reading a direct code, breaks under noise, or behaves unstably, that is what the record will say. A negative result shrinks or retires the mechanism claim; it is not hidden or spun into success.</p>
+<h2 id="the-map-that-came-before">The map that came before</h2>
+<p>The v13 map began with a related frustration: AI-assisted work can feel competent and still feel stale. It proposed looking beyond the most visible material for specialist comments, unanswered questions, unusual changes, and prior observations that alter what a current one means.</p>
+<p>The original map remains unchanged as a historical anchor. Its caution also survives:</p>
+<blockquote><p>Underweighted is a starting condition, not a conclusion.</p></blockquote>
+<p>The center of gravity has moved. Peripheral material is a candidate acquisition strategy, not a truth signal. A velocity anomaly deserves attention, not belief. A learning loop requires a defined outcome. The old picture is not the current topology; the current map keeps typed relations, recorded decisions, correction, and separately versioned outcomes visible.</p>
+<h2 id="what-to-remember">What to remember</h2>
+<p>One week later, the framework name may be gone. The useful habit should remain:</p>
+<blockquote><p>Before saying “many sources agree,” count the observations, inspect how many distinct information paths they represent, ask what exact claim each path supports, leave unresolved relations unresolved, and record what a person will do next.</p></blockquote>
+<p>The aim is not to count less. It is to count the declared unit and keep unlike judgments from laundering one another.</p>
+<p>That is a design proposition, not a result. The next honest step is to try the smaller receipt, then run or retire the narrow comparison only if its gates are authorized.</p>
+<p><strong>About nine-minute stop.</strong> The public argument is complete here. Component records, bounded cases, protocol gates, source status, glossary definitions, and the historical map remain optional deeper material.</p><p class="source-note">Generated 2026-08-19. Inline CSS; no JavaScript, fonts, images, or local runtime dependencies. Repository-relative links are displayed as paths rather than presented as live standalone links.</p></main>
+<aside aria-label="On this page"><h2>On this page</h2><ul><li class="level-1"><a href="#pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</a></li><li class="level-2"><a href="#what-an-ai-system-should-preserve-before-repetition-becomes-corroboration">What an AI system should preserve before repetition becomes corroboration</a></li><li class="level-2"><a href="#nine-reports-one-announcement">Nine reports, one announcement</a></li><li class="level-2"><a href="#three-relation-states-before-technical-codes">Three relation states before technical codes</a></li><li class="level-3"><a href="#receipt-origin-ex-01">Receipt ORIGIN-EX-01</a></li><li class="level-2"><a href="#the-judgment-before-the-answer">The judgment before the answer</a></li><li class="level-3"><a href="#1-can-we-inspect-what-we-saw-and-where-it-came-from">1. Can we inspect what we saw and where it came from?</a></li><li class="level-3"><a href="#2-does-it-bear-on-this-exact-claim">2. Does it bear on this exact claim?</a></li><li class="level-3"><a href="#3-may-we-use-it-and-what-should-happen-next">3. May we use it, and what should happen next?</a></li><li class="level-2"><a href="#two-loops-one-preserved-history">Two loops, one preserved history</a></li><li class="level-2"><a href="#when-the-receipt-earns-its-cost">When the receipt earns its cost</a></li><li class="level-2"><a href="#earlier-work-removes-the-easy-novelty-claim">Earlier work removes the easy novelty claim</a></li><li class="level-2"><a href="#how-the-proposal-could-lose">How the proposal could lose</a></li><li class="level-2"><a href="#one-narrow-proposed-comparison-no-result">One narrow proposed comparison, no result</a></li><li class="level-2"><a href="#the-map-that-came-before">The map that came before</a></li><li class="level-2"><a href="#what-to-remember">What to remember</a></li></ul></aside>
+</div>
+</body>
+</html>

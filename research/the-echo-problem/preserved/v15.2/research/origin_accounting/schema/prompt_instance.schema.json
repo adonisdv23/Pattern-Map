@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/prompt-instance.schema.json",
+  "title": "Origin-accounting prompt instance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["prompt_instance_id", "bundle_id", "condition", "prompt_version", "system_text", "user_text", "instruction_text", "final_input_text", "system_sha256", "user_sha256", "instruction_sha256", "final_input_sha256", "input_token_count", "input_byte_count", "target_input_token_count", "target_input_byte_count", "tokenizer_id", "tokenizer_is_surrogate", "token_parity_pass", "byte_parity_pass", "max_new_tokens", "retrieval_calls", "tool_calls", "relation_codes", "report_id_order", "report_text_sha256s", "report_text_hash_sequence", "evidence_bytes_equal", "intended_tokenizer_parity_status"],
+  "properties": {
+    "prompt_instance_id": {"type": "string", "pattern": "^PI-[A-Z2-7]{10}$"},
+    "bundle_id": {"type": "string", "pattern": "^BD-[A-Z2-7]{10}$"},
+    "condition": {"enum": ["F0", "F1", "F2"]},
+    "prompt_version": {"type": "string"},
+    "system_text": {"type": "string"},
+    "user_text": {"type": "string"},
+    "instruction_text": {"type": "string"},
+    "final_input_text": {"type": "string"},
+    "system_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "user_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "instruction_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "final_input_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "input_token_count": {"type": "integer", "minimum": 0},
+    "input_byte_count": {"type": "integer", "minimum": 0},
+    "target_input_token_count": {"type": "integer", "minimum": 1},
+    "target_input_byte_count": {"type": "integer", "minimum": 1},
+    "tokenizer_id": {"type": "string"},
+    "tokenizer_is_surrogate": {"type": "boolean"},
+    "token_parity_pass": {"type": "boolean"},
+    "byte_parity_pass": {"type": "boolean"},
+    "max_new_tokens": {"type": "integer", "const": 128},
+    "retrieval_calls": {"type": "integer", "const": 0},
+    "tool_calls": {"type": "integer", "const": 0},
+    "relation_codes": {"type": "object", "additionalProperties": {"enum": ["DPND", "INDP", "UNKN", "NONE"]}},
+    "report_id_order": {"type": "array", "items": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"}, "uniqueItems": true},
+    "report_text_sha256s": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "report_text_hash_sequence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["report_id", "text_sha256"],
+        "properties": {
+          "report_id": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"},
+          "text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "evidence_bytes_equal": {"type": "boolean"},
+    "intended_tokenizer_parity_status": {"enum": ["not_run_model_tokenizer"]}
+  }
+}

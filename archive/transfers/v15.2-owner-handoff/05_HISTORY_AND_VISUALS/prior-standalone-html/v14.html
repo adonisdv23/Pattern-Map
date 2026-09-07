@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Pattern Recognition — v14 manuscript snapshot</title>
+<style>
+:root { color-scheme: light dark; --paper:#f4f0e6; --ink:#211f1a; --muted:#655f54; --line:#c8c0af; --teal:#0d6668; --panel:#fbf8f0; --code:#e8e1d4; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.68 Georgia, 'Times New Roman', serif; }
+a { color:var(--teal); text-underline-offset:.15em; }
+a:focus-visible, summary:focus-visible { outline:3px solid #c65332; outline-offset:3px; }
+.release { border-bottom:1px solid var(--line); background:color-mix(in srgb, var(--paper) 92%, var(--teal)); font:700 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.09em; text-transform:uppercase; }
+.release-inner { width:min(1120px, calc(100% - 32px)); margin:auto; padding:14px 0; display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:space-between; }
+.version-nav { word-spacing:.25em; }
+.version-nav [aria-current="page"] { color:var(--ink); text-decoration-thickness:3px; }
+.boundary { width:min(1120px, calc(100% - 32px)); margin:24px auto 0; padding:16px 18px; border-left:5px solid var(--teal); background:var(--panel); font:14px/1.55 ui-sans-serif, system-ui, sans-serif; }
+.layout { width:min(1120px, calc(100% - 32px)); margin:32px auto 96px; display:grid; grid-template-columns:minmax(0, 760px) minmax(220px, 1fr); gap:64px; align-items:start; }
+main { min-width:0; }
+aside { position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; padding:18px; border:1px solid var(--line); background:var(--panel); font:13px/1.45 ui-sans-serif, system-ui, sans-serif; }
+aside h2 { margin-top:0; font:700 12px/1.2 ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; }
+aside ul { margin:0; padding-left:18px; } aside .level-3 { margin-left:12px; }
+h1,h2,h3,h4 { line-height:1.08; text-wrap:balance; scroll-margin-top:24px; }
+h1 { margin:.4em 0 .5em; font-size:clamp(2.4rem, 7vw, 5.6rem); letter-spacing:-.045em; }
+h2 { margin:2.15em 0 .65em; font-size:clamp(1.75rem, 4vw, 3rem); border-top:1px solid var(--line); padding-top:.65em; }
+h3 { margin:1.8em 0 .5em; font-size:1.5rem; }
+h4 { margin:1.5em 0 .4em; font:700 1.05rem/1.3 ui-sans-serif, system-ui, sans-serif; }
+p,li { max-width:72ch; }
+blockquote { margin:1.5em 0; padding:.15em 0 .15em 1.25em; border-left:6px solid #b74b35; font-size:1.25em; }
+code,pre { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+code { padding:.08em .28em; background:var(--code); border-radius:3px; font-size:.84em; }
+pre { overflow:auto; padding:18px; background:#1f211f; color:#f5f2e9; font-size:.78em; line-height:1.55; }
+pre code { padding:0; background:transparent; color:inherit; }
+.frontmatter { margin:0 0 2em; border:1px solid var(--line); background:var(--panel); font:14px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.frontmatter summary { cursor:pointer; padding:12px 16px; font-weight:700; }
+.frontmatter pre { margin:0; border-radius:0; }
+.local-ref { text-decoration:underline dotted; text-underline-offset:.15em; }
+.table-wrap { overflow-x:auto; margin:1.5em 0; }
+table { width:100%; border-collapse:collapse; font:15px/1.45 ui-sans-serif, system-ui, sans-serif; }
+th,td { padding:10px 12px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+th { background:var(--panel); }
+hr { margin:3rem 0; border:0; border-top:4px solid var(--ink); }
+.source-note { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font:13px/1.5 ui-sans-serif, system-ui, sans-serif; }
+@media (max-width:850px) { .layout { grid-template-columns:1fr; } aside { position:static; max-height:none; order:-1; } body { font-size:17px; } }
+@media (prefers-color-scheme:dark) { :root { --paper:#171713; --ink:#f0ecdf; --muted:#bdb5a6; --line:#4b493f; --teal:#6fc2c0; --panel:#22221d; --code:#35332b; } }
+@media print { :root { --paper:#fff; --ink:#000; --muted:#444; --line:#999; --teal:#004d4d; --panel:#fff; --code:#eee; } .release, aside { display:none; } .boundary,.layout { width:auto; margin-left:0; margin-right:0; } .layout { display:block; } a { color:inherit; } h2 { break-before:page; } table,blockquote,pre { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<header class="release"><div class="release-inner"><span>Pattern Recognition · historical manuscript reader</span><nav class="version-nav" aria-label="Version snapshots"><a href="v14.html" aria-current="page">v14</a> · <a href="v15.html">v15</a> · <a href="v15-1.html">v15.1</a> · <a href="v15-2.html">v15.2</a></nav></div></header>
+<div class="boundary"><strong>v14 manuscript snapshot.</strong> This is a self-contained editorial comparison page, not a reconstruction of the historical site. It reports no empirical result. Current canonical release: v15.2. Source: source/THOUGHT_PIECE_V14.md in the v15.2 release tree.</div>
+<div class="layout">
+<main id="main"><h1 id="pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</h1>
+<h2 id="a-visual-systems-framework-for-deciding-what-information-deserves-acquisition-comparison-enrichment-and-influence-before-ai-generates">A visual systems framework for deciding what information deserves acquisition, comparison, enrichment, and influence before AI generates</h2>
+<p>Version: 14 · reader-review draft</p>
+<p>Status: <code>READY_FOR_OWNER_REVIEW</code> Evidence posture: conceptual synthesis and research agenda; not empirical validation, peer review, or deployment guidance</p>
+<hr>
+<h2 id="five-minute-version">Five-minute version</h2>
+<h3 id="the-problem">The problem</h3>
+<p>A model can write a polished answer from a poor evidence environment.</p>
+<p>The visible failure arrives at the end—a generic recommendation, a confident mistake, a summary that misses the interesting exception. But the consequential decisions often happened earlier:</p>
+<ul>
+<li>Which information was available at all?</li>
+<li>Which sources and artifacts were treated as distinct?</li>
+<li>Which repeated claims were actually copies of one origin?</li>
+<li>Which evidence supported which claim?</li>
+<li>What was missing relative to a reasonable expectation?</li>
+<li>Was another search worth its cost?</li>
+<li>What entered the final context, what was withheld, and why?</li>
+<li>Who could correct the decision?</li>
+<li>What later outcome, if any, should change the next one?</li>
+</ul>
+<p>Retrieval helps find material. Provenance helps trace it. Claim verification helps test bounded propositions. Human review can help correct a system. The inspected literature now contains multiple integrated systems spanning overlapping parts of that responsibility, including cross-source verification, conflict modeling, source-aware attribution, adaptive search, and evidence interfaces. This thought piece does not claim an unoccupied universal layer; it asks whether keeping several judgments visibly separate is useful, then narrows the first empirical test to one origin-relation cue.</p>
+<h3 id="the-thesis">The thesis</h3>
+<p>Some evidence-sensitive AI workflows may benefit from an explicit responsibility for deciding what context to acquire, identify, preserve, compare, enrich, admit, withhold, and update before generation.</p>
+<p>I call that responsibility the <strong>discrimination layer</strong>. Here, <em>discrimination</em> means technical differentiation, selection, and judgment—not social classification or discriminatory treatment. A layer is a responsibility, not necessarily one service, model, or box.</p>
+<p>The responsibility should be:</p>
+<ul>
+<li><strong>inspectable:</strong> a person can see the evidence path, reasons, exclusions, and uncertainty;</li>
+<li><strong>cost-bounded:</strong> search, enrichment, computation, disclosure, and review have explicit limits;</li>
+<li><strong>source-aware:</strong> source, artifact, claim, and derivation identities remain distinct;</li>
+<li><strong>correctable:</strong> a human can contest the frame, evidence, assessment, route, or memory;</li>
+<li><strong>revisable:</strong> later outcomes may motivate a new policy without rewriting the old record.</li>
+</ul>
+<p>That is a design proposition, not a result. The open question is whether making this responsibility explicit improves decisions enough to justify its cost.</p>
+<h3 id="the-framework-at-a-glance">The framework at a glance</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Family</th>
+<th>The question it answers</th>
+<th>Principal output</th>
+</tr></thead><tbody>
+<tr>
+<td>1. Intent and authorization</td>
+<td>What are we deciding, what is expected, what is allowed, and what can it cost?</td>
+<td>A versioned decision brief and permission envelope</td>
+</tr>
+<tr>
+<td>2. Evidence spine</td>
+<td>What did we acquire, from whom, in which version, and through which transformation?</td>
+<td>Identity, capture, and provenance records</td>
+</tr>
+<tr>
+<td>3. Relationship and claim graph</td>
+<td>What is related, repeated, dependent, supported, contradicted, or missing?</td>
+<td>Typed relationships and claim-evidence states</td>
+</tr>
+<tr>
+<td>4. Discrimination policy</td>
+<td>Which separate judgments apply, and what permitted step should happen next?</td>
+<td>Assessments, a route, and a bounded context packet</td>
+</tr>
+<tr>
+<td>5. Human disposition and memory</td>
+<td>What did the owner accept, reject, defer, or correct, and what history should remain?</td>
+<td>A disposition and versioned ledger</td>
+</tr>
+<tr>
+<td>6. Outcome feedback</td>
+<td>What happened later, and should any policy change?</td>
+<td>An expected-versus-observed comparison and proposed update</td>
+</tr>
+</tbody></table></div>
+<p>The flow is not a conveyor belt. A gap can trigger another search. A reviewer can revise the question. A failed capture can end a branch. An outcome can propose—but should not silently apply—a new weighting rule.</p>
+<h3 id="one-worked-example">One worked example</h3>
+<p><strong>Illustrative example—not a reported case or result.</strong></p>
+<p>A technical team is deciding whether to run a sandbox pilot of a new data-migration tool. Search returns nine positive articles, the vendor documentation, a vendor benchmark, and two issue reports describing rollback failures.</p>
+<p>A flat summary might say that the tool is widely praised, supports rollback, and is substantially faster.</p>
+<p>The discrimination layer asks different questions:</p>
+<ol>
+<li><strong>Intent and authorization.</strong> The decision is only whether to run a sandbox pilot. No production or customer data is authorized. Research has a ninety-minute limit.</li>
+<li><strong>Evidence spine.</strong> The system records each page, publisher, capture time, version, and derivation. All nine positive articles turn out to paraphrase the same launch announcement.</li>
+<li><strong>Relationships and claims.</strong> Nine mentions remain nine observations, but they establish only one known origin under the packet’s relation rule—not nine distinct origins. The feature claim “rollback is supported” links to official documentation. The performance claim links only to the vendor's benchmark. The failure reports are relevant but do not yet establish prevalence.</li>
+<li><strong>Separate assessments.</strong> The vendor is authoritative about what it documents; the packet does not establish separately rooted comparative-performance support. The issue reports have high attention priority but unresolved representativeness. All three claim types are relevant; none receives a universal trust score.</li>
+<li><strong>Route.</strong> Given the remaining time, the system recommends reading the benchmark method and reproducing one rollback path locally. If that cannot be done, it recommends a provisional brief rather than another broad search.</li>
+<li><strong>Context packet.</strong> The decision maker receives the exact documentation, benchmark caveats, both failure reports, the common-origin note, one excluded duplicate, the budget used, and the unresolved questions.</li>
+<li><strong>Disposition and outcome.</strong> The owner may approve a sandbox-only pilot, reject it, or defer. If a pilot occurs, its predefined rollback and migration outcomes can inform a later decision. They do not rewrite the external evidence or prove that the tool is generally good or bad.</li>
+</ol>
+<p>The point is not that the framework magically knows the answer. The point is that it makes the path to a bounded action visible and correctable.</p>
+<h3 id="why-the-distinctions-matter">Why the distinctions matter</h3>
+<p>The framework refuses several convenient collapses:</p>
+<div class="table-wrap"><table><thead><tr>
+<th>This</th>
+<th>Is not this</th>
+</tr></thead><tbody>
+<tr>
+<td>Attention priority</td>
+<td>Truth</td>
+</tr>
+<tr>
+<td>Domain source authority</td>
+<td>Universal trust or permission to act</td>
+</tr>
+<tr>
+<td>Claim support</td>
+<td>Source popularity</td>
+</tr>
+<tr>
+<td>Recurrence</td>
+<td>Independence</td>
+</tr>
+<tr>
+<td>Independence</td>
+<td>Different wording, URLs, or unknown origin</td>
+</tr>
+<tr>
+<td>Relevance</td>
+<td>General importance</td>
+</tr>
+<tr>
+<td>Owner interest</td>
+<td>Endorsement</td>
+</tr>
+<tr>
+<td>Operational authorization</td>
+<td>Domain source authority or technical access</td>
+</tr>
+<tr>
+<td>Enrichment value</td>
+<td>Action priority or acceptance</td>
+</tr>
+<tr>
+<td>Action priority</td>
+<td>A factual conclusion or truth probability</td>
+</tr>
+<tr>
+<td>Provenance</td>
+<td>Correctness</td>
+</tr>
+<tr>
+<td>A signal candidate</td>
+<td>A verified event or conclusion</td>
+</tr>
+<tr>
+<td>A decision to acquire more information</td>
+<td>A factual conclusion</td>
+</tr>
+</tbody></table></div>
+<p>Those separations sound fussy until a system gets one of them wrong. A widely repeated press release can look like corroboration. A high-priority safety report can look like an established fact. An official source can be the best evidence for what it announced and poor evidence for whether the product works. A detailed provenance graph can faithfully trace a false claim.</p>
+<p>The relations themselves also need levels. A <strong>derivation relation</strong> says copied, paraphrased, summarized, translated, quoted, or inferred. An <strong>origin-family relation</strong> says same upstream origin, distinct origin, or unresolved origin. A <strong>claim-stance relation</strong> says supports, refutes, qualifies, or is insufficient. An <strong>action relation</strong> says provisional, hold, escalate, authorized, or unauthorized. One generic <code>relation</code> field cannot safely stand in for all four.</p>
+<h3 id="what-remains-unresolved">What remains unresolved</h3>
+<p>The framework could fail for straightforward reasons:</p>
+<ul>
+<li>It may be a more elaborate diagram around mechanisms that existing systems already combine well.</li>
+<li>Reviewers may not be able to apply its distinctions consistently.</li>
+<li>A simpler retrieval-plus-citation workflow may perform just as well at lower cost.</li>
+<li>Common-origin analysis may suppress genuine convergence or miss coordinated copying.</li>
+<li>Source authority and selection policies may harden institutional bias.</li>
+<li>Human review may become ceremonial.</li>
+<li>Outcome feedback may encode one owner's taste or a contaminated proxy as truth.</li>
+<li>The term <em>discrimination layer</em> may communicate the wrong idea despite explanation.</li>
+</ul>
+<p>Those are not footnotes. They are tests. Until they are run, the maximum claim is that this is a coherent, historically grounded framework worth examining—not that it is complete, novel as a scientific mechanism, or effective.</p>
+<hr>
+<h2 id="complete-version">Complete version</h2>
+<h3 id="where-the-idea-came-from">Where the idea came from</h3>
+<p>The <a href="https://pattern-recognition-map.adonisdv23.chatgpt.site/" rel="noreferrer">v13 visual map</a> began with a practical frustration: much AI-assisted work can feel competent and still feel stale. Its answer was <strong>pattern recognition before generation</strong>. Look beyond the most visible material; find the specialist comment, the repeated unanswered question, the unusual rate of change, the disclosure that differs from its peers, or the prior observation that changes what the current one means.</p>
+<p>V13 put <strong>peripheral signal mining</strong> in the center. Around it sat source weighing, velocity, absence and memory, structured peer patterns, and a learning loop. It also made an essential correction to its own premise: less-visible material is not more truthful. The periphery contains insight, noise, manipulation, copied claims, and ordinary irrelevance. Underweighted is a starting condition, not a conclusion.</p>
+<p>That remains the pulse of this piece.</p>
+<p>The revision changes the architecture around it. “Peripheral” is relative to a task and an observed corpus; we usually do not know what a model's training distribution contains. Recurrence across communities is not necessarily independent evidence. Source track record is not claim support. A velocity anomaly deserves attention, not belief. A gap is meaningful only against an expected baseline. A learning loop is not learning unless an outcome was defined before the story was told.</p>
+<p>The earlier map asked: <em>How do we find the material generic workflows miss?</em> V14 keeps that question and adds a harder one: <em>What gives any item the right to influence the answer?</em></p>
+<h3 id="the-problem-is-context-judgment-not-context-volume">The problem is context judgment, not context volume</h3>
+<p>Retrieval-augmented generation established a practical way to condition generation on external material <a href="https://papers.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html" rel="noreferrer">years ago</a>. Long-context systems can hold more material, but evaluations show that models may use relevant information unevenly depending on its position and the task (<a href="https://aclanthology.org/2024.tacl-1.9/" rel="noreferrer">Liu et al., 2024</a>). More room does not remove the need to decide what belongs in it.</p>
+<p>The decision is not one-dimensional. Consider a single document:</p>
+<ul>
+<li>It can be authoritative for what an organization officially announced.</li>
+<li>It can weakly support a claim about whether the announcement will succeed.</li>
+<li>It can be highly relevant to the current decision.</li>
+<li>It can be derived from another source and add no distinct-origin support under the stated relation rule.</li>
+<li>It can deserve immediate attention because the cost of ignoring it is high.</li>
+<li>It can still be withheld because using it would violate a privacy or authorization boundary.</li>
+</ul>
+<p>Calling the document “trusted,” “important,” or “high quality” erases those differences. The design proposition is that a universal score may make ranking easy while making the source of a mistake harder to inspect and correct; that proposition still requires comparative evaluation.</p>
+<p>The proposed layer therefore does not decide which sources are good. It records a set of typed, scoped judgments and uses them to choose a permitted next action.</p>
+<h3 id="why-call-it-a-discrimination-layer">Why call it a discrimination layer?</h3>
+<p>The word points to a capability that retrieval alone does not name: distinguishing unlike things and judging how they should be treated. The historical map used it for sifting peripheral material before generation. V14 uses it for the broader responsibility that connects acquisition, evidence, comparison, routing, and revision.</p>
+<p>The term carries a serious ambiguity. In ordinary and legal contexts, discrimination often concerns unjust treatment or protected classes. That is not the intended meaning, and a technical definition does not make the social meaning disappear. If representative readers continue to infer the wrong thesis after the definition, the title should change. <strong>Context judgment layer</strong> is the cleanest current alternative.</p>
+<p>The term <em>layer</em> is also conceptual. An implementation might distribute the work across a search service, provenance store, claim graph, policy engine, interface, and memory system. A prompt template can instantiate a small portion. A component named <code>discrimination</code> can instantiate none of it.</p>
+<h3 id="when-this-framework-is-worth-the-overhead">When this framework is worth the overhead</h3>
+<p>The framework is aimed at tasks where evidence selection can materially change a decision:</p>
+<ul>
+<li>claims are consequential, disputed, time-sensitive, or source-dependent;</li>
+<li>several reports may share one origin;</li>
+<li>missing perspectives or longitudinal state matter;</li>
+<li>acquisition or enrichment is costly;</li>
+<li>sensitive information or role permissions constrain use;</li>
+<li>a human must be able to inspect and correct the path;</li>
+<li>later outcomes can be defined and responsibly observed.</li>
+</ul>
+<p>It is probably unnecessary for a low-stakes rewrite, a calculation from complete supplied inputs, or a direct creative task where no factual evidence claim is made. Complexity is not a badge of seriousness. If ordinary retrieval, clear citations, and review solve the problem under matched constraints, use them.</p>
+<h2 id="the-system">The system</h2>
+<h3 id="six-families-eleven-responsibilities">Six families, eleven responsibilities</h3>
+<pre data-language="mermaid"><code>flowchart LR
+    A[&quot;Intent + authorization&quot;] --&gt; B[&quot;Evidence spine&quot;]
+    B --&gt; C[&quot;Relationships + claims&quot;]
+    C --&gt; D[&quot;Separate assessments&quot;]
+    D --&gt; E{&quot;Bounded router&quot;}
+    E --&gt;|&quot;acquire / compare / enrich&quot;| B
+    E --&gt;|&quot;package&quot;| F[&quot;Context packet&quot;]
+    E --&gt;|&quot;clarify / escalate&quot;| G[&quot;Human disposition&quot;]
+    G --&gt; F
+    F --&gt; H[&quot;Generation or human use&quot;]
+    H --&gt; I[&quot;Versioned memory&quot;]
+    G --&gt; I
+    I --&gt; J[&quot;Outcome feedback&quot;]
+    J --&gt;|&quot;propose update&quot;| G</code></pre>
+<p>Text equivalent: a bounded question and permission envelope governs acquisition. Captured material receives stable source, artifact, version, and derivation records. Relationship and claim views expose common origin, recurrence, support, contradiction, and gaps. Separate assessments inform a cost-bounded route. Selected material becomes an inspectable context packet. A human can correct or override the route. Evidence, decisions, and outputs remain versioned. Defined outcomes may later motivate an approved policy update.</p>
+<p>The component map below is deliberately more explicit than the eventual user interface. Its purpose is to make hidden dependencies visible.</p>
+<h3 id="c01-decision-brief-and-authorization-envelope">C01. Decision brief and authorization envelope</h3>
+<p><strong>What is it?</strong> A versioned statement of the question, intended use, decision owner, stakes, expected baselines, allowed operations, sensitive-source rules, and budgets.</p>
+<p><strong>Why does it exist?</strong> Relevance and meaningful absence are task-relative. Acquisition and disclosure require permission. Stopping requires a budget and consequence frame.</p>
+<p><strong>What does it consume?</strong> The owner's question; audience and use; known constraints; privacy, retention, disclosure, and tool permissions; time, money, token, compute, and attention limits; expected sources or perspectives.</p>
+<p><strong>What does it produce?</strong> A decision-brief version, permission policy, expected baseline, cost envelope, and success, abstention, or escalation criteria.</p>
+<p><strong>How does it interact?</strong> Every later record points to this version. It constrains acquisition, defines relevance, gives gaps a baseline, and names the outcomes that feedback may later compare.</p>
+<p><strong>What can go wrong?</strong> Technical access is mistaken for authorization. A vague question makes relevance arbitrary. A baseline is invented after seeing the evidence. A material brief change fails to invalidate old work.</p>
+<p><strong>Example.</strong> The migration-tool brief authorizes public-source research and a synthetic-data sandbox, prohibits production data, and limits the initial decision to whether a pilot is warranted.</p>
+<p><strong>What evidence supports it?</strong> Decision analysis, value-of-information work, mixed-initiative design, and risk-management practice all make task, cost, and authority framing consequential. They do not validate this schema.</p>
+<p><strong>What remains speculative?</strong> The minimum useful brief and whether one representation can travel across domains without flattening their different evidence and permission rules.</p>
+<h3 id="c02-acquisition-controller">C02. Acquisition controller</h3>
+<p><strong>What is it?</strong> A governed mechanism that proposes, authorizes, records, and stops retrieval or collection actions.</p>
+<p><strong>Why does it exist?</strong> Evidence can be absent from current context, but one more search consumes time, money, compute, attention, and sometimes privacy. Information foraging and value-of-information research already treat search as a resource-bounded decision (<a href="https://doi.org/10.1037/0033-295X.106.4.643" rel="noreferrer">Pirolli &amp; Card, 1999</a>; <a href="https://doi.org/10.1109/TSSC.1966.300074" rel="noreferrer">Howard, 1966</a>).</p>
+<p><strong>What does it consume?</strong> The brief; candidate sources, queries, and tools; current gaps and uncertainty; expected improvement; remaining budget.</p>
+<p><strong>What does it produce?</strong> An acquisition proposal, authorization result, capture or failure receipt, immutable raw-artifact reference, and budget update.</p>
+<p><strong>How does it interact?</strong> It receives targeted gaps from the graph and router, gives captures to the evidence spine, and reports costs and failures to later evaluation.</p>
+<p><strong>What can go wrong?</strong> Novelty is mistaken for value. Scope expands silently. A paid, private, or sensitive retrieval runs without permission. A failed capture becomes negative evidence. Search continues because no stop state exists.</p>
+<p><strong>Example.</strong> Instead of searching broadly for more praise, the router authorizes one targeted search for a separately authored rollback test—whose origin relation still must be assessed—because that evidence could change the pilot decision.</p>
+<p><strong>What evidence supports it?</strong> Information foraging, relevance feedback, active learning, value of information, and metareasoning provide strong precedents for bounded selection.</p>
+<p><strong>What remains speculative?</strong> Reliable value estimates in open-world research, particularly when harms are asymmetric and the most important evidence may be rare.</p>
+<h3 id="c03-source-artifact-normalization-and-provenance-spine">C03. Source, artifact, normalization, and provenance spine</h3>
+<p><strong>What is it?</strong> Stable identities and append-only derivation records for sources, artifacts, captures, versions, transformations, actors, and times.</p>
+<p><strong>Why does it exist?</strong> A source is not an artifact. A mutable page is not one timeless object. A normalized extract is not the original. A summary should not acquire authority by losing its origin.</p>
+<p><strong>What does it consume?</strong> Raw captures, source observations, artifact bytes or stable references, transformation specifications, and tool versions.</p>
+<p><strong>What does it produce?</strong> Source and artifact identities, version or hash, normalized representations, provenance edges, and explicit identity ambiguity.</p>
+<p><strong>How does it interact?</strong> It grounds both graphs, travels with context packets and memory, and lets a correction point to exact evidence. <a href="https://www.w3.org/TR/prov-o/" rel="noreferrer">W3C PROV-O</a> is direct prior art for entities, activities, agents, and derivations.</p>
+<p><strong>What can go wrong?</strong> False merges, duplicate counting, qualifier loss, provenance laundering through summaries or embeddings, unversioned page changes, and the presentation of lineage as truth.</p>
+<p><strong>Example.</strong> The vendor documentation, issuing organization, capture time, page version, extracted text, and parser version are linked but separate records.</p>
+<p><strong>What evidence supports it?</strong> Provenance standards, data lineage, and evidence-synthesis practice strongly support traceable derivation.</p>
+<p><strong>What remains speculative?</strong> Reliable identity resolution across aliases and complete provenance through providers whose internal transformations are opaque.</p>
+<h3 id="c04-relationship-recurrence-common-origin-and-gap-graph">C04. Relationship, recurrence, common-origin, and gap graph</h3>
+<p><strong>What is it?</strong> A typed graph among sources, artifacts, events, observations, time points, copies, derivations, recurrences, comparison sets, cohorts, and expected-but-missing perspectives.</p>
+<p><strong>Why does it exist?</strong> Repetition does not establish distinct-origin support. Evidence-synthesis practice explicitly distinguishes multiple reports from multiple underlying studies (<a href="https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04" rel="noreferrer">Cochrane Handbook, chapter 4</a>). Velocity needs repeated time-stamped observations. Meaningful absence needs an expected baseline.</p>
+<p><strong>What does it consume?</strong> Identified sources and artifacts, provenance, timestamps, grouping rules, expected baselines, similarity observations, and citations.</p>
+<p><strong>What does it produce?</strong> Typed relationships, candidate common-origin clusters, recurrence with dependence state, comparison sets, cohort roles, gaps, temporal observations, and explicitly derived signal candidates.</p>
+<p><strong>How does it interact?</strong> It uses evidence-spine identities, informs claim-level origin relations, shapes attention and enrichment, and can request targeted acquisition.</p>
+<p><strong>What can go wrong?</strong> Syndicated copies become votes. Unknown origin becomes independent by default. Similarity becomes shared cause. A cohort becomes a permanent identity. One timestamp becomes velocity. An unspecified expectation manufactures an absence. A signal candidate is displayed as an event.</p>
+<p><strong>Example.</strong> Nine launch articles remain nine observations, but the graph links all nine to the same announcement. It records one known origin and does not pretend that separately rooted support has been established.</p>
+<p><strong>What evidence supports it?</strong> Evidence synthesis, provenance, sensemaking, and research on coordinated amplification support the boundary. Automated common-origin inference remains a design hypothesis.</p>
+<p><strong>What remains speculative?</strong> Useful estimates of partial dependence and defensible thresholds for recurrence, velocity, gaps, or coordination across domains.</p>
+<h3 id="c05-claim-evidence-comparison-and-contradiction-graph">C05. Claim, evidence, comparison, and contradiction graph</h3>
+<p><strong>What is it?</strong> A claim-level view connecting atomic propositions to exact evidence spans, support states, qualifications, contradictions, alternatives, and unresolved questions.</p>
+<p><strong>Why does it exist?</strong> A document can contain claims with different support. A credible publisher does not make every sentence correct. Claim-verification work such as <a href="https://aclanthology.org/N18-1074/" rel="noreferrer">FEVER</a>, <a href="https://aclanthology.org/2020.emnlp-main.609/" rel="noreferrer">SciFact</a>, and <a href="https://aclanthology.org/2023.emnlp-main.741/" rel="noreferrer">FActScore</a> provides bounded precedent for claim-level decomposition and evidence-linked evaluation while also exposing the limits of bounded corpora.</p>
+<p><strong>What does it consume?</strong> Exact artifact spans, candidate claims, source and artifact identity, common-origin relationships, domain evidence standards, and comparison frames.</p>
+<p><strong>What does it produce?</strong> Claim versions; support, contradiction, qualification, and insufficiency edges; rationales; unresolved items; alternatives; and comparison matrices.</p>
+<p><strong>How does it interact?</strong> It receives provenance and origin-dependence context, supplies claim support without deciding action priority, and provides cited material to the context packet.</p>
+<p><strong>What can go wrong?</strong> Claims stay too broad to test. Citation presence is treated as entailment. Domain authority transfers across unrelated claims. Lexical overlap becomes evidence. Different time frames are compared as if equivalent. Open-world unknowns are forced into a binary verdict.</p>
+<p><strong>Example.</strong> “The tool supports rollback” links to documentation. “Rollback is reliable under interruption” remains insufficient until evidence actually tests that condition.</p>
+<p><strong>What evidence supports it?</strong> Claim-verification benchmarks, scientific evidence tools, structured analytic techniques, and evidence-synthesis methods provide established precedents.</p>
+<p><strong>What remains speculative?</strong> Domain-general claim decomposition and evidence standards that transfer without erasing expert judgment.</p>
+<h3 id="c06-multidimensional-assessment">C06. Multidimensional assessment</h3>
+<p><strong>What is it?</strong> Separate task-scoped judgments for attention priority, domain source authority, claim support, independence, relevance, enrichment value, action priority, and owner disposition. Uncertainty and possible consequence qualify those judgments and routes; they are explicit assessment attributes rather than interchangeable scoring dimensions.</p>
+<p><strong>Why does it exist?</strong> Credibility is contextual and multidimensional (<a href="https://doi.org/10.1002/asi.20672" rel="noreferrer">Metzger, 2007</a>). Compressing unlike judgments into one score hides the source of an error and lets one virtue launder another.</p>
+<p><strong>What does it consume?</strong> The brief, source and artifact records, relationship and claim graphs, uncertainty, and possible consequences.</p>
+<p><strong>What does it produce?</strong> Typed assessments with reasons and evidence, unknown or contested states, action considerations, and a review queue.</p>
+<p><strong>How does it interact?</strong> It converts the evidence structure into inputs for routing while keeping every dimension open to human correction.</p>
+<p><strong>What can go wrong?</strong> A trust score becomes a verdict. Owner interest becomes endorsement. First-party evidence is rejected categorically or trusted universally. Model confidence substitutes for support. Precise numbers hide uncertain identity or origin.</p>
+<p><strong>Example.</strong> Official documentation can have high domain authority for the documented feature, strong support for the text it contains, a vendor-linked origin relation with no separately rooted support established, high relevance, and uncertain support for real-world reliability—all simultaneously.</p>
+<p><strong>What evidence supports it?</strong> Source-credibility, epistemic-vigilance, claim-verification, relevance, and calibration research support the separations. No study here establishes this exact set as minimal or usable.</p>
+<p><strong>What remains speculative?</strong> Whether people and models can apply the dimensions reliably, and whether explicit separation improves outcomes enough to offset complexity.</p>
+<h3 id="c07-enrichment-stopping-and-action-router">C07. Enrichment, stopping, and action router</h3>
+<p><strong>What is it?</strong> A policy that compares permitted next actions under uncertainty: acquire, compare, enrich, clarify, answer, answer provisionally, hold, defer, escalate, or refuse.</p>
+<p><strong>Why does it exist?</strong> Assessment has operational value only when it guides a bounded step. But an action decision must not masquerade as a factual conclusion.</p>
+<p><strong>What does it consume?</strong> The separate assessments, evidence and gap states, allowed actions, remaining resources, expected benefit and consequence, deadline, and stopping criteria.</p>
+<p><strong>What does it produce?</strong> A recommended action, alternatives where useful, a reason, an expected benefit and cost range, uncertainty, and a stop or escalation receipt.</p>
+<p><strong>How does it interact?</strong> It can loop to acquisition or comparison, ask a human for permission, route selected evidence to packaging, and log its prediction and cost for later outcome comparison.</p>
+<p><strong>What can go wrong?</strong> An enrichment-value estimate becomes acceptance or dictates action priority. A utility estimate creates false precision. Search stops when a convenient answer appears or never stops because certainty is impossible. The route exceeds its authorization. Attention priority becomes truth probability.</p>
+<p><strong>Example.</strong> With unresolved rollback risk and fifteen minutes remaining, the router chooses one reproducible sandbox check rather than ten more general articles.</p>
+<p><strong>What evidence supports it?</strong> Value of information, metareasoning, resource rationality, and mixed-initiative systems are strong prior art for cost-aware action selection.</p>
+<p><strong>What remains speculative?</strong> Portable utility functions and defensible handling of unknown or asymmetric harm.</p>
+<h3 id="c08-bounded-context-packet">C08. Bounded context packet</h3>
+<p><strong>What is it?</strong> A versioned package of selected material plus provenance, claim links, inclusion and exclusion reasons, unresolved states, budgets, and generation constraints.</p>
+<p><strong>Why does it exist?</strong> A generator needs a usable context. A reviewer needs to know what influenced it and what was left out. A long unstructured prompt guarantees neither.</p>
+<p><strong>What does it consume?</strong> The authorized route, exact artifact spans and claims, provenance, assessments, exclusions, unresolved gaps, and token or disclosure limits.</p>
+<p><strong>What does it produce?</strong> A packet version, selection and exclusion manifests, citation map, uncertainty and abstention instructions, and an invocation receipt.</p>
+<p><strong>How does it interact?</strong> It binds the evidence and routing stages, remains reviewable before use, and links the exact input to the resulting output and later outcome.</p>
+<p><strong>What can go wrong?</strong> Compression alters a claim. Ordering over-amplifies convenient evidence. Exclusions disappear. Provenance is stripped for brevity. Context is called evidence without a support relationship. Sensitive information crosses a disclosure boundary.</p>
+<p><strong>Example.</strong> The migration packet includes the relevant documentation, benchmark method, issue passages, common-origin note, material exclusions, unresolved state, and instruction not to turn insufficiency into certainty.</p>
+<p><strong>What evidence supports it?</strong> RAG, context engineering, long-context evaluation, and provenance supply adjacent precedents. Industry context-engineering guidance is implementation context, not independent validation.</p>
+<p><strong>What remains speculative?</strong> The packet fields, ordering, and compression policy that best improve correction across models and tasks.</p>
+<h3 id="c09-owner-disposition-review-and-override">C09. Owner disposition, review, and override</h3>
+<p><strong>What is it?</strong> A human control surface for accepting, rejecting, deferring, holding, overriding, requesting enrichment, correcting relationships, and revising constraints.</p>
+<p><strong>Why does it exist?</strong> The framework promises correctability. Some permissions and domain judgments belong to accountable people, not the model. Mixed-initiative and human-AI design work emphasizes uncertainty, timing, correction, and control (<a href="https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/" rel="noreferrer">Horvitz, 1999</a>; <a href="https://doi.org/10.1145/3290605.3300233" rel="noreferrer">Amershi et al., 2019</a>).</p>
+<p><strong>What does it consume?</strong> Assessment and route receipts, the context packet, evidence paths, uncertainties, costs, consequences, and the reviewer's role.</p>
+<p><strong>What does it produce?</strong> A versioned disposition, reason, override, correction, changed constraint, or escalation destination.</p>
+<p><strong>How does it interact?</strong> It can revise the brief, correct identity or relationship records, approve or reject a route, alter a packet, and supply a decision to the ledger.</p>
+<p><strong>What can go wrong?</strong> Rubber-stamping. A conclusion appears without its evidence path. Preference is stored as fact. An override has no reason or authority. Review load exceeds available attention. Role-based access hides the context needed to correct the system.</p>
+<p><strong>Example.</strong> An analyst relabels two articles from separately rooted-as-stipulated to common-origin under the packet’s relation rule, records the press release they share, and reruns the route without changing either capture.</p>
+<p><strong>What evidence supports it?</strong> HCI, mixed-initiative, structured-analysis, and risk-management research support explicit control. Merely placing a person in the loop does not guarantee meaningful review.</p>
+<p><strong>What remains speculative?</strong> Which decisions require mandatory review and which interface supports real intervention rather than ceremonial approval.</p>
+<h3 id="c10-versioned-evidence-decision-and-memory-ledger">C10. Versioned evidence, decision, and memory ledger</h3>
+<p><strong>What is it?</strong> Append-only retention of observations, derived interpretations, decisions, packets, outputs, corrections, and supersession relationships, with current views built over the history.</p>
+<p><strong>Why does it exist?</strong> Audit and learning require prior state. Mutable memory can erase why a decision was made or make an old error look like a durable fact. Recent agent-memory systems already explore reflection, links, temporal organization, and fact/opinion distinctions; those mechanisms are prior art, not this framework's invention.</p>
+<p><strong>What does it consume?</strong> Records from the earlier components, retention and access policy, correction events, and model, prompt, and tool versions.</p>
+<p><strong>What does it produce?</strong> Immutable events, current views, supersession links, origin-bound retrieval indexes, an audit timeline, and staleness flags.</p>
+<p><strong>How does it interact?</strong> It preserves every stage, supplies authorized prior cases to later assessment, and gives outcome evaluation the decision state that actually existed at the time.</p>
+<p><strong>What can go wrong?</strong> A summary overwrites evidence. Retrieved memory loses epistemic type. A preference becomes a factual prior. Sensitive records outlive authorization. Version proliferation becomes unusable. Repetition launders authority. Contaminated memory compounds.</p>
+<p><strong>Example.</strong> A corrected rollback claim does not disappear. The earlier version is marked superseded, excluded from default retrieval, and preserved with the evidence and decision context that produced it.</p>
+<p><strong>What evidence supports it?</strong> Provenance, data lineage, organizational learning, and agent-memory research support versioned retention and retrieval.</p>
+<p><strong>What remains speculative?</strong> Safe cross-task reuse and provenance-preserving consolidation at practical scale.</p>
+<h3 id="c11-outcome-feedback-and-revisable-policy-update">C11. Outcome feedback and revisable policy update</h3>
+<p><strong>What is it?</strong> A controlled comparison of recorded expectations, decisions, and costs with defined later observations, followed by a proposed—not silent—update.</p>
+<p><strong>Why does it exist?</strong> V13 called this the system's metabolism. That metaphor earns its place only when the outcome, measurement window, prior decision state, and update authority are real.</p>
+<p><strong>What does it consume?</strong> The decision and route receipts, an expected outcome or decision objective, actual cost, time-stamped outcome observation, confounders and missingness, and current policy versions.</p>
+<p><strong>What does it produce?</strong> An expected-versus-observed comparison, calibration or error record, candidate policy change or no-update decision, and new evidence question.</p>
+<p><strong>How does it interact?</strong> It reads the ledger, may propose changes to the brief or routing rubrics, and sends every proposed change through human disposition. Confidence can be evaluated against observed correctness, but calibration is still distinct from authority, evidence, and utility (<a href="https://proceedings.mlr.press/v70/guo17a.html" rel="noreferrer">Guo et al., 2017</a>).</p>
+<p><strong>What can go wrong?</strong> Outcomes are defined after the fact. A proxy becomes the real objective. Hindsight creates a causal story. Only successes are observed. One owner's preference becomes universal policy. Adversarial feedback changes the system automatically.</p>
+<p><strong>Example.</strong> Before the sandbox, the team defines successful rollback and a time budget. Afterward, it records what happened and the actual cost. That observation may change a pilot rule; it does not establish general product reliability.</p>
+<p><strong>What evidence supports it?</strong> Calibration, organizational learning, decision quality, and human-in-the-loop work supply adjacent foundations.</p>
+<p><strong>What remains speculative?</strong> Causal attribution in the field and whether feedback improves routing without reinforcing local bias or manipulation.</p>
+<h2 id="how-the-parts-connect">How the parts connect</h2>
+<h3 id="two-loops-one-preserved-history">Two loops, one preserved history</h3>
+<p>The framework has two different loops.</p>
+<p>The <strong>evidence loop</strong> operates within a decision. A gap, contradiction, or ambiguity can send the system back to acquire, identify, compare, or clarify. It stops under a visible rule. This loop can improve the current context but cannot convert the act of searching into proof.</p>
+<p>The <strong>learning loop</strong> operates across decisions. A later, predefined outcome can motivate a new source prior, routing rule, or baseline. It moves more slowly and should be harder to change. It never edits raw evidence or silently replaces the policy under which the earlier decision was made.</p>
+<p>Mixing the loops creates a dangerous shortcut: “the system searched for this, therefore it matters; the owner accepted it, therefore it was true; the outcome looked good, therefore the reasoning was correct.” Every arrow in that sentence needs its own evidence.</p>
+<h3 id="observations-interpretations-decisions-and-outcomes">Observations, interpretations, decisions, and outcomes</h3>
+<p>Four record types should remain visible:</p>
+<ol>
+<li><strong>Observation:</strong> what was captured or directly recorded, with source and time.</li>
+<li><strong>Interpretation:</strong> an inferred relationship, assessment, claim, gap, or signal candidate.</li>
+<li><strong>Decision:</strong> a route or human disposition under a stated policy and authority.</li>
+<li><strong>Outcome:</strong> a later observation linked to a prior decision and measurement window.</li>
+</ol>
+<p>An interpretation can be corrected without deleting the observation. A decision can be reversed without pretending it was never made. An outcome can challenge a policy without proving a single cause.</p>
+<h3 id="state-and-receipts">State and receipts</h3>
+<p>A conceptual lifecycle is:</p>
+<p><code>PROPOSED → AUTHORIZED | NOT_AUTHORIZED → OBSERVED | FAILED → IDENTIFIED → RELATED → ASSESSED → ROUTED → HELD | EXCLUDED | DISPOSED → PACKAGED → USED → OUTCOME_RECORDED → UPDATE_PROPOSED → SUPERSEDED</code></p>
+<p>This is not one compulsory pipeline. It is a reminder that failure, exclusion, uncertainty, staleness, and supersession are first-class states. A material transition should identify the object version, actor or policy, inputs, reason, time, and permission.</p>
+<h2 id="three-implementation-paths-without-a-hierarchy">Three implementation paths—without a hierarchy</h2>
+<p>V13 offered three paths that remain useful if treated as examples rather than maturity levels.</p>
+<h3 id="process-practice">Process practice</h3>
+<p>A team can add a lightweight discrimination practice to existing work: define the decision, ask what evidence would change it, separate source authority from claim support, record material exclusions, and state why research stopped.</p>
+<p>This is cheap and inspectable. It is also fragile: habits decay, prompts drift, and individual judgment is hard to audit at scale.</p>
+<h3 id="coordinating-systems-responsibility">Coordinating systems responsibility</h3>
+<p>A workflow can connect retrieval, provenance, claim relationships, policy, review, and memory so that the user asks normally while the system assembles an inspectable context packet.</p>
+<p>This is the main architectural proposal here. Its risk is architecture theater—a large amount of metadata and orchestration that does not improve the decision.</p>
+<h3 id="model-level-behavior">Model-level behavior</h3>
+<p>Training, fine-tuning, or agent policies can encourage models to seek missing information, preserve epistemic types, or abstain under uncertainty.</p>
+<p>Model-level behavior does not remove the need for external evidence identity, permissions, receipts, or human authority. It may also be the wrong investment for a narrow workflow.</p>
+<p>The paths can coexist. None is inherently deepest or most defensible. The right choice depends on the task, available data, required control, and cost of being wrong.</p>
+<h2 id="the-strongest-counterarguments">The strongest counterarguments</h2>
+<h3 id="this-is-old-work-wearing-a-new-label">This is old work wearing a new label</h3>
+<p>Much of it is old work. Information foraging, relevance feedback, source credibility, claim verification, provenance, evidence synthesis, sensemaking, mixed initiative, value of information, RAG, calibration, memory, and organizational learning already own the mechanisms.</p>
+<p>The honest contribution is a proposed integration and distinction contract for pre-generation context judgment, plus an evaluation agenda. If a systematic review finds that an existing framework already covers the same responsibility more clearly, this one should be subsumed or abandoned.</p>
+<h3 id="the-layer-can-become-a-gatekeeper">The layer can become a gatekeeper</h3>
+<p>Selection controls what a model can see. An organization can encode incumbent authority, hide dissent, or call inconvenient evidence irrelevant. Detailed rules can make the exclusion look neutral.</p>
+<p>The response is not “better trust scoring.” It is scoped authority, visible exclusions, contestable assessments, role-aware override, and governance of who defines the policy. Even then, the risk remains.</p>
+<h3 id="provenance-can-become-rigor-theater">Provenance can become rigor theater</h3>
+<p>A perfectly traced falsehood is still false. A receipt can document a bad decision in exquisite detail. Provenance earns its cost only if it improves inspection, correction, reproducibility, or accountability.</p>
+<h3 id="the-framework-may-cost-more-than-it-saves">The framework may cost more than it saves</h3>
+<p>Eleven responsibilities can become a bureaucracy. The test is not whether every field can be populated. It is whether a minimal configuration beats ordinary retrieval, citations, and review on supported claims, correction, decision quality, or evidence gain per unit cost.</p>
+<h3 id="human-review-can-be-decorative">Human review can be decorative</h3>
+<p>Reviewers can rubber-stamp, defer to polished output, or lack the context to intervene. The framework needs to measure when people correct it, when they should have corrected it, and what the review costs. “Human in the loop” is not a result.</p>
+<h3 id="feedback-can-optimize-the-wrong-thing">Feedback can optimize the wrong thing</h3>
+<p>Owner acceptance may reflect taste, incentives, or fatigue. A downstream success can be unrelated to the evidence path. Some important outcomes arrive too late to learn from. The system should update routing priors only from defined, scoped observations—and sometimes the correct update is no update.</p>
+<h2 id="a-second-example-when-not-to-use-the-full-framework">A second example: when not to use the full framework</h2>
+<p><strong>Illustrative counterexample.</strong> A user asks an assistant to rewrite a paragraph they supplied in a warmer tone. No new factual claim, source acquisition, longitudinal state, or consequential action is involved. A clear instruction and direct output are probably sufficient.</p>
+<p>Forcing source identities, claim graphs, common-origin analysis, and an outcome ledger into that task would not make it more responsible. It would make it slower and stranger. The discrimination responsibility should scale down to the problem; sometimes it should disappear entirely.</p>
+<h2 id="enterprise-translation-kept-in-its-place">Enterprise translation—kept in its place</h2>
+<p>Organizations can apply the same questions to internal research, competitive intelligence, compliance, technical evaluation, knowledge management, incident analysis, or evidence-sensitive assistance. The requirements become stricter: role-based access, sensitive-source handling, lineage, retention, model and prompt versioning, cost allocation, review authority, reproducibility, and failure response.</p>
+<p>Those controls are necessary for a serious enterprise implementation and insufficient to establish that it is safe, compliant, or valuable. A plausible requirements map is not enterprise readiness. The detailed boundary is in <span class="local-ref">Enterprise Translation and Limits <code>../case-studies/ENTERPRISE<em>TRANSLATION</em>AND_LIMITS.md</code></span>.</p>
+<h2 id="two-bounded-product-case-studies">Two bounded product case studies</h2>
+<h3 id="alpha-solver-reasoning-posture-not-validation">Alpha Solver: reasoning posture, not validation</h3>
+<p>Alpha Solver helps illustrate structured reasoning, clarification, routing, evidence-bounded answers, replay, and budget controls. Its inspected discrimination-layer demo packet explicitly reports itself as captured but not executed; a related manual value read reports no simulation or runtime result and stops inconclusively.</p>
+<p>That makes it useful here precisely because it exposes the difference between a framework, an evaluation design, and evidence. Alpha Solver does not validate general AI reasoning or the discrimination layer. See the exact revision and artifacts in <span class="local-ref">Alpha Solver Case-Study Boundary <code>../case-studies/ALPHA<em>SOLVER</em>CASE<em>STUDY</em>BOUNDARY.md</code></span>.</p>
+<h3 id="signal-foundry-evidence-responsibilities-not-a-universal-model">Signal Foundry: evidence responsibilities, not a universal model</h3>
+<p>Signal Foundry helps illustrate high-volume intake, source and artifact identity, inventory, provenance, grouping, enrichment selection, destination resolution, saved versus unsaved state, evidence/context separation, owner correction, and a deliberately non-claiming <code>Pattern Candidate</code> boundary.</p>
+<p>Its inspected documents are boundary and handoff specifications, not runtime validation of this framework. Its object model is product-specific. Visual evidence remains separate from transcript-backed evidence. Signal Foundry does not prove that the v14 architecture is correct or complete. See <span class="local-ref">Signal Foundry Case-Study Boundary <code>../case-studies/SIGNAL<em>FOUNDRY</em>CASE<em>STUDY</em>BOUNDARY.md</code></span>.</p>
+<p>The two projects were shaped in related intellectual terrain. Treating them as independent proof would be circular.</p>
+<h2 id="limitations">Limitations</h2>
+<ol>
+<li><strong>No empirical evaluation.</strong> This project reports no experiment, participant study, field outcome, or comparative performance result.</li>
+<li><strong>No claim of mechanism novelty.</strong> The components have extensive prior art. The proposed integration may also overlap a framework not yet found by the current targeted review.</li>
+<li><strong>No proven minimum.</strong> Eleven components are an analytical decomposition, not evidence that every task needs eleven implemented modules.</li>
+<li><strong>No validated constructs.</strong> Reviewers may not reliably distinguish authority, support, independence, relevance, attention, enrichment value, action priority, and disposition.</li>
+<li><strong>Open-world evidence remains hard.</strong> Sources change, origins are obscured, important evidence is inaccessible, and support can remain contested.</li>
+<li><strong>Costs and utilities are uncertain.</strong> A clean stopping rule can still stop before rare decisive evidence or encode the wrong consequence model.</li>
+<li><strong>Human control is not guaranteed.</strong> Interfaces and organizational incentives can turn review into ceremony.</li>
+<li><strong>Memory can amplify error.</strong> Retention, retrieval, and summarization can preserve stale, biased, or manipulated content.</li>
+<li><strong>The name may fail.</strong> <code>Discrimination layer</code> may remain ambiguous or harmful despite an explicit technical definition.</li>
+<li><strong>The historical HTML is still pending.</strong> The original v13 diagram is now preserved and its supplied hash is verified; the expected standalone HTML remains unavailable and unverified.</li>
+<li><strong>Product cases are illustrative.</strong> Alpha Solver and Signal Foundry are not independent validation.</li>
+<li><strong>No publication or owner approval.</strong> This is a local review draft.</li>
+</ol>
+<h2 id="research-horizon">Research horizon</h2>
+<p>The next defensible step is not to make the diagram bigger. It is to make one claim smaller and test it.</p>
+<h3 id="narrowest-current-first-paper-candidate-oracle-origin-metadata-in-one-frozen-model">Narrowest current first-paper candidate: oracle origin metadata in one frozen model</h3>
+<p>The current first-paper candidate does not test the full layer. It asks whether, on newly authored fictional evidence bundles with stipulated provenance, a typed <code>dependent</code> / <code>independent_as_stipulated</code> / <code>unknown</code> metadata condition produces less all-assigned risk-coded false corroboration than the same origin-counting rule without that metadata, on one frozen model. Recall of stipulated supporting origins on a fixed manifest set, with a candidate five-percentage-point non-inferiority margin, is the safety endpoint. Retrieval, routing, human correction, memory, authority, real-world independence, and field outcomes are out of scope.</p>
+<p>This is an oracle origin-relation metadata condition, not automated provenance discovery or evidence about an internal reasoning mechanism. A positive result would support only a bounded condition-effect claim for the tested model, prompt, labels, and generator. The study design is in <span class="local-ref">Oracle Origin-Relation Metadata in One Frozen Model <code>../research/ORIGIN<em>ACCOUNTING</em>STUDY<em>PROTOCOL</em>V0.md</code></span>, with the full schema, prompt, parser, power, and release contract in the <span class="local-ref">Loop 3 consolidated operationalization specification <code>../research/overnight/rounds/08<em>LOOP2</em>OPERATIONALIZATION_SPEC.md</code></span>.</p>
+<h3 id="first-lock-the-claim-and-prior-art-boundary">First: lock the claim and prior-art boundary</h3>
+<p>Run a protocol-led review across information retrieval, evidence synthesis, provenance, sensemaking, mixed initiative, context engineering, memory, decision support, adaptive search, source-reliability RAG, and claim/evidence interfaces. Compare the project with integrated precedents, not only component-by-component ancestors. Keep “discrimination layer” as the historical thought-piece label; use a functional scientific title unless a later comprehension study supports the old name.</p>
+<h3 id="second-build-and-audit-the-narrow-origin-benchmark">Second: build and audit the narrow origin benchmark</h3>
+<p>Create 300 fictional primary bundles balanced across one-origin repetition, multiple-origin convergence, unknown origin, and conflict, plus 60 locked stress bundles. Split by proposition and origin family. Use opaque IDs, fixed-width metadata slots, crossed lexical overlap and style, exact/near-duplicate checks, and a surface-only shortcut classifier. Synthetic origin is true only by construction; it does not establish real-world epistemic independence.</p>
+<h3 id="third-compare-three-tightly-controlled-conditions">Third: compare three tightly controlled conditions</h3>
+<p>Hold the evidence, model, decoding, output contract, and metadata length fixed. Compare citation-only, citation plus an explicit origin-counting rule, and the same rule plus typed relation cues. If the rule-only condition matches the typed-cue condition, the result belongs to instruction design rather than provenance representation. If the typed cue suppresses valid convergence, reject it.</p>
+<h3 id="fourth-earn-each-larger-question-separately">Fourth: earn each larger question separately</h3>
+<p>Only after a stable origin-accounting effect or failure exists should the program choose one next study: noisy provenance inference, construct/terminology comprehension, a claim/evidence correction interface, or a candidate profiled action policy against strong source-faithful and source-reliability baselines. Human studies require their own endpoint, burden, and accessibility design; longitudinal field work requires separate governance, defined outcomes, and independent replication. None is an automatic next phase.</p>
+<p>The complete paths, ethics requirements, falsifiers, and venue audiences are in <span class="local-ref">Research-Paper Readiness Path <code>../research/RESEARCH<em>PAPER</em>READINESS_PATH.md</code></span>.</p>
+<h2 id="what-would-materially-weaken-or-retire-this-framework-for-a-named-task-class">What would materially weaken or retire this framework for a named task class?</h2>
+<p>For a predefined task class, the framework should be narrowed, renamed, or retired if preregistered measures and thresholds show that:</p>
+<ul>
+<li>an established framework already covers the same responsibility with clearer concepts;</li>
+<li>reviewers cannot apply the distinctions with useful reliability;</li>
+<li>the candidate profiled policy does not beat strong simpler baselines under matched resources;</li>
+<li>common-origin analysis creates more evidential distortion than it prevents;</li>
+<li>the review and provenance burden outweighs gains in correction or decision quality;</li>
+<li>outcome updates worsen calibration, diversity, or subgroup outcomes;</li>
+<li>the terminology persistently causes a materially wrong understanding.</li>
+</ul>
+<p>Those are candidate empirical failure conditions, not yet operationalized results. Each needs a named task scope, comparator, unit, threshold, and measurement protocol. A framework becomes more serious when it names the conditions under which it should lose.</p>
+<h2 id="closing">Closing</h2>
+<p>The original instinct was simple: the answer that matters may not be in the most obvious material, and a model will not rescue a weak evidence environment merely by writing well.</p>
+<p>The revised instinct is more demanding. Finding overlooked material is only one move. The system must also know what it observed, what shares an origin, what supports which claim, what is relevant to this decision, what it is allowed to do next, what it chose not to include, who can correct it, and what later outcome could justify a change.</p>
+<p>That is the discrimination layer: not a truth machine, not an expert replacement, and not a universal stack. It is a proposal to make the judgment before generation visible.</p>
+<p>The proposal is useful if that visibility helps people catch consequential mistakes and choose better next actions. If it does not, the extra layer is only more machinery.</p>
+<hr>
+<h2 id="evidence-and-status-legend">Evidence and status legend</h2>
+<ul>
+<li><strong>Historical v13 claim:</strong> present in the owner-designated live v13 reference; historical presence does not establish truth.</li>
+<li><strong>Primary-source-supported:</strong> a bounded statement supported by a named paper, standard, or official source.</li>
+<li><strong>Conceptual synthesis:</strong> a reasoned integration or distinction; not independently validated.</li>
+<li><strong>Design hypothesis:</strong> a proposed architecture, interface, or policy requiring evaluation.</li>
+<li><strong>Empirical hypothesis:</strong> a measurable prediction with no result reported here.</li>
+<li><strong>Illustrative example:</strong> a synthetic or bounded explanation; not a case result.</li>
+<li><strong>Case-derived:</strong> a bounded observation from an exact product artifact; not general evidence.</li>
+</ul>
+<p>Canonical audit artifacts:</p>
+<ul>
+<li><span class="local-ref">Thesis and Terminology Contract <code>THESIS<em>AND</em>TERMINOLOGY_CONTRACT.md</code></span></li>
+<li><span class="local-ref">Framework Component Map <code>FRAMEWORK<em>COMPONENT</em>MAP.md</code></span></li>
+<li><span class="local-ref">Claims and Evidence Register <code>../research/CLAIMS<em>AND</em>EVIDENCE_REGISTER.md</code></span></li>
+<li><span class="local-ref">Prior Art and Adjacent Fields <code>../research/PRIOR<em>ART</em>AND<em>ADJACENT</em>FIELDS_MAP.md</code></span></li>
+<li><span class="local-ref">Overclaim and Counterargument Register <code>../research/OVERCLAIM<em>AND</em>COUNTERARGUMENT_REGISTER.md</code></span></li>
+<li><span class="local-ref">References <code>../research/REFERENCES.md</code></span></li>
+<li><span class="local-ref">V13 Recovery and Intent Memo <code>../reports/V13<em>RECOVERY</em>AND<em>INTENT</em>MEMO.md</code></span></li>
+</ul><p class="source-note">Generated 2026-08-19. Inline CSS; no JavaScript, fonts, images, or local runtime dependencies. Repository-relative links are displayed as paths rather than presented as live standalone links.</p></main>
+<aside aria-label="On this page"><h2>On this page</h2><ul><li class="level-1"><a href="#pattern-recognition-the-discrimination-layer">Pattern Recognition: The Discrimination Layer</a></li><li class="level-2"><a href="#a-visual-systems-framework-for-deciding-what-information-deserves-acquisition-comparison-enrichment-and-influence-before-ai-generates">A visual systems framework for deciding what information deserves acquisition, comparison, enrichment, and influence before AI generates</a></li><li class="level-2"><a href="#five-minute-version">Five-minute version</a></li><li class="level-3"><a href="#the-problem">The problem</a></li><li class="level-3"><a href="#the-thesis">The thesis</a></li><li class="level-3"><a href="#the-framework-at-a-glance">The framework at a glance</a></li><li class="level-3"><a href="#one-worked-example">One worked example</a></li><li class="level-3"><a href="#why-the-distinctions-matter">Why the distinctions matter</a></li><li class="level-3"><a href="#what-remains-unresolved">What remains unresolved</a></li><li class="level-2"><a href="#complete-version">Complete version</a></li><li class="level-3"><a href="#where-the-idea-came-from">Where the idea came from</a></li><li class="level-3"><a href="#the-problem-is-context-judgment-not-context-volume">The problem is context judgment, not context volume</a></li><li class="level-3"><a href="#why-call-it-a-discrimination-layer">Why call it a discrimination layer?</a></li><li class="level-3"><a href="#when-this-framework-is-worth-the-overhead">When this framework is worth the overhead</a></li><li class="level-2"><a href="#the-system">The system</a></li><li class="level-3"><a href="#six-families-eleven-responsibilities">Six families, eleven responsibilities</a></li><li class="level-3"><a href="#c01-decision-brief-and-authorization-envelope">C01. Decision brief and authorization envelope</a></li><li class="level-3"><a href="#c02-acquisition-controller">C02. Acquisition controller</a></li><li class="level-3"><a href="#c03-source-artifact-normalization-and-provenance-spine">C03. Source, artifact, normalization, and provenance spine</a></li><li class="level-3"><a href="#c04-relationship-recurrence-common-origin-and-gap-graph">C04. Relationship, recurrence, common-origin, and gap graph</a></li><li class="level-3"><a href="#c05-claim-evidence-comparison-and-contradiction-graph">C05. Claim, evidence, comparison, and contradiction graph</a></li><li class="level-3"><a href="#c06-multidimensional-assessment">C06. Multidimensional assessment</a></li><li class="level-3"><a href="#c07-enrichment-stopping-and-action-router">C07. Enrichment, stopping, and action router</a></li><li class="level-3"><a href="#c08-bounded-context-packet">C08. Bounded context packet</a></li><li class="level-3"><a href="#c09-owner-disposition-review-and-override">C09. Owner disposition, review, and override</a></li><li class="level-3"><a href="#c10-versioned-evidence-decision-and-memory-ledger">C10. Versioned evidence, decision, and memory ledger</a></li><li class="level-3"><a href="#c11-outcome-feedback-and-revisable-policy-update">C11. Outcome feedback and revisable policy update</a></li><li class="level-2"><a href="#how-the-parts-connect">How the parts connect</a></li><li class="level-3"><a href="#two-loops-one-preserved-history">Two loops, one preserved history</a></li><li class="level-3"><a href="#observations-interpretations-decisions-and-outcomes">Observations, interpretations, decisions, and outcomes</a></li><li class="level-3"><a href="#state-and-receipts">State and receipts</a></li><li class="level-2"><a href="#three-implementation-paths-without-a-hierarchy">Three implementation paths—without a hierarchy</a></li><li class="level-3"><a href="#process-practice">Process practice</a></li><li class="level-3"><a href="#coordinating-systems-responsibility">Coordinating systems responsibility</a></li><li class="level-3"><a href="#model-level-behavior">Model-level behavior</a></li><li class="level-2"><a href="#the-strongest-counterarguments">The strongest counterarguments</a></li><li class="level-3"><a href="#this-is-old-work-wearing-a-new-label">This is old work wearing a new label</a></li><li class="level-3"><a href="#the-layer-can-become-a-gatekeeper">The layer can become a gatekeeper</a></li><li class="level-3"><a href="#provenance-can-become-rigor-theater">Provenance can become rigor theater</a></li><li class="level-3"><a href="#the-framework-may-cost-more-than-it-saves">The framework may cost more than it saves</a></li><li class="level-3"><a href="#human-review-can-be-decorative">Human review can be decorative</a></li><li class="level-3"><a href="#feedback-can-optimize-the-wrong-thing">Feedback can optimize the wrong thing</a></li><li class="level-2"><a href="#a-second-example-when-not-to-use-the-full-framework">A second example: when not to use the full framework</a></li><li class="level-2"><a href="#enterprise-translation-kept-in-its-place">Enterprise translation—kept in its place</a></li><li class="level-2"><a href="#two-bounded-product-case-studies">Two bounded product case studies</a></li><li class="level-3"><a href="#alpha-solver-reasoning-posture-not-validation">Alpha Solver: reasoning posture, not validation</a></li><li class="level-3"><a href="#signal-foundry-evidence-responsibilities-not-a-universal-model">Signal Foundry: evidence responsibilities, not a universal model</a></li><li class="level-2"><a href="#limitations">Limitations</a></li><li class="level-2"><a href="#research-horizon">Research horizon</a></li><li class="level-3"><a href="#narrowest-current-first-paper-candidate-oracle-origin-metadata-in-one-frozen-model">Narrowest current first-paper candidate: oracle origin metadata in one frozen model</a></li><li class="level-3"><a href="#first-lock-the-claim-and-prior-art-boundary">First: lock the claim and prior-art boundary</a></li><li class="level-3"><a href="#second-build-and-audit-the-narrow-origin-benchmark">Second: build and audit the narrow origin benchmark</a></li><li class="level-3"><a href="#third-compare-three-tightly-controlled-conditions">Third: compare three tightly controlled conditions</a></li><li class="level-3"><a href="#fourth-earn-each-larger-question-separately">Fourth: earn each larger question separately</a></li><li class="level-2"><a href="#what-would-materially-weaken-or-retire-this-framework-for-a-named-task-class">What would materially weaken or retire this framework for a named task class?</a></li><li class="level-2"><a href="#closing">Closing</a></li><li class="level-2"><a href="#evidence-and-status-legend">Evidence and status legend</a></li></ul></aside>
+</div>
+</body>
+</html>

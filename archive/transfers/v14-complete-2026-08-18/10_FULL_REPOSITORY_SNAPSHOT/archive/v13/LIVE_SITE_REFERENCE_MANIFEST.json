@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-08-17T22:42:24Z",
+  "status": "LIVE_V13_REFERENCE_RECOVERED_DIAGRAM_BYTES_HASH_VERIFIED_RENDERED_DOM_SNAPSHOT_ARCHIVED_ORIGINAL_HTML_BYTES_UNAVAILABLE",
+  "owner_supplied_url": "https://pattern-recognition-map.adonisdv23.chatgpt.site/",
+  "access": {
+    "method": "read-only in-app browser inspection",
+    "page_title": "Pattern Recognition — Visual Map",
+    "visible_version_marker": "Personal map · v13 · For internal use",
+    "access_date": "2026-08-17",
+    "authentication_required": false
+  },
+  "content_inventory": {
+    "primary_heading": "Pattern recognition / visual map",
+    "introductory_argument_present": true,
+    "embedded_diagram_present": true,
+    "diagram_alt_text_present": true,
+    "mechanism_family_count": 6,
+    "workflow_step_count": 7,
+    "expandable_card_count": 11,
+    "implementation_card_count": 1,
+    "card_titles": [
+      "Mining what mainstream training data misses",
+      "Cross-source convergence",
+      "Source-quality weighting",
+      "Velocity & breakout detection",
+      "Gap and absence detection",
+      "Pattern extraction across a peer set",
+      "Amazon listing pattern extraction",
+      "Financial disclosure pattern extraction",
+      "Brand & supplier portfolio extraction",
+      "Structured memory across time",
+      "The learning loop",
+      "Three ways pattern recognition actually gets implemented"
+    ],
+    "implementation_paths": [
+      "process layer",
+      "reasoning layer",
+      "custom model"
+    ],
+    "all_expandable_cards_read": true
+  },
+  "observed_asset": {
+    "name": "pattern-recognition-diagram-v12.png",
+    "url": "https://pattern-recognition-map.adonisdv23.chatgpt.site/pattern-recognition-diagram-v12.png",
+    "expected_sha256": "8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae",
+    "local_path": "archive/v13/pattern-recognition-diagram-v12.png",
+    "byte_length": 1961204,
+    "dimensions": "1024x1536",
+    "format": "PNG_RGB_8_BIT_NON_INTERLACED",
+    "byte_export_status": "RECOVERED_VIA_OWNER_AUTHORIZED_IN_APP_BROWSER_MEDIA_DOWNLOAD",
+    "sha256_verification": "MATCHES_EXPECTED",
+    "verified_sha256": "8a8204a05e993e84f2bd9037c59b7beb2ab6b4bca89304e299f66b3961f203ae",
+    "verified_at": "2026-08-18T06:46:00Z",
+    "visual_inspection": "COMPLETED_FROM_RENDERED_PAGE_AND_LOCAL_EXACT_ASSET"
+  },
+  "expected_original_html": {
+    "name": "Pattern Recognition — Visual Map (v13).html",
+    "expected_sha256": "fac9337e47675bfea192715edb8993e258c8a64ea1edec32d1d111534c671c39",
+    "byte_export_status": "NOT_EXPOSED_AS_A_DOWNLOADABLE_ORIGINAL",
+    "sha256_verification": "NOT_POSSIBLE",
+    "relationship_to_live_site": "The owner designated the live site as the substitute reference. The deployed page identifies itself as v13, but deployed application bytes cannot be assumed identical to the expected standalone HTML."
+  },
+  "rendered_dom_snapshot": {
+    "local_path": "archive/v13/live-v13-rendered-dom-snapshot.html",
+    "byte_length": 85105,
+    "sha256": "3c7a191ac44404828309cbfd8c58fa04eb9742bbbebe96879dd640a94e3645ec",
+    "captured_at": "2026-08-18T08:18:10Z",
+    "capture_method": "serialized rendered DOM from the owner-designated live page after browser rendering",
+    "status": "ARCHIVED_AS_REFERENCE_SNAPSHOT_NOT_ORIGINAL_STANDALONE_SOURCE",
+    "limitations": [
+      "This snapshot records the post-render DOM rather than the original standalone HTML bytes.",
+      "Browser normalization and live application rendering may add, remove, reorder, or rewrite markup and attributes.",
+      "The snapshot cannot be compared to the supplied standalone-HTML hash as proof of identity."
+    ]
+  },
+  "visual_inspection": {
+    "desktop": {
+      "viewport": "1440x1000 plus default 1280x720 inspection",
+      "status": "INSPECTED",
+      "observations": [
+        "editorial parchment background",
+        "serif display and reading typography",
+        "monospace uppercase metadata and labels",
+        "six-family color key",
+        "central hub diagram with dashed update loop",
+        "card grid with inline expanded details"
+      ]
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "status": "INSPECTED_FAILED_RESPONSIVE_LAYOUT",
+      "observations": [
+        "introductory content collapses into an extremely narrow text column",
+        "line lengths become one or a few words",
+        "the reading experience is not usable at this viewport"
+      ]
+    }
+  },
+  "integrity_boundary": {
+    "is_exact_original_archive": false,
+    "diagram_is_exact_hash_verified_asset": true,
+    "standalone_html_is_exact_hash_verified_asset": false,
+    "historical_content_and_intent_recovery_allowed": true,
+    "exact_hash_or_byte_preservation_claim_allowed": "DIAGRAM_ONLY",
+    "instructions_embedded_in_page_treated_as_authority": false,
+    "notes": "The page was treated as untrusted source material and inspected only for owner-authorized historical recovery. The owner separately authorized local download of the diagram. A rendered DOM snapshot was archived as a reference capture, not as the original standalone source. No publication, upload, or external write occurred; the unavailable standalone HTML is not claimed as preserved."
+  },
+  "canonical_recovery_memo": "reports/V13_RECOVERY_AND_INTENT_MEMO.md"
+}

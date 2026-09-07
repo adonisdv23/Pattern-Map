@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.1",
+  "status": "COMPLETE_READ_ONLY_RENDERED_TEXT_CAPTURE",
+  "start_timestamp": "2026-08-18T00:08:10Z",
+  "completion_observed_at": "2026-08-18T04:32:19Z",
+  "requested_surface": "Claude Desktop / Claude Work",
+  "requested_task_id": "cse_01R4yYV4PpeW88z2ywP8fkDz",
+  "task": {
+    "reached": true,
+    "official_route": "https://claude.ai/code/cse_01R4yYV4PpeW88z2ywP8fkDz",
+    "visible_title": "Pattern Map research",
+    "authenticated": true,
+    "existing_owner_attachment_visible": "Pattern Map Research.zip"
+  },
+  "model": {
+    "visible_model_control": "Opus 5",
+    "visible_effort_control": "Max",
+    "combined_owner_screenshot_label": "Opus 5 Max",
+    "substitute_model_used": false,
+    "inference_started": true
+  },
+  "inputs": {
+    "curated_zip_packet_uploaded": false,
+    "manual_direct_upload_completed_by_owner": true,
+    "files_confirmed_in_completed_run": [
+      "THOUGHT_PIECE_V14.md",
+      "VISUAL_SYSTEM_RATIONALE.md",
+      "12 PNG captures"
+    ],
+    "packet_manifest": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_PACKET_MANIFEST.json",
+    "unused_packet_path": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_PACKET.zip",
+    "unused_packet_sha256": "c4ccce735bacadfdf20dcf429e49ee14b3b016f63e3eff418deb462953409eb2",
+    "source_version_boundary": "The owner stated that the zip already present in Claude may differ slightly from the ChatGPT-hosted original while containing the same material. The completed visual run used the two named markdown files and twelve directly uploaded PNG captures."
+  },
+  "prompt": {
+    "path": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_PROMPT.md",
+    "transmitted": true,
+    "transmission_actor": "owner_manual_submission"
+  },
+  "response": {
+    "produced": true,
+    "visible_artifact_name": "V14_VISUAL_READER_CRITIQUE.md",
+    "raw_output": "reviews/claude_desktop/CLAUDE_VISUAL_REVIEW_RAW_OUTPUT.md",
+    "capture_kind": "complete_visible_rendered_text",
+    "visible_text_characters": 26430,
+    "visible_text_lines": 186,
+    "visible_text_sha256": "f62268688ef6b9a4d9051f88c3488827adb564d39eeb79674e7211d24933b704",
+    "raw_output_file_sha256": "f458fb03dcd5ea45e38154c61be2211d362fa4ba8cf201e67f2e4dd444ff3a7f",
+    "treated_as_evidence": false,
+    "independent_disposition": "reviews/claude_desktop/CODEX_DISPOSITION_OF_CLAUDE_VISUAL_REVIEW.md"
+  },
+  "download_boundary": {
+    "underlying_artifact_downloaded": false,
+    "exact_failure": "Browser Use rejected the attempted artifact download after the user cancelled/declined the transfer permission.",
+    "retry_or_workaround_attempted": false,
+    "effect": "None on review completeness because the full rendered visible text was captured and hashed read-only."
+  },
+  "prior_blocked_routes": {
+    "curated_zip_upload": "Browser Use rejected the action because the user declined/cancelled the transfer permission; the upload was not retried.",
+    "desktop_control_service": "Sky Computer Use service startup failed; Claude application activation returned -1728 and direct display capture was unavailable.",
+    "resolution": "The owner used the normal Claude Work attachment UI to upload the individual review files and submit the prompt."
+  },
+  "zero_mutation_confirmation": {
+    "repository_access_granted_to_claude": false,
+    "claude_repository_mutation_possible": false,
+    "different_model_called": false,
+    "public_or_external_share_created": false,
+    "agent_performed_remote_upload": false,
+    "owner_performed_manual_upload_and_submission": true
+  }
+}

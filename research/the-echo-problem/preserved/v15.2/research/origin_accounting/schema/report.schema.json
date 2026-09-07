@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/origin-accounting/report.schema.json",
+  "title": "Origin-accounting report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_id", "source_id", "artifact_id", "proposition_family_id", "origin_id", "style", "stance", "transformation_type", "observed_at", "text", "text_sha256"],
+  "properties": {
+    "report_id": {"type": "string", "pattern": "^RP-[A-Z2-7]{10}$"},
+    "source_id": {"type": "string", "pattern": "^SC-[A-Z2-7]{10}$"},
+    "artifact_id": {"type": "string", "pattern": "^AR-[A-Z2-7]{10}$"},
+    "proposition_family_id": {"type": "string", "pattern": "^PF-[A-Z2-7]{10}$"},
+    "origin_id": {"type": "string", "pattern": "^OR-[A-Z2-7]{10}$"},
+    "style": {"enum": ["lab_note", "release_note", "field_log", "review_note"]},
+    "stance": {"enum": ["supports", "refutes", "neutral"]},
+    "transformation_type": {"enum": ["original", "dependent_copy", "dependent_paraphrase", "independent_observation", "independent_contradiction", "summary"]},
+    "observed_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "text": {"type": "string", "minLength": 120, "maxLength": 900},
+    "text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

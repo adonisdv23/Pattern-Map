@@ -1,0 +1,1801 @@
+{
+  "schema_version": 1,
+  "status": "SYNTHETIC_INSTRUMENT_CANDIDATE_NO_STUDY_RESULTS",
+  "instruction_commit": "d02f58ac81fcacee77e0c128ad16cd92b454b1cf",
+  "tasks": {
+    "T001": {
+      "task_id": "T001",
+      "purpose": "Recommend how a local command-line utility can show complete help within its startup limit.",
+      "surface1": "The fictional Cedar utility loads command plug-ins before showing help. Choose a change that preserves every command and makes help ready within the stated limit. You have two local inspection units; the catalogue describes possible mechanisms, not verified outcomes.",
+      "candidates": [
+        {
+          "id": "T001-C1",
+          "summary": "Restore a saved process image.",
+          "purpose": "Avoid startup initialization.",
+          "mechanism": "Reuse a snapshot of a previously initialized process."
+        },
+        {
+          "id": "T001-C2",
+          "summary": "Dispatch through a small command manifest.",
+          "purpose": "Show help before loading an individual command.",
+          "mechanism": "Use a static command directory for help, then initialize only the selected command."
+        },
+        {
+          "id": "T001-C3",
+          "summary": "Accelerate the eager plug-in initializer.",
+          "purpose": "Reduce time before help is printed.",
+          "mechanism": "Initialize all plug-ins using a compact shared lookup table."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T001-E1",
+          "text": "The current eager implementation needs 360 ms for help in this fictional acceptance fixture; the required ceiling is 100 ms."
+        },
+        {
+          "id": "T001-E2",
+          "text": "Help must list all 18 installed commands, including aliases. Each command must still initialize before it executes. No network access is permitted."
+        },
+        {
+          "id": "T001-E3",
+          "text": "A process image may not carry yesterday's workspace path or environment settings into today's invocation. Published candidate timings do not by themselves establish command coverage."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T001-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T001-H2",
+          "text": "Help must meet the 100 ms ceiling and include all 18 commands and aliases."
+        },
+        {
+          "id": "T001-H3",
+          "text": "Current invocation settings must be used; saved workspace/environment state is prohibited."
+        },
+        {
+          "id": "T001-H4",
+          "text": "A recommendation must support both its coverage/initialization behavior and its startup bound with inspected records."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T001-P1",
+          "rank": 1,
+          "text": "First satisfy all functional and state constraints."
+        },
+        {
+          "id": "T001-P2",
+          "rank": 2,
+          "text": "Among supported compliant routes, prefer the least work needed to reach the 100 ms threshold; faster performance below it earns no additional priority."
+        },
+        {
+          "id": "T001-P3",
+          "rank": 3,
+          "text": "Spend inspection units only on records that can resolve a required condition within the remaining budget; a supported compliant route takes priority over leaving the decision unresolved."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T001-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T001-E4",
+          "description": "Read the command-manifest completeness contract.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T001-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T001-E5",
+          "description": "Read the eager-lookup acceptance record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T001-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T001-E6",
+          "description": "Read the saved-image restoration contract.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T001-E7",
+          "kind": "INSPECT",
+          "target_evidence_id": "T001-E7",
+          "description": "Read the manifest startup/state record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T002": {
+      "task_id": "T002",
+      "purpose": "Choose a way to hand off an approved terminology file without changing it.",
+      "surface1": "The fictional Reed workshop needs a terminology import. An approved export and two alternative preparation routes are available. Choose the preparation route; do not actually transmit or alter a file.",
+      "candidates": [
+        {
+          "id": "T002-C1",
+          "summary": "Retype the pairs into a new export.",
+          "purpose": "Recreate the table in the requested format.",
+          "mechanism": "Enter each pair manually and export again."
+        },
+        {
+          "id": "T002-C2",
+          "summary": "Expand the table with familiar synonyms.",
+          "purpose": "Make the vocabulary easier to recognize.",
+          "mechanism": "Add alternative terms before export."
+        },
+        {
+          "id": "T002-C3",
+          "summary": "Use the supplied approved export.",
+          "purpose": "Provide the importer its terminology table.",
+          "mechanism": "Copy the existing UTF-8 tab-separated file as bytes."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T002-E1",
+          "text": "The target importer requires UTF-8, tab separation, exactly 40 approved term pairs, the approved pair order and no extra columns."
+        },
+        {
+          "id": "T002-E2",
+          "text": "The supplied export has an accompanying complete byte/row inspection: UTF-8, tabs, exactly those 40 pairs in the approved order and no extra columns. The inspection covers the supplied unchanged bytes."
+        },
+        {
+          "id": "T002-E3",
+          "text": "The owner's instruction is exact transfer of this approved table; no translation, synonym addition, correction or content selection is requested."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T002-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T002-H2",
+          "text": "Preserve the approved bytes and pair order."
+        },
+        {
+          "id": "T002-H3",
+          "text": "Do not add, remove, translate or normalize terms."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T002-P1",
+          "rank": 1,
+          "text": "Use an already compliant supplied artifact before creating another transformation."
+        },
+        {
+          "id": "T002-P2",
+          "rank": 2,
+          "text": "Additional inspections or re-entry have no decision value when the complete existing check already covers the unchanged artifact."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T002-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T002-E4",
+          "description": "Read the export-copy instructions.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T002-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T002-E5",
+          "description": "Read the synonym-expansion plan.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T002-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T002-E6",
+          "description": "Read the manual re-entry plan.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T003": {
+      "task_id": "T003",
+      "purpose": "Choose a method to assemble exactly 30 washers per local kit.",
+      "surface1": "A fictional repair room must prepare kits containing exactly 30 washers each within a short preparation window. Compare a counting board, a scale and a volume cup using the supplied catalogue and any selected local records.",
+      "candidates": [
+        {
+          "id": "T003-C1",
+          "summary": "Fill a thirty-position counting board.",
+          "purpose": "Produce an exact unit count.",
+          "mechanism": "Place one washer in each separated position before moving the set."
+        },
+        {
+          "id": "T003-C2",
+          "summary": "Weigh out a target total.",
+          "purpose": "Produce the unit count quickly.",
+          "mechanism": "Infer count from total mass divided by a reference unit mass."
+        },
+        {
+          "id": "T003-C3",
+          "summary": "Fill a fixed volume cup.",
+          "purpose": "Produce the unit count quickly.",
+          "mechanism": "Use occupied bulk volume as a proxy for quantity."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T003-E1",
+          "text": "Each kit must contain exactly 30 of the supplied washers and must be prepared within 15 seconds. A near count is unacceptable."
+        },
+        {
+          "id": "T003-E2",
+          "text": "The batch may contain more than one washer thickness. Candidate methods must support both exact count and the 15-second bound."
+        },
+        {
+          "id": "T003-E3",
+          "text": "The counting-board description specifies thirty separate positions, but fit, stacking prevention and handling time require its acceptance record."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T003-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T003-H2",
+          "text": "Exactly 30 washers; neither approximate mass nor volume alone establishes count."
+        },
+        {
+          "id": "T003-H3",
+          "text": "The chosen method must have inspected support for completion within 15 seconds."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T003-P1",
+          "rank": 1,
+          "text": "Exact count outranks speed below 15 seconds."
+        },
+        {
+          "id": "T003-P2",
+          "rank": 2,
+          "text": "Choose a supported method within the threshold rather than a faster unsupported inference."
+        },
+        {
+          "id": "T003-P3",
+          "rank": 3,
+          "text": "Spend inspection units only on records that can resolve a required condition within the remaining budget; a supported compliant route takes priority over leaving the decision unresolved."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T003-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T003-E4",
+          "description": "Read the board fit and handling acceptance record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T003-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T003-E5",
+          "description": "Read the cup packing record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T003-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T003-E6",
+          "description": "Read the batch mass-composition record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T004": {
+      "task_id": "T004",
+      "purpose": "Determine whether either local preview renderer can be selected under a memory ceiling.",
+      "surface1": "The fictional Birch preview task needs a renderer with a documented peak memory bound. Two renderers and a reduced-mode variant are listed, but the relevant local record is unavailable. Decide whether the current packet supports selection or a bounded hold.",
+      "candidates": [
+        {
+          "id": "T004-C1",
+          "summary": "Use Ember reduced mode.",
+          "purpose": "Render the required preview with fewer cached objects.",
+          "mechanism": "Disable the optional cache while retaining the same rendering path."
+        },
+        {
+          "id": "T004-C2",
+          "summary": "Use renderer Ember.",
+          "purpose": "Render the required preview.",
+          "mechanism": "Build a full in-memory preview tree."
+        },
+        {
+          "id": "T004-C3",
+          "summary": "Use renderer Brook.",
+          "purpose": "Render the required preview.",
+          "mechanism": "Stream page segments through a bounded buffer."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T004-E1",
+          "text": "Selection requires a current peak-memory record of <=64 MiB for the exact required preview and configuration. Functional support alone is insufficient."
+        },
+        {
+          "id": "T004-E2",
+          "text": "All three candidates support the required output features, but no current peak-memory record is present. The only permitted local actions read the package index, feature summary or the failed measurement-job receipt."
+        },
+        {
+          "id": "T004-E3",
+          "text": "The measurement job did not produce a usable artifact. A new measurement is outside this task's available actions; packet size, algorithm labels and a failure receipt do not determine peak memory."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T004-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T004-H2",
+          "text": "Do not select without an applicable current <=64 MiB record."
+        },
+        {
+          "id": "T004-H3",
+          "text": "Do not substitute package size, streaming terminology or an unrun proposed measurement for peak-memory evidence."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T004-P1",
+          "rank": 1,
+          "text": "Candidate selection requires the specified current measurement; unsupported rankings have no decision value."
+        },
+        {
+          "id": "T004-P2",
+          "rank": 2,
+          "text": "Avoid paid inspections that merely repeat the known record gap."
+        },
+        {
+          "id": "T004-P3",
+          "rank": 3,
+          "text": "Do not rank the candidates by guessed memory use."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T004-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T004-E4",
+          "description": "Read the package index.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T004-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T004-E5",
+          "description": "Read the feature summary.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T004-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T004-E6",
+          "description": "Read the measurement-job receipt.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T005": {
+      "task_id": "T005",
+      "purpose": "Choose a readable six-page handoff format for a wide comparison table.",
+      "surface1": "The fictional Lark handoff contains a wide table whose row relationships must remain intelligible on a fixed printer. Compare shrinking, long-form pagination and tiled panels with repeated identifiers. Choose a supported layout; no document is actually exported.",
+      "candidates": [
+        {
+          "id": "T005-C1",
+          "summary": "Shrink the whole table to page width.",
+          "purpose": "Keep each row on one page.",
+          "mechanism": "Scale the full-width table uniformly."
+        },
+        {
+          "id": "T005-C2",
+          "summary": "Give each row a separate readable block.",
+          "purpose": "Keep all attributes readable.",
+          "mechanism": "Stack each complete row as a portrait block."
+        },
+        {
+          "id": "T005-C3",
+          "summary": "Tile the columns into linked panels.",
+          "purpose": "Preserve readable cross-column comparison.",
+          "mechanism": "Split attribute groups across panels while repeating the row identifier and column headings."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T005-E1",
+          "text": "The printer is fixed to portrait A5. The handoff may use at most six pages, must retain every supplied cell and must use at least 11-point body text."
+        },
+        {
+          "id": "T005-E2",
+          "text": "A reader must be able to associate every attribute with its original row without guessing. Repeated row identifiers and headings may use space but may not alter the data."
+        },
+        {
+          "id": "T005-E3",
+          "text": "The source has twelve uniquely identified rows. The candidate summaries do not establish page count, font size or complete cell coverage."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T005-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T005-H2",
+          "text": "Retain every cell and its correct row association."
+        },
+        {
+          "id": "T005-H3",
+          "text": "Use portrait A5, <=6 pages and >=11-point body text."
+        },
+        {
+          "id": "T005-H4",
+          "text": "Support both coverage/association and geometry before selection."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T005-P1",
+          "rank": 1,
+          "text": "Completeness and readable association outrank visual compactness."
+        },
+        {
+          "id": "T005-P2",
+          "rank": 2,
+          "text": "Among compliant formats, no additional preference is assigned to fewer than six pages."
+        },
+        {
+          "id": "T005-P3",
+          "rank": 3,
+          "text": "Spend inspection units only on records that can resolve a required condition within the remaining budget; a supported compliant route takes priority over leaving the decision unresolved."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T005-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T005-E4",
+          "description": "Read the panel coverage and association map.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T005-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T005-E5",
+          "description": "Read the row-block geometry sheet.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T005-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T005-E6",
+          "description": "Read the linked-panel geometry sheet.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T005-E7",
+          "kind": "INSPECT",
+          "target_evidence_id": "T005-E7",
+          "description": "Read the uniform-scaling geometry sheet.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T006": {
+      "task_id": "T006",
+      "purpose": "Choose how to fulfill a local request for twenty identical spacers.",
+      "surface1": "The fictional Elm stockroom has a request for twenty spacers. A sealed nearby pack, distant loose stock and a new route-planning procedure are available. Choose the handling plan without moving anything.",
+      "candidates": [
+        {
+          "id": "T006-C1",
+          "summary": "Use the nearby sealed pack.",
+          "purpose": "Provide twenty matching spacers.",
+          "mechanism": "Take one already counted, request-matching pack."
+        },
+        {
+          "id": "T006-C2",
+          "summary": "Count loose units in the far aisle.",
+          "purpose": "Assemble the request from loose stock.",
+          "mechanism": "Walk to the remote bin and count pieces individually."
+        },
+        {
+          "id": "T006-C3",
+          "summary": "Build a new pick-route plan.",
+          "purpose": "Optimize the path to inventory.",
+          "mechanism": "Recompute a multi-bin route before choosing stock."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T006-E1",
+          "text": "The request is for exactly twenty spacers of type S4, finish matte, with no substitution."
+        },
+        {
+          "id": "T006-E2",
+          "text": "The nearby sealed pack is marked S4/matte/20. A current complete inspection covering the unchanged sealed pack confirms type, finish and count. It can be handled in 30 seconds."
+        },
+        {
+          "id": "T006-E3",
+          "text": "The handling deadline is 60 seconds. There is no other request to combine, no shortage, and no reason to reopen the verified pack."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T006-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T006-H2",
+          "text": "Exactly twenty S4/matte spacers."
+        },
+        {
+          "id": "T006-H3",
+          "text": "The plan must fit 60 seconds and preserve the sealed verified pack when using it."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T006-P1",
+          "rank": 1,
+          "text": "Use a supported route within 60 seconds."
+        },
+        {
+          "id": "T006-P2",
+          "rank": 2,
+          "text": "Prefer the existing verified nearby pack to avoid new counting, planning or transformations once the deadline is met."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T006-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T006-E4",
+          "description": "Read the pack-handling card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T006-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T006-E5",
+          "description": "Read the route-planner scope card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T006-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T006-E6",
+          "description": "Read the remote-bin route card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T007": {
+      "task_id": "T007",
+      "purpose": "Choose a local update executor that preserves ordered configuration edits.",
+      "surface1": "The fictional Alder editor applies ordered configuration operations. Three executors reduce overhead differently. Choose one that preserves the requested operation semantics and meets the acceptance window.",
+      "candidates": [
+        {
+          "id": "T007-C1",
+          "summary": "Keep only the last operation per field.",
+          "purpose": "Reduce the number of operations.",
+          "mechanism": "Coalesce each field's operation list to its final entry."
+        },
+        {
+          "id": "T007-C2",
+          "summary": "Keep order while sharing one file handle.",
+          "purpose": "Reduce per-operation overhead.",
+          "mechanism": "Apply each operation sequentially through one open handle."
+        },
+        {
+          "id": "T007-C3",
+          "summary": "Group operations by target field.",
+          "purpose": "Reduce repeated visits to each field.",
+          "mechanism": "Sort pending operations by their field names before applying them."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T007-E1",
+          "text": "A batch may contain insertions, removals and indexed moves. The required final state is the result of executing the supplied operations in their original order."
+        },
+        {
+          "id": "T007-E2",
+          "text": "The executor must finish the stipulated batch within 120 ms. The unmodified executor takes 180 ms; none of the proposed executor records has yet been inspected."
+        },
+        {
+          "id": "T007-E3",
+          "text": "Do not assume operations commute merely because they reference the same or similarly named fields."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T007-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T007-H2",
+          "text": "Preserve sequential operation semantics, including index changes."
+        },
+        {
+          "id": "T007-H3",
+          "text": "Meet <=120 ms with an inspected applicable record."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T007-P1",
+          "rank": 1,
+          "text": "Correct final state outranks speed below 120 ms."
+        },
+        {
+          "id": "T007-P2",
+          "rank": 2,
+          "text": "Spend inspection units only on records that can resolve a required condition within the remaining budget; a supported compliant route takes priority over leaving the decision unresolved."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T007-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T007-E4",
+          "description": "Read the shared-handle executor record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T007-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T007-E5",
+          "description": "Read the last-operation executor record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T007-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T007-E6",
+          "description": "Read the grouped-field executor record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T008": {
+      "task_id": "T008",
+      "purpose": "Determine whether a venue handoff contains the current complete room roster.",
+      "surface1": "The fictional Wren venue packet must include its current complete room roster. Several drafts can be read locally, but the current roster capture failed. Decide whether the packet can be selected for completion or must await the missing source.",
+      "candidates": [
+        {
+          "id": "T008-C1",
+          "summary": "Combine the available drafts.",
+          "purpose": "Recover rooms missing from one draft.",
+          "mechanism": "Union the room names found in the local draft files."
+        },
+        {
+          "id": "T008-C2",
+          "summary": "Use the latest filename.",
+          "purpose": "Choose the most current-looking draft.",
+          "mechanism": "Infer currency from the export name and timestamp."
+        },
+        {
+          "id": "T008-C3",
+          "summary": "Use the first draft roster.",
+          "purpose": "Provide a room list for the handoff.",
+          "mechanism": "Reuse the older full-length draft."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T008-E1",
+          "text": "Acceptance requires the current approved twelve-room roster, including the exact names. Last month also had twelve rooms, but at least one room changed; count alone cannot identify the current roster."
+        },
+        {
+          "id": "T008-E2",
+          "text": "Neither locally available draft is certified current. The current source capture failed, and no available action can recover that source in this episode."
+        },
+        {
+          "id": "T008-E3",
+          "text": "A filename, timestamp, union of drafts or expected count does not certify current membership. A missing capture is compatible with the venue having a current roster that this packet does not contain."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T008-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T008-H2",
+          "text": "Include all and only the current approved room names before selecting a completed roster."
+        },
+        {
+          "id": "T008-H3",
+          "text": "Do not infer current membership from count, filename or failed capture."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T008-P1",
+          "rank": 1,
+          "text": "Current approved membership takes priority over finishing the handoff with an unsupported roster."
+        },
+        {
+          "id": "T008-P2",
+          "rank": 2,
+          "text": "Avoid spending inspections on already-known non-authoritative drafts as though they could certify completeness."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T008-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T008-E4",
+          "description": "Read the current-roster capture receipt.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T008-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T008-E5",
+          "description": "Read the second draft provenance card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T008-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T008-E6",
+          "description": "Read the first draft provenance card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T009": {
+      "task_id": "T009",
+      "purpose": "Choose how to prepare an exhibit-mount kit after its location is assigned.",
+      "surface1": "The fictional Heron workshop receives an exhibit location shortly before setup. One kit can be prepared from its allocated common parts. Compare preparing that full kit in advance, assembling after assignment and separating invariant components from the location-specific insert. Choose a supported method within the preparation window.",
+      "candidates": [
+        {
+          "id": "T009-C1",
+          "summary": "Stage a common core and add the location insert.",
+          "purpose": "Finish the correct kit quickly after assignment.",
+          "mechanism": "Prepare invariant parts in advance, then complete the variable portion after the location is known."
+        },
+        {
+          "id": "T009-C2",
+          "summary": "Preassemble one full kit before location assignment.",
+          "purpose": "Have a complete kit ready immediately.",
+          "mechanism": "Commit the single allocated kit to one bracket before the final mounting location is known."
+        },
+        {
+          "id": "T009-C3",
+          "summary": "Assemble a full kit after assignment.",
+          "purpose": "Use the correct parts for the location.",
+          "mechanism": "Perform the full assembly sequence when the request arrives."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T009-E1",
+          "text": "Each completed kit needs the location-specific bracket plus six listed common fasteners. Exactly one worker is available after assignment, and the kit must be ready within 120 seconds."
+        },
+        {
+          "id": "T009-E2",
+          "text": "There are three possible locations requiring different brackets. Assignment is not known during advance preparation. No bracket substitution is permitted. Only one kit's six common fasteners are allocated, so three complete advance kits cannot be prepared; the three bracket types are available."
+        },
+        {
+          "id": "T009-E3",
+          "text": "Advance work may use common stock, but a staged core must be compatible with every location and the final method must retain exact part identity/count. Candidate summaries do not establish those facts."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T009-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T009-H2",
+          "text": "The final bracket must match the assigned location."
+        },
+        {
+          "id": "T009-H3",
+          "text": "Use exactly the listed six common fasteners and one correct bracket."
+        },
+        {
+          "id": "T009-H4",
+          "text": "Support compatibility/count preservation and <=120 seconds of post-assignment work."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T009-P1",
+          "rank": 1,
+          "text": "Correct parts/count outrank speed below 120 seconds."
+        },
+        {
+          "id": "T009-P2",
+          "rank": 2,
+          "text": "Spend inspection units only on records that can resolve a required condition within the remaining budget; a supported compliant route takes priority over leaving the decision unresolved."
+        },
+        {
+          "id": "T009-P3",
+          "rank": 3,
+          "text": "New components or stocking systems have no priority over an equally compliant route using available parts."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T009-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T009-E4",
+          "description": "Read the full-assembly timing card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T009-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T009-E5",
+          "description": "Read the common-core compatibility/count sheet.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T009-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T009-E6",
+          "description": "Read the full-kit advance plan.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T009-E7",
+          "kind": "INSPECT",
+          "target_evidence_id": "T009-E7",
+          "description": "Read the final-insert handling card.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T010": {
+      "task_id": "T010",
+      "purpose": "Choose a pre-commit check for an already supplied configuration file.",
+      "surface1": "The fictional Finch repository needs one local pre-commit check for a complete configuration file. The existing checker has a complete acceptance record. Compare reuse, a partial checker and a new parallel wrapper, then choose the necessary plan.",
+      "candidates": [
+        {
+          "id": "T010-C1",
+          "summary": "Add a parallel wrapper.",
+          "purpose": "Reduce elapsed check time.",
+          "mechanism": "Partition the check across workers and merge findings."
+        },
+        {
+          "id": "T010-C2",
+          "summary": "Reuse the existing complete checker.",
+          "purpose": "Check the supplied configuration before commit.",
+          "mechanism": "Run the current schema checker unchanged."
+        },
+        {
+          "id": "T010-C3",
+          "summary": "Write a checker for frequently edited fields.",
+          "purpose": "Reduce check time.",
+          "mechanism": "Inspect only the fields that usually change."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T010-E1",
+          "text": "The file is fully supplied. Acceptance requires checking every field against the existing schema and reporting every violation with its position; the deadline is 15 seconds."
+        },
+        {
+          "id": "T010-E2",
+          "text": "The existing checker has a complete applicable record: every supplied field is checked, all violations and positions are retained, and it completes in 12 seconds. No new schema or requirement is pending."
+        },
+        {
+          "id": "T010-E3",
+          "text": "The owner prioritizes zero implementation change once the complete check meets 15 seconds. Faster results within that ceiling do not justify new code for this task."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T010-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T010-H2",
+          "text": "Check the whole file and retain all violations and positions."
+        },
+        {
+          "id": "T010-H3",
+          "text": "Meet 15 seconds; do not change the schema or input content."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T010-P1",
+          "rank": 1,
+          "text": "Meet complete-check requirements first."
+        },
+        {
+          "id": "T010-P2",
+          "rank": 2,
+          "text": "Among compliant routes prefer zero implementation changes; do not optimize below the already-met deadline."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T010-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T010-E4",
+          "description": "Read the partial-checker scope.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T010-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T010-E5",
+          "description": "Read the current checker invocation note.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T010-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T010-E6",
+          "description": "Read the parallel-wrapper plan.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T011": {
+      "task_id": "T011",
+      "purpose": "Choose a searchable handoff export that removes an obsolete routing tag.",
+      "surface1": "The fictional Mica exercise uses a disposable routing tag that must not remain in the final document. Compare overlaying it, flattening everything to an image and rebuilding from the approved text. The tag is fictional and no sensitive document is involved.",
+      "candidates": [
+        {
+          "id": "T011-C1",
+          "summary": "Cover the tag with an opaque rectangle.",
+          "purpose": "Hide the obsolete tag in the visible page.",
+          "mechanism": "Place a white overlay over the existing text layer."
+        },
+        {
+          "id": "T011-C2",
+          "summary": "Rasterize every page.",
+          "purpose": "Remove selectable underlying text.",
+          "mechanism": "Turn all pages into images before export."
+        },
+        {
+          "id": "T011-C3",
+          "summary": "Regenerate from the approved text without the tag.",
+          "purpose": "Keep searchable approved content without the obsolete tag.",
+          "mechanism": "Build a new searchable export from the reviewed text source."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T011-E1",
+          "text": "The final export must retain all approved non-tag text as searchable text, preserve reading order, and contain no obsolete tag in visible text, extracted text or document metadata."
+        },
+        {
+          "id": "T011-E2",
+          "text": "The original tag is the fictional string ZQ-47. Visually hiding it is insufficient. This task selects an export method; no real document is altered."
+        },
+        {
+          "id": "T011-E3",
+          "text": "The source text without the tag is approved, but completeness/searchability and metadata removal in its generated export require their respective records."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T011-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T011-H2",
+          "text": "Remove ZQ-47 from visible text, extractable text and metadata."
+        },
+        {
+          "id": "T011-H3",
+          "text": "Keep all other approved text searchable and in reading order."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T011-P1",
+          "rank": 1,
+          "text": "Satisfy removal and searchable-content requirements together."
+        },
+        {
+          "id": "T011-P2",
+          "rank": 2,
+          "text": "Spend inspection units only on records that can resolve a required condition within the remaining budget; visual appearance cannot replace a required evidence channel."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T011-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T011-E4",
+          "description": "Read the overlay extraction record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T011-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T011-E5",
+          "description": "Read the raster export record.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T011-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T011-E6",
+          "description": "Read the regenerated export content comparison.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T011-E7",
+          "kind": "INSPECT",
+          "target_evidence_id": "T011-E7",
+          "description": "Read the regenerated export metadata inspection.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    },
+    "T012": {
+      "task_id": "T012",
+      "purpose": "Determine whether a carrier tray has enough documented acceptance to be selected.",
+      "surface1": "The fictional Ash stockroom must choose a carrier tray for a local parts transfer. Two tray designs and a hybrid proposal are listed. Selection requires three distinct current acceptance records for the same configuration. The episode has only two inspection units. Decide whether this packet can support selection now and what should happen next.",
+      "candidates": [
+        {
+          "id": "T012-C1",
+          "summary": "Use tray Cove.",
+          "purpose": "Carry the requested parts.",
+          "mechanism": "Use a ribbed tray with a sliding latch."
+        },
+        {
+          "id": "T012-C2",
+          "summary": "Combine parts from the two tray designs.",
+          "purpose": "Carry the requested parts.",
+          "mechanism": "Propose a hybrid of the existing tray components."
+        },
+        {
+          "id": "T012-C3",
+          "summary": "Use tray Slate.",
+          "purpose": "Carry the requested parts.",
+          "mechanism": "Use a rigid tray with a hinged latch."
+        }
+      ],
+      "initial_evidence": [
+        {
+          "id": "T012-E1",
+          "text": "A selected tray must have three distinct applicable current records: load acceptance, latch acceptance and clearance acceptance. None is initially supplied for either tray. Each listed inspection returns only its named record for one tray."
+        },
+        {
+          "id": "T012-E2",
+          "text": "The acquisition cap is two units, each inspection costs one, and no other authorized action supplies acceptance evidence. There is no combined certificate and the hybrid has no acceptance records."
+        },
+        {
+          "id": "T012-E3",
+          "text": "All three records must support the same selected configuration. An incomplete set cannot establish acceptance, even if every acquired record passes."
+        }
+      ],
+      "constraints": [
+        {
+          "id": "T012-H1",
+          "text": "This is a fictional local planning decision. No software, file, stock movement, publication or external action is executed. Use only supplied and released records."
+        },
+        {
+          "id": "T012-H2",
+          "text": "Selection requires visible current load, latch and clearance acceptance for the same configuration."
+        },
+        {
+          "id": "T012-H3",
+          "text": "Do not transfer one tray's acceptance to another tray or a hybrid."
+        },
+        {
+          "id": "T012-H4",
+          "text": "Do not treat an incomplete certificate set as a completed acceptance."
+        }
+      ],
+      "decision_priorities": [
+        {
+          "id": "T012-P1",
+          "rank": 1,
+          "text": "Complete documented acceptance takes priority over completing a transfer; partial support earns no selection credit."
+        },
+        {
+          "id": "T012-P2",
+          "rank": 2,
+          "text": "Avoid collecting a partial set that cannot change admissibility in this episode."
+        },
+        {
+          "id": "T012-P3",
+          "rank": 3,
+          "text": "Record the need for a later adequately resourced check; do not perform one."
+        }
+      ],
+      "limits": {
+        "acquisition_units": 2,
+        "max_attempts": 8,
+        "invalid_attempt_cost_units": 1
+      },
+      "rejection_policy": {
+        "reversible": true
+      },
+      "action_set": [
+        {
+          "action_id": "INSPECT:T012-E4",
+          "kind": "INSPECT",
+          "target_evidence_id": "T012-E4",
+          "description": "Read Slate load acceptance.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T012-E5",
+          "kind": "INSPECT",
+          "target_evidence_id": "T012-E5",
+          "description": "Read Slate clearance acceptance.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T012-E6",
+          "kind": "INSPECT",
+          "target_evidence_id": "T012-E6",
+          "description": "Read Slate latch acceptance.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T012-E7",
+          "kind": "INSPECT",
+          "target_evidence_id": "T012-E7",
+          "description": "Read Cove latch acceptance.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T012-E8",
+          "kind": "INSPECT",
+          "target_evidence_id": "T012-E8",
+          "description": "Read Cove clearance acceptance.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "INSPECT:T012-E9",
+          "kind": "INSPECT",
+          "target_evidence_id": "T012-E9",
+          "description": "Read Cove load acceptance.",
+          "cost_units": 1,
+          "deadline_attempt": 6
+        },
+        {
+          "action_id": "COMPARE",
+          "kind": "COMPARE",
+          "description": "Record a comparison of listed candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REJECT",
+          "kind": "REJECT",
+          "description": "Set aside listed candidates while retaining their evidence and rejection basis.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "REOPEN",
+          "kind": "REOPEN",
+          "description": "Reconsider previously rejected candidates; no additional evidence is released.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "SELECT",
+          "kind": "SELECT",
+          "description": "End with the selected candidate IDs, a supported implementation and the shared decision fields.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "HOLD",
+          "kind": "HOLD",
+          "description": "End with no selected candidates and the condition preventing a supported selection.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        },
+        {
+          "action_id": "STOP",
+          "kind": "STOP",
+          "description": "End with no selected candidates and the reason further work should end.",
+          "cost_units": 0,
+          "deadline_attempt": 8
+        }
+      ]
+    }
+  }
+}

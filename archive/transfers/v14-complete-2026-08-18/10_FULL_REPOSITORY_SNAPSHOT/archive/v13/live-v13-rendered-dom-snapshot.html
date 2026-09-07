@@ -1,0 +1,1460 @@
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/assets/index-D0pbBpVx.css" data-rsc-css-href="/assets/index-D0pbBpVx.css" data-precedence="vite-rsc/importer-resources"><link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" as="style"><link rel="modulepreload" href="/assets/layout-segment-context-DHzazk39.js" crossorigin=""><link rel="modulepreload" href="/assets/rolldown-runtime-S-ySWqyJ.js" crossorigin=""><link rel="modulepreload" href="/assets/index-DJzSWtkZ.js" crossorigin=""><link rel="modulepreload" href="/assets/framework-DjPHiq1u.js" crossorigin=""><link rel="modulepreload" href="/assets/page-HPwvog9C.js" crossorigin=""><title>Pattern Recognition — Visual Map</title><meta name="description" content="A visual map of the discrimination layer: twelve mechanisms and implementation paths for finding, weighing, and learning from underweighted signal."><meta name="keywords" content="pattern recognition,discrimination layer,peripheral signal,source weighting,AI"><meta name="robots" content="index, follow"><meta property="og:title" content="Pattern Recognition — Visual Map"><meta property="og:description" content="Twelve mechanisms for engineering what gets fed into AI before generation."><meta property="og:url" content="https://pattern-recognition-map.adonisdv23.chatgpt.site/"><meta property="og:type" content="website"><meta property="og:image" content="https://pattern-recognition-map.adonisdv23.chatgpt.site/og.png"><meta property="og:image:width" content="1536"><meta property="og:image:height" content="1024"><meta property="og:image:alt" content="Pattern Recognition visual map social preview"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Pattern Recognition — Visual Map"><meta name="twitter:description" content="Twelve mechanisms for engineering what gets fed into AI before generation."><meta name="twitter:image" content="https://pattern-recognition-map.adonisdv23.chatgpt.site/og.png"><link rel="canonical" href="https://pattern-recognition-map.adonisdv23.chatgpt.site/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"><script>self.__VINEXT_RSC_PARAMS__={}</script><script>self.__VINEXT_RSC_NAV__={"pathname":"/","searchParams":[]}</script><link rel="modulepreload" href="/assets/index-DJzSWtkZ.js">
+</head><body><main id="pattern-map-root"><style>
+  :root{
+    --bg: #f6f2e8;
+    --bg-card: #ffffff;
+    --bg-hero: #faf6ec;
+    --bg-soft: #fafaf5;
+    --ink: #1a1a1a;
+    --ink-muted: #5e5e5e;
+    --ink-faint: #9a9a9a;
+    --rule: #e3ddcb;
+    --rule-soft: #efebde;
+
+    /* family colors */
+    --f1: #c25337; /* structured patterns - coral */
+    --f1-soft: #f6e4dd;
+    --f2: #2c6e83; /* peripheral signal - blue/teal */
+    --f2-soft: #dde9ef;
+    --f3: #5d7e3a; /* source weighing - green */
+    --f3-soft: #e3ebd4;
+    --f4: #7d4988; /* absence + memory - plum */
+    --f4-soft: #ebdfee;
+    --f5: #b8741b; /* time / motion - amber */
+    --f5-soft: #f4e6d0;
+    --f6: #3a4d8c; /* learning / metabolism - indigo */
+    --f6-soft: #dde2f0;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+
+  body::before{
+    content:"";
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(rgba(28,25,23,0.018) 1px, transparent 1px),
+      radial-gradient(rgba(28,25,23,0.012) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 1px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 36px 28px 80px 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== Header ===== */
+  header{ margin-bottom: 22px; }
+  .eyebrow{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+  h1{
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0 0 14px 0;
+  }
+
+  /* ===== Framing ===== */
+  .framing{
+    background: var(--bg-card);
+    border-left: 3px solid var(--ink);
+    padding: 22px 24px;
+    margin: 0 0 26px 0;
+  }
+  .framing p{
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0;
+    color: var(--ink);
+  }
+  .framing p + p{
+    margin-top: 12px;
+    color: var(--ink-muted);
+    font-size: 14.75px;
+  }
+  .framing strong{ font-weight: 600; }
+  .framing em{ font-style: italic; }
+  .framing .origin-note{
+    font-style: italic;
+    color: var(--ink-muted);
+    border-bottom: 1px solid var(--rule-soft);
+    padding-bottom: 14px;
+    margin-bottom: 14px !important;
+  }
+  .framing .origin-note strong{
+    font-style: normal;
+    color: var(--ink);
+  }
+  .framing .examples{
+    margin-top: 14px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 13.5px !important;
+    color: var(--ink-muted) !important;
+  }
+  .framing .examples strong{
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .framing .who-this-is-for{
+    margin-top: 14px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 13.5px !important;
+    color: var(--ink-muted) !important;
+  }
+  .framing .who-this-is-for strong{
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .framing .who-this-is-for em{
+    color: var(--ink);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .framing .what-survives{
+    margin-top: 14px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 13.5px !important;
+    color: var(--ink-muted) !important;
+  }
+  .framing .what-survives strong{
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .framing .what-survives em{
+    color: var(--ink);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .framing .peripheral-truth{
+    margin-top: 14px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 13.5px !important;
+    color: var(--ink-muted) !important;
+  }
+  .framing .peripheral-truth strong{
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .framing .peripheral-truth em{
+    color: var(--ink);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* ===== Family diagram (image) ===== */
+  .family-diagram{
+    margin: 32px 0 8px;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+  .family-diagram img{
+    display: block;
+    width: 100%;
+    max-width: 880px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+
+    /* ===== Toolbar ===== */
+  .toolbar{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 0;
+    margin-bottom: 8px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .toolbar-label{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .filters{ display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip{
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink-muted);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .chip:hover{ border-color: var(--ink); color: var(--ink); }
+  .chip.active{ background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .chip .count{ margin-left: 6px; opacity: 0.6; font-size: 12px; }
+  .toolbar-action{
+    margin-left: auto;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px 0;
+  }
+  .toolbar-action:hover{ color: var(--ink); }
+  .filter-note{
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin: 0 0 22px 0;
+    font-style: italic;
+  }
+
+  /* ===== Grid ===== */
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    grid-auto-flow: dense;
+  }
+  @media (max-width: 1024px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px){ .grid{ grid-template-columns: 1fr; } }
+
+  /* ===== Cards ===== */
+  .card{
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--family);
+    padding: 18px 18px 20px 18px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+  }
+  .card:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -12px rgba(0,0,0,0.18);
+    border-color: var(--family);
+  }
+  .card.dimmed{ opacity: 0.28; pointer-events: none; }
+  .card.selected{
+    box-shadow: 0 0 0 2px var(--family) inset, 0 8px 24px -12px rgba(0,0,0,0.18);
+    border-color: var(--family);
+  }
+
+  .card-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .card-num{
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--family);
+    line-height: 1;
+    font-weight: 500;
+  }
+  .family-pill{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--family);
+    background: var(--family-soft);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  .card h3{
+    font-family: "Source Serif 4", serif;
+    font-size: 17px;
+    line-height: 1.22;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: var(--ink);
+  }
+  .card .summary{
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ink-muted);
+    margin: 0;
+    flex-grow: 1;
+  }
+  .card .badges{ display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .badge{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    color: var(--ink-muted);
+  }
+  .badge.finance{ border-color: #c4a14a; background: #f6efd8; color: #8a6510; }
+  .badge.building{ border-color: #2f7878; background: #d9ebeb; color: #1d5050; }
+  .badge.discriminator{ border-color: #6e3f70; background: #f0e5f1; color: #5a2e5d; font-style: italic; }
+
+  /* ===== HERO card ===== */
+  .card.hero{
+    grid-column: span 2;
+    grid-row: span 2;
+    background: var(--bg-hero);
+    border-left: 4px solid var(--family);
+    padding: 26px 28px 26px 28px;
+    min-height: 0;
+    position: relative;
+  }
+  .card.hero::before{
+    content: "THE HEART · CORE PRINCIPLE";
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    color: var(--family);
+    font-weight: 500;
+  }
+  .card.hero .card-top{ margin-bottom: 14px; padding-right: 140px; }
+  .card.hero .card-num{ font-size: 32px; }
+  .card.hero h3{
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    max-width: 18em;
+  }
+  .card.hero .summary{
+    font-family: "Source Serif 4", serif;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .card.hero .summary em{
+    background: var(--family-soft);
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-style: normal;
+  }
+  .card.hero .preview-list{
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 18px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--ink-muted);
+  }
+  .card.hero .preview-list li{
+    position: relative;
+    padding-left: 14px;
+  }
+  .card.hero .preview-list li::before{
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--family);
+  }
+  .card.hero .badges{ margin-top: 16px; }
+
+  @media (max-width: 1024px){
+    .card.hero{ grid-column: span 2; grid-row: auto; }
+    .card.hero .preview-list{ grid-template-columns: 1fr; }
+    .card.hero .card-top{ padding-right: 0; }
+    .card.hero::before{ position: static; display: block; margin-bottom: 10px; }
+  }
+  @media (max-width: 600px){ .card.hero{ grid-column: span 1; } }
+
+  /* ===== Closing card (#12) — three solutions ===== */
+  .card.closing{
+    grid-column: 1 / -1;
+    background: var(--bg-card);
+    border-left: 4px solid var(--ink);
+    padding: 26px 28px 28px 28px;
+    min-height: 0;
+    cursor: default;
+    position: relative;
+  }
+  .card.closing:hover{
+    transform: none;
+    box-shadow: none;
+    border-color: var(--rule);
+    border-left-color: var(--ink);
+  }
+  .card.closing::before{
+    content: "WHERE THIS GOES · THREE PATHS";
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .card.closing .card-top{ margin-bottom: 14px; padding-right: 200px; }
+  .card.closing .card-num{ color: var(--ink); font-size: 28px; }
+  .card.closing .family-pill{
+    color: var(--ink);
+    background: #ece6d5;
+  }
+  .card.closing h3{
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    max-width: 22em;
+  }
+  .card.closing .summary{
+    font-family: "Source Serif 4", serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin-bottom: 18px;
+    max-width: 50em;
+  }
+
+  .closing-solutions{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 8px;
+  }
+  @media (max-width: 900px){
+    .closing-solutions{ grid-template-columns: 1fr; }
+    .card.closing .card-top{ padding-right: 0; }
+    .card.closing::before{ position: static; display: block; margin-bottom: 10px; }
+  }
+  .solution{
+    border: 1px solid var(--rule);
+    background: var(--bg-soft);
+    padding: 16px 16px 18px 16px;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .solution.highlight{
+    background: var(--bg-card);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink);
+  }
+  .solution .sol-num{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .solution.highlight .sol-num{ color: var(--ink); }
+  .solution .sol-name{
+    font-family: "Source Serif 4", serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .solution .sol-tag{
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: #ece6d5;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 500;
+  }
+  .solution .sol-body{
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+  .solution .sol-fit{
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed var(--rule);
+  }
+  .solution .sol-fit strong{
+    font-style: normal;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .closing-coda{
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    max-width: 50em;
+  }
+
+  /* ===== Docked detail row ===== */
+  #detailRowMount{
+    grid-column: 1 / -1;
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--detail-family, var(--ink));
+    padding: 22px 24px 24px 24px;
+    margin-top: 4px;
+  }
+  #detailRowMount.active{ display: block; }
+
+  .detail-row-header{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .detail-row-title{
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .detail-row-title .num{
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--detail-family, var(--ink));
+  }
+  .detail-row-title .name{
+    font-family: "Source Serif 4", serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .detail-row-close{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+  }
+  .detail-row-close:hover{ color: var(--ink); border-color: var(--ink); }
+
+  .detail-content{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 820px){
+    .detail-content{ grid-template-columns: 1fr; gap: 22px; }
+  }
+  .detail-content .body{
+    font-family: "Source Serif 4", serif;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .detail-content .body p{ margin: 0 0 12px 0; }
+  .detail-content .body ul{
+    padding-left: 20px;
+    margin: 8px 0 12px 0;
+  }
+  .detail-content .body ul li{
+    margin-bottom: 6px;
+    font-size: 14.5px;
+  }
+  .detail-content .example{
+    background: var(--bg-soft);
+    border-left: 3px solid var(--detail-family, var(--ink));
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 14.25px;
+    line-height: 1.5;
+    border-radius: 0 4px 4px 0;
+  }
+  .detail-content .example .ex-label{
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.75px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--detail-family, var(--ink));
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .detail-content .where{
+    font-size: 13.25px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+  .detail-content .where-label{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--detail-family, var(--ink));
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .detail-content .vs-default{
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+    border-radius: 4px;
+    font-size: 12.75px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .detail-content .vs-default em{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.75px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--detail-family, var(--ink));
+    font-style: normal;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .detail-content .pair-with{
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--detail-family-soft, var(--bg-soft));
+    border-radius: 4px;
+    font-size: 12.75px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .detail-content .pair-with em{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.75px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--detail-family, var(--ink));
+    font-style: normal;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .detail-content .output-artifact{
+    margin: 12px 0;
+    padding: 10px 14px;
+    border: 1px dashed var(--rule);
+    background: transparent;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .detail-content .output-artifact em{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.75px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-style: normal;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* template (hidden) — populated from card data attributes */
+  .detail-source{ display: none; }
+
+  /* ===== Legend ===== */
+  .legend{
+    margin-top: 36px;
+    padding: 22px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+  }
+  .legend-title{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+  }
+  .legend-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 28px;
+  }
+  @media (max-width: 700px){ .legend-grid{ grid-template-columns: 1fr; } }
+  .legend-item{
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .legend-swatch{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .legend-item .name{ font-weight: 500; color: var(--ink); margin-right: 6px; }
+  .legend-item .desc{ color: var(--ink-muted); }
+  .legend-item .nums{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  footer{
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .card[role="button"]:focus-visible,
+  .toolbar-action:focus-visible,
+  .detail-row-close:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--family, var(--ink)) 72%, white);
+    outline-offset: 4px;
+  }
+
+  #detailRowMount:focus {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wrap {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 10vw, 38px);
+    }
+
+    .framing,
+    #detailRowMount {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
+</style><div><div class="wrap">
+
+  <header>
+    <div class="eyebrow">Personal map · v13 · For internal use</div>
+    <h1>Pattern recognition <span style="color: var(--ink-faint); font-style: italic;">/</span> visual map</h1>
+  </header>
+
+  <section class="framing">
+    <p class="origin-note">This started as a conversation about why so much AI output feels stale, and what to actually do about it. The answer that kept surfacing was <strong>pattern recognition</strong> — applied not to the model’s output but to what gets fed in. This document maps the specific mechanisms and the implementation paths.</p>
+
+    <p><strong>Most people are using AI at the output layer. The leverage is in the discrimination layer before generation.</strong> Default GPT produces middle-of-the-distribution output because its training data is heavily weighted toward mainstream curated text. The breakthrough, niche, and specialist signal lives in the <em>peripheral layer</em> — anywhere mainstream training underweights. Pattern recognition is how you find it; the discrimination layer is how you decide what to do with it.</p>
+    <p>None of this is new at the frontier. Research labs and the best AI-native product teams are already doing versions of all of it — context engineering, learned source weighting, structured priors, gap detection. The principles are known. <strong>The thing that’s new is treating these as standard operating discipline, not as research-team specialty work.</strong> Most teams shipping with AI today are still wrapping a model in a prompt, feeding it generic data, and shipping the output flat. That’s the gap — and it’s why so much AI feels samey even when the underlying models are getting better.</p>
+    <p>Two things are amplifying this gap right now. First, <strong>the population of people building AI-augmented products has expanded by orders of magnitude</strong> — finance, ops, QA, design, anyone with a working hypothesis can ship something. The floor of “competent AI output” is rising fast and converging, which is why every dashboard, every chatbot, every AI feature feels eerily similar. Same models, same default prompts, same flat retrieval.</p>
+    <p>Second, <strong>the model layer itself is commoditizing faster than anyone expected.</strong> Strong open-source releases, distilled models, fast-following labs reaching frontier-class capability for a fraction of the cost. <em>The model is becoming the foundation.</em> Differentiation isn’t moving up the stack to bigger models — it’s moving sideways into what you feed them and what you do with the output.</p>
+    <p><strong>The discrimination layer</strong> is the system that does the sifting. It mines the peripheries and re-weights what gets fed into the model before generation. Most of what you collect is gravel. The job is to engineer what you keep, how you weight it, what you compare it against, and what absences you flag. <strong>Domain experts already do this without thinking about it.</strong> Expertise <em>is</em> the discrimination layer, built up over years in a domain. The opportunity is to encode that pattern-recognition discipline so non-experts can produce expert-grade output, while the experts themselves move up the value chain to the parts that don’t decompose — taste, judgment, novel-situation sensemaking. The honest version: this engineers the <em>decomposable</em> part of expertise. What gets democratized is the floor, not the ceiling.</p>
+
+    <p class="peripheral-truth">
+      <strong>Peripheral does not mean true</strong>
+      The mistake to avoid: treating “underweighted by mainstream training” as a synonym for “more truthful.” It isn’t. The peripheral layer is also where contamination lives — coordinated inauthentic content, astroturfed reviews, niche communities that have been gamed, AI-generated comment threads dressed as human consensus. The synthetic-content problem is accelerating: the cheaper it gets to produce convincing peripheral signal, the more the periphery fills with manufactured noise. <em>Mining the peripheral layer is only useful when paired with cross-source convergence</em> (does this signal hold across genuinely independent ecosystems?), <em>source-quality weighting</em> (does the source have a track record of original signal that played out?), and <em>outcome validation</em> (did past calls from this source actually hold up?). In practice these compound: a peripheral signal earns weight only when it clears more than one. A single interesting comment isn’t a signal until something else corroborates it. Underweighted is a starting condition, not a conclusion.
+    </p>
+    <p class="examples">
+      <strong>The peripheral layer is broader than it sounds</strong>
+      Comment threads and upvote patterns. Q&amp;A pushback in interviews and earnings calls. Footnotes in disclosures. Niche journals and specialist forums with non-viral findings. Velocity patterns in product launches and creator output. Reddit thread density. What conspicuously isn’t being said. The shape and rate of change in time-series data. All of it is undersampled by mainstream training.
+    </p>
+    <p class="who-this-is-for">
+      <strong>Who this is for</strong>
+      The argument here isn’t that any single card is a novel idea. It’s that <em>treating these as a baseline discipline</em> — the way teams already treat auth, logging, or caching as baseline disciplines — is what separates products that feel intelligent from products that feel generic. Anyone shipping AI-augmented work should have this thinking in front of them from day one — operators, analysts, PMs, engineers, the finance person building an internal tool, the designer prototyping a feature. The first of the three implementation approaches in card #12 (the process layer) is what every team should be doing without thinking about it. The other two are the strategic decisions that follow.
+    </p>
+    <p class="what-survives">
+      <strong>What survives once everyone’s doing it</strong>
+      The mechanisms below will themselves commoditize — the patterns that distinguish good teams today become baseline discipline tomorrow. What persists past that point: <em>access to data others don’t have</em>, <em>velocity of updating the discrimination layer</em>, <em>integration with the parts of expertise that don’t decompose</em>, and <em>the bigger discipline of finding the next under-mined layer</em> as the current periphery becomes mainstream. Card #11 covers the part most teams skip: the discrimination layer is a <em>system that learns</em>, not a static methodology.
+    </p>
+  </section>
+
+  <figure class="family-diagram" role="img" aria-label="Diagram showing the six families of pattern recognition mechanisms, how they relate, and the seven-step workflow.">
+    <img src="pattern-recognition-diagram-v12.png" alt="A map of the discrimination layer: six families (peripheral mining, source weighing, absence + memory, structured patterns, velocity, learning loop) feeding the central peripheral mining hub, which feeds implementation. Below: a seven-step workflow from collecting widely to the learning loop continuously updating weights and baselines.">
+  </figure>
+
+  <nav class="toolbar">
+    <span class="toolbar-label">Click any card to expand</span>
+    <button class="toolbar-action" id="collapse-all" aria-label="Collapse expanded card details">Collapse</button>
+  </nav>
+
+  <div class="grid" id="grid">
+
+<!-- HERO #01 -->
+    <article class="card hero" data-num="01" data-finance="true" data-building="true" style="--family: var(--f2); --family-soft: var(--f2-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 01: Mining what mainstream training data misses">
+      <div class="card-top">
+        <span class="card-num">01</span>
+        <span class="family-pill">Peripheral signal mining</span>
+      </div>
+      <h3>Mining what mainstream training data misses</h3>
+      <p class="summary">A user wants to do Y. The video, the blog post, the Wikipedia entry all explain the standard way. But buried in the comments — or in a niche journal nobody’s sharing yet, or in the velocity pattern of a new product launch — sits the actual answer. <em>That’s the gold.</em> Default GPT, by itself, won’t reach it without the data and pipeline to get there.</p>
+      <ul class="preview-list">
+        <li>Comment threads + upvote patterns</li>
+        <li>Niche medical / research journals</li>
+        <li>Mid-thought reversals in transcripts</li>
+        <li>Velocity anomalies in launch data</li>
+        <li>Recommended-graph clustering</li>
+        <li>Q&amp;A pushback in earnings calls</li>
+        <li>Recurring questions never answered</li>
+        <li>Niche forum exchanges</li>
+      </ul>
+      <div class="badges">
+        
+        <span class="badge building">Building</span>
+        <span class="badge discriminator">core principle</span>
+      </div>
+      <div class="detail-source">
+        <div class="body">
+          <p>This is where the difference between competent and specialist actually lives. Default GPT produces middle-of-the-distribution output because its training data is heavily weighted toward mainstream curated text. The breakthrough signal lives in places that data undersamples — and those places are more varied than “just YouTube comments.”</p>
+          <div class="example">
+            <span class="ex-label">Example · consumer tech</span>
+            A user wants to accomplish task Y. The standard YouTube video explains the conventional method. But a high-upvoted comment buried deep in the thread says “tool Z does this faster and simpler.” Default GPT will never surface tool Z — it barely exists in mainstream documentation.
+          </div>
+          <div class="example">
+            <span class="ex-label">Example · medical research</span>
+            A new paper in a small specialty journal reports a finding that contradicts the standard treatment protocol. The paper has been cited 3 times in 6 months — barely indexed, no press coverage. But two clinicians on a niche forum and one researcher’s blog have flagged it as significant. Default GPT will repeat the consensus protocol because that’s what its training weighted heavily. Mining the peripheral layer surfaces the contradicting paper while it’s still early.
+          </div>
+          <p>The engineering is the same in both cases: at scale across the relevant corpus, mine the peripheral layer and look for convergence. Tool Z appears in 12 different comment sections. The contradicting paper is referenced by 3 independent specialist sources. That convergence — across separate audiences with separate incentive structures — is what lifts a signal from “random mention” to “the actual answer.”</p>
+          <p>Specifically what you look for in this layer:</p>
+          <ul>
+            <li>Tools, methods, contradictions, or findings repeatedly named in peripheral sources but absent from mainstream content</li>
+            <li>Moments where speakers reverse, refine, or qualify themselves (the corrected version is usually the real answer)</li>
+            <li>Questions that recur across many comment sections, forums, or Q&amp;A exchanges that mainstream sources never address (the gap is the opportunity)</li>
+            <li>Cross-references between independent specialists that suggest a hidden network of expertise outside mainstream visibility</li>
+          </ul>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A ranked shortlist of repeated peripheral signals (tools, contradictions, findings, unanswered questions), with links to source nodes and a convergence score showing how many distinct ecosystems each signal appeared in.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Topic research, product/tool discovery, R&amp;D scouting, competitive intelligence, medical research, emerging-trend tracking. Directly transferable to earnings call Q&amp;A (the analyst-pushback exchanges are the equivalent peripheral layer) and to specialist research domains where consensus lags the frontier.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            Default GPT can summarize the mainstream source. It cannot mine peripheral ecosystems at scale, weight by upvote/citation convergence across distinct sources, or surface a niche tool/finding that exists almost entirely outside its training-data center of mass. The engineering is in acquiring and re-weighting that layer before generation.
+          </div>
+          <div class="pair-with">
+            <em>The center of gravity</em>
+            This card stands alone in its family because every other pattern card is in service of it. The source-weighing cards (#02, #03) are how you decide what to trust. Velocity (#04) catches signals before they’re even peripheral. The absence cards (#05, #10) are what’s missing once you’ve mined. The structured-patterns block (#06 parent, with #07, #08, #09 as worked instances) is the same logic applied to populations of comparable items. The learning loop (#11) is the metabolism on top. Card #12 is how it actually gets implemented.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 03 -->
+    <article class="card" data-num="02" data-finance="true" data-building="false" style="--family: var(--f3); --family-soft: var(--f3-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 02: Cross-source convergence">
+      <div class="card-top">
+        <span class="card-num">02</span>
+        <span class="family-pill">Source weighing</span>
+      </div>
+      <h3>Cross-source convergence</h3>
+      <p class="summary">Same signal across three distinct ecosystems beats fifty mentions inside one. The point is incentive-structure independence, not raw count.</p>
+      <div class="detail-source">
+        <div class="body">
+          <p>Default GPT can compare three articles you paste in. What it can’t do: track the same signal across genuinely different ecosystems and weight it by how independent those ecosystems are.</p>
+          <div class="example">
+            <span class="ex-label">Example · emerging tools</span>
+            Tool Z gets named in three YouTube comment threads (different creators), two Reddit posts on different subs, and a niche Discord exchange. Much stronger signal than 50 mentions inside one influencer’s ecosystem (which usually means a wave started by a single person).
+          </div>
+          <div class="example">
+            <span class="ex-label">Example · medical research</span>
+            A small-journal finding gets cited by one independent clinician’s blog, referenced in a specialist forum thread, and built on by a separate research group’s preprint. Three independent ecosystems, one signal — much stronger than a viral preprint that’s only retweeted within one academic Twitter circle.
+          </div>
+          <p>The engineering is in defining what counts as a “distinct ecosystem” (different incentive structures, different audiences, different gatekeepers) and tracking convergence across them.</p>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            An ecosystem map plus a convergence-weighted shortlist of signals, with each signal tagged by how many independent ecosystems referenced it.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Tracking emerging tools across YouTube + Reddit + Discord. Tracking research across specialty journals + forums + independent labs. Tracking thesis convergence across earnings calls + sell-side notes + trade press.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT will count mentions; it won’t weight by source-ecosystem distinctness or filter for incentive independence. That’s engineered weighting on top.
+          </div>
+          <div class="pair-with">
+            <em>Pair with #03</em>
+            Convergence (this card) and source-quality weighting (#03) work together. Convergence asks “how many independent ecosystems agree?” #03 asks “which sources should I listen to harder in the first place?”
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 05 -->
+    <article class="card" data-num="03" data-finance="true" data-building="false" style="--family: var(--f3); --family-soft: var(--f3-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 03: Source-quality weighting">
+      <div class="card-top">
+        <span class="card-num">03</span>
+        <span class="family-pill">Source weighing</span>
+      </div>
+      <h3>Source-quality weighting</h3>
+      <p class="summary">Niche YouTuber right about 3 sleeper tools 6 months early. Large channel recycling consensus. Track records aren’t equal — and GPT treats them as if they are.</p>
+      <div class="detail-source">
+        <div class="body">
+          <p>Default GPT treats most sources as roughly equal because its training data is flat. Per-source learned weighting based on track record is engineering: track which sources have repeatedly introduced non-consensus signal that later proved out, and re-weight their input accordingly.</p>
+          <div class="example">
+            <span class="ex-label">Example · creators</span>
+            A niche YouTuber in a specific category has been right about three sleeper tools 6+ months before they broke into mainstream. A large channel mostly recycles current consensus. Weighting them equally produces noise. Tracking each source’s history of original-vs-derivative signal, and feeding that as a prior, produces actual signal.
+          </div>
+          <div class="example">
+            <span class="ex-label">Example · analysts</span>
+            One sell-side analyst has been right about non-consensus calls in the sector three times over two years. Another mostly mirrors the median estimate. Same logic: track-record weighting changes which signals actually matter when they speak.
+          </div>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A track-record table per source (original calls, accuracy, lead time) plus weighting rules applied automatically when new content arrives from that source.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Research feeds, content discovery, expert tracking. Same approach for ranking analysts, independent commentators, or trade press by track record of original calls vs. consensus restating.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT has no per-source learned weighting from your specific track-record observations. The track-record table and the re-weighting logic are both engineered.
+          </div>
+          <div class="pair-with">
+            <em>Pair with #02</em>
+            Two halves of the same problem. #02 says “trust what shows up across many distinct sources.” #03 says “listen harder to the sources that have been right before.”
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 04 -->
+    <article class="card" data-num="04" data-finance="true" data-building="true" style="--family: var(--f5); --family-soft: var(--f5-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 04: Velocity &amp; breakout detection">
+      <div class="card-top">
+        <span class="card-num">04</span>
+        <span class="family-pill">Velocity / motion</span>
+      </div>
+      <h3>Velocity &amp; breakout detection</h3>
+      <p class="summary">Most launches die. The few with anomalous velocity-to-age ratio are early signals of an emerging tool, idea, or category. Catch the fidget spinner in week one, not week twelve.</p>
+      <div class="badges">
+        <span class="badge building">Building</span>
+      </div>
+      <div class="detail-source">
+        <div class="body">
+          <p>Pattern recognition in the rate of change, not the absolute level. Default GPT can describe a trend narratively (“sales appear to be accelerating”) but can’t engineer the comparison: tracking many launches in a category, computing velocity-relative-to-cohort, and flagging the outliers <em>while they’re still small enough to be actionable</em>.</p>
+          <div class="example">
+            <span class="ex-label">Example · creator economy</span>
+            A new AI-news YouTube channel posts 4 videos a day (clearly AI-tooled). 95% of similar channels stall at 200 views. This one is averaging 18,000 views by day three. The velocity profile says <em>their tooling or angle is doing something the others aren’t</em> — which is a signal worth investigating before it’s obvious.
+          </div>
+          <div class="example">
+            <span class="ex-label">Example · Amazon products</span>
+            New product launched 30 days ago. Already in BSR top 5,000 with a review velocity well above category median for that age. Most products this young are still climbing slowly. This one isn’t — which means either the product is genuinely strong, the launch is gamed, or there’s an emerging category. All three are worth knowing about: wholesale opportunity if it’s real, contamination flag if it’s gamed, first-mover window if it’s a category. Catch the fidget spinner in week one. Don’t catch it in month four.
+          </div>
+          <div class="example">
+            <span class="ex-label">Example · finance</span>
+            Same logic applied to micro-cap volume / mention-velocity / position-build patterns — anomalous activity relative to the issuer’s historical baseline and to peer baselines, before the move is obvious from the price chart alone.
+          </div>
+          <p>This isn’t real time-series forecasting (default GPT can’t do that — it would need a separate model). It’s the upstream layer that <em>identifies which series are even worth forecasting</em>. The signal is in the anomaly, not the projection.</p>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A ranked watch-list of breakout candidates with velocity-relative-to-cohort scores, anomaly flags, and contamination caveats.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Wholesale sourcing, private-label category scouting, creator/tool emergence tracking, micro-cap finance, any domain where catching the early-but-not-too-early window matters.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT can read a series and say “this looks like it’s growing fast.” It can’t systematically compare against cohort baselines, flag anomalies relative to peer-class behavior, or weight by contamination risk. That’s engineered comparison logic plus a maintained baseline corpus.
+          </div>
+          <div class="pair-with">
+            <em>Stands alone in its family</em>
+            Time and motion are different from the other five families. Peripheral signal mining (#01) is about where to look. Source weighing (#02, #03) is about who to trust. Absence + memory (#05, #10) is about negative space. Structured patterns (#06 parent, with #07, #08, #09 as worked instances) compare across a population at one moment. The learning loop (#11) is the metabolism on top. Velocity is about <em>rate of change</em> — orthogonal to all of them, and often the earliest signal you can act on.
+          </div>
+        </div>
+      </div></article>
+
+<!-- 04 -->
+    <article class="card" data-num="05" data-finance="true" data-building="false" style="--family: var(--f4); --family-soft: var(--f4-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 05: Gap and absence detection">
+      <div class="card-top">
+        <span class="card-num">05</span>
+        <span class="family-pill">Absence + memory</span>
+      </div>
+      <h3>Gap and absence detection</h3>
+      <p class="summary">Many reviews rave about Feature X. None mention durability after 6 months. The absence is the signal — and default GPT won’t proactively flag it.</p>
+      <div class="detail-source">
+        <div class="body">
+          <p>Default GPT won’t proactively flag what’s missing unless you ask the exact question. The engineering: define an expected pattern from a peer corpus, then scan for the conspicuous absence.</p>
+          <div class="example">
+            <span class="ex-label">Example · consumer reviews</span>
+            Many reviews of a product all rave about Feature X. None mention durability after 6 months. Default summarization says “users love Feature X.” Gap detection flags: <em>absence of durability discussion is the real signal — either it’s not durable, or the use case hasn’t surfaced it yet.</em>
+          </div>
+          <div class="example">
+            <span class="ex-label">Example · earnings calls</span>
+            Many earnings calls in a sector all discuss growth. None addresses margin compression. The absence is the signal — management has pivoted attention away from where the real pressure is.
+          </div>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            An expected-pattern baseline (built from the peer corpus) plus a conspicuous-absence list flagging what should be there but isn’t.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Product/customer research, due diligence, competitive analysis. Anywhere the expected disclosure doesn’t appear.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT summarizes what’s there. Gap detection requires knowing what <em>should</em> be there from peer comparison. That baseline is engineered.
+          </div>
+          <div class="pair-with">
+            <em>Pair with #10</em>
+            Gap detection finds what’s missing in current data. Longitudinal context (#10) finds what’s been missing over time. Both are about negative space.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 06 abstract parent pattern -->
+    <article class="card" data-num="06" data-finance="true" data-building="false" style="--family: var(--f1); --family-soft: var(--f1-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 06: Pattern extraction across a peer set">
+      <div class="card-top">
+        <span class="card-num">06</span>
+        <span class="family-pill">Structured patterns</span>
+      </div>
+      <h3>Pattern extraction across a peer set</h3>
+      <p class="summary">Anywhere you have items with shared measurable attributes, you can pull the population, normalize, find what correlates with success, and identify gaps in a target item. The next three cards are this same logic applied to three different worlds.</p>
+      <div class="detail-source">
+        <div class="body">
+          <p>The most general form of structured pattern recognition. Given any population of items that can be measured against the same attributes, the same logic applies: assemble the population, normalize the attributes so comparison is meaningful, identify which attribute combinations correlate with success in that population, then compare a target item against the population to find its specific gaps.</p>
+          <p>Default GPT can compare a few items if you paste them in. The engineered version goes further: pulling the entire population, normalizing across non-text features, weighting by performance proxies, and surfacing the systematic gap between target and winner profile.</p>
+          <div class="example">
+            <span class="ex-label">Example · sports analytics</span>
+            Pull every NBA point guard’s stats from the season. Normalize per-36-minute and per-100-possession to make comparisons fair across playing time. Identify which stat profiles correlate with team success — assist-to-turnover ratio, true shooting percentage above league average, defensive rating. Compare a target player against that distribution to surface their specific gaps. The output isn’t “here are this player’s stats.” It’s “here’s what this player would need to develop to reach the next tier, ranked by impact.”
+          </div>
+          <p>The same shape applies in many domains: real estate comps in a zip code, supplier evaluation in a category, candidate benchmarking in a hiring pool, restaurants on a delivery platform, songs in a streaming service’s catalog. The next three cards (#07, #08, #09) are three places I’ve actually applied this logic.</p>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A normalized population dataset plus a target-versus-population gap report, ranked by which gaps would have the largest performance impact if closed.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Anywhere you have a population of items with shared, measurable attributes — sports rosters, real estate, suppliers, candidates, products, restaurants, songs. The constraint is whether the attributes are normalizable and whether you can pull the full population.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT can compare a handful of items if you paste them. It can’t pull the population, normalize across non-text features, or weight gaps by performance impact. The pattern is generalizable; the engineering to apply it at scale is the gap.
+          </div>
+          <div class="pair-with">
+            <em>Family head · structured patterns</em>
+            The parent of #07 (Amazon listings), #08 (financial disclosures), and #09 (brand portfolios). Same logic, three different populations, each with its own attribute set and success metric.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 01 -->
+    <article class="card" data-num="07" data-finance="false" data-building="true" style="--family: var(--f1); --family-soft: var(--f1-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 07: Amazon listing pattern extraction">
+      <div class="card-top">
+        <span class="card-num">07</span>
+        <span class="family-pill">Structured patterns</span>
+      </div>
+      <h3>Amazon listing pattern extraction</h3>
+      <p class="summary">Scrape an entire category. Normalize across non-text features. Performance-weight the patterns. Surface the gap against my listing. Engineering, not prompting.</p>
+      <div class="badges">
+        <span class="badge building">Building</span>
+      </div>
+      <div class="detail-source">
+        <div class="body">
+          <p>Default GPT can compare a few listings I paste in. The discipline at scale is different: scrape an entire category, normalize across products on non-text features (pricing tiers, review velocity, image counts, badge prevalence, A+ content presence), weight patterns by performance proxies (rank position × review count × velocity), and run gap detection against my specific listing.</p>
+          <p>The output isn’t a summary. It’s a winner-weighted gap report: which claim-types, visual structures, price-tier expectations, and proof elements show up among the top-performing listings <em>that are missing from mine</em>.</p>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A weighted checklist + gap report (rank × reviews × velocity), split into “quick wins” vs “structural rebuilds.”
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Amazon wholesale work. The same engineering applies to any structured marketplace.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT can compare 3 listings if you paste them. It can’t scrape 50, normalize across non-text features, or weight by performance. That’s the engineering gap.
+          </div>
+          <div class="pair-with">
+            <em>Family · structured patterns</em>
+            Direct sibling of #08 (disclosure patterns — finance translation) and #09 (brand portfolio — personal twin). Same logic, three different corpora.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 06 -->
+    <article class="card" data-num="08" data-finance="true" data-building="false" style="--family: var(--f1); --family-soft: var(--f1-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 08: Financial disclosure pattern extraction">
+      <div class="card-top">
+        <span class="card-num">08</span>
+        <span class="family-pill">Structured patterns</span>
+      </div>
+      <h3>Financial disclosure pattern extraction</h3>
+      <p class="summary">Risk-factor sections from 8 peer 10-Ks. What’s universal, what’s idiosyncratic, what’s missing where peers include it. Departures from established patterns matter more than the disclosed numbers.</p>
+      <div class="detail-source">
+        <div class="body">
+          <p>Default GPT can summarize a 10-K. The harder lift is structured comparison across an entire peer set <em>and</em> across an issuer’s own prior filings, then surfacing what changed.</p>
+          <div class="example">
+            <span class="ex-label">Concrete example</span>
+            Pull the risk factors section from 8 peer 10-Ks. Identify (a) what’s universally mentioned (table-stakes language), (b) what’s specific to one issuer (idiosyncratic), and (c) what’s conspicuously missing where peers include it (the absence). Then track the same issuer’s prior 4 filings: did they add or drop risk language between Q2 and Q3? Departures from established patterns — both peer-relative and self-relative — are often more interesting than the disclosed numbers themselves.
+          </div>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A peer-by-time delta table — universal vs idiosyncratic vs missing-where-expected, plus quarter-over-quarter language additions and deletions per issuer.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Earnings releases, 10-Ks, 10-Qs, S-1s. Direct adaptation of the listing-analysis logic into a finance corpus.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT summarizes one filing well. Cross-peer + cross-time structural comparison is engineered — the corpus assembly, normalization, and gap-detection layer.
+          </div>
+          <div class="pair-with">
+            <em>Family · structured patterns</em>
+            The finance translation of #07 (Amazon listings). Same logic applied to a different corpus — that’s really the whole point.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 07 -->
+    <article class="card" data-num="09" data-finance="false" data-building="true" style="--family: var(--f1); --family-soft: var(--f1-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 09: Brand &amp; supplier portfolio extraction">
+      <div class="card-top">
+        <span class="card-num">09</span>
+        <span class="family-pill">Structured patterns</span>
+      </div>
+      <h3>Brand &amp; supplier portfolio extraction</h3>
+      <p class="summary">A brand with 40 SKUs across 8 categories. Which 3 categories show velocity-to-review-count strength? Which SKUs cannibalize each other? Decision-grade pattern set, not a description.</p>
+      <div class="badges">
+        <span class="badge building">Building</span>
+      </div>
+      <div class="detail-source">
+        <div class="body">
+          <p>The personal twin of #08 in my own work. When evaluating a brand or supplier to take on, default summarization tells me “they have 40 products across 8 categories.” Useful but not decision-grade.</p>
+          <div class="example">
+            <span class="ex-label">Concrete example</span>
+            Pattern extraction across the portfolio: which 3 categories have the best velocity-to-review-count ratio (growing into demand vs. coasting on early reviews)? Where are they pricing 20%+ above category median (premium positioning that’s working)? Where below median with high review count (commodity, possibly racing to the bottom)? Which SKUs cluster around the same root keyword and cannibalize each other?
+          </div>
+          <p>The output: which SKUs to actually take on, which are losers I shouldn’t touch, where the brand has unrealized leverage. That’s a decision, not a description.</p>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A SKU-by-SKU triage list (take / skip / negotiate) with reasoning grounded in the comparison logic.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Brand evaluation, supplier diligence, portfolio rationalization in my Amazon wholesale work.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            GPT, given the same data, can’t do this without me engineering the comparison logic, the velocity calculation, or the cannibalization clustering.
+          </div>
+          <div class="pair-with">
+            <em>Family · structured patterns</em>
+            The version of #08 I can talk fluently about because I’ve actually built it. Same logic, my domain.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 08 -->
+    <article class="card" data-num="10" data-finance="true" data-building="true" style="--family: var(--f4); --family-soft: var(--f4-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 10: Structured memory across time">
+      <div class="card-top">
+        <span class="card-num">10</span>
+        <span class="family-pill">Absence + memory</span>
+      </div>
+      <h3>Structured memory across time</h3>
+      <p class="summary">Default memory is a blob: “things you’ve told me.” Structured prior tracks what’s been ruled out, what keeps recurring, what hasn’t been tried, and actively asks for what’s missing.</p>
+      <div class="badges">
+        
+        <span class="badge building">Building</span>
+      </div>
+      <div class="detail-source">
+        <div class="body">
+          <p>Default GPT memory is an unstructured blob: “things you’ve told me.” It’ll remember “I have recurring fatigue.” It won’t track that thyroid was tested twice in 2024 (both normal), B12 hasn’t been tested since 2023, sleep study was never run, fatigue worsens before stress events, and a doctor in March suggested ruling out X but it never happened.</p>
+          <p>A structured prior maintains state of: what’s been tested or ruled out (with dates), what keeps recurring (with frequency and triggers), what hasn’t been tried, and what should be requested next. The model doesn’t just remember — it actively reasons about what’s missing from the context and prompts for it.</p>
+          <div class="example">
+            <span class="ex-label">Concrete example</span>
+            In my own medical use, default memory would have said “you mentioned fatigue.” The structured prior surfaced a missing test that no individual doctor visit had spotted — because no individual visit had the full prior in front of them, but the structured prior did.
+          </div>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A maintained state table (tested / ruled out / recurring / untried) plus an active next-questions list the model surfaces unprompted.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Personal health context. Equivalent for tracking a single position or thesis in finance: cost basis, original thesis, what’s played out vs. what hasn’t, new risks emerging, original risks now moot — actively maintained state, not blob memory.
+          <div class="vs-default">
+            <em>vs. default GPT memory</em>
+            Default memory = unstructured blob. Structured prior = tested vs. untested + recurring patterns + active requesting of missing data. The structure and the reasoning-over-it are both engineered.
+          </div>
+          <div class="pair-with">
+            <em>Pair with #05</em>
+            Both are about negative space. #05 finds what’s missing in current data. #10 finds what’s been missing across time that no single observation could have caught.
+          </div>
+        </div>
+      </div>
+    </article>
+
+<!-- 11 — Learning loop -->
+    <article class="card" data-num="11" data-finance="true" data-building="true" style="--family: var(--f6); --family-soft: var(--f6-soft);" tabindex="0" role="button" aria-expanded="false" aria-controls="detailRowMount" aria-label="Open details for card 11: The learning loop">
+      <div class="card-top">
+        <span class="card-num">11</span>
+        <span class="family-pill">Learning loop</span>
+      </div>
+      <h3>The learning loop</h3>
+      <p class="summary">Every other card here is a snapshot. This one is the metabolism on top — the system that updates which signals to trust based on what actually played out. Static discipline ages out. The learning loop is what doesn’t.</p>
+      <div class="badges">
+        <span class="badge building">Building</span>
+      </div>
+      <div class="detail-source">
+        <div class="body">
+          <p>Every card before this one describes a discipline. This one describes the metabolism on top of that discipline — the system that revises which sources to weight, which gaps matter, and which patterns still hold. Without this layer, the mechanisms are a snapshot of expertise frozen in time. Useful, but rapidly stale. This runs as a background discipline. The system logs predictions and outcomes over time, then updates its weights between queries — not during them.</p>
+          <p>What makes someone a deepening expert vs. a stagnant one is the rate at which they incorporate evidence and revise priors. The expert clinician learns from missed diagnoses. The expert investor updates priors when theses fail. The expert recruiter recalibrates after watching a hire perform over years. A discrimination layer that doesn’t do this is just last year’s expertise — competent but increasingly miscalibrated.</p>
+          <p>Specifically, what the learning loop tracks:</p>
+          <ul>
+            <li><em>Track-record validation:</em> every prediction the system makes (which signals to weight, which gaps matter, which sources to trust) gets logged against eventual outcome. Sources that were highly weighted but produced poor predictions get downweighted. Sources dismissed but proven right get upweighted.</li>
+            <li><em>Drift detection:</em> sources change over time. A blog reliable in 2022 might be ghostwritten by 2025. A community that produced novel insights might have been infiltrated. The layer continuously tests whether historical performance still predicts current quality.</li>
+            <li><em>Active probing:</em> a learning system doesn’t just consume signal passively. It generates predictions and tests them. Same logic as experimental science, or how good investors take small positions to validate theses before committing.</li>
+            <li><em>Frame revision:</em> the categories themselves drift. What counts as “peripheral signal” in 2025 won’t in 2028. Periodically, the discrimination layer needs to revise not just its weights but its taxonomy.</li>
+          </ul>
+          <div class="example">
+            <span class="ex-label">Example · concrete</span>
+            A team using #03 (source-quality weighting) builds a track-record table of which industry analysts have called sleeper trends correctly. Useful — but only if that table updates. The learning-loop discipline says: every quarter, score each analyst’s recent calls against outcomes, downweight the ones who’ve drifted toward consensus, upweight the ones still introducing original signal. Several quarters in, the table looks materially different from where it started. That’s the metabolism.
+          </div>
+          <div class="output-artifact">
+            <em>Output artifact</em>
+            A maintained ledger of (prediction → outcome → weight adjustment) that runs continuously. Plus drift alerts when historical reliability stops predicting current performance.
+          </div>
+        </div>
+        <div class="where">
+          <div class="where-label">Where it shows up</div>
+          Any discipline meant to last more than a few years. Particularly important under adversarial conditions — once adversaries know your sources, the static layer gets gamed; the learning layer detects and routes around it. Especially relevant for any team building an internal AI capability they expect to compound rather than rebuild yearly.
+          <div class="vs-default">
+            <em>vs. default GPT</em>
+            Default GPT has no track record of <em>your</em> predictions on <em>your</em> subject matter. It has the training corpus and the current context. The track-record table built from your own observations, plus the updating logic, is genuinely engineered.
+          </div>
+          <div class="pair-with">
+            <em>The metabolism on top of everything else</em>
+            This card sits over the others, not beside them. Source-quality weighting (#03) implies a track-record table; this card describes how that table updates. Cross-source convergence (#02) implies trusted ecosystems; this card detects when they drift. Gap detection (#05) implies an expected baseline; this card revises the baseline as the corpus changes. The mechanisms are the discipline. This card is what keeps the discipline current.
+          </div>
+        </div>
+      </div></article>
+
+<!-- 11 CLOSING — three solutions -->
+    <article class="card closing" data-num="12" data-finance="true" data-building="true">
+      <div class="card-top">
+        <span class="card-num">12</span>
+        <span class="family-pill">Implementation</span>
+      </div>
+      <h3>Three ways pattern recognition actually gets implemented</h3>
+      <p class="summary">Knowing the patterns matter is one thing. Building them into how AI gets used is another. Three credible paths, in increasing order of capital and lock-in. The first one isn’t optional — it’s the baseline every product team should treat as table stakes. The second and third are the strategic decisions that follow.</p>
+
+      <div class="closing-solutions">
+
+        <div class="solution">
+          <div class="sol-num">Solution 01 · Process layer</div>
+          <div class="sol-name">Build discrimination into how the team prompts</div>
+          <p class="sol-body">A team builds discrimination directly into how they prompt and verify. Templates like “before answering, list which sources you’d weight higher and why,” “what’s missing from this corpus that should be there,” “compare against the peer set, not in isolation.” This is the baseline. It doesn’t change the model — it changes what the team asks of it. <em>Every product team building with AI should be doing this on day one, regardless of whether they ever go further.</em></p>
+          <p class="sol-fit">
+            <strong>Best fit · limitation</strong>
+            Any team. Costs almost nothing. Limitation: the discipline lives in habits, which decay. It’s necessary but not sufficient — once a team scales, individual habits stop being reliable enough.
+          </p>
+        </div>
+
+        <div class="solution highlight">
+          <div class="sol-num">Solution 02 · Reasoning layer <span class="sol-tag">What I’m building</span></div>
+          <div class="sol-name">A discrimination layer between the model and the question</div>
+          <p class="sol-body">A layer that sits <em>between</em> the model and the user. The user asks normally; the layer mines peripheral sources, weights what gets passed in, flags absences, maintains structured priors, and only then hands the model a high-signal context. Generic GPT becomes specialist GPT without retraining.</p>
+          <p class="sol-fit">
+            <strong>Best fit · limitation</strong>
+            Many users wanting specialist-grade output without each one having to rebuild the discipline. Limitation: still bounded by what the underlying model can do once given good context.
+          </p>
+        </div>
+
+        <div class="solution">
+          <div class="sol-num">Solution 03 · Custom model</div>
+          <div class="sol-name">Train or fine-tune with pattern recognition as a first-class objective</div>
+          <p class="sol-body">A company trains or fine-tunes its own model with pattern recognition built in as a primary objective. The model doesn’t just consume better context — it learns to seek it. The deepest path, and the one that can be most defensible long-term.</p>
+          <p class="sol-fit">
+            <strong>Best fit · limitation</strong>
+            One-vertical operators with a unique training corpus and a long horizon. Limitation: capital-intensive, slow, and the moat depends on data nobody else can replicate.
+          </p>
+        </div>
+
+      </div>
+
+      <p class="closing-coda">The three aren’t mutually exclusive — process discipline accelerates a reasoning layer, and a reasoning layer can be the front-end to a custom model. Whichever path a team picks, none of them work as a static deliverable: each one needs the learning loop on top, or it ages out. The real question isn’t which path a team picks. It’s whether they’re working on the discrimination layer at all, or shipping at default-prompt level and calling it AI strategy. The mechanisms in this document are how you do the former. Most teams are still doing the latter. That gap — between teams with a deliberate position on what feeds the model and teams without — is where the advantage sits, and it’ll keep sitting there until the discipline goes baseline. Pick a path. Start with the process layer. Build the learning loop on top. That’s the work.</p>
+    </article>
+
+  </div>
+
+  <div id="detailRowMount" role="region" aria-label="Card details" tabindex="-1" aria-live="polite"></div>
+
+  <aside class="legend">
+    <div class="legend-title">Six families · How they relate</div>
+    <div class="legend-grid">
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: var(--f2)"></span>
+        <div>
+          <span class="name">Peripheral signal mining</span>
+          <span class="nums">[01 — the heart]</span>
+          <div class="desc">Mining the layer mainstream training underweights — comments, niche journals, forum exchanges, Q&amp;A pushback, anywhere consensus lags the frontier. Standalone in its family because every other card is in service of this principle.</div>
+        </div>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: var(--f3)"></span>
+        <div>
+          <span class="name">Source weighing</span>
+          <span class="nums">[02, 03]</span>
+          <div class="desc">How to combine many sources without flattening them. Convergence across distinct ecosystems (02) and per-source track-record weighting (03).</div>
+        </div>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: var(--f5)"></span>
+        <div>
+          <span class="name">Velocity / motion</span>
+          <span class="nums">[04]</span>
+          <div class="desc">Pattern recognition in the rate of change. Identifies which signals are worth attention before absolute numbers make it obvious. Often the earliest actionable layer.</div>
+        </div>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: var(--f4)"></span>
+        <div>
+          <span class="name">Absence + memory</span>
+          <span class="nums">[05, 10]</span>
+          <div class="desc">The negative-space plays. Gap detection finds what’s missing right now (05). Structured memory across time carries what was missing across past observations (10).</div>
+        </div>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: var(--f1)"></span>
+        <div>
+          <span class="name">Structured patterns</span>
+          <span class="nums">[06 parent, 07, 08, 09]</span>
+          <div class="desc">Pull a population of comparable items, normalize, find what correlates with success, identify gaps. Card 06 is the abstract parent; the next three are worked instances: Amazon listings (07), financial disclosures (08), brand portfolios (09).</div>
+        </div>
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch" style="background: var(--f6)"></span>
+        <div>
+          <span class="name">Learning loop</span>
+          <span class="nums">[11]</span>
+          <div class="desc">The metabolism on top of the other families. Track-record validation, drift detection, active probing, frame revision. The mechanism that keeps a discrimination layer current as sources drift, adversaries adapt, and the once-peripheral becomes mainstream.</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <footer>
+    <span>Pattern recognition · personal map · v13 · async + compound guardrails</span>
+    <span>Click any card to expand · press Esc to close</span>
+  </footer>
+
+</div></div></main><script id="_R_">import("/assets/index-DJzSWtkZ.js")</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2cc7a49ba30d123',t:'MTc4NzAwOTU0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; visibility: hidden;"></iframe><script>self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push("2:I[\"ee1e8c590ee3\",[],\"Children\",1]\n3:I[\"dbaf2f92cac2\",[],\"LayoutSegmentProvider\",1]\n4:I[\"ee1e8c590ee3\",[],\"Slot\",1]\n5:I[\"4955a651e5f7\",[],\"RedirectBoundary\",1]\n:HL[\"/assets/index-D0pbBpVx.css\",\"style\"]\n:HL[\"https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700\u0026family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400\u0026family=JetBrains+Mono:wght@400;500\u0026display=swap\",\"style\"]\n")</script><script>self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push("0:{\"__route\":\"route:/\",\"__interceptionContext\":null,\"__layoutIds\":[\"layout:/\"],\"__rootLayout\":\"/\",\"page:/\":\"$L1\",\"layout:/\":[[[[\"$\",\"link\",\"css:/assets/index-D0pbBpVx.css\",{\"rel\":\"stylesheet\",\"precedence\":\"vite-rsc/importer-resources\",\"href\":\"/assets/index-D0pbBpVx.css\",\"data-rsc-css-href\":\"/assets/index-D0pbBpVx.css\"}],\"$undefined\"],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[[\"$\",\"link\",null,{\"rel\":\"preconnect\",\"href\":\"https://fonts.googleapis.com\"}],[\"$\",\"link\",null,{\"rel\":\"preconnect\",\"href\":\"https://fonts.gstatic.com\",\"crossOrigin\":\"anonymous\"}],[\"$\",\"link\",null,{\"href\":\"https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700\u0026family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400\u0026family=JetBrains+Mono:wght@400;500\u0026display=swap\",\"rel\":\"stylesheet\"}]]}],[\"$\",\"body\",null,{\"children\":[\"$\",\"$L2\",null,{}]}]]}]],null],\"route:/\":[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],[[\"$\",\"title\",\"0\",{\"children\":\"Pattern Recognition — Visual Map\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"A visual map of the discrimination layer: twelve mechanisms and implementation paths for finding, weighing, and learning from underweighted signal.\"}],[\"$\",\"meta\",\"2\",{\"name\":\"keywords\",\"content\":\"pattern recognition,discrimination layer,peripheral signal,source weighting,AI\"}],[\"$\",\"meta\",\"3\",{\"name\":\"robots\",\"content\":\"index, follow\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Pattern Recognition — Visual Map\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"Twelve mechanisms for engineering what gets fed into AI before generation.\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:url\",\"content\":\"https://pattern-recognition-map.adonisdv23.chatgpt.site/\"}],[\"$\",\"meta\",\"7\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:image\",\"content\":\"https://pattern-recognition-map.adonisdv23.chatgpt.site/og.png\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:image:width\",\"content\":\"1536\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:image:height\",\"content\":\"1024\"}],[\"$\",\"meta\",\"11\",{\"property\":\"og:image:alt\",\"content\":\"Pattern Recognition visual map social preview\"}],[\"$\",\"meta\",\"12\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"$\",\"meta\",\"13\",{\"name\":\"twitter:title\",\"content\":\"Pattern Recognition — Visual Map\"}],[\"$\",\"meta\",\"14\",{\"name\":\"twitter:description\",\"content\":\"Twelve mechanisms for engineering what gets fed into AI before generation.\"}],[\"$\",\"meta\",\"15\",{\"name\":\"twitter:image\",\"content\":\"https://pattern-recognition-map.adonisdv23.chatgpt.site/og.png\"}],[\"$\",\"link\",\"16\",{\"rel\":\"canonical\",\"href\":\"https://pattern-recognition-map.adonisdv23.chatgpt.site/\"}]],[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]],[\"$\",\"$L3\",null,{\"segmentMap\":{\"children\":[]},\"children\":[\"$\",\"$L4\",null,{\"id\":\"layout:/\",\"parallelSlots\":\"$undefined\",\"children\":[\"$\",\"$L5\",null,{\"children\":[\"$\",\"$L3\",null,{\"segmentMap\":{\"children\":[]},\"children\":[\"$\",\"$L4\",null,{\"id\":\"page:/\"}]}]}]}]}]],\"__layoutFlags\":{\"layout:/\":\"s\"},\"__artifactCompatibility\":{\"schemaVersion\":1,\"graphVersion\":\"app-route-graph:4uhn5s1wvoptc\",\"deploymentVersion\":\"55595e71-9300-451a-b1b6-de366fabb25f\",\"appElementsSchemaVersion\":1,\"rscPayloadSchemaVersion\":1,\"rootBoundaryId\":\"/\",\"renderEpoch\":null}}\n6:I[\"6efdf509a785\",[],\"default\",1]\n1:[\"$\",\"$L6\",null,{\"params\":\"$@7\",\"searchParams\":\"$@8\"}]\n7:{}\n8:{}\n")</script><script>self.__VINEXT_RSC_DONE__=true</script></body><div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483647;"></div></html>
