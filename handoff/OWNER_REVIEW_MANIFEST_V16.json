@@ -2,7 +2,7 @@
   "schema_version": 2,
   "package": "pattern-map-v16-owner-review",
   "status": "owner-review candidate; not merged, deployed, published, or empirically validated",
-  "generated_date": "2026-08-30",
+  "generated_date": "2026-09-07",
   "historical_converged_checkpoint": "874a0a8e09f0bde11532cf873087865addb7d973",
   "owner_review_pdf_checkpoint": "385af09679bac12d8ce807bda6c3d4ee3f143723",
   "phase_0_hardening_baseline": "37c7c852ff406431454346eacc694ac04c5f57a5",
@@ -31,10 +31,10 @@
     "command": "git rev-parse --verify HEAD",
     "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit"
   },
-  "evidence_note": "This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site, deterministic teaching reveal, exact document destinations, focus-neutral nested-disclosure navigation, dark-callout state contrast, and JavaScript-enabled headless print retention; fail-closed publication metadata, semantic headings, and explicit identity/rights/authorization gates; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, exactly reconciled memory use and selected influence, exact budget/fixture shapes, general untrusted-payload data/control separation, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; strict deterministic complete-payload owner packaging plus copied-extraction controls; current principal-door evidence; and the byte-identical six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
+  "evidence_note": "The 2026-09-07 successor adds a targeted research methods comparison, unrun pilot proposal and synthetic development/candidate packets; two bounded applications with explicit no-benefit and unmeasured-effort limits; a separately generated faithful mentor reading PDF; a short repository entry; a constructed useful-discovery example; and review supplements for local Council/Signal Foundry changes. None is empirical efficacy evidence. This manifest covers the locked human thesis and six-family content; the preserved Echo boundary; the shared-source review/public site, deterministic teaching reveal, exact document destinations, focus-neutral nested-disclosure navigation, dark-callout state contrast, and JavaScript-enabled headless print retention; fail-closed publication metadata, semantic headings, and explicit identity/rights/authorization gates; a genuine four-field ordinary route; typed permission, resolvable comparison/disconfirmation, real UTC motion instants, exactly reconciled memory use and selected influence, exact budget/fixture shapes, general untrusted-payload data/control separation, and append-only current-memory fixtures; an actual pending-to-reviewed synthetic no-result fixture with exact expectation/window resolution and a preserved-payload digest; the targeted 2025–2026 adjacent-work boundary and two unrun study-mode candidates; the optional repository-local project-use starter; the unpublished mentor/X/release-decision rehearsal kit; the supplemental targeted opportunity source scan; opportunity/red-team and ultra-finalization review loops; exact-commit Signal Foundry subset construction with classified out-of-packet links; strict deterministic complete-payload owner packaging plus copied-extraction controls; current principal-door evidence; and the byte-identical six-page review PDF. Manual owner/mentor comprehension, physical keyboard, supported screen reader, real zoom, forced colors, native print, hardware touch, byline, canonical URL, social image, and publication-time link checks remain open. Agent and Claude reviews are advisory only. No study, deployment, publication, merge, research-provider selection/call, external dataset acquisition, outreach, or incremental spend is implied.",
   "archive_scope": "Key ledgers and verifiers are included here; immutable archive payload hashes remain authoritative in their own manifests.",
-  "file_count": 302,
-  "total_bytes": 15132861,
+  "file_count": 315,
+  "total_bytes": 15319805,
   "files": [
     {
       "path": ".gitignore",
@@ -48,8 +48,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9276,
-      "sha256": "c85b96aa61d6f42dfd8d5a3db452a02d74353e1e5d4b7d2d14edf6dcfba52bb4"
+      "bytes": 9669,
+      "sha256": "edb729ff94cacabad9a626722dc6681155759010a82d4e1d0811946eef0788ae"
     },
     {
       "path": "archive/CHECKPOINT_INDEX.json",
@@ -112,6 +112,11 @@
       "sha256": "9033fc37b6c6839c8dcf8f6cb200f948357e032a5f46e0473c14fdcbdf003455"
     },
     {
+      "path": "cases/grounded-option-discovery/README.md",
+      "bytes": 2756,
+      "sha256": "42700ea5e3cae93df006e7c73a4124a2d8feb04be9094579417e479d8b7bb023"
+    },
+    {
       "path": "cases/product-and-process/README.md",
       "bytes": 5783,
       "sha256": "cc44bfa7e9256c5a666282a646c3ec46f445dd712c7b737cab2ab16ce2a2383f"
@@ -123,8 +128,8 @@
     },
     {
       "path": "docs/ADVISORY_REVIEW_DISPOSITIONS.md",
-      "bytes": 140085,
-      "sha256": "bfdc85b24680b8f58b861e291fb2f54d93324fa5ba3785bbb6d4bf763f27fdcd"
+      "bytes": 144029,
+      "sha256": "6f144aff6d660675ef619246d57dda42ed67d06205cbc19d59e27c21fa8defb3"
     },
     {
       "path": "docs/ARTIFACT_BOUNDARIES.md",
@@ -148,18 +153,23 @@
     },
     {
       "path": "docs/CONTENT_INTERFACE_V16.json",
-      "bytes": 8057,
-      "sha256": "9b01c7adbe4656f16ff9c366d5bebf99b51032a0d3b56a73594ac730030df174"
+      "bytes": 8179,
+      "sha256": "d24a0b32daf3d0aba64720a44ef43ddec1dfed11915909c64a9ab9855b1565ae"
     },
     {
       "path": "docs/DECISION_LOG.md",
-      "bytes": 98442,
-      "sha256": "1a60a1faaec538465ead7761d92f6356e1f668a47cfc977ba0031223e9a603db"
+      "bytes": 102942,
+      "sha256": "b88e412222d6e602c40e7cf6fa133f04868331d42f9e1e8c860e86ce682ae850"
     },
     {
       "path": "docs/MIGRATION_INVENTORY.md",
       "bytes": 4850,
       "sha256": "d547c3d6abdd40c5c33050eda67300b0267d8c5c4ebe86e075e9873a3c9e6954"
+    },
+    {
+      "path": "docs/NEXT_PHASE_GOAL_2026-09-07.md",
+      "bytes": 5009,
+      "sha256": "140ccea42fece620a34b5047e4e323a060fb342df92c9a0ab624366c520ae2df"
     },
     {
       "path": "docs/OPPORTUNITY_EXPANSION_LOOPS_V16.md",
@@ -293,13 +303,18 @@
     },
     {
       "path": "framework/agent-playbook/PROJECT_USE_STARTER.md",
-      "bytes": 5894,
-      "sha256": "2834df41ab82c7b67ed7f8d7b3fb3d47562f78eab1e659c5d78e7eea59ac9d0e"
+      "bytes": 6042,
+      "sha256": "35ae8d5548c8efe3423d15ed3092df105919352226b93c906ffa1052d67bf881"
     },
     {
       "path": "framework/agent-playbook/QUICKSTART.md",
       "bytes": 9489,
       "sha256": "a6f04f4b8a9281c9494d5d775df201b7dde0913b95b249c28afcd2b9cd49a88e"
+    },
+    {
+      "path": "framework/agent-playbook/START_WITH_ONE_DECISION.md",
+      "bytes": 1288,
+      "sha256": "3a2977e1d14a8df581efa89609a9c0f606edc4c285e5824a9f46bfb462527cd6"
     },
     {
       "path": "framework/templates/ACQUISITION_RECEIPT.md",
@@ -357,6 +372,11 @@
       "sha256": "c958175d4d274e5c445a3ad98bbc8d4d130ac8f8517db363af58d7771d91725d"
     },
     {
+      "path": "handoff/NEXT_PHASE_REVIEW_2026-09-07.md",
+      "bytes": 10968,
+      "sha256": "f59fa41871e5ea9701d77e71c8902e41e835bef8b405a658c77e18480aff09ff"
+    },
+    {
       "path": "handoff/OWNER_REVIEW_PACKET_V16.md",
       "bytes": 25230,
       "sha256": "268447f47e3725a08126c3feba5155018b4c4ac410f5268ccd480f46fe5eef17"
@@ -382,6 +402,11 @@
       "sha256": "c9719a622a88c518d6ba80b32efb049cd60e8d98fc653995563e0dd2be4b2a85"
     },
     {
+      "path": "handoff/signal-foundry/NEXT_PHASE_SUPPLEMENT_2026-09-07.md",
+      "bytes": 4690,
+      "sha256": "5531ee3b2d1953f699521e5d6e9d23463985e08eaeda1ec602f6957eb0634083"
+    },
+    {
       "path": "handoff/signal-foundry/PATTERN_MAP_V16_CANONICAL_HANDOFF.md",
       "bytes": 25481,
       "sha256": "5a3d998a92237365d9b71c182e2105e8ad7f4a0a45794abcfd50688ba4e93775"
@@ -393,8 +418,8 @@
     },
     {
       "path": "handoff/signal-foundry/build_portable_bundle.py",
-      "bytes": 66299,
-      "sha256": "abeb7a687cacfdf988fbbce68d3e3eb7de83c2cb08f18be79f19cf790ff87b5d"
+      "bytes": 66498,
+      "sha256": "f69b3f9ca27aa561a8f86038794f1e6ab801ed26d4ab2523492f6ef7f449aabf"
     },
     {
       "path": "handoff/verify_extracted_owner_bundle.py",
@@ -403,8 +428,8 @@
     },
     {
       "path": "handoff/verify_owner_review_package.py",
-      "bytes": 34705,
-      "sha256": "98db56a51cd73d372e5bd9e730618c65770925c883fbe95d1231f5a493335537"
+      "bytes": 35915,
+      "sha256": "5e159873b8097a5cc798300f85bceac674eee72626ab8982dd27862206da015b"
     },
     {
       "path": "manuscript/MENTOR_COVER_NOTE.md",
@@ -437,6 +462,11 @@
       "sha256": "30ef2c8faeee81a3db1ab88413ea6da9b0f8093c5966d7205bed05d2b82941ac"
     },
     {
+      "path": "publication/MENTOR_HANDOFF_2026-09-07.md",
+      "bytes": 1614,
+      "sha256": "86699de294bd596d26efd37e1f9227278ced341d7701e7d406d97189f5a4a3d6"
+    },
+    {
       "path": "publication/MENTOR_REVIEW_SEQUENCE_V16.md",
       "bytes": 5343,
       "sha256": "41cc07e7ee03c3ecfb01be5b128f3fa3d39aeb23ed4e3ebcd6cc464fc22a509b"
@@ -455,6 +485,11 @@
       "path": "publication/X_COPY_VARIANTS_V16.md",
       "bytes": 3979,
       "sha256": "35e8c3aebd8caa43aba357128ea0b2f64a1cc44975234e2187332daff17ae712"
+    },
+    {
+      "path": "publication/generate_mentor_reading_pdf.py",
+      "bytes": 5036,
+      "sha256": "edaef22af026f58cafc479d03bbe5455314813725f59a10feedd7ac1404074b1"
     },
     {
       "path": "qa/FINAL_ACCEPTANCE_MATRIX_V16.md",
@@ -937,6 +972,16 @@
       "sha256": "1a7797c0f2eef8a6c59b163c42446bd901c173643f15b1fff49f0b573a887b27"
     },
     {
+      "path": "qa/strategic/BOUNDED_APPLICATIONS_2026-09-07.md",
+      "bytes": 8362,
+      "sha256": "7b19746cfd61adc4352d47b60e8b706d3f9daa2648429c92a124f550344c422d"
+    },
+    {
+      "path": "qa/strategic/PATTERN_MAP_STRATEGIC_AUDIT_2026-09-07_ac981f7.md",
+      "bytes": 47795,
+      "sha256": "728a1482c3a322082566e4fd031d37769eccf210d412eb0381663298cf355689"
+    },
+    {
       "path": "qa/visual/POLISH_PLAN.md",
       "bytes": 5290,
       "sha256": "50d5bb8a210cc4459d742712827a060a98a7dabb00bb6626e1d46895841d090e"
@@ -1333,8 +1378,8 @@
     },
     {
       "path": "research/README.md",
-      "bytes": 1176,
-      "sha256": "a6893274f52395b458f3e3af5771d82ad39f4152794d79bf5e31052d4d4eb92d"
+      "bytes": 1482,
+      "sha256": "2ecc444932bdf0ad0796e3b9d952ed0b12918ca2ba530b480540d03a7e5f13e7"
     },
     {
       "path": "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
@@ -1350,6 +1395,26 @@
       "path": "research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md",
       "bytes": 15132,
       "sha256": "db82c3157861e72dbe93a548611c4d4cf44a7d5a9d5776f0016ece30849ce66d"
+    },
+    {
+      "path": "research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md",
+      "bytes": 20687,
+      "sha256": "950dd08aa2c673c9e1a836aa979525636eca67652c4545668db235d85de121b9"
+    },
+    {
+      "path": "research/future-studies/development/DISCOVERY_CASES.json",
+      "bytes": 4886,
+      "sha256": "91576a4243d3d81998c77129f8d8bf084fd12a6b80578919c95daf66cd503271"
+    },
+    {
+      "path": "research/future-studies/development/README.md",
+      "bytes": 1738,
+      "sha256": "491a8d0056f8c714f3059a9f63dce2e84f7f4119555777b963df7e3cd5021651"
+    },
+    {
+      "path": "research/future-studies/development/observation_cases.py",
+      "bytes": 6725,
+      "sha256": "152426a8eec8c7b0f4ce9b39bbb093257245437f92a36deab54f8f670c2e2609"
     },
     {
       "path": "research/the-echo-problem/FUTURE_EXECUTION_PLAN.md",
@@ -1473,8 +1538,8 @@
     },
     {
       "path": "site/build.mjs",
-      "bytes": 126759,
-      "sha256": "d888042d7c0aaedaa67a9e9358acf3876e46660bd85753096812ac0ab89994c1"
+      "bytes": 128209,
+      "sha256": "4f2d2c76d2131ad09d019b18351d2d89654b2e070d9c3ab94ec03aab0aad12af"
     },
     {
       "path": "site/check.mjs",
@@ -1488,13 +1553,13 @@
     },
     {
       "path": "site/exports/standalone/pattern-map-v16-public.html",
-      "bytes": 513493,
-      "sha256": "63b37ce1b32fa752f7e05b0e3f6d0ec87e4f3bd921fe4e95a3935b08546b62ce"
+      "bytes": 539981,
+      "sha256": "e64047b9e5293170622af90eb3d7529ba05a0db3b945fe39d5d3a81a474b668f"
     },
     {
       "path": "site/exports/standalone/pattern-map-v16.html",
-      "bytes": 526426,
-      "sha256": "c6408a92ee552ff263f07279035a843609003754c023c1b32df8e4936a0e47bb"
+      "bytes": 553056,
+      "sha256": "83ecd6caec40a05a74b82687a29009a22d9cf8a324bfbd938a77f767d19690d5"
     },
     {
       "path": "site/package-lock.json",
