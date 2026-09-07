@@ -12,8 +12,8 @@ separate. No old pilot size, token allowance or dollar cap transfers here.
 
 The task is to choose a supported feasible option, or a justified bounded hold
 or stop, using a finite catalogue and costly local evidence checks. The primary
-question is whether R's transfer/check procedure improves accepted decisions
-relative to **both** O and M under equal resource ceilings. This tests an
+question is whether R's transfer/check procedure improves operational supported-
+task attainment relative to **both** O and M under equal resource ceilings. This tests an
 instruction-policy package in a constructed environment, not creativity in
 general, open-web discovery, or the complete six-family playbook.
 
@@ -147,15 +147,18 @@ the estimand before launch or stop; do not claim matched total tokens.
 Propose **12 fresh base tasks**, three non-sensitive local domains crossed with
 four regimes: useful unfamiliar transfer; tempting invalid transfer; adequate
 ordinary route; and a gap that cannot be resolved usefully within budget.
-Candidate domains are local software workflows, document handoffs, and small
-inventory operations. Their exact tasks and value judgments are unfrozen.
-Complementary checks and changing transfer conditions should appear across
-regimes. This is coverage for diagnosis, not a powered effectiveness study.
+The authored domains are local software workflows, document handoffs, and small
+inventory operations. [The instrument](pilot/README.md) now binds exact public
+tasks, private releases/keys and proposed task values; owner acceptance of those
+values remains open. It includes joint checks and changing transfer conditions.
+This is coverage for diagnosis, not a powered effectiveness study.
 
-Each base task receives two independently authored, semantically reviewed
-surface forms and two repeat episodes per arm: `12 × 2 × 2 × 3 = 144`
-assigned episodes. Counterfactual world pairs, reordered text and repeated
-outputs are not independent tasks. Existing development cases are excluded.
+Each base task receives two separately authored, semantically reviewed
+introductory narratives over identical structured facts, and two repeat episodes
+per arm: `12 × 2 × 2 × 3 = 144`
+planned episodes. Only the introductory narrative varies; these are not
+independently paraphrased complete payloads. Counterfactual world pairs, reordered
+text and repeated outputs are not independent tasks. Existing development cases are excluded.
 No dialogue history, feedback or memory passes between episodes.
 
 Before calls, freeze content/keys separately, then use a recorded seed to
@@ -179,8 +182,17 @@ being instantiated or combined, and may not be empty for SELECT. The semantic
 reviewer must check that binding and evidence instead of grading the name.
 Unfamiliarity, verbosity, family coverage and schema completion earn no credit.
 
-A hold/stop receives credit only when the decision conditions warrant it;
-running down the budget does not automatically justify a hold. Preserve error
+Primary Y measures **operational supported-task attainment**, separately from
+whether a terminal assertion is justified or an inspection was reasonable given
+what was known. The frozen rubric has nine initially attainable selection tasks
+and three initial-gap controls (T004/T008/T012). In the nine, Y=1 requires a
+supported compliant SELECT; a truthful HOLD/STOP after a plausible failed check
+has Y=0 without becoming a false assertion or automatically needless action.
+In the three gap controls, a supported bounded HOLD/STOP can attain Y=1. Their
+classification is frozen from the available evidence-release universe and B/K,
+not inferred after outputs. This is a proposed operational value choice, not a
+universal definition of good judgment. Running down B does not automatically
+justify holding, and an unseen favorable release cannot justify hindsight blame. Preserve error
 classes separately: unsupported selection, invalid transfer, missed feasible
 option, needless hold/recheck, incorrect absence/presence, scope or permission
 violation, and effort failure. Identical observations in paired hidden worlds
@@ -195,7 +207,7 @@ the frozen rubric; irreducibly ambiguous keys invalidate the task rather than
 being repaired to favor an arm. Report sensitivity with and without invalid
 tasks, but no advancement occurs until a new reviewed instrument is frozen.
 
-Let `Y(t,a,s,r)` be binary acceptance for task t, arm a, surface s, repeat r.
+Let `Y(t,a,s,r)` be that binary attainment for task t, arm a, surface s, repeat r.
 Terminal parse failures, unjustified refusal, model timeout and failure to
 terminate within the hard ceilings score zero, with their classes retained.
 Using all B units before a valid terminal decision is not automatically failure.
@@ -213,8 +225,9 @@ noninferiority, or domain transfer.
 Scoring precedence: an intermediate malformed, denied, duplicate or unaffordable
 attempt remains in the action/cost ledger and does not by itself force zero
 acceptance or the terminal `effort_failure` class. For example, with B=1 and
-K=3, INSPECT, a denied second INSPECT, then a justified STOP may receive terminal
-acceptance. Grade that decision against the frozen rubric and score any
+K=3, INSPECT, a denied second INSPECT, then a justified STOP may receive Y=1
+when the task is a frozen gap control; it receives Y=0 in an initially attainable
+selection task while its assertion can remain justified. Grade that decision against the frozen rubric and score any
 rubric-defined needless acquisition or scope/permission violation separately.
 Reaching K without a valid terminal decision, exceeding the model/time ceiling,
 or failing final acceptance still scores zero. No favorable ending erases an
@@ -257,25 +270,26 @@ finding. Memory and omnibus arms cannot be added to rescue the comparison.
 
 ## Remaining preparation and owner decisions
 
-This document is reviewable, **not run-ready**. The exact prompt strings and
-parameterized action contract above are authored. The following local work is
-still incomplete; lack of study authorization does not prevent preparing it:
+Local instrument preparation is complete for review; empirical launch remains
+blocked. [The authored instrument](pilot/README.md) contains twelve fresh tasks,
+public constraints and proposed values, 43 frozen inspection releases, private
+semantic keys, B=2/K=8 limits and deadlines, and two public-first-authored
+narratives. The reviewer recorded ambiguities before seeing keys, then verified
+the corrected grading precedence. Supplied catalogue salience and same-model
+review remain explicit limitations.
 
-1. Author the 12 fresh task objects, public constraints/value assumptions,
-   candidate/evidence contents, private release maps and acceptance keys; bind B,
-   K, action deadlines and reversibility per task. The eight development families
-   are examples, not these twelve future observations.
-2. Produce independent surface forms and a semantic key review; check alternate
-   valid implementations, joint-check value, indistinguishable worlds and cue
-   leakage. Independent authoring/review is preparation, not approval to run.
-3. Implement and deterministically check the model-facing adapter's request
-   parsing, charging, deadlines, safe projection, terminal rules and failure
-   ledger, without model calls. Bind exact task/prompt/adapter hashes and the
-   assignment seed. Provider-specific enforceability may remain unverified.
+The strict offline adapter and adversarial checks cover request parsing,
+charging, deadlines, nested public projection, citations, mechanism bindings,
+terminal rules and attempted-action history. The preparation manifest binds
+source, instruction and adapter hashes plus the seed and 144 planned slots.
+All slots remain unlaunched. The eight development families remain separate
+from the twelve pilot tasks. No helper automatically grades semantic acceptance.
 
-These are the minimal further authoring dependencies. They must be completed
-and inspected before requesting execution approval, rather than hidden among
-owner-only decisions. Separate exact owner decisions remain **UNSET**:
+Actual model transport, episode/key isolation and token/time/call enforcement
+must be verified after an exact provider/configuration and environment are
+selected under later authorization. The in-process authoring adapter does not
+claim those operational properties. The following owner decisions remain
+**UNSET** and must precede an empirical launch:
 
 | Owner execution choice | Required content |
 | --- | --- |

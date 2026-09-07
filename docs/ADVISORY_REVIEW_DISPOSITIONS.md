@@ -641,3 +641,36 @@ Pattern Map integrates these records on
 heads are given by Git and the external verification attestation. No accepted
 disposition substitutes for the owner's later merge, study, outreach or
 publication authorization.
+
+## Ultra continuation dispositions — 2026-09-07
+
+Preserved source: `dacbe02`; research author `d02f58a`, development author
+`77a7faa`, Council successor `ea707b2`. The primary agent inspected actual source
+and reran focused checks. Three same-model advisory reviews are preserved under
+`qa/strategic/ultra/`; they carry exact reviewed commits and limits. They are
+neither empirical evidence nor Council's formal Auditor verdict.
+
+| ID | Finding / recommendation | Disposition | Reason, affected files and governing requirement | Action / verification |
+| --- | --- | --- | --- | --- |
+| U53-01 | Use parallel Ultra authors with a separate challenge of their outputs | **Accepted with revision** | Exclusive paths, primary integration and rotating reviews; D053 and review protocol; scope and reusable goal | Earlier clean checkpoints retained; no recursive team or empirical evaluation |
+| U53-02 | Treat evaluation order alone as a new mechanism | **Rejected** | Complete fixed independent checks can commute; novelty unestablished; D053/A11; mechanism document | Conditional equivalence plus explicit assumption-breaking cases |
+| U53-03 | Keep observation/capture as the automatic first pilot | **Accepted with revision** | Prioritize grounded acquisition/transfer against two capable baselines; keep observation measurement separately; D053 | Current research navigation distinguishes the preserved earlier proposal |
+| U53-04 | Count repeated templates and surface reversals as independent tasks | **Rejected** | Sixteen variants belong to eight development families; two pilot narratives share structured facts; D053/A15–A17 | Development tests, explicit coverage/interpretation and separate fresh pilot materials |
+| U53-05 | Preserve current counts/readiness from old Council evaluations or changed claims | **Accepted with revision** | Five failure paths reproduced on constructed records; unknown and source-context boundaries; D053 | Council ea707b2, 250 full product tests; independent advisory and root reruns; no production migration |
+| U53-06 | Treat a Signal service fixture as proof of complete compose-flow fit | **Rejected** | The real UI requires a fuller episode; fixture behavior is narrower; D053/A11 | Prospective-use script grounded in current compose/preview/Apply/retrieval sources |
+| U53-07 | Infer prior sharing helped Signal or that a new store is needed | **Deferred** for actual-use evidence; **Rejected** for a benefit inference or new generic store now | Recipient/effect unverified and both bounded choices retained initial recommendations; D053 | Preserve existing memory; no write to production; record future burden/no-benefit |
+| U53-08 | Leave intermediate budget rejection and terminal effort failure ambiguous | **Accepted** | Episode acceptance and harmful-error counts require a single precedence; pilot review finding1; D053/A15–A17 | af6d601 and strict B/K action tests; denied inspection can precede justified terminal decision |
+| U53-09 | Report unspecified task-cluster confidence intervals for an authored grid | **Accepted with revision** | No probability sample or defined population target; pilot finding2; D053 | Exact fixed-instrument means plus leave-one-task-out composition sensitivity, no population interval |
+| U53-10 | Permit unnamed implementations but let empty bindings bypass rejection | **Accepted with revision** | New implementation names remain eligible; finite-catalogue mechanism IDs must bind selection; pilot finding3 and adapter finding4 | 7c74e55, empty-selection rejection and new-name acceptance for semantic review |
+| U53-11 | Label rejection of renamed novelty as rejection of stopping the claim | **Accepted** | Controlled disposition must name the proposition actually rejected; pilot finding4 | Mechanism table wording corrected in af6d601 |
+| U53-12 | Expose unchecked nested action descriptions, misleading reopening availability, or omit the public request contract | **Accepted** | Actual adapter reproductions and integrator finding; D053 | c9e28cd/7c74e55, nested canary, irreversible state, exact public schema and focused successor readback |
+| U53-13 | Retain candidate-number or answer-bearing inspection-label shortcuts | **Accepted with revision** | Role concentration and public-first reading exposed avoidable cues; D053/A15–A17 | Candidate/inspection IDs counterbalanced consistently; neutral record labels and explicit task constraints; semantic review remains advisory |
+| U53-16 | Leave truthful HOLD after a plausible failed inspection ambiguously scored | **Accepted with revision** | Operational task attainment, assertion support and ex ante action quality are distinct; S-K01 and D053 | Private-key c3f98b2, independent surface/key readback at a50190d8, main pilot aligned; nine attainable tasks and three prospectively declared gap controls |
+| U53-14 | Treat a prepared instrument or account reset as study/paid-provider authority | **Rejected** | The existing exact-execution boundary governs; D053 and owner intent | No tested-model call, provider choice, dataset acquisition, credit redemption or study |
+| U53-15 | Defer all remaining instrument preparation as an owner-only blocker | **Accepted with revision** | Local synthetic tasks, releases, surfaces and offline checks can be authored now; D053 and active goal | Complete bounded local preparation; later exact model, value/cost, semantic acceptance and authorized transport decisions remain explicit |
+
+All accepted changes remain within the broad v16 purpose and permanent project
+split. No disposition grants merge, deployment, publication, outreach, spending,
+participant work or empirical execution. Exact final source and seal identities
+are resolved by the final handoff and external attestation, not by this ledger's
+self-reference.

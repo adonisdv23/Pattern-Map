@@ -159,6 +159,13 @@ python3 qa/research/validate_research_boundaries.py
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
   -s qa/research -p 'test_*.py' -v
 
+# The Ultra instrument is deterministic authoring QA, not an empirical runner.
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s research/future-studies/ultra/development -p 'test_*.py' -v
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
+  -s research/future-studies/ultra/pilot -p 'test_*.py' -v
+PYTHONDONTWRITEBYTECODE=1 python3 research/future-studies/ultra/pilot/prepare.py
+
 printf '\n[10/12] Cross-computer Signal Foundry packet contract\n'
 if [ "$qa_extracted_package" -eq 1 ]; then
   printf '%s\n' \

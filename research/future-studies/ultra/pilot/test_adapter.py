@@ -169,7 +169,7 @@ class AdapterContract(unittest.TestCase):
     def test_loaded_packets_match_strict_contract(self):
         directory = Path(__file__).parent
         if not (directory / 'TASKS.json').exists():
-            self.skipTest('task authoring not yet integrated')
+            self.fail('required frozen task material is missing')
         tasks = strict_json((directory / 'TASKS.json').read_text())['tasks']
         keys = strict_json((directory / 'PRIVATE_KEYS.json').read_text())['keys']
         self.assertEqual(len(tasks), 12)

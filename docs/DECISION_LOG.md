@@ -1949,3 +1949,63 @@ The existing future protocols and all preserved Echo files retain their bytes.
 claims but not redefine intent; meaningful baselines and counterexamples;
 fixed budgets; no protocol/fixture as result; two-project separation; exact
 authorization for empirical execution.
+
+## D-053 — Use Ultra for bounded challenge, correction and instrument preparation
+
+**Date:** 2026-09-07
+
+**Status:** Accepted with revision; local authoring and review only
+
+**Decision:** Preserve `dacbe02` and extend the active goal through separately
+owned worktrees and rotating advisory review. The current intellectual direction
+is grounded acquisition and structural transfer under a finite budget. State
+when evaluation order is equivalent, compare with both strong ordinary practice
+and purpose/mechanism practice, and call the proposed increment a composite
+instruction policy. D-052's first-pilot preference for observation/capture is
+superseded as a recommendation; its source and candidate objects retain their
+bytes. Observation remains a narrower measurement direction. No novelty or
+effectiveness claim follows.
+
+Add eight development families with sixteen variants and a separate twelve-task
+synthetic pilot proposal. Prepare exact shared/arm instructions, private release
+and rubric boundaries, separately authored narrative forms, deterministic
+assignment and an offline action adapter. Surface variants share the structured
+facts; they are not independent tasks or complete independently paraphrased
+records. Counterbalance candidate/inspection IDs and remove answer-bearing
+catalogue descriptions. A routine option, justified hold, null or harmful result
+must remain possible. Keep authoring/review separate from running the study.
+
+Resolve the advisory scoring ambiguity: intermediate denied attempts retain
+costs and diagnostics without automatically becoming terminal effort failure.
+Use descriptive task/composition sensitivity rather than an unspecified
+population confidence interval. Require selected mechanism IDs even for an
+unforeseen implementation name. Rejection rules cannot be evaded by renaming.
+The adapter supplies the exact public contract, rejects nested nontext action
+descriptions, and advertises irreversible reopening accurately.
+
+Extend Council's initial correction only where reproduced compatibility failures
+show historical assessments leaking into current decisions: bind explicit review
+to the claim/evidence context; gate current projections, rank and discrimination;
+recompute peer factors; recheck prerequisites and revision/evidence identity at
+experiment append. Preserve unknowns, historical records and an explicitly
+reviewed weak-evidence route. No migration or formal Auditor approval is implied.
+
+Signal's prospective-use script follows the real complete compose/preview/
+Apply/retrieval contract. The two-event service fixture does not establish full
+UI suitability. Prior sharing and practical effect remain unverified; no actual
+operator use or prospective effort measurement is invented. Existing portfolio
+procedures remain the default before a shared adapter, platform or commercial
+offer is developed.
+
+**Evidence and paths:** `docs/ULTRA_PLAN_AND_GOAL_2026-09-07.md`, scope record,
+current research successor and `ultra/development/` / `ultra/pilot/`,
+`qa/strategic/ultra/`, Signal prospective-use script and current continuation
+handoff. Research author `d02f58a`, development author `77a7faa`; root corrections
+`af6d601`, `c9e28cd`, `7c74e55`; Council `ea707b2` over `1e82ada`.
+Exact final material identities and clean checks are recorded in the source
+seals and external verification attestation after integration.
+
+**Governing requirement:** later owner Ultra instruction; locked v16 purpose;
+A01–A03, A06–A08, A11, A13–A17; source authority and artifact boundaries;
+controlled dispositions; unknown remains unknown; proportionate reuse;
+no fixture, design, simulation or model review as an empirical result.

@@ -11,7 +11,7 @@ from adapter import Episode, strict_json
 SEED = 20260907
 STATUS = 'AUTHORED_INSTRUMENT_ONLY_NO_STUDY_NO_RESULTS'
 FILES = (
-    'TASKS.json', 'PRIVATE_KEYS.json', 'SURFACES.json', 'AUTHORING_NOTES.md',
+    'README.md', 'TASKS.json', 'PRIVATE_KEYS.json', 'SURFACES.json', 'AUTHORING_NOTES.md',
     'SURFACE_REVIEW.md', 'adapter.py', 'test_adapter.py', 'prepare.py',
     '../MECHANISM_AND_COMPARATORS.md', '../PILOT_DECISION_SPEC.md',
 )
@@ -54,6 +54,30 @@ def materials(directory):
             or len({y for _, y in cells}) != 4):
         raise ValueError('authored 3-by-4 coverage incomplete')
     return tasks, keys, surfaces
+
+
+
+def make_episode(directory, slot):
+    """Instantiate one planned slot locally; caller may expose only its view."""
+    tasks, keys, surfaces = materials(directory)
+    task = dict(tasks[slot['task_id']])
+    order = slot['candidate_order']
+    candidates = {row['id']: row for row in task['candidates']}
+    if len(order) != len(candidates) or set(order) != set(candidates):
+        raise ValueError('planned candidate order is not a permutation')
+    task['candidates'] = [candidates[identifier] for identifier in order]
+    if slot['surface'] not in (1, 2) or type(slot['surface']) is not int:
+        raise ValueError('unknown planned surface')
+    surface = task['surface1'] if slot['surface'] == 1 else surfaces[task['task_id']]['surface2']
+    return Episode(task, keys[task['task_id']]['releases'], surface=surface)
+
+
+def public_prompt(directory, slot, episode):
+    """Serialize instructions and public state only; no model or network call."""
+    view = episode.view()
+    if view['task_id'] != slot['task_id']:
+        raise ValueError('episode does not match planned slot')
+    return instructions(directory)[slot['arm']] + '\n\nPUBLIC_TASK_DATA\n' + json.dumps(view, ensure_ascii=False, allow_nan=False)
 
 
 def build(directory):

@@ -1,0 +1,2096 @@
+{
+  "schema_version": 1,
+  "status": "AUTHORED_INSTRUMENT_ONLY_NO_STUDY_NO_RESULTS",
+  "assignment_seed": 20260907,
+  "planned_slots": 144,
+  "model_calls": 0,
+  "empirical_results": false,
+  "purpose": "Frozen local authoring record for execution review, not authorization or a run ledger.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6100,
+      "sha256": "2e7ff61e315bfe0a461409288910886a52d4715a2a5b721ddee73747e38d3ce3"
+    },
+    {
+      "path": "TASKS.json",
+      "bytes": 68299,
+      "sha256": "fb4faaeff2aaa0527a66743a24c310724bae7d7871a16cab19fba8d91c407204"
+    },
+    {
+      "path": "PRIVATE_KEYS.json",
+      "bytes": 89520,
+      "sha256": "a50190d82c44dc5b359cf1804d24be3049834474ae2fa0652b052f36ef574109"
+    },
+    {
+      "path": "SURFACES.json",
+      "bytes": 3963,
+      "sha256": "16c343edd08e095ccba52f728a66b00e0c6b0849abfaa96464c3dfc4a988bb19"
+    },
+    {
+      "path": "AUTHORING_NOTES.md",
+      "bytes": 13433,
+      "sha256": "7aad4f7108c1551d9e98b96a80c792314a1b2797f8a1bf9c4511abfbafaf59db"
+    },
+    {
+      "path": "SURFACE_REVIEW.md",
+      "bytes": 14380,
+      "sha256": "d2874ff0315e51e46b65448bb637b3e9690b965ce3e7d380d24e63210bfd7423"
+    },
+    {
+      "path": "adapter.py",
+      "bytes": 16458,
+      "sha256": "17cc969e1fa6662bbadf113c40f904778f78282bc3b08da6d5a03d343d6c8cb3"
+    },
+    {
+      "path": "test_adapter.py",
+      "bytes": 10752,
+      "sha256": "9a424c2b9d2453032cd0e792e84fccdaaabdb148092ef7e2e1c4448821b6baa2"
+    },
+    {
+      "path": "prepare.py",
+      "bytes": 6481,
+      "sha256": "923f60ab97522fe2edfea5741083556706d5865300c688ddfc6ee2f694283528"
+    },
+    {
+      "path": "../MECHANISM_AND_COMPARATORS.md",
+      "bytes": 9355,
+      "sha256": "d0378e29a99989bcad731223c66d56a0cc2535b3693f719587fb9e0a6372fb35"
+    },
+    {
+      "path": "../PILOT_DECISION_SPEC.md",
+      "bytes": 19630,
+      "sha256": "ce3dd16523fed3822641f25ed51865a858c7ed89cefcdd660e074cf41f9d681e"
+    }
+  ],
+  "instruction_sha256": {
+    "O": "a06ee2e8c021d18b4517266a3af44fb5deb43f525f513db8d93276e9f09e1759",
+    "M": "fccadb44e2a368338eb194eff0da21c3071ea50a1176eafaa961474afe135188",
+    "R": "8dd827c912352beee86cfdb9faf3f79c107fe38796777eed92e8b26402b48073"
+  },
+  "assignment": [
+    {
+      "slot": 1,
+      "block": 1,
+      "task_id": "T009",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T009-C3",
+        "T009-C1",
+        "T009-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 2,
+      "block": 1,
+      "task_id": "T009",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T009-C3",
+        "T009-C1",
+        "T009-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 3,
+      "block": 1,
+      "task_id": "T009",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T009-C3",
+        "T009-C1",
+        "T009-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 4,
+      "block": 2,
+      "task_id": "T012",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T012-C3",
+        "T012-C1",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 5,
+      "block": 2,
+      "task_id": "T012",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T012-C3",
+        "T012-C1",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 6,
+      "block": 2,
+      "task_id": "T012",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T012-C3",
+        "T012-C1",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 7,
+      "block": 3,
+      "task_id": "T005",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T005-C3",
+        "T005-C2",
+        "T005-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 8,
+      "block": 3,
+      "task_id": "T005",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T005-C3",
+        "T005-C2",
+        "T005-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 9,
+      "block": 3,
+      "task_id": "T005",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T005-C3",
+        "T005-C2",
+        "T005-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 10,
+      "block": 4,
+      "task_id": "T008",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T008-C1",
+        "T008-C2",
+        "T008-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 11,
+      "block": 4,
+      "task_id": "T008",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T008-C1",
+        "T008-C2",
+        "T008-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 12,
+      "block": 4,
+      "task_id": "T008",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T008-C1",
+        "T008-C2",
+        "T008-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 13,
+      "block": 5,
+      "task_id": "T002",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T002-C1",
+        "T002-C3",
+        "T002-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 14,
+      "block": 5,
+      "task_id": "T002",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T002-C1",
+        "T002-C3",
+        "T002-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 15,
+      "block": 5,
+      "task_id": "T002",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T002-C1",
+        "T002-C3",
+        "T002-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 16,
+      "block": 6,
+      "task_id": "T001",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C2",
+        "T001-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 17,
+      "block": 6,
+      "task_id": "T001",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C2",
+        "T001-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 18,
+      "block": 6,
+      "task_id": "T001",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C2",
+        "T001-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 19,
+      "block": 7,
+      "task_id": "T008",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 20,
+      "block": 7,
+      "task_id": "T008",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 21,
+      "block": 7,
+      "task_id": "T008",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 22,
+      "block": 8,
+      "task_id": "T010",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T010-C2",
+        "T010-C3",
+        "T010-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 23,
+      "block": 8,
+      "task_id": "T010",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T010-C2",
+        "T010-C3",
+        "T010-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 24,
+      "block": 8,
+      "task_id": "T010",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T010-C2",
+        "T010-C3",
+        "T010-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 25,
+      "block": 9,
+      "task_id": "T003",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T003-C2",
+        "T003-C1",
+        "T003-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 26,
+      "block": 9,
+      "task_id": "T003",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T003-C2",
+        "T003-C1",
+        "T003-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 27,
+      "block": 9,
+      "task_id": "T003",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T003-C2",
+        "T003-C1",
+        "T003-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 28,
+      "block": 10,
+      "task_id": "T010",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T010-C2",
+        "T010-C1",
+        "T010-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 29,
+      "block": 10,
+      "task_id": "T010",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T010-C2",
+        "T010-C1",
+        "T010-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 30,
+      "block": 10,
+      "task_id": "T010",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T010-C2",
+        "T010-C1",
+        "T010-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 31,
+      "block": 11,
+      "task_id": "T011",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T011-C2",
+        "T011-C1",
+        "T011-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 32,
+      "block": 11,
+      "task_id": "T011",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T011-C2",
+        "T011-C1",
+        "T011-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 33,
+      "block": 11,
+      "task_id": "T011",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T011-C2",
+        "T011-C1",
+        "T011-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 34,
+      "block": 12,
+      "task_id": "T002",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T002-C1",
+        "T002-C2",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 35,
+      "block": 12,
+      "task_id": "T002",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T002-C1",
+        "T002-C2",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 36,
+      "block": 12,
+      "task_id": "T002",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T002-C1",
+        "T002-C2",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 37,
+      "block": 13,
+      "task_id": "T003",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T003-C1",
+        "T003-C3",
+        "T003-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 38,
+      "block": 13,
+      "task_id": "T003",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T003-C1",
+        "T003-C3",
+        "T003-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 39,
+      "block": 13,
+      "task_id": "T003",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T003-C1",
+        "T003-C3",
+        "T003-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 40,
+      "block": 14,
+      "task_id": "T006",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T006-C3",
+        "T006-C2",
+        "T006-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 41,
+      "block": 14,
+      "task_id": "T006",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T006-C3",
+        "T006-C2",
+        "T006-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 42,
+      "block": 14,
+      "task_id": "T006",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T006-C3",
+        "T006-C2",
+        "T006-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 43,
+      "block": 15,
+      "task_id": "T006",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T006-C3",
+        "T006-C1",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 44,
+      "block": 15,
+      "task_id": "T006",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T006-C3",
+        "T006-C1",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 45,
+      "block": 15,
+      "task_id": "T006",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T006-C3",
+        "T006-C1",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 46,
+      "block": 16,
+      "task_id": "T011",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T011-C2",
+        "T011-C1",
+        "T011-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 47,
+      "block": 16,
+      "task_id": "T011",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T011-C2",
+        "T011-C1",
+        "T011-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 48,
+      "block": 16,
+      "task_id": "T011",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T011-C2",
+        "T011-C1",
+        "T011-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 49,
+      "block": 17,
+      "task_id": "T012",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C3",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 50,
+      "block": 17,
+      "task_id": "T012",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C3",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 51,
+      "block": 17,
+      "task_id": "T012",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C3",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 52,
+      "block": 18,
+      "task_id": "T011",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T011-C1",
+        "T011-C3",
+        "T011-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 53,
+      "block": 18,
+      "task_id": "T011",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T011-C1",
+        "T011-C3",
+        "T011-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 54,
+      "block": 18,
+      "task_id": "T011",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T011-C1",
+        "T011-C3",
+        "T011-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 55,
+      "block": 19,
+      "task_id": "T002",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T002-C2",
+        "T002-C1",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 56,
+      "block": 19,
+      "task_id": "T002",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T002-C2",
+        "T002-C1",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 57,
+      "block": 19,
+      "task_id": "T002",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T002-C2",
+        "T002-C1",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 58,
+      "block": 20,
+      "task_id": "T008",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 59,
+      "block": 20,
+      "task_id": "T008",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 60,
+      "block": 20,
+      "task_id": "T008",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 61,
+      "block": 21,
+      "task_id": "T005",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T005-C2",
+        "T005-C3",
+        "T005-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 62,
+      "block": 21,
+      "task_id": "T005",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T005-C2",
+        "T005-C3",
+        "T005-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 63,
+      "block": 21,
+      "task_id": "T005",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T005-C2",
+        "T005-C3",
+        "T005-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 64,
+      "block": 22,
+      "task_id": "T007",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T007-C1",
+        "T007-C2",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 65,
+      "block": 22,
+      "task_id": "T007",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T007-C1",
+        "T007-C2",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 66,
+      "block": 22,
+      "task_id": "T007",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T007-C1",
+        "T007-C2",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 67,
+      "block": 23,
+      "task_id": "T007",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T007-C2",
+        "T007-C1",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 68,
+      "block": 23,
+      "task_id": "T007",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T007-C2",
+        "T007-C1",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 69,
+      "block": 23,
+      "task_id": "T007",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T007-C2",
+        "T007-C1",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 70,
+      "block": 24,
+      "task_id": "T001",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C2",
+        "T001-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 71,
+      "block": 24,
+      "task_id": "T001",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C2",
+        "T001-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 72,
+      "block": 24,
+      "task_id": "T001",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C2",
+        "T001-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 73,
+      "block": 25,
+      "task_id": "T001",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T001-C2",
+        "T001-C1",
+        "T001-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 74,
+      "block": 25,
+      "task_id": "T001",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T001-C2",
+        "T001-C1",
+        "T001-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 75,
+      "block": 25,
+      "task_id": "T001",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T001-C2",
+        "T001-C1",
+        "T001-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 76,
+      "block": 26,
+      "task_id": "T011",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T011-C3",
+        "T011-C1",
+        "T011-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 77,
+      "block": 26,
+      "task_id": "T011",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T011-C3",
+        "T011-C1",
+        "T011-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 78,
+      "block": 26,
+      "task_id": "T011",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T011-C3",
+        "T011-C1",
+        "T011-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 79,
+      "block": 27,
+      "task_id": "T012",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C3",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 80,
+      "block": 27,
+      "task_id": "T012",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C3",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 81,
+      "block": 27,
+      "task_id": "T012",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C3",
+        "T012-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 82,
+      "block": 28,
+      "task_id": "T009",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T009-C1",
+        "T009-C2",
+        "T009-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 83,
+      "block": 28,
+      "task_id": "T009",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T009-C1",
+        "T009-C2",
+        "T009-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 84,
+      "block": 28,
+      "task_id": "T009",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T009-C1",
+        "T009-C2",
+        "T009-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 85,
+      "block": 29,
+      "task_id": "T007",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T007-C1",
+        "T007-C2",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 86,
+      "block": 29,
+      "task_id": "T007",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T007-C1",
+        "T007-C2",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 87,
+      "block": 29,
+      "task_id": "T007",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T007-C1",
+        "T007-C2",
+        "T007-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 88,
+      "block": 30,
+      "task_id": "T003",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T003-C1",
+        "T003-C2",
+        "T003-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 89,
+      "block": 30,
+      "task_id": "T003",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T003-C1",
+        "T003-C2",
+        "T003-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 90,
+      "block": 30,
+      "task_id": "T003",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T003-C1",
+        "T003-C2",
+        "T003-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 91,
+      "block": 31,
+      "task_id": "T010",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T010-C3",
+        "T010-C2",
+        "T010-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 92,
+      "block": 31,
+      "task_id": "T010",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T010-C3",
+        "T010-C2",
+        "T010-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 93,
+      "block": 31,
+      "task_id": "T010",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T010-C3",
+        "T010-C2",
+        "T010-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 94,
+      "block": 32,
+      "task_id": "T001",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C1",
+        "T001-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 95,
+      "block": 32,
+      "task_id": "T001",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C1",
+        "T001-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 96,
+      "block": 32,
+      "task_id": "T001",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T001-C3",
+        "T001-C1",
+        "T001-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 97,
+      "block": 33,
+      "task_id": "T006",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T006-C1",
+        "T006-C3",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 98,
+      "block": 33,
+      "task_id": "T006",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T006-C1",
+        "T006-C3",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 99,
+      "block": 33,
+      "task_id": "T006",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T006-C1",
+        "T006-C3",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 100,
+      "block": 34,
+      "task_id": "T005",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T005-C1",
+        "T005-C2",
+        "T005-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 101,
+      "block": 34,
+      "task_id": "T005",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T005-C1",
+        "T005-C2",
+        "T005-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 102,
+      "block": 34,
+      "task_id": "T005",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T005-C1",
+        "T005-C2",
+        "T005-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 103,
+      "block": 35,
+      "task_id": "T009",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T009-C1",
+        "T009-C3",
+        "T009-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 104,
+      "block": 35,
+      "task_id": "T009",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T009-C1",
+        "T009-C3",
+        "T009-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 105,
+      "block": 35,
+      "task_id": "T009",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T009-C1",
+        "T009-C3",
+        "T009-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 106,
+      "block": 36,
+      "task_id": "T006",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T006-C1",
+        "T006-C3",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 107,
+      "block": 36,
+      "task_id": "T006",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T006-C1",
+        "T006-C3",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 108,
+      "block": 36,
+      "task_id": "T006",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T006-C1",
+        "T006-C3",
+        "T006-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 109,
+      "block": 37,
+      "task_id": "T003",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T003-C3",
+        "T003-C2",
+        "T003-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 110,
+      "block": 37,
+      "task_id": "T003",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T003-C3",
+        "T003-C2",
+        "T003-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 111,
+      "block": 37,
+      "task_id": "T003",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T003-C3",
+        "T003-C2",
+        "T003-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 112,
+      "block": 38,
+      "task_id": "T012",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C2",
+        "T012-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 113,
+      "block": 38,
+      "task_id": "T012",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C2",
+        "T012-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 114,
+      "block": 38,
+      "task_id": "T012",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T012-C1",
+        "T012-C2",
+        "T012-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 115,
+      "block": 39,
+      "task_id": "T002",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T002-C2",
+        "T002-C1",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 116,
+      "block": 39,
+      "task_id": "T002",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T002-C2",
+        "T002-C1",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 117,
+      "block": 39,
+      "task_id": "T002",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T002-C2",
+        "T002-C1",
+        "T002-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 118,
+      "block": 40,
+      "task_id": "T009",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T009-C3",
+        "T009-C2",
+        "T009-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 119,
+      "block": 40,
+      "task_id": "T009",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T009-C3",
+        "T009-C2",
+        "T009-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 120,
+      "block": 40,
+      "task_id": "T009",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T009-C3",
+        "T009-C2",
+        "T009-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 121,
+      "block": 41,
+      "task_id": "T005",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T005-C3",
+        "T005-C1",
+        "T005-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 122,
+      "block": 41,
+      "task_id": "T005",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T005-C3",
+        "T005-C1",
+        "T005-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 123,
+      "block": 41,
+      "task_id": "T005",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T005-C3",
+        "T005-C1",
+        "T005-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 124,
+      "block": 42,
+      "task_id": "T008",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 125,
+      "block": 42,
+      "task_id": "T008",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 126,
+      "block": 42,
+      "task_id": "T008",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T008-C3",
+        "T008-C1",
+        "T008-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 127,
+      "block": 43,
+      "task_id": "T004",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T004-C3",
+        "T004-C2",
+        "T004-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 128,
+      "block": 43,
+      "task_id": "T004",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T004-C3",
+        "T004-C2",
+        "T004-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 129,
+      "block": 43,
+      "task_id": "T004",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T004-C3",
+        "T004-C2",
+        "T004-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 130,
+      "block": 44,
+      "task_id": "T010",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T010-C3",
+        "T010-C1",
+        "T010-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 131,
+      "block": 44,
+      "task_id": "T010",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T010-C3",
+        "T010-C1",
+        "T010-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 132,
+      "block": 44,
+      "task_id": "T010",
+      "surface": 2,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T010-C3",
+        "T010-C1",
+        "T010-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 133,
+      "block": 45,
+      "task_id": "T004",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "O",
+      "candidate_order": [
+        "T004-C3",
+        "T004-C2",
+        "T004-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 134,
+      "block": 45,
+      "task_id": "T004",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "M",
+      "candidate_order": [
+        "T004-C3",
+        "T004-C2",
+        "T004-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 135,
+      "block": 45,
+      "task_id": "T004",
+      "surface": 1,
+      "repeat": 2,
+      "arm": "R",
+      "candidate_order": [
+        "T004-C3",
+        "T004-C2",
+        "T004-C1"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 136,
+      "block": 46,
+      "task_id": "T007",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T007-C3",
+        "T007-C1",
+        "T007-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 137,
+      "block": 46,
+      "task_id": "T007",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T007-C3",
+        "T007-C1",
+        "T007-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 138,
+      "block": 46,
+      "task_id": "T007",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T007-C3",
+        "T007-C1",
+        "T007-C2"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 139,
+      "block": 47,
+      "task_id": "T004",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T004-C1",
+        "T004-C2",
+        "T004-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 140,
+      "block": 47,
+      "task_id": "T004",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T004-C1",
+        "T004-C2",
+        "T004-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 141,
+      "block": 47,
+      "task_id": "T004",
+      "surface": 1,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T004-C1",
+        "T004-C2",
+        "T004-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 142,
+      "block": 48,
+      "task_id": "T004",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "O",
+      "candidate_order": [
+        "T004-C2",
+        "T004-C1",
+        "T004-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 143,
+      "block": 48,
+      "task_id": "T004",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "M",
+      "candidate_order": [
+        "T004-C2",
+        "T004-C1",
+        "T004-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    },
+    {
+      "slot": 144,
+      "block": 48,
+      "task_id": "T004",
+      "surface": 2,
+      "repeat": 1,
+      "arm": "R",
+      "candidate_order": [
+        "T004-C2",
+        "T004-C1",
+        "T004-C3"
+      ],
+      "state": "PLANNED_UNLAUNCHED"
+    }
+  ],
+  "unresolved_execution": [
+    "owner value and cost thresholds",
+    "exact model/provider/version and data handling",
+    "authorized isolated transport with token/time/call enforcement and raw-wire retention",
+    "reviewer allocation and final semantic acceptance",
+    "priced maximum and exact owner launch"
+  ]
+}

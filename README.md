@@ -27,11 +27,15 @@ no study run is authorized.
 
 ## Current state
 
-The 2026-09-07 next-phase work is on a separate review branch. Start with its
-[execution and integration handoff](handoff/NEXT_PHASE_REVIEW_2026-09-07.md) for
-the research proposal, mentor reading packet, two bounded applications and
-Council/Signal Foundry changes. The prior final candidate is `ac981f7`; neither
-that checkpoint nor this successor is a merge, deployment or research result.
+The 2026-09-07 Ultra continuation is the current separate review branch. Start
+with its [current review handoff](handoff/ULTRA_CONTINUATION_REVIEW_2026-09-07.md)
+and [updated plan and reusable goal](docs/ULTRA_PLAN_AND_GOAL_2026-09-07.md).
+It preserves the completed next-phase checkpoint `dacbe02` and advances the
+research instrument and Council compatibility review. The earlier
+[next-phase handoff](handoff/NEXT_PHASE_REVIEW_2026-09-07.md) remains historical
+context for the mentor packet, two bounded applications and Signal fixture.
+The prior final candidate is `ac981f7`; none of these checkpoints is a merge,
+deployment or research result.
 
 The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family
@@ -45,9 +49,10 @@ independent proxy/operator checks pass within their stated artifact
 boundaries. Owner/mentor judgment plus manual
 physical-keyboard, supported screen-reader, real-zoom, forced-colors, browser
 print-preview, and hardware-touch confirmation remain open.
-The exact active branch and draft pull-request state is recorded in
-[`handoff/BRANCH_AND_PR_STATE.md`](handoff/BRANCH_AND_PR_STATE.md) and must be
-resolved from Git/GitHub at use. Earlier draft pull requests remain review
+The current branch and integration route are recorded in the current review
+handoff above; the final external attestation binds its exact head and draft PR.
+[`handoff/BRANCH_AND_PR_STATE.md`](handoff/BRANCH_AND_PR_STATE.md) preserves earlier
+review history. Resolve Git/GitHub state at use. Earlier draft pull requests remain review
 history; none is authorization to merge or publish.
 
 Start with:

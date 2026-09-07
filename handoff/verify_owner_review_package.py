@@ -55,6 +55,15 @@ SOURCE_HEAD_RESOLUTION = {
     "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
 }
 EVIDENCE_NOTE = (
+    "The Ultra continuation preserves dacbe02 and adds a grounded-acquisition "
+    "mechanism/comparator assessment, eight deterministic development families, "
+    "twelve fictional pilot tasks, separately authored narratives, private rubrics, "
+    "an offline action adapter and a frozen 144-slot unlaunched assignment. "
+    "Supported task attainment remains separate from justified uncertainty and "
+    "ex ante action quality. Rotating same-model advisory review corrected "
+    "scoring, disclosure, pruning and catalogue-cue defects. Council's successor "
+    "binds current evidence review across projection/ranking/action paths; "
+    "Signal has a prospective complete-flow script, not observed UI adoption. "
     "The 2026-09-07 successor adds a targeted research methods comparison, "
     "unrun pilot proposal and synthetic development/candidate packets; two "
     "bounded applications with explicit no-benefit and unmeasured-effort limits; "
@@ -118,6 +127,29 @@ DEFAULT_BRANCH_NAMES = {"main", "master", "trunk"}
 
 
 REQUIRED_PATHS = [
+    "docs/ULTRA_CONTINUATION_SCOPE_2026-09-07.md",
+    "docs/ULTRA_PLAN_AND_GOAL_2026-09-07.md",
+    "handoff/ULTRA_CONTINUATION_REVIEW_2026-09-07.md",
+    "handoff/signal-foundry/PROSPECTIVE_USE_SCRIPT_2026-09-07.md",
+    "qa/strategic/ultra/COUNCIL_ADVISORY_REVIEW.md",
+    "qa/strategic/ultra/PILOT_ADVISORY_REVIEW.md",
+    "qa/strategic/ultra/ADAPTER_ADVISORY_REVIEW.md",
+    "research/future-studies/ultra/MECHANISM_AND_COMPARATORS.md",
+    "research/future-studies/ultra/PILOT_DECISION_SPEC.md",
+    "research/future-studies/ultra/development/README.md",
+    "research/future-studies/ultra/development/case_objects.py",
+    "research/future-studies/ultra/development/cases.py",
+    "research/future-studies/ultra/development/test_cases.py",
+    "research/future-studies/ultra/pilot/README.md",
+    "research/future-studies/ultra/pilot/TASKS.json",
+    "research/future-studies/ultra/pilot/PRIVATE_KEYS.json",
+    "research/future-studies/ultra/pilot/SURFACES.json",
+    "research/future-studies/ultra/pilot/AUTHORING_NOTES.md",
+    "research/future-studies/ultra/pilot/SURFACE_REVIEW.md",
+    "research/future-studies/ultra/pilot/adapter.py",
+    "research/future-studies/ultra/pilot/test_adapter.py",
+    "research/future-studies/ultra/pilot/prepare.py",
+    "research/future-studies/ultra/pilot/INSTRUMENT_MANIFEST.json",
     "docs/NEXT_PHASE_GOAL_2026-09-07.md",
     "handoff/NEXT_PHASE_REVIEW_2026-09-07.md",
     "handoff/signal-foundry/NEXT_PHASE_SUPPLEMENT_2026-09-07.md",
