@@ -33,8 +33,8 @@ The public revision supplied to the independent surface author has SHA-256
 The author was instructed to inspect only public task data, author surface two
 and record ambiguities before reading the private keys, and bind the public
 revision by hash. Any later public correction requires a corresponding surface
-review and a new frozen version. This authoring record does not certify that
-independent review is complete.
+review and a new frozen version. Independent advisory review is recorded below;
+neither its completion nor this record approves a study.
 
 Advisory dispositions before the final public freeze are **Accepted with
 revision**. Root identified concentration of useful routes at C3 and no worked
@@ -120,12 +120,37 @@ outcome as known in advance.
 
 Record factual support separately from action quality and terminal acceptance.
 For example, a single coverage check does not establish timing; a single timing
-check does not establish coverage. After wasting the budget, an accurate
-statement that the remaining condition is unknown retains its factual credit,
-while the earlier effort allocation or missed attainable decision can fail task
-acceptance. A qualified prospective route may appear in HOLD's next step; it
+check does not establish coverage. The primary Y is operational supported-task
+attainment: the nine prospectively classified `SUPPORTED_SELECTION_ATTAINABLE`
+tasks require a valid supported compliant SELECT for Y = 1. An accurate HOLD
+after a plausible unsuccessful inspection has Y = 0 for nonattainment, while
+retaining its epistemic justification; that score does not establish avoidable
+effort or an inherently needless hold. The three `INITIAL_GAP_CONTROL` tasks
+permit a valid bounded HOLD/STOP to attain Y = 1. Classification is frozen from
+the initial capabilities, limits and authored release universe before any
+episode. It cannot be reassigned because a particular trace ended in HOLD.
+A qualified prospective route may appear in HOLD's next step; it
 does not become an accepted SELECT before required support exists. Conversely,
 a complete initially supplied record does not require ritual rechecking.
+
+The independent key review's S-K01 finding is **Accepted with revision**: earlier
+wording left Y discretionary after a plausible failed check. The global
+`rubric_contract.primary_Y`, `precedence` and each task's
+`rubric.primary_terminal_acceptance` now supply the binary rule. For example,
+T001 can inspect the eager-revision record, observe its failure, and lack enough
+remaining acquisitions for both manifest obligations. A truthful bounded HOLD
+then retains epistemic justification but attains Y = 0. Ex ante policy blame
+cannot be inferred from the eventual hidden result or that score. Identical
+observational traces in indistinguishable worlds retain the same epistemic
+assessment. Benign rejected intermediate attempts remain charged diagnostics
+unless they cause terminal invalidity, a hard-ceiling termination failure or a
+hard task-constraint violation. This rule is an authored operational value
+choice awaiting owner approval, not a universal definition of good judgment.
+The independent reviewer confirmed the exact key readback at SHA-256
+`a50190d82c44dc5b359cf1804d24be3049834474ae2fa0652b052f36ef574109`
+and closed S-K01 for this authoring review. The public surface revision was
+frozen before that private read and remained unchanged afterward. This is
+preparatory advisory review, not validated task quality or future study approval.
 
 T004 and T008 give indistinguishable-world examples: failed capture is compatible
 with different unobserved states and supports the same bounded uncertainty.
