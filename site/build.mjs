@@ -90,10 +90,14 @@ const SOURCE_DESTINATIONS = new Map([
   ["docs/SOURCE_AUTHORITY_AND_LINEAGE.md", { route: "history", fragment: "source-lineage-document" }],
   ["manuscript/ORIGIN_NOTE.md", { route: "history", fragment: "origin-note-document" }],
   ["research/README.md", { route: "research", fragment: "research-overview-document" }],
+  ["research/future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md", { route: "research", fragment: "research-execution-document" }],
+  ["research/future-studies/decision-continuation/DECISION_SEMANTICS.md", { route: "research", fragment: "research-semantics-document" }],
+  ["research/future-studies/decision-continuation/QUESTION_DISCOVERY_DEVELOPMENT.md", { route: "research", fragment: "research-question-document" }],
   ["research/future-studies/ultra/MECHANISM_AND_COMPARATORS.md", { route: "research", fragment: "research-mechanism-document" }],
   ["research/future-studies/ultra/PILOT_DECISION_SPEC.md", { route: "research", fragment: "research-pilot-decision-document" }],
   ["research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md", { route: "research", fragment: "research-next-stage-document" }],
   ["cases/grounded-option-discovery/README.md", { route: "examples", fragment: "case-discovery-a-better-way-to-remember-a-decision" }],
+  ["cases/grounded-option-discovery/CONTINUATION.md", { route: "examples", fragment: "case-continuation-document" }],
   ["research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md", { route: "research", fragment: "research-agenda-document" }],
   ["research/future-studies/DL_PLAYBOOK_MATCHED_BUDGET_PROTOCOL_V0_1.md", { route: "research", fragment: "dl-playbook-protocol-document" }],
   ["research/the-echo-problem/README.md", { route: "research", fragment: "echo-identity-document" }],
@@ -117,9 +121,9 @@ const repositorySourcePathFor = (href, sourcePath) => {
   return resolved;
 };
 
-const siteSourceDestination = (href, ctx, sourcePath) => {
+const siteSourceDestination = (href, ctx, sourcePath, idPrefix = "") => {
   if (externalHref(href)) return { kind: "external", href };
-  if (href.startsWith("#")) return { kind: "rendered", href };
+  if (href.startsWith("#")) return { kind: "rendered", href: `#${idPrefix}${href.slice(1)}` };
   const repositoryPath = repositorySourcePathFor(href, sourcePath);
   const route = sourceRouteFor(repositoryPath);
   if (!route) return { kind: "owner-package", repositoryPath };
@@ -138,7 +142,7 @@ const applyEmphasis = (value) =>
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>");
 
-const inlineMarkdown = (value, ctx, sourcePath = "") => {
+const inlineMarkdown = (value, ctx, sourcePath = "", idPrefix = "") => {
   const tokens = [];
   const storeToken = (html) => {
     const token = `\uE000${tokens.length}\uE001`;
@@ -164,7 +168,7 @@ const inlineMarkdown = (value, ctx, sourcePath = "") => {
     storeToken(`<span class="inline-media-note">[${formatLabel(alt)}: ${escapeHtml(href)}]</span>`)
   );
   output = output.replace(/\[([^\]]+)\]\(((?:[^()]|\([^()]*\))*)\)/g, (_, label, href) => {
-    const destination = siteSourceDestination(href, ctx, sourcePath);
+    const destination = siteSourceDestination(href, ctx, sourcePath, idPrefix);
     if (destination.kind === "owner-package") {
       return storeToken(`<span class="owner-package-reference">${formatLabel(label)} <span class="owner-package-path">Owner package path: <code>${escapeHtml(destination.repositoryPath)}</code></span></span>`);
     }
@@ -201,7 +205,7 @@ const renderMarkdown = (markdown, options = {}) => {
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
-    output.push(`<p>${inlineMarkdown(paragraph.join(" "), ctx, sourcePath)}</p>`);
+    output.push(`<p>${inlineMarkdown(paragraph.join(" "), ctx, sourcePath, idPrefix)}</p>`);
     paragraph = [];
   };
 
@@ -237,7 +241,7 @@ const renderMarkdown = (markdown, options = {}) => {
     if (heading) {
       flushParagraph();
       const level = Math.min(6, heading[1].length + headingOffset);
-      const text = inlineMarkdown(heading[2], ctx, sourcePath);
+      const text = inlineMarkdown(heading[2], ctx, sourcePath, idPrefix);
       const baseId = `${idPrefix}${slugify(heading[2])}`;
       const occurrence = (headingIdCounts.get(baseId) ?? 0) + 1;
       headingIdCounts.set(baseId, occurrence);
@@ -274,10 +278,10 @@ const renderMarkdown = (markdown, options = {}) => {
         rows.push(tableCells(lines[index]));
         index += 1;
       }
-      const headerHtml = header.map((cell) => `<th scope="col">${inlineMarkdown(cell, ctx, sourcePath)}</th>`).join("");
+      const headerHtml = header.map((cell) => `<th scope="col">${inlineMarkdown(cell, ctx, sourcePath, idPrefix)}</th>`).join("");
       const rowsHtml = rows.map((row) => {
         const cells = header.map((_, cellIndex) => row[cellIndex] ?? "");
-        return `<tr>${cells.map((cell) => `<td>${inlineMarkdown(cell, ctx, sourcePath)}</td>`).join("")}</tr>`;
+        return `<tr>${cells.map((cell) => `<td>${inlineMarkdown(cell, ctx, sourcePath, idPrefix)}</td>`).join("")}</tr>`;
       }).join("");
       output.push(`<div class="table-wrap"><table><thead><tr>${headerHtml}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`);
       continue;
@@ -298,7 +302,7 @@ const renderMarkdown = (markdown, options = {}) => {
         }
       }
       const tag = ordered ? "ol" : "ul";
-      output.push(`<${tag}>${items.map((item) => `<li>${inlineMarkdown(item, ctx, sourcePath)}</li>`).join("")}</${tag}>`);
+      output.push(`<${tag}>${items.map((item) => `<li>${inlineMarkdown(item, ctx, sourcePath, idPrefix)}</li>`).join("")}</${tag}>`);
       continue;
     }
 
@@ -1032,7 +1036,8 @@ const renderExamples = (ctx) => {
       </article>
     </div>
     <section class="case-section" aria-labelledby="cases-heading"><div class="section-heading"><p class="eyebrow">BOUNDED CASES</p><h2 id="cases-heading">From illustration to inspectable practice.</h2><p>Signal Foundry is labeled every time it appears: <strong>ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION.</strong> The neutral cases show how the same records can stay proportionate across domains.</p></div><div class="case-grid"><details class="case-card signal-foundry"${isPublic(ctx) ? "" : " open"}><summary>Signal Foundry — ILLUSTRATION ONLY / READ-ONLY / NOT VALIDATION</summary><div class="source-markdown">${renderMarkdown(readText("cases/signal-foundry/README.md"), { ctx, headingOffset: 2, idPrefix: "case-signal-foundry-" })}</div></details><details class="case-card"><summary>Domain-neutral case A — a second weekly session</summary><div class="source-markdown">${renderMarkdown(readText("cases/general-research/README.md"), { ctx, headingOffset: 2, idPrefix: "case-general-" })}</div></details><details class="case-card"><summary>Domain-neutral case B — an intake process</summary><div class="source-markdown">${renderMarkdown(readText("cases/product-and-process/README.md"), { ctx, headingOffset: 2, idPrefix: "case-process-" })}</div></details></div></section>
-    <section class="case-section" id="case-grounded-discovery" aria-labelledby="discovery-heading"><div class="section-heading"><p class="eyebrow">GROUNDED OPTION DISCOVERY</p><h2 id="discovery-heading">An unfamiliar comparison reveals a smaller, useful route.</h2><p>A question about a new memory database becomes a question about finding the right existing decision. This is a constructed illustration, not a study or product result.</p></div><details class="case-card"><summary>A better way to remember a decision</summary><div class="source-markdown">${renderMarkdown(readText("cases/grounded-option-discovery/README.md"), { ctx, headingOffset: 2, idPrefix: "case-discovery-" })}</div></details></section>
+    <section class="case-section" id="case-grounded-discovery" aria-labelledby="discovery-heading"><div class="section-heading"><p class="eyebrow">GROUNDED OPTION DISCOVERY</p><h2 id="discovery-heading">An unfamiliar comparison reveals a smaller, useful route.</h2><p>A question about a new memory database becomes a question about finding the right existing decision. This is a constructed illustration, not a study or product result.</p></div><details class="case-card"><summary>A better way to remember a decision</summary><div class="source-markdown">${renderMarkdown(readText("cases/grounded-option-discovery/README.md"), { ctx, headingOffset: 2, idPrefix: "case-discovery-", sourcePath: "cases/grounded-option-discovery/README.md" })}</div></details>
+    <details class="case-card" id="case-continuation-disclosure"><summary>Carry the reason, then reconsider what changed — authored continuation</summary><div class="source-markdown" id="case-continuation-document">${renderMarkdown(readText("cases/grounded-option-discovery/CONTINUATION.md"), { ctx, headingOffset: 2, idPrefix: "case-continuation-", sourcePath: "cases/grounded-option-discovery/CONTINUATION.md" })}</div></details></section>
     <section class="ordinary-contrast" aria-labelledby="ordinary-heading"><details><summary id="ordinary-heading">Ordinary work versus the Discrimination Layer</summary><div class="source-markdown">${renderMarkdown(ordinary, { ctx, headingOffset: 2, idPrefix: "ordinary-" })}</div></details></section>
     ${renderSourceManifest("examples", ctx)}
   </section>`;
@@ -1059,6 +1064,9 @@ const renderResearch = (ctx) => `
   <section class="research-route" id="research">
     <div class="research-status"><span class="status-dot" aria-hidden="true"></span><div><p class="eyebrow">RESEARCH ROUTE / STATUS</p><h2>UNRUN · NO RESULTS · NO PROVIDER OR MODEL SELECTED</h2><p>This route describes future questions and boundaries only. It does not authorize a model call, provider selection, participant activity, dataset acquisition, preregistration, publication, deployment, or spend.</p></div></div>
     <div class="source-markdown long-source" id="research-overview-document">${renderMarkdown(readText("research/README.md"), { ctx, headingOffset: 1, idPrefix: "research-readme-", sourcePath: "research/README.md" })}</div>
+    <details class="protocol-source" id="research-execution-disclosure"><summary>Prepare the next execution decision — proposed values, no run</summary><div class="source-markdown" id="research-execution-document">${renderMarkdown(readText("research/future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md"), { ctx, headingOffset: 2, idPrefix: "research-execution-", sourcePath: "research/future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md" })}</div></details>
+    <details class="protocol-source" id="research-semantics-disclosure"><summary>What a changed reason can change — development</summary><div class="source-markdown" id="research-semantics-document">${renderMarkdown(readText("research/future-studies/decision-continuation/DECISION_SEMANTICS.md"), { ctx, headingOffset: 2, idPrefix: "research-semantics-", sourcePath: "research/future-studies/decision-continuation/DECISION_SEMANTICS.md" })}</div></details>
+    <details class="protocol-source" id="research-question-disclosure"><summary>Find a question worth asking — one authored development problem</summary><div class="source-markdown" id="research-question-document">${renderMarkdown(readText("research/future-studies/decision-continuation/QUESTION_DISCOVERY_DEVELOPMENT.md"), { ctx, headingOffset: 2, idPrefix: "research-question-", sourcePath: "research/future-studies/decision-continuation/QUESTION_DISCOVERY_DEVELOPMENT.md" })}</div></details>
     <details class="protocol-source" id="research-mechanism-disclosure"><summary>Current research direction: grounded discovery and strong comparators</summary><div class="source-markdown" id="research-mechanism-document">${renderMarkdown(readText("research/future-studies/ultra/MECHANISM_AND_COMPARATORS.md"), { ctx, headingOffset: 2, idPrefix: "research-mechanism-", sourcePath: "research/future-studies/ultra/MECHANISM_AND_COMPARATORS.md" })}</div></details>
     <details class="protocol-source" id="research-pilot-decision-disclosure"><summary>Current pilot proposal: outcomes, costs and launch gates — unrun</summary><div class="source-markdown" id="research-pilot-decision-document">${renderMarkdown(readText("research/future-studies/ultra/PILOT_DECISION_SPEC.md"), { ctx, headingOffset: 2, idPrefix: "research-pilot-decision-", sourcePath: "research/future-studies/ultra/PILOT_DECISION_SPEC.md" })}</div></details>
     <details class="protocol-source" id="research-next-stage-disclosure"><summary>Earlier proposal: observation/capture candidate — priority revised above</summary><div class="source-markdown" id="research-next-stage-document">${renderMarkdown(readText("research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md"), { ctx, headingOffset: 2, idPrefix: "research-next-stage-", sourcePath: "research/future-studies/RESEARCH_NEXT_STAGE_2026-09-07.md" })}</div></details>

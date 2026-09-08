@@ -213,6 +213,16 @@ Every site surface inherits these constraints:
 
 ## Change control
 
+The public continuation adds optional Examples/Research disclosures under
+D-PUBLIC-054: the authored `cases/grounded-option-discovery/CONTINUATION.md`,
+the decision-semantics and question-development notes under
+`research/future-studies/decision-continuation/`, and the proposed
+`research/future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md`.
+Source-local fragment links resolve to their document's prefixed headings in
+routed and standalone HTML. These additions leave the human opening, principal
+doors, six-family order and separate Echo project unchanged. They are authored
+development and execution preparation, not results or execution authority.
+
 The site task may make local copy edits for navigation or accessibility only
 when they preserve the source meaning and status. Any change to the headline,
 standfirst proposition, six-family names/order/questions, artifact hierarchy,

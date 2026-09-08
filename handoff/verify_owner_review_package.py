@@ -55,6 +55,12 @@ SOURCE_HEAD_RESOLUTION = {
     "sealed_signal_bundle_field": "BUNDLE_METADATA.json.source_commit",
 }
 EVIDENCE_NOTE = (
+    "This curated public continuation adds concise companion guidance, a fictional "
+    "later-change example, two authored research development notes and a proposed "
+    "execution decision packet over public baseline 61f530c. Source-local links "
+    "resolve to prefixed document headings. The complete local research record "
+    "remains a separate preserved review unit. Numerical planning is not observed "
+    "performance, approved execution or verified provider-runtime enforcement. "
     "The Ultra continuation preserves dacbe02 and adds a grounded-acquisition "
     "mechanism/comparator assessment, eight deterministic development families, "
     "twelve fictional pilot tasks, separately authored narratives, private rubrics, "
@@ -127,6 +133,14 @@ DEFAULT_BRANCH_NAMES = {"main", "master", "trunk"}
 
 
 REQUIRED_PATHS = [
+    "docs/PUBLIC_CONTINUATION_SCOPE_2026-09-07.md",
+    "handoff/PUBLIC_CONTINUATION_REVIEW_2026-09-07.md",
+    "cases/grounded-option-discovery/CONTINUATION.md",
+    "research/future-studies/decision-continuation/DECISION_SEMANTICS.md",
+    "research/future-studies/decision-continuation/QUESTION_DISCOVERY_DEVELOPMENT.md",
+    "research/future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md",
+    "research/future-studies/execution-preparation/threshold_arithmetic.py",
+    "research/future-studies/execution-preparation/THRESHOLD_ARITHMETIC.txt",
     "docs/ULTRA_CONTINUATION_SCOPE_2026-09-07.md",
     "docs/ULTRA_PLAN_AND_GOAL_2026-09-07.md",
     "handoff/ULTRA_CONTINUATION_REVIEW_2026-09-07.md",

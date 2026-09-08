@@ -9,7 +9,20 @@ This area contains two distinct research responsibilities:
 No empirical study, model/provider call, participant activity, dataset
 acquisition, or preregistration is authorized in this phase.
 
+The prepared grounded-discovery pilot remains the first candidate for a
+separately authorized comparison of the bounded transfer/check question.
+It does not test the whole six-family framework or open-ended question
+invention. The new execution packet proposes concrete decision thresholds and
+run requirements; it changes none of the frozen tasks, rubrics or assignments.
+
 Start with:
+
+- [Proposed execution decision packet](future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md)
+  — numerical planning choices, resource trade-offs and the remaining execution decisions;
+- [What a changed reason can change](future-studies/decision-continuation/DECISION_SEMANTICS.md)
+  — scoped reconsideration, surviving reasons and claim-specific uncertainty;
+- [Find a question worth asking](future-studies/decision-continuation/QUESTION_DISCOVERY_DEVELOPMENT.md)
+  — one fictional open-need formulation, including a valid no-extra-work outcome;
 
 - [Current mechanism and comparator assessment](future-studies/ultra/MECHANISM_AND_COMPARATORS.md)
   — grounded acquisition and structural transfer under a limited budget, with

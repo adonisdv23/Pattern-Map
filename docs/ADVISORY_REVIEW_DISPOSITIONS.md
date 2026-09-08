@@ -674,3 +674,75 @@ split. No disposition grants merge, deployment, publication, outreach, spending,
 participant work or empirical execution. Exact final source and seal identities
 are resolved by the final handoff and external attestation, not by this ledger's
 self-reference.
+
+
+## Public continuation dispositions — 2026-09-07
+
+Governing decision: D-PUBLIC-054 and the public continuation scope. The initial
+five-file advisory reviewed local authoring source `b9af287` against public
+baseline `61f530c`; report `PUBLIC_CURATION_ADVISORY.md` is preserved in the local
+owner handoff, SHA-256
+`d4851f86e731b1b20ee693d29ed0749acae9a8bdc3d0414b652579cd579bd045`.
+The primary integrator inspected the actual files and makes the revisions below
+separately. This record does not import the complete local advisory history.
+
+| ID | Recommendation | Disposition | Reason, files and governing requirement | Integration and verification |
+| --- | --- | --- | --- | --- |
+| PC-01 | Carry the concise companion explanation | **Accepted** | Guide/brief disclose general procedures; keep mandatory gates and existing fields; A08 | Selected exact file bytes; focused framework validation and final source attestation |
+| PC-02 | Carry the fictional continuation | **Accepted** | ORBIT is authored and draws on public development cases; ordinary alternative and unbuilt-index clarification preserved; A07/A11 | Selected exact file bytes; source-link checks and source-navigation regression |
+| PC-03 | Remove dependence on an omitted concurrent proposal | **Accepted with revision** | Birch status says not a study/benchmark and distinguishes itself directly from the public primary pilot; A11 and independent reading path | Integrator wording in `QUESTION_DISCOVERY_DEVELOPMENT.md`; no new study implied |
+| PC-04 | Make scope references resolvable | **Accepted with revision** | Both research headers link the fresh public scope; no omitted governance copied; source authority | Integrator header replacements and local-link checks |
+| PC-05 | Make the method-inspection limit self-contained | **Accepted with revision** | Semantics comparison relies on MG532 and does not claim inspection of R-4216 or Dewar's complete book; A11 | Integrator source-limit wording; existing public primary citation retained |
+| PC-06 | Preserve the abstract reasoning and fictional open-need packet | **Accepted** | No actual project outcome is needed to teach these distinctions; A07/A11/A16 | Content retained beyond the self-containment revisions above |
+| PC-07 | Transfer excluded source records or inherit their commits for provenance | **Rejected** | The complete local history is a separately preserved review unit; public scope does not require its disclosure | Branch begins directly at `61f530c`; full new-commit reachability and payload review before push |
+
+The final source/seal attestation resolves the integration commit. Numerical
+execution proposals and their review dispositions are recorded separately;
+none of these dispositions approves model/provider selection or a study.
+
+
+### Execution preparation review
+
+Author source: `0f8c9e31fb38d9b0aa6e9ad34ac80c0ba739f468`, three files only.
+The source parent is part of the separately preserved local record; public
+integration copies reviewed files without merging that ancestry. The advisory
+report `EXECUTION_PACKET_ADVISORY.md` is preserved locally, SHA-256
+`be08875c7d946832822041f6a25d0529e1bca50c2a839e6b16850925d4e9cf87`.
+The primary integrator reviewed the report and actual source; the correction
+below is separate from the preserved original authoring and advisory finding.
+
+| ID | Recommendation / finding | Disposition | Reason, files and governing requirement | Action / verification |
+| --- | --- | --- | --- | --- |
+| EPR-01 | Include the mandatory adherence pass in reviewer burden | **Accepted with revision** | Frozen specification requires separate action/procedure review and actual reviewer minutes; A11/A15. Original proposal omitted that component from its margin/allocation. | Execution packet and arithmetic now include all marginal semantic, adherence/trace and adjudication work; 26 proposed person-hours = 4 setup + 14.4 semantic + 2.4 adherence + 4 adjudication + 1.2 reserve. Two independent semantic reviews remain; all times are unverified allocations. |
+| EPR-02–EPR-04 | Retain effect arithmetic, concentration sensitivity and the bounded extra-inspection allowance | **Accepted** | Twelve equal task weights yield 48 assignments per arm; five net gains meet the proposed 0.10 threshold. +12 acquisition units is an explicit preference, not measured information value; existing B=2 remains. | Arithmetic replay and source comparison pass; no observed performance is reported. |
+| EPR-05–EPR-07 | Retain assigned-account costs, failure precedence and all conjunctive advancement gates | **Accepted** | Both comparators, complete assignment, domain/regime contrasts, every harm class and separate resources remain required; missing is unknown and never-launched slots remain visible. | Packet preserves frozen rules; no changes to instrument bytes. |
+| EPR-08–EPR-10 | Retain tentative ceilings and exact runtime/price/authority gates | **Accepted with revision** | Token/request/time/price arithmetic is conditional and correct; reviewer allocation changes under EPR-01. An offline adapter cannot certify provider isolation or enforce actual external costs. | Corrected arithmetic record; runtime and prices explicitly unverified. |
+| EPR-11 | Keep the packet self-contained and provider-neutral | **Accepted** | Existing public sources and six local links suffice; no extra source accession or study needed; artifact boundaries | Selected public file copy; no private memo dependency. |
+| EPR-VALUES | Treat proposed values and labor allocation as accepted owner choices | **Deferred** | Owner values, semantic acceptance and actual capacity remain decisions; A15–A17 | Owner may accept, revise or decline before outputs; 26 hours is neither a forecast nor an authorization. |
+| EPR-RUNTIME | Claim actual tokenizer fit, prices, transport or reviewer readiness | **Deferred** | Exact environment and adequate accounting have not been selected or verified | Named later execution scope and transport acceptance required. |
+| EPR-RESULTS | Infer efficacy, statistical power or execution authority from arithmetic/review | **Rejected** | Authored calculations and same-team advisory review establish neither behavior nor benefit; A11/A15 | No run, provider call, spend, outcome ledger or human-result claim. |
+
+The primary integrator's rendered-browser check at the public candidate verified
+that the execution link opens its own disclosure and that the example's
+snapshot-A link lands on the current-source paragraph. This is bounded UI
+verification, not physical-keyboard, screen-reader or human-comprehension QA.
+
+
+### Public candidate review
+
+The final content advisory reviewed exact `8d469d8b4b0cefc19416d3c219f0cbc3c15503f4`
+against `61f530c`, including new ancestry, generated exports and package path
+selection. Report `PUBLIC_CANDIDATE_FINAL_REVIEW.md` is preserved locally,
+SHA-256 `73894c5d1045cef7d5e5ce30d3764a3a8a4899e34eb83cca694ecfa334533bb3`.
+
+| ID | Disposition | Integrator treatment, reason and governing requirement |
+| --- | --- | --- |
+| PF-01–PF-03 | **Accepted** | Preserve separate public ancestry, the seven PC dispositions, mandatory gates and self-contained fictional/research notes. The reviewer found no new disclosure or content blocker; D-PUBLIC-054/A07–A08/A11. |
+| PF-04 | **Accepted** | Keep numerical choices proposed and all frozen validity/harm/stratum gates intact. Arithmetic and source review do not authorize execution; A15–A17. |
+| PF-05 | **Accepted with revision** | Same concrete omission as EPR-01, independently confirmed. Include the adherence pass in all reviewer-cost comparisons and the corrected 26-hour proposal, helper/output and both exports. Original finding retained separately. |
+| PF-06 | **Accepted** | Retain optional disclosures, source-local heading mapping and complete eight-file package selection; A06/A13 and artifact boundaries. |
+| PF-07 | **Deferred** to final delivery verification | The review precedes the corrected source and manifest seal. Bind the final source, inspect subsequent reachable commits and verify the full archive before delivery. The final external attestation records that completion; no new execution authority is needed for these already scoped checks. |
+
+All accepted implementation and preparation changes belong to this branch's
+source commits. The bounded manifest seal and final external attestation identify
+the exact deliverable without making this ledger self-referential.
