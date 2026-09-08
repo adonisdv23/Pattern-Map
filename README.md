@@ -27,15 +27,18 @@ no study run is authorized.
 
 ## Current state
 
-The 2026-09-07 Ultra continuation is the current separate review branch. Start
-with its [current review handoff](handoff/ULTRA_CONTINUATION_REVIEW_2026-09-07.md)
-and [updated plan and reusable goal](docs/ULTRA_PLAN_AND_GOAL_2026-09-07.md).
-It preserves the completed next-phase checkpoint `dacbe02` and advances the
-research instrument and Council compatibility review. The earlier
-[next-phase handoff](handoff/NEXT_PHASE_REVIEW_2026-09-07.md) remains historical
-context for the mentor packet, two bounded applications and Signal fixture.
-The prior final candidate is `ac981f7`; none of these checkpoints is a merge,
-deployment or research result.
+The current public review candidate extends the approved `61f530c` checkpoint.
+Start with the [public continuation handoff](handoff/PUBLIC_CONTINUATION_REVIEW_2026-09-07.md).
+It adds concise companion guidance, a fictional decision continuation, two
+research development notes and a proposed execution decision packet. These
+are prepared artifacts, not observed use or research results. The earlier
+[Ultra handoff](handoff/ULTRA_CONTINUATION_REVIEW_2026-09-07.md) remains the
+history and source of the unchanged twelve-task pilot.
+
+This curated review branch is separate from the complete local research
+record. It includes only selected material reviewed for this public delivery;
+it does not replace the preserved local checkpoint or owner archive. No study,
+merge or site deployment follows from making a review branch available.
 
 The repository now has a reproducible canonical root, immutable historical
 transfers, a locked v16 intent, a converged manuscript, a stable six-family

@@ -40,6 +40,20 @@ const exactHrefFor = (html, labelPart) => {
   return matches[0].href;
 };
 
+for (const [html, prefix, mode] of [
+  [read("site/dist/examples/index.html"), "", "review"],
+  [read("site/public-dist/examples/index.html"), "", "public"],
+  [reviewStandalone, "examples-", "review standalone"],
+  [publicStandalone, "examples-", "public standalone"],
+]) {
+  for (const [label, heading] of [["snapshot A", "current-source"], ["Version 2", "preserved-history"]]) {
+    const target = `${prefix}case-continuation-${heading}`;
+    assert.equal(exactHrefFor(html, label), `#${target}`, `${mode} source-local reference escaped its document heading scope`);
+    assert.ok(html.includes(`id="${target}"`), `${mode} continuation reference has no actual heading target`);
+  }
+  assert.ok(html.includes(`id="${prefix}case-continuation-document"`), `${mode} continuation has no stable disclosure destination`);
+}
+
 for (const [sourcesHtml, researchHtml, mode] of [
   [sources, research, "review"],
   [publicSources, publicResearch, "public"],

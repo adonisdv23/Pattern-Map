@@ -141,6 +141,7 @@ EXPECTED_SOURCE_MANIFESTS = {
         "cases/general-research/README.md",
         "cases/product-and-process/README.md",
         "cases/grounded-option-discovery/README.md",
+        "cases/grounded-option-discovery/CONTINUATION.md",
     ],
     "boundaries": [
         "framework/BOUNDARIES_AND_FAILURES.md",
@@ -152,6 +153,9 @@ EXPECTED_SOURCE_MANIFESTS = {
     ],
     "research": [
         "research/README.md",
+        "research/future-studies/execution-preparation/EXECUTION_DECISION_PACKET.md",
+        "research/future-studies/decision-continuation/DECISION_SEMANTICS.md",
+        "research/future-studies/decision-continuation/QUESTION_DISCOVERY_DEVELOPMENT.md",
         "research/THE_DISCRIMINATION_LAYER_RESEARCH_AGENDA.md",
         "research/future-studies/ultra/MECHANISM_AND_COMPARATORS.md",
         "research/future-studies/ultra/PILOT_DECISION_SPEC.md",

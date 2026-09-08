@@ -2009,3 +2009,35 @@ seals and external verification attestation after integration.
 A01–A03, A06–A08, A11, A13–A17; source authority and artifact boundaries;
 controlled dispositions; unknown remains unknown; proportionate reuse;
 no fixture, design, simulation or model review as an empirical result.
+
+
+## D-PUBLIC-054 — Curate a public continuation while preserving the complete local record
+
+**Date:** 2026-09-07
+
+**Status:** Accepted with revision
+
+**Decision:** Continue independent preparation under the owner's instruction.
+Create a separate feature branch directly from public checkpoint `61f530c`.
+Carry the reviewed concise companion changes, fictional continuation and two
+abstract/fictional development notes; make references self-contained. Prepare
+one proposed execution decision packet for the unchanged primary pilot. Do not
+merge the complete local research branch or disclose excluded source material
+through new commits, derivative reports, manifests or generated exports.
+
+**Cross-artifact flow:** Builder/agent explanations become optional worked
+Examples and Research disclosures, with no new thesis or runtime authority.
+The source-local fragment correction maps references to the same prefixed
+headings used by routed/standalone rendering. Navigation and package selections
+must describe this curated payload accurately. Preserve the complete local
+checkpoint and owner archive as a different review unit.
+
+**Evidence and affected paths:** `docs/PUBLIC_CONTINUATION_SCOPE_2026-09-07.md`,
+`handoff/PUBLIC_CONTINUATION_REVIEW_2026-09-07.md`, the selected files named there,
+public curation dispositions and final source/verification attestation. New
+numerical thresholds remain proposed management choices. No study, runtime
+transport verification, user benefit or human review occurred by preparing them.
+
+**Governing requirement:** later owner instruction to advance independent work;
+locked owner intent; A07–A08/A11/A13–A17; proportionality; artifact boundaries;
+source authority; review/disposition protocol; exact external-action scope.

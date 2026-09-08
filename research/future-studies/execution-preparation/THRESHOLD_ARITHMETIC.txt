@@ -1,0 +1,18 @@
+AUTHORED THRESHOLD ARITHMETIC / NO OBSERVED OR SIMULATED PERFORMANCE
+Base tasks: 12; assignments per arm: 48; total: 144
+delta_min | required net accepted assignments | realized threshold | largest eligible baseline count
+0.05 | 3 | 3/48 = 0.062500 | 45
+0.10 | 5 | 5/48 = 0.104167 | 43
+0.15 | 8 | 8/48 = 0.166667 | 40
+Concentration illustration, net task counts [4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]: overall 5/48
+Leave-one-task-out range: 1/44 to 5/44; not a confidence interval
+Proposed independent hard ceilings (not measured needs):
+32,000 accounted tokens/episode: 1,536,000/arm; 4,608,000 total
+8 model requests/episode: 384/arm; 1,152 total
+180 seconds/episode: 8640/arm; 25,920 summed episode seconds = 7.2 hours
+2 acquisition units/episode: 96/arm; 288 total
+Proposed acquisition margin: +12 units/arm = 1/4 unit per assigned episode; zero-extra is the stricter alternative
+2 semantic reviews/episode: 288 initial reviews
+Reviewer plan: 4h setup + 14.4h initial reviews + 4h adjudication + 1.6h reserve = 24 person-hours
+USD50 / 4,608,000 tokens permits at most USD10.850694/million at the maximum token price, if there are no other charges
+Prices, tokenizer fit, actual elapsed enforcement and owner acceptance remain unverified.

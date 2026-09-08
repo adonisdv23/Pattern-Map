@@ -83,6 +83,13 @@ Do not let “find information” stand in for the decision. If the question is
 underspecified, ask a clarifying question or label the interpretation
 PROVISIONAL.
 
+When the owner supplies a bounded goal rather than a research question, identify
+the choice or required answer that further inspection could improve. State
+which possible answers to the proposed question would change that choice or
+its support. If they would change neither, and the required answer is already
+adequately supported, another check may not earn its cost. This question
+selection stays inside the owner's scope; it does not create a new project lane.
+
 ## 3. Separate technical access from permission
 
 For each operation, record:
@@ -282,6 +289,15 @@ Use repository template `framework/templates/MEMORY_RECORD.md` only when
 scoped memory is material. A link proves which record was corrected; it does
 not prove that the correction is true.
 
+Before carrying a past decision into this task, identify the reason that bears
+on the current question and the conditions under which it applies. A valid
+digest establishes the preserved version, not present applicability. Describe
+the reason and scope in the existing selected-material role/support fields;
+use the brief's resume condition for a proposed later review. If a condition
+changes, inspect the affected reason and any remaining sufficient reasons.
+Reviewing one reason does not establish the opposite conclusion, reopen other
+scope, or authorize an action. Keep the prior record unchanged.
+
 ## 10. Disconfirm the leading interpretation
 
 Before answering a consequential question, create a disconfirmation log:
@@ -323,6 +339,18 @@ Use typed uncertainty:
 State the source of the uncertainty and the action that could reduce it. Do
 not convert an unavailable source into a negative observation or model
 confidence into evidence support.
+
+Attach uncertainty to the claims or operations that depend on it. For example,
+verified current authority may establish that a project is parked even when
+the historical supersession chain is unavailable. Answer that bounded
+present-state question from the available authority, leave the historical
+relationship unresolved, and retrieve more only if it matters to the task.
+Withhold material when a required identity, permission or memory gate is
+unresolved. Other nonblocking unknowns do not erase its authorized support or
+qualification for a narrow claim. Unknown consequence still prevents answer
+routes, and the global blocked permission contract still blocks the receipt.
+Do not discard an independently supported claim merely because another claim
+remains unknown.
 
 ## 12. Choose the route and stop
 

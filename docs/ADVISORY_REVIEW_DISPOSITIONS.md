@@ -674,3 +674,28 @@ split. No disposition grants merge, deployment, publication, outreach, spending,
 participant work or empirical execution. Exact final source and seal identities
 are resolved by the final handoff and external attestation, not by this ledger's
 self-reference.
+
+
+## Public continuation dispositions — 2026-09-07
+
+Governing decision: D-PUBLIC-054 and the public continuation scope. The initial
+five-file advisory reviewed local authoring source `b9af287` against public
+baseline `61f530c`; report `PUBLIC_CURATION_ADVISORY.md` is preserved in the local
+owner handoff, SHA-256
+`d4851f86e731b1b20ee693d29ed0749acae9a8bdc3d0414b652579cd579bd045`.
+The primary integrator inspected the actual files and makes the revisions below
+separately. This record does not import the complete local advisory history.
+
+| ID | Recommendation | Disposition | Reason, files and governing requirement | Integration and verification |
+| --- | --- | --- | --- | --- |
+| PC-01 | Carry the concise companion explanation | **Accepted** | Guide/brief disclose general procedures; keep mandatory gates and existing fields; A08 | Selected exact file bytes; focused framework validation and final source attestation |
+| PC-02 | Carry the fictional continuation | **Accepted** | ORBIT is authored and draws on public development cases; ordinary alternative and unbuilt-index clarification preserved; A07/A11 | Selected exact file bytes; source-link checks and source-navigation regression |
+| PC-03 | Remove dependence on an omitted concurrent proposal | **Accepted with revision** | Birch status says not a study/benchmark and distinguishes itself directly from the public primary pilot; A11 and independent reading path | Integrator wording in `QUESTION_DISCOVERY_DEVELOPMENT.md`; no new study implied |
+| PC-04 | Make scope references resolvable | **Accepted with revision** | Both research headers link the fresh public scope; no omitted governance copied; source authority | Integrator header replacements and local-link checks |
+| PC-05 | Make the method-inspection limit self-contained | **Accepted with revision** | Semantics comparison relies on MG532 and does not claim inspection of R-4216 or Dewar's complete book; A11 | Integrator source-limit wording; existing public primary citation retained |
+| PC-06 | Preserve the abstract reasoning and fictional open-need packet | **Accepted** | No actual project outcome is needed to teach these distinctions; A07/A11/A16 | Content retained beyond the self-containment revisions above |
+| PC-07 | Transfer excluded source records or inherit their commits for provenance | **Rejected** | The complete local history is a separately preserved review unit; public scope does not require its disclosure | Branch begins directly at `61f530c`; full new-commit reachability and payload review before push |
+
+The final source/seal attestation resolves the integration commit. Numerical
+execution proposals and their review dispositions are recorded separately;
+none of these dispositions approves model/provider selection or a study.

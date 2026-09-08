@@ -12,6 +12,10 @@ Foundry translation and at least two domain-neutral examples.
   weekly session, using invented fixture records.
 - [product-and-process/](product-and-process/) — deciding whether to change an
   intake process, using invented fixture records.
+- [A better way to remember a decision](grounded-option-discovery/README.md)
+  — a constructed comparison that reveals a smaller useful route, with an
+  optional [later-change continuation](grounded-option-discovery/CONTINUATION.md).
+  Its source packet, draft pointer and later snapshots are authored examples.
 
 Every case states its evidence boundary, permission boundary, stop logic, and
 residual risks. None is a runtime report, empirical result, or product claim.
