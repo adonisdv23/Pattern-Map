@@ -41,9 +41,10 @@ def main():
     print(f"2 acquisition units/episode: {per_arm * 2}/arm; {slots * 2} total")
     print(f"Proposed acquisition margin: +12 units/arm = {Fraction(12, per_arm)} unit per assigned episode; zero-extra is the stricter alternative")
     print(f"2 semantic reviews/episode: {slots * 2} initial reviews")
-    minutes = 2 * 120 + slots * 2 * 3 + 240 + 96
-    assert minutes == 24 * 60
-    print("Reviewer plan: 4h setup + 14.4h initial reviews + 4h adjudication + 1.6h reserve = 24 person-hours")
+    print(f"1 separate action/procedure review/episode: {slots} adherence passes")
+    minutes = 2 * 120 + slots * 2 * 3 + slots * 1 + 240 + 72
+    assert minutes == 26 * 60
+    print("Reviewer plan: 4h setup + 14.4h semantic reviews + 2.4h adherence passes + 4h adjudication + 1.2h reserve = 26 person-hours")
     price = Fraction(50 * 1000000, slots * 32000)
     print(f"USD50 / 4,608,000 tokens permits at most USD{float(price):.6f}/million at the maximum token price, if there are no other charges")
     print("Prices, tokenizer fit, actual elapsed enforcement and owner acceptance remain unverified.")

@@ -13,6 +13,7 @@ Proposed independent hard ceilings (not measured needs):
 2 acquisition units/episode: 96/arm; 288 total
 Proposed acquisition margin: +12 units/arm = 1/4 unit per assigned episode; zero-extra is the stricter alternative
 2 semantic reviews/episode: 288 initial reviews
-Reviewer plan: 4h setup + 14.4h initial reviews + 4h adjudication + 1.6h reserve = 24 person-hours
+1 separate action/procedure review/episode: 144 adherence passes
+Reviewer plan: 4h setup + 14.4h semantic reviews + 2.4h adherence passes + 4h adjudication + 1.2h reserve = 26 person-hours
 USD50 / 4,608,000 tokens permits at most USD10.850694/million at the maximum token price, if there are no other charges
 Prices, tokenizer fit, actual elapsed enforcement and owner acceptance remain unverified.

@@ -69,7 +69,7 @@ or combine unlike resources into a score.
 | Inference spend | At most 10% of each baseline total | Token parity cannot conceal different billed rates, cache behavior or charges |
 | Sum of episode elapsed times | At most 15% of each baseline total | A little more latency is acceptable; service delay still counts and condition-confounded disruption invalidates interpretation |
 | Charged acquisition units | **At most 12 additional units** over either baseline total | Allows an average 0.25 extra charged units per assigned episode to obtain discriminating evidence; the shared B=2 ceiling remains unchanged |
-| Marginal semantic-review plus adjudication person-minutes | At most 10% of each baseline total | More readable justification must earn its review burden; common setup is recorded separately |
+| All marginal semantic, adherence/trace-review and adjudication person-minutes | At most 10% of each baseline total | Include the required separate action/procedure pass; report subcomponents and common setup separately |
 
 Implement each margin as a difference inequality, for example
 `R_tokens - O_tokens <= 0.10 * O_tokens`; do the same against M. The relative
@@ -77,8 +77,10 @@ resource gates remain defined when a baseline is zero: R must also be zero for
 that resource. Acquisition instead uses `R_units - baseline_units <= 12`, so
 a zero-acquisition baseline allows at most twelve R units. An
 unavailable measurement is unknown, never zero; unresolved required accounting
-prevents advancement. Attribute adjudication time to the affected output/arm;
-record genuinely shared setup separately rather than assigning it favorably.
+prevents advancement. Attribute semantic, adherence/trace-review and adjudication time to the
+affected output/arm; report those subcomponents separately and include all
+of them in the margin. Record genuinely shared setup separately rather than
+assigning it favorably.
 
 Twelve extra units permits up to twelve extra checks or charged mistakes for
 the required five net attainment gains. This is a proposed small allowance,
@@ -101,7 +103,7 @@ tokenizer/runtime, nor extra capacity granted to R:
   request supplies one original action string to the frozen adapter. No silent
   repair or answer-quality retry; transport failures consume their assigned slot
   and remain visible. Adapter B=2/K=8 and all action deadlines stay unchanged.
-- Propose **USD 50 total inference/transport spend** and **24 reviewer
+- Propose **USD 50 total inference/transport spend** and **26 reviewer
   person-hours**. The dollar amount is an unpriced ceiling preference, not a
   quote or predicted bill. Neither amount is authorized. Storage or fixed service charges
   must fit the dollar ceiling; paid reviewer contracting is not proposed.
@@ -129,15 +131,18 @@ Prefer reviewers who did not author the task/rubric. If unavailable, record the
 author-dependence limitation rather than call the review independent of authorship.
 No external recruitment or paid review is authorized here.
 
-The 24-person-hour planning allowance comprises four hours of common preparation
-(two per reviewer), 14.4 hours for 288 initial reviews (three minutes each), four
-hours adjudication, and 1.6 hours reserve. These are allocation assumptions, not
-measured task times or a per-output pressure to agree. If adequate review exceeds
+The 26-person-hour planning allowance comprises four hours of common preparation
+(two per semantic reviewer), 14.4 hours for 288 initial semantic reviews
+(three minutes each), 2.4 hours for 144 separate action/procedure adherence
+passes (one minute each), four hours adjudication, and 1.2 hours reserve. Name
+the adherence reviewer; that role may be held by a member of the named team
+while preserving the independent semantic judgments. These are allocation
+assumptions, not measured task times or a per-output pressure to agree. If adequate review exceeds
 capacity, record the remaining work and stop interpretation; unresolved scoring
 cannot earn advancement.
 Review labor may dominate the total practical expense despite a small inference
 ceiling. No reviewer wage, willingness or actual burden has been measured; the
-24-hour proposal is a capacity reservation for owner review, not a forecast.
+26-hour proposal is a capacity reservation for owner review, not a forecast.
 
 Before evaluated outputs exist, both reviewers should inspect all twelve public
 tasks and both narrative forms, identify questionable values, feasible

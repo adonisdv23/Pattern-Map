@@ -47,6 +47,20 @@ specification, templates and sealed Signal subset retain their prior bytes.
 Earlier handoffs and review PDFs remain historical companions to their named
 checkpoints; they are not newly rendered copies of these optional additions.
 
+## Review and verification
+
+The initial curation review checked the selected source files and their public
+reading dependencies. A separate research review caught omitted adherence-review
+burden; the revised packet includes that required work in both its cost margin
+and its proposed 26-person-hour allocation. The original authoring and finding
+remain preserved; [controlled dispositions](../docs/ADVISORY_REVIEW_DISPOSITIONS.md)
+record the root's correction separately.
+
+The complete owner-review command is `sh qa/run_owner_review_checks.sh` from a
+clean checkout after the bounded manifest is sealed. Its final log/attestation
+bind the exact source checked. The new arithmetic helper additionally replays
+its checked-in output exactly. No study is embedded in either check.
+
 ## What still requires real evidence or an owner decision
 
 Actual mentor review, real operator use, observed effort, retrieval success and
